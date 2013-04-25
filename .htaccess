@@ -1,0 +1,48 @@
+AddDefaultCharset utf-8
+AddCharset utf-8 .css .js
+IndexHeadInsert "<meta content=\"noindex,follow\" name=\"robots\">"
+IndexOptions Charset=utf-8 HTMLTable IgnoreClient SuppressDescription
+Options +Indexes
+ServerSignature off
+SetEnv TZ Europe/London
+
+RewriteEngine on
+RewriteBase /
+RewriteCond %{QUERY_STRING} !=""
+RewriteCond %{QUERY_STRING} !^/crap/$
+RewriteRule ^(.*)$ /$1? [R=permanent,L]
+RewriteCond %{THE_REQUEST} ^.*index\.html?
+RewriteRule ^(.*)index\.html?$ /$1 [R=permanent,L]
+# FIXME: I have no idea if the following works.
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://www.robotinaponcho.net/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://blog.robotinaponcho.net/.*$ [NC]
+RewriteRule /crap/glyphiconshalflings-regular.*$ - [F]
+
+AddType application/javascript js
+AddType application/x-font-woff woff
+AddType image/x-icon ico
+AddType text/x-c c
+AddType text/x-diff patch
+AddType text/x-python py
+AddType text/x-shellscript sh
+
+ExpiresActive on
+ExpiresDefault "access plus 1 week"
+ExpiresByType image/gif "access plus 1 week"
+ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/x-icon "access plus 1 week"
+ExpiresByType text/html "access plus 0 seconds"
+FileETag none
+Header unset ETag
+
+Redirect 301 /crap/teamspeakbanner.jpeg /crap/teamspeak-banner.jpeg
+Redirect gone /deadlypremonition.jpeg
+Redirect gone /demons_souls_theodore.jpg
+Redirect gone /robotinaponcho.jpeg
+Redirect gone /crap/bastardsnake.swf
+Redirect gone /crap/blog-date-icon.png
+Redirect gone /crap/blog-source-icon.png
+Redirect gone /crap/blog-tags-icon.png
+Redirect gone /crap/thingy.swf
