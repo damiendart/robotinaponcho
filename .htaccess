@@ -37,12 +37,20 @@ ExpiresByType text/html "access plus 0 seconds"
 FileETag none
 Header unset ETag
 
+Redirect 301 /crap/glyphiconshalflings-regular.eot /obtaincornhoop/glyphiconshalflings-regular.eot
+Redirect 301 /crap/glyphiconshalflings-regular.otf /obtaincornhoop/glyphiconshalflings-regular.otf
+Redirect 301 /crap/glyphiconshalflings-regular.svg /obtaincornhoop/glyphiconshalflings-regular.svg
+Redirect 301 /crap/glyphiconshalflings-regular.ttf /obtaincornhoop/glyphiconshalflings-regular.ttf
+Redirect 301 /crap/glyphiconshalflings-regular.woff /obtaincornhoop/glyphiconshalflings-regular.woff
 Redirect 301 /crap/teamspeakbanner.jpeg /crap/teamspeak-banner.jpeg
 Redirect gone /deadlypremonition.jpeg
 Redirect gone /demons_souls_theodore.jpg
 Redirect gone /robotinaponcho.jpeg
 Redirect gone /crap/bastardsnake.swf
+Redirect gone /crap/blog-background.gif
+Redirect gone /crap/blog-background2.gif
 Redirect gone /crap/blog-date-icon.png
+Redirect gone /crap/blog-header.png
 Redirect gone /crap/blog-source-icon.png
 Redirect gone /crap/blog-tags-icon.png
 Redirect gone /crap/thingy.swf
