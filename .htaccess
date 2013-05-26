@@ -1,56 +1,90 @@
 AddDefaultCharset utf-8
-AddCharset utf-8 .css .js
-IndexHeadInsert "<meta content=\"noindex,follow\" name=\"robots\">"
-IndexOptions Charset=utf-8 HTMLTable IgnoreClient SuppressDescription
-Options +Indexes
+FileETag none
+Options +Indexes -MultiViews
 ServerSignature off
 SetEnv TZ Europe/London
 
-RewriteEngine on
-RewriteBase /
-RewriteCond %{QUERY_STRING} !=""
-RewriteCond %{QUERY_STRING} !^/crap/$
-RewriteRule ^(.*)$ /$1? [R=permanent,L]
-RewriteCond %{THE_REQUEST} ^.*index\.html?
-RewriteRule ^(.*)index\.html?$ /$1 [R=permanent,L]
-# FIXME: I have no idea if the following works.
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://www.robotinaponcho.net/.*$ [NC]
-RewriteCond %{HTTP_REFERER} !^http://blog.robotinaponcho.net/.*$ [NC]
-RewriteRule /crap/glyphiconshalflings-regular.*$ - [F]
+<IfModule mod_alias.c>
+  Redirect gone /deadlypremonition.jpeg
+  Redirect gone /demons_souls_theodore.jpg
+  Redirect gone /robotinaponcho.jpeg
+  Redirect gone /crap/bastardsnake.swf
+  Redirect gone /crap/blog-background.gif
+  Redirect gone /crap/blog-background2.gif
+  Redirect gone /crap/blog-date-icon.png
+  Redirect gone /crap/blog-header.png
+  Redirect gone /crap/blog-source-icon.png
+  Redirect gone /crap/blog-tags-icon.png
+  Redirect gone /crap/thingy.swf
+  RedirectMatch 301 /crap/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
+      /obtaincornhoop/glyphiconshalflings-regular.$1
+</IfModule>
 
-AddType application/javascript js
-AddType application/x-font-woff woff
-AddType image/x-icon ico
-AddType text/x-c c
-AddType text/x-diff patch
-AddType text/x-python py
-AddType text/x-shellscript sh
+<IfModule mod_autoindex.c>
+  IndexHeadInsert "<meta content=\"noindex,follow\" name=\"robots\">"
+  IndexOptions Charset=utf-8 HTMLTable SuppressDescription
+</IfModule>
 
-ExpiresActive on
-ExpiresDefault "access plus 1 week"
-ExpiresByType image/gif "access plus 1 week"
-ExpiresByType image/jpeg "access plus 1 week"
-ExpiresByType image/png "access plus 1 week"
-ExpiresByType image/x-icon "access plus 1 week"
-ExpiresByType text/html "access plus 0 seconds"
-FileETag none
-Header unset ETag
+# Custom expire headers for better cache control. For more information, see
+# <https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L433>.
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType application/font-woff "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType application/vnd.ms-fontobjec "access plus 1 week"
+  ExpiresByType application/x-font-ttf "access plus 1 week"
+  ExpiresByType font/opentype "access plus 1 week"
+  ExpiresByType image/gif "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 week"
+  ExpiresByType image/x-icon "access plus 1 week"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
 
-Redirect 301 /crap/glyphiconshalflings-regular.eot /obtaincornhoop/glyphiconshalflings-regular.eot
-Redirect 301 /crap/glyphiconshalflings-regular.otf /obtaincornhoop/glyphiconshalflings-regular.otf
-Redirect 301 /crap/glyphiconshalflings-regular.svg /obtaincornhoop/glyphiconshalflings-regular.svg
-Redirect 301 /crap/glyphiconshalflings-regular.ttf /obtaincornhoop/glyphiconshalflings-regular.ttf
-Redirect 301 /crap/glyphiconshalflings-regular.woff /obtaincornhoop/glyphiconshalflings-regular.woff
-Redirect 301 /crap/teamspeakbanner.jpeg /crap/teamspeak-banner.jpeg
-Redirect gone /deadlypremonition.jpeg
-Redirect gone /demons_souls_theodore.jpg
-Redirect gone /robotinaponcho.jpeg
-Redirect gone /crap/bastardsnake.swf
-Redirect gone /crap/blog-background.gif
-Redirect gone /crap/blog-background2.gif
-Redirect gone /crap/blog-date-icon.png
-Redirect gone /crap/blog-header.png
-Redirect gone /crap/blog-source-icon.png
-Redirect gone /crap/blog-tags-icon.png
-Redirect gone /crap/thingy.swf
+# Allow access to web fonts from other domains. For more information, see
+# <https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L45>.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  # Force UTF-8 encoding for other file formats.
+  AddCharset utf-8 .css .js
+  AddType application/javascript js
+  AddType application/vnd.ms-fontobject eot
+  AddType application/x-font-ttf ttc ttf
+  AddType application/x-font-woff woff
+  AddType application/x-shockwave-flash swf
+  AddType font/opentype otf
+  AddType image/x-icon ico
+  AddType text/x-c c
+  AddType text/x-diff patch
+  AddType text/x-python py
+  AddType text/x-shellscript sh
+  # Remove unneccesary ETags; setting "FileETag None" is not enough. For more
+  # information, see <http://developer.yahoo.com/performance/rules.html#etags>.
+  Header unset ETag
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  # Remove "index.html" from URLs.
+  RewriteCond %{THE_REQUEST} ^.*index\.html?
+  RewriteRule ^(.*)index\.html?$ /$1 [R=permanent,L]
+  # Remove query strings from URLs. For more information, see
+  # <http://briancray.com/posts/htaccess-hack-remove-url-query-strings>.
+  RewriteCond %{QUERY_STRING} !=""
+  RewriteCond %{REQUEST_URI} !^/crap/$
+  RewriteRule ^(.*)$ /$1? [R=permanent,L]
+  # Prevent hotlinking of Obtain Corn Hoop assets.
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !google. [NC]
+  RewriteCond %{HTTP_REFERER} !^http://www.robotinaponcho.net/.*$ [NC]
+  RewriteCond %{HTTP_REFERER} !^http://blog.robotinaponcho.net/.*$ [NC]
+  RewriteRule \obtaincornhoop\.*$ - [F]
+</IfModule>
