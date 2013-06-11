@@ -8,6 +8,8 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100% }
 
+.js body > * { display: none; }
+
 /* img */.site-image {
   display: block;
   margin: 3em auto -24px auto;
@@ -19,6 +21,7 @@ body {
   line-height: 1.5em;
   margin: 0 0 0.375em 0;
   padding: 0;
+  z-index: 999;
   /* a */.site-header__link {
     background-color: inherit;
     color: inherit;

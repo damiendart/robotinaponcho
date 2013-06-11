@@ -1,11 +1,14 @@
 !!! 5
 %html{:lang => "en"}
   %head
+    %link{:href => "assets/animate.min.css", :rel => "stylesheet"}
     %meta{:charset => "utf-8"}
     %meta{:content => "Damien Dart", :name => "author"}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "index.scss"))}
+    %script{:src => "assets/jquery-1.10.1.min.js"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
+    %script document.documentElement.className += "js";
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
@@ -25,3 +28,10 @@
           %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
         %li.site-navigation__list__item<>
           %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr 
+  :javascript
+    $(window).load(function() {
+      $(".site-image").show().addClass("animated fadeInDown");
+      $(".site-header").show().addClass("animated fadeInUp");
+      $(".site-navigation").show().addClass("animated fadeInUp");
+    });
+
