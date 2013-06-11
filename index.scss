@@ -1,2 +1,55 @@
 body {
-  font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif; }
+  background-color: #ffffff;
+  color: #000000;
+  font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiasing;
+  margin: 0;
+  text-align: center;
+  -webkit-text-size-adjust: 100% }
+
+/* h1 */.site-header {
+  font-size: 200%;
+  line-height: 1.5em;
+  margin: 3em 0 0.375em 0;
+  padding: 0;
+  /* a */.site-header__link {
+    background-color: inherit;
+    color: inherit;
+    &:active, &:focus, &:hover, &:visited:hover {
+      color: #0000ff; }
+    &:visited {
+      color: #000000; } } }
+
+/* nav */.site-navigation {
+  display: block;
+  max-width: 47.5em;
+  margin: 0 auto;
+  /* ul */.site-navigation__list {
+    list-style: none;
+    margin: -0.75em 0 0 -0.75em;
+    padding: 0;
+    /* li */.site-navigation__list__item {
+      display: inline-block;
+      margin: 0.75em 0 0 0.75em;
+      padding: 0; } } }
+
+/* a */.button {
+  background-color: #000000;
+  border-radius: 0.375em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.375em 0.75em;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:active, &:focus, &:hover, &:visited:hover {
+    background-color: #0000ff; }
+  &:visited {
+    background-color: #000000; } }
+/* a */.button--disabled {
+  background-color: #cccccc;
+  cursor: default;
+  pointer-events: none;
+  &:active, &:focus, &:hover, &:visited, &:visited:hover {
+    background-color: #cccccc; } }

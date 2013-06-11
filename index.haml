@@ -2,8 +2,25 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
+    %meta{:content => "Damien Dart", :name => "author"}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "index.scss"))}
+    %script{:src => "//use.typekit.net/mnw2jkv.js"}
+    %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
-    %p Raspberry kumquats apple raspberries cherries lychees grapefruit.
+    %h1.site-header Hello blah blah <a class="site-header__link" href="mailto:damiendart@pobox.com">Damien Dart</a> blah personal site.
+    %nav.site-navigation
+      %ul.site-navigation__list
+        %li.site-navigation__list__item<>
+          %a.button.button--disabled{:href => "#"} Artwork (Coming Soon)
+        %li.site-navigation__list__item<>
+          %a.button.button--disabled{:href => "#"} The Folder of Crap (Coming Soon)
+        %li.site-navigation__list__item<>
+          %a.button{:href => "https://github.com/damiendart"} Code at GitHub
+        %li.site-navigation__list__item<>
+          %a.button{:href => "http://instagram.com/damiendart"} Crappy Photos at Instagram
+        %li.site-navigation__list__item<>
+          %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
+        %li.site-navigation__list__item<>
+          %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr 
