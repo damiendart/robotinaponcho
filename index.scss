@@ -4,9 +4,15 @@ body {
   font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiasing;
+  height: 100%;
   margin: 0;
   text-align: center;
-  -webkit-text-size-adjust: 100% }
+  -webkit-text-size-adjust: 100%;
+  width: 100%; }
+
+html {
+  height: 100%;
+  width: 100%; }
 
 /* a */.button {
   background-color: #000000;
@@ -61,6 +67,8 @@ body {
       padding: 0; } } }
 
 .js {
-  body {
-    & > * {
-      display: none; } } }
+  .site-header, .site-image, .site-navigation {
+    display: none; }
+  .spinner {
+    left: 50%;
+    top: 50%; } }

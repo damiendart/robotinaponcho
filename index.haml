@@ -7,6 +7,7 @@
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "index.scss"))}
     %script{:src => "assets/jquery-1.10.1.min.js"}
+    %script{:src => "assets/spin.min.js"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
     -# The following line of JavaScript won't have any effect unless it is
     -# above the Typekit stuff, for some reason.
@@ -31,7 +32,10 @@
         %li.site-navigation__list__item<>
           %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
   :javascript
+    var spinner = new Spinner().spin();
+    document.getElementsByTagName("body").item(0).appendChild(spinner.el);
     $(window).load(function() {
+      spinner.stop();
       $(".site-image").show().addClass("animated fadeInDown");
       $(".site-header").show().addClass("animated fadeInUp");
       $(".site-navigation").show().addClass("animated fadeInUp");
