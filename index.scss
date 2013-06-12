@@ -1,4 +1,21 @@
+%flexy-box {
+  // See <http://www.html5rocks.com/en/tutorials/flexbox/quick/#toc-center>
+  // for more information on this mess.
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center; }
+
 body {
+  @extend %flexy-box;
   background-color: #ffffff;
   color: #000000;
   font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif;
@@ -34,6 +51,9 @@ html {
   &:active, &:focus, &:hover, &:visited, &:visited:hover {
     background-color: #cccccc; } }
 
+/* div */.container {
+  padding: 3em 0; }
+
 /* h1 */.site-header {
   font-size: 200%;
   line-height: 1.5em;
@@ -49,7 +69,7 @@ html {
 
 /* img */.site-image {
   display: block;
-  margin: 3em auto -24px auto;
+  margin: 0 auto -24px auto;
   max-width: 100%;
   border: 0; }
 
@@ -68,7 +88,4 @@ html {
 
 .js {
   .site-header, .site-image, .site-navigation {
-    display: none; }
-  .spinner {
-    left: 50%;
-    top: 50%; } }
+    display: none; } }

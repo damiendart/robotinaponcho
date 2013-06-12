@@ -15,22 +15,23 @@
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
-    %img.site-image{:src => "assets/site-header.png"}
-    %h1.site-header Hello blah blah <a class="site-header__link" href="mailto:damiendart@pobox.com">Damien Dart</a> blah personal site.
-    %nav.site-navigation
-      %ul.site-navigation__list
-        %li.site-navigation__list__item<>
-          %a.button.button--disabled{:href => "#"} Artwork (Coming Soon)
-        %li.site-navigation__list__item<>
-          %a.button.button--disabled{:href => "#"} The Folder of Crap (Coming Soon)
-        %li.site-navigation__list__item<>
-          %a.button{:href => "https://github.com/damiendart"} Code at GitHub
-        %li.site-navigation__list__item<>
-          %a.button{:href => "http://instagram.com/damiendart"} Crappy Photos at Instagram
-        %li.site-navigation__list__item<>
-          %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
-        %li.site-navigation__list__item<>
-          %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
+    .container
+      %img.site-image{:src => "assets/site-header.png"}
+      %h1.site-header Hello blah blah <a class="site-header__link" href="mailto:damiendart@pobox.com">Damien Dart</a> blah personal site.
+      %nav.site-navigation
+        %ul.site-navigation__list
+          %li.site-navigation__list__item<>
+            %a.button.button--disabled{:href => "#"} Artwork (Coming Soon)
+          %li.site-navigation__list__item<>
+            %a.button.button--disabled{:href => "#"} The Folder of Crap (Coming Soon)
+          %li.site-navigation__list__item<>
+            %a.button{:href => "https://github.com/damiendart"} Code at GitHub
+          %li.site-navigation__list__item<>
+            %a.button{:href => "http://instagram.com/damiendart"} Crappy Photos at Instagram
+          %li.site-navigation__list__item<>
+            %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
+          %li.site-navigation__list__item<>
+            %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
   :javascript
     var spinner = new Spinner().spin();
     document.getElementsByTagName("body").item(0).appendChild(spinner.el);
