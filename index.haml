@@ -8,6 +8,8 @@
       #{File.read(File.join(File.dirname(__FILE__), "index.scss"))}
     %script{:src => "assets/jquery-1.10.1.min.js"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
+    -# The following line of JavaScript won't have any effect unless it is
+    -# above the Typekit stuff, for some reason.
     %script document.documentElement.className += "js";
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
@@ -27,7 +29,7 @@
         %li.site-navigation__list__item<>
           %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
         %li.site-navigation__list__item<>
-          %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr 
+          %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
   :javascript
     $(window).load(function() {
       $(".site-image").show().addClass("animated fadeInDown");
