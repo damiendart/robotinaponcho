@@ -8,7 +8,7 @@ task :default => "index.html"
 desc "Spit out the homepage."
 file "index.html" => ["index.haml", "index.js", "index.scss"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  Haml::Filters::Scss.options[:style] = :compact
+  Haml::Filters::Scss.options[:style] = :compressed
   Haml::Filters::Scss.options[:cache] = false
   template = File.read("index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
