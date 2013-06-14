@@ -1,4 +1,5 @@
-var spinner = new Spinner().spin();
+var spinner = new Spinner({color: "#ccc", corners: 1, hwaccel: true,
+    length: 0, lines: 12,radius: 15, width: 5}).spin();
 document.getElementsByTagName("body").item(0).appendChild(spinner.el);
 $(window).load(function() {
   $(".spinner").addClass("animated fadeOut");
