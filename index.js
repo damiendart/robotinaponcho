@@ -1,6 +1,10 @@
 var spinner = new Spinner({className: "js-spinner", color: "#ccc", corners: 1,
     hwaccel: true, length: 0, lines: 12,radius: 15, width: 5}).spin();
 document.getElementsByTagName("body").item(0).appendChild(spinner.el);
+if (window.devicePixelRatio > 1) {
+  $(".site-image").attr("src", "assets/site-header@2x.png");
+}
+
 $(window).load(function() {
   $(".spinner").addClass("js-fade-out");
   setTimeout(function() {
