@@ -105,5 +105,36 @@ html {
         margin: 0.75em 0.75em 0 0.75em; } } } }
 
 .js {
+  .js-fade-in-from-bottom {
+    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
+      #{$prefix}animation-duration: 0.5s;
+      #{$prefix}animation-fill-mode: both;
+      #{$prefix}animation-name: fadeInUp; }
+      @media screen and (max-width: 767px) {
+        @each $prefix in ("", "-moz-", "-o", "-webkit-") {
+          #{$prefix}animation-duration: 0.5s;
+          #{$prefix}animation-name: fadeInLeft; } } }
+  .js-fade-in-from-top {
+    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
+      #{$prefix}animation-duration: 0.5s;
+      #{$prefix}animation-fill-mode: both;
+      #{$prefix}animation-iteration-count: 1;
+      #{$prefix}animation-name: fadeInDown; } }
+  .js-fade-out {
+    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
+      #{$prefix}animation-duration: 0.5s;
+      #{$prefix}animation-fill-mode: both;
+      #{$prefix}animation-name: fadeOut; } }
+  .js-no-animation {
+    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
+      #{$prefix}animation: none;
+      // HACK: Force hardware-accelerated rendering at all times. When
+      // removing CSS animations, the element is no longer rendered with
+      // hardware acceleration, which can cause subtle rendering issues.
+      #{$prefix}transform: translateZ(0px); } }
+  .js-spinner {
+    @media screen and (max-width: 767px) {
+      top: 50px;
+      left: 50%; } }
   .site-header, .site-image, .site-navigation {
     display: none; } }
