@@ -1,0 +1,8 @@
+<IfModule mod_autoindex.c>
+  HeaderName crap-header.html
+  IndexIgnore crap-header.html crap-footer.html .htaccess ..
+  IndexOptions Charset=utf-8 HTMLTable NameWidth=* SuppressDescription
+  IndexOptions SuppressDescription SuppressHTMLPreamble SuppressIcon SuppressRules
+  Options +Indexes
+  ReadmeName crap-footer.html
+</IfModule>
