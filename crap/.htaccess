@@ -1,3 +1,5 @@
+# "Directory" directives cannot be used in ".htaccess"-type configuration
+# files, so we make do with using directory-specific configuration files.
 <IfModule mod_autoindex.c>
   HeaderName /assets/header.html
   IndexIgnore .. .htaccess
