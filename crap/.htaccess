@@ -1,10 +1,10 @@
 # "Directory" directives cannot be used in ".htaccess"-type configuration
 # files, so we make do with using directory-specific configuration files.
 <IfModule mod_autoindex.c>
-  HeaderName /assets/header.html
+  HeaderName /assets/foc-header.html
   IndexIgnore .. .htaccess
   IndexOptions Charset=utf-8 HTMLTable NameWidth=*
   IndexOptions SuppressDescription SuppressHTMLPreamble SuppressIcon SuppressRules
   Options +Indexes
-  ReadmeName /assets/footer.html
+  ReadmeName /assets/foc-footer.html
 </IfModule>
