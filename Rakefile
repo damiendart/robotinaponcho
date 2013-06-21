@@ -6,11 +6,12 @@ CLOBBER.include("index.html")
 task :default => "index.html"
 
 desc "Spit out the homepage."
-file "index.html" => ["index.haml", "index.js", "index.scss"] do |task|
+file "index.html" => ["haml/index.haml", "javascript/index.js", 
+    "scss/index.scss"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   Haml::Filters::Scss.options[:style] = :compressed
   Haml::Filters::Scss.options[:cache] = false
-  template = File.read("index.haml")
+  template = File.read("haml/index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
         :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/^[\s]*$\n/, "")
