@@ -49,11 +49,10 @@ body {
   /* h1 */.content__header {
     $font-size: 80px;
     font-size: calculate_percentage($font-size, $base-font-size);
+    font-weight: normal;
     line-height: calculate_em($font-size, $font-size);
     margin: 0;
     text-align: center;
-    text-shadow: calculate_em(4px, $font-size) calculate_em(4px, $font-size)
-        darken($base-background-colour, 25%);
     text-transform: uppercase; }
   /* div */.content__blurb {
     // We have no control over Markdown-generated markup.
@@ -81,28 +80,3 @@ body {
           text-transform: uppercase;
           a {
             text-decoration: none; } } } } } }
-
-.tk-league-gothic {
-  $font-size: 80px;
-  font-size: calculate_percentage($font-size, $base-font-size);
-  font-weight: normal;
-  line-height: calculate_em($font-size, $font-size);
-  .tk-league-gothic__js-char {
-    display: inline-block;
-    position: relative; }
-  $i: 1;
-  @each $transformation in ((-2deg, 0px, 0px),
-      (2deg, -3px, 0px), (-2deg, 3px, 0px), (0deg, 0px, 0px),
-      (2deg, -3px, 0px), (2deg, 6px, 0px), (2deg, 7px, 0px),
-      (2deg, -7px, -7px), (0deg, 0px, -9px), (-2deg, 5px, -7px),
-      (0deg, 0px, 0px), (2deg, 5px, -6px), (-2deg, 0px, -7px),
-      (0deg, 0px, 0px), (2deg, -3px, -5px), (-2deg, 0px, -4px),
-      (-2deg, 7px, -5px), (-2deg, 4px, -6px)) {
-    .tk-league-gothic__js-char--#{$i} {
-      @each $prefix in ("", "-moz-", "-webkit-") {
-        #{$prefix}transform: rotate(nth($transformation, 1)); }
-      top: calculate_em(nth($transformation, 2), $font-size);
-      left: nth($transformation, 3)};
-    $i: $i + 1; }
-  .tk-league-gothic__js-word {
-    display: inline-block; } }
