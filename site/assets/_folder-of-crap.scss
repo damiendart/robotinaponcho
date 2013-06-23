@@ -1,49 +1,79 @@
+@function calculate_em($target, $context) {
+  @return ($target / $context) * 1em; }
+
+@function calculate_percentage($target, $context) {
+  @return percentage($target / $context); }
+
+$base-background-colour: #ffffff;
+$base-font-size: 16px;
+$base-foreground-colour: #444444;
+$base-line-height: 24px;
+$base-layout-unit: $base-line-height;
+$content-width: 500px;
+
 a {
-  color: #444444;
-  &:hover {
-    background-color: #ffffff;
-    color: #444444; } }
+  color: $base-foreground-colour;
+  &:active, &:focus, &:hover, &:visited:hover {
+    background-color: $base-foreground-colour;
+    color: $base-background-colour; }
+  &:visited {
+    background-colour: $base-background-colour;
+    color: $base-foreground-colour; } }
 
 body {
-  background-color: #ffffff;
-  color: #444444;
+  background-color: $base-background-colour;
+  color: $base-foreground-colour;
+  // Setting the font size initially to 100% avoids the Internet Explorer 6
+  // and Internet Explorer 7 exaggerated text-resizing bug (see
+  // <http://alistapart.com/article/howtosizetextincss#section5>).
   font: 100%/1.5 "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  @if ($base-font-size != 16px) {
+    font-size: calculate_percentage($base-font-size, 16); }
+  -webkit-font-smoothing: antialiasing;
   margin: 0;
+  // Internet Explorer 6 hates us and doesn't center block elements with just
+  // "margin-left: auto; margin-right: auto" alone.
   text-align: center;
-  @media screen and (max-width: 31.25em) {
-    font-size: 87.5%; } }
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: calculate_em($content-width, $base-font-size)) {
+    font-size: calculate_percentage($base-font-size * 0.875, $base-font-size); } }
 
 /* div */.content {
-  margin: 3em auto;
-  max-width: 31.25em;
+  margin: calculate_em($base-layout-unit * 3, $base-font-size) auto;
+  max-width: calculate_em($content-width, $base-font-size);
   text-align: left;
-  @media screen and (max-width: 31.25em) {
+  @media screen and (max-width: calculate_em($content-width, $base-font-size)) {
     margin: 0;
     max-width: 100%;
-    padding: 1.5em; }
+    padding: calculate_em($base-layout-unit, $base-font-size); }
   /* h1 */.content__header {
-    font-size: 150%;
-    line-height: 1em;
-    margin: 0 0 1em 0;
+    $font-size: 80px;
+    font-size: calculate_percentage($font-size, $base-font-size);
+    line-height: calculate_em($font-size, $font-size);
+    margin: 0;
+    text-align: center;
+    text-shadow: calculate_em(4px, $font-size) calculate_em(4px, $font-size)
+        darken($base-background-colour, 25%);
     text-transform: uppercase; }
   /* div */.content__blurb {
     // We have no control over Markdown-generated markup.
     p {
-      margin: 0.75em 0 0 0; } }
+      margin: calculate_em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
   /* div */.content__file-list {
     // We have no control over the Apache-generated file-list markup.
     table {
       border-collapse: collapse;
-      margin: 0.75em 0 0 0;
+      margin: calculate_em($base-layout-unit / 2, $base-font-size) 0 0 0;
       width: 100%;
       tr {
         td, th {
-          padding: 0 0 0 0.75em;
+          padding: 0 0 0 calculate_em($base-layout-unit / 2, $base-font-size);
           text-align: right;
           &:first-child {
             padding: 0;
             text-align: left; }
-          @media screen and (max-width: 31.25em) {
+          @media screen and (max-width:
+              calculate_em($content-width, $base-font-size)) {
             &:nth-child(2) {
               display: none; } } }
         th {
@@ -51,3 +81,28 @@ body {
           text-transform: uppercase;
           a {
             text-decoration: none; } } } } } }
+
+.tk-league-gothic {
+  $font-size: 80px;
+  font-size: calculate_percentage($font-size, $base-font-size);
+  font-weight: normal;
+  line-height: calculate_em($font-size, $font-size);
+  .tk-league-gothic__js-char {
+    display: inline-block;
+    position: relative; }
+  $i: 1;
+  @each $transformation in ((-2deg, 0px, 0px),
+      (2deg, -3px, 0px), (-2deg, 3px, 0px), (0deg, 0px, 0px),
+      (2deg, -3px, 0px), (2deg, 6px, 0px), (2deg, 7px, 0px),
+      (2deg, -7px, -7px), (0deg, 0px, -9px), (-2deg, 5px, -7px),
+      (0deg, 0px, 0px), (2deg, 5px, -6px), (-2deg, 0px, -7px),
+      (0deg, 0px, 0px), (2deg, -3px, -5px), (-2deg, 0px, -4px),
+      (-2deg, 7px, -5px), (-2deg, 4px, -6px)) {
+    .tk-league-gothic__js-char--#{$i} {
+      @each $prefix in ("", "-moz-", "-webkit-") {
+        #{$prefix}transform: rotate(nth($transformation, 1)); }
+      top: calculate_em(nth($transformation, 2), $font-size);
+      left: nth($transformation, 3)};
+    $i: $i + 1; }
+  .tk-league-gothic__js-word {
+    display: inline-block; } }

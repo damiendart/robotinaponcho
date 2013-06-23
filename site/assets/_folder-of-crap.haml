@@ -8,6 +8,8 @@
       #{File.read(File.join(File.dirname(__FILE__), "site", "assets", "_folder-of-crap.scss"))}
     %script{:src => "/assets/jquery-1.10.1.min.js", :type => "text/javascript"}
     %script{:src => "/assets/moment.min.js", :type => "text/javascript"}
+    %script{:src => "//use.typekit.net/mnw2jkv.js"}
+    %script try{Typekit.load();}catch(e){}
   %body
     .content
       %h1.content__header The Folder of Crap
