@@ -5,7 +5,7 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "Damien Dart", :name => "author"}
     :scss
-      #{File.read(File.join(File.dirname(__FILE__), "scss", "index.scss"))}
+      #{File.read(File.join(File.dirname(__FILE__), "site", "_index.scss"))}
     %script{:src => "assets/html5shiv.js"}
     %script{:src => "assets/jquery-1.10.1.min.js"}
     %script{:src => "assets/spin.min.js"}
@@ -34,4 +34,4 @@
           %li.site-navigation__list__item<>
             %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
   :javascript
-    #{File.read(File.join(File.dirname(__FILE__), "javascript", "index.js"))}
+    #{File.read(File.join(File.dirname(__FILE__), "site", "_index.js"))}

@@ -5,14 +5,15 @@ require "rake/clean"
 Haml::Filters::Scss.options[:style] = :compressed
 Haml::Filters::Scss.options[:cache] = false
 
-CLOBBER.include("foc-footer.html", "foc-header.html", "index.html")
-task :default => ["foc-footer.html", "foc-header.html", "index.html"]
+CLOBBER.include(FileList["site/index.html", "site/assets/foc-*.html"])
+task :default => ["site/index.html", "site/assets/foc-footer.html",
+    "site/assets/foc-header.html"]
 
 desc "Spit out the homepage."
-file "index.html" => ["haml/index.haml", "javascript/index.js", 
-    "scss/index.scss"] do |task|
+file "site/index.html" => ["site/_index.haml", "site/_index.js", 
+    "site/_index.scss"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  template = File.read("haml/index.haml")
+  template = File.read("site/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
         :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/^[\s]*$\n/, "")
@@ -23,10 +24,11 @@ end
 
 %w{footer header}.each do |template_part|
   desc "Spit out The Folder of Crap #{template_part}."
-  file "foc-#{template_part}.html" => ["haml/folder-of-crap.haml", 
-      "javascript/folder-of-crap.js", "scss/folder-of-crap.scss"] do |task| 
+  file "site/assets/foc-#{template_part}.html" => 
+      ["site/assets/_folder-of-crap.haml",  "site/assets/_folder-of-crap.js", 
+      "site/assets/_folder-of-crap.scss"] do |task| 
     puts "# Spitting out \"" + task.name + "\"."
-    template = File.read("haml/folder-of-crap.haml")
+    template = File.read("site/assets/_folder-of-crap.haml")
     outputs = Haml::Engine.new(template, {:format => :html4,
           :escape_attrs => false, 
           :attr_wrapper => "\""}).render.split(/<!-- TABLE -->/)
