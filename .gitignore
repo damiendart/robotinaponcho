@@ -1,3 +1,3 @@
 site/index.html
-site/assets/
+site/assets/*
 !site/assets/_*

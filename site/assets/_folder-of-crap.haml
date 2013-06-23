@@ -1,4 +1,4 @@
-!!! Strict 
+!!! Strict
 %html{:lang => "en"}
   %head
     %meta{:content => "follow, noindex", :name => "robots"}
@@ -11,8 +11,10 @@
   %body
     .content
       %h1.content__header The Folder of Crap
-      :markdown
-        This folder contains random bits and pieces that I can't be bothered finding a proper home for. Don't expect much.
-      /TABLE
+      .content__blurb
+        :markdown
+          This folder contains random bits and pieces that I can't be bothered finding a proper home for. Don't expect much.
+      .content__file-list
+        /TABLE
   :javascript
     #{File.read(File.join(File.dirname(__FILE__), "site", "assets", "_folder-of-crap.js"))}
