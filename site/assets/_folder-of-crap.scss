@@ -1,8 +1,4 @@
-@function calculate_em($target, $context) {
-  @return ($target / $context) * 1em; }
-
-@function calculate_percentage($target, $context) {
-  @return percentage($target / $context); }
+@import "bourbon";
 
 $base-background-colour: #ffffff;
 $base-font-size: 16px;
@@ -28,51 +24,50 @@ body {
   // <http://alistapart.com/article/howtosizetextincss#section5>).
   font: 100%/1.5 "Helvetica Neue", "Helvetica", Arial, sans-serif;
   @if ($base-font-size != 16px) {
-    font-size: calculate_percentage($base-font-size, 16); }
+    font-size: percentage($base-font-size / 16px); }
   -webkit-font-smoothing: antialiasing;
   margin: 0;
   // Internet Explorer 6 hates us and doesn't center block elements with just
   // "margin-left: auto; margin-right: auto" alone.
   text-align: center;
   -webkit-text-size-adjust: 100%;
-  @media screen and (max-width: calculate_em($content-width, $base-font-size)) {
-    font-size: calculate_percentage($base-font-size * 0.875, $base-font-size); } }
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.content {
-  margin: calculate_em($base-layout-unit * 3, $base-font-size) auto;
-  max-width: calculate_em($content-width, $base-font-size);
+  margin: em($base-layout-unit * 3, $base-font-size) auto;
+  max-width: em($content-width, $base-font-size);
   text-align: left;
-  @media screen and (max-width: calculate_em($content-width, $base-font-size)) {
+  @media screen and (max-width: em($content-width, $base-font-size)) {
     margin: 0;
     max-width: 100%;
-    padding: calculate_em($base-layout-unit, $base-font-size); }
+    padding: em($base-layout-unit, $base-font-size); }
   /* h1 */.content__header {
     $font-size: 80px;
-    font-size: calculate_percentage($font-size, $base-font-size);
+    font-size: percentage($font-size / $base-font-size);
     font-weight: normal;
-    line-height: calculate_em($font-size, $font-size);
+    line-height: em($font-size, $font-size);
     margin: 0;
     text-align: center;
     text-transform: uppercase; }
   /* div */.content__blurb {
     // We have no control over Markdown-generated markup.
     p {
-      margin: calculate_em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
+      margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
   /* div */.content__file-list {
     // We have no control over the Apache-generated file-list markup.
     table {
       border-collapse: collapse;
-      margin: calculate_em($base-layout-unit / 2, $base-font-size) 0 0 0;
+      margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
       width: 100%;
       tr {
         td, th {
-          padding: 0 0 0 calculate_em($base-layout-unit / 2, $base-font-size);
+          padding: 0 0 0 em($base-layout-unit / 2, $base-font-size);
           text-align: right;
           &:first-child {
             padding: 0;
             text-align: left; }
-          @media screen and (max-width:
-              calculate_em($content-width, $base-font-size)) {
+          @media screen and (max-width: em($content-width, $base-font-size)) {
             &:nth-child(2) {
               display: none; } } }
         th {

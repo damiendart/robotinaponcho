@@ -2,8 +2,9 @@ require "haml"
 require "rake"
 require "rake/clean"
 
-Haml::Filters::Scss.options[:style] = :compressed
+ENV["SASS_PATH"] += ":#{File.join(File.dirname(__FILE__), "bourbon")}:"
 Haml::Filters::Scss.options[:cache] = false
+Haml::Filters::Scss.options[:style] = :compressed
 
 CLOBBER.include(FileList["site/index.html", "site/assets/foc-*.html"])
 task :default => ["site/index.html", "site/assets/foc-footer.html",
