@@ -34,48 +34,51 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-/* div */.content {
+/* div */.container {
   margin: em($base-layout-unit * 3, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, $base-font-size)) {
     margin: 0;
     max-width: 100%;
-    padding: em($base-layout-unit, $base-font-size); }
-  /* h1 */.content__header {
-    $font-size: 72px;
+    padding: em($base-layout-unit, $base-font-size); } }
+
+/* h1 */.page-header {
+  $font-size: 72px;
+  font-size: percentage($font-size / $base-font-size);
+  font-weight: normal;
+  line-height: em($font-size, $font-size);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    $font-size: 48px;
     font-size: percentage($font-size / $base-font-size);
-    font-weight: normal;
-    line-height: em($font-size, $font-size);
-    margin: 0;
-    text-align: center;
-    text-transform: uppercase;
-    @media screen and (max-width: em($content-width, $base-font-size)) {
-      $font-size: 48px;
-      font-size: percentage($font-size / $base-font-size);
-      line-height: em($font-size, $font-size); } }
-  /* div */.content__blurb {
-    // We have no control over Markdown-generated markup.
-    p {
-      margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
-  /* div */.content__file-list {
-    // We have no control over the Apache-generated file-list markup.
-    table {
-      border-collapse: collapse;
-      margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
-      width: 100%;
-      tr {
-        td, th {
-          padding: 0 0 0 em($base-layout-unit / 2, $base-font-size);
-          text-align: right;
-          &:first-child {
-            padding: 0;
-            text-align: left; }
-          @media screen and (max-width: em($content-width, $base-font-size)) {
-            &:nth-child(2) {
-              display: none; } } }
-        th {
-          font-weight: bold;
-          text-transform: uppercase;
-          a {
-            text-decoration: none; } } } } } }
+    line-height: em($font-size, $font-size); } }
+
+/* div */.blurb {
+  // We have no control over Markdown-generated markup.
+  p {
+    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
+
+/* div */.file-list {
+  // We have no control over the Apache-generated file-list markup.
+  table {
+    border-collapse: collapse;
+    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+    width: 100%;
+    tr {
+      td, th {
+        padding: 0 0 0 em($base-layout-unit / 2, $base-font-size);
+        text-align: right;
+        &:first-child {
+          padding: 0;
+          text-align: left; }
+        @media screen and (max-width: em($content-width, $base-font-size)) {
+          &:nth-child(2) {
+            display: none; } } }
+      th {
+        font-weight: bold;
+        text-transform: uppercase;
+        a {
+          text-decoration: none; } } } } }

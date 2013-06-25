@@ -11,12 +11,12 @@
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
     %script try{Typekit.load();}catch(e){}
   %body
-    .content
-      %h1.content__header The Folder of Crap
-      .content__blurb
+    .container
+      %h1.page-header The Folder of Crap
+      .blurb
         :markdown
           This folder contains random bits and pieces that I can't be bothered finding a proper home for. Don't expect much.
-      .content__file-list
+      .file-list
         /TABLE
   :javascript
     #{File.read(File.join(File.dirname(__FILE__), "site", "assets", "_folder-of-crap.js"))}
