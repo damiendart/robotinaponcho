@@ -18,7 +18,7 @@
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
     .container
-      %img.site-image{:height => "655", :src => "assets/site-header.png", :width => "800"}
+      %img.site-image{:alt => "", :height => "655", :src => "assets/site-header.png", :width => "800"}
       %h1.site-header Hello blah blah <a class="site-header__link" href="mailto:damiendart@pobox.com">Damien Dart</a> blah personal site.
       %nav.site-navigation
         %ul.site-navigation__list
@@ -34,5 +34,5 @@
             %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
           %li.site-navigation__list__item<>
             %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
-  :javascript
-    #{File.read(File.join(File.dirname(__FILE__), "site", "_index.js"))}
+    :javascript
+      #{File.read(File.join(File.dirname(__FILE__), "site", "_index.js"))}
