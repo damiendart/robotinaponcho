@@ -27,7 +27,7 @@ end
 %w{footer header}.each do |template_part|
   desc "Spit out The Folder of Crap #{template_part}."
   file "site/assets/foc-#{template_part}.html" => 
-      ["site/assets/_folder-of-crap.haml",  "site/assets/_folder-of-crap.js", 
+      ["site/assets/_folder-of-crap.haml", "site/assets/_folder-of-crap.js", 
       "site/assets/_folder-of-crap.scss"] do |task| 
     puts "# Spitting out \"" + task.name + "\"."
     template = File.read("site/assets/_folder-of-crap.haml")
