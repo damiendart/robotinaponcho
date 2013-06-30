@@ -1,80 +1,85 @@
-%flexy-box {
-  // See <http://www.html5rocks.com/en/tutorials/flexbox/quick/#toc-center>
-  // for more information on this mess.
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  box-pack: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center; }
+@import "bourbon";
+
+$base-background-colour: #ffffff;
+$base-disabled-colour: #cccccc;
+$base-font-size: 16px;
+$base-foreground-colour: #000000;
+$base-line-height: 24px;
+$base-link-colour: #0000ff;
+$base-layout-unit: $base-line-height;
 
 body {
-  @extend %flexy-box;
-  background-color: #ffffff;
-  color: #000000;
+  @include box(horizontal, center, center);
+  background-color: $base-background-colour;
+  color: $base-foreground-colour;
+  // Setting the font size initially to 100% avoids the Internet Explorer 6
+  // and Internet Explorer 7 exaggerated text-resizing bug (see
+  // <http://alistapart.com/article/howtosizetextincss#section5>).
   font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 500;
+  @if ($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  font-weight: bold; // TODO: Move this to a Typekit-specific class.
   -webkit-font-smoothing: antialiasing;
   height: 100%;
-  margin: 0;
+  margin: 0; // Reset the body margin set in most browsers.
+  // Internet Explorer 6 hates us and doesn't center block elements with just
+  // "margin-left: auto; margin-right: auto" alone.
   text-align: center;
   -webkit-text-size-adjust: 100%;
-  width: 100%;
   @media screen and (max-width: 767px) {
-    display: block; } }
+    display: block;
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 html {
-  height: 100%;
-  width: 100%; }
+  height: 100%; }
 
 /* a */.button {
-  background-color: #000000;
-  border-radius: 0.375em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  padding: 0.375em 0.75em;
+  @include inline-block;
+  background-color: $base-foreground-colour;
+  border-radius: em($base-layout-unit / 4, $base-font-size);
+  color: $base-background-colour;
+  padding: em($base-layout-unit / 4, $base-font-size)
+      em($base-layout-unit / 2, $base-font-size);
   text-decoration: none;
   text-transform: uppercase;
   &:active, &:focus, &:hover, &:visited:hover {
-    background-color: #0000ff; }
+    background-color: $base-link-colour; }
   &:visited {
-    background-color: #000000; }
+    background-color: $base-foreground-colour; }
   @media screen and (max-width: 767px) {
     display: block; } }
 /* a */.button--disabled {
-  background-color: #cccccc;
+  background-color: $base-disabled-colour;
   cursor: default;
   pointer-events: none;
   &:active, &:focus, &:hover, &:visited, &:visited:hover {
-    background-color: #cccccc; } }
+    background-color: $base-disabled-colour; } }
 
 /* div */.container {
-  padding: 3em 0;
+  padding: em($base-layout-unit * 2, $base-font-size) 0;
   @media screen and (max-width: 767px) {
-   padding: 1.5em 0 0.75em 0; } }
+   padding: 0 0 em($base-layout-unit / 2, $base-font-size) 0; } }
 
 /* h1 */.site-header {
-  font-size: 200%;
-  line-height: 1.5em;
-  margin: 0 0 0.375em 0;
+  $font-size: 32px;
+  $line-height: 48px;
+  font-size: percentage($font-size / $base-font-size);
+  line-height: em($line-height, $font-size);
+  margin: 0 0 em($base-layout-unit / 2, $font-size) 0;
   padding: 0;
   @media screen and (max-width: 767px) {
-    font-size: 150%;
-    margin: 0 1.5em; }
+    $font-size: 24px;
+    font-size: percentage($font-size / $base-font-size);
+    margin: 0 em($base-layout-unit / 2, $font-size)
+        em($base-layout-unit / 2, $font-size)
+        em($base-layout-unit / 2, $font-size); }
   /* a */.site-header__link {
     background-color: inherit;
     color: inherit;
     &:active, &:focus, &:hover, &:visited:hover {
-      color: #0000ff; }
+      color: $base-link-colour; }
     &:visited {
-      color: #000000; } } }
+      color: $base-foreground-colour; } } }
 
 /* img */.site-image {
   display: block;
@@ -87,52 +92,43 @@ html {
 
 /* nav */.site-navigation {
   display: block;
-  max-width: 47.5em;
+  max-width: em(760px, $base-font-size);
   margin: 0 auto;
   @media screen and (max-width: 767px) {
-    max-width: 25em; }
+    max-width: em(400px, $base-font-size); }
   /* ul */.site-navigation__list {
     list-style: none;
-    margin: -0.75em 0 0 -0.75em;
+    margin: em($base-layout-unit / -2, $base-font-size) 0
+        0 em($base-layout-unit / -2, $base-font-size);
     padding: 0;
     @media screen and (max-width: 767px) {
       margin: 0; }
     /* li */.site-navigation__list__item {
-      display: inline-block;
-      margin: 0.75em 0 0 0.75em;
+      @include inline-block;
+      margin: em($base-layout-unit / 2, $base-font-size) 0
+          0 em($base-layout-unit / 2, $base-font-size);
       padding: 0;
       @media screen and (max-width: 767px) {
         display: block;
-        margin: 0.75em 0.75em 0 0.75em; } } } }
+        margin: em($base-layout-unit / 2, $base-font-size)
+            em($base-layout-unit / 2, $base-font-size) 0
+            em($base-layout-unit / 2, $base-font-size); } } } }
 
 .js {
   .js-fade-in-from-bottom {
-    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
-      #{$prefix}animation-duration: 0.5s;
-      #{$prefix}animation-fill-mode: both;
-      #{$prefix}animation-name: fadeInUp; }
+    @include animation(fadeInUp 0.5s ease both);
       @media screen and (max-width: 767px) {
-        @each $prefix in ("", "-moz-", "-o", "-webkit-") {
-          #{$prefix}animation-duration: 0.5s;
-          #{$prefix}animation-name: fadeInLeft; } } }
+        @include animation-name(fadeInLeft); } }
   .js-fade-in-from-top {
-    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
-      #{$prefix}animation-duration: 0.5s;
-      #{$prefix}animation-fill-mode: both;
-      #{$prefix}animation-iteration-count: 1;
-      #{$prefix}animation-name: fadeInDown; } }
+    @include animation(fadeInDown 0.5s ease both); }
   .js-fade-out {
-    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
-      #{$prefix}animation-duration: 0.5s;
-      #{$prefix}animation-fill-mode: both;
-      #{$prefix}animation-name: fadeOut; } }
+    @include animation(fadeOut 0.5s ease both); }
   .js-no-animation {
-    @each $prefix in ("", "-moz-", "-o", "-webkit-") {
-      #{$prefix}animation: none;
-      // HACK: Force hardware-accelerated rendering at all times. When
-      // removing CSS animations, the element is no longer rendered with
-      // hardware acceleration, which can cause subtle rendering issues.
-      #{$prefix}transform: translateZ(0px); } }
+    @include prefixer(animation, none, spec moz ms o webkit);
+    // HACK: Force hardware-accelerated rendering at all times. When
+    // removing CSS animations, the element is no longer rendered with
+    // hardware acceleration, which can cause subtle rendering issues.
+    @include prefixer(transform, translateZ(0px), spec moz ms o webkit); }
   .js-spinner {
     @media screen and (max-width: 767px) {
       top: 50px;
