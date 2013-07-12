@@ -16,8 +16,13 @@ SetEnv TZ Europe/London
   Redirect gone /crap/blog-source-icon.png
   Redirect gone /crap/blog-tags-icon.png
   Redirect gone /crap/thingy.swf
+  Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
+  Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
   RedirectMatch 301 /crap/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
-      /obtaincornhoop/glyphiconshalflings-regular.$1
+      /assets/glyphiconshalflings-regular.$1
+  RedirectMatch 301 /obtaincornhoop/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
+      /assets/glyphiconshalflings-regular.$1
+  RedirectMatch 301 /obtaincornhoop/(html5shiv|selectnav.min).js /assets/$1.js
 </IfModule>
 
 <IfModule mod_autoindex.c>
