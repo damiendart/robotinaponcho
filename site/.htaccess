@@ -25,11 +25,6 @@ SetEnv TZ Europe/London
   RedirectMatch 301 /obtaincornhoop/(html5shiv|selectnav.min).js /assets/$1.js
 </IfModule>
 
-<IfModule mod_autoindex.c>
-  IndexHeadInsert "<meta content=\"noindex,follow\" name=\"robots\">"
-  IndexOptions Charset=utf-8 HTMLTable SuppressDescription
-</IfModule>
-
 # Custom expire headers for better cache control. For more information, see
 # <https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L433>.
 <IfModule mod_expires.c>
