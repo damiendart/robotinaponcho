@@ -1,38 +1,15 @@
 !!! 5
 %html{:lang => "en"}
   %head
-    %link{:href => "assets/animate.min.css", :rel => "stylesheet"}
     %meta{:charset => "utf-8"}
     %meta{:content => "Damien Dart", :name => "author"}
-    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "site", "_index.scss"))}
-    %script{:src => "assets/html5shiv.js"}
-    %script{:src => "assets/jquery-1.10.1.min.js"}
-    %script{:src => "assets/spin.min.js"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
-    -# The following line of JavaScript won't have any effect unless it is
-    -# above the Typekit stuff, for some reason.
-    %script document.documentElement.className += "js";
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
-    .container
-      %img.site-image{:alt => "", :height => "655", :src => "assets/site-header.png", :width => "800"}
-      %h1.site-header Hello blah blah <a class="site-header__link" href="mailto:damiendart@pobox.com">Damien Dart</a> blah personal site.
-      %nav.site-navigation
-        %ul.site-navigation__list
-          %li.site-navigation__list__item<>
-            %a.button.button--disabled{:href => "#"} Artwork (Coming Soon)
-          %li.site-navigation__list__item<>
-            %a.button.button--disabled{:href => "#"} The Folder of Crap (Coming Soon)
-          %li.site-navigation__list__item<>
-            %a.button{:href => "https://github.com/damiendart"} Code at GitHub
-          %li.site-navigation__list__item<>
-            %a.button{:href => "http://instagram.com/damiendart"} Crappy Photos at Instagram
-          %li.site-navigation__list__item<>
-            %a.button{:href => "https://twitter.com/damiendart"} Verbal Diarrhoea at Twitter
-          %li.site-navigation__list__item<>
-            %a.button{:href => "http://blog.robotinaponcho.net/"} Weblog at Tumblr
-    :javascript
-      #{File.read(File.join(File.dirname(__FILE__), "site", "_index.js"))}
+    .page-content
+      .page-content__body
+        :markdown
+          #{File.read(File.join(File.dirname(__FILE__), "site", "_index.markdown"))}

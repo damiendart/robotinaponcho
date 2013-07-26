@@ -1,11 +1,12 @@
 @import "bourbon";
 
 $base-background-colour: #ffffff;
-$base-disabled-colour: #cccccc;
-$base-font-size: 16px;
-$base-foreground-colour: #000000;
-$base-line-height: 24px;
-$base-link-colour: #0000ff;
+$base-font-size: 24px;
+$base-foreground-colour: #444444;
+$base-line-height: 36px;
+$base-link-background-colour: #4c50a4;
+$base-link-foreground-colour: #ffffff;
+$base-link-hover-background-colour: #000000;
 $base-layout-unit: $base-line-height;
 
 body {
@@ -18,7 +19,6 @@ body {
   font: 100%/1.5 "Helvetica Neue", Helvetica, sans-serif;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  font-weight: bold; // TODO: Move this to a Typekit-specific class.
   -webkit-font-smoothing: antialiasing;
   height: 100%;
   margin: 0; // Reset the body margin set in most browsers.
@@ -26,112 +26,37 @@ body {
   // "margin-left: auto; margin-right: auto" alone.
   text-align: center;
   -webkit-text-size-adjust: 100%;
+  width: 100%;
   @media screen and (max-width: 767px) {
     display: block;
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 html {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
-/* a */.button {
-  @include inline-block;
-  background-color: $base-foreground-colour;
-  border-radius: em($base-layout-unit / 4, $base-font-size);
-  color: $base-background-colour;
-  padding: em($base-layout-unit / 4, $base-font-size)
-      em($base-layout-unit / 2, $base-font-size);
-  text-decoration: none;
-  text-transform: uppercase;
-  &:active, &:focus, &:hover, &:visited:hover {
-    background-color: $base-link-colour; }
-  &:visited {
-    background-color: $base-foreground-colour; }
-  @media screen and (max-width: 767px) {
-    display: block; } }
-/* a */.button--disabled {
-  background-color: $base-disabled-colour;
-  cursor: default;
-  pointer-events: none;
-  &:active, &:focus, &:hover, &:visited, &:visited:hover {
-    background-color: $base-disabled-colour; } }
-
-/* div */.container {
-  padding: em($base-layout-unit * 2, $base-font-size) 0;
-  @media screen and (max-width: 767px) {
-   padding: 0 0 em($base-layout-unit / 2, $base-font-size) 0; } }
-
-/* h1 */.site-header {
-  $font-size: 32px;
-  $line-height: 48px;
-  font-size: percentage($font-size / $base-font-size);
-  line-height: em($line-height, $font-size);
-  margin: 0 0 em($base-layout-unit / 2, $font-size) 0;
-  padding: 0;
-  @media screen and (max-width: 767px) {
-    $font-size: 24px;
-    font-size: percentage($font-size / $base-font-size);
-    margin: 0 em($base-layout-unit / 2, $font-size)
-        em($base-layout-unit / 2, $font-size)
-        em($base-layout-unit / 2, $font-size); }
-  /* a */.site-header__link {
-    background-color: inherit;
-    color: inherit;
-    &:active, &:focus, &:hover, &:visited:hover {
-      color: $base-link-colour; }
-    &:visited {
-      color: $base-foreground-colour; } } }
-
-/* img */.site-image {
-  display: block;
-  height: auto;
-  margin: 0 auto -24px auto;
-  max-width: 100%;
-  border: 0;
-  @media screen and (max-width: 767px) {
-    margin: 0 0 -12px 0; } }
-
-/* nav */.site-navigation {
-  display: block;
-  max-width: em(760px, $base-font-size);
-  margin: 0 auto;
-  @media screen and (max-width: 767px) {
-    max-width: em(400px, $base-font-size); }
-  /* ul */.site-navigation__list {
-    list-style: none;
-    margin: em($base-layout-unit / -2, $base-font-size) 0
-        0 em($base-layout-unit / -2, $base-font-size);
-    padding: 0;
-    @media screen and (max-width: 767px) {
-      margin: 0; }
-    /* li */.site-navigation__list__item {
-      @include inline-block;
-      margin: em($base-layout-unit / 2, $base-font-size) 0
-          0 em($base-layout-unit / 2, $base-font-size);
-      padding: 0;
-      @media screen and (max-width: 767px) {
-        display: block;
-        margin: em($base-layout-unit / 2, $base-font-size)
-            em($base-layout-unit / 2, $base-font-size) 0
-            em($base-layout-unit / 2, $base-font-size); } } } }
-
-.js {
-  .js-fade-in-from-bottom {
-    @include animation(fadeInUp 0.5s ease both);
-      @media screen and (max-width: 767px) {
-        @include animation-name(fadeInLeft); } }
-  .js-fade-in-from-top {
-    @include animation(fadeInDown 0.5s ease both); }
-  .js-fade-out {
-    @include animation(fadeOut 0.5s ease both); }
-  .js-no-animation {
-    @include prefixer(animation, none, spec moz ms o webkit);
-    // HACK: Force hardware-accelerated rendering at all times. When
-    // removing CSS animations, the element is no longer rendered with
-    // hardware acceleration, which can cause subtle rendering issues.
-    @include prefixer(transform, translateZ(0px), spec moz ms o webkit); }
-  .js-spinner {
-    @media screen and (max-width: 767px) {
-      top: 50px;
-      left: 50%; } }
-  .site-header, .site-image, .site-navigation {
-    display: none; } }
+/* div */.page-content {
+  /* div */.page-content__header { }
+  /* div */.page-content__body {
+    text-align: left;
+    margin: 0 auto;
+    padding: em($base-layout-unit * 2, $base-font-size) 0;
+    width: em(600px, $base-font-size);
+    a {
+      background-color: $base-link-background-colour;
+      border-radius: em($base-line-height / 4, $base-font-size);
+      color: $base-link-foreground-colour;
+      padding: 0 em($base-line-height / 4, $base-font-size);
+      text-decoration: none;
+      &:active, &:focus, &:hover, &:visited:hover {
+        background-color: $base-link-hover-background-colour;
+        color: $base-link-foreground-colour;
+        text-decoration: underline; }
+      &:visited {
+        // TODO: Make visited links a little different from other links?
+        background: $base-link-background-colour;
+        color: $base-link-foreground-colour; } }
+    p {
+      margin: 0;
+      & + p {
+        text-indent: em($base-line-height, $base-font-size); } } } }
