@@ -6,7 +6,7 @@ $base-foreground-colour: #444444;
 $base-line-height: 36px;
 $base-link-background-colour: #4c50a4;
 $base-link-foreground-colour: #ffffff;
-$base-link-hover-background-colour: #000000;
+$base-link-hover-background-colour: darken($base-link-background-colour, 25);
 $base-layout-unit: $base-line-height;
 
 body {
@@ -43,6 +43,7 @@ html {
     padding: em($base-layout-unit * 2, $base-font-size) 0;
     width: em(600px, $base-font-size);
     a {
+      @include transition(background-color 0.25s);
       background-color: $base-link-background-colour;
       border-radius: em($base-line-height / 4, $base-font-size);
       color: $base-link-foreground-colour;
