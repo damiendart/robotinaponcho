@@ -29,19 +29,20 @@ body {
   width: 100%;
   @media screen and (max-width: 767px) {
     display: block;
-    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
+    font-size: percentage(($base-font-size * 0.875) / 16px); } }
 
 html {
   height: 100%;
   width: 100%; }
 
 /* div */.page-content {
-  /* div */.page-content__header { }
   /* div */.page-content__body {
     text-align: left;
     margin: 0 auto;
     padding: em($base-layout-unit * 2, $base-font-size) 0;
-    width: em(600px, $base-font-size);
+    max-width: em(600px, $base-font-size);
+    @media screen and (max-width: 767px) {
+      padding: em($base-layout-unit, $base-font-size); }
     a {
       @include transition(background-color 0.25s);
       background-color: $base-link-background-colour;
