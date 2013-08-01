@@ -50,6 +50,7 @@ html {
       color: $base-link-foreground-colour;
       padding: 0 em($base-line-height / 4, $base-font-size);
       text-decoration: none;
+      white-space: pre;
       &:active, &:focus, &:hover, &:visited:hover {
         background-color: $base-link-hover-background-colour;
         color: $base-link-foreground-colour;
