@@ -31,27 +31,15 @@ print($output);
 __DATA__
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>The Folder of Crap (www.robotinaponcho.net)</title>
-    <meta content="noindex,follow" name="robots">
-    <link href="/site-assets/crap.css" rel="stylesheet">
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
-  </head>
-  <body>
-    <h1>The Folder of Crap</h1>
-    <p>This folder contains random stuff that I can&#8217;t be bothered
-    finding a proper home for. Don&#8217;t expect much.</p>
-    <table>
-      <thead>
-        <tr><th>Filename</th><th>Modification Date</th><th>Size</th></tr>
-      </thead>
-      <tbody>
-        <!-- TMPL_LOOP NAME="directory_list" -->
-        <tr><td><a href="<TMPL_VAR NAME="uri">"><TMPL_VAR NAME="filename"></a></td><td><TMPL_VAR NAME="modification_date"></td><td><TMPL_VAR NAME="size"></td></tr>
-        <!-- /TMPL_LOOP -->
-      </tbody>
-    </table>
-    <script src="/site-assets/crap.js"></script>
-  </body>
-</html>
+<meta charset="utf-8">
+<title>The Folder of Crap Test</title>
+<table>
+  <thead>
+    <tr><th>Filename</th><th>Modification Date</th><th>Size</th></tr>
+  </thead>
+  <tbody>
+    <!-- TMPL_LOOP NAME="directory_list" -->
+    <tr><td><a href="<TMPL_VAR NAME="uri">"><TMPL_VAR NAME="filename"></a></td><td><TMPL_VAR NAME="modification_date"></td><td><TMPL_VAR NAME="size"></td></tr>
+    <!-- /TMPL_LOOP -->
+  </tbody>
+</table>

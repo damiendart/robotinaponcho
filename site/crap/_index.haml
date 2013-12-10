@@ -1,4 +1,4 @@
-!!! Strict
+!!! 5
 %html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "Content-Type"}
@@ -6,7 +6,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %title The Folder of Crap
     :scss
-      #{File.read(File.join(File.dirname(__FILE__), "site", "assets", "_folder-of-crap.scss"))}
+      #{File.read(File.join(File.dirname(__FILE__), "site", "crap", "_index.scss"))}
     %script{:src => "/assets/jquery-1.10.1.min.js", :type => "text/javascript"}
     %script{:src => "/assets/moment.min.js", :type => "text/javascript"}
     %script{:src => "//use.typekit.net/mnw2jkv.js", :type => "text/javascript"}
@@ -19,6 +19,19 @@
         :markdown
           This folder contains random bits and pieces that I can't be bothered finding a proper home for. Don't expect much.
       .file-list
-        /TABLE
+        %table
+          %thead
+            %tr
+              %th<> Filename
+              %th<> Modification Date
+              %th<> Size
+          %tbody
+            / TMPL_LOOP NAME="directory_list"
+            %tr
+              %td<>
+                %a{:href => "<TMPL_VAR NAME=\"uri\">"} <TMPL_VAR NAME="filename">
+              %td<> <TMPL_VAR NAME="modification_date">
+              %td<> <TMPL_VAR NAME="size">
+            / /TMPL_LOOP
     :javascript
-      #{File.read(File.join(File.dirname(__FILE__), "site", "assets", "_folder-of-crap.js"))}
+      #{File.read(File.join(File.dirname(__FILE__), "site", "crap", "_index.js"))}
