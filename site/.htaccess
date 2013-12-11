@@ -1,6 +1,6 @@
 AddDefaultCharset utf-8
 FileETag none
-Options +Indexes -MultiViews
+Options -Indexes -MultiViews
 ServerSignature off
 SetEnv TZ Europe/London
 
@@ -8,6 +8,8 @@ SetEnv TZ Europe/London
   Redirect gone /deadlypremonition.jpeg
   Redirect gone /demons_souls_theodore.jpg
   Redirect gone /robotinaponcho.jpeg
+  Redirect gone /assets/foc-footer.html
+  Redirect gone /assets/foc-header.html
   Redirect gone /crap/bastardsnake.swf
   Redirect gone /crap/blog-background.gif
   Redirect gone /crap/blog-background2.gif
@@ -66,16 +68,18 @@ SetEnv TZ Europe/London
   AddType text/x-diff patch
   AddType text/x-python py
   AddType text/x-shellscript sh
-  # Remove unneccesary ETags; setting "FileETag None" is not enough. For more
-  # information, see <http://developer.yahoo.com/performance/rules.html#etags>.
-  Header unset ETag
+  <IfModule mod_headers.c>
+    # Remove unneccesary ETags; setting "FileETag None" is not enough. For more
+    # information, see <http://developer.yahoo.com/performance/rules.html#etags>.
+    Header unset ETag
+  </IfModule>
 </IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  # Remove "index.html" from URLs.
-  RewriteCond %{THE_REQUEST} ^.*index\.html?
-  RewriteRule ^(.*)index\.html?$ /$1 [R=permanent,L]
+  # Remove "index.cgi" and "index.html" from URLs.
+  RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html)?
+  RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [R=permanent,L]
   # Remove query strings from URLs. For more information, see
   # <http://briancray.com/posts/htaccess-hack-remove-url-query-strings>.
   RewriteCond %{QUERY_STRING} !=""
