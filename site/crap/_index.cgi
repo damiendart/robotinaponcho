@@ -15,7 +15,7 @@ closedir($directory);
 my @table_data;
 foreach (@directory_contents) {
   my %row = (filename => $_, 
-      modification_date => strftime("%d/%m/%y", localtime((stat($_))[9])),
+      modification_date => strftime("%d-%m-%Y %R", localtime((stat($_))[9])),
       size => sprintf("%.1f KB", ((stat($_))[7] / 1024)), uri => URI->new($_));
   $row{size} =~ s/\.0//g;
   push(@table_data, \%row);
