@@ -11,6 +11,25 @@
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
     .page-content
-      .page-content__body
+      .page-content__text
+        :markdown
+          **Hello! I'm Damien Dart.** I code and draw things:
+      %ul.page-content__project-list
+        - projects.each do |project|
+          %li.page-content__project-list__item>
+            %a.panel{:href => project[:url]}
+              %div.panel__text
+                %b.panel__text__title= project[:name]
+                %br/
+                = project[:description]
+              - if project[:code_example]
+                %blockquote.panel__code-background
+                  %pre
+                    -# This is such a gross hack.
+                    - require "open-uri"
+                    = preserve do
+                      :escaped
+                        #{open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)] * ""}
+      .page-content__text
         :markdown
           #{File.read(File.join(File.dirname(__FILE__), "site", "_index.markdown"))}

@@ -1,5 +1,6 @@
 require "rubygems"
 require "bundler/setup"
+require "yaml"
 Bundler.require(:default)
 
 Haml::Filters::Scss.options[:cache] = false
@@ -12,8 +13,10 @@ desc "Spit out the homepage."
 file "site/index.html" => FileList["site/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   template = File.read("site/_index.haml")
+  project_list = YAML.load_file("site/_index.yaml")
   output = Haml::Engine.new(template, {:format => :html5,
-        :escape_attrs => false, :attr_wrapper => "\""}).render
+        :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
+        :projects => project_list)
   output = Redcarpet::Render::SmartyPants.render(output)
   output = output.gsub(/^[\s]*$\n/, "")
   File.open(task.name, "w") do |file|

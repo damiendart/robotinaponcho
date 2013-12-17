@@ -36,30 +36,86 @@ html {
   width: 100%; }
 
 /* div */.page-content {
-  /* div */.page-content__body {
+  margin: 0 auto;
+  @media screen and (max-width: 767px) {
+    padding: em($base-layout-unit / 2, $base-font-size); }
+  /* ul */.page-content__project-list {
+    @include clearfix;
+    list-style: none;
+    // Apply negative margins to negate list items' gutters.
+    margin: em($base-layout-unit / 4, $base-font-size) 0
+        0 em($base-layout-unit / -4, $base-font-size);
+    padding: 0;
     text-align: left;
-    margin: 0 auto;
-    padding: em($base-layout-unit * 2, $base-font-size) 0;
-    max-width: em(600px, $base-font-size);
+    width: em(600px + ($base-layout-unit * 2), $base-font-size);
     @media screen and (max-width: 767px) {
-      padding: em($base-layout-unit, $base-font-size); }
+      width: 100%; }
+    /* li */.page-content__project-list__item {
+      float: left;
+      height: em($base-layout-unit * 5, $base-font-size);
+      margin: em($base-layout-unit / 4, $base-font-size) 0
+          0 em($base-layout-unit / 4, $base-font-size);
+      padding: 0;
+      width: em(300px + ($base-layout-unit * 0.75), $base-font-size);
+      @media screen and (max-width: 767px) {
+        width: 100%; } } }
+  /* div */.page-content__text {
+    text-align: left;
+    margin: em($base-layout-unit / 2, $base-font-size) auto 0 auto;
+    width: em(600px, $base-font-size);
+    @media screen and (max-width: 767px) {
+      width: 100%; }
     a {
-      @include transition(background-color 0.25s);
-      background-color: $base-link-background-colour;
-      border-radius: em($base-line-height / 4, $base-font-size);
-      color: $base-link-foreground-colour;
-      padding: 0 em($base-line-height / 4, $base-font-size);
-      text-decoration: none;
-      white-space: pre;
+      background-color: $base-link-foreground-colour;
+      color: $base-link-background-colour;
+      font-weight: bold;
+      text-decoration: underline;
       &:active, &:focus, &:hover, &:visited:hover {
-        background-color: $base-link-hover-background-colour;
-        color: $base-link-foreground-colour;
+        background-color: $base-link-foreground-colour;
+        color: $base-link-hover-background-colour;
         text-decoration: underline; }
       &:visited {
         // TODO: Make visited links a little different from other links?
-        background: $base-link-background-colour;
-        color: $base-link-foreground-colour; } }
+        background: $base-link-foreground-colour;
+        color: $base-link-background-colour; } }
     p {
       margin: 0;
       & + p {
         text-indent: em($base-line-height, $base-font-size); } } } }
+
+/* a */.panel {
+  @include box-sizing(border-box);
+  background: $base-link-background-colour;
+  border-radius: em($base-layout-unit / 4, $base-font-size);
+  color: $base-link-foreground-colour;
+  display: block;
+  height: em($base-layout-unit * 5, $base-font-size);
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  /* blockquote */.panel__code-background {
+    @include transform(rotate(4deg));
+    left: 10%;
+    color: #000000;
+    font-size: 75%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    pre {
+      margin: 0;
+      padding: 0; } }
+  /* div */.panel__text {
+    bottom: em($base-line-height / 2, $base-font-size);
+    left: em($base-line-height / 2, $base-font-size);
+    margin: 0;
+    padding: 0 em($base-line-height / 2, $base-font-size) 0 0;
+    position: absolute;
+    z-index: 1000; }
+  &:active, &:focus, &:hover, &:visited:hover {
+    color: $base-link-foreground-colour;
+    background-color: $base-link-hover-background-colour;
+    text-decoration: underline; }
+  &:visited {
+    color: $base-link-foreground-colour;
+    background-color: $base-link-background-colour; } }
