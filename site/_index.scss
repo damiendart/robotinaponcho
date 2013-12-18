@@ -95,6 +95,7 @@ html {
   text-align: left;
   /* blockquote */.panel__code-background {
     @include transform(rotate(4deg));
+    @include user-select(none);
     left: 10%;
     color: #000000;
     font-size: 75%;

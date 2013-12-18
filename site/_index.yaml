@@ -2,6 +2,8 @@
   :name: brainfuck
   :description: A simple brainfuck interpreter written in C.
   :url: https://github.com/damiendart/brainfuck
+  :code_example: https://raw.github.com/damiendart/brainfuck/master/src/brainfuck.c
+  :code_example_start: 29
 -
   :name: nfsnapi-python
   :description: A NearlyFreeSpeech.NET API package for Python.
@@ -12,8 +14,12 @@
   :name: obtaincornhoop
   :description: The source code to my Tumblr weblog theme.
   :url: https://github.com/damiendart/obtaincornhoop
+  :code_example: https://raw.github.com/damiendart/obtaincornhoop/master/scss/_blocks.scss
+  :code_example_start: 51
 -
   :name: toolbox
   :description: Miscellaneous nerdy bits and pieces.
   :url: https://github.com/damiendart/toolbox
+  :code_example: https://raw.github.com/damiendart/toolbox/master/inkcleanup
+  :code_example_start: 20
 
