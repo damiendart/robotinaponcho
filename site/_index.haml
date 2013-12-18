@@ -6,6 +6,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "site", "_index.scss"))}
+    %script{:src => "/assets/jquery-1.10.1.min.js", :type => "text/javascript"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
@@ -22,14 +23,21 @@
                 %b.panel__text__title= project[:name]
                 %br/
                 = project[:description]
-              - if project[:code_example]
-                %blockquote.panel__code-background
-                  %pre
-                    -# This is such a gross hack.
-                    - require "open-uri"
-                    = preserve do
-                      :escaped
-                        #{open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)] * ""}
       .page-content__text
         :markdown
           #{File.read(File.join(File.dirname(__FILE__), "site", "_index.markdown"))}
+    :javascript
+      var projects = new Array();
+      #{
+        # HORRIBLE HACKY CODE AHOY!
+        require "cgi"
+        require "open-uri"
+        projects.map{ |project| "projects[\"#{project[:url]}\"] = " + 
+            "\"#{preserve(CGI.escapeHTML(open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)].join("")))}\";" if
+            project[:code_example] }.join "\n"
+      }
+      $(".panel").each(function(i) {
+        if (projects[this.href] != null) {
+          $(this).prepend("<blockquote class=\"panel__code-background\">" +
+              "<pre><code>" + projects[this.href] + "</code></pre></blockquote>")
+      } } )
