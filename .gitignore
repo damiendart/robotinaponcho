@@ -1,3 +1,5 @@
 Gemfile.lock
 site/index.html
 site/crap/index.cgi
+site/assets/*
+!site/assets/_*
