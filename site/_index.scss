@@ -89,10 +89,11 @@ html {
   border-radius: em($base-layout-unit / 4, $base-font-size);
   color: $base-link-foreground-colour;
   display: block;
-  height: em($base-layout-unit * 5, $base-font-size);
+  height: 100%;
   overflow: hidden;
   position: relative;
   text-align: left;
+  text-decoration: none;
   /* blockquote */.panel__code-background {
     @include transform(rotate(4deg));
     @include user-select(none);
