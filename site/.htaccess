@@ -1,4 +1,5 @@
 AddDefaultCharset utf-8
+DirectoryIndex index.cgi index.html gitweb.cgi
 FileETag none
 Options -Indexes -MultiViews
 ServerSignature off
@@ -80,10 +81,14 @@ SetEnv TZ Europe/London
   # Remove "index.cgi" and "index.html" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html)?
   RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [R=permanent,L]
+  # Remove "gitweb.cgi" from URLs.
+  RewriteCond %{THE_REQUEST} ^.*/gitweb\.cgi?
+  RewriteRule ^(.*)gitweb\.cgi?$ /$1 [R=permanent,L]
   # Remove query strings from URLs. For more information, see
   # <http://briancray.com/posts/htaccess-hack-remove-url-query-strings>.
   RewriteCond %{QUERY_STRING} !=""
   RewriteCond %{REQUEST_URI} !^/crap/$
+  RewriteCond %{REQUEST_URI} !^/git/$
   RewriteRule ^(.*)$ /$1? [R=permanent,L]
   # Prevent hotlinking of Obtain Corn Hoop assets.
   RewriteCond %{HTTP_REFERER} !^$

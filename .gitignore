@@ -3,3 +3,4 @@ site/index.html
 site/crap/index.cgi
 site/assets/*
 !site/assets/_*
+site/git/
