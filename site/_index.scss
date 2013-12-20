@@ -36,7 +36,7 @@ html {
   width: 100%; }
 
 /* div */.page-content {
-  margin: em($base-layout-unit * 2) auto;
+  margin: em($base-layout-unit * 2, $base-font-size) auto;
   @media screen and (max-width: 767px) {
     padding: em($base-layout-unit / 2, $base-font-size); }
   /* ul */.page-content__project-list {
