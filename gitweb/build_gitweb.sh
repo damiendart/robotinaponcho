@@ -1,6 +1,6 @@
 #!/bin/sh
-# A janky-as-hell script that automates the compilation and installation of
-# "gitweb", the Git web interface included in the Git distribution.
+# Automate the compilation and installation of Gitweb, the Git web interface
+# included in the Git distribution.
 
 # TODO: Clean up and make more robust.
 
