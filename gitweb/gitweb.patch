@@ -1,0 +1,11 @@
+--- Original
++++ Modified
+@@ -4066,7 +4066,7 @@
+ <head>
+ <meta http-equiv="content-type" content="$content_type; charset=utf-8"/>
+ <meta name="generator" content="gitweb/$version git/$git_version$mod_perl_version"/>
+-<meta name="robots" content="index, nofollow"/>
++<meta name="robots" content="noindex, nofollow"/>
+ <title>$title</title>
+ EOF
+ 	# the stylesheet, favicon etc urls won't work correctly with path_info
