@@ -2,8 +2,6 @@
 # Automate the compilation and installation of Gitweb, the Git web interface
 # included in the Git distribution.
 
-# TODO: Clean up and make more robust.
-
 trap "rm -rf git-1.8.5.2" EXIT
 USAGE=`cat <<USAGE;
 USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER [MAKE-COMMAND]
