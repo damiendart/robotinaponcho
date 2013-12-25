@@ -80,10 +80,10 @@ SetEnv TZ Europe/London
   RewriteEngine on
   # Remove "index.cgi" and "index.html" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html)?
-  RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [R=permanent,L]
+  RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [L,NE,R=permanent]
   # Remove "gitweb.cgi" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/gitweb\.cgi?
-  RewriteRule ^(.*)gitweb\.cgi?$ /$1 [R=permanent,L]
+  RewriteRule ^(.*)gitweb\.cgi?$ /$1 [L,NE,R=permanent]
   # Remove query strings from URLs. For more information, see
   # <http://briancray.com/posts/htaccess-hack-remove-url-query-strings>.
   RewriteCond %{QUERY_STRING} !=""
