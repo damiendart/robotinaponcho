@@ -11,8 +11,11 @@ wget -O - https://github.com/git/git/archive/v1.8.5.2.tar.gz | tar -zxf -
 (cd git-1.8.5.2 && ${3:-make} bindir="/usr/local/bin" \
     GITWEB_CONFIG="${2%/}/gitweb_config.perl" \
     GITWEB_CSS="/assets/gitweb.css" GITWEB_FAVICON="/assets/git-favicon.png" \
-    GITWEB_JS="/assets/gitweb.js" GITWEB_LOGO="/assets/git-logo.png" \
-    GITWEB_PROJECTROOT="${1%/}/git" GITWEB_SITENAME="GitHub Mirror" \
+    GITWEB_JS="/assets/gitweb.js" \
+    GITWEB_HOMETEXT="${2%/}/gitwebindextext.html" \
+    GITWEB_LOGO="/assets/git-logo.png" \
+    GITWEB_PROJECTROOT="${1%/}/git" \
+    GITWEB_SITENAME="Git Git Git (www.robotinaponcho.net)" \
     gitwebdir="${1%/}/git" gitweb install-gitweb &&
     mv ${1%/}/git/static/* ${1%/}/assets && rm -fr ${1%/}/git/static)
 patch ${1%/}/git/gitweb.cgi <<'PATCH'
