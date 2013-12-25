@@ -1,6 +1,6 @@
 #!/bin/sh
-# Automate the compilation and installation of Gitweb, the Git web interface
-# included in the Git distribution.
+# Automate the compilation and installation of Gitweb for
+# <http://www.robotinaponcho.net/git/>.
 
 trap "rm -rf git-1.8.5.2" EXIT
 USAGE=`cat <<USAGE;
