@@ -31,3 +31,5 @@ if __name__ == "__main__":
       subprocess.check_call(["git", "config", "gitweb.%s" % k, v])
     with open("description", "w") as f:
       f.write(repository["description"] + "\n")
+    # TODO: Check whether the "--bare" flag is necessary.
+    subprocess.check_call(["git", "--bare", "update-server-info"])
