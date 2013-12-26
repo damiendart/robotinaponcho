@@ -29,6 +29,9 @@ if __name__ == "__main__":
         "description": repository["description"],
         "owner": repository["owner"]["login"]}.iteritems():
       subprocess.check_call(["git", "config", "gitweb.%s" % k, v])
+    subprocess.check_call(["git", "config", "--add", "gitweb.url",
+        "http://www.robotinaponcho.net/git/%s" %
+        os.path.basename(repository["git_url"])])
     with open("description", "w") as f:
       f.write(repository["description"] + "\n")
     # TODO: Check whether the "--bare" flag is necessary.
