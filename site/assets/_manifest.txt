@@ -1,6 +1,10 @@
 animate.min.css
 blog-background.png
 blog-style.css
+git-favicon.png
+git-logo.png
+gitweb.css
+gitweb.js
 glyphiconshalflings-regular.eot
 glyphiconshalflings-regular.otf
 glyphiconshalflings-regular.svg
