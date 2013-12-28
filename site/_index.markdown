@@ -1,4 +1,4 @@
-I also have a [folder of crap][1] and [Git repository mirrors][2].
+See also my [folder of crap][1] and [sundry Git repositories][2].
 
 Other places I've polluted include [GitHub][3], [Instagram][4],
 [Tumblr][5] and [Twitter][6].  Here's an [email address][7].
