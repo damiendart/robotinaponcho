@@ -12,18 +12,18 @@ Bundler.require(:default)
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
 
-CLOBBER.include(FileList["gitweb/gitwebindextext.html",
-    "site/index.html", "site/crap/index.cgi"])
-task :default => ["gitweb/gitwebindextext.html", "site/index.html",
+output_files = ["gitweb/gitwebindextext.html", "site/index.html",
     "site/crap/index.cgi"]
+CLOBBER.include(output_files)
+task :default => output_files
 
 desc "Spit out the Gitweb project overview include."
 file "gitweb/gitwebindextext.html" =>
     FileList["gitweb/_gitwebindextext.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   output = File.read("gitweb/_gitwebindextext.markdown")
-  output = output.gsub(/^<!--.*-->\n/m, "").strip
-  output = "<pre>" + output + "</pre>\n"
+  output = output.gsub(/^<!--.*-->\n/m, "")
+  output = "<pre>" + output.strip + "</pre>\n"
   File.open(task.name, "w") do |file|
     file.write(output)
   end
