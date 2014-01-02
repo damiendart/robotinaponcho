@@ -1,3 +1,11 @@
+<!--
+  Homepage Markdown source for Damien Dart's personal website.
+
+  Copyright (C) 2013, 2014 Damien Dart, <damiendart@pobox.com>.
+  This file is distributed under the MIT licence. For more information,
+  please refer to the accompanying "LICENCE" file.
+-->
+
 See also my [folder of crap][1] and [sundry Git repositories][2].
 
 Other places I've polluted include [GitHub][3], [Instagram][4],
