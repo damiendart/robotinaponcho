@@ -9,7 +9,7 @@
 See also my [folder of crap][1] and [sundry Git repositories][2].
 
 Other places I've polluted include [GitHub][3], [Instagram][4],
-[Tumblr][5] and [Twitter][6].  Here's an [email address][7].
+[Tumblr][5] and [Twitter][6]. Here's an [email address][7].
 
 [1]: <crap/>
 [2]: <git/>
