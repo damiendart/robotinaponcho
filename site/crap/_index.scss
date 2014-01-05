@@ -68,7 +68,6 @@ body {
     margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
 
 /* div */.file-list {
-  // We have no control over the Apache-generated file-list markup.
   table {
     border-collapse: collapse;
     margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
