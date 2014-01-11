@@ -24,9 +24,9 @@ file "site/index.html" => FileList["site/_index.*"] do |task|
   output = Haml::Engine.new(template, {:format => :html5,
         :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
         :projects => project_list)
-  output = Redcarpet::Render::SmartyPants.render(output)
   output = output.gsub(/<!--.*-->\n/m, "")
   output = output.gsub(/^[\s]*$\n/, "")
+  output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
     file.write(output)
   end
@@ -40,12 +40,12 @@ file "site/crap/index.cgi" => FileList["site/crap/_index.*"] do |task|
   template = File.read("site/crap/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
         :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = output.gsub(/^[\s]*$\n/, "")
+  output = output.gsub(%r{^\s*//.*\n}, "")
   output = Redcarpet::Render::SmartyPants.render(output)
   # HACK: The SmartyPants parser doesn't like it when "HTMl::Template"'s tags
   # are used for HTML element attribute values.
   output = output.gsub(/&ldquo;/, "\"")
-  output = output.gsub(/^[\s]*$\n/, "")
-  output = output.gsub(%r{^\s*//.*\n}, "")
   File.open(task.name, "w") do |file|
     file.write(script)
     file.write("__DATA__\n")
