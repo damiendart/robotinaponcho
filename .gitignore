@@ -2,6 +2,8 @@ Gemfile.lock
 gitweb/gitwebindextext.html
 gitweb/gitweb_config.perl
 site/index.html
+site/google*.html
+site/robots.txt
 site/crap/index.cgi
 site/assets/*
 !site/assets/_*

@@ -12,7 +12,8 @@ Bundler.require(:default)
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
 
-output_files = ["site/index.html", "site/crap/index.cgi"]
+output_files = ["site/index.html", "site/googlefb3645e0f9f23eaf.html",
+    "site/robots.txt", "site/crap/index.cgi"]
 CLOBBER.include(output_files)
 task :default => output_files
 
@@ -29,6 +30,25 @@ file "site/index.html" => FileList["site/_index.*"] do |task|
   output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
     file.write(output)
+  end
+end
+
+desc "Spit out Google Webmaster Tools' Verification file."
+file "site/googlefb3645e0f9f23eaf.html" do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  File.open(task.name, "w") do |file|
+    file.write("google-site-verification: " + File.basename(task.name) + "\n")
+  end
+end
+
+desc "Spit out \"robots.txt\"."
+file "site/robots.txt" do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  File.open(task.name, "w") do |file|
+    file.write("User-agent: *\n")
+    ["assets", "icons", "git"].each do |folder|
+      file.write("Disallow: /#{folder}/\n")
+    end
   end
 end
 
