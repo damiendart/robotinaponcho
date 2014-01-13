@@ -55,7 +55,7 @@ end
 desc "Spit out The Folder of Crap CGI script."
 file "site/crap/index.cgi" => FileList["site/crap/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  script = File.read("site/crap/_index.cgi")
+  script = File.read("site/crap/_index.pl")
   script = script.gsub(/__DATA__.*$/m, "")
   template = File.read("site/crap/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
