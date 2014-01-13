@@ -18,7 +18,6 @@ wget -O - https://github.com/git/git/archive/v1.8.5.2.tar.gz | tar -zxf -
     GITWEB_HOMETEXT="${2%/}/gitwebindextext.html" \
     GITWEB_LOGO="/assets/git-logo.png" \
     GITWEB_PROJECTROOT="${1%/}/git" \
-    GITWEB_SITENAME="Git Git Git (www.robotinaponcho.net)" \
     gitwebdir="${1%/}/git" gitweb install-gitweb &&
     mv ${1%/}/git/static/* ${1%/}/assets && rm -fr ${1%/}/git/static)
 patch ${1%/}/git/gitweb.cgi <<'PATCH'
@@ -37,12 +36,13 @@ PATCH
 cat << 'INDEX' > ${2%/}/gitwebindextext.html
 <pre>Here are a bunch of read-only Git repository mirrors; for the moment the
 only mirrors here are of the repositories found on my public GitHub
-profile. These mirrors should be no more than six hours out of date,
+profile. These mirrors should be no more than two hours out of date,
 unless the mirroring script I wrote broke.
 
 -- Damien</pre>
 INDEX
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
+$site_name = "Damien's Git Repositories";
 $feature{"avatar"}{"default"} = ["gravatar"];
 $feature{"timed"}{"default"} = [1];
 CONFIG
