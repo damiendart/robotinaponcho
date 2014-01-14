@@ -36,6 +36,7 @@ SetEnv TZ Europe/London
   ExpiresByType application/font-woff "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType application/vnd.ms-fontobjec "access plus 1 week"
+  ExpiresByType application/xhtml+xml "access plus 0 seconds"
   ExpiresByType application/x-font-ttf "access plus 1 week"
   ExpiresByType font/opentype "access plus 1 week"
   ExpiresByType image/gif "access plus 1 week"
