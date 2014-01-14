@@ -6,6 +6,7 @@ This file is distributed under the MIT licence. For more information,
 please refer to the accompanying "LICENCE" file.
 """
 
+import cgi
 import json
 import os
 import re
@@ -38,6 +39,11 @@ if __name__ == "__main__":
     subprocess.check_call(["git", "config", "--add", "gitweb.url",
         "http://www.robotinaponcho.net/git/%s" %
         os.path.basename(repository["git_url"])])
+    with open("README.html", "w") as f:
+      f.write("<pre>%s</pre>\n" % cgi.escape(subprocess.check_output(["git",
+          "cat-file", "blob", "HEAD:%s" % filter(lambda i:
+          re.compile(r"README").search(i), subprocess.check_output(["git",
+          "ls-tree", "HEAD", "--name-only"]).split("\n"))[0]])))
     with open("description", "w") as f:
       f.write(repository["description"] + "\n")
     # TODO: Check whether the "--bare" flag is necessary.
