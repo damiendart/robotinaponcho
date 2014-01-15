@@ -39,8 +39,8 @@ file "site/index.html" => FileList["site/_index.*"] do |task|
   template = File.read("site/_index.haml")
   project_list = YAML.load_file("site/_index.yaml")
   output = Haml::Engine.new(template, {:format => :html5,
-        :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
-        :projects => project_list)
+      :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
+      :projects => project_list)
   output = output.gsub(/<!--.*-->\n/m, "")
   output = output.gsub(/^[\s]*$\n/, "")
   output = Redcarpet::Render::SmartyPants.render(output)
@@ -75,7 +75,7 @@ file "site/crap/index.cgi" => FileList["site/crap/_index.*"] do |task|
   script = script.gsub(/__DATA__.*$/m, "")
   template = File.read("site/crap/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
-        :escape_attrs => false, :attr_wrapper => "\""}).render
+      :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/^[\s]*$\n/, "")
   output = output.gsub(%r{^\s*//.*\n}, "")
   output = Redcarpet::Render::SmartyPants.render(output)
