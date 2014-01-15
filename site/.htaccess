@@ -1,5 +1,7 @@
 AddDefaultCharset utf-8
 DirectoryIndex index.cgi index.html gitweb.cgi
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
 FileETag none
 Options -Indexes -MultiViews
 ServerSignature off

@@ -12,10 +12,26 @@ Bundler.require(:default)
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
 
-output_files = ["site/index.html", "site/googlefb3645e0f9f23eaf.html",
-    "site/robots.txt", "site/crap/index.cgi"]
+output_files = ["site/403.html", "site/404.html", "site/index.html",
+    "site/googlefb3645e0f9f23eaf.html", "site/robots.txt",
+    "site/crap/index.cgi"]
 CLOBBER.include(output_files)
 task :default => output_files
+
+%w{403 404}.each do |error_code|
+  desc "Spit out the #{error_code} HTTP error document."
+  file "site/#{error_code}.html" => FileList["site/_error.*"] do |task|
+    puts "# Spitting out \"" + task.name + "\"."
+    template = File.read("site/_error.haml")
+    output = Haml::Engine.new(template, {:format => :html5,
+        :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
+        :error_code => error_code)
+    output = output.gsub(/^[\s]*$\n/, "")
+    File.open(task.name, "w") do |file|
+      file.write(output)
+    end
+  end
+end
 
 desc "Spit out the homepage."
 file "site/index.html" => FileList["site/_index.*"] do |task|
@@ -46,8 +62,8 @@ file "site/robots.txt" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
-    ["assets", "icons", "git"].each do |folder|
-      file.write("Disallow: /#{folder}/\n")
+    ["403.html", "404.html", "assets/", "icons/", "git/"].each do |path|
+      file.write("Disallow: /#{path}\n")
     end
   end
 end
