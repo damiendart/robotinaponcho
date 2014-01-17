@@ -14,8 +14,6 @@
     %script try{Typekit.load();}catch(e){}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "site", "_error.scss"))}
-    %title<
-      = error_code
+    %title #{error_code} (www.robotinaponcho.net)
   %body
-    %h1.error_code<
-      = error_code
+    %h1.error_code #{error_code}
