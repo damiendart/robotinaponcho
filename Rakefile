@@ -12,13 +12,15 @@ Bundler.require(:default)
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
 
-output_files = ["site/403.html", "site/404.html", "site/index.html",
-    "site/googlefb3645e0f9f23eaf.html", "site/robots.txt",
+ERROR_CODES = %w{403 404 410}
+OUTPUT_FILES = ERROR_CODES.map{ |code| "site/#{code}.html" } +
+    ["site/index.html", "site/googlefb3645e0f9f23eaf.html", "site/robots.txt",
     "site/crap/index.cgi"]
-CLOBBER.include(output_files)
-task :default => output_files
 
-%w{403 404}.each do |error_code|
+CLOBBER.include(OUTPUT_FILES)
+task :default => OUTPUT_FILES
+
+ERROR_CODES.each do |error_code|
   desc "Spit out the #{error_code} HTTP error document."
   file "site/#{error_code}.html" => FileList["site/_error.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
@@ -62,7 +64,8 @@ file "site/robots.txt" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
-    ["403.html", "404.html", "assets/", "icons/", "git/"].each do |path|
+    (ERROR_CODES.map{ |code| "#{code}.html" } + ["assets/", "icons/",
+        "git/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
   end
