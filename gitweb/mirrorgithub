@@ -32,10 +32,12 @@ if __name__ == "__main__":
           repository["git_url"]])
     os.chdir(os.path.basename(repository["git_url"]))
     for k, v in {"url": repository["clone_url"],
-        "description": repository["description"],
-        "owner": repository["owner"]["login"]}.iteritems():
+        "description": repository["description"]}.iteritems():
       subprocess.check_call(["git", "config", "--replace-all",
           "gitweb.%s" % k, v])
+    subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
+        json.load(urllib2.urlopen("https://api.github.com/users/%s" %
+        repository["owner"]["login"]))["name"]])
     subprocess.check_call(["git", "config", "--add", "gitweb.url",
         "http://www.robotinaponcho.net/git/%s" %
         os.path.basename(repository["git_url"])])
