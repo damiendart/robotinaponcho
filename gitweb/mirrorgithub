@@ -15,12 +15,13 @@ import urllib2
 import subprocess
 
 if __name__ == "__main__":
-  if len(sys.argv) != 3:
+  if len(sys.argv) != 4:
     sys.stderr.write("Not enough operands\n")
-    sys.stderr.write("USAGE: %s GITHUB-USERNAME FOLDER\n" % sys.argv[0])
+    sys.stderr.write("USAGE: %s GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
     sys.exit(1)
   repositories = json.load(urllib2.urlopen(
-      "https://api.github.com/users/%s/repos" % sys.argv[1]))
+      "https://api.github.com/users/%s/repos?access_token=%s" %
+      (sys.argv[1], sys.argv[3])))
   for repository in repositories:
     os.chdir(os.path.normpath(sys.argv[2]))
     if (os.path.isdir(os.path.basename(repository["git_url"]))):
@@ -36,8 +37,8 @@ if __name__ == "__main__":
       subprocess.check_call(["git", "config", "--replace-all",
           "gitweb.%s" % k, v])
     subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
-        json.load(urllib2.urlopen("https://api.github.com/users/%s" %
-        repository["owner"]["login"]))["name"]])
+        json.load(urllib2.urlopen("https://api.github.com/users/%s?access_token=%s" %
+        (repository["owner"]["login"], sys.argv[3])))["name"]])
     subprocess.check_call(["git", "config", "--add", "gitweb.url",
         "http://www.robotinaponcho.net/git/%s" %
         os.path.basename(repository["git_url"])])
