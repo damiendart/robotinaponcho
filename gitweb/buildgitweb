@@ -34,9 +34,9 @@ patch ${1%/}/git/gitweb.cgi <<'PATCH'
  	# the stylesheet, favicon etc urls won't work correctly with path_info
 PATCH
 cat << 'INDEX' > ${2%/}/gitwebindextext.html
-<pre>Here are a bunch of read-only Git repository mirrors; for the moment the
-only mirrors here are of the repositories found on my public GitHub
-profile. These mirrors should be no more than two hours out of date,
+Here are a bunch of read-only Git repository; at the moment the only
+repositories here are mirrors of those found on my public GitHub
+profile. These mirrors should be no more than an hour out of date,
 unless the mirroring script I wrote broke.
 
 -- Damien</pre>
