@@ -9,7 +9,7 @@
   :description: A simple brainfuck interpreter written in C.
   :url: https://github.com/damiendart/brainfuck
   :code_example: https://raw.github.com/damiendart/brainfuck/master/src/brainfuck.c
-  :code_example_start: 29
+  :code_example_start: 39
 -
   :name: nfsnapi-python
   :description: A NearlyFreeSpeech.NET API package for Python.
