@@ -20,7 +20,6 @@ SetEnv TZ Europe/London
   Redirect gone /robotinaponcho.jpeg
   Redirect gone /assets/foc-footer.html
   Redirect gone /assets/foc-header.html
-  Redirect gone /crap/bastardsnake.swf
   Redirect gone /crap/blog-background.gif
   Redirect gone /crap/blog-background2.gif
   Redirect gone /crap/blog-date-icon.png
