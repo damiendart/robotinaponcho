@@ -5,5 +5,5 @@
 // please refer to the accompanying "LICENCE" file.
 
 $("td:nth-child(2)").each(function() {
-  $(this).text(moment($.trim($(this).text()), "DD-MMM-YYYY HH:mm").fromNow());
+  $(this).text(moment($.trim($(this).text()), "DD-MM-YYYY HH:mm").fromNow());
 });
