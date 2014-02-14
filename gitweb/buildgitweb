@@ -39,7 +39,7 @@ repositories here are mirrors of those found on my public GitHub
 profile. These mirrors should be no more than an hour out of date,
 unless the mirroring script I wrote broke.
 
--- Damien</pre>
+-- <a href="http://www.robotinaponcho.net/">Damien</a></pre>
 INDEX
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
 $site_name = "Damien's Git Repositories";
