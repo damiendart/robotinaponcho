@@ -24,20 +24,19 @@
       .blurb
         :markdown
           This is a collection of random bits and pieces that I can't be bothered finding a proper home for, so don't expect much.
-      .file-list
-        %table
-          %thead
-            %tr
-              %th<> Filename
-              %th<> Modification Date
-              %th<> Size
-          %tbody
-            / TMPL_LOOP NAME="directory_list"
-            %tr
-              %td<>
-                %a{:href => "<TMPL_VAR NAME=\"uri\">"} <TMPL_VAR NAME="filename">
-              %td<> <TMPL_VAR NAME="modification_date">
-              %td<> <TMPL_VAR NAME="size">
-            / /TMPL_LOOP
+      %table.file-list-table
+        %thead
+          %tr.file-list-table__row
+            %th.file-list-table__row__cell.file-list-table__row__cell--header<> Filename
+            %th.file-list-table__row__cell.file-list-table__row__cell--header<> Modification Date
+            %th.file-list-table__row__cell.file-list-table__row__cell--header<> Size
+        %tbody
+          / TMPL_LOOP NAME="directory_list"
+          %tr.file-list-table__row
+            %td.file-list-table__row__cell<>
+              %a{:href => "<TMPL_VAR NAME=\"uri\">"} <TMPL_VAR NAME="filename">
+            %td.file-list-table__row__cell<> <TMPL_VAR NAME="modification_date">
+            %td.file-list-table__row__cell<> <TMPL_VAR NAME="size">
+          / /TMPL_LOOP
     :javascript
       #{File.read(File.join(File.dirname(__FILE__), "site", "crap", "_index.js"))}
