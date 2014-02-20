@@ -34,15 +34,15 @@ patch ${1%/}/git/gitweb.cgi <<'PATCH'
  	# the stylesheet, favicon etc urls won't work correctly with path_info
 PATCH
 cat << 'INDEX' > ${2%/}/gitwebindextext.html
-Here are a bunch of read-only Git repository; at the moment the only
-repositories here are mirrors of those found on my public GitHub
-profile. These mirrors should be no more than an hour out of date,
+<pre>Here are a bunch of read-only Git repository; at the moment the only
+repositories here are mirrors of those found on <a href="https://github.com/damiendart">my public GitHub
+profile</a>. These mirrors should be no more than an hour out of date,
 unless the mirroring script I wrote broke.
 
 -- <a href="http://www.robotinaponcho.net/">Damien</a></pre>
 INDEX
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
-$site_name = "Damien's Git Repositories";
+$site_name = "Some Git Repositories (www.robotinaponcho.net)";
 $feature{"avatar"}{"default"} = ["gravatar"];
 $feature{"timed"}{"default"} = [1];
 CONFIG
