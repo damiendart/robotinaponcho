@@ -5,11 +5,21 @@
 # please refer to the accompanying "LICENCE" file.
 
 -
+  :name: Drawings on Tumblr
+  :description: Doodles and drawings on my Tumblr weblog.
+  :url: http://blog.robotinaponcho.net/tagged/drawing
+-
   :name: brainfuck
   :description: A simple brainfuck interpreter written in C.
   :url: https://github.com/damiendart/brainfuck
   :code_example: https://raw.github.com/damiendart/brainfuck/master/src/brainfuck.c
   :code_example_start: 39
+-
+  :name: knr-solutions
+  :description: My solutions to some of the exercises in "K&R".
+  :url: https://github.com/damiendart/knr-solutions
+  :code_example: https://raw.github.com/damiendart/knr-solutions/master/src/exercise203.c
+  :code_example_start: 46
 -
   :name: nfsnapi-python
   :description: A NearlyFreeSpeech.NET API package for Python.

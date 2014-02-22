@@ -38,7 +38,8 @@
         # HORRIBLE HACKY CODE AHOY!
         require "cgi"
         require "open-uri"
-        projects.map{ |project| "projects[\"#{project[:url]}\"] = " +
+        projects = projects.reject { |project| project.key?("code_example") }
+        projects.map { |project| "projects[\"#{project[:url]}\"] = " +
             "\"#{preserve(CGI.escapeHTML(open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)].join("")))}\";" if
             project[:code_example] }.join("\n")
       }
