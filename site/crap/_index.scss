@@ -62,10 +62,8 @@ body {
     font-size: percentage($font-size / $base-font-size);
     line-height: em($font-size, $font-size); } }
 
-/* div */.blurb {
-  // We have no control over Markdown-generated markup.
-  p {
-    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; } }
+/* p */.blurb {
+  margin: em($base-layout-unit / 2, $base-font-size) 0 0 0; }
 
 /* table */.file-list-table {
   border-collapse: collapse;
