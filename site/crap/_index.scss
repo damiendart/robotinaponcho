@@ -13,6 +13,18 @@ $base-line-height: 24px;
 $base-layout-unit: $base-line-height;
 $content-width: 500px;
 
+@font-face {
+  $font-folder: "http://www.robotinaponcho.net/assets/";
+  $font-basename: "glyphiconshalflings-regular";
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: normal;
+  src: url("#{$font-folder}#{$font-basename}.eot");
+  src: url("#{$font-folder}#{$font-basename}.eot?#iefix") format("embedded-opentype"),
+      url("#{$font-folder}#{$font-basename}.woff") format("woff"),
+      url("#{$font-folder}#{$font-basename}.ttf") format("truetype"),
+      url("#{$font-folder}#{$font-basename}.svg#glyphicons_halflingsregular") format("svg"); }
+
 a {
   color: $base-foreground-colour;
   &:active, &:focus, &:hover, &:visited:hover {
@@ -41,13 +53,39 @@ body {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.container {
-  margin: em($base-layout-unit * 3, $base-font-size) auto;
+  margin: em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, $base-font-size)) {
     margin: 0;
     max-width: 100%;
     padding: em($base-layout-unit, $base-font-size); } }
+
+/* div */.navigation {
+  background-color: $base-foreground-colour;
+  color: $base-background-colour;
+  padding: em($base-layout-unit / 2, $base-font-size) 0;
+  /* a */.navigation__home-link {
+    color: $base-background-colour;
+    font-weight: bold;
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $base-background-colour;
+      color: $base-foreground-colour; }
+    &:before {
+      // Adjust font size to make icon glyphs align better with adjacent text.
+      $font-size: $base-font-size * 0.75;
+      content: "\e021";
+      display: inline-block;
+      font-family: "Glyphicons Halflings";
+      font-size: percentage($font-size / $base-font-size);
+      height: em($base-line-height, $font-size);
+      line-height: em($base-line-height, $font-size);
+      speak: none;
+      text-align: left;
+      width: em($base-line-height, $font-size); }
+    &:visited {
+      background-colour: $base-foreground-colour;
+      color: $base-background-colour; } } }
 
 /* h1 */.page-header {
   $font-size: 72px;
