@@ -61,7 +61,7 @@ body {
     max-width: 100%;
     padding: em($base-layout-unit, $base-font-size); } }
 
-/* div */.navigation {
+/* nav */.navigation {
   background-color: $base-foreground-colour;
   color: $base-background-colour;
   padding: em($base-layout-unit / 2, $base-font-size) 0;
