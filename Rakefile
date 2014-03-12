@@ -45,6 +45,9 @@ file "site/index.html" => FileList["site/_index.*"] do |task|
       :projects => project_list)
   output = output.gsub(/<!--.*-->\n/m, "")
   output = output.gsub(/^[\s]*$\n/, "")
+  # HACK: Remove a stray newline from minified CSS which Sass 3.3 (and
+  # newer) leaves behind.
+  output = output.gsub(/}\s*html/, "}html")
   output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
     file.write(output)
