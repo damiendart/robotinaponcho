@@ -20,6 +20,14 @@ OUTPUT_FILES = ERROR_CODES.map{ |code| "site/#{code}.html" } +
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
 
+def tidyHTML(html_document)
+  html_document = html_document.gsub(/^\s*$\n/, "")
+  # HACK: Remove stray newlines from minified CSS which Sass 3.3 (and
+  # newer) leaves behind.
+  html_document = html_document.gsub(/}\s*(html|\.)/, "}\\1")
+  return html_document
+end
+
 ERROR_CODES.each do |error_code|
   desc "Spit out the #{error_code} HTTP error document."
   file "site/#{error_code}.html" => FileList["site/_error.*"] do |task|
@@ -28,7 +36,7 @@ ERROR_CODES.each do |error_code|
     output = Haml::Engine.new(template, {:format => :html5,
         :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
         :error_code => error_code)
-    output = output.gsub(/^[\s]*$\n/, "")
+    output = tidyHTML(output)
     File.open(task.name, "w") do |file|
       file.write(output)
     end
@@ -44,10 +52,7 @@ file "site/index.html" => FileList["site/_index.*"] do |task|
       :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
       :projects => project_list)
   output = output.gsub(/<!--.*-->\n/m, "")
-  output = output.gsub(/^[\s]*$\n/, "")
-  # HACK: Remove a stray newline from minified CSS which Sass 3.3 (and
-  # newer) leaves behind.
-  output = output.gsub(/}\s*html/, "}html")
+  output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
     file.write(output)
@@ -82,7 +87,7 @@ file "site/crap/index.cgi" => FileList["site/crap/_index.*"] do |task|
   template = File.read("site/crap/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
       :escape_attrs => false, :attr_wrapper => "\""}).render
-  output = output.gsub(/^[\s]*$\n/, "")
+  output = tidyHTML(output)
   output = output.gsub(%r{^\s*//.*\n}, "")
   output = Redcarpet::Render::SmartyPants.render(output)
   # HACK: The SmartyPants parser doesn't like it when "HTMl::Template"'s tags
