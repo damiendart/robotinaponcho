@@ -43,7 +43,7 @@ html {
 
 /* div */.page-content {
   padding: em($base-layout-unit, $base-font-size) 0;
-  /* ul */.page-content__project-list {
+  /* ul */ &__project-list {
     @include clearfix;
     list-style: none;
     margin: em($base-layout-unit / 2, $base-font-size) auto 0 auto;
@@ -52,7 +52,7 @@ html {
     width: em(600px + ($base-layout-unit * 2), $base-font-size);
     @media screen and (max-width: 767px) {
       width: 100%; }
-    /* li */.page-content__project-list__item {
+    /* li */ &__item {
       float: left;
       height: em($base-layout-unit * 5, $base-font-size);
       margin: 0;
@@ -61,7 +61,7 @@ html {
       @media screen and (max-width: em(600px + ($base-layout-unit * 2),
           $base-font-size * 0.875)) {
         width: 100%; } } }
-  /* div */.page-content__text {
+  /* div */ &__text {
     text-align: left;
     margin: em($base-layout-unit / 2, $base-font-size) auto 0 auto;
     max-width: em(600px, $base-font-size);
@@ -101,7 +101,7 @@ html {
   position: relative;
   text-align: left;
   text-decoration: none;
-  /* blockquote */.panel__code-background {
+  /* blockquote */ &__code-background {
     @include transform(rotate(4deg));
     @include user-select(none);
     left: 10%;
@@ -114,7 +114,7 @@ html {
     pre {
       margin: 0;
       padding: 0; } }
-  /* div */.panel__text {
+  /* div */ &__text {
     bottom: em($base-line-height / 2, $base-font-size);
     left: em($base-line-height / 2, $base-font-size);
     margin: 0;
