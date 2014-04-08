@@ -104,5 +104,5 @@ SetEnv TZ Europe/London
   RewriteCond %{HTTP_REFERER} !google. [NC]
   RewriteCond %{HTTP_REFERER} !^http://www.robotinaponcho.net/.*$ [NC]
   RewriteCond %{HTTP_REFERER} !^http://blog.robotinaponcho.net/.*$ [NC]
-  RewriteRule \obtaincornhoop\.*$ - [F]
+  RewriteRule \assets\.*$ - [F]
 </IfModule>
