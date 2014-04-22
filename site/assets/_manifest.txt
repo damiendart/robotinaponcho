@@ -1,6 +1,7 @@
 animate.min.css
 blog-background.png
 blog-style.css
+drawings-on-tumblr-background.png
 git-favicon.png
 git-logo.png
 gitweb.css
