@@ -33,18 +33,25 @@
         :markdown
           #{File.read(File.join(File.dirname(__FILE__), "site", "_index.markdown"))}
     :javascript
-      var projects = new Array();
+      var arty_projects = new Array();
+      var programming_projects = new Array();
       #{
         # HORRIBLE HACKY CODE AHOY!
         require "cgi"
         require "open-uri"
-        projects = projects.reject { |project| project.key?("code_example") }
-        projects.map { |project| "projects[\"#{project[:url]}\"] = " +
-            "\"#{preserve(CGI.escapeHTML(open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)].join("")))}\";" if
-            project[:code_example] }.join("\n")
+        projects.map { |project|
+          if (project[:code_example])
+            "programming_projects[\"#{project[:url]}\"] = \"#{preserve(CGI.escapeHTML(open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)].join("")))}\";"
+          elsif (project[:background_image])
+            "arty_projects[\"#{project[:url]}\"] = \"#{project[:background_image]}\";"
+          end
+        }.join("\n")
       }
       $(".panel").each(function(i) {
-        if (projects[this.href] != null) {
-          $(this).prepend("<blockquote class=\"panel__code-background\">" +
-              "<pre><code>" + projects[this.href] + "</code></pre></blockquote>")
+        if (arty_projects[this.href] != null) {
+          $(this).prepend("<img class=\"panel__background panel__background--image\" src=\"" + arty_projects[this.href] + "\">")
+        } else
+        if (programming_projects[this.href] != null) {
+          $(this).prepend("<blockquote class=\"panel__background\">" +
+              "<pre><code>" + programming_projects[this.href] + "</code></pre></blockquote>")
       } } )

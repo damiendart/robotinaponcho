@@ -101,7 +101,7 @@ html {
   position: relative;
   text-align: left;
   text-decoration: none;
-  /* blockquote */ &__code-background {
+  /* blockquote, img */ &__background {
     @include transform(rotate(4deg));
     @include user-select(none);
     left: 10%;
@@ -114,7 +114,9 @@ html {
     top: 0;
     pre {
       margin: 0;
-      padding: 0; } }
+      padding: 0; }
+    &--image {
+      left: 25%; } }
   /* div */ &__text {
     bottom: em($base-line-height / 2, $base-font-size);
     left: em($base-line-height / 2, $base-font-size);

@@ -8,6 +8,7 @@
   :name: Drawings on Tumblr
   :description: Doodles and drawings on my Tumblr weblog.
   :url: http://blog.robotinaponcho.net/tagged/drawing
+  :background_image: /assets/drawings-on-tumblr-background.png
 -
   :name: brainfuck
   :description: A simple brainfuck interpreter written in C.
