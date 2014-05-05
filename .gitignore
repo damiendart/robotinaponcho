@@ -6,9 +6,9 @@
 
 *.html
 Gemfile.lock
-gitweb/gitweb_config.perl
-site/robots.txt
-site/crap/index.cgi
-site/assets/*
-!site/assets/_*
-site/git/
+www/protected/gitweb_config.perl
+www/public/robots.txt
+www/public/crap/index.cgi
+www/public/assets/*
+!www/public/assets/_*
+www/public/git/
