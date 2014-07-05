@@ -13,7 +13,7 @@
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
     %script try{Typekit.load();}catch(e){}
     :scss
-      #{File.read(File.join(File.dirname(__FILE__), "site", "_error.scss"))}
+      #{File.read(File.join(File.dirname(__FILE__), "public", "_error.scss"))}
     %title #{error_code} (www.robotinaponcho.net)
   %body
     %h1.error_code #{error_code}
