@@ -32,13 +32,16 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%;
   width: 100%;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $base-layout-unit * 28) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.content { 
   margin: em($base-layout-unit * 2, $base-font-size) auto; 
   max-width: em($base-layout-unit * 24, $base-font-size);
   text-align: left;
+  @media screen and (max-width: $base-layout-unit * 28) {
+    margin: em($base-layout-unit, $base-font-size) auto;
+    padding: 0 em($base-layout-unit, $base-font-size); }
   a {
     background-color: $base-link-foreground-colour;
     color: $base-link-background-colour;
