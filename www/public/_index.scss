@@ -8,7 +8,7 @@
 
 $base-background-colour: #ffffff;
 $base-font-size: 24px;
-$base-foreground-colour: #444444;
+$base-foreground-colour: #000000;
 $base-line-height: 36px;
 $base-link-background-colour: #4c50a4;
 $base-link-foreground-colour: #ffffff;
@@ -16,7 +16,6 @@ $base-link-hover-background-colour: darken($base-link-background-colour, 25);
 $base-layout-unit: $base-line-height;
 
 body {
-  @include box(horizontal, center, center);
   background-color: $base-background-colour;
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet Explorer 6
@@ -34,100 +33,16 @@ body {
   -webkit-text-size-adjust: 100%;
   width: 100%;
   @media screen and (max-width: 767px) {
-    display: block;
-    font-size: percentage(($base-font-size * 0.875) / 16px); } }
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-html {
-  height: 100%;
-  width: 100%; }
-
-/* div */.page-content {
-  padding: em($base-layout-unit, $base-font-size) 0;
-  /* ul */ &__project-list {
-    @include clearfix;
-    list-style: none;
-    margin: em($base-layout-unit / 2, $base-font-size) auto 0 auto;
-    padding: 0;
-    text-align: left;
-    width: em(600px + ($base-layout-unit * 2), $base-font-size);
-    @media screen and (max-width: 767px) {
-      width: 100%; }
-    /* li */ &__item {
-      float: left;
-      height: em($base-layout-unit * 5, $base-font-size);
-      margin: 0;
-      padding: 0;
-      width: 50%;
-      @media screen and (max-width: em(600px + ($base-layout-unit * 2),
-          $base-font-size * 0.875)) {
-        width: 100%; } } }
-  /* div */ &__text {
-    text-align: left;
-    margin: em($base-layout-unit / 2, $base-font-size) auto 0 auto;
-    max-width: em(600px, $base-font-size);
-    @media screen and (max-width: 767px) {
-      margin: em($base-layout-unit / 2, $base-font-size)
-          em($base-layout-unit / 2, $base-font-size) 0
-          em($base-layout-unit / 2, $base-font-size);
-      max-width: 100%; }
-    a {
-      background-color: $base-link-foreground-colour;
-      color: $base-link-background-colour;
-      font-weight: bold;
-      text-decoration: underline;
-      &:active, &:focus, &:hover, &:visited:hover {
-        background-color: $base-link-foreground-colour;
-        color: $base-link-hover-background-colour;
-        text-decoration: underline; }
-      &:visited {
-        // TODO: Make visited links a little different from other links?
-        background: $base-link-foreground-colour;
-        color: $base-link-background-colour; } }
-    p {
-      margin: 0;
-      & + p {
-        text-indent: em($base-line-height, $base-font-size); } } }
-  > :first-child {
-    margin-top: 0; } }
-
-/* a */.panel {
-  @include box-sizing(border-box);
-  background: $base-link-background-colour;
-  box-shadow: inset 0 0 em($base-layout-unit, $base-font-size) rgba(0, 0, 0, 0.1);
-  color: $base-link-foreground-colour;
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
+/* div */.content { 
+  margin: em($base-layout-unit * 2, $base-font-size) auto; 
+  max-width: em($base-layout-unit * 24, $base-font-size);
   text-align: left;
-  text-decoration: none;
-  /* blockquote, img */ &__background {
-    @include transform(rotate(4deg));
-    @include user-select(none);
-    left: 10%;
-    color: #000000;
-    font-size: 75%;
-    margin: 0;
-    opacity: 0.50;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    pre {
-      margin: 0;
-      padding: 0; }
-    &--image {
-      left: 25%; } }
-  /* div */ &__text {
-    bottom: em($base-line-height / 2, $base-font-size);
-    left: em($base-line-height / 2, $base-font-size);
-    margin: 0;
-    padding: 0 em($base-line-height / 2, $base-font-size) 0 0;
-    position: absolute;
-    z-index: 1000; }
-  &:active, &:focus, &:hover, &:visited:hover {
-    color: $base-link-foreground-colour;
-    background-color: $base-link-hover-background-colour;
-    text-decoration: underline; }
-  &:visited {
-    color: $base-link-foreground-colour;
-    background-color: $base-link-background-colour; } }
+  p {
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
+  ul {
+    list-style: square;
+    margin: em($base-line-height / 2, $base-font-size) 0
+        0 em($base-line-height, $base-font-size);
+    padding: 0; } }

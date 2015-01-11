@@ -47,10 +47,8 @@ desc "Spit out the homepage."
 file "public/index.html" => FileList["public/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   template = File.read("public/_index.haml")
-  project_list = YAML.load_file("public/_index.yaml")
   output = Haml::Engine.new(template, {:format => :html5,
-      :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
-      :projects => project_list)
+      :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/<!--.*-->\n/m, "")
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)

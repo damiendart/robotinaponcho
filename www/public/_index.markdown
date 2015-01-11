@@ -6,15 +6,20 @@
   please refer to the accompanying "LICENCE" file.
 -->
 
-See also my [folder of crap][1] and [sundry Git repositories][2].
+**Hi! I'm Damien Dart.**
 
-Other places I've polluted include [GitHub][3], [Instagram][4],
-[Tumblr][5] and [Twitter][6]. Here's an [email address][7].
+  - I have a bunch of nerdy things up on [GitHub][1] (and [mirrored here][2]).
+  - I put dumb drawings and paintings up on [Tumblr][3] and [Instagram][4].
+  - I have a [folder of crap][5] for random bits and pieces.
+  - Other places I've polluted: [Twitter][6].
+  - Here's an [email address][7].
 
-[1]: <crap/>
+I'll make a better-looking homepage tomorrow.
+
+[1]: <https://github.com/damiendart>
 [2]: <git/>
-[3]: <https://github.com/damiendart>
+[3]: <http://blog.robotinaponcho.net>
 [4]: <http://instagram.com/damiendart>
-[5]: <http://blog.robotinaponcho.net>
+[5]: <crap/>
 [6]: <https://twitter.com/damiendart>
 [7]: <mailto:damiendart@pobox.com>

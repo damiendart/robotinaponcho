@@ -12,46 +12,21 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
-    %script{:src => "/assets/jquery-1.10.1.min.js"}
     %script{:src => "//use.typekit.net/mnw2jkv.js"}
     %script try{Typekit.load();}catch(e){}
     %title Damien Dart&rsquo;s Personal Website (www.robotinaponcho.net)
   %body
-    .page-content
-      .page-content__text
-        :markdown
-          **Hello! I'm Damien Dart.** I code and draw things:
-      %ul.page-content__project-list
-        - projects.each do |project|
-          %li.page-content__project-list__item>
-            %a.panel{:href => project[:url]}
-              %div.panel__text
-                %b.panel__text__title= project[:name]
-                %br/
-                = project[:description]
-      .page-content__text
-        :markdown
-          #{File.read(File.join(File.dirname(__FILE__), "public", "_index.markdown"))}
+    .content
+      :markdown
+        #{File.read(File.join(File.dirname(__FILE__), "public", "_index.markdown"))}
     :javascript
-      var arty_projects = new Array();
-      var programming_projects = new Array();
-      #{
-        # HORRIBLE HACKY CODE AHOY!
-        require "cgi"
-        require "open-uri"
-        projects.map { |project|
-          if (project[:code_example])
-            "programming_projects[\"#{project[:url]}\"] = \"#{preserve(CGI.escapeHTML(open(project[:code_example]).readlines()[project[:code_example_start]...(project[:code_example_start] + 25)].join("")))}\";"
-          elsif (project[:background_image])
-            "arty_projects[\"#{project[:url]}\"] = \"#{project[:background_image]}\";"
-          end
-        }.join("\n")
-      }
-      $(".panel").each(function(i) {
-        if (arty_projects[this.href] != null) {
-          $(this).prepend("<img class=\"panel__background panel__background--image\" src=\"" + arty_projects[this.href] + "\">")
-        } else
-        if (programming_projects[this.href] != null) {
-          $(this).prepend("<blockquote class=\"panel__background\">" +
-              "<pre><code>" + programming_projects[this.href] + "</code></pre></blockquote>")
-      } } )
+      function easterEgg() {
+        if (window.location.hash == "#iloveyou") {
+          var links = document.getElementsByTagName("a");
+          for (var i = 0; i < links.length; i++) {
+            links[i].onmouseover = function() {
+              this.style.fontFamily = "\"Comic Sans MS\", \"Comic Sans\"";
+              this.style.lineHeight = "1";
+      }; } } }
+      window.onhashchange = easterEgg();
+      easterEgg();
