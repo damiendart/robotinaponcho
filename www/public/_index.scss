@@ -39,6 +39,19 @@ body {
   margin: em($base-layout-unit * 2, $base-font-size) auto; 
   max-width: em($base-layout-unit * 24, $base-font-size);
   text-align: left;
+  a {
+    background-color: $base-link-foreground-colour;
+    color: $base-link-background-colour;
+    font-weight: bold;
+    text-decoration: underline;
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $base-link-foreground-colour;
+      color: $base-link-hover-background-colour;
+      text-decoration: underline; }
+    &:visited {
+      // TODO: Make visited links a little different from other links?
+      background: $base-link-foreground-colour;
+      color: $base-link-background-colour; } }
   p {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
   ul {
