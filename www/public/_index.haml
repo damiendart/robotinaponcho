@@ -20,13 +20,4 @@
       :markdown
         #{File.read(File.join(File.dirname(__FILE__), "public", "_index.markdown"))}
     :javascript
-      function easterEgg() {
-        if (window.location.hash == "#iloveyou") {
-          var links = document.getElementsByTagName("a");
-          for (var i = 0; i < links.length; i++) {
-            links[i].onmouseover = function() {
-              this.style.fontFamily = "\"Comic Sans MS\", \"Comic Sans\"";
-              this.style.lineHeight = "1";
-      }; } } }
-      window.onhashchange = easterEgg;
-      easterEgg();
+        #{File.read(File.join(File.dirname(__FILE__), "public", "_index.js"))}
