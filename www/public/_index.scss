@@ -27,17 +27,13 @@ body {
   -webkit-font-smoothing: antialiasing;
   height: 100%;
   margin: 0; // Reset the body margin set in most browsers.
-  // Internet Explorer 6 hates us and doesn't center block elements with just
-  // "margin-left: auto; margin-right: auto" alone.
-  text-align: center;
   -webkit-text-size-adjust: 100%;
   width: 100%;
-  @media screen and (max-width: $base-layout-unit * 28) {
+  @media screen and (max-width: 767px) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.content { 
-  margin: em($base-layout-unit * 2, $base-font-size) auto; 
-  max-width: em($base-layout-unit * 24, $base-font-size);
+  margin: em($base-layout-unit * 2, $base-font-size); 
   text-align: left;
   @media screen and (max-width: $base-layout-unit * 28) {
     margin: em($base-layout-unit, $base-font-size) auto;
@@ -52,7 +48,6 @@ body {
       color: $base-link-hover-background-colour;
       text-decoration: underline; }
     &:visited {
-      // TODO: Make visited links a little different from other links?
       background: $base-link-foreground-colour;
       color: $base-link-background-colour; } }
   p {
