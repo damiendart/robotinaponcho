@@ -14,7 +14,7 @@ Haml::Filters::Scss.options[:style] = :compressed
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/index.html", "public/googlefb3645e0f9f23eaf.html", 
+    ["public/index.html", "public/googlefb3645e0f9f23eaf.html",
     "public/robots.txt", "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
