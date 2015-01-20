@@ -32,8 +32,8 @@ body {
   @media screen and (max-width: 767px) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-/* div */.content { 
-  margin: em($base-layout-unit * 2, $base-font-size); 
+/* div */.content {
+  margin: em($base-layout-unit * 2, $base-font-size);
   text-align: left;
   @media screen and (max-width: $base-layout-unit * 28) {
     margin: em($base-layout-unit, $base-font-size) auto;
