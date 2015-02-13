@@ -9,7 +9,7 @@ MAINTAINER Damien Dart <damiendart@pobox.com>
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install apache2 build-essential cpanminus libapache2-mod-php5
+RUN apt-get -y install apache2 build-essential cpanminus
 RUN cpanm HTML::Template URI
 RUN a2enmod cgi
 RUN a2enmod rewrite
