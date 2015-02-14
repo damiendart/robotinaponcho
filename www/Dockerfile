@@ -11,9 +11,8 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install apache2 build-essential cpanminus
 RUN cpanm HTML::Template URI
-RUN a2enmod cgi
-RUN a2enmod rewrite
-EXPOSE 80
-ADD public /var/www/robotinaponcho
+RUN a2enmod cgid rewrite
 ADD apache.conf /etc/apache2/sites-enabled/000-default.conf
+ADD public /var/www/robotinaponcho
+EXPOSE 80
 CMD /usr/sbin/apache2ctl -D FOREGROUND
