@@ -88,15 +88,15 @@ body {
       color: $base-background-colour; } } }
 
 /* h1 */.page-header {
-  $font-size: 72px;
+  $font-size: 36px;
   font-size: percentage($font-size / $base-font-size);
-  font-weight: normal;
+  font-weight: bold;
   line-height: em($font-size, $font-size);
   margin: 0;
   text-align: center;
   text-transform: uppercase;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    $font-size: 48px;
+    $font-size: 28px;
     font-size: percentage($font-size / $base-font-size);
     line-height: em($font-size, $font-size); } }
 
