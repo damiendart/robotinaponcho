@@ -18,8 +18,13 @@ SetEnv TZ Europe/London
   Redirect gone /deadlypremonition.jpeg
   Redirect gone /demons_souls_theodore.jpg
   Redirect gone /robotinaponcho.jpeg
+  Redirect gone /assets/animate.min.css
+  Redirect gone /assets/drawings-on-tumblr-background.png
   Redirect gone /assets/foc-footer.html
   Redirect gone /assets/foc-header.html
+  Redirect gone /assets/site-header.png
+  Redirect gone /assets/site-header@x2.png
+  Redirect gone /assets/spin.min.js
   Redirect gone /crap/blog-background.gif
   Redirect gone /crap/blog-background2.gif
   Redirect gone /crap/blog-date-icon.png
