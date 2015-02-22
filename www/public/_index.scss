@@ -21,7 +21,7 @@ body {
   // Setting the font size initially to 100% avoids the Internet Explorer 6
   // and Internet Explorer 7 exaggerated text-resizing bug (see
   // <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/1.5 $helvetica;
+  font: 100%/1.5 $georgia;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   -webkit-font-smoothing: antialiasing;
