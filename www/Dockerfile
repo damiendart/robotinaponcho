@@ -13,6 +13,6 @@ RUN apt-get -y install apache2 build-essential cpanminus
 RUN cpanm HTML::Template URI
 RUN a2enmod cgid rewrite
 ADD apache.conf /etc/apache2/sites-enabled/000-default.conf
-ADD public /var/www/robotinaponcho
+VOLUME /var/www/robotinaponcho
 EXPOSE 80
 CMD /usr/sbin/apache2ctl -D FOREGROUND
