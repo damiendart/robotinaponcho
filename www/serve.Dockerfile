@@ -1,4 +1,4 @@
-# Dockerfile for Damien Dart's personal website.
+# Dockerfile for serving Damien Dart's personal website.
 #
 # Copyright (C) 2013-2015 Damien Dart, <damiendart@pobox.com>.
 # This file is distributed under the MIT licence. For more information,
