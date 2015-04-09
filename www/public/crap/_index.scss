@@ -35,7 +35,7 @@ a {
     color: $base-foreground-colour; } }
 
 body {
-  background-color: $base-background-colour;
+  background-color: darken($base-background-colour, 20);
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet Explorer 6
   // and Internet Explorer 7 exaggerated text-resizing bug (see
@@ -50,27 +50,26 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
+    background-color: $base-background-colour;
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.container {
+  border-radius: em($base-layout-unit / 4, $base-font-size);
+  background-color: #ffffff;
   margin: em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
+  padding: em($base-layout-unit, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, $base-font-size)) {
+    border-radius: none;
     margin: 0;
     max-width: 100%;
     padding: em($base-layout-unit, $base-font-size); } }
 
 /* nav */.navigation {
-  background-color: $base-foreground-colour;
-  color: $base-background-colour;
-  padding: em($base-layout-unit / 2, $base-font-size) 0;
+  margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
   /* a */ &__home-link {
-    color: $base-background-colour;
     font-weight: bold;
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $base-background-colour;
-      color: $base-foreground-colour; }
     &:before {
       // Adjust font size to make icon glyphs align better with adjacent text.
       $font-size: $base-font-size * 0.75;
@@ -78,14 +77,9 @@ body {
       display: inline-block;
       font-family: "Glyphicons Halflings";
       font-size: percentage($font-size / $base-font-size);
-      height: em($base-line-height, $font-size);
-      line-height: em($base-line-height, $font-size);
       speak: none;
       text-align: left;
-      width: em($base-line-height, $font-size); }
-    &:visited {
-      background-colour: $base-foreground-colour;
-      color: $base-background-colour; } } }
+      width: em($base-line-height, $font-size); } } }
 
 /* h1 */.page-header {
   $font-size: 36px;
@@ -93,7 +87,6 @@ body {
   font-weight: bold;
   line-height: em($font-size, $font-size);
   margin: 0;
-  text-align: center;
   text-transform: uppercase;
   @media screen and (max-width: em($content-width, $base-font-size)) {
     $font-size: 28px;
