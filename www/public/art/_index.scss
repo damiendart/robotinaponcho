@@ -1,0 +1,71 @@
+// Folder of Crap Sass source for Damien Dart's personal website.
+//
+// Copyright (C) 2013, 2014 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@import "bourbon";
+
+$base-background-colour: #ffffff;
+$base-font-size: 16px;
+$base-foreground-colour: #000000;
+$base-line-height: 24px;
+$base-layout-unit: $base-line-height;
+$content-width: 640px;
+
+a {
+  color: $base-foreground-colour;
+  &:active, &:focus, &:hover, &:visited:hover {
+    background-color: $base-foreground-colour;
+    color: $base-background-colour; }
+  &:visited {
+    background-colour: $base-background-colour;
+    color: $base-foreground-colour; } }
+
+body {
+  background-color: $base-background-colour;
+  color: $base-foreground-colour;
+  // Setting the font size initially to 100% avoids the Internet Explorer 6
+  // and Internet Explorer 7 exaggerated text-resizing bug (see
+  // <http://alistapart.com/article/howtosizetextincss#section5>).
+  font: 100%/1.5 $helvetica;
+  @if ($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  -webkit-font-smoothing: antialiasing;
+  margin: 0;
+  // Internet Explorer 6 hates us and doesn't center block elements with just
+  // "margin-left: auto; margin-right: auto" alone.
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
+
+/* div */.container {
+  margin: em($base-layout-unit, $base-font-size) auto;
+  max-width: em($content-width, $base-font-size);
+  padding: em($base-layout-unit, $base-font-size);
+  text-align: left;
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    margin: 0;
+    max-width: 100%;
+    padding: em($base-layout-unit, $base-font-size); } }
+
+/* h1 */.page-header {
+  $font-size: 36px;
+  font-size: percentage($font-size / $base-font-size);
+  font-weight: bold;
+  line-height: em($font-size, $font-size);
+  margin: 0;
+  text-align: center;
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    $font-size: 28px;
+    font-size: percentage($font-size / $base-font-size);
+    line-height: em($font-size, $font-size); } }
+
+/* div */.thumbnails {
+  @include clearfix;
+  margin: em($base-layout-unit, $base-font-size) 0 0 0; 
+  /* img */ &__thumbnail {
+    display: block;
+    float: left;
+    max-width: 50%; } }

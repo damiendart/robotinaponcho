@@ -15,7 +15,7 @@ Haml::Filters::Scss.options[:style] = :compressed
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
     ["public/index.html", "public/googlefb3645e0f9f23eaf.html",
-    "public/robots.txt", "public/crap/index.cgi"]
+    "public/robots.txt", "public/art/index.cgi", "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -75,6 +75,26 @@ file "public/robots.txt" do |task|
         "git/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
+  end
+end
+
+desc "Spit out the Art Stuff CGI script."
+file "public/art/index.cgi" => FileList["public/art/_index.*"] do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  script = File.read("public/art/_index.pl")
+  script = script.gsub(/__DATA__.*$/m, "")
+  template = File.read("public/art/_index.haml")
+  output = Haml::Engine.new(template, {:format => :html5,
+      :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = tidyHTML(output)
+  output = Redcarpet::Render::SmartyPants.render(output)
+  # HACK: The SmartyPants parser doesn't like it when "HTMl::Template"'s tags
+  # are used for HTML element attribute values.
+  output = output.gsub(/&ldquo;/, "\"")
+  File.open(task.name, "w") do |file|
+    file.write(script)
+    file.write("__DATA__\n")
+    file.write(output)
   end
 end
 
