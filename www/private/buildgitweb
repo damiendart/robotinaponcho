@@ -37,7 +37,7 @@ cat << 'INDEX' > ${2%/}/gitwebindextext.html
 <pre>Here are a bunch of read-only Git repository; at the moment the only
 repositories here are mirrors of those found on <a href="https://github.com/damiendart">my public GitHub
 profile</a>. These mirrors should be no more than an hour out of date,
-unless the <a href="http://www.robotinaponcho.net/git/?p=robotinaponcho.git;a=blob_plain;f=www/protected/mirrorgithub;hb=HEAD">mirroring script</a> I wrote broke.
+unless the <a href="http://www.robotinaponcho.net/git/?p=robotinaponcho.git;a=blob_plain;f=www/private/mirrorgithub;hb=HEAD">mirroring script</a> I wrote broke.
 
 -- <a href="http://www.robotinaponcho.net/">Damien</a></pre>
 INDEX
