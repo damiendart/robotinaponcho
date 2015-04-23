@@ -42,9 +42,8 @@ body {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.container {
-  margin: em($base-layout-unit, $base-font-size) auto;
+  margin: em($base-layout-unit * 3, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
-  padding: em($base-layout-unit, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, $base-font-size)) {
     margin: 0;
@@ -52,16 +51,10 @@ body {
     padding: em($base-layout-unit, $base-font-size); } }
 
 /* h1 */.page-header {
-  $font-size: 36px;
-  font-size: percentage($font-size / $base-font-size);
-  font-weight: bold;
-  line-height: em($font-size, $font-size);
   margin: 0;
-  text-align: center;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    $font-size: 28px;
-    font-size: percentage($font-size / $base-font-size);
-    line-height: em($font-size, $font-size); } }
+  /* img */ &__header-image {
+    display: block;
+    margin: 0 auto; } }
 
 /* div */.thumbnails {
   @include clearfix;

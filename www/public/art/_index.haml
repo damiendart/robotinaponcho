@@ -14,7 +14,8 @@
       #{File.read(File.join(File.dirname(__FILE__), "public", "art", "_index.scss"))}
   %body
     .container
-      %h1.page-header Art Stuff 
+      %h1.page-header
+        %img.page-header__header-image{:src => "/assets/homepage-header.png"}
       .thumbnails
         / TMPL_LOOP NAME="artwork"
         %img.thumbnails__thumbnail{:src =>"/assets/<TMPL_VAR NAME=\"thumbnail\">"}
