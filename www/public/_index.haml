@@ -8,7 +8,7 @@
 %html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "Content-Type"}
-    %title Damien Dart's Art Stuff (www.robotinaponcho.net)
+    %title Damien Dart's Personal Site (www.robotinaponcho.net)
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
   %body
@@ -17,7 +17,7 @@
         %img.page-header__header-image{:alt => "Damien Dart Occasionally Draws Things", :height => "133", :src => "/assets/homepage-header.png", :srcset => "/assets/homepage-header@2x.png 2x", :width => "538"}
       .thumbnails
         / TMPL_LOOP NAME="artwork"
-        %img.thumbnails__thumbnail{:alt => "", :height => "320", :src =>"/assets/<TMPL_VAR NAME=\"thumbnail\">", :width => "320"}
+        %img.thumbnails__thumbnail{:alt => "", :height => "320", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">", :width => "320"}
         / /TMPL_LOOP
       .links
         %a.links__link{:href => "/crap/"}
