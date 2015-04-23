@@ -15,19 +15,19 @@
   %body
     .container
       %h1.page-header
-        %img.page-header__header-image{:src => "/assets/homepage-header.png"}
+        %img.page-header__header-image{:alt => "Damien Dart Occasionally Draws Things", :src => "/assets/homepage-header.png"}
       .thumbnails
         / TMPL_LOOP NAME="artwork"
-        %img.thumbnails__thumbnail{:src =>"/assets/<TMPL_VAR NAME=\"thumbnail\">"}
+        %img.thumbnails__thumbnail{:alt => "", :src =>"/assets/<TMPL_VAR NAME=\"thumbnail\">"}
         / /TMPL_LOOP
       .links
         %a.links__link{:href => "/crap/"}
-          %img.links__link__image{:src => "/assets/homepage-folderofcrap.png"}
+          %img.links__link__image{:alt => "The Folder of Crap", :src => "/assets/homepage-folderofcrap.png"}
         %a.links__link{:href => "http://instagram.com/damiendart"}
-          %img.links__link__image{:src => "/assets/homepage-instagram.png"}
+          %img.links__link__image{:alt => "Instagram", :src => "/assets/homepage-instagram.png"}
         %a.links__link{:href => "https://github.com/damiendart"}
-          %img.links__link__image{:src => "/assets/homepage-github.png"}
+          %img.links__link__image{:alt => "GitHub", :src => "/assets/homepage-github.png"}
         %a.links__link{:href => "https://blog.robotinaponcho.net/"}
-          %img.links__link__image{:src => "/assets/homepage-tumblr.png"}
+          %img.links__link__image{:alt => "Tumblr", :src => "/assets/homepage-tumblr.png"}
         %a.links__link{:href => "https://twitter.com/damiendart"}
-          %img.links__link__image{:src => "/assets/homepage-twitter.png"}
+          %img.links__link__image{:alt =>"Twitter", :src => "/assets/homepage-twitter.png"}
