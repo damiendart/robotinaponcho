@@ -57,6 +57,8 @@ file "public/index.cgi" => FileList["public/_index.*"] do |task|
   # HACK: The SmartyPants parser doesn't like it when "HTMl::Template"'s tags
   # are used for HTML element attribute values.
   output = output.gsub(/&ldquo;/, "\"")
+  output = output.gsub(/&quot;/, "\"")
+  output = output.gsub(/&rdquo;/, "\"")
   File.open(task.name, "w") do |file|
     file.write(script)
     file.write("__DATA__\n")
@@ -97,6 +99,8 @@ file "public/crap/index.cgi" => FileList["public/crap/_index.*"] do |task|
   # HACK: The SmartyPants parser doesn't like it when "HTMl::Template"'s tags
   # are used for HTML element attribute values.
   output = output.gsub(/&ldquo;/, "\"")
+  output = output.gsub(/&quot;/, "\"")
+  output = output.gsub(/&rdquo;/, "\"")
   File.open(task.name, "w") do |file|
     file.write(script)
     file.write("__DATA__\n")
