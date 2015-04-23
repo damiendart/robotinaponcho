@@ -34,6 +34,7 @@ SetEnv TZ Europe/London
   Redirect gone /crap/thingy.swf
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
+  RedirectMatch 301 /art/$ /
   RedirectMatch 301 /crap/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
       /assets/glyphiconshalflings-regular.$1
   RedirectMatch 301 /obtaincornhoop/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
