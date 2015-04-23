@@ -14,15 +14,6 @@ $base-layout-unit: $base-line-height;
 $thumbnail-width: 320px;
 $content-width: ($thumbnail-width * 2) + $base-layout-unit;
 
-a {
-  color: $base-foreground-colour;
-  &:active, &:focus, &:hover, &:visited:hover {
-    background-color: $base-foreground-colour;
-    color: $base-background-colour; }
-  &:visited {
-    background-colour: $base-background-colour;
-    color: $base-foreground-colour; } }
-
 body {
   background-color: $base-background-colour;
   color: $base-foreground-colour;
@@ -32,23 +23,15 @@ body {
   font: 100%/1.5 $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  -webkit-font-smoothing: antialiasing;
   margin: 0;
   // Internet Explorer 6 hates us and doesn't center block elements with just
   // "margin-left: auto; margin-right: auto" alone.
-  text-align: center;
-  -webkit-text-size-adjust: 100%;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
+  text-align: center; }
 
 /* div */.container {
-  margin: em($base-layout-unit * 3, $base-font-size) auto;
-  max-width: em($content-width, $base-font-size);
-  text-align: left;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    margin: 0;
-    max-width: 100%;
-    padding: em($base-layout-unit, $base-font-size); } }
+  margin: $base-layout-unit * 3 auto;
+  width: $content-width;
+  text-align: left; }
 
 /* div */.links {
   margin: $base-layout-unit 0 0 0;
@@ -66,10 +49,8 @@ body {
 
 /* div */.thumbnails {
   @include clearfix;
-  margin: em($base-layout-unit, $base-font-size) 0
-      0 em($base-layout-unit * -1, $base-font-size);
+  margin: $base-layout-unit 0 0 ($base-layout-unit * -1);
   /* img */ &__thumbnail {
     display: block;
     float: left;
-    margin: 0 0 0 em($base-layout-unit, $base-font-size);
-    max-width: em($thumbnail-width, $base-font-size); } }
+    margin: 0 0 0 $base-layout-unit; } }
