@@ -1,6 +1,6 @@
-// Homepage Sass source for Damien Dart's personal website.
+// Folder of Crap Sass source for Damien Dart's personal website.
 //
-// Copyright (C) 2013-2015 Damien Dart, <damiendart@pobox.com>.
+// Copyright (C) 2013, 2014 Damien Dart, <damiendart@pobox.com>.
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
@@ -10,10 +10,9 @@ $base-background-colour: #ffffff;
 $base-font-size: 16px;
 $base-foreground-colour: #000000;
 $base-line-height: 24px;
-$base-link-background-colour: #4c50a4;
-$base-link-foreground-colour: #ffffff;
-$base-link-hover-background-colour: darken($base-link-background-colour, 25);
 $base-layout-unit: $base-line-height;
+$thumbnail-width: 320px;
+$content-width: ($thumbnail-width * 2) + $base-layout-unit;
 
 body {
   background-color: $base-background-colour;
@@ -21,39 +20,37 @@ body {
   // Setting the font size initially to 100% avoids the Internet Explorer 6
   // and Internet Explorer 7 exaggerated text-resizing bug (see
   // <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/1.5 $georgia;
+  font: 100%/1.5 $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  -webkit-font-smoothing: antialiasing;
-  height: 100%;
-  margin: 0; // Reset the body margin set in most browsers.
-  -webkit-text-size-adjust: 100%;
-  width: 100%;
-  @media screen and (max-width: 767px) {
-    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
+  margin: 0;
+  // Internet Explorer 6 hates us and doesn't center block elements with just
+  // "margin-left: auto; margin-right: auto" alone.
+  text-align: center; }
 
-/* div */.content {
-  margin: em($base-layout-unit * 2, $base-font-size);
-  text-align: left;
-  @media screen and (max-width: $base-layout-unit * 28) {
-    margin: em($base-layout-unit, $base-font-size) auto;
-    padding: 0 em($base-layout-unit, $base-font-size); }
-  a {
-    background-color: $base-link-foreground-colour;
-    color: $base-link-background-colour;
-    font-weight: bold;
-    text-decoration: underline;
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $base-link-foreground-colour;
-      color: $base-link-hover-background-colour;
-      text-decoration: underline; }
-    &:visited {
-      background: $base-link-foreground-colour;
-      color: $base-link-background-colour; } }
-  p {
-    margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
-  ul {
-    list-style: square;
-    margin: em($base-line-height / 2, $base-font-size) 0
-        0 em($base-line-height, $base-font-size);
-    padding: 0; } }
+/* div */.container {
+  margin: $base-layout-unit * 3 auto;
+  width: $content-width;
+  text-align: left; }
+
+/* div */.links {
+  margin: $base-layout-unit 0 0 0;
+  /* a */ &__link {
+    border: 0;
+    /* img */ &__image {
+      display: block;
+      margin: ($base-layout-unit / 2) auto 0 auto; } } }
+
+/* h1 */.page-header {
+  margin: 0;
+  /* img */ &__header-image {
+    display: block;
+    margin: 0 auto; } }
+
+/* div */.thumbnails {
+  @include clearfix;
+  margin: $base-layout-unit 0 0 ($base-layout-unit * -1);
+  /* img */ &__thumbnail {
+    display: block;
+    float: left;
+    margin: 0 0 0 $base-layout-unit; } }

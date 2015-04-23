@@ -10,7 +10,7 @@ use strict;
 use CGI qw/:standard/;
 use HTML::Template;
 
-opendir(my $directory, "../assets") or die "Unable to open directory: $!";
+opendir(my $directory, "./assets") or die "Unable to open directory: $!";
 my @thumbnails = grep { /thumbnail\.png/ } readdir($directory);
 closedir($directory);
 my @artwork;
