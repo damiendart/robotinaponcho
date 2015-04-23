@@ -20,3 +20,14 @@
         / TMPL_LOOP NAME="artwork"
         %img.thumbnails__thumbnail{:src =>"/assets/<TMPL_VAR NAME=\"thumbnail\">"}
         / /TMPL_LOOP
+      .links
+        %a.links__link{:href => "/crap/"}
+          %img.links__link__image{:src => "/assets/homepage-folderofcrap.png"}
+        %a.links__link{:href => "http://instagram.com/damiendart"}
+          %img.links__link__image{:src => "/assets/homepage-instagram.png"}
+        %a.links__link{:href => "https://github.com/damiendart"}
+          %img.links__link__image{:src => "/assets/homepage-github.png"}
+        %a.links__link{:href => "https://blog.robotinaponcho.net/"}
+          %img.links__link__image{:src => "/assets/homepage-tumblr.png"}
+        %a.links__link{:href => "https://twitter.com/damiendart"}
+          %img.links__link__image{:src => "/assets/homepage-twitter.png"}

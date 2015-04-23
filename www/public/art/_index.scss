@@ -50,6 +50,14 @@ body {
     max-width: 100%;
     padding: em($base-layout-unit, $base-font-size); } }
 
+/* div */.links {
+  margin: $base-layout-unit 0 0 0;
+  /* a */ &__link {
+    border: 0;
+    /* img */ &__image {
+      display: block;
+      margin: ($base-layout-unit / 2) auto 0 auto; } } }
+
 /* h1 */.page-header {
   margin: 0;
   /* img */ &__header-image {
