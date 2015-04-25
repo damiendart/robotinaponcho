@@ -11,8 +11,17 @@ $base-font-size: 16px;
 $base-foreground-colour: #000000;
 $base-line-height: 24px;
 $base-layout-unit: $base-line-height;
-$thumbnail-width: 320px;
-$content-width: ($thumbnail-width * 2) + $base-layout-unit;
+$content-width: 640px;
+$thumbnail-width: $content-width / 2;
+
+a {
+  color: $base-foreground-colour;
+  &:active, &:focus, &:hover, &:visited:hover {
+    background-color: $base-foreground-colour;
+    color: $base-background-colour; }
+  &:visited {
+    background-colour: $base-background-colour;
+    color: $base-foreground-colour; } }
 
 body {
   background-color: $base-background-colour;
@@ -23,34 +32,56 @@ body {
   font: 100%/1.5 $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
+  -webkit-font-smoothing: antialiasing;
   margin: 0;
   // Internet Explorer 6 hates us and doesn't center block elements with just
   // "margin-left: auto; margin-right: auto" alone.
-  text-align: center; }
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    background-color: $base-background-colour;
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-/* div */.container {
-  margin: $base-layout-unit * 3 auto;
-  width: $content-width;
-  text-align: left; }
+/* div */.page-body {
+  margin: 0 auto em($base-layout-unit, $base-font-size) auto;
+  max-width: em($content-width, $base-font-size); }
 
-/* div */.links {
-  margin: $base-layout-unit 0 0 0;
-  /* a */ &__link {
-    border: 0;
-    /* img */ &__image {
-      display: block;
-      margin: ($base-layout-unit / 2) auto 0 auto; } } }
-
-/* h1 */.page-header {
+/* header */.site-header {
+  background-color: $base-foreground-colour;
+  color: $base-background-colour; 
   margin: 0;
-  /* img */ &__header-image {
-    display: block;
-    margin: 0 auto; } }
+  /* div */ &__container {
+    @include clearfix;
+    max-width: em($content-width, $base-font-size);
+    margin: 0 auto;
+    padding: em($base-layout-unit, $base-font-size);
+    /* h1 */ &__title {
+      $font-size: 24px;
+      float: left;
+      font-size: $font-size;
+      line-height: em($font-size, $font-size); 
+      margin: 0; }
+    /* ul */ &__navigation {
+      float: right;
+      list-style: none;
+      margin: 0;
+      /* li */ &__item {
+        text-transform: uppercase;
+        /* a */ &__link {
+          color: $base-background-colour;
+          text-decoration: none;
+          &:active, &:focus, &:hover, &:visited:hover {
+            background-color: $base-foreground-colour;
+            color: $base-background-colour; 
+            text-decoration: underline; }
+          &:visited {
+            background-colour: $base-foreground-colour;
+            color: $base-background-colour; } } } } } }
 
 /* div */.thumbnails {
   @include clearfix;
-  margin: $base-layout-unit 0 0 ($base-layout-unit * -1);
   /* img */ &__thumbnail {
     display: block;
     float: left;
-    margin: 0 0 0 $base-layout-unit; } }
+    margin: 0; 
+    max-width: $thumbnail-width; } }

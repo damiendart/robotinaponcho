@@ -12,21 +12,14 @@
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
   %body
-    .container
-      %h1.page-header
-        %img.page-header__header-image{:alt => "Damien Dart Occasionally Draws Things", :height => "133", :src => "/assets/homepage-header.png", :srcset => "/assets/homepage-header@2x.png 2x", :width => "538"}
+    %header.site-header
+      .site-header__container
+        %h1.site-header__container__title Damien Dart Occasionally Draws Things
+        %ul.site-header__container__navigation
+          %li.site-header__container__navigation__item 
+            %a.site-header__container__navigation__item__link{:href => "#"} About
+    .page-body
       .thumbnails
         / TMPL_LOOP NAME="artwork"
-        %img.thumbnails__thumbnail{:alt => "", :height => "320", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">", :width => "320"}
+        %img.thumbnails__thumbnail{:alt => "", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">"}
         / /TMPL_LOOP
-      .links
-        %a.links__link{:href => "/crap/"}
-          %img.links__link__image{:alt => "The Folder of Crap", :src => "/assets/homepage-folderofcrap.png"}
-        %a.links__link{:href => "http://instagram.com/damiendart"}
-          %img.links__link__image{:alt => "Instagram", :src => "/assets/homepage-instagram.png"}
-        %a.links__link{:href => "https://github.com/damiendart"}
-          %img.links__link__image{:alt => "GitHub", :src => "/assets/homepage-github.png"}
-        %a.links__link{:href => "https://blog.robotinaponcho.net/"}
-          %img.links__link__image{:alt => "Tumblr", :src => "/assets/homepage-tumblr.png"}
-        %a.links__link{:href => "https://twitter.com/damiendart"}
-          %img.links__link__image{:alt =>"Twitter", :src => "/assets/homepage-twitter.png"}
