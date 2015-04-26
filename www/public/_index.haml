@@ -8,13 +8,14 @@
 %html{:lang => "en"}
   %head
     %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "Content-Type"}
+    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %title Damien Dart's Personal Site (www.robotinaponcho.net)
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
   %body
     %header.site-header
       .site-header__container
-        %h1.site-header__container__title Damien Dart Occasionally Draws Things
+        %h1.site-header__container__title Damien Dart<span> Occasionally Draws Things</span>
         %ul.site-header__container__navigation
           %li.site-header__container__navigation__item 
             %a.site-header__container__navigation__item__link{:href => "#"} About

@@ -39,12 +39,13 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    background-color: $base-background-colour;
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.page-body {
   margin: 0 auto em($base-layout-unit, $base-font-size) auto;
-  max-width: em($content-width, $base-font-size); }
+  max-width: em($content-width, $base-font-size);
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    max-width: 100%; } }
 
 /* header */.site-header {
   background-color: $base-foreground-colour;
@@ -58,9 +59,12 @@ body {
     /* h1 */ &__title {
       $font-size: 24px;
       float: left;
-      font-size: $font-size;
+      font-size: em($font-size, $base-font-size);
       line-height: em($font-size, $font-size); 
-      margin: 0; }
+      margin: 0;
+      @media screen and (max-width: em($content-width, $base-font-size)) {
+        span {
+          display: none; } } }
     /* ul */ &__navigation {
       float: right;
       list-style: none;
@@ -84,4 +88,6 @@ body {
     display: block;
     float: left;
     margin: 0; 
-    max-width: $thumbnail-width; } }
+    max-width: $thumbnail-width;
+    @media screen and (max-width: em($content-width, $base-font-size)) {
+      max-width: 50%; } } }
