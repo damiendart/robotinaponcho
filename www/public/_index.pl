@@ -1,5 +1,5 @@
 #!/usr/bin/perl -wT
-# Art Stuff CGI script for Damien Dart's personal website.
+# Homepage CGI script for Damien Dart's personal website.
 #
 # Copyright (C) 2013-2015 Damien Dart, <damiendart@pobox.com>.
 # This file is distributed under the MIT licence. For more information,
