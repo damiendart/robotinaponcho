@@ -14,8 +14,9 @@ Haml::Filters::Scss.options[:style] = :compressed
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/index.cgi", "public/googlefb3645e0f9f23eaf.html",
-    "public/robots.txt", "public/crap/index.cgi"]
+    ["public/about.html", "public/index.cgi",
+    "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
+    "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -41,6 +42,20 @@ ERROR_CODES.each do |error_code|
     File.open(task.name, "w") do |file|
       file.write(output)
     end
+  end
+end
+
+desc "Spit out the About page."
+file "public/about.html" => FileList["public/_about.*"] do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  template = File.read("public/_about.haml")
+  output = Haml::Engine.new(template, {:format => :html5,
+      :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = output.gsub(/<!--.*-->\n/m, "")
+  output = tidyHTML(output)
+  output = Redcarpet::Render::SmartyPants.render(output)
+  File.open(task.name, "w") do |file|
+    file.write(output)
   end
 end
 

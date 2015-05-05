@@ -1,4 +1,4 @@
--# Homepage Haml markup for Damien Dart's personal website.
+-# About Haml markup for Damien Dart's personal website.
 -#
 -# Copyright (C) 2013-2015 Damien Dart, <damiendart@pobox.com>.
 -# This file is distributed under the MIT licence. For more information,
@@ -9,7 +9,7 @@
   %head
     %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "Content-Type"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    %title Damien Dart's Personal Site (www.robotinaponcho.net)
+    %title About Damien Dart (www.robotinaponcho.net)
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
   %body
@@ -20,7 +20,5 @@
           %li.site-header__container__navigation__item 
             %a.site-header__container__navigation__item__link{:href => "/about"} About
     .page-body
-      .thumbnails
-        / TMPL_LOOP NAME="artwork"
-        %img.thumbnails__thumbnail{:alt => "", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">"}
-        / /TMPL_LOOP
+      :markdown 
+        #{File.read(File.join(File.dirname(__FILE__), "public", "_about.markdown"))}
