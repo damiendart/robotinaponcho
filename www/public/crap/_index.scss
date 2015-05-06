@@ -8,22 +8,10 @@
 
 $base-background-colour: #ffffff;
 $base-font-size: 16px;
-$base-foreground-colour: #444444;
+$base-foreground-colour: #000000;
 $base-line-height: 24px;
 $base-layout-unit: $base-line-height;
 $content-width: 500px;
-
-@font-face {
-  $font-folder: "http://www.robotinaponcho.net/assets/";
-  $font-basename: "glyphiconshalflings-regular";
-  font-family: "Glyphicons Halflings";
-  font-style: normal;
-  font-weight: normal;
-  src: url("#{$font-folder}#{$font-basename}.eot");
-  src: url("#{$font-folder}#{$font-basename}.eot?#iefix") format("embedded-opentype"),
-      url("#{$font-folder}#{$font-basename}.woff") format("woff"),
-      url("#{$font-folder}#{$font-basename}.ttf") format("truetype"),
-      url("#{$font-folder}#{$font-basename}.svg#glyphicons_halflingsregular") format("svg"); }
 
 a {
   color: $base-foreground-colour;
@@ -35,7 +23,7 @@ a {
     color: $base-foreground-colour; } }
 
 body {
-  background-color: darken($base-background-colour, 20);
+  background-color: $base-background-colour;
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet Explorer 6
   // and Internet Explorer 7 exaggerated text-resizing bug (see
@@ -50,12 +38,10 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    background-color: $base-background-colour;
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.container {
   border-radius: em($base-layout-unit / 4, $base-font-size);
-  background-color: #ffffff;
   margin: em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
   padding: em($base-layout-unit, $base-font-size);
@@ -67,19 +53,9 @@ body {
     padding: em($base-layout-unit, $base-font-size); } }
 
 /* nav */.navigation {
-  margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+  margin: em($base-layout-unit, $base-font-size) 0 0 0;
   /* a */ &__home-link {
-    font-weight: bold;
-    &:before {
-      // Adjust font size to make icon glyphs align better with adjacent text.
-      $font-size: $base-font-size * 0.75;
-      content: "\e021";
-      display: inline-block;
-      font-family: "Glyphicons Halflings";
-      font-size: percentage($font-size / $base-font-size);
-      speak: none;
-      text-align: left;
-      width: em($base-line-height, $font-size); } } }
+    font-style: italic; } }
 
 /* h1 */.page-header {
   $font-size: 36px;
@@ -102,13 +78,12 @@ body {
   width: 100%;
   /* tr */ &__row {
     /* td, th */ &__cell {
-      padding: 0 0 0 em($base-layout-unit / 2, $base-font-size);
+      padding: 0;
       text-align: right;
       /* td, th */ &--header {
         font-weight: bold;
         text-transform: uppercase; }
       &:first-child {
-        padding: 0;
         text-align: left; }
       @media screen and (max-width: em($content-width, $base-font-size)) {
         &:nth-child(2) {
