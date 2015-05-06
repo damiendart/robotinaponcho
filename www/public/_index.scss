@@ -49,7 +49,7 @@ body {
 
 /* header */.site-header {
   background-color: $base-foreground-colour;
-  color: $base-background-colour; 
+  color: $base-background-colour;
   margin: 0;
   /* div */ &__container {
     @include clearfix;
@@ -60,7 +60,7 @@ body {
       $font-size: 24px;
       float: left;
       font-size: em($font-size, $base-font-size);
-      line-height: em($font-size, $font-size); 
+      line-height: em($font-size, $font-size);
       margin: 0;
       @media screen and (max-width: em($content-width, $base-font-size)) {
         span {
@@ -76,7 +76,7 @@ body {
           text-decoration: none;
           &:active, &:focus, &:hover, &:visited:hover {
             background-color: $base-foreground-colour;
-            color: $base-background-colour; 
+            color: $base-background-colour;
             text-decoration: underline; }
           &:visited {
             background-colour: $base-foreground-colour;
@@ -87,7 +87,7 @@ body {
   /* img */ &__thumbnail {
     display: block;
     float: left;
-    margin: 0; 
+    margin: 0;
     max-width: $thumbnail-width;
     @media screen and (max-width: em($content-width, $base-font-size)) {
       max-width: 50%; } } }

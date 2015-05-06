@@ -62,7 +62,7 @@ end
 [["public/", "the homepage"], ["public/crap/",
     "The Folder of Crap"]].each do |cgi_script|
   desc "Spit out #{cgi_script[1]} CGI script."
-  file "#{cgi_script[0]}index.cgi" => 
+  file "#{cgi_script[0]}index.cgi" =>
       FileList["#{cgi_script[0]}_index.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
     script = File.read("#{cgi_script[0]}_index.pl")
