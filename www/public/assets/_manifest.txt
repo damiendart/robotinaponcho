@@ -1,5 +1,3 @@
-blog-background.png
-blog-style.css
 git-favicon.png
 git-logo.png
 gitweb.css
@@ -12,4 +10,3 @@ glyphiconshalflings-regular.woff
 html5shiv.js
 jquery-1.11.3.min.js
 moment.min.js
-selectnav.min.js
