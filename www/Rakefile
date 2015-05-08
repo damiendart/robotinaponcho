@@ -46,7 +46,8 @@ ERROR_CODES.each do |error_code|
 end
 
 desc "Spit out the About page."
-file "public/about.html" => FileList["public/_about.*"] do |task|
+file "public/about.html" => FileList["public/_about.*",
+    "public/_index.scss"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   template = File.read("public/_about.haml")
   output = Haml::Engine.new(template, {:format => :html5,

@@ -59,7 +59,7 @@ body {
     /* h1 */ &__title {
       $font-size: 24px;
       float: left;
-      font-size: em($font-size, $base-font-size);
+      font-size: percentage($font-size / $base-font-size);
       line-height: em($font-size, $font-size);
       margin: 0;
       @media screen and (max-width: em($content-width, $base-font-size)) {
