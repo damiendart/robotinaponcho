@@ -26,16 +26,16 @@ a {
 body {
   background-color: $base-background-colour;
   color: $base-foreground-colour;
-  // Setting the font size initially to 100% avoids the Internet Explorer 6
-  // and Internet Explorer 7 exaggerated text-resizing bug (see
-  // <http://alistapart.com/article/howtosizetextincss#section5>).
+  // Setting the font size initially to 100% avoids the Internet
+  // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
+  // (see <http://alistapart.com/article/howtosizetextincss#section5>).
   font: 100%/1.5 $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   -webkit-font-smoothing: antialiasing;
   margin: 0;
-  // Internet Explorer 6 hates us and doesn't center block elements with just
-  // "margin-left: auto; margin-right: auto" alone.
+  // Internet Explorer 6 hates us and doesn't center block elements with
+  // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
