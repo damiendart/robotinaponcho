@@ -86,17 +86,17 @@ body {
       list-style: none;
       margin: 0;
       /* li */ &__item {
-        text-transform: uppercase;
-        /* a */ &__link {
-          color: $base-background-colour;
-          text-decoration: none;
-          &:active, &:focus, &:hover, &:visited:hover {
-            background-color: $base-foreground-colour;
-            color: $base-background-colour;
-            text-decoration: underline; }
-          &:visited {
-            background-colour: $base-foreground-colour;
-            color: $base-background-colour; } } } } } }
+        text-transform: uppercase; } } }
+  /* a */ &__link {
+    color: $base-background-colour;
+    text-decoration: none;
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $base-foreground-colour;
+      color: $base-background-colour;
+      text-decoration: underline; }
+    &:visited {
+      background-colour: $base-foreground-colour;
+      color: $base-background-colour; } } }
 
 /* div */.thumbnails {
   @include clearfix;
