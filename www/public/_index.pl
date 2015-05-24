@@ -8,6 +8,7 @@
 use strict;
 
 use CGI qw/:standard/;
+use File::Basename;
 use HTML::Template;
 
 opendir(my $directory, "./assets") or die "Unable to open directory: $!";
@@ -15,7 +16,7 @@ my @thumbnails = grep { /thumbnail\.png/ } readdir($directory);
 closedir($directory);
 my @artwork;
 foreach (reverse(@thumbnails)) {
-  my %art = (thumbnail => $_);
+  my %art = (basename => basename($_, "-thumbnail.png"));
   push(@artwork, \%art);
 }
 my $template = HTML::Template->new(filehandle => *DATA);
@@ -32,5 +33,5 @@ __DATA__
 <meta charset="utf-8">
 <title>Art Stuff Test</title>
 <!-- TMPL_LOOP NAME="artwork" -->
-  <img src="/assets/<TMPL_VAR NAME="thumbnail">">
+  <img src="/assets/<TMPL_VAR NAME="basename">-thumbnail.png">
 <!-- /TMPL_LOOP -->

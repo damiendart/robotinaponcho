@@ -23,5 +23,6 @@
     .page-body
       .thumbnails
         / TMPL_LOOP NAME="artwork"
-        %img.thumbnails__thumbnail{:alt => "", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">"}
+        %a{:href => "/art/<TMPL_VAR NAME=\"basename\">.png"}<
+          %img.thumbnails__thumbnail{:alt => "", :src => "/assets/<TMPL_VAR NAME=\"basename\">-thumbnail.png"}
         / /TMPL_LOOP
