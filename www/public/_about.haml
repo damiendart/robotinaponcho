@@ -20,6 +20,6 @@
         %ul.site-header__container__navigation
           %li.site-header__container__navigation__item
             %a.site-header__link{:href => "/about"} About
-    .page-body
+    .page-body.page-body--text
       :markdown
         #{File.read(File.join(File.dirname(__FILE__), "public", "_about.markdown"))}

@@ -61,7 +61,11 @@ body {
       margin: 0;
       padding: 0; } }
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    max-width: 100%; } }
+    max-width: 100%;
+    &--text {
+      padding: 0 em($base-layout-unit, $base-font-size)
+          em($base-layout-unit, $base-font-size)
+          em($base-layout-unit, $base-font-size); } } }
 
 /* header */.site-header {
   background-color: $base-foreground-colour;
