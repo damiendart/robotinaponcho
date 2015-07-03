@@ -53,6 +53,7 @@ file "public/about.html" => FileList["public/_about.*",
   output = Haml::Engine.new(template, {:format => :html5,
       :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/<!--.*-->\n/m, "")
+  output = output.gsub("<h2>", "<h2 class=\"tk-adelle\">")
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
