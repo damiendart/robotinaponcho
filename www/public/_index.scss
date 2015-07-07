@@ -76,6 +76,8 @@ body {
     max-width: em($content-width, $base-font-size);
     margin: 0 auto;
     padding: em($base-layout-unit, $base-font-size);
+    /* h1 */.tk-adelle { // Typekit stuff.
+      font-weight: normal; }
     /* h1 */ &__title {
       $font-size: 24px;
       float: left;
