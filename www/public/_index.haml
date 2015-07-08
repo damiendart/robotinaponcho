@@ -14,7 +14,7 @@
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
     %script{:src => "//use.typekit.net/zkk4eyh.js"}
     %script try{Typekit.load();}catch(e){}
-  %body
+  %body.dark
     %header.site-header
       .site-header__container
         %h1.site-header__container__title.tk-adelle
@@ -26,5 +26,5 @@
       .thumbnails
         / TMPL_LOOP NAME="artwork"
         %a{:href => "/art/<TMPL_VAR NAME=\"filename\">"}<
-          %img.thumbnails__thumbnail{:alt => "", :src => "/assets/<TMPL_VAR NAME=\"thumbnail\">"}
+          %img.thumbnails__thumbnail{:alt => "", :src => "/art/<TMPL_VAR NAME=\"filename\">"}
         / /TMPL_LOOP

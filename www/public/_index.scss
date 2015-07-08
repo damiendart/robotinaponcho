@@ -41,6 +41,9 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
+/* body */.dark {
+  background-color: #000000; }
+
 /* div */.page-body {
   margin: 0 auto em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
@@ -105,11 +108,9 @@ body {
       color: $base-background-colour; } } }
 
 /* div */.thumbnails {
-  @include clearfix;
   /* img */ &__thumbnail {
     display: block;
-    float: left;
-    margin: 0;
-    max-width: $thumbnail-width;
-    @media screen and (max-width: em($content-width, $base-font-size)) {
-      max-width: 50%; } } }
+    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+    max-width: 100%;
+    a:first-child & {
+      margin: 0; } } }
