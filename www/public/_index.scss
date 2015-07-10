@@ -6,7 +6,7 @@
 
 @import "bourbon";
 
-$base-background-colour: #ffffff;
+$base-background-colour: #e3e3e3;
 $base-font-size: 16px;
 $base-foreground-colour: #000000;
 $base-line-height: 24px;
@@ -41,8 +41,8 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-/* body */.dark {
-  background-color: #000000; }
+/* body */.light {
+  background-color: #ffffff; }
 
 /* div */.page-body {
   margin: 0 auto em($base-layout-unit, $base-font-size) auto;
@@ -71,16 +71,14 @@ body {
           em($base-layout-unit, $base-font-size); } } }
 
 /* header */.site-header {
-  background-color: $base-foreground-colour;
-  color: $base-background-colour;
+  background-color: $base-background-colour;
+  color: $base-foreground-colour;
   margin: 0;
   /* div */ &__container {
     @include clearfix;
     max-width: em($content-width, $base-font-size);
     margin: 0 auto;
     padding: em($base-layout-unit, $base-font-size);
-    /* h1 */.tk-adelle { // Typekit stuff.
-      font-weight: normal; }
     /* h1 */ &__title {
       $font-size: 24px;
       float: left;
@@ -100,12 +98,12 @@ body {
     color: $base-background-colour;
     text-decoration: none;
     &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $base-foreground-colour;
-      color: $base-background-colour;
+      background-color: $base-background-colour;
+      color: $base-foreground-colour;
       text-decoration: underline; }
     &:visited {
-      background-colour: $base-foreground-colour;
-      color: $base-background-colour; } } }
+      background-colour: $base-background-colour;
+      color: $base-foreground-colour; } } }
 
 /* div */.thumbnails {
   /* img */ &__thumbnail {
