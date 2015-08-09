@@ -12,16 +12,16 @@
   %head
     %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "Content-Type"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    %title Damien Dart's Personal Site (www.robotinaponcho.net)
-    :scss
-      #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
     %script{:src => "//use.typekit.net/zkk4eyh.js"}
     %script try{Typekit.load();}catch(e){}
+    :scss
+      #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
+    %title Damien Dart's Personal Site (www.robotinaponcho.net)
   %body
-    %header.site-header
-      .site-header__container
-        %h1.site-header__container__title.tk-adelle <b>Hello! I'm Damien Dart.</b> I occasionally make things:
     .page-body
+      .page-body__text.tk-adelle
+        :markdown
+          **Hello! I'm Damien Dart.** I occasionally make things:
       %ul.projects
         - data["projects"].each do |project|
           %li.projects__project>

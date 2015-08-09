@@ -41,13 +41,21 @@ body {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* div */.page-body {
-  margin: 0 auto em($base-layout-unit, $base-font-size) auto;
-  max-width: em($content-width, $base-font-size);
-  text-align: left; }
+  margin: em($base-layout-unit * 3, $base-font-size) auto 
+      em($base-layout-unit, $base-font-size) auto;
+  max-width: em($content-width, $base-font-size); 
+  /* div */ &__text {
+    p {
+      $font-size: 24px;
+      color: #ffffff;
+      font-size: percentage($font-size / $base-font-size);
+      line-height: em($font-size, $font-size);
+      margin: 0; } } }
 
 /* ul */.projects {
   list-style: none;
-  margin: 0 0 0 em($base-layout-unit / -2, $base-font-size);
+  margin: em($base-layout-unit, $base-font-size) 0 
+      0 em($base-layout-unit / -2, $base-font-size);
   padding: 0;
   /* li */ &__project {
     background-color: red;
@@ -71,28 +79,9 @@ body {
            em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
       padding: em($base-layout-unit, $base-font-size);
       position: absolute; 
+      text-align: left;
       /* h3 */ &__title {
         margin: 0;
         font-size: 1em; }
       /* p */ &__text {
         margin: 0; } } } }
-
-/* header */.site-header {
-  $background-colour: $base-background-colour;
-  $foreground-colour: #ffffff; 
-  background-color: $background-colour;
-  color: $foreground-colour;
-  margin: 0;
-  /* div */ &__container {
-    @include clearfix;
-    max-width: em($content-width, $base-font-size);
-    margin: em($base-layout-unit * 3, $base-font-size) auto 
-        em($base-layout-unit, $base-font-size) auto;
-    @media screen and (max-width: em($content-width, $base-font-size)) {
-      margin: 0 auto; }
-    /* h1 */ &__title {
-      $font-size: 24px;
-      font-size: percentage($font-size / $base-font-size);
-      font-weight: normal;
-      line-height: em($font-size, $font-size);
-      margin: 0; } } }
