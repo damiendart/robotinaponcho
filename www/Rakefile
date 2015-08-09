@@ -14,9 +14,8 @@ Haml::Filters::Scss.options[:style] = :compressed
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/about.html", "public/index.cgi",
-    "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
-    "public/crap/index.cgi"]
+    ["public/index.html", "public/googlefb3645e0f9f23eaf.html", 
+    "public/robots.txt", "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -45,45 +44,17 @@ ERROR_CODES.each do |error_code|
   end
 end
 
-desc "Spit out the About page."
-file "public/about.html" => FileList["public/_about.*",
-    "public/_index.scss"] do |task|
+desc "Spit out the homepage."
+file "public/index.html" => FileList["public/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  template = File.read("public/_about.haml")
+  template = File.read("public/_index.haml")
   output = Haml::Engine.new(template, {:format => :html5,
       :escape_attrs => false, :attr_wrapper => "\""}).render
   output = output.gsub(/<!--.*-->\n/m, "")
-  output = output.gsub("<h2>", "<h2 class=\"tk-adelle\">")
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
   File.open(task.name, "w") do |file|
     file.write(output)
-  end
-end
-
-[["public/", "the homepage"], ["public/crap/",
-    "The Folder of Crap"]].each do |cgi_script|
-  desc "Spit out #{cgi_script[1]} CGI script."
-  file "#{cgi_script[0]}index.cgi" =>
-      FileList["#{cgi_script[0]}_index.*"] do |task|
-    puts "# Spitting out \"" + task.name + "\"."
-    script = File.read("#{cgi_script[0]}_index.pl")
-    script = script.gsub(/__DATA__.*$/m, "")
-    template = File.read("#{cgi_script[0]}_index.haml")
-    output = Haml::Engine.new(template, {:format => :html5,
-        :escape_attrs => false, :attr_wrapper => "\""}).render
-    output = tidyHTML(output)
-    output = Redcarpet::Render::SmartyPants.render(output)
-    # HACK: The SmartyPants parser doesn't "HTMl::Template"'s tags being
-    # used for HTML element attribute values.
-    output = output.gsub(/&ldquo;/, "\"")
-    output = output.gsub(/&quot;/, "\"")
-    output = output.gsub(/&rdquo;/, "\"")
-    File.open(task.name, "w") do |file|
-      file.write(script)
-      file.write("__DATA__\n")
-      file.write(output)
-    end
   end
 end
 
@@ -104,5 +75,27 @@ file "public/robots.txt" do |task|
         "git/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
+  end
+end
+
+desc "Spit out the Folder of Crap CGI script."
+file "public/crap/index.cgi" => FileList["public/crap/_index.*"] do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  script = File.read("public/crap/_index.pl")
+  script = script.gsub(/__DATA__.*$/m, "")
+  template = File.read("public/crap/_index.haml")
+  output = Haml::Engine.new(template, {:format => :html5,
+      :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = tidyHTML(output)
+  output = Redcarpet::Render::SmartyPants.render(output)
+  # HACK: The SmartyPants parser doesn't "HTMl::Template"'s tags being
+  # used for HTML element attribute values.
+  output = output.gsub(/&ldquo;/, "\"")
+  output = output.gsub(/&quot;/, "\"")
+  output = output.gsub(/&rdquo;/, "\"")
+  File.open(task.name, "w") do |file|
+    file.write(script)
+    file.write("__DATA__\n")
+    file.write(output)
   end
 end

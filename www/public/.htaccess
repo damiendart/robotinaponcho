@@ -97,11 +97,12 @@ SetEnv TZ Europe/London
 <IfModule mod_rewrite.c>
   RewriteEngine on
   # Remove file extensions from some URLs.
-  RewriteCond %{THE_REQUEST} ^.*/about\.html?
-  RewriteRule ^(.*).html?$ /$1 [L,NE,R=permanent]
-  RewriteCond %{REQUEST_FILENAME}\.html -f
-  RewriteCond %{THE_REQUEST} ^.*/about?
-  RewriteRule ^([^\.]+)$ $1.html [NC,L]
+  # (Keeping this around in case I need it again.)
+  # RewriteCond %{THE_REQUEST} ^.*/about\.html?
+  # RewriteRule ^(.*).html?$ /$1 [L,NE,R=permanent]
+  # RewriteCond %{REQUEST_FILENAME}\.html -f
+  # RewriteCond %{THE_REQUEST} ^.*/about?
+  # RewriteRule ^([^\.]+)$ $1.html [NC,L]
   # Remove "index.cgi" and "index.html" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html)?
   RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [L,NE,R=permanent]

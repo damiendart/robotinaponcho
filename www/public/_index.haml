@@ -4,6 +4,9 @@
 -# This file is distributed under the MIT licence. For more information,
 -# please refer to the accompanying "LICENCE" file.
 
+- require "yaml"
+- data = YAML.load(File.read(File.join(File.dirname(__FILE__), "public", "_index.yaml")))
+
 !!! 5
 %html{:lang => "en"}
   %head
@@ -17,14 +20,14 @@
   %body
     %header.site-header
       .site-header__container
-        %h1.site-header__container__title.tk-adelle
-          %a.site-header__link{:href => "/"} Damien Dart<span> Occasionally Draws Things</span>
-        %ul.site-header__container__navigation
-          %li.site-header__container__navigation__item
-            %a.site-header__link{:href => "/about"} About
+        %h1.site-header__container__title.tk-adelle <b>Hello! I'm Damien Dart.</b> I occasionally make things:
     .page-body
-      .thumbnails
-        / TMPL_LOOP NAME="artwork"
-        %a{:href => "/art/<TMPL_VAR NAME=\"filename\">"}<
-          %img.thumbnails__thumbnail{:alt => "", :src => "/art/<TMPL_VAR NAME=\"filename\">"}
-        / /TMPL_LOOP
+      %ul.projects
+        - data["projects"].each do |project|
+          %li.projects__project>
+            %img.projects__project__image{:src => "#{project['image']}"}
+            .projects__project__description
+              %h3.projects__project__description__title.tk-adelle
+                = project["title"]
+              %p.projects__project__description__text
+                = project["description"]

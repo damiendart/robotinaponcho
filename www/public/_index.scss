@@ -6,13 +6,12 @@
 
 @import "bourbon";
 
-$base-background-colour: #e3e3e3;
+$base-background-colour: #0099b3;
 $base-font-size: 16px;
 $base-foreground-colour: #000000;
 $base-line-height: 24px;
 $base-layout-unit: $base-line-height;
-$content-width: 640px;
-$thumbnail-width: $content-width / 2;
+$content-width: 966px;
 
 a {
   color: $base-foreground-colour;
@@ -41,74 +40,59 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-/* body */.light {
-  background-color: #ffffff; }
-
 /* div */.page-body {
   margin: 0 auto em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
-  text-align: left;
-  h2 {
-    $font-size: 36px;
-    font-size: percentage($font-size / $base-font-size);
-    line-height: 1;
-    margin: em($base-layout-unit, $font-size) 0; }
-  p {
-    margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
-  ul {
-    list-style: square;
-    margin: em($base-line-height / 2, $base-font-size) 0
-        0 em($base-line-height, $base-font-size);
-    padding: 0;
-    & > * {
-      margin: 0;
-      padding: 0; } }
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    max-width: 100%;
-    &--text {
-      padding: 0 em($base-layout-unit, $base-font-size)
-          em($base-layout-unit, $base-font-size)
-          em($base-layout-unit, $base-font-size); } } }
+  text-align: left; }
+
+/* ul */.projects {
+  list-style: none;
+  margin: 0 0 0 em($base-layout-unit / -2, $base-font-size);
+  padding: 0;
+  /* li */ &__project {
+    background-color: red;
+    display: inline-block;
+    float: left;
+    height: em($base-layout-unit * 12, $base-font-size);
+    margin: 0 0 em($base-layout-unit / 2, $base-font-size)
+        em($base-layout-unit / 2, $base-font-size);
+    overflow: hidden;
+    padding: 0; 
+    position: relative;
+    width: em(($content-width / 3) - ($base-layout-unit / 3), $base-font-size);
+    vertical-align: top;
+    /* img */ &__image {
+      display: block;
+      margin: 0; }
+    /* div */ &__description {
+      bottom: 0;
+      background-color: #fff; 
+      box-shadow: 0 em($base-layout-unit / -4, $base-font-size)
+           em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
+      padding: em($base-layout-unit, $base-font-size);
+      position: absolute; 
+      /* h3 */ &__title {
+        margin: 0;
+        font-size: 1em; }
+      /* p */ &__text {
+        margin: 0; } } } }
 
 /* header */.site-header {
-  background-color: $base-background-colour;
-  color: $base-foreground-colour;
+  $background-colour: $base-background-colour;
+  $foreground-colour: #ffffff; 
+  background-color: $background-colour;
+  color: $foreground-colour;
   margin: 0;
   /* div */ &__container {
     @include clearfix;
     max-width: em($content-width, $base-font-size);
-    margin: 0 auto;
-    padding: em($base-layout-unit, $base-font-size);
+    margin: em($base-layout-unit * 3, $base-font-size) auto 
+        em($base-layout-unit, $base-font-size) auto;
+    @media screen and (max-width: em($content-width, $base-font-size)) {
+      margin: 0 auto; }
     /* h1 */ &__title {
       $font-size: 24px;
-      float: left;
       font-size: percentage($font-size / $base-font-size);
+      font-weight: normal;
       line-height: em($font-size, $font-size);
-      margin: 0;
-      @media screen and (max-width: em($content-width, $base-font-size)) {
-        span {
-          display: none; } } }
-    /* ul */ &__navigation {
-      float: right;
-      list-style: none;
-      margin: 0;
-      /* li */ &__item {
-        text-transform: uppercase; } } }
-  /* a */ &__link {
-    color: $base-background-colour;
-    text-decoration: none;
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $base-background-colour;
-      color: $base-foreground-colour;
-      text-decoration: underline; }
-    &:visited {
-      background-colour: $base-background-colour;
-      color: $base-foreground-colour; } } }
-
-/* div */.thumbnails {
-  /* img */ &__thumbnail {
-    display: block;
-    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
-    max-width: 100%;
-    a:first-child & {
       margin: 0; } } }
