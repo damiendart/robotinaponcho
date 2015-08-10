@@ -42,9 +42,23 @@ body {
   -webkit-text-size-adjust: 100%; }
 
 /* div */.page-content {
+  $full-width: ($panel-width * 3) + $base-layout-unit;
+  $half-width: ($panel-width * 2) + ($base-layout-unit / 2);
+  $breakpoint-margin: $base-layout-unit * 2;
   margin: em($base-layout-unit * 3, $base-font-size) auto 
       em($base-layout-unit, $base-font-size) auto;
-  width: em(($panel-width * 3) + $base-layout-unit, $base-font-size); 
+  width: em($full-width, $base-font-size); 
+  @media screen and 
+      (max-width: em($full-width + $breakpoint-margin, $base-font-size)) {
+    width: em($half-width, $base-font-size); }
+  @media screen and 
+      (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
+    margin: em($base-layout-unit, $base-font-size) auto
+        em($base-layout-unit / 2, $base-font-size) auto;
+    width: em($panel-width, $base-font-size); }
+  @media screen and 
+      (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+    width: 100%; }
   /* p */ &__header {
     $font-size: 24px;
     $line-height: $font-size;
@@ -64,7 +78,11 @@ body {
           em($base-layout-unit / 2, $base-font-size);
       padding: 0;
       vertical-align: top;
-      width: em($panel-width, $base-font-size); } } }
+      width: em($panel-width, $base-font-size); 
+      @media screen and 
+          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+        margin-left: 0;
+        width: 100%; } } } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour);
