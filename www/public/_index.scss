@@ -8,19 +8,22 @@
 
 $base-background-colour: #0099b3;
 $base-font-size: 16px;
-$base-foreground-colour: #000000;
-$base-line-height: 24px;
-$base-layout-unit: $base-line-height;
-$content-width: 966px;
+$base-foreground-colour: #ffffff;
+$base-layout-unit: 24px;
+$base-line-height: $base-layout-unit;
+$panel-background-colour: #ffffff;
+$panel-foreground-colour: #000000;
+$panel-width: 314px;
 
-a {
-  color: $base-foreground-colour;
-  &:active, &:focus, &:hover, &:visited:hover {
-    background-color: $base-foreground-colour;
-    color: $base-background-colour; }
-  &:visited {
-    background-colour: $base-background-colour;
-    color: $base-foreground-colour; } }
+@mixin link-junk($background-colour, $foreground-colour) {
+  a {
+    color: $foreground-colour;
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $foreground-colour;
+      color: $background-colour; }
+    &:visited {
+      background-colour: $background-colour;
+      color: $foreground-colour; } } }
 
 body {
   background-color: $base-background-colour;
@@ -36,52 +39,48 @@ body {
   // Internet Explorer 6 hates us and doesn't center block elements with
   // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
-  -webkit-text-size-adjust: 100%;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
+  -webkit-text-size-adjust: 100%; }
 
-/* div */.page-body {
+/* div */.page-content {
   margin: em($base-layout-unit * 3, $base-font-size) auto 
       em($base-layout-unit, $base-font-size) auto;
-  max-width: em($content-width, $base-font-size); 
-  /* div */ &__text {
-    p {
-      $font-size: 24px;
-      color: #ffffff;
-      font-size: percentage($font-size / $base-font-size);
-      line-height: em($font-size, $font-size);
-      margin: 0; } } }
-
-/* ul */.projects {
-  list-style: none;
-  margin: em($base-layout-unit, $base-font-size) 0 
-      0 em($base-layout-unit / -2, $base-font-size);
-  padding: 0;
-  /* li */ &__project {
-    background-color: red;
-    display: inline-block;
-    float: left;
-    height: em($base-layout-unit * 12, $base-font-size);
-    margin: 0 0 em($base-layout-unit / 2, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size);
-    overflow: hidden;
+  width: em(($panel-width * 3) + $base-layout-unit, $base-font-size); 
+  /* p */ &__header {
+    $font-size: 24px;
+    $line-height: $font-size;
+    font-size: percentage($font-size / $base-font-size);
+    line-height: em($line-height, $font-size);
+    margin: 0; }
+  /* ul */ &__project-list {
+    list-style: none;
+    margin: em($base-layout-unit, $base-font-size) 0 
+        0 em($base-layout-unit / -2, $base-font-size);
     padding: 0; 
-    position: relative;
-    width: em(($content-width / 3) - ($base-layout-unit / 3), $base-font-size);
-    vertical-align: top;
-    /* img */ &__image {
-      display: block;
-      margin: 0; }
-    /* div */ &__description {
-      bottom: 0;
-      background-color: #fff; 
-      box-shadow: 0 em($base-layout-unit / -4, $base-font-size)
-           em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
-      padding: em($base-layout-unit, $base-font-size);
-      position: absolute; 
-      text-align: left;
-      /* h3 */ &__title {
-        margin: 0;
-        font-size: 1em; }
-      /* p */ &__text {
-        margin: 0; } } } }
+    text-align: left;
+    /* li */ &__item {
+      display: inline-block;
+      height: em($base-layout-unit * 12, $base-font-size);
+      margin: 0 0 em($base-layout-unit / 2, $base-font-size)
+          em($base-layout-unit / 2, $base-font-size);
+      padding: 0;
+      vertical-align: top;
+      width: em($panel-width, $base-font-size); } } }
+
+/* div */.panel {
+  @include link-junk($panel-background-colour, $panel-foreground-colour);
+  background-color: $panel-background-colour;
+  color: $panel-foreground-colour;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  /* div */ &__description {
+    background-color: $panel-background-colour;
+    bottom: 0;
+    box-shadow: 0 em($base-layout-unit / -4, $base-font-size)
+        em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
+    padding: em($base-layout-unit, $base-font-size);
+    position: absolute; }
+  /* img */ &__js-image {
+    @include transition(opacity 1s ease-in);
+    display: block; 
+    opacity: 0; } }
