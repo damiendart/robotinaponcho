@@ -25,7 +25,7 @@
         - data["projects"].each do |project|
           %li.page-content__project-list__item>
             .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :"data-image" => (project["image"] ? "#{project['image']}" : nil)}
-              .panel__description 
+              .panel__description
                 %strong.tk-adelle #{project["title"]}<br>
                 = project["description"]
     :javascript
