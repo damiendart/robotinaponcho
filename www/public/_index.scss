@@ -11,6 +11,7 @@ $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-layout-unit: 24px;
 $base-line-height: $base-layout-unit;
+$breakpoint-margin: $base-layout-unit * 2;
 $code-background-colour: darken($base-background-colour, 10);
 $code-foreground-colour: #57d083;
 $panel-background-colour: #ffffff;
@@ -48,9 +49,9 @@ body {
 /* div */.page-content {
   $full-width: ($panel-width * 3) + $base-layout-unit;
   $half-width: ($panel-width * 2) + ($base-layout-unit / 2);
-  $breakpoint-margin: $base-layout-unit * 2;
   margin: em($base-layout-unit * 3, $base-font-size) auto
       em($base-layout-unit, $base-font-size) auto;
+  text-align: left;
   width: em($full-width, $base-font-size);
   @media screen and
       (max-width: em($full-width + $breakpoint-margin, $base-font-size)) {
@@ -74,7 +75,6 @@ body {
     margin: em($base-layout-unit, $base-font-size) 0
         0 em($base-layout-unit / -2, $base-font-size);
     padding: 0;
-    text-align: left;
     /* li */ &__item {
       display: inline-block;
       height: em($base-layout-unit * 12, $base-font-size);
@@ -91,10 +91,14 @@ body {
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
   background-color: $panel-background-colour;
+  border-radius: em($base-layout-unit, $base-font-size) 0;
   color: $panel-foreground-colour;
   height: 100%;
   overflow: hidden;
   position: relative;
+  @media screen and
+      (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+    border-radius: 0; }
   /* div */ &__description {
     background-color: $panel-background-colour;
     bottom: 0;
@@ -111,7 +115,6 @@ body {
     padding: 0;
     position: absolute; }
   /* img */ &__js-image {
-    @include transition(opacity 1s ease-in);
     display: block;
     opacity: 0; }
   &--js-code {
