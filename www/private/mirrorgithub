@@ -53,5 +53,9 @@ if __name__ == "__main__":
           stdout=subprocess.PIPE).communicate()[0]))
     with open("description", "w") as f:
       f.write(repository["description"] + "\n")
-    # TODO: Check whether the "--bare" flag is necessary.
-    subprocess.check_call(["git", "--bare", "update-server-info"])
+    subprocess.check_call(["git", "update-server-info"])
+    # HACK: Resets overstrict permissions after
+    # "git update-server-info". For more information, see:
+    # <https://www.mail-archive.com/git@vger.kernel.org/msg63438.html>.
+    subprocess.check_call(["chmod", "0664", "info/refs"])
+    subprocess.check_call(["chmod", "0664", "objects/info/packs"])
