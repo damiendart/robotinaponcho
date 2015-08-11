@@ -11,6 +11,8 @@ $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-layout-unit: 24px;
 $base-line-height: $base-layout-unit;
+$code-background-colour: darken($base-background-colour, 10);
+$code-foreground-colour: #57d083;
 $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
@@ -98,7 +100,17 @@ body {
         em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
     padding: em($base-layout-unit, $base-font-size);
     position: absolute; }
+  /* pre */ &__js-code {
+    @include transform(rotate(4deg));
+    @include user-select(none);
+    color: $code-foreground-colour;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    position: absolute; } 
   /* img */ &__js-image {
     @include transition(opacity 1s ease-in);
     display: block; 
-    opacity: 0; } }
+    opacity: 0; }
+  &--js-code {
+    background-color: $code-background-colour; } }

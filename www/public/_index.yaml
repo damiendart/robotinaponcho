@@ -10,7 +10,7 @@ projects:
       grapes guava.
 -
   title: nfsnapi (2014)
-  image: http://www.placecage.com/400/300
+  code_example: /git/?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#93
   description: Tangerine satsuma peaches oranges lychee; apples
       pineapple; dates, pineapples.
 -
@@ -20,6 +20,6 @@ projects:
       clementine grapes.
 -
   title: brainfuck (2013--2014)
-  image: http://www.placecage.com/500/300
+  code_example: /git/?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: Coconuts banana; raspberries date bananas cherries date
       gooseberries satsuma plums.

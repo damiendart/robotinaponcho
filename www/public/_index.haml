@@ -24,11 +24,21 @@
       %ul.page-content__project-list
         - data["projects"].each do |project|
           %li.page-content__project-list__item>
-            .panel{:"data-image" => "#{project['image']}"}
+            .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :"data-image" => (project["image"] ? "#{project['image']}" : nil)}
               .panel__description 
                 %strong.tk-adelle #{project["title"]}<br>
                 = project["description"]
     :javascript
       $(".panel").each(function(i) {
-        $(this).prepend("<img class=\"panel__js-image\" onLoad=\"this.style.opacity = 1\" src=\"" + $(this).data("image") + "\">");
+        if($(this).attr("data-image")) {
+          $(this).prepend("<img class=\"panel__js-image\" onLoad=\"this.style.opacity = 1\" src=\"" + $(this).data("image") + "\">");
+        } else if($(this).attr("data-code-example")) {
+          var panel = $(this);
+          $.get($(this).data("code-example"), function(data) {
+            panel.addClass("panel--js-code");
+            line_number = parseInt(panel.data("code-example").split("#")[1]);
+            code = data.split("\n").slice(line_number, line_number + 25).join("\n");
+            panel.prepend("<pre class=\"panel__js-code\">" + code + "</pre>");
+          });
+        }
       });
