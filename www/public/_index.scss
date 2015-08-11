@@ -17,9 +17,11 @@ $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
 
-@mixin link-junk($background-colour, $foreground-colour) {
+@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
   a {
     color: $foreground-colour;
+    @if ($underline == false) {
+      text-decoration: none; }
     &:active, &:focus, &:hover, &:visited:hover {
       background-color: $foreground-colour;
       color: $background-colour; }
@@ -87,7 +89,7 @@ body {
         width: 100%; } } } }
 
 /* div */.panel {
-  @include link-junk($panel-background-colour, $panel-foreground-colour);
+  @include link-junk($panel-background-colour, $panel-foreground-colour, false);
   background-color: $panel-background-colour;
   color: $panel-foreground-colour;
   height: 100%;
