@@ -20,13 +20,13 @@
     %title Damien Dart's Personal Site (www.robotinaponcho.net)
   %body
     .page-content
-      %p.page-content__header.tk-adelle <b>Hello! I'm Damien Dart.</b> I occasionally create things:
+      %p.page-content__header.tk-adelle-sans <b>Hello! I'm Damien Dart.</b><br>I occasionally create things.
       %ul.page-content__project-list
         - data["projects"].each do |project|
           %li.page-content__project-list__item>
             .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :"data-image" => (project["image"] ? "#{project['image']}" : nil)}
-              .panel__description
-                %strong.tk-adelle<
+              .panel__description.tk-adelle
+                %strong.tk-adelle-sans<
                   %a{:href => "#{project['link']}"} #{project["title"]}
                 <br>
                 = project["description"]
@@ -40,7 +40,7 @@
             panel.addClass("panel--js-code");
             line_number = parseInt(panel.data("code-example").split("#")[1]);
             code = data.split("\n").slice(line_number, line_number + 25).join("\n");
-            panel.prepend("<pre class=\"panel__js-code\">" + code + "</pre>");
+            panel.prepend("<pre class=\"panel__js-code tk-source-code-pro\">" + code + "</pre>");
           });
         }
       });
