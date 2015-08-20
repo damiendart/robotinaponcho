@@ -108,7 +108,28 @@ body {
       @media screen and
           (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
         margin-left: 0;
-        width: 100%; } } } }
+        width: 100%; } } }
+  /* footer */ &__footer {
+    @include clearfix;
+    color: $base-foreground-colour;
+    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+    opacity: 0.5;
+    /* hr */ &__rule {
+      display: none; }
+    /* p */ &__copyright {
+      float: right;
+      margin: 0; }
+    /* ul */ &__social-list {
+      float: left;
+      list-style: none;
+      margin: 0;
+      padding: 0; 
+      text-transform: uppercase; 
+      /* li */ &__item {
+        @include link-junk($base-background-colour, $base-foreground-colour, false);
+        display: inline-block;
+        font-weight: bold;
+        margin-right: em($base-layout-unit / 2, $base-font-size); } } } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
