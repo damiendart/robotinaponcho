@@ -20,7 +20,9 @@
     %title Damien Dart's Personal Site (www.robotinaponcho.net)
   %body
     .page-content
-      %p.page-content__header.tk-adelle-sans <b>Hello! I'm Damien Dart.</b><br>I occasionally create things.
+      %header.page-content__header.tk-adelle-sans 
+        %h1.page-content__header__title <span>Hello! I'm </span>Damien Dart<span>.</span>
+        %h2.page-content__header__subtitle I occasionally create things.
       %ul.page-content__project-list
         - data["projects"].each do |project|
           %li.page-content__project-list__item>

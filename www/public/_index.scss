@@ -63,13 +63,31 @@ body {
     width: em($panel-width, $base-font-size); }
   @media screen and
       (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
     width: 100%; }
-  /* p */ &__header {
+  /* header */ &__header {
     $font-size: 24px;
     $line-height: 32px;
-    font-size: percentage($font-size / $base-font-size);
-    line-height: em($line-height, $font-size);
-    margin: 0; }
+    @media screen and
+        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+      margin: 0 em($base-layout-unit / 2, $base-font-size);
+      text-align: center; }
+    /* h1 */ &__title {
+      font-size: percentage($font-size / $base-font-size);
+      line-height: em($line-height, $font-size);
+      margin: 0;
+      @media screen and
+          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+        span {
+          display: none; } } }
+    /* h2 */ &__subtitle {
+      font-size: percentage($font-size / $base-font-size);
+      font-weight: normal;
+      line-height: em($line-height, $font-size);
+      margin: 0;
+      @media screen and
+          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+        display: none; } } }
   /* ul */ &__project-list {
     list-style: none;
     margin: em($base-layout-unit, $base-font-size) 0
