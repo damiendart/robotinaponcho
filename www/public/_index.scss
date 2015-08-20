@@ -75,6 +75,10 @@ body {
     margin: em($base-layout-unit, $base-font-size) 0
         0 em($base-layout-unit / -2, $base-font-size);
     padding: 0;
+    @media screen and
+        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+      margin: em($base-layout-unit / 2, $base-font-size)
+        em($base-layout-unit / 2, $base-font-size) 0; }
     /* li */ &__item {
       display: inline-block;
       height: em($base-layout-unit * 12, $base-font-size);
@@ -98,7 +102,7 @@ body {
   position: relative;
   @media screen and
       (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-    border-radius: 0; }
+    border-radius: em($base-layout-unit / 2, $base-font-size) 0; }
   /* div */ &__description {
     background-color: $panel-background-colour;
     bottom: 0;
