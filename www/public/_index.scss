@@ -6,14 +6,14 @@
 
 @import "bourbon";
 
-$base-background-colour: #0099b3;
+$base-background-colour: #cd5e5e;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-layout-unit: 24px;
 $base-line-height: $base-layout-unit;
 $breakpoint-margin: $base-layout-unit * 2;
 $code-background-colour: darken($base-background-colour, 10);
-$code-foreground-colour: #57d083;
+$code-foreground-colour: #d39669;
 $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
@@ -49,8 +49,7 @@ body {
 /* div */.page-content {
   $full-width: ($panel-width * 3) + $base-layout-unit;
   $half-width: ($panel-width * 2) + ($base-layout-unit / 2);
-  margin: em($base-layout-unit * 3, $base-font-size) auto
-      em($base-layout-unit, $base-font-size) auto;
+  margin: em($base-layout-unit * 3, $base-font-size) auto;
   text-align: left;
   width: em($full-width, $base-font-size);
   @media screen and
@@ -113,7 +112,6 @@ body {
     @include clearfix;
     color: $base-foreground-colour;
     margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
-    opacity: 0.5;
     /* hr */ &__rule {
       display: none; }
     /* p */ &__copyright {
