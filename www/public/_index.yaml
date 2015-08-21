@@ -3,28 +3,26 @@ projects:
   title: Obtain Corn Hoop (2013---)
   link: http://blog.robotinaponcho.net/
   image: http://www.placecage.com/350/300
-  description: Avocado grapefruit tangerine apples orange lychees.
+  description: My infrequently-updated Tumblr weblog, mainly for art things.
 -
   title: robotinaponcho (2013--2015)
   link: https://github.com/damiendart/robotinaponcho
-  image: http://www.placecage.com/450/500
-  description: Banana nectarine satsuma guavas. Pears grapes kumquats
-      grapes guava.
+  code_example: /git/?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#72
+  description: The slightly messy source code to the very site you are on.
 -
   title: nfsnapi (2014)
   link: https://github.com/damiendart/nfsnapi-python
   code_example: /git/?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#93
-  description: Tangerine satsuma peaches oranges lychee; apples
-      pineapple; dates, pineapples.
+  description: A simple Python package that makes the 
+      NearlyFreeSpeech.NET API a little easier to use.
 -
   title: Radical Apps (2014)
-  link: https://www.radicalapps.co.uk/
+  link: http://www.radicalapps.co.uk/
   image: http://www.placecage.com/600/400
-  description: Gooseberry guavas plum nectarines plums oranges
-      clementine grapes.
+  description: A mobile app portfolio website I designed and built.
 -
   title: brainfuck (2013--2014)
   link: https://github.com/damiendart/brainfuck
   code_example: /git/?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
-  description: Coconuts banana; raspberries date bananas cherries date
-      gooseberries satsuma plums.
+  description: A simple brainfuck interpreter and embeddable library 
+      written in C.
