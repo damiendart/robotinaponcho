@@ -11,7 +11,6 @@ $(".panel").each(function(i) {
   } else if($(this).attr("data-code-example")) {
     var panel = $(this);
     $.get($(this).data("code-example"), function(data) {
-      panel.addClass("panel--js-code");
       line_number = parseInt(panel.data("code-example").split("#")[1]);
       code = data.split("\n").slice(line_number, line_number + 25).join("\n");
       panel.prepend("<pre class=\"panel__js-code tk-source-code-pro\">" + code + "</pre>");
