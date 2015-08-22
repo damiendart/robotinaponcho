@@ -6,8 +6,7 @@
 
 $(".panel").each(function(i) {
   if($(this).attr("data-image")) {
-    $(this).prepend("<img class=\"panel__js-image\" onLoad=\"this.style.opacity = 1\" src=\"" + 
-        $(this).data("image") + "\">");
+    $(this).attr("style", "background-image: url(" + $(this).data("image") + ")");
   } else if($(this).attr("data-code-example")) {
     var panel = $(this);
     $.get($(this).data("code-example"), function(data) {

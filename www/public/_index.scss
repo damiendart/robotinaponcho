@@ -12,8 +12,6 @@ $base-foreground-colour: #ffffff;
 $base-layout-unit: 24px;
 $base-line-height: $base-layout-unit;
 $breakpoint-margin: $base-layout-unit * 2;
-$code-background-colour: darken($base-background-colour, 10);
-$code-foreground-colour: #d39669;
 $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
@@ -69,16 +67,11 @@ body {
     $line-height: 32px;
     @media screen and
         (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-      margin: 0 em($base-layout-unit / 2, $base-font-size);
-      text-align: center; }
+      margin: 0 em($base-layout-unit / 2, $base-font-size); }
     /* h1 */ &__title {
       font-size: percentage($font-size / $base-font-size);
       line-height: em($line-height, $font-size);
-      margin: 0;
-      @media screen and
-          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-        span {
-          display: none; } } }
+      margin: 0; }
     /* h2 */ &__subtitle {
       font-size: percentage($font-size / $base-font-size);
       font-weight: normal;
@@ -86,7 +79,8 @@ body {
       margin: 0;
       @media screen and
           (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-        display: none; } } }
+        font-size: 100%;
+        font-weight: bold; } } }
   /* ul */ &__project-list {
     list-style: none;
     margin: em($base-layout-unit, $base-font-size) 0
@@ -131,9 +125,8 @@ body {
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
-  background-color: $base-background-colour;
-  border: em($base-layout-unit / 2, $base-font-size) solid
-      $panel-background-colour;
+  background-position: center;
+  border: em($base-layout-unit / 2, $base-font-size) solid $panel-background-colour;
   border-radius: em($base-layout-unit, $base-font-size) 0 0;
   box-sizing: border-box;
   color: $panel-foreground-colour;
@@ -149,7 +142,13 @@ body {
         em($base-layout-unit / 2, $base-font-size)
         em($base-layout-unit / 2, $base-font-size)
         em($base-layout-unit / 2, $base-font-size);
-    position: absolute; }
+    position: absolute;
+    @media screen and
+        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+      padding: em($base-layout-unit * 0.75, $base-font-size)
+          em($base-layout-unit / 4, $base-font-size)
+          em($base-layout-unit / 4, $base-font-size)
+          em($base-layout-unit / 4, $base-font-size); } }
   /* pre */ &__js-code {
     @include transform(rotate(4deg));
     @include user-select(none);
@@ -157,7 +156,4 @@ body {
     font-weight: bold;
     margin: 0;
     padding: 0;
-    position: absolute; }
-  /* img */ &__js-image {
-    display: block;
-    opacity: 0; } }
+    position: absolute; } }
