@@ -5,9 +5,7 @@
 // please refer to the accompanying "LICENCE" file.
 
 $(".panel").each(function(i) {
-  if($(this).attr("data-image")) {
-    $(this).attr("style", "background-image: url(" + $(this).data("image") + ")");
-  } else if($(this).attr("data-code-example")) {
+  if($(this).attr("data-code-example")) {
     var panel = $(this);
     $.get($(this).data("code-example"), function(data) {
       line_number = parseInt(panel.data("code-example").split("#")[1]);

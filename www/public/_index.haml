@@ -26,7 +26,7 @@
       %ul.page-content__project-list
         - data["projects"].each do |project|
           %li.page-content__project-list__item>
-            .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :"data-image" => (project["image"] ? "#{project['image']}" : nil)}
+            .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :style => (project["image"] ? "background-image: url(#{project['image']})" : nil)}
               .panel__description.tk-adelle
                 %strong.tk-adelle-sans<
                   %a{:href => "#{project['link']}"} #{project["title"]}
