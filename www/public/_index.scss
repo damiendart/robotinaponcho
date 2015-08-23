@@ -42,7 +42,9 @@ body {
   // Internet Explorer 6 hates us and doesn't center block elements with
   // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+    font-size: 87.5%; } }
 
 /* div */.page-content {
   $full-width: ($panel-width * 3) + $base-layout-unit;
@@ -76,11 +78,7 @@ body {
       font-size: percentage($font-size / $base-font-size);
       font-weight: normal;
       line-height: em($line-height, $font-size);
-      margin: 0;
-      @media screen and
-          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-        font-size: 100%;
-        font-weight: bold; } } }
+      margin: 0; } }
   /* ul */ &__project-list {
     list-style: none;
     margin: em($base-layout-unit, $base-font-size) 0
