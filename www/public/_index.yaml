@@ -26,3 +26,16 @@ projects:
   code_example: /git/?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library 
       written in C.
+social:
+-
+  title: Email
+  link: mailto:damiendart@pobox.com
+-
+  title: GitHub
+  link: https://github.com/damiendart
+-
+  title: Instagram
+  link: https://instagram.com/damiendart
+-
+  title: Twitter
+  link: https://twitter.com/damiendart

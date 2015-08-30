@@ -35,14 +35,9 @@
       %footer.page-content__footer.tk-adelle-sans
         %hr.page-content__footer__rule
         %ul.page-content__footer__social-list
-          %li.page-content__footer__social-list__item<>
-            %a{:href => "mailto:damiendart@pobox.com"} Email
-          %li.page-content__footer__social-list__item<>
-            %a{:href => "https://github.com/damiendart"} GitHub
-          %li.page-content__footer__social-list__item<>
-            %a{:href => "https://instagram.com/damiendart"} Instagram
-          %li.page-content__footer__social-list__item<>
-            %a{:href => "https://twitter.com/damiendart"} Twitter
+          - data["social"].each do |link|
+            %li.page-content__footer__social-list__item<>
+              %a{:href => "#{link['link']}"} #{link["title"]}
         %p.page-content__footer__copyright &copy; 2015 Damien Dart
     :javascript
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.js"))}
