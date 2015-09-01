@@ -151,7 +151,6 @@ body {
     @include transform(rotate(4deg));
     @include user-select(none);
     color: $panel-background-colour;
-    font-weight: bold;
     margin: 0;
     padding: 0;
     position: absolute; } }
