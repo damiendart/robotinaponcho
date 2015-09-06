@@ -57,12 +57,11 @@ body {
     width: em($half-width, $base-font-size); }
   @media screen and
       (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
-    margin: em($base-layout-unit, $base-font-size) auto
-        em($base-layout-unit / 2, $base-font-size) auto;
+    margin: em($base-layout-unit, $base-font-size) auto;
     width: em($panel-width, $base-font-size); }
   @media screen and
       (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+    margin: em($base-layout-unit / 2, $base-font-size) 0;
     width: 100%; }
   /* header */ &__header {
     $font-size: 24px;
@@ -104,6 +103,9 @@ body {
     @include clearfix;
     color: $base-foreground-colour;
     margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+    @media screen and
+        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+      margin: 0 em($base-layout-unit / 2, $base-font-size) 0; }
     /* hr */ &__rule {
       display: none; }
     /* p */ &__copyright {
@@ -119,7 +121,11 @@ body {
         @include link-junk($base-background-colour, $base-foreground-colour, false);
         display: inline-block;
         font-weight: bold;
-        margin-right: em($base-layout-unit / 2, $base-font-size); } } } }
+        margin-right: em($base-layout-unit / 2, $base-font-size);
+        @media screen and
+            (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
+          display: block;
+          margin: 0 auto; } } } } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
