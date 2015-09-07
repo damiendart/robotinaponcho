@@ -3,12 +3,12 @@ projects:
   title: Obtain Corn Hoop (2013---)
   link: http://blog.robotinaponcho.net/
   image: http://www.placecage.com/350/300
-  description: My infrequently-updated Tumblr weblog, mainly for art things.
+  description: My infrequently-updated Tumblr weblog, contains mainly art things.
 -
   title: robotinaponcho (2013--2015)
   link: https://github.com/damiendart/robotinaponcho
   code_example: /git/?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#72
-  description: The slightly messy source code to the very site you are on.
+  description: The source code to this very site. Uses all of the programming things.
 -
   title: nfsnapi (2014)
   link: https://github.com/damiendart/nfsnapi-python
@@ -18,7 +18,7 @@ projects:
 -
   title: Radical Apps (2014)
   link: http://www.radicalapps.co.uk/
-  image: http://www.placecage.com/600/400
+  image: /assets/radicalapps.png
   description: A mobile app portfolio website I designed and built.
 -
   title: brainfuck (2013--2014)
@@ -36,6 +36,9 @@ social:
 -
   title: Instagram
   link: https://instagram.com/damiendart
+-
+  title: Tumblr
+  link: http://blog.robotinaponcho.net/
 -
   title: Twitter
   link: https://twitter.com/damiendart

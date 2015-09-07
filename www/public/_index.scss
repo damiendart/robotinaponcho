@@ -6,7 +6,7 @@
 
 @import "bourbon";
 
-$base-background-colour: #5B5E6F;
+$base-background-colour: #586a80;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-layout-unit: 24px;
@@ -99,7 +99,7 @@ body {
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
-  background-position: center;
+  background-position: top center;
   border: em($base-layout-unit / 2, $base-font-size) solid $panel-background-colour;
   border-radius: em($base-layout-unit, $base-font-size) 0 0;
   box-sizing: border-box;
