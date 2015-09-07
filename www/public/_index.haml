@@ -20,24 +20,24 @@
     %title Damien Dart's Personal Site (www.robotinaponcho.net)
   %body
     .page-content
-      %header.page-content__header.tk-adelle-sans 
-        %h1.page-content__header__title <span>Hello! I'm </span>Damien Dart<span>.</span>
-        %h2.page-content__header__subtitle I occasionally create things.
-      %ul.page-content__project-list
+      %header.header.tk-adelle-sans
+        %h1.header__title <span>Hello! I'm </span>Damien Dart<span>.</span>
+        %h2.header__subtitle I occasionally create things.
+      %ul.project-list
         - data["projects"].each do |project|
-          %li.page-content__project-list__item>
+          %li.project-list__item>
             .panel{:"data-code-example" => (project["code_example"] ? "#{project['code_example']}" : nil), :style => (project["image"] ? "background-image: url(#{project['image']})" : nil)}
               .panel__description.tk-adelle
                 %strong.tk-adelle-sans<
                   %a{:href => "#{project['link']}"} #{project["title"]}
                 <br>
                 = project["description"]
-      %footer.page-content__footer.tk-adelle-sans
-        %hr.page-content__footer__rule
-        %ul.page-content__footer__social-list
+      %footer.footer.tk-adelle-sans
+        %hr.footer__rule
+        %ul.footer__social-list
           - data["social"].each do |link|
-            %li.page-content__footer__social-list__item<>
+            %li.footer__social-list__item<>
               %a{:href => "#{link['link']}"} #{link["title"]}
-        %p.page-content__footer__copyright &copy; 2015 Damien Dart
+        %p.footer__copyright &copy; 2015 Damien Dart
     :javascript
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.js"))}

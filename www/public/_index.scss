@@ -15,6 +15,8 @@ $breakpoint-margin: $base-layout-unit * 2;
 $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
+$responsive-three-columns: ($panel-width * 3) + $base-layout-unit;
+$responsive-two-columns: ($panel-width * 2) + ($base-layout-unit / 2);
 
 @mixin link-junk($background-colour, $foreground-colour, $underline: true) {
   a {
@@ -47,66 +49,53 @@ body {
     font-size: 87.5%; } }
 
 /* div */.page-content {
-  $full-width: ($panel-width * 3) + $base-layout-unit;
-  $half-width: ($panel-width * 2) + ($base-layout-unit / 2);
   margin: em($base-layout-unit * 3, $base-font-size) auto;
   text-align: left;
-  width: em($full-width, $base-font-size);
-  @media screen and
-      (max-width: em($full-width + $breakpoint-margin, $base-font-size)) {
-    width: em($half-width, $base-font-size); }
-  @media screen and
-      (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
+  width: em($responsive-three-columns, $base-font-size);
+  @media screen and (max-width: em($responsive-three-columns +
+      $breakpoint-margin, $base-font-size)) {
+    width: em($responsive-two-columns, $base-font-size); }
+  @media screen and (max-width: em($responsive-two-columns +
+      $breakpoint-margin, $base-font-size)) {
     margin: em($base-layout-unit, $base-font-size) auto;
-    width: em($panel-width, $base-font-size); }
-  /* header */ &__header {
-    $font-size: 24px;
-    $line-height: 32px;
-    /* h1 */ &__title {
-      font-size: percentage($font-size / $base-font-size);
-      line-height: em($line-height, $font-size);
-      margin: 0; }
-    /* h2 */ &__subtitle {
-      font-size: percentage($font-size / $base-font-size);
-      font-weight: normal;
-      line-height: em($line-height, $font-size);
-      margin: 0; } }
-  /* ul */ &__project-list {
+    width: em($panel-width, $base-font-size); } }
+
+/* footer */ .footer {
+  @include clearfix;
+  color: $base-foreground-colour;
+  margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+  /* hr */ &__rule {
+    display: none; }
+  /* p */ &__copyright {
+    float: right;
+    margin: 0; }
+  /* ul */ &__social-list {
+    float: left;
     list-style: none;
-    margin: em($base-layout-unit, $base-font-size) 0
-        0 em($base-layout-unit / -2, $base-font-size);
+    margin: 0;
     padding: 0;
+    text-transform: uppercase;
     /* li */ &__item {
+      @include link-junk($base-background-colour, $base-foreground-colour, false);
       display: inline-block;
-      height: em($base-layout-unit * 12, $base-font-size);
-      margin: 0 0 em($base-layout-unit / 2, $base-font-size)
-          em($base-layout-unit / 2, $base-font-size);
-      padding: 0;
-      vertical-align: top;
-      width: em($panel-width, $base-font-size); } }
-  /* footer */ &__footer {
-    @include clearfix;
-    color: $base-foreground-colour;
-    margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
-    /* hr */ &__rule {
-      display: none; }
-    /* p */ &__copyright {
-      float: right;
-      margin: 0; }
-    /* ul */ &__social-list {
-      float: left;
-      list-style: none;
-      margin: 0;
-      padding: 0; 
-      text-transform: uppercase; 
-      /* li */ &__item {
-        @include link-junk($base-background-colour, $base-foreground-colour, false);
-        display: inline-block;
-        font-weight: bold;
-        margin-right: em($base-layout-unit / 2, $base-font-size);
-        @media screen and
-            (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
-          display: block; } } } } }
+      font-weight: bold;
+      margin-right: em($base-layout-unit / 2, $base-font-size);
+      @media screen and (max-width: em($responsive-two-columns +
+          $breakpoint-margin, $base-font-size)) {
+        display: block; } } } }
+
+/* header */ .header {
+  $font-size: 24px;
+  $line-height: 32px;
+  /* h1 */ &__title {
+    font-size: percentage($font-size / $base-font-size);
+    line-height: em($line-height, $font-size);
+    margin: 0; }
+  /* h2 */ &__subtitle {
+    font-size: percentage($font-size / $base-font-size);
+    font-weight: normal;
+    line-height: em($line-height, $font-size);
+    margin: 0; } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
@@ -135,3 +124,17 @@ body {
     margin: 0;
     padding: 0;
     position: absolute; } }
+
+/* ul */ .project-list {
+  list-style: none;
+  margin: em($base-layout-unit, $base-font-size) 0
+      0 em($base-layout-unit / -2, $base-font-size);
+  padding: 0;
+  /* li */ &__item {
+    display: inline-block;
+    height: em($base-layout-unit * 12, $base-font-size);
+    margin: 0 0 em($base-layout-unit / 2, $base-font-size)
+        em($base-layout-unit / 2, $base-font-size);
+    padding: 0;
+    vertical-align: top;
+    width: em($panel-width, $base-font-size); } }
