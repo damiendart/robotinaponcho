@@ -59,16 +59,9 @@ body {
       (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
     margin: em($base-layout-unit, $base-font-size) auto;
     width: em($panel-width, $base-font-size); }
-  @media screen and
-      (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-    margin: em($base-layout-unit / 2, $base-font-size) 0;
-    width: 100%; }
   /* header */ &__header {
     $font-size: 24px;
     $line-height: 32px;
-    @media screen and
-        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-      margin: 0 em($base-layout-unit / 2, $base-font-size); }
     /* h1 */ &__title {
       font-size: percentage($font-size / $base-font-size);
       line-height: em($line-height, $font-size);
@@ -83,10 +76,6 @@ body {
     margin: em($base-layout-unit, $base-font-size) 0
         0 em($base-layout-unit / -2, $base-font-size);
     padding: 0;
-    @media screen and
-        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-      margin: em($base-layout-unit / 2, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size) 0; }
     /* li */ &__item {
       display: inline-block;
       height: em($base-layout-unit * 12, $base-font-size);
@@ -94,18 +83,11 @@ body {
           em($base-layout-unit / 2, $base-font-size);
       padding: 0;
       vertical-align: top;
-      width: em($panel-width, $base-font-size);
-      @media screen and
-          (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-        margin-left: 0;
-        width: 100%; } } }
+      width: em($panel-width, $base-font-size); } }
   /* footer */ &__footer {
     @include clearfix;
     color: $base-foreground-colour;
     margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
-    @media screen and
-        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-      margin: 0 em($base-layout-unit / 2, $base-font-size) 0; }
     /* hr */ &__rule {
       display: none; }
     /* p */ &__copyright {
@@ -124,8 +106,7 @@ body {
         margin-right: em($base-layout-unit / 2, $base-font-size);
         @media screen and
             (max-width: em($half-width + $breakpoint-margin, $base-font-size)) {
-          display: block;
-          margin: 0 auto; } } } } }
+          display: block; } } } } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
@@ -146,13 +127,7 @@ body {
         em($base-layout-unit / 2, $base-font-size)
         em($base-layout-unit / 2, $base-font-size)
         em($base-layout-unit / 2, $base-font-size);
-    position: absolute;
-    @media screen and
-        (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
-      padding: em($base-layout-unit * 0.75, $base-font-size)
-          em($base-layout-unit / 4, $base-font-size)
-          em($base-layout-unit / 4, $base-font-size)
-          em($base-layout-unit / 4, $base-font-size); } }
+    position: absolute; }
   /* pre */ &__js-code {
     @include transform(rotate(4deg));
     @include user-select(none);
