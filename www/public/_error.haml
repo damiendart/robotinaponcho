@@ -14,4 +14,5 @@
       #{File.read(File.join(File.dirname(__FILE__), "public", "_error.scss"))}
     %title #{error_code} (www.robotinaponcho.net)
   %body
-    %h1.error_code #{error_code}
+    %h1.error_code<
+      %a{:href => "/"} #{error_code}

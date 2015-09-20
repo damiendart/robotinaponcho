@@ -37,4 +37,7 @@ body {
   padding: 0;
   position: absolute;
   top: 50%;
-  width: 100%; }
+  width: 100%;
+  a, a:active, a:focus, a:hover, a:visited {
+    color: $base-foreground-colour;
+    text-decoration: none; } }
