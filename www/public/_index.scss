@@ -107,6 +107,12 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
+  @each $classname in obtaincornhoop, radicalapps {
+    &--#{$classname} {
+      @include hidpi {
+        background-image: url(/assets/#{$classname}@2x.png);
+        background-size: 350px; }
+      background-image: url(/assets/#{$classname}.png); } }
   /* div */ &__description {
     background-color: $panel-background-colour;
     bottom: 0;

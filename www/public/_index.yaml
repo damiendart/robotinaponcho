@@ -2,7 +2,7 @@ projects:
 -
   title: Obtain Corn Hoop (2013---)
   link: http://blog.robotinaponcho.net/
-  image: http://www.placecage.com/350/300
+  class_name: obtaincornhoop
   description: My infrequently-updated Tumblr weblog, contains mainly art things.
 -
   title: robotinaponcho (2013--2015)
@@ -18,7 +18,7 @@ projects:
 -
   title: Radical Apps (2014)
   link: http://www.radicalapps.co.uk/
-  image: /assets/radicalapps.png
+  class_name: radicalapps
   description: A mobile app portfolio website I designed and built.
 -
   title: brainfuck (2013--2014)
