@@ -16,7 +16,6 @@ if (($#ARGV + 1) != 1) {
 (my $asset_folder = $ARGV[0]) =~ s|/\z||;
 my $html = get("http://blog.robotinaponcho.net/") or die;
 if ($html =~ m/data-bg-image="(.*)"/) {
-  print $asset_folder;
   my $header = Image::Magick->new();
   my $header_retina = Image::Magick->new();
   $header->Read($1);
