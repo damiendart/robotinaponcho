@@ -21,6 +21,7 @@ if __name__ == "__main__":
     sys.stderr.write("Not enough operands\n")
     sys.stderr.write("USAGE: %s [--gitweb] GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
     sys.exit(1)
+  gitweb = False
   if "--gitweb" in sys.argv:
     sys.argv.remove("--gitweb")
     gitweb = True
