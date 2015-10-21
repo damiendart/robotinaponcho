@@ -3,6 +3,7 @@ TODO
 
   * Add a link back to the homepage on the GitWeb stuff.
   * Add [Windows Live Tile][1] and [iOS Web Clip][2] support.  
+  * "private/mirrorgithub": Make the GitWeb-specific stuff optional.
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
