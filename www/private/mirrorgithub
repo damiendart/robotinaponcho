@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Maintains mirrors of a GitHub user's public repositories.
 
-Also does some per-repository stuff for Gitweb's benefit.
+Optionally does some per-repository stuff for Gitweb's benefit.
 
 Copyright (C) 2013-2015 Damien Dart, <damiendart@pobox.com>.
 This file is distributed under the MIT licence. For more information,
@@ -17,10 +17,13 @@ import urllib2
 import subprocess
 
 if __name__ == "__main__":
-  if len(sys.argv) != 4:
+  if len(sys.argv) < 4:
     sys.stderr.write("Not enough operands\n")
-    sys.stderr.write("USAGE: %s GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
+    sys.stderr.write("USAGE: %s [--gitweb] GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
     sys.exit(1)
+  if "--gitweb" in sys.argv:
+    sys.argv.remove("--gitweb")
+    gitweb = True
   repositories = json.load(urllib2.urlopen(
       "https://api.github.com/users/%s/repos?access_token=%s" %
       (sys.argv[1], sys.argv[3])))
@@ -33,29 +36,30 @@ if __name__ == "__main__":
     else:
       subprocess.check_call(["git", "clone", "-q", "--mirror",
           repository["git_url"]])
-    os.chdir(os.path.basename(repository["git_url"]))
-    for k, v in {"url": repository["clone_url"],
-        "description": repository["description"]}.iteritems():
-      subprocess.check_call(["git", "config", "--replace-all",
-          "gitweb.%s" % k, v])
-    subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
-        json.load(urllib2.urlopen("https://api.github.com/users/%s?access_token=%s" %
-        (repository["owner"]["login"], sys.argv[3])))["name"]])
-    subprocess.check_call(["git", "config", "--add", "gitweb.url",
-        "http://www.robotinaponcho.net/git/%s" %
-        os.path.basename(repository["git_url"])])
-    with open("README.html", "w") as f:
-      f.write("<pre>%s</pre>\n" % cgi.escape(subprocess.Popen(["git",
-          "cat-file", "blob", "HEAD:%s" % filter(lambda i:
-          re.compile(r"README").search(i), subprocess.Popen(["git",
-          "ls-tree", "HEAD", "--name-only"],
-          stdout=subprocess.PIPE).communicate()[0].split("\n"))[0]],
-          stdout=subprocess.PIPE).communicate()[0]))
-    with open("description", "w") as f:
-      f.write(repository["description"] + "\n")
-    subprocess.check_call(["git", "update-server-info"])
-    # HACK: Resets overstrict permissions after
-    # "git update-server-info". For more information, see:
-    # <https://www.mail-archive.com/git@vger.kernel.org/msg63438.html>.
-    subprocess.check_call(["chmod", "0664", "info/refs"])
-    subprocess.check_call(["chmod", "0664", "objects/info/packs"])
+    if gitweb:
+      os.chdir(os.path.basename(repository["git_url"]))
+      for k, v in {"url": repository["clone_url"],
+          "description": repository["description"]}.iteritems():
+        subprocess.check_call(["git", "config", "--replace-all",
+            "gitweb.%s" % k, v])
+      subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
+          json.load(urllib2.urlopen("https://api.github.com/users/%s?access_token=%s" %
+          (repository["owner"]["login"], sys.argv[3])))["name"]])
+      subprocess.check_call(["git", "config", "--add", "gitweb.url",
+          "http://www.robotinaponcho.net/git/%s" %
+          os.path.basename(repository["git_url"])])
+      with open("README.html", "w") as f:
+        f.write("<pre>%s</pre>\n" % cgi.escape(subprocess.Popen(["git",
+            "cat-file", "blob", "HEAD:%s" % filter(lambda i:
+            re.compile(r"README").search(i), subprocess.Popen(["git",
+            "ls-tree", "HEAD", "--name-only"],
+            stdout=subprocess.PIPE).communicate()[0].split("\n"))[0]],
+            stdout=subprocess.PIPE).communicate()[0]))
+      with open("description", "w") as f:
+        f.write(repository["description"] + "\n")
+      subprocess.check_call(["git", "update-server-info"])
+      # HACK: Resets overstrict permissions after
+      # "git update-server-info". For more information, see:
+      # <https://www.mail-archive.com/git@vger.kernel.org/msg63438.html>.
+      subprocess.check_call(["chmod", "0664", "info/refs"])
+      subprocess.check_call(["chmod", "0664", "objects/info/packs"])
