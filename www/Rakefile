@@ -11,6 +11,14 @@ Bundler.require(:default)
 
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
+Haml::Options.defaults[:attr_wrapper] = "\""
+Haml::Options.defaults[:escape_attrs] = false
+Haml::Options.defaults[:format] = :html5
+# Increase the degree of precision of values that Sass spits out to
+# prevent some browsers from rendering elements a pixel narrower than
+# intended. See <https://github.com/nex3/sass/issues/319> for more
+# information.
+Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
@@ -34,9 +42,7 @@ ERROR_CODES.each do |error_code|
   file "public/#{error_code}.html" => FileList["public/_error.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
     template = File.read("public/_error.haml")
-    output = Haml::Engine.new(template, {:format => :html5,
-        :escape_attrs => false, :attr_wrapper => "\""}).render(Object.new,
-        :error_code => error_code)
+    output = Haml::Engine.new(template).render(Object.new, :error_code => error_code)
     output = tidyHTML(output)
     File.open(task.name, "w") do |file|
       file.write(output)
@@ -48,8 +54,7 @@ desc "Spit out the homepage."
 file "public/index.html" => FileList["public/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   template = File.read("public/_index.haml")
-  output = Haml::Engine.new(template, {:format => :html5,
-      :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = Haml::Engine.new(template).render
   output = output.gsub(/<!--.*-->\n/m, "")
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
@@ -84,8 +89,7 @@ file "public/crap/index.cgi" => FileList["public/crap/_index.*"] do |task|
   script = File.read("public/crap/_index.pl")
   script = script.gsub(/__DATA__.*$/m, "")
   template = File.read("public/crap/_index.haml")
-  output = Haml::Engine.new(template, {:format => :html5,
-      :escape_attrs => false, :attr_wrapper => "\""}).render
+  output = Haml::Engine.new(template).render
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
   # HACK: The SmartyPants parser doesn't "HTMl::Template"'s tags being
