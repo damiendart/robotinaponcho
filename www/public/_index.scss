@@ -99,9 +99,9 @@ body {
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
+  background: $panel-background-colour;
   background-position: top center;
-  border: em($base-layout-unit / 2, $base-font-size) solid $panel-background-colour;
-  border-radius: em($base-layout-unit, $base-font-size) 0 0;
+  border-radius: em($base-layout-unit / 4, $base-font-size);
   box-sizing: border-box;
   color: $panel-foreground-colour;
   height: 100%;
@@ -118,15 +118,12 @@ body {
     bottom: 0;
     box-shadow: 0 em($base-layout-unit / -4, $base-font-size)
         em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
-    padding: em($base-layout-unit, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size);
+    padding: em($base-layout-unit, $base-font-size);
     position: absolute; }
   /* pre */ &__js-code {
     @include transform(rotate(4deg));
     @include user-select(none);
-    color: $panel-background-colour;
+    color: $base-background-colour;
     margin: 0;
     padding: 0;
     position: absolute; } }
