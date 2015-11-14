@@ -17,9 +17,14 @@ $panel-width: 314px;
 $responsive-three-columns: ($panel-width * 3) + $base-line-height;
 $responsive-two-columns: ($panel-width * 2) + ($base-line-height / 2);
 
-@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
+@mixin link-junk($background-colour, $foreground-colour, $underline: true,
+    $font-size: $base-font-size) {
   a {
+    @include transition(background-color 0.1s, color 0.2s);
+    border-radius: em($base-line-height / 4, $font-size);
     color: $foreground-colour;
+    margin: 0 em($base-line-height / -4, $font-size);
+    padding: 0 em($base-line-height / 4, $font-size);
     @if ($underline == false) {
       text-decoration: none; }
     &:active, &:focus, &:hover, &:visited:hover {
