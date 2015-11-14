@@ -9,14 +9,13 @@
 $base-background-colour: #586a80;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
-$base-layout-unit: 24px;
-$base-line-height: $base-layout-unit;
-$breakpoint-margin: $base-layout-unit * 2;
+$base-line-height: 24px;
+$breakpoint-margin: $base-line-height * 2;
 $panel-background-colour: #ffffff;
 $panel-foreground-colour: #000000;
 $panel-width: 314px;
-$responsive-three-columns: ($panel-width * 3) + $base-layout-unit;
-$responsive-two-columns: ($panel-width * 2) + ($base-layout-unit / 2);
+$responsive-three-columns: ($panel-width * 3) + $base-line-height;
+$responsive-two-columns: ($panel-width * 2) + ($base-line-height / 2);
 
 @mixin link-junk($background-colour, $foreground-colour, $underline: true) {
   a {
@@ -49,7 +48,7 @@ body {
     font-size: 87.5%; } }
 
 /* div */.page-content {
-  margin: em($base-layout-unit * 3, $base-font-size) auto;
+  margin: em($base-line-height * 3, $base-font-size) auto;
   text-align: left;
   width: em($responsive-three-columns, $base-font-size);
   @media screen and (max-width: em($responsive-three-columns +
@@ -57,13 +56,13 @@ body {
     width: em($responsive-two-columns, $base-font-size); }
   @media screen and (max-width: em($responsive-two-columns +
       $breakpoint-margin, $base-font-size)) {
-    margin: em($base-layout-unit, $base-font-size) auto;
+    margin: em($base-line-height, $base-font-size) auto;
     width: em($panel-width, $base-font-size); } }
 
 /* footer */ .footer {
   @include clearfix;
   color: $base-foreground-colour;
-  margin: em($base-layout-unit / 2, $base-font-size) 0 0 0;
+  margin: em($base-line-height / 2, $base-font-size) 0 0 0;
   /* hr */ &__rule {
     display: none; }
   /* p */ &__copyright {
@@ -79,7 +78,7 @@ body {
       @include link-junk($base-background-colour, $base-foreground-colour, false);
       display: inline-block;
       font-weight: bold;
-      margin-right: em($base-layout-unit / 2, $base-font-size);
+      margin-right: em($base-line-height / 2, $base-font-size);
       @media screen and (max-width: em($responsive-two-columns +
           $breakpoint-margin, $base-font-size)) {
         display: block; } } } }
@@ -101,7 +100,7 @@ body {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
   background: $panel-background-colour;
   background-position: top center;
-  border-radius: em($base-layout-unit / 4, $base-font-size);
+  border-radius: em($base-line-height / 4, $base-font-size);
   box-sizing: border-box;
   color: $panel-foreground-colour;
   height: 100%;
@@ -116,9 +115,9 @@ body {
   /* div */ &__description {
     background-color: $panel-background-colour;
     bottom: 0;
-    box-shadow: 0 em($base-layout-unit / -4, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size) rgba(0, 0, 0, 0.1);
-    padding: em($base-layout-unit, $base-font-size);
+    box-shadow: 0 em($base-line-height / -4, $base-font-size)
+        em($base-line-height / 2, $base-font-size) rgba(0, 0, 0, 0.1);
+    padding: em($base-line-height, $base-font-size);
     position: absolute; }
   /* pre */ &__js-code {
     @include transform(rotate(4deg));
@@ -130,14 +129,14 @@ body {
 
 /* ul */ .project-list {
   list-style: none;
-  margin: em($base-layout-unit, $base-font-size) 0
-      0 em($base-layout-unit / -2, $base-font-size);
+  margin: em($base-line-height, $base-font-size) 0
+      0 em($base-line-height / -2, $base-font-size);
   padding: 0;
   /* li */ &__item {
     display: inline-block;
-    height: em($base-layout-unit * 12, $base-font-size);
-    margin: 0 0 em($base-layout-unit / 2, $base-font-size)
-        em($base-layout-unit / 2, $base-font-size);
+    height: em($base-line-height * 12, $base-font-size);
+    margin: 0 0 em($base-line-height / 2, $base-font-size)
+        em($base-line-height / 2, $base-font-size);
     padding: 0;
     vertical-align: top;
     width: em($panel-width, $base-font-size); } }
