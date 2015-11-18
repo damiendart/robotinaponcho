@@ -40,4 +40,4 @@
               %a{:href => "#{link['link']}"} #{link["title"]}
         %p.footer__copyright &copy; 2015 Damien Dart
     :javascript
-      #{File.read(File.join(File.dirname(__FILE__), "public", "_index.js"))}
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.js")} -c -m`}

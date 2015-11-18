@@ -36,4 +36,4 @@
       %nav.navigation
         %a.navigation__home-link{:href => "\\"} Damien Dart's Personal Site
     :javascript
-      #{File.read(File.join(File.dirname(__FILE__), "public", "crap", "_index.js"))}
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}
