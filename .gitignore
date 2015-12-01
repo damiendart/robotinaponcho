@@ -8,6 +8,7 @@
 *.html
 Gemfile.lock
 www/protected/gitweb_config.perl
+www/public/.htaccess
 www/public/robots.txt
 www/public/art/*
 www/public/assets/*

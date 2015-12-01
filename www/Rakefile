@@ -4,6 +4,7 @@
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
 
+require "erb"
 require "rubygems"
 require "bundler/setup"
 require "yaml"
@@ -22,8 +23,9 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/index.html", "public/googlefb3645e0f9f23eaf.html",
-    "public/robots.txt", "public/crap/index.cgi"]
+    ["public/.htaccess", "public/index.html", 
+    "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
+    "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -47,6 +49,15 @@ ERROR_CODES.each do |error_code|
     File.open(task.name, "w") do |file|
       file.write(output)
     end
+  end
+end
+
+desc "Spit out \".htaccess\"."
+file "public/.htaccess" => "public/_.htaccess.erb" do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  output = ERB.new(File.read("public/_.htaccess.erb"), nil, "-").result()
+  File.open(task.name, "w") do |file|
+    file.write(output)
   end
 end
 
