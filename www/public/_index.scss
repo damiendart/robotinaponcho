@@ -144,4 +144,6 @@ body {
         em($base-line-height / 2, $base-font-size);
     padding: 0;
     vertical-align: top;
-    width: em($panel-width, $base-font-size); } }
+    width: em($panel-width, $base-font-size);
+    @media screen and (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
+      height: em($base-line-height * 10, $base-font-size); } } }
