@@ -15,6 +15,7 @@ Haml::Filters::Scss.options[:style] = :compressed
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
+Haml::Options.defaults[:remove_whitespace] = true
 # Increase the degree of precision of values that Sass spits out to
 # prevent some browsers from rendering elements a pixel narrower than
 # intended. See <https://github.com/nex3/sass/issues/319> for more

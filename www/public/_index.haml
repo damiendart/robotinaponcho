@@ -12,9 +12,8 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    %script{:src => "/assets/jquery-1.11.3.min.js"}
-    %script{:src => "//use.typekit.net/zkk4eyh.js"}
-    %script try{Typekit.load();}catch(e){}
+    :javascript
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.typekit.js")} -c -m`}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_index.scss"))}
     %title Damien Dart's Personal Site (www.robotinaponcho.net)
@@ -30,7 +29,7 @@
               .panel__description.tk-adelle
                 %strong.tk-adelle-sans<
                   %a{:href => "#{project['link']}"} #{project["title"]}
-                <br>
+                %br>
                 = project["description"]
       %footer.footer.tk-adelle-sans
         %hr.footer__rule
@@ -39,5 +38,6 @@
             %li.footer__social-list__item<>
               %a{:href => "#{link['link']}"} #{link["title"]}
         %p.footer__copyright &copy; 2015 Damien Dart
+    %script{:src => "/assets/jquery-1.11.3.min.js"}
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.js")} -c -m`}
