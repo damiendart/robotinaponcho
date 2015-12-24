@@ -4,13 +4,26 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-$(".panel").each(function(i) {
-  if($(this).attr("data-code-example")) {
-    var panel = $(this);
-    $.get($(this).data("code-example"), function(data) {
-      line_number = parseInt(panel.data("code-example").split("#")[1]);
-      code = data.split("\n").slice(line_number, line_number + 25).join("\n");
-      panel.prepend("<pre class=\"panel__js-code tk-source-code-pro\">" + code + "</pre>");
-    });
-  }
-});
+var panels = document.querySelectorAll(".panel");
+for (var i = 0; i < panels.length; i++) {
+  (function() {
+    if (panels[i].hasAttribute("data-code-example")) {
+      var request = new XMLHttpRequest();
+      request.open("GET", panels[i].getAttribute("data-code-example"), true);
+      request.onreadystatechange = function(el) {
+        return function() {
+          if (request.readyState === XMLHttpRequest.DONE) {
+            var code_html = document.createElement("pre");
+            code_html.className = "panel__js-code tk-source-code-pro";
+            var line_number = parseInt(
+                el.getAttribute("data-code-example").split("#")[1]);
+            code_html.innerHTML = this.responseText.split(
+                "\n").slice(line_number, line_number + 25).join("\n");
+            el.insertBefore(code_html, el.firstChild);
+          }
+        }
+      }(panels[i]);
+      request.send()
+    }
+  })();
+}

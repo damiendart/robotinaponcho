@@ -38,6 +38,5 @@
             %li.footer__social-list__item<>
               %a{:href => "#{link['link']}"} #{link["title"]}
         %p.footer__copyright &copy; 2015 Damien Dart
-    %script{:src => "/assets/jquery-1.11.3.min.js"}
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.js")} -c -m`}
