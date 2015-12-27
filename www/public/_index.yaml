@@ -1,32 +1,32 @@
 projects:
 -
-  title: Obtain Corn Hoop (2013---)
+  title: Obtain Corn Hoop
   link: http://blog.robotinaponcho.net/
   class_name: obtaincornhoop
   description: My infrequently-updated Tumblr weblog, contains mainly art things.
 -
-  title: Kathryn Craigdaillie Designs (2015)
+  title: Kathryn Craigdaillie Designs
   link: http://www.kathryncraigdaillie.co.uk/
   class_name: kathryn
   description: A graphic design portfolio website I built from scratch.
 -
-  title: robotinaponcho (2013--2015)
+  title: robotinaponcho
   link: https://github.com/damiendart/robotinaponcho
   code_example: /git/?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#72
   description: The source code to this very site. Uses all of the programming things.
 -
-  title: nfsnapi (2014)
+  title: nfsnapi
   link: https://github.com/damiendart/nfsnapi-python
   code_example: /git/?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#93
   description: A simple Python package that makes the
       NearlyFreeSpeech.NET API a little easier to use.
 -
-  title: Radical Apps (2014)
+  title: Radical Apps
   link: http://www.radicalapps.co.uk/
   class_name: radicalapps
   description: A mobile app portfolio website I designed and built from scratch.
 -
-  title: brainfuck (2013--2014)
+  title: brainfuck
   link: https://github.com/damiendart/brainfuck
   code_example: /git/?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library
