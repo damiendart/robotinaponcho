@@ -5,6 +5,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 *.cgi
+*.compressed
 *.html
 Gemfile.lock
 www/protected/gitweb_config.perl

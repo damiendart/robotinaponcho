@@ -24,7 +24,7 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/.htaccess", "public/index.html",
+    ["public/.htaccess", "public/index.html", "public/index.html.compressed",
     "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
     "public/crap/index.cgi"]
 
@@ -72,6 +72,12 @@ file "public/index.html" => FileList["public/_index.*"] do |task|
   File.open(task.name, "w") do |file|
     file.write(output)
   end
+end
+
+desc "Sput out the compressed homepage."
+file "public/index.html.compressed" => "public/index.html" do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  `gzip -9c public/index.html > public/index.html.compressed`
 end
 
 desc "Spit out Google Webmaster Tools' Verification file."

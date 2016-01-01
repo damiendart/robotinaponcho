@@ -77,6 +77,7 @@ SetEnv TZ Europe/London
 <IfModule mod_mime.c>
   # Force UTF-8 encoding for other file formats.
   AddCharset utf-8 .css .js
+  AddEncoding x-gzip compressed
   AddType application/javascript js
   AddType application/vnd.ms-fontobject eot
   AddType application/x-font-ttf ttc ttf
@@ -84,6 +85,7 @@ SetEnv TZ Europe/London
   AddType application/x-shockwave-flash swf
   AddType font/opentype otf
   AddType image/x-icon ico
+  AddType text/html compressed
   AddType text/x-c c
   AddType text/x-diff patch
   AddType text/x-python py
@@ -105,8 +107,12 @@ SetEnv TZ Europe/London
   # RewriteCond %{THE_REQUEST} ^.*/about?
   # RewriteRule ^([^\.]+)$ $1.html [NC,L]
   # Remove "index.cgi" and "index.html" from URLs.
-  RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html)?
-  RewriteRule ^(.*)index\.(cgi|html)?$ /$1 [L,NE,R=permanent]
+  RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html|html\.compressed)?
+  RewriteRule ^(.*)index\.(cgi|html|html\.compressed)?$ /$1 [L,NE,R=permanent]
+  # Add "gzip" compression support.
+  RewriteCond %{HTTP:Accept-Encoding} gzip
+  RewriteCond %{REQUEST_FILENAME}.compressed -f
+  RewriteRule ^(.+)$ $1.compressed
   # Remove "gitweb.cgi" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/gitweb\.cgi?
   RewriteRule ^(.*)gitweb\.cgi?$ /$1 [L,NE,R=permanent]
