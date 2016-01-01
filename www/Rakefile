@@ -74,7 +74,7 @@ file "public/index.html" => FileList["public/_index.*"] do |task|
   end
 end
 
-desc "Sput out the compressed homepage."
+desc "Spit out the compressed homepage."
 file "public/index.html.compressed" => "public/index.html" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   `gzip -9c public/index.html > public/index.html.compressed`
