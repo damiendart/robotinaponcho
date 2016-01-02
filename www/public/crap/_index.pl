@@ -10,6 +10,7 @@ use strict;
 use CGI qw/:standard/;
 use File::Basename;
 use HTML::Template;
+use IO::Compress::Gzip qw/gzip/;
 use POSIX qw/strftime/;
 use URI;
 
@@ -31,8 +32,16 @@ $template->param(directory_list => \@table_data);
 my $output = $template->output;
 $output =~ s/^\s+//;
 $output =~ s/\n\s*\n/\n/g;
-defined $ENV{GATEWAY_INTERFACE} && print header(-charset => "utf-8");
-print($output);
+if ($ENV{HTTP_ACCEPT_ENCODING} && $ENV{HTTP_ACCEPT_ENCODING} =~ /\bgzip\b/) {
+  my $compressed_output;
+  defined $ENV{GATEWAY_INTERFACE} && print header(-charset => "utf-8",
+      -content_encoding => "gzip");
+  gzip \$output => \$compressed_output;
+  print($compressed_output);
+} else {
+  defined $ENV{GATEWAY_INTERFACE} && print header(-charset => "utf-8");
+  print($output);
+}
 
 __DATA__
 <!DOCTYPE html>
