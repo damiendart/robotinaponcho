@@ -37,6 +37,7 @@ def tidyHTML(html_document)
   # HACK: Remove stray newlines from minified CSS which Sass 3.3 (and
   # newer) leaves behind.
   html_document = html_document.gsub(/}\s*(html|\.)/, "}\\1")
+  html_document = html_document.gsub(/\s*<(\/)?(script|style)>\s*/m, "<\\1\\2>")
   return html_document
 end
 
