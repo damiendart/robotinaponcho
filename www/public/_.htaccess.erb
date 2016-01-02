@@ -85,7 +85,7 @@ SetEnv TZ Europe/London
   AddType application/x-shockwave-flash swf
   AddType font/opentype otf
   AddType image/x-icon ico
-  AddType text/html compressed
+  AddType text/html html.compressed
   AddType text/x-c c
   AddType text/x-diff patch
   AddType text/x-python py
@@ -109,9 +109,9 @@ SetEnv TZ Europe/London
   # Remove "index.cgi" and "index.html" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html|html\.compressed)?
   RewriteRule ^(.*)index\.(cgi|html|html\.compressed)?$ /$1 [L,NE,R=permanent]
-  # Add "gzip" compression support.
+  # Add GZIP compression support.
   RewriteCond %{HTTP:Accept-Encoding} gzip
-  RewriteCond %{REQUEST_FILENAME}.compressed -f
+  RewriteCond %{REQUEST_FILENAME}\.compressed -f
   RewriteRule ^(.+)$ $1.compressed
   # Remove "gitweb.cgi" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/gitweb\.cgi?
