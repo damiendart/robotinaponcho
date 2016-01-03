@@ -10,7 +10,7 @@ use strict;
 use CGI qw/:standard/;
 use File::Basename;
 use HTML::Template;
-use IO::Compress::Gzip qw/gzip/;
+use PerlIO::gzip;
 use POSIX qw/strftime/;
 use URI;
 
@@ -32,16 +32,16 @@ $template->param(directory_list => \@table_data);
 my $output = $template->output;
 $output =~ s/^\s+//;
 $output =~ s/\n\s*\n/\n/g;
-if ($ENV{HTTP_ACCEPT_ENCODING} && $ENV{HTTP_ACCEPT_ENCODING} =~ /\bgzip\b/) {
-  my $compressed_output;
-  defined $ENV{GATEWAY_INTERFACE} && print header(-charset => "utf-8",
-      -content_encoding => "gzip");
-  gzip \$output => \$compressed_output;
-  print($compressed_output);
-} else {
-  defined $ENV{GATEWAY_INTERFACE} && print header(-charset => "utf-8");
-  print($output);
+my %content_encoding = ();
+if ($ENV{HTTP_ACCEPT_ENCODING} &&
+    $ENV{HTTP_ACCEPT_ENCODING} =~ m/(^|,|;|\s)gzip(,|;|\s|$)/ &&
+    $ENV{HTTP_ACCEPT_ENCODING} !~ m/(^|,|;|\s)gzip\s*;q=0(,|\s|$)/) {
+  %content_encoding = (-content_encoding => "gzip");
 }
+print header(%content_encoding, -charset => "utf-8");
+binmode STDOUT, ":gzip" if (%content_encoding);
+print($output);
+
 
 __DATA__
 <!DOCTYPE html>
