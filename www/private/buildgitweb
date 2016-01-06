@@ -9,7 +9,7 @@ GIT_VERSION="2.2.1"
 trap "rm -rf git-$GIT_VERSION" EXIT
 USAGE=`cat <<USAGE;
 USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER [MAKE-COMMAND]`
-[ "$#" -lt 2 ] && { echo -e "Not enough operands\n$USAGE" >&2; exit 2; }
+[ "$#" -lt 2 ] && { printf "Not enough operands\n$USAGE\n" >&2; exit 2; }
 wget -O - https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -zxf -
 (cd git-${GIT_VERSION} && ${3:-make} bindir="/usr/local/bin" \
     GITWEB_CONFIG="${2%/}/gitweb_config.perl" \
