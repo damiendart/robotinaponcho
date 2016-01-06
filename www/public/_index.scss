@@ -72,7 +72,11 @@ body {
     display: none; }
   /* p */ &__copyright {
     float: right;
-    margin: 0; }
+    margin: 0;
+    span {
+      @media screen and (max-width: em($responsive-two-columns +
+          $breakpoint-margin, $base-font-size)) {
+        display: none; } } }
   /* ul */ &__social-list {
     float: left;
     list-style: none;
