@@ -24,6 +24,7 @@ foreach (@repositories) {
   (my $repository = "$ARGV[0]/$_") =~ s|//|/|;
   chdir $repository;
   chomp(my $description = `git config --get gitweb.description`);
+  $description =~ s/'/&rsquo;/g;
   my %row = ( description => $description,
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_, 
       timestamp => `git log -1 --pretty=format:%ct`, 
