@@ -5,7 +5,7 @@
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
 
-GIT_VERSION="2.2.1"
+GIT_VERSION="2.6.4"
 trap "rm -rf git-$GIT_VERSION" EXIT
 USAGE=`cat <<USAGE;
 USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER [MAKE-COMMAND]`
@@ -19,19 +19,7 @@ wget -O - https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -zxf -
     GITWEB_PROJECTROOT="${1%/}/git" \
     gitwebdir="${1%/}/git" gitweb install-gitweb &&
     mv ${1%/}/git/static/* ${1%/}/assets && rm -fr ${1%/}/git/static)
-patch ${1%/}/git/gitweb.cgi <<'PATCH'
---- Original
-+++ Modified
-@@ -4066,7 +4066,7 @@
- <head>
- <meta http-equiv="content-type" content="$content_type; charset=utf-8"/>
- <meta name="generator" content="gitweb/$version git/$git_version$mod_perl_version"/>
--<meta name="robots" content="index, nofollow"/>
-+<meta name="robots" content="noindex, nofollow"/>
- <title>$title</title>
- EOF
- 	# the stylesheet, favicon etc urls won't work correctly with path_info
-PATCH
+sed -i -e "s/index, nofollow/noindex, nofollow/g" ${1%/}/git/gitweb.cgi
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
 $feature{"avatar"}{"default"} = ["gravatar"];
 $home_link_str = "Damien Dart&rsquo;s Git Repositories";
