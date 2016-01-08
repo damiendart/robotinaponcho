@@ -31,6 +31,13 @@ projects:
   code_example: /git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library
       written in C.
+other:
+-
+  title: The Folder of Crap
+  link: /crap/
+-
+  title: My Git Repositories
+  link: /git/
 social:
 -
   title: Email

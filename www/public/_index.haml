@@ -33,10 +33,15 @@
                 = project["description"]
       %footer.footer.tk-adelle-sans
         %hr.footer__rule
-        %ul.footer__social-list
-          - data["social"].each do |link|
-            %li.footer__social-list__item<>
-              %a{:href => "#{link['link']}"} #{link["title"]}
-        %p.footer__copyright <span>Copyright </span>&copy; #{`date +%Y`} Damien Dart
+        .footer__links
+          %ul.footer__links__link-list
+            - data["other"].each do |link|
+              %li.footer__links__link-list__item<>
+                %a{:href => "#{link['link']}"} #{link["title"]}
+          %ul.footer__links__link-list
+            - data["social"].each do |link|
+              %li.footer__links__link-list__item<>
+                %a{:href => "#{link['link']}"} #{link["title"]}
+        %p.footer__copyright Copyright &copy; #{`date +%Y`} Damien Dart
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.js")} -c -m`}
