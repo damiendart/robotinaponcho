@@ -20,7 +20,7 @@ opendir(my $directory, $ARGV[0]) or die "Unable to open directory.";
 my @repositories = grep { !/^\.\.?/ && /\.git$/ } readdir($directory);
 closedir($directory);
 my @table_data;
-foreach (@repositories) {
+foreach (sort { lc($a) cmp lc($b) } @repositories) {
   (my $repository = "$ARGV[0]/$_") =~ s|//|/|;
   chdir $repository;
   chomp(my $description = `git config --get gitweb.description`);
