@@ -8,6 +8,7 @@
 *.compressed
 *.html
 Gemfile.lock
+www/private/*.tmpl
 www/protected/gitweb_config.perl
 www/public/.htaccess
 www/public/robots.txt
