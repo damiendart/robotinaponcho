@@ -42,7 +42,8 @@ def tidyHTML(html_document)
 end
 
 desc "Spit out the \"private/githome\" HTML template."
-file "private/githome.tmpl" => FileList["private/_githome.*"] do |task|
+file "private/githome.tmpl" => FileList["private/_githome.*"] + 
+    FileList["public/crap/_index.{scss,js}"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   output = Haml::Engine.new(File.read("private/_githome.haml")).render
   output = output.gsub(/<!--.*-->\n/m, "")

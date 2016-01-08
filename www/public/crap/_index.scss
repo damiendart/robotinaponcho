@@ -85,5 +85,5 @@ body {
       &:first-child {
         text-align: left; }
       @media screen and (max-width: em($content-width, $base-font-size)) {
-        &:nth-child(2) {
+        &--collapse {
           display: none; } } } } }

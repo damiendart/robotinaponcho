@@ -21,14 +21,14 @@
         %thead
           %tr.file-list-table__row
             %th.file-list-table__row__cell.file-list-table__row__cell--header<> Filename
-            %th.file-list-table__row__cell.file-list-table__row__cell--header<> Modification Date
+            %th.file-list-table__row__cell.file-list-table__row__cell--header.file-list-table__row__cell--collapse<> Modification Date
             %th.file-list-table__row__cell.file-list-table__row__cell--header<> Size
         %tbody
           / TMPL_LOOP NAME="directory_list"
           %tr.file-list-table__row
             %td.file-list-table__row__cell<>
               %a{:href => "<TMPL_VAR NAME=\"uri\">"} <TMPL_VAR NAME="filename">
-            %td.file-list-table__row__cell{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="modification_date">
+            %td.file-list-table__row__cell.file-list-table__row__cell--collapse{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="modification_date">
             %td.file-list-table__row__cell<> <TMPL_VAR NAME="size">
           / /TMPL_LOOP
       %nav.navigation
