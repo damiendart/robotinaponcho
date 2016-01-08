@@ -54,7 +54,7 @@ __DATA__
   </thead>
   <tbody>
     <!-- TMPL_LOOP NAME="directory_list" -->
-    <tr><td><a href="<TMPL_VAR NAME="uri">"><TMPL_VAR NAME="filename"></a></td><td><TMPL_VAR NAME="modification_date"></td><td><TMPL_VAR NAME="size"></td></tr>
+    <tr><td><a href="<TMPL_VAR NAME="uri">"><TMPL_VAR NAME="filename"></a></td><td><TMPL_VAR NAME="modification_date"> (<TMPL_VAR NAME="timestamp">)</td><td><TMPL_VAR NAME="size"></td></tr>
     <!-- /TMPL_LOOP -->
   </tbody>
 </table>
