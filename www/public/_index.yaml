@@ -12,7 +12,7 @@ projects:
 -
   title: robotinaponcho
   link: https://github.com/damiendart/robotinaponcho
-  code_example: /git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#72
+  code_example: /git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115
   description: The source code to this very site. Uses all of the programming things.
 -
   title: nfsnapi
