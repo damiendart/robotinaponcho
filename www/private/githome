@@ -11,9 +11,10 @@ use File::Basename;
 use HTML::Template;
 use URI;
 
-if (@ARGV < 2 ) {
-  print("Not enough operands\n");
-  print("USAGE: " . basename($0) . " REPOS-FOLDER HTML-TEMPLATE-FILE\n");
+if (@ARGV < 3 ) {
+  print(STDERR "Not enough operands\n");
+  print(STDERR
+      "USAGE: " . basename($0) . " REPOS-FOLDER TEMPLATE-FILE OUTPUT-FILE\n");
   exit(2);
 }
 opendir(my $directory, $ARGV[0]) or die "Unable to open directory.";
@@ -36,4 +37,7 @@ $template->param(repositories => \@table_data);
 my $output = $template->output;
 $output =~ s/^\s+//;
 $output =~ s/\n\s*\n/\n/g;
-print($output);
+open(my $filehandle, ">", $ARGV[2]) or die "Unable to open file for writing";
+print($filehandle $output);
+close($output);
+system("gzip -9c $ARGV[2] > $ARGV[2].compressed");
