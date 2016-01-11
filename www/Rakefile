@@ -24,7 +24,7 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["private/githome.tmpl", "public/.htaccess", "public/index.html", 
+    ["private/gitindex.tmpl", "public/.htaccess", "public/index.html", 
     "public/index.html.compressed", "public/googlefb3645e0f9f23eaf.html", 
     "public/robots.txt", "public/crap/index.cgi"]
 
@@ -41,11 +41,11 @@ def tidyHTML(html_document)
   return html_document
 end
 
-desc "Spit out the \"private/githome\" HTML template."
-file "private/githome.tmpl" => FileList["private/_githome.*"] + 
+desc "Spit out the \"private/gitindex\" HTML template."
+file "private/gitindex.tmpl" => FileList["private/_githome.*"] + 
     FileList["public/crap/_index.{scss,js}"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  output = Haml::Engine.new(File.read("private/_githome.haml")).render
+  output = Haml::Engine.new(File.read("private/_gitindex.haml")).render
   output = output.gsub(/<!--.*-->\n/m, "")
   output = tidyHTML(output)
   output = Redcarpet::Render::SmartyPants.render(output)
