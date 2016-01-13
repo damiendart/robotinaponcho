@@ -1,6 +1,9 @@
 TODO
 ====
 
+  * Add an Art portfolio.
+  * Add SSL support.
+  * Add Git repository cruft to "robots.txt".
   * Add [Windows Live Tile][1] and [iOS Web Clip][2] support.  
 
 [1]: <http://www.buildmypinnedsite.com/en>
