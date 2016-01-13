@@ -118,7 +118,7 @@ file "public/robots.txt" do |task|
     (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
-    file.write("Disallow: /git/gitweb.cgi")
+    file.write("Disallow: /git/gitweb.cgi\n")
   end
 end
 
