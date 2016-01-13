@@ -22,7 +22,7 @@
         %li.action-list__item
           Git clone command:&nbsp;
           %input{:readonly => true, :value => "git clone http://www.robotinaponcho.net/git/<TMPL_VAR NAME=\"repository\">"}
-        %li.action-list--item Last commit: <span data-timestamp="<TMPL_VAR NAME="timestamp">"><TMPL_VAR NAME="last_commit"></span>
+        %li.action-list--item Last commit: <span data-timestamp="<TMPL_VAR NAME="timestamp">"><TMPL_VAR NAME="last_commit"></span> (<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">"><code><TMPL_VAR NAME="hash_short"></code></a>)
       %nav.navigation
         %a.navigation__link{:href => "\\git\\"} Damien Dart's Git Repositories 
         %br/
