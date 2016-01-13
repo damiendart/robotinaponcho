@@ -40,6 +40,17 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
+@if variable-exists(action-list) {
+  /* ul */.action-list {
+    list-style: square;
+    margin: em($base-layout-unit / 2, $base-font-size) 0
+        0 em($base-layout-unit, $base-font-size);
+    padding: 0;
+    /* li */ &__item {
+      input {
+        font-family: $monospace;
+        width: 50%; } } } }
+
 /* div */.container {
   margin: em($base-layout-unit, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
