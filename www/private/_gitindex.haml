@@ -11,6 +11,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %title Damien Dart's Git Repositories
     :scss
+      $file-list-table: true;
       #{File.read(File.join(File.dirname(__FILE__), "public", "crap", "_index.scss"))}
   %body
     .container
@@ -29,6 +30,6 @@
             %td.file-list-table__row__cell{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="last_commit">
           / /TMPL_LOOP
       %nav.navigation
-        %a.navigation__home-link{:href => "\\"} Damien Dart's Personal Site
+        %a.navigation__link{:href => "\\"} Damien Dart's Personal Site
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}

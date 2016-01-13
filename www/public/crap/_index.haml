@@ -11,6 +11,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %title Damien Dart's Folder of Crap
     :scss
+      $file-list-table: true;
       #{File.read(File.join(File.dirname(__FILE__), "public", "crap", "_index.scss"))}
   %body
     .container
@@ -31,6 +32,6 @@
             %td.file-list-table__row__cell<> <TMPL_VAR NAME="size">
           / /TMPL_LOOP
       %nav.navigation
-        %a.navigation__home-link{:href => "\\"} Damien Dart's Personal Site
+        %a.navigation__link{:href => "\\"} Damien Dart's Personal Site
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}
