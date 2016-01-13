@@ -11,35 +11,40 @@ use File::Basename;
 use File::pushd;
 use File::Spec::Functions qw/catfile rel2abs/;
 use HTML::Template;
-use URI;
+
+sub output
+{
+  my $output = $_[0]->output;
+  open(my $filehandle, ">", $_[1]) or die "Unable to open file for writing";
+  print($filehandle $output);
+  close($output);
+  system("gzip -9c $_[1] > $_[1].compressed");
+}
 
 if (@ARGV < 1 ) {
   print(STDERR "Not enough operands\n");
   print(STDERR "USAGE: " . basename($0) . " REPOS-FOLDER\n");
   exit(2);
 }
+my $git_template = HTML::Template->new(
+    filename => (rel2abs(__FILE__) . ".tmpl"), die_on_bad_params => 0);
+my $repo_template = HTML::Template->new(
+    filename => (rel2abs(__FILE__) . ".repo.tmpl"), die_on_bad_params => 0);
+my @table_data;
 opendir(my $directory, $ARGV[0]) or die "Unable to open directory.";
 my @repositories = grep { !/^\.\.?/ && /\.git$/ } readdir($directory);
 closedir($directory);
-my @table_data;
 foreach (sort { lc($a) cmp lc($b) } @repositories) {
   my $dir = pushd(catfile($ARGV[0], $_));
   chomp(my $description = `git config --get gitweb.description`);
   $description =~ s/'/&rsquo;/g;
-  my %row = ( description => $description,
+  my %repo_data = (description => $description,
+      github_url => "https://github.com/damiendart/" . basename($_, ".git"),
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_, 
-      timestamp => `git log -1 --pretty=format:%ct`, 
-      uri => URI->new("gitweb.cgi?p=$_"));
-  push(@table_data, \%row);
+      timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/");
+  push(@table_data, \%repo_data);
+  $repo_template->param(\%repo_data);
+  output($repo_template, "index.html");
 }
-my $template = HTML::Template->new(filename => (rel2abs(__FILE__) . ".tmpl"));
-$template->param(repositories => \@table_data);
-my $output = $template->output;
-$output =~ s/^\s+//;
-$output =~ s/\n\s*\n/\n/g;
-open(my $filehandle, ">", catfile($ARGV[0], "index.html"))
-    or die "Unable to open file for writing";
-print($filehandle $output);
-close($output);
-system("gzip -9c " . catfile($ARGV[0], "index.html") . " > " .
-    catfile($ARGV[0], "index.html.compressed"));
+$git_template->param(repositories => \@table_data);
+output($git_template, catfile($ARGV[0], "index.html"));

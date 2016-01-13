@@ -24,9 +24,10 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["private/gitindex.tmpl", "public/.htaccess", "public/index.html", 
-    "public/index.html.compressed", "public/googlefb3645e0f9f23eaf.html", 
-    "public/robots.txt", "public/crap/index.cgi"]
+    ["private/gitindex.tmpl", "private/gitindex.repo.tmpl", "public/.htaccess",
+    "public/index.html", "public/index.html.compressed",
+    "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
+    "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -41,21 +42,23 @@ def tidyHTML(html_document)
   return html_document
 end
 
-desc "Spit out the \"private/gitindex\" HTML template."
-file "private/gitindex.tmpl" => FileList["private/_githome.*"] + 
-    FileList["public/crap/_index.{scss,js}"] do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  output = Haml::Engine.new(File.read("private/_gitindex.haml")).render
-  output = output.gsub(/<!--.*-->\n/m, "")
-  output = tidyHTML(output)
-  output = Redcarpet::Render::SmartyPants.render(output)
-  # HACK: The SmartyPants parser doesn't like "HTMl::Template"'s tags 
-  # being used for HTML element attribute values.
-  output = output.gsub(/&ldquo;/, "\"")
-  output = output.gsub(/&quot;/, "\"")
-  output = output.gsub(/&rdquo;/, "\"")
-  File.open(task.name, "w") do |file|
-    file.write(output)
+["gitindex", "gitindex.repo"].each do |template|
+  desc "Spit out the \"private/#{template}\" HTML template."
+  file "private/#{template}.tmpl" => FileList["private/_#{template}.haml"] + 
+      FileList["public/crap/_index.{scss,js}"] do |task|
+    puts "# Spitting out \"" + task.name + "\"."
+    output = Haml::Engine.new(File.read("private/_#{template}.haml")).render
+    output = output.gsub(/<!--.*-->\n/m, "")
+    output = tidyHTML(output)
+    output = Redcarpet::Render::SmartyPants.render(output)
+    # HACK: The SmartyPants parser doesn't like "HTMl::Template"'s tags 
+    # being used for HTML element attribute values.
+    output = output.gsub(/&ldquo;/, "\"")
+    output = output.gsub(/&quot;/, "\"")
+    output = output.gsub(/&rdquo;/, "\"")
+    File.open(task.name, "w") do |file|
+      file.write(output)
+    end
   end
 end
 
