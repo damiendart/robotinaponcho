@@ -11,12 +11,12 @@ projects:
   description: A graphic design portfolio website I built from scratch.
 -
   title: robotinaponcho
-  link: https://github.com/damiendart/robotinaponcho
+  link: /git/robotinaponcho.git/
   code_example: /git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115
   description: The source code to this very site. Uses all of the programming things.
 -
   title: nfsnapi
-  link: https://github.com/damiendart/nfsnapi-python
+  link: https://pypi.python.org/pypi/nfsnapi
   code_example: /git/gitweb.cgi?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#93
   description: A simple Python package that makes the
       NearlyFreeSpeech.NET API a little easier to use.
@@ -27,7 +27,7 @@ projects:
   description: A mobile app portfolio website I designed and built from scratch.
 -
   title: brainfuck
-  link: https://github.com/damiendart/brainfuck
+  link: /git/brainfuck.git/ 
   code_example: /git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library
       written in C.
