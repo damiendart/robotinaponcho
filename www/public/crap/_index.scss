@@ -48,7 +48,12 @@ body {
     /* li */ &__item {
       input {
         font-family: $monospace;
-        width: 50%; } } } }
+        width: 50%;
+        @media screen and (max-width: em($content-width, $base-font-size)) {
+          width: auto; } }
+      @media screen and (max-width: em($content-width, $base-font-size)) {
+        span {
+          display: none; } } } } }
 
 /* div */.container {
   margin: em($base-line-height, $base-font-size) auto;

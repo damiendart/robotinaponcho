@@ -20,7 +20,7 @@
       %ul.action-list
         %li.action-list__item Browse with <a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">">Gitweb</a> or on <a href="<TMPL_VAR NAME="github_url">">GitHub</a>
         %li.action-list__item
-          Git clone command:&nbsp;
+          <span>Git clone command: </span>
           %input{:readonly => true, :value => "git clone http://www.robotinaponcho.net/git/<TMPL_VAR NAME=\"repository\">"}
         %li.action-list--item Last commit: <span data-timestamp="<TMPL_VAR NAME="timestamp">"><TMPL_VAR NAME="last_commit"></span> (<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">"><code><TMPL_VAR NAME="hash_short"></code></a>)
       %nav.navigation
