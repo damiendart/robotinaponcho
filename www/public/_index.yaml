@@ -27,7 +27,7 @@ projects:
   description: A mobile app portfolio website I designed and built from scratch.
 -
   title: brainfuck
-  link: /git/brainfuck.git/ 
+  link: /git/brainfuck.git/
   code_example: /git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library
       written in C.

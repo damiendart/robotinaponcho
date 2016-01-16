@@ -44,14 +44,14 @@ end
 
 ["gitindex", "gitindex.repo"].each do |template|
   desc "Spit out the \"private/#{template}\" HTML template."
-  file "private/#{template}.tmpl" => FileList["private/_#{template}.haml"] + 
+  file "private/#{template}.tmpl" => FileList["private/_#{template}.haml"] +
       FileList["public/crap/_index.{scss,js}"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
     output = Haml::Engine.new(File.read("private/_#{template}.haml")).render
     output = output.gsub(/<!--.*-->\n/m, "")
     output = tidyHTML(output)
     output = Redcarpet::Render::SmartyPants.render(output)
-    # HACK: The SmartyPants parser doesn't like "HTMl::Template"'s tags 
+    # HACK: The SmartyPants parser doesn't like "HTMl::Template"'s tags
     # being used for HTML element attribute values.
     output = output.gsub(/&ldquo;/, "\"")
     output = output.gsub(/&quot;/, "\"")

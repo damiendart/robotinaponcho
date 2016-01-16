@@ -95,7 +95,7 @@ body {
         margin-right: em($base-line-height / 2, $base-font-size);
         @media screen and (max-width: em($responsive-two-columns +
             $breakpoint-margin, $base-font-size)) {
-          display: block; 
+          display: block;
           margin: 0;
           text-align: center; } } } } }
 
