@@ -42,7 +42,7 @@ foreach (sort { lc($a) cmp lc($b) } @repositories) {
       github_url => "https://github.com/damiendart/" . basename($_, ".git"),
       hash_short => `git log -1 --pretty=format:%h`,
       hash_long => `git log -1 --pretty=format:%H`,
-      last_commit => `git log -1 --pretty=format:%ci`, repository => $_, 
+      last_commit => `git log -1 --pretty=format:%ci`, repository => $_,
       timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/");
   push(@table_data, \%repo_data);
   $repo_template->param(\%repo_data);
