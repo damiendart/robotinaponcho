@@ -25,6 +25,7 @@ $responsive-two-columns: ($panel-width * 2) + ($base-line-height / 2);
     color: $foreground-colour;
     margin: 0 em($base-line-height / -4, $font-size);
     padding: 0 em($base-line-height / 4, $font-size);
+    white-space: pre;
     @if ($underline == false) {
       text-decoration: none; }
     &:active, &:focus, &:hover, &:visited:hover {
