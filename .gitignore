@@ -13,6 +13,7 @@ www/protected/gitweb_config.perl
 www/public/.htaccess
 www/public/robots.txt
 www/public/art/*
+!www/public/art/_*
 www/public/assets/*
 !www/public/assets/_*
 www/public/git/

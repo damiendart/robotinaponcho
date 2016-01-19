@@ -27,7 +27,7 @@ OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
     ["private/gitindex.tmpl", "private/gitindex.repo.tmpl", "public/.htaccess",
     "public/index.html", "public/index.html.compressed",
     "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
-    "public/crap/index.cgi"]
+    "public/art/index.html", "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
@@ -120,6 +120,24 @@ file "public/robots.txt" do |task|
     end
     file.write("Disallow: /git/gitweb.cgi\n")
   end
+end
+
+desc "Spit out the Art page."
+file "public/art/index.html" => FileList["public/art/_index.*"] do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  output = Haml::Engine.new(File.read("public/art/_index.haml")).render
+  output = output.gsub(/<!--.*-->\n/m, "")
+  output = tidyHTML(output)
+  output = Redcarpet::Render::SmartyPants.render(output)
+  File.open(task.name, "w") do |file|
+    file.write(output)
+  end
+end
+
+desc "Spit out the compressed homepage."
+file "public/art/index.html.compressed" => "public/art/index.html" do |task|
+  puts "# Spitting out \"" + task.name + "\"."
+  `gzip -9c public/art/index.html > public/art/index.html.compressed`
 end
 
 desc "Spit out the Folder of Crap CGI script."
