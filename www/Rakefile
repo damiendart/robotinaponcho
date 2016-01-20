@@ -24,10 +24,11 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["private/gitindex.tmpl", "private/gitindex.repo.tmpl", "public/.htaccess",
-    "public/index.html", "public/index.html.compressed",
+    ["private/gitindex.tmpl", "private/gitindex.repo.tmpl",
+    "public/.htaccess", "public/index.html", "public/index.html.compressed",
     "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
-    "public/art/index.html", "public/crap/index.cgi"]
+    "public/art/index.html", "public/art/index.html.compressed",
+    "public/crap/index.cgi"]
 
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
