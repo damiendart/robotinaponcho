@@ -1,0 +1,38 @@
+// Copyright (C) 2013-2016 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@import "bourbon";
+
+$base-background-colour: #dddddd;
+$base-font-size: 16px;
+$base-foreground-colour: #000000;
+$base-line-height: 24px;
+
+body {
+  background-color: $base-background-colour;
+  color: $base-foreground-colour;
+  // Setting the font size initially to 100% avoids the Internet
+  // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
+  // (see <http://alistapart.com/article/howtosizetextincss#section5>).
+  font: 100%/1.5 $helvetica;
+  @if ($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  -webkit-font-smoothing: antialiasing;
+  margin: 0;
+  // Internet Explorer 6 hates us and doesn't center block elements with
+  // just "margin-left: auto; margin-right: auto" alone.
+  text-align: center;
+  -webkit-text-size-adjust: 100%; }
+
+/* h1 */.header {
+  $font-size: 32px;
+  font-size: percentage($font-size / $base-font-size);
+  margin: em($base-line-height * 2, $font-size); }
+
+/* img */.image {
+  border: em($base-line-height, $base-font-size) solid #ffffff;
+  box-shadow: 0 em($base-line-height / 2, $base-font-size)
+      em($base-line-height, $base-font-size) rgba(#000000, 0.1);
+  display: block;
+  margin: em($base-line-height, $base-font-size) auto 0 auto; }

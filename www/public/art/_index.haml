@@ -6,8 +6,10 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
+    :scss
+      #{File.read(File.join(File.dirname(__FILE__), "public", "art", "_index.scss"))}
     %title Damien Dart's Artwork and Illustrations
   %body
-    %h1.header__title Damien Dart's Artwork
+    %h1.header Damien Dart's Artwork
     - Dir["public/art/*.{jpeg,png}"].each do |image|
-      %img{:src => File.basename(image)}
+      %img.image{:src => File.basename(image)}
