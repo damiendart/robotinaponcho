@@ -6,10 +6,22 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
+    :javascript
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.typekit.js")} -c -m`}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "art", "_index.scss"))}
     %title Damien Dart's Artwork and Illustrations
   %body
-    %h1.header Damien Dart's Artwork
+    .header 
+      %h1.header__header.tk-adelle-sans Damien Dart's Artwork
+      %ul.header__navigation-list.tk-adelle-sans
+        %li.header__navigation-list__item 
+          %a{:href => "/"} &larr; Damien Dart's Homepage
+        %li.header__navigation-list__item 
+          %a{:href => "https://instagram.com/damiendart"} Instagram
+        %li.header__navigation-list__item 
+          %a{:href => "http://blog.robotinaponcho.net/"} Tumblr
     - Dir["public/art/*.{jpeg,png}"].each do |image|
       %img.image{:src => File.basename(image)}
+    %footer.footer.tk-adelle-sans
+      %p.footer__copyright Copyright &copy; #{`date +%Y`} Damien Dart

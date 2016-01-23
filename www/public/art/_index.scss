@@ -9,6 +9,24 @@ $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-line-height: 24px;
 
+@mixin link-junk($background-colour, $foreground-colour, $underline: true,
+    $font-size: $base-font-size) {
+  a {
+    @include transition(background-color 0.1s, color 0.2s);
+    border-radius: em($base-line-height / 4, $font-size);
+    color: $foreground-colour;
+    margin: 0 em($base-line-height / -4, $font-size);
+    padding: 0 em($base-line-height / 4, $font-size);
+    white-space: pre;
+    @if ($underline == false) {
+      text-decoration: none; }
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $foreground-colour;
+      color: $background-colour; }
+    &:visited {
+      background-colour: $background-colour;
+      color: $foreground-colour; } } }
+
 body {
   background-color: $base-background-colour;
   color: $base-foreground-colour;
@@ -25,10 +43,29 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%; }
 
-/* h1 */.header {
-  $font-size: 32px;
-  font-size: percentage($font-size / $base-font-size);
-  margin: em($base-line-height * 2, $font-size); }
+/* footer */.footer {
+  line-height : em($base-line-height, $base-font-size);
+  margin: em($base-line-height * 4, $base-font-size); }
+
+/* div */.header {
+  margin: em($base-line-height * 4, $base-font-size);
+  /* h1 */ &__header {
+    $font-size: 32px;
+    font-size: percentage($font-size / $base-font-size);
+    line-height: em($font-size, $font-size);
+    margin: 0; }
+  /* ul */ &__navigation-list {
+    list-style: none;
+    margin: em($base-line-height / 4, $base-font-size) 0 0 0;
+    padding: 0;
+    text-transform: uppercase;
+    /* li */ &__item { 
+      @include link-junk($base-background-colour, $base-foreground-colour, false);
+      display: inline-block;
+      font-weight: bold;
+      padding: 0 em($base-line-height / 2, $base-font-size) 0 0; 
+      &:last-child {
+        padding: 0; } } } }
 
 /* img */.image {
   border: em($base-line-height, $base-font-size) solid #ffffff;
