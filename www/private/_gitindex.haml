@@ -32,6 +32,6 @@
               &nbsp;(<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">"><code><TMPL_VAR NAME="hash_short"></code></a>)
           / /TMPL_LOOP
       %nav.navigation
-        %a.navigation__link{:href => "\\"} Damien Dart's Personal Site
+        %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}
