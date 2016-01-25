@@ -65,11 +65,11 @@ body {
     margin: em($base-line-height / 4, $base-font-size) 0 0 0;
     padding: 0;
     text-transform: uppercase;
-    /* li */ &__item { 
+    /* li */ &__item {
       @include link-junk($base-background-colour, $base-foreground-colour, false);
       display: inline-block;
       font-weight: bold;
-      padding: 0 em($base-line-height / 2, $base-font-size) 0 0; 
+      padding: 0 em($base-line-height / 2, $base-font-size) 0 0;
       &:last-child {
         padding: 0; }
       @media screen and (max-width: em(500px, $base-font-size)) {
