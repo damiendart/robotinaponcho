@@ -29,7 +29,7 @@
               %a{:href => "<TMPL_VAR NAME=\"uri\">", :title => "<TMPL_VAR NAME=\"description\">"} <TMPL_VAR NAME="repository">
             %td.file-list-table__row__cell
               %span{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="last_commit">
-              &nbsp;(<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">"><code><TMPL_VAR NAME="hash_short"></code></a>)
+              &nbsp;(<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">" title="<TMPL_VAR NAME="last_commit_title">"><code><TMPL_VAR NAME="hash_short"></code></a>)
           / /TMPL_LOOP
       %nav.navigation
         %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site

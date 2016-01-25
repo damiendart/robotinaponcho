@@ -11,6 +11,7 @@ use File::Basename;
 use File::pushd;
 use File::Spec::Functions qw/catfile rel2abs/;
 use HTML::Template;
+use Text::Typography qw/typography/;
 
 sub output
 {
@@ -37,12 +38,13 @@ closedir($directory);
 foreach (sort { lc($a) cmp lc($b) } @repositories) {
   my $dir = pushd(catfile($ARGV[0], $_));
   chomp(my $description = `git config --get gitweb.description`);
-  $description =~ s/'/&rsquo;/g;
-  my %repo_data = (description => $description,
+  chomp(my $title = `git show -s --format=%s`);
+  my %repo_data = (description => typography($description),
       github_url => "https://github.com/damiendart/" . basename($_, ".git"),
       hash_short => `git log -1 --pretty=format:%h`,
       hash_long => `git log -1 --pretty=format:%H`,
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_,
+      last_commit_title => typography($title),
       timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/");
   push(@table_data, \%repo_data);
   $repo_template->param(\%repo_data);
