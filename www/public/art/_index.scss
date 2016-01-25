@@ -41,14 +41,20 @@ body {
   // Internet Explorer 6 hates us and doesn't center block elements with
   // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: em(500px, $base-font-size)) {
+    font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
 /* footer */.footer {
   line-height : em($base-line-height, $base-font-size);
-  margin: em($base-line-height * 4, $base-font-size); }
+  margin: em($base-line-height * 4, $base-font-size);
+  @media screen and (max-width: em(500px, $base-font-size)) {
+    margin: em($base-line-height * 2, $base-font-size) 0; } }
 
 /* div */.header {
-  margin: em($base-line-height * 4, $base-font-size);
+  margin: em($base-line-height * 4, $base-font-size) 0;
+  @media screen and (max-width: em(500px, $base-font-size)) {
+    margin: em($base-line-height * 2, $base-font-size) 0; }
   /* h1 */ &__header {
     $font-size: 32px;
     font-size: percentage($font-size / $base-font-size);
@@ -65,11 +71,20 @@ body {
       font-weight: bold;
       padding: 0 em($base-line-height / 2, $base-font-size) 0 0; 
       &:last-child {
-        padding: 0; } } } }
+        padding: 0; }
+      @media screen and (max-width: em(500px, $base-font-size)) {
+        &:first-child {
+          display: block;
+          padding: 0; } } } } }
 
 /* img */.image {
   border: em($base-line-height, $base-font-size) solid #ffffff;
   box-shadow: 0 em($base-line-height / 2, $base-font-size)
       em($base-line-height, $base-font-size) rgba(#000000, 0.1);
   display: block;
-  margin: em($base-line-height, $base-font-size) auto 0 auto; }
+  margin: em($base-line-height, $base-font-size) auto 0 auto;
+  @media screen and (max-width: em(500px, $base-font-size)) {
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: 100%; } }
