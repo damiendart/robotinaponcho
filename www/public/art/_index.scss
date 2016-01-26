@@ -59,7 +59,10 @@ body {
     $font-size: 32px;
     font-size: percentage($font-size / $base-font-size);
     line-height: em($font-size, $font-size);
-    margin: 0; }
+    margin: 0;
+    @media screen and (max-width: em(500px, $base-font-size)) {
+      span {
+        display: none; } } }
   /* ul */ &__navigation-list {
     list-style: none;
     margin: em($base-line-height / 4, $base-font-size) 0 0 0;
