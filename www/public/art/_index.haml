@@ -25,4 +25,4 @@
     - Dir["public/art/*.{jpeg,png}"].each do |image|
       %img.image{:alt => File.read(image + ".txt"), :src => File.basename(image), :title => File.read(image + ".txt")}
     %footer.footer.tk-adelle-sans
-      %p.footer__copyright Copyright &copy; #{`date +%Y`} Damien Dart
+      %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
