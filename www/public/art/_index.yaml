@@ -1,0 +1,11 @@
+# Copyright (C) 2013-2016 Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more information,
+# please refer to the accompanying "LICENCE" file.
+-
+  alt_text: The 2015 Christmas Card.
+  border: true
+  filename: 2015-12-18-christmas-card.png
+  filename_retina: 2015-12-18-christmas-card@2x.png
+  height: 500px
+  title: The 2015 Christmas Card.
+  width: 500px

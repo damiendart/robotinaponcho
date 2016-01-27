@@ -2,6 +2,8 @@
 -# This file is distributed under the MIT licence. For more information,
 -# please refer to the accompanying "LICENCE" file.
 
+- images = YAML.load_file("public/art/_index.yaml")
+
 !!! 5
 %html{:lang => "en"}
   %head
@@ -22,7 +24,7 @@
           %a{:href => "https://instagram.com/damiendart"} Instagram
         %li.header__navigation-list__item
           %a{:href => "http://blog.robotinaponcho.net/"} Tumblr
-    - Dir["public/art/*.{jpeg,png}"].each do |image|
-      %img.image{:alt => File.read(image + ".txt"), :src => File.basename(image), :title => File.read(image + ".txt")}
+    - images.each do |image|
+      %img.image{:alt => image["alt_text"], :class => (image["border"] ? "image--border" : nil), :height => image["height"], :src => image["filename"], :srcset => "#{image['filename_retina']} 2x", :title => image["title"], :width => image["width"]}
     %footer.footer.tk-adelle-sans
       %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
