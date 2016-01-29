@@ -123,7 +123,7 @@ file "public/robots.txt" do |task|
   end
 end
 
-desc "Spit out the Art page."
+desc "Spit out the art porfolio."
 file "public/art/index.html" => FileList["public/art/_index.*"] do |task|
   puts "# Spitting out \"" + task.name + "\"."
   output = Haml::Engine.new(File.read("public/art/_index.haml")).render
@@ -135,7 +135,7 @@ file "public/art/index.html" => FileList["public/art/_index.*"] do |task|
   end
 end
 
-desc "Spit out the compressed homepage."
+desc "Spit out the compressed art porfolio."
 file "public/art/index.html.compressed" => "public/art/index.html" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   `gzip -9c public/art/index.html > public/art/index.html.compressed`
