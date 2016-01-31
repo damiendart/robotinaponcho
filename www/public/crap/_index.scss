@@ -55,6 +55,10 @@ body {
         span {
           display: none; } } } } }
 
+@if variable-exists(commit-streak) {
+  /* p */.commit-streak {
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0; } }
+
 /* div */.container {
   margin: em($base-line-height, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);

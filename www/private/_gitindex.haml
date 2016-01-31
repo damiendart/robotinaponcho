@@ -11,6 +11,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %title Damien Dart's Git Repositories
     :scss
+      $commit-streak: true;
       $file-list-table: true;
       #{File.read(File.join(File.dirname(__FILE__), "public", "crap", "_index.scss"))}
   %body
@@ -31,6 +32,7 @@
               %span{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="last_commit">
               &nbsp;(<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">" title="<TMPL_VAR NAME="last_commit_title">"><code><TMPL_VAR NAME="hash_short"></code></a>)
           / /TMPL_LOOP
+      %p.commit-streak Current commit streak: <TMPL_VAR NAME="commit_streak">
       %nav.navigation
         %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site
     :javascript

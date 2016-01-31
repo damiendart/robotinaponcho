@@ -9,7 +9,7 @@ use strict;
 
 use File::Basename;
 use File::pushd;
-use File::Spec::Functions qw/catfile rel2abs/;
+use File::Spec::Functions qw/catdir catfile rel2abs/;
 use HTML::Template;
 use Text::Typography qw/typography/;
 
@@ -24,7 +24,7 @@ sub output
 
 if (@ARGV < 1 ) {
   print(STDERR "Not enough operands\n");
-  print(STDERR "USAGE: " . basename($0) . " REPOS-FOLDER\n");
+  print(STDERR "USAGE: " . basename($0) . " REPOS-FOLDER GITSTREAK-FOLDER\n");
   exit(2);
 }
 my $git_template = HTML::Template->new(
@@ -50,5 +50,7 @@ foreach (sort { lc($a) cmp lc($b) } @repositories) {
   $repo_template->param(\%repo_data);
   output($repo_template, "index.html");
 }
-$git_template->param(repositories => \@table_data);
+$git_template->param(repositories => \@table_data, commit_streak =>
+    readpipe(catfile($ARGV[1], "gitstreak") . " " .
+    catdir($ARGV[0], "*.git") . " 2>/dev/null"));
 output($git_template, catfile($ARGV[0], "index.html"));
