@@ -100,7 +100,7 @@ end
 desc "Spit out the compressed homepage."
 file "public/index.html.compressed" => "public/index.html" do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  `gzip -9c public/index.html > public/index.html.compressed`
+  `gzip -9c public/index.html > #{task.name}`
 end
 
 desc "Spit out Google Webmaster Tools' Verification file."
@@ -138,7 +138,7 @@ end
 desc "Spit out the compressed art porfolio."
 file "public/art/index.html.compressed" => "public/art/index.html" do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  `gzip -9c public/art/index.html > public/art/index.html.compressed`
+  `gzip -9c public/art/index.html > #{task.name}`
 end
 
 desc "Spit out the Folder of Crap CGI script."
