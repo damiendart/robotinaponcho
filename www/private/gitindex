@@ -22,9 +22,9 @@ sub output
   system("gzip -9c $_[1] > $_[1].compressed");
 }
 
-if (@ARGV < 1 ) {
+if (@ARGV < 2 ) {
   print(STDERR "Not enough operands\n");
-  print(STDERR "USAGE: " . basename($0) . " REPOS-FOLDER GITSTREAK-FOLDER\n");
+  print(STDERR "USAGE: " . basename($0) . " REPOS-FOLDER GITSTREAK-BIN\n");
   exit(2);
 }
 my $git_template = HTML::Template->new(
@@ -50,8 +50,7 @@ foreach (sort { lc($a) cmp lc($b) } @repositories) {
   output($repo_template, "index.html");
 }
 my $classname;
-chomp(my $streak = readpipe(catfile($ARGV[1], "gitstreak") . " " .
-    catdir($ARGV[0], "*.git") . " 2>/dev/null"));
+chomp(my $streak = readpipe("$ARGV[1] --quiet " . catdir($ARGV[0], "*.git")));
 $classname = " commit-streak__streak--fire" if (split /\s+/, $streak)[0] > 6;
 $git_template->param(repositories => \@table_data, commit_streak => $streak,
     class => $classname);
