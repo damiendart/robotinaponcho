@@ -57,7 +57,19 @@ body {
 
 @if variable-exists(commit-streak) {
   /* p */.commit-streak {
-    margin: em($base-line-height / 2, $base-font-size) 0 0 0; } }
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+    /* span */ &__streak {
+      &--fire {
+        background: url("/assets/fire.gif") top center;
+        color: #000000;
+        display: inline-block;
+        font-weight: bold;
+        margin: em($base-line-height * -1, $base-font-size) 0 0 0;
+        padding: em($base-line-height, $base-font-size)
+            em($base-line-height / 4, $base-font-size) 0
+            em($base-line-height / 4, $base-font-size);
+        text-shadow: 0 0
+            em($base-line-height / 4, $base-font-size) #ffff00; } } } }
 
 /* div */.container {
   margin: em($base-line-height, $base-font-size) auto;

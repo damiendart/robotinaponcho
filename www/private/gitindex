@@ -37,20 +37,22 @@ my @repositories = grep { !/^\.\.?/ && /\.git$/ } readdir($directory);
 closedir($directory);
 foreach (sort { lc($a) cmp lc($b) } @repositories) {
   my $dir = pushd(catfile($ARGV[0], $_));
-  chomp(my $description = `git config --get gitweb.description`);
-  chomp(my $title = `git show -s --format=%s`);
-  my %repo_data = (description => typography($description),
+  chomp(my %repo_data = (
+      description => typography(`git config --get gitweb.description`),
       github_url => "https://github.com/damiendart/" . basename($_, ".git"),
       hash_short => `git log -1 --pretty=format:%h`,
       hash_long => `git log -1 --pretty=format:%H`,
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_,
-      last_commit_title => typography($title),
-      timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/");
+      last_commit_title => typography(`git show -s --format=%a`),
+      timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/"));
   push(@table_data, \%repo_data);
   $repo_template->param(\%repo_data);
   output($repo_template, "index.html");
 }
-$git_template->param(repositories => \@table_data, commit_streak =>
-    readpipe(catfile($ARGV[1], "gitstreak") . " " .
+my $classname;
+chomp(my $streak = readpipe(catfile($ARGV[1], "gitstreak") . " " .
     catdir($ARGV[0], "*.git") . " 2>/dev/null"));
+$classname = " commit-streak__streak--fire" if (split /\s+/, $streak)[0] > 6;
+$git_template->param(repositories => \@table_data, commit_streak => $streak,
+    class => $classname);
 output($git_template, catfile($ARGV[0], "index.html"));

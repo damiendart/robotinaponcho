@@ -32,7 +32,7 @@
               %span{:data => {:timestamp => "<TMPL_VAR NAME=\"timestamp\">"}}<> <TMPL_VAR NAME="last_commit">
               &nbsp;(<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">" title="<TMPL_VAR NAME="last_commit_title">"><code><TMPL_VAR NAME="hash_short"></code></a>)
           / /TMPL_LOOP
-      %p.commit-streak Current commit streak: <TMPL_VAR NAME="commit_streak">
+      %p.commit-streak Current commit streak: <span class="commit-streak__streak<TMPL_VAR NAME="class">"><TMPL_VAR NAME="commit_streak"></span>
       %nav.navigation
         %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site
     :javascript
