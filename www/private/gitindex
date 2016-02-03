@@ -15,10 +15,9 @@ use Text::Typography qw/typography/;
 
 sub output
 {
-  my $output = $_[0]->output;
   open(my $filehandle, ">", $_[1]) or die "Unable to open file for writing";
-  print($filehandle $output);
-  close($output);
+  $_[0]->output(print_to => $filehandle);
+  close($filehandle);
   system("gzip -9c $_[1] > $_[1].compressed");
 }
 
@@ -43,7 +42,7 @@ foreach (sort { lc($a) cmp lc($b) } @repositories) {
       hash_short => `git log -1 --pretty=format:%h`,
       hash_long => `git log -1 --pretty=format:%H`,
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_,
-      last_commit_title => typography(`git show -s --format=%a`),
+      last_commit_title => typography(`git show -s --format=format:%s`),
       timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/"));
   push(@table_data, \%repo_data);
   $repo_template->param(\%repo_data);
