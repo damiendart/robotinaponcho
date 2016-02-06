@@ -123,7 +123,7 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
-  @each $classname in kathryn, obtaincornhoop, radicalapps {
+  @each $classname in artwork, kathryn, radicalapps {
     &--#{$classname} {
       @include hidpi {
         background-image: url(/assets/#{$classname}@2x.png);
