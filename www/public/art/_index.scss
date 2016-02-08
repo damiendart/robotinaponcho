@@ -92,3 +92,12 @@ body {
     height: auto;
     margin: 0;
     max-width: 100%; } }
+
+.javascript {
+  .image {
+    opacity: 0;
+    transition: opacity 3s;
+    &--js-show {
+      opacity: 1; } } }
+
+
