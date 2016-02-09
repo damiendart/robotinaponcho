@@ -95,9 +95,13 @@ body {
 
 .javascript {
   .image {
+    @include transform(translate3d(-2.5%, 0, 0));
     opacity: 0;
-    transition: opacity 3s;
+    transition: opacity 1s, transform 1s;
+    &:nth-child(odd) {
+      @include transform(translate3d(2.5%, 0, 0)); }
     &--js-show {
+      @include transform(translate3d(0, 0, 0));
       opacity: 1; } } }
 
 
