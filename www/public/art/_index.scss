@@ -102,6 +102,15 @@ body {
       @include transform(translate3d(2.5%, 0, 0)); }
     &--js-show {
       @include transform(translate3d(0, 0, 0));
-      opacity: 1; } } }
+      opacity: 1; } }
+  .js-loading {
+    margin: em($base-line-height * -0.5, $base-font-size) 0 0 0;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transition: opacity 0.5s;
+    width: 100%;
+    &--hidden {
+      opacity: 0; } } }
 
 
