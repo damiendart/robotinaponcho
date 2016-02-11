@@ -1,9 +1,11 @@
 setTimeout(function() {
   if (document.readyState != "complete") {
-    var loading_text = document.createElement("div");
-    loading_text.className = "js-loading";
-    loading_text.appendChild(document.createTextNode("Loading images"));
-    document.body.appendChild(loading_text);
+    var loading = document.createElement("div");
+    loading.className = "js-loading";
+    for (var i = 0; i < 3; i++) {
+      loading.insertBefore(document.createElement("div"), loading.firstChild);
+    }
+    document.body.appendChild(loading);
   }
 }, 750);
 window.onload = function() {

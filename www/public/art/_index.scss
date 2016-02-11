@@ -97,20 +97,37 @@ body {
   .image {
     @include transform(translate3d(-2.5%, 0, 0));
     opacity: 0;
-    transition: opacity 1s, transform 1s;
+    transition: opacity 3s, transform 1s;
     &:nth-child(odd) {
       @include transform(translate3d(2.5%, 0, 0)); }
     &--js-show {
       @include transform(translate3d(0, 0, 0));
       opacity: 1; } }
   .js-loading {
-    margin: em($base-line-height * -0.5, $base-font-size) 0 0 0;
+    @include transform(translate(-50%, -50%));
+    left: 50%;
     position: fixed;
-    text-align: center;
     top: 50%;
-    transition: opacity 0.5s;
     width: 100%;
+    div {
+      @at-root {
+        @include keyframes(loading) {
+          0%, 80%, 100% {
+            @include transform(scale(0)); }
+          40% {
+            @include transform(scale(1.0)); } } }
+      @include animation(loading 1.4s infinite ease-in-out both);
+      background-color: $base-foreground-colour;
+      border-radius: 100%;
+      display: inline-block;
+      height: em($base-line-height, $base-font-size);
+      margin: 0 em($base-line-height / 4, $base-font-size) 0 0;
+      width: em($base-line-height, $base-font-size);
+      &:last-child {
+        margin: 0; }
+      &:nth-child(1) {
+        @include animation-delay(-0.32s); }
+      &:nth-child(2) {
+        @include animation-delay(-0.16s); } }
     &--hidden {
       opacity: 0; } } }
-
-
