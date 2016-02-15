@@ -2,8 +2,8 @@ TODO
 ====
 
   * Add SSL support.
-  * Add loading stuff to the art portfolio.
   * Add "Copy to clipboard" gubbins to Git repositories' homepages.
+  * Add READMEs to Git repositories' homepages.
   * Add [Windows Live Tile][1] and [iOS Web Clip][2] support.  
 
 [1]: <http://www.buildmypinnedsite.com/en>
