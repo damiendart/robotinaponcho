@@ -18,6 +18,8 @@
       %h1.page-header <TMPL_VAR NAME="repository">
       %p.blurb <TMPL_VAR NAME="description">
       %ul.action-list
+        %li.action-list__item
+          %a{:href => "README.html"} View project README
         %li.action-list__item Browse with <a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">">Gitweb</a> or on <a href="<TMPL_VAR NAME="github_url">">GitHub</a>
         %li.action-list__item
           <span>Git clone command: </span>
