@@ -36,6 +36,7 @@ my @repositories = grep { !/^\.\.?/ && /\.git$/ } readdir($directory);
 closedir($directory);
 foreach (sort { lc($a) cmp lc($b) } @repositories) {
   my $dir = pushd(catfile($ARGV[0], $_));
+  open(README, "README.html") or die "Unable to open file: $!";
   chomp(my %repo_data = (
       description => typography(`git config --get gitweb.description`),
       github_url => "https://github.com/damiendart/" . basename($_, ".git"),
@@ -43,8 +44,10 @@ foreach (sort { lc($a) cmp lc($b) } @repositories) {
       hash_long => `git log -1 --pretty=format:%H`,
       last_commit => `git log -1 --pretty=format:%ci`, repository => $_,
       last_commit_title => typography(`git show -s --format=format:%s`),
+      readme => join("", <README>),
       timestamp =>`git log -1 --pretty=format:%ct`, uri => "$_/"));
   push(@table_data, \%repo_data);
+  close(README);
   $repo_template->param(\%repo_data);
   output($repo_template, "index.html");
 }

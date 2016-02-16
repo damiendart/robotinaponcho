@@ -12,14 +12,14 @@
     %title <TMPL_VAR NAME="repository"> (Damien Dart's Git Repositories)
     :scss
       $action-list: true;
+      $readme: true;
       #{File.read(File.join(File.dirname(__FILE__), "public", "crap", "_index.scss"))}
   %body
     .container
       %h1.page-header <TMPL_VAR NAME="repository">
       %p.blurb <TMPL_VAR NAME="description">
+      .readme <TMPL_VAR NAME="readme">
       %ul.action-list
-        %li.action-list__item
-          %a{:href => "README.html"} View project README
         %li.action-list__item Browse with <a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">">Gitweb</a> or on <a href="<TMPL_VAR NAME="github_url">">GitHub</a>
         %li.action-list__item
           <span>Git clone command: </span>

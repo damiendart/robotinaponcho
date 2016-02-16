@@ -120,3 +120,22 @@ body {
         @media screen and (max-width: em($content-width, $base-font-size)) {
           &--collapse {
             display: none; } } } } } }
+
+@if variable-exists(readme) {
+  /* div */.readme {
+    @include calc(width,
+        "72ch + #{em($base-line-height * 2, $base-font-size)}");
+    @include transform(translateX(-50%));
+    background: #ffffff;
+    font-family: monospace;
+    overflow-x: auto;
+    margin: em($base-line-height / 2, $base-font-size) 0 0 50%;
+    padding: em($base-line-height, $base-font-size) 0;
+    @media screen and (max-width: em($content-width, $base-font-size)) {
+      @include transform(translateX(0));
+      margin-left: 0;
+      max-width: 100%; }
+    pre {
+      display: inline-block;
+      margin: 0;
+      padding: 0 em($base-line-height, $base-font-size); } } }
