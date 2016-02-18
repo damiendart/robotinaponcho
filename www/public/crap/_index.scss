@@ -32,6 +32,8 @@ body {
     font-size: percentage($base-font-size / 16px); }
   -webkit-font-smoothing: antialiasing;
   margin: 0;
+  @if variable-exists(readme) {
+    overflow-x: hidden; }
   // Internet Explorer 6 hates us and doesn't center block elements with just
   // "margin-left: auto; margin-right: auto" alone.
   text-align: center;
@@ -123,19 +125,14 @@ body {
 
 @if variable-exists(readme) {
   /* div */.readme {
-    @include calc(width,
-        "72ch + #{em($base-line-height * 2, $base-font-size)}");
-    @include transform(translateX(-50%));
     background: #ffffff;
     font-family: monospace;
-    overflow-x: auto;
-    margin: em($base-line-height / 2, $base-font-size) 0 0 50%;
-    padding: em($base-line-height, $base-font-size) 0;
+    margin: em($base-line-height, $base-font-size) -1000px 0 -1000px;
+    padding: em($base-line-height, $base-font-size) 1000px;
+    width: 100%;
     @media screen and (max-width: em($content-width, $base-font-size)) {
-      @include transform(translateX(0));
-      margin-left: 0;
-      max-width: 100%; }
+      padding: em($base-line-height / 2, $base-font-size) 1000px; }
     pre {
-      display: inline-block;
       margin: 0;
-      padding: 0 em($base-line-height, $base-font-size); } } }
+      @media screen and (max-width: em($content-width, $base-font-size)) {
+        overflow-x: auto; } } } }
