@@ -79,7 +79,6 @@ body {
   padding: em($base-line-height, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    border-radius: none;
     margin: 0;
     max-width: 100%;
     padding: em($base-line-height, $base-font-size); } }
@@ -103,7 +102,6 @@ body {
 
 /* p */.blurb {
   margin: em($base-line-height, $base-font-size) 0 0 0; }
-
 
 @if variable-exists(file-list-table) {
   /* table */.file-list-table {
