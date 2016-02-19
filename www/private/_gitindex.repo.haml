@@ -24,10 +24,10 @@
           <span>Git clone command: </span>
           %input{:readonly => true, :value => "git clone http://www.robotinaponcho.net/git/<TMPL_VAR NAME=\"repository\">"}
         %li.action-list--item Last commit: <span data-timestamp="<TMPL_VAR NAME="timestamp">"><TMPL_VAR NAME="last_commit"></span> (<a href="/git/gitweb.cgi?p=<TMPL_VAR NAME="repository">;h=<TMPL_VAR NAME="hash_long">"><code><TMPL_VAR NAME="hash_short"></code></a>)<br><i><TMPL_VAR NAME="last_commit_title"></i>
-      .readme <TMPL_VAR NAME="readme">
       %nav.navigation
         %a.navigation__link{:href => "\\git\\"} &larr; Damien Dart's Git Repositories
         %br/
         %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site
+    .readme <TMPL_VAR NAME="readme">
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}
