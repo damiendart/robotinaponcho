@@ -34,6 +34,6 @@
           / /TMPL_LOOP
       %p.commit-streak Current commit streak: <span class="commit-streak__streak<TMPL_VAR NAME="class">"><TMPL_VAR NAME="commit_streak"></span>
       %nav.navigation
-        %a.navigation__link{:href => "\\"} &larr; Damien Dart's Personal Site
+        %a.navigation__link{:href => "/"} &larr; Damien Dart's Personal Site
     :javascript
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "crap", "_index.js")} -c -m`}
