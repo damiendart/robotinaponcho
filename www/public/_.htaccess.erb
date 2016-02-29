@@ -49,28 +49,9 @@ SetEnv TZ Europe/London
 <IfModule mod_expires.c>
   ExpiresActive on
   ExpiresDefault "access plus 1 week"
-  ExpiresByType application/font-woff "access plus 1 week"
-  ExpiresByType application/javascript "access plus 1 week"
-  ExpiresByType application/vnd.ms-fontobjec "access plus 1 week"
   ExpiresByType application/xhtml+xml "access plus 0 seconds"
-  ExpiresByType application/x-font-ttf "access plus 1 week"
-  ExpiresByType font/opentype "access plus 1 week"
-  ExpiresByType image/gif "access plus 1 week"
-  ExpiresByType image/jpeg "access plus 1 week"
-  ExpiresByType image/png "access plus 1 week"
-  ExpiresByType image/svg+xml "access plus 1 week"
-  ExpiresByType image/x-icon "access plus 1 week"
-  ExpiresByType text/css "access plus 1 week"
   ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType text/plain "access plus 0 seconds"
-</IfModule>
-
-# Allow access to web fonts from other domains. For more information, see
-# <https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess#L45>.
-<IfModule mod_headers.c>
-  <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
-    Header set Access-Control-Allow-Origin "*"
-  </FilesMatch>
 </IfModule>
 
 <IfModule mod_mime.c>
@@ -98,13 +79,6 @@ SetEnv TZ Europe/London
 
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  # Remove file extensions from some URLs.
-  # (Keeping this around in case I need it again.)
-  # RewriteCond %{THE_REQUEST} ^.*/about\.html?
-  # RewriteRule ^(.*).html?$ /$1 [L,NE,R=permanent]
-  # RewriteCond %{REQUEST_FILENAME}\.html -f
-  # RewriteCond %{THE_REQUEST} ^.*/about?
-  # RewriteRule ^([^\.]+)$ $1.html [NC,L]
   # Remove "index.cgi" and "index.html" from URLs.
   RewriteCond %{THE_REQUEST} ^.*/index\.(cgi|html|html\.compressed)?
   RewriteRule ^(.*)index\.(cgi|html|html\.compressed)?$ /$1 [L,NE,R=permanent]
@@ -118,10 +92,4 @@ SetEnv TZ Europe/London
   RewriteCond %{REQUEST_URI} !^/crap/$
   RewriteCond %{REQUEST_URI} !^/git/gitweb.cgi$
   RewriteRule ^(.*)$ /$1? [R=permanent,L]
-  # Prevent hotlinking of Obtain Corn Hoop assets.
-  RewriteCond %{HTTP_REFERER} !^$
-  RewriteCond %{HTTP_REFERER} !google. [NC]
-  RewriteCond %{HTTP_REFERER} !^http://www.robotinaponcho.net/.*$ [NC]
-  RewriteCond %{HTTP_REFERER} !^http://blog.robotinaponcho.net/.*$ [NC]
-  RewriteRule \assets\.*$ - [F]
 </IfModule>
