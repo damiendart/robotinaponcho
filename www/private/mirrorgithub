@@ -58,6 +58,7 @@ if __name__ == "__main__":
             stdout=subprocess.PIPE).communicate()[0]))
       with open("description", "w") as f:
         f.write(repository["description"] + "\n")
+      open("git-daemon-export-ok", "a").close() # For "git http-backend".
       subprocess.check_call(["git", "update-server-info"])
       # HACK: Resets overstrict permissions after
       # "git update-server-info". For more information, see:
