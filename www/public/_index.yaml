@@ -11,7 +11,7 @@ projects:
   description: A graphic design portfolio website I built from scratch.
 -
   title: robotinaponcho
-  link: /git/robotinaponcho.git/
+  link: https://github.com/damiendart/robotinaponcho
   code_example: /git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115
   description: The source code to this very site. Uses all of the programming things.
 -
@@ -27,7 +27,7 @@ projects:
   description: A mobile app portfolio website I designed and built from scratch.
 -
   title: brainfuck
-  link: /git/brainfuck.git/
+  link: https://github.com/damiendart/brainfuck
   code_example: /git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38
   description: A simple brainfuck interpreter and embeddable library
       written in C.

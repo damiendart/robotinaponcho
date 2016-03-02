@@ -24,8 +24,7 @@ Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
 OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["private/gitindex.tmpl", "private/gitindex.repo.tmpl",
-    "public/.htaccess", "public/index.html", "public/index.html.compressed",
+    ["public/.htaccess", "public/index.html", "public/index.html.compressed",
     "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
     "public/art/index.html", "public/art/index.html.compressed",
     "public/crap/index.cgi"]
@@ -41,26 +40,6 @@ def tidyHTML(html_document)
   html_document = html_document.gsub(/}\s*(html|\.)/, "}\\1")
   html_document = html_document.gsub(/\s*<(\/)?(script|style)>\s*/m, "<\\1\\2>")
   return html_document
-end
-
-["gitindex", "gitindex.repo"].each do |template|
-  desc "Spit out the \"private/#{template}\" HTML template."
-  file "private/#{template}.tmpl" => FileList["private/_#{template}.haml"] +
-      FileList["public/crap/_index.{scss,js}"] do |task|
-    puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("private/_#{template}.haml")).render
-    output = output.gsub(/<!--.*-->\n/m, "")
-    output = tidyHTML(output)
-    output = Redcarpet::Render::SmartyPants.render(output)
-    # HACK: The SmartyPants parser doesn't like "HTMl::Template"'s tags
-    # being used for HTML element attribute values.
-    output = output.gsub(/&ldquo;/, "\"")
-    output = output.gsub(/&quot;/, "\"")
-    output = output.gsub(/&rdquo;/, "\"")
-    File.open(task.name, "w") do |file|
-      file.write(output)
-    end
-  end
 end
 
 ERROR_CODES.each do |error_code|
@@ -116,10 +95,9 @@ file "public/robots.txt" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
-    (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/"]).each do |path|
+    (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/", "git/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
-    file.write("Disallow: /git/gitweb.cgi\n")
   end
 end
 
