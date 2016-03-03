@@ -39,38 +39,6 @@ body {
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: percentage(($base-font-size * 0.875) / $base-font-size); } }
 
-@if variable-exists(action-list) {
-  /* ul */.action-list {
-    list-style: square;
-    margin: em($base-line-height / 2, $base-font-size) 0
-        0 em($base-line-height, $base-font-size);
-    padding: 0;
-    /* li */ &__item {
-      input {
-        font-family: $monospace;
-        width: 50%;
-        @media screen and (max-width: em($content-width, $base-font-size)) {
-          width: auto; } }
-      @media screen and (max-width: em($content-width, $base-font-size)) {
-        span {
-          display: none; } } } } }
-
-@if variable-exists(commit-streak) {
-  /* p */.commit-streak {
-    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
-    /* span */ &__streak {
-      &--fire {
-        background: url("/assets/fire.gif") top center;
-        color: #000000;
-        display: inline-block;
-        font-weight: bold;
-        margin: em($base-line-height * -1, $base-font-size) 0 0 0;
-        padding: em($base-line-height, $base-font-size)
-            em($base-line-height / 4, $base-font-size) 0
-            em($base-line-height / 4, $base-font-size);
-        text-shadow: 0 0
-            em($base-line-height / 4, $base-font-size) #ffff00; } } } }
-
 /* div */.container {
   margin: em($base-line-height, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
@@ -101,36 +69,19 @@ body {
 /* p */.blurb {
   margin: em($base-line-height, $base-font-size) 0 0 0; }
 
-@if variable-exists(file-list-table) {
-  /* table */.file-list-table {
-    border-collapse: collapse;
-    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
-    width: 100%;
-    /* tr */ &__row {
-      /* td, th */ &__cell {
-        padding: 0;
-        text-align: right;
-        /* td, th */ &--header {
-          font-weight: bold;
-          text-transform: uppercase; }
-        &:first-child {
-          text-align: left; }
-        @media screen and (max-width: em($content-width, $base-font-size)) {
-          &--collapse {
-            display: none; } } } } } }
-
-@if variable-exists(readme) {
-  /* div */.readme {
-    background: #ffffff;
-    margin: em($base-line-height * -1, $base-font-size) 0
-      em($base-line-height * 2, $base-font-size) 0;
-    overflow-x: auto;
-    padding: em($base-line-height, $base-font-size) 0;
-    @media screen and (max-width: em($content-width, $base-font-size)) {
-      margin: 0; }
-    max-width: 100%;
-    pre {
-      display: inline-block;
-      margin: 0 auto;
-      padding: 0 em($base-line-height, $base-font-size);
-      text-align: left; } } }
+/* table */.file-list-table {
+  border-collapse: collapse;
+  margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+  width: 100%;
+  /* tr */ &__row {
+    /* td, th */ &__cell {
+      padding: 0;
+      text-align: right;
+      /* td, th */ &--header {
+        font-weight: bold;
+        text-transform: uppercase; }
+      &:first-child {
+        text-align: left; }
+      @media screen and (max-width: em($content-width, $base-font-size)) {
+        &--collapse {
+          display: none; } } } } }
