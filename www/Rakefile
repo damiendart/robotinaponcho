@@ -95,7 +95,8 @@ file "public/robots.txt" do |task|
   puts "# Spitting out \"" + task.name + "\"."
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
-    (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/", "git/"]).each do |path|
+    (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/",
+        "git/*a=", "git/*.git"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
   end

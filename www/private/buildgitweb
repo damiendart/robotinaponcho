@@ -16,10 +16,9 @@ wget -O - https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -zxf -
     GITWEB_CSS="/assets/gitweb.css" GITWEB_FAVICON="/assets/git-favicon.png" \
     GITWEB_JS="/assets/gitweb.js" \
     GITWEB_LOGO="/assets/git-logo.png" \
-    GITWEB_PROJECTROOT="${1%/}/git" \
+    GITWEB_PROJECTROOT="${2%/}/git" \
     gitwebdir="${1%/}/git" gitweb install-gitweb &&
     mv ${1%/}/git/static/* ${1%/}/assets && rm -fr ${1%/}/git/static)
-sed -i -e "s/index, nofollow/noindex, nofollow/g" ${1%/}/git/gitweb.cgi
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
 $feature{"avatar"}{"default"} = ["gravatar"];
 $home_link_str = "Damien Dart&rsquo;s Git Repositories";

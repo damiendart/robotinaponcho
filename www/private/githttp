@@ -1,0 +1,10 @@
+#!/bin/sh
+
+USAGE=`cat <<USAGE;
+USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER GIT-HTTP-BACKEND`
+[ "$#" -lt 3 ] && { printf "Not enough operands\n$USAGE\n" >&2; exit 2; }
+for REPO in $(ls -1 "${2%/}/git/"); do
+  cp $3 ${1%/}/git/$REPO
+done
+	
+
