@@ -88,8 +88,7 @@ SetEnv TZ Europe/London
   RewriteCond %{HTTP:Accept-Encoding} gzip
   RewriteCond %{REQUEST_FILENAME}\.compressed -f
   RewriteRule ^(.+)$ $1.compressed
-  # Remove query strings from URLs. For more information, see
-  # <http://briancray.com/posts/htaccess-hack-remove-url-query-strings>.
+  # Remove query strings from URLs.
   RewriteCond %{QUERY_STRING} !=""
   RewriteCond %{REQUEST_URI} !^/crap/$
   RewriteCond %{REQUEST_URI} !^/git/
