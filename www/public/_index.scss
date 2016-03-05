@@ -68,7 +68,7 @@ body {
 /* footer */ .footer {
   @include clearfix;
   color: $base-foreground-colour;
-  margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+  margin: em($base-line-height, $base-font-size) 0 0 0;
   /* hr */ &__rule {
     display: none; }
   /* p */ &__copyright {
@@ -159,3 +159,15 @@ body {
     width: em($panel-width, $base-font-size);
     @media screen and (max-width: em($panel-width + $breakpoint-margin, $base-font-size)) {
       height: em($base-line-height * 10, $base-font-size); } } }
+
+/* ul */.secondary-project-list {
+  @include columns(3 em($panel-width, $base-font-size));
+  @include column-gap(em($base-line-height / 2, $base-font-size));
+  @include link-junk($base-background-colour, $base-foreground-colour, false);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* li */ &__item {
+    display: inline-block;
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+    padding: 0; } }

@@ -30,6 +30,13 @@
                   %a{:href => "#{project['link']}"} #{project["title"]}
                 %br>
                 = project["description"]
+      %ul.secondary-project-list
+        - data["other-projects"].each do |project|
+          %li.secondary-project-list__item.tk-adelle
+            %strong.tk-adelle-sans<
+              %a{:href => "#{project['link']}"} #{project["title"]}
+            %br>
+            = project["description"]
       %footer.footer.tk-adelle-sans
         %hr.footer__rule
         .footer__links
