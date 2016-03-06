@@ -10,7 +10,7 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :javascript
-      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_index.typekit.js")} -c -m`}
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_base.typekit.js")} -c -m`}
       document.documentElement.className += " javascript";
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "art", "_index.scss"))}

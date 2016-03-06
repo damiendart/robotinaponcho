@@ -1,0 +1,109 @@
+// Homepage Sass source for Damien Dart's personal website.
+//
+// Copyright (C) 2013-2016 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@import "bourbon";
+
+$base-background-colour: #eeeeee;
+$base-font-size: 24px;
+$base-foreground-colour: #000000;
+$base-line-height: $base-font-size * 1.5;
+$base-secondary-colour: #ccc;
+$base-code-background-colour: #ddd;
+$content-width: 720px;
+
+@mixin link-junk($background-colour, $foreground-colour, $underline: true,
+    $fancy-border: false ) {
+  a {
+    @include transition(background-color 0.1s, color 0.2s);
+    color: $foreground-colour;
+    @if ($fancy-border == true) {
+      border-radius: em($base-line-height / 4, $base-font-size);
+      margin: 0 em($base-line-height / -4, $base-font-size);
+      padding: 0 em($base-line-height / 4, $base-font-size);
+      white-space: pre; }
+    @if ($underline == false) {
+      text-decoration: none; }
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $foreground-colour;
+      color: $background-colour; }
+    &:visited {
+      background-color: $background-colour;
+      color: $foreground-colour; } } }
+
+body {
+  @include hidpi {
+    background-image: url("/assets/page-background@2x.png");
+    background-size: 1000px; }
+  background: $base-background-colour url("/assets/page-background.png")
+      no-repeat center -100px;
+  color: $base-foreground-colour;
+  // Setting the font size initially to 100% avoids the Internet
+  // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
+  // (see <http://alistapart.com/article/howtosizetextincss#section5>).
+  font: 100%/1.5 $helvetica;
+  @if ($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  -webkit-font-smoothing: antialiasing;
+  margin: 0;
+  // Internet Explorer 6 hates us and doesn't center block elements with
+  // just "margin-left: auto; margin-right: auto" alone.
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+  @media screen and (max-width: em($content-width, 16px)) {
+    background-size: 600px;
+    font-size: 87.5%; } }
+
+/* div */.body {
+  @include link-junk($base-background-colour, $base-foreground-colour);
+  margin: em($base-line-height * 2, $base-font-size) 0 0 0;
+  code {
+    background-color: $base-code-background-colour;
+    font-size: 75%; }
+  h2 {
+    font-size: 100%;
+    line-height: em($base-line-height, $base-font-size);
+    margin: em($base-line-height, $base-font-size) 0 0 0;
+    text-transform: uppercase; }
+  p {
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
+  pre {
+    background-color: $base-code-background-colour;
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+    overflow-x: auto;
+    padding: em($base-line-height / 2, $base-font-size); }
+  ul {
+    list-style: square;
+    margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+    padding: 0 0 0 em($base-line-height, $base-font-size); } }
+
+/* div */.page-content {
+  margin: em($base-line-height * 3, $base-font-size) auto;
+  text-align: left;
+  max-width: em($content-width, $base-font-size);
+  padding: 0 em($base-line-height, $base-font-size); }
+
+/* footer */ .footer {
+  color: $base-secondary-colour;
+  margin: em($base-line-height * 2, $base-font-size) 0 0 0;
+  text-align: center;
+  /* hr */ &__rule {
+    display: none; }
+  /* p */ &__copyright {
+    margin: 0; } }
+
+/* header */ .header {
+  $font-size: 72px;
+  $line-height: $font-size;
+  text-align: center;
+  /* div */ &__homepage-link {
+    @include link-junk($base-background-colour, $base-secondary-colour,
+        false, true);
+    font-weight: bold;
+    text-transform: uppercase; }
+  /* h1 */ &__title {
+    font-size: percentage($font-size / $base-font-size);
+    line-height: em($line-height, $font-size);
+    margin: 0; } }

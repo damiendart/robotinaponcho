@@ -23,14 +23,6 @@ Haml::Options.defaults[:remove_whitespace] = true
 Sass::Script::Number.precision = 8
 
 ERROR_CODES = %w{403 404 410}
-OUTPUT_FILES = ERROR_CODES.map{ |code| "public/#{code}.html" } +
-    ["public/.htaccess", "public/index.html", "public/index.html.compressed",
-    "public/googlefb3645e0f9f23eaf.html", "public/robots.txt",
-    "public/art/index.html", "public/art/index.html.compressed",
-    "public/crap/index.cgi"]
-
-CLOBBER.include(OUTPUT_FILES)
-task :default => OUTPUT_FILES
 
 def tidyHTML(html_document)
   html_document = html_document.gsub(/^\s*$\n/, "")
@@ -64,22 +56,32 @@ file "public/.htaccess" => "public/_.htaccess.erb" do |task|
   end
 end
 
-desc "Spit out the homepage."
-file "public/index.html" => FileList["public/_index.*"] do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  output = Haml::Engine.new(File.read("public/_index.haml")).render
-  output = output.gsub(/<!--.*-->\n/m, "")
-  output = tidyHTML(output)
-  output = Redcarpet::Render::SmartyPants.render(output)
-  File.open(task.name, "w") do |file|
-    file.write(output)
-  end
-end
+FileList["**/*_*.markdown"].each do |markdown_file|
+  output_filename = markdown_file.gsub(/_(.*).markdown/, "\\1.html")
 
-desc "Spit out the compressed homepage."
-file "public/index.html.compressed" => "public/index.html" do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  `gzip -9c public/index.html > #{task.name}`
+  desc "Spit out \"#{output_filename}\"."
+  file output_filename => FileList["public/_base.*", "Rakefile", 
+      markdown_file] do |task|
+    MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+        disable_indented_code_blocks: true, fenced_code_blocks: true)
+    content = File.read(markdown_file).split(/\s*==+\s*/)
+    puts "# Spitting out \"" + task.name + "\"."
+    output = Haml::Engine.new(File.read("public/_base.haml")).render(
+        Object.new, :page_body => MARKDOWN.render(content[-1]),
+        :page_title => content[0])
+    output = output.gsub(/<!--.*-->\n/m, "")
+    output = tidyHTML(output)
+    output = Redcarpet::Render::SmartyPants.render(output)
+    File.open(task.name, "w") do |file|
+      file.write(output)
+    end
+  end
+
+  desc "Spit out the compressed version of \"#{output_filename}\"."
+  file "#{output_filename}.compressed" => output_filename do |task|
+    puts "# Spitting out \"" + task.name + "\"."
+    `gzip -9c #{output_filename} > #{task.name}`
+  end
 end
 
 desc "Spit out Google Webmaster Tools' Verification file."
@@ -139,3 +141,8 @@ file "public/crap/index.cgi" => FileList["public/crap/_index.*"] do |task|
     file.write(output)
   end
 end
+
+OUTPUT_FILES = Rake.application.tasks.collect{ |task| task.name }.reject { 
+    |task_name| ["clean", "clobber"].include?(task_name) }
+CLOBBER.include(OUTPUT_FILES)
+task :default => OUTPUT_FILES
