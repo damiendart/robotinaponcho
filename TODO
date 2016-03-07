@@ -2,7 +2,9 @@ TODO
 ====
 
   * Add SSL support.
-  * Add "Copy to clipboard" gubbins to Git repositories' homepages.
+  * Add confetti to error pages.
+  * Use homepage design on The Folder of Crap.
+  * Add Git commit streak stuff to GitWeb's project list page.
   * Add [Windows Live Tile][1] and [iOS Web Clip][2] support.  
 
 [1]: <http://www.buildmypinnedsite.com/en>
