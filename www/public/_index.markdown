@@ -3,7 +3,7 @@ Damien Dart
 
 **Hello!** I'm [Damien Dart][1] and I make things, mainly involving
 computers and illustration. I occasionally do a bit of freelance
-work, so please [get in touch][2] if you have a project I can help with!
+work, so please [get in touch][2] if you have a project I can help with.
 
 [1]: </>
 [2]: <mailto:damiendart@pobox.com>
@@ -15,7 +15,7 @@ work, so please [get in touch][2] if you have a project I can help with!
     NearlyFreeSpeech.NET API a little easier to use.
   - I've written a simple [brainfuck interpreter in C][3], which
     includes an embeddable library (because reasons).
-  - The [source code to this very site][4] is also available.
+  - The [source code to this site][4] is also available.
 
 [2]: <https://pypi.python.org/pypi/nfsnapi>
 [3]: </git/?p=brainfuck.git>
