@@ -22,6 +22,9 @@ SetEnv TZ Europe/London
   Redirect gone /assets/drawings-on-tumblr-background.png
   Redirect gone /assets/foc-footer.html
   Redirect gone /assets/foc-header.html
+  Redirect gone /assets/html5shiv.js
+  Redirect gone /assets/jquery-1.11.3.min.js
+  Redirect gone /assets/moment.min.js
   Redirect gone /assets/site-header.png
   Redirect gone /assets/site-header@x2.png
   Redirect gone /assets/selectnav.min.js
@@ -36,6 +39,8 @@ SetEnv TZ Europe/London
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
   RedirectMatch gone /assets/blog-(background.png|style.css)
+  RedirectMatch gone /assets/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff)
+  RedirectMatch gone /assets/(kathryn|obtaincornhoop|radicalapps)(@2x)?.png
   RedirectMatch 301 /assets/jquery-1.10.1.min.js /assets/jquery-1.11.3.min.js
   RedirectMatch 301 /crap/glyphiconshalflings-regular.(eot|otf|svg|ttf|woff) \
       /assets/glyphiconshalflings-regular.$1

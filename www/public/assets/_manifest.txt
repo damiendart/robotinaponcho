@@ -1,12 +1,6 @@
+fire.gif
 git-favicon.png
 git-logo.png
 gitweb.css
 gitweb.js
-glyphiconshalflings-regular.eot
-glyphiconshalflings-regular.otf
-glyphiconshalflings-regular.svg
-glyphiconshalflings-regular.ttf
-glyphiconshalflings-regular.woff
-html5shiv.js
-jquery-1.11.3.min.js
-moment.min.js
+page-background.png
