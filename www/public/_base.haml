@@ -13,14 +13,12 @@
       #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_base.typekit.js")} -c -m`}
     :scss
       #{File.read(File.join(File.dirname(__FILE__), "public", "_base.scss"))}
-    %title Damien Dart's Personal Site (www.robotinaponcho.net)
+    %title #{page_title} (www.robotinaponcho.net)
   %body
-    .page-content
-      %header.header
-        %div.header__homepage-link
-          %a{:href => "/"} Damien Dart's Personal Site
-        %h1.header__title= page_title
-      .body= page_body
-      %footer.footer
-        %hr.footer__rule
-        %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
+    %header.header
+      %a.header__homepage-link{:href => "/"}
+        .header__homepage-link__container www.robotinaponcho.net
+    %article.body= page_body
+    %footer.footer
+      %hr.footer__rule
+      %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart

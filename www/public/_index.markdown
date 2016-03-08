@@ -1,5 +1,5 @@
-Damien Dart
-===========
+Damien Dart's Homepage
+======================
 
 **Hello!** I'm [Damien Dart][1] and I make things, mainly involving
 computers and illustration. I occasionally do a bit of freelance

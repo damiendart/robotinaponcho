@@ -8,30 +8,25 @@
 
 $base-background-colour: #eeeeee;
 $base-font-size: 24px;
-$base-foreground-colour: #000000;
+$base-foreground-colour: #222222;
+$base-header-background-colour: #ffffff;
+$base-header-foreground-colour: $base-foreground-colour;
 $base-line-height: $base-font-size * 1.5;
-$base-secondary-colour: #ccc;
-$base-code-background-colour: #ddd;
+$base-secondary-colour: #cccccc;
+$base-code-background-colour: #dddddd;
 $content-width: 720px;
 
-@mixin link-junk($background-colour, $foreground-colour, $underline: true,
-    $fancy-border: false ) {
-  a {
-    @include transition(background-color 0.1s, color 0.2s);
-    color: $foreground-colour;
-    @if ($fancy-border == true) {
-      border-radius: em($base-line-height / 4, $base-font-size);
-      margin: 0 em($base-line-height / -4, $base-font-size);
-      padding: 0 em($base-line-height / 4, $base-font-size);
-      white-space: pre; }
-    @if ($underline == false) {
-      text-decoration: none; }
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $foreground-colour;
-      color: $background-colour; }
-    &:visited {
-      background-color: $background-colour;
-      color: $foreground-colour; } } }
+@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
+  @include transition(background-color 0.1s, color 0.2s);
+  color: $foreground-colour;
+  @if ($underline == false) {
+    text-decoration: none; }
+  &:active, &:focus, &:hover, &:visited:hover {
+    background-color: $foreground-colour;
+    color: $background-colour; }
+  &:visited {
+    background-color: $background-colour;
+    color: $foreground-colour; } }
 
 body {
   @include hidpi {
@@ -57,15 +52,28 @@ body {
     font-size: 87.5%; } }
 
 // HACK: Minimise the severity of FOUT.
-header, h2 {
+h1, h2, footer, header {
   font-family: sans-serif; }
 
-/* div */.body {
-  @include link-junk($base-background-colour, $base-foreground-colour);
-  margin: em($base-line-height * 2, $base-font-size) 0 0 0;
+/* article */.body {
+  margin: em($base-line-height * 3, $base-font-size) auto
+      em($base-line-height * 2, $base-font-size) auto;
+  text-align: left;
+  max-width: em($content-width, $base-font-size);
+  padding: 0 em($base-line-height, $base-font-size);
+  a {
+    @include link-junk($base-background-colour, $base-foreground-colour); }
   code {
     background-color: $base-code-background-colour;
     font-size: 75%; }
+  h1 {
+    $font-size: $base-font-size * 2;
+    @include font-feature-settings("calt", "clig", "liga");
+    font-size: percentage($font-size / $base-font-size);
+    font-variant-ligatures: common-ligatures contextual;
+    line-height: em($font-size, $font-size);
+    margin: 0 0 em($base-line-height, $font-size) 0;
+    text-rendering: optimizeLegibility; }
   h2 {
     font-size: 100%;
     line-height: em($base-line-height, $base-font-size);
@@ -83,15 +91,10 @@ header, h2 {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
     padding: 0 0 0 em($base-line-height, $base-font-size); } }
 
-/* div */.page-content {
-  margin: em($base-line-height * 3, $base-font-size) auto;
-  text-align: left;
-  max-width: em($content-width, $base-font-size);
-  padding: 0 em($base-line-height, $base-font-size); }
-
 /* footer */ .footer {
   color: $base-secondary-colour;
-  margin: em($base-line-height * 2, $base-font-size) 0 0 0;
+  margin: em($base-line-height * 2, $base-font-size) 0
+      em($base-line-height * 3, $base-font-size) 0;
   text-align: center;
   /* hr */ &__rule {
     display: none; }
@@ -99,18 +102,15 @@ header, h2 {
     margin: 0; } }
 
 /* header */ .header {
-  $font-size: 72px;
-  $line-height: $font-size;
-  text-align: center;
-  /* div */ &__homepage-link {
-    @include link-junk($base-background-colour, $base-secondary-colour,
-        false, true);
+  text-align: left;
+  /* a */ &__homepage-link {
+    @include link-junk($base-header-background-colour,
+        $base-header-foreground-colour, false);
+    background-color: $base-header-background-colour;
+    display: block;
     font-weight: bold;
-    text-transform: uppercase; }
-  /* h1 */ &__title {
-    @include font-feature-settings("calt", "clig", "liga");
-    font-size: percentage($font-size / $base-font-size);
-    font-variant-ligatures: common-ligatures contextual;
-    line-height: em($line-height, $font-size);
-    margin: 0;
-    text-rendering: optimizeLegibility; } }
+    /* div */ &__container {
+      margin: 0 auto;
+      max-width: em($content-width, $base-font-size);
+      padding: em($base-line-height / 4, $base-font-size)
+          em($base-line-height, $base-font-size); } } }
