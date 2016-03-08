@@ -98,7 +98,7 @@ file "public/robots.txt" do |task|
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
     (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/",
-        "git/*a=", "git/*.git"]).each do |path|
+        "git/*a=", "git/*.git/"]).each do |path|
       file.write("Disallow: /#{path}\n")
     end
   end
