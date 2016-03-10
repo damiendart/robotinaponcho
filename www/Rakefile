@@ -104,24 +104,6 @@ file "public/robots.txt" do |task|
   end
 end
 
-desc "Spit out the art porfolio."
-file "public/art/index.html" => FileList["public/art/_index.*"] do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  output = Haml::Engine.new(File.read("public/art/_index.haml")).render
-  output = output.gsub(/<!--.*-->\n/m, "")
-  output = tidyHTML(output)
-  output = Redcarpet::Render::SmartyPants.render(output)
-  File.open(task.name, "w") do |file|
-    file.write(output)
-  end
-end
-
-desc "Spit out the compressed art porfolio."
-file "public/art/index.html.compressed" => "public/art/index.html" do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  `gzip -9c public/art/index.html > #{task.name}`
-end
-
 OUTPUT_FILES = Rake.application.tasks.collect{ |task| task.name }.reject { 
     |task_name| ["clean", "clobber"].include?(task_name) }
 CLOBBER.include(OUTPUT_FILES)
