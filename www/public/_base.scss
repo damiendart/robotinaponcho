@@ -7,14 +7,14 @@
 @import "bourbon";
 
 $base-background-colour: #eeeeee;
-$base-font-size: 24px;
+$base-font-size: 18px;
 $base-foreground-colour: #222222;
 $base-header-background-colour: #ffffff;
 $base-header-foreground-colour: $base-foreground-colour;
 $base-line-height: $base-font-size * 1.5;
 $base-secondary-colour: #cccccc;
 $base-code-background-colour: #dddddd;
-$content-width: 720px;
+$content-width: $base-font-size * 30;
 
 @mixin link-junk($background-colour, $foreground-colour, $underline: true) {
   @include transition(background-color 0.1s, color 0.2s);
