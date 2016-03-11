@@ -62,6 +62,9 @@ end
 
 FileList["**/*.markdown"].each do |markdown_file|
   output_filename = markdown_file.gsub(/(.*).markdown/, "\\1.html")
+  if output_filename !~ /index/
+    output_filename.gsub!(".html", "/index.html")
+  end
   output_filename.gsub!("pages", "public")
 
   desc "Spit out \"#{output_filename}\"."
