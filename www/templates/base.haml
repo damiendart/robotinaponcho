@@ -10,9 +10,9 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :javascript
-      #{`uglifyjs #{File.join(File.dirname(__FILE__), "public", "_base.typekit.js")} -c -m`}
+      #{`uglifyjs #{File.join(File.dirname(__FILE__), "templates", "base.typekit.js")} -c -m`}
     :scss
-      #{File.read(File.join(File.dirname(__FILE__), "public", "_base.scss"))}
+      #{File.read(File.join(File.dirname(__FILE__), "templates", "base.scss"))}
     %title #{page_title} (www.robotinaponcho.net)
   %body
     %header.header

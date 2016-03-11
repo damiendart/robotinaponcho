@@ -38,11 +38,12 @@ end
 
 ERROR_CODES.each do |error_code|
   desc "Spit out the #{error_code} HTTP error document."
-  file "public/#{error_code}.html" => FileList["public/_error.*"] do |task|
+  file "public/#{error_code}.html" => FileList["templates/error.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("public/_error.haml")).render(
+    output = Haml::Engine.new(File.read("templates/error.haml")).render(
         Object.new, :error_code => error_code)
     output = tidyHTML(output)
+    mkdir_p task.name.pathmap("%d")
     File.open(task.name, "w") do |file|
       file.write(output)
     end
@@ -50,28 +51,31 @@ ERROR_CODES.each do |error_code|
 end
 
 desc "Spit out \".htaccess\"."
-file "public/.htaccess" => "public/_.htaccess.erb" do |task|
+file "public/.htaccess" => "templates/.htaccess.erb" do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  output = ERB.new(File.read("public/_.htaccess.erb"), nil, "-").result()
+  output = ERB.new(File.read("templates/.htaccess.erb"), nil, "-").result()
+  mkdir_p task.name.pathmap("%d")
   File.open(task.name, "w") do |file|
     file.write(output)
   end
 end
 
-FileList["**/*_*.markdown"].each do |markdown_file|
-  output_filename = markdown_file.gsub(/_(.*).markdown/, "\\1.html")
+FileList["**/*.markdown"].each do |markdown_file|
+  output_filename = markdown_file.gsub(/(.*).markdown/, "\\1.html")
+  output_filename.gsub!("pages", "public")
 
   desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["public/_base.*", "Rakefile", 
+  file output_filename => FileList["templates/base.*", "Rakefile", 
       markdown_file] do |task|
     page_body = File.read(markdown_file)
     puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("public/_base.haml")).render(
+    output = Haml::Engine.new(File.read("templates/base.haml")).render(
         Object.new, :page_body => MARKDOWN.render(page_body),
         :page_title => page_body.split(/\s*==+\s*/)[0])
     output = output.gsub(/<!--.*-->\n/m, "")
     output = tidyHTML(output)
     output = Redcarpet::Render::SmartyPants.render(output)
+    mkdir_p task.name.pathmap("%d")
     File.open(task.name, "w") do |file|
       file.write(output)
     end
@@ -87,6 +91,7 @@ end
 desc "Spit out Google Webmaster Tools' Verification file."
 file "public/googlefb3645e0f9f23eaf.html" do |task|
   puts "# Spitting out \"" + task.name + "\"."
+  mkdir_p task.name.pathmap("%d")
   File.open(task.name, "w") do |file|
     file.write("google-site-verification: " + File.basename(task.name) + "\n")
   end
@@ -95,6 +100,7 @@ end
 desc "Spit out \"robots.txt\"."
 file "public/robots.txt" do |task|
   puts "# Spitting out \"" + task.name + "\"."
+  mkdir_p task.name.pathmap("%d")
   File.open(task.name, "w") do |file|
     file.write("User-agent: *\n")
     (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/",
