@@ -67,7 +67,7 @@ FileList["**/*.markdown"].each do |markdown_file|
   output_filename.gsub!("pages", "public")
 
   desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["templates/base.*", "Rakefile", 
+  file output_filename => FileList["templates/base.*", "Rakefile",
       markdown_file] do |task|
     page_body = File.read(markdown_file)
     puts "# Spitting out \"" + task.name + "\"."
@@ -112,7 +112,7 @@ file "public/robots.txt" do |task|
   end
 end
 
-OUTPUT_FILES = Rake.application.tasks.collect{ |task| task.name }.reject { 
+OUTPUT_FILES = Rake.application.tasks.collect{ |task| task.name }.reject {
     |task_name| ["clean", "clobber"].include?(task_name) }
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES
