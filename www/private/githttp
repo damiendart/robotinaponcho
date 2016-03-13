@@ -6,5 +6,3 @@ USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER GIT-HTTP-BACKEND`
 for REPO in $(ls -1 "${2%/}/git/"); do
   cp $3 ${1%/}/git/$REPO
 done
-	
-
