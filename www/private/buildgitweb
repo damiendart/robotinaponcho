@@ -24,7 +24,7 @@ cat << "STYLE" >> ${1%/}/assets/gitweb.css
 
 /* "gitstreak" stuff */
 
-span.fire { 
+span.fire {
 	background: url("/assets/fire.gif") top center;
 	color: white;
 	display: inline-block;
