@@ -31,6 +31,7 @@ span.fire {
 	font-weight: bold;
 	margin: -3em 0 -0.25em 0;
 	padding: 3em 0.5em 0.25em 0.5em;
+	pointer-events: none;
 }
 STYLE
 cat << 'CONFIG' > ${2%/}/gitweb_config.perl
