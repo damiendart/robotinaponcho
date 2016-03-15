@@ -1,12 +1,16 @@
 Damien Dart's Homepage
 ======================
 
-**Hello!** I'm [Damien Dart][1] and I occasionally make things.
+<img alt="" class="robotinaponcho-image"
+    src="/assets/robotinaponcho.png"
+    srcset="/assets/robotinaponcho@2x.png 2x">
+
+**Hello!** I'm [Damien Dart][1] and I occasionally make things, mainly nerdy and illustration stuff.
 
 [1]: </>
 
-  - My [open-source code][2] (see also [GitHub][3]).
-  - My [doodles and drawings][4] (mainly doodles).
+  - My various [open-source projects][2] (also hosted on [GitHub][3]).
+  - My [doodles and drawings][4].
   - I've built a few websites: [Kathryn Craigdaillie Designs (2015)][5],
     a graphic design portfolio website, and [Radical Apps (2014)][6], a
     mobile app showcase website.

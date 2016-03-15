@@ -3,3 +3,5 @@ git-favicon.png
 git-logo.png
 gitweb.css
 gitweb.js
+robotinaponcho.png
+robotinaponcho@2x.png
