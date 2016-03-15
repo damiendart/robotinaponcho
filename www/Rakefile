@@ -49,16 +49,6 @@ ERROR_CODES.each do |error_code|
   end
 end
 
-desc "Spit out \".htaccess\"."
-file "public/.htaccess" => ".htaccess.erb" do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  output = ERB.new(File.read(".htaccess.erb"), nil, "-").result()
-  mkdir_p task.name.pathmap("%d")
-  File.open(task.name, "w") do |file|
-    file.write(output)
-  end
-end
-
 FileList["*.markdown"].each do |markdown_file|
   output_filename = markdown_file.gsub(/(.*).markdown/, "\\1.html")
   if output_filename !~ /index/
@@ -87,28 +77,6 @@ FileList["*.markdown"].each do |markdown_file|
   file "#{output_filename}.compressed" => output_filename do |task|
     puts "# Spitting out \"" + task.name + "\"."
     `gzip -9c #{output_filename} > #{task.name}`
-  end
-end
-
-desc "Spit out Google Webmaster Tools' Verification file."
-file "public/googlefb3645e0f9f23eaf.html" do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  mkdir_p task.name.pathmap("%d")
-  File.open(task.name, "w") do |file|
-    file.write("google-site-verification: " + File.basename(task.name) + "\n")
-  end
-end
-
-desc "Spit out \"robots.txt\"."
-file "public/robots.txt" do |task|
-  puts "# Spitting out \"" + task.name + "\"."
-  mkdir_p task.name.pathmap("%d")
-  File.open(task.name, "w") do |file|
-    file.write("User-agent: *\n")
-    (ERROR_CODES.map{ |c| "#{c}.html" } + ["assets/",
-        "git/*a=", "git/*.git/"]).each do |path|
-      file.write("Disallow: /#{path}\n")
-    end
   end
 end
 
