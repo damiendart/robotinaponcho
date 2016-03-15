@@ -11,7 +11,7 @@
     %meta{:content => "nofollow, noindex", :name => "robots"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :scss
-      #{File.read(File.join(File.dirname(__FILE__), "templates", "error.scss"))}
+      #{File.read("error.scss")}
     %title #{error_code} (www.robotinaponcho.net)
   %body
     %h1.error_code<

@@ -37,9 +37,9 @@ end
 
 ERROR_CODES.each do |error_code|
   desc "Spit out the #{error_code} HTTP error document."
-  file "public/#{error_code}.html" => FileList["templates/error.*"] do |task|
+  file "public/#{error_code}.html" => FileList["error.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("templates/error.haml")).render(
+    output = Haml::Engine.new(File.read("error.haml")).render(
         Object.new, :error_code => error_code)
     output = tidyHTML(output)
     mkdir_p task.name.pathmap("%d")
@@ -50,28 +50,28 @@ ERROR_CODES.each do |error_code|
 end
 
 desc "Spit out \".htaccess\"."
-file "public/.htaccess" => "templates/.htaccess.erb" do |task|
+file "public/.htaccess" => ".htaccess.erb" do |task|
   puts "# Spitting out \"" + task.name + "\"."
-  output = ERB.new(File.read("templates/.htaccess.erb"), nil, "-").result()
+  output = ERB.new(File.read(".htaccess.erb"), nil, "-").result()
   mkdir_p task.name.pathmap("%d")
   File.open(task.name, "w") do |file|
     file.write(output)
   end
 end
 
-FileList["**/*.markdown"].each do |markdown_file|
+FileList["*.markdown"].each do |markdown_file|
   output_filename = markdown_file.gsub(/(.*).markdown/, "\\1.html")
   if output_filename !~ /index/
     output_filename.gsub!(".html", "/index.html")
   end
-  output_filename.gsub!("pages", "public")
+  output_filename = "public/" + output_filename
 
   desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["templates/base.*", "Rakefile",
+  file output_filename => FileList["base.*", "Rakefile",
       markdown_file] do |task|
     page_body = File.read(markdown_file)
     puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("templates/base.haml")).render(
+    output = Haml::Engine.new(File.read("base.haml")).render(
         Object.new, :page_body => MARKDOWN.render(page_body),
         :page_title => page_body.split(/\s*==+\s*/)[0])
     output = output.gsub(/<!--.*-->\n/m, "")
