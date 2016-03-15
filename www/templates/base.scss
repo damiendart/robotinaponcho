@@ -6,34 +6,17 @@
 
 @import "bourbon";
 
-$base-background-colour: #eeeeee;
+$base-background-colour: #ffffff;
 $base-font-size: 18px;
-$base-foreground-colour: #222222;
-$base-header-background-colour: #ffffff;
-$base-header-foreground-colour: $base-foreground-colour;
+$base-foreground-colour: #000000;
 $base-line-height: $base-font-size * 1.5;
+$base-link-colour: blue;
 $base-secondary-colour: #cccccc;
 $base-code-background-colour: #dddddd;
 $content-width: $base-font-size * 30;
 
-@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
-  @include transition(background-color 0.1s, color 0.2s);
-  color: $foreground-colour;
-  @if ($underline == false) {
-    text-decoration: none; }
-  &:active, &:focus, &:hover, &:visited:hover {
-    background-color: $foreground-colour;
-    color: $background-colour; }
-  &:visited {
-    background-color: $background-colour;
-    color: $foreground-colour; } }
-
 body {
-  @include hidpi {
-    background-image: url("/assets/page-background@2x.png");
-    background-size: 1000px; }
-  background: $base-background-colour url("/assets/page-background.png")
-      no-repeat center -100px;
+  background-color: $base-background-colour;
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
@@ -56,13 +39,17 @@ h1, h2, footer, header {
   font-family: sans-serif; }
 
 /* article */.body {
-  margin: em($base-line-height * 3, $base-font-size) auto
-      em($base-line-height * 2, $base-font-size) auto;
+  margin: em(($base-line-height * 2) - 1px, $base-font-size) auto;
   text-align: left;
   max-width: em($content-width, $base-font-size);
   padding: 0 em($base-line-height, $base-font-size);
   a {
-    @include link-junk($base-background-colour, $base-foreground-colour); }
+    color: $base-link-colour;
+    text-decoration: none;
+    &:active, &:focus, &:hover, &:visited:hover {
+      text-decoration: underline; }
+    &:visited {
+      color: $base-link-colour; } }
   code {
     background-color: $base-code-background-colour;
     font-size: 75%; }
@@ -95,8 +82,7 @@ h1, h2, footer, header {
 
 /* footer */ .footer {
   color: $base-secondary-colour;
-  margin: em($base-line-height * 2, $base-font-size) 0
-      em($base-line-height * 3, $base-font-size) 0;
+  margin: em($base-line-height * 2, $base-font-size) 0;
   text-align: center;
   /* hr */ &__rule {
     display: none; }
@@ -105,12 +91,17 @@ h1, h2, footer, header {
 
 /* header */ .header {
   text-align: left;
+  border-bottom: em(1px, $base-font-size) solid $base-secondary-colour;
   /* a */ &__homepage-link {
-    @include link-junk($base-header-background-colour,
-        $base-header-foreground-colour, false);
-    background-color: $base-header-background-colour;
+    background-color: $base-background-colour;
+    color: $base-secondary-colour;
     display: block;
-    font-weight: bold;
+    text-decoration: none;
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $base-link-colour;
+      color: $base-background-colour; }
+    &:visited {
+      color: $base-secondary-colour; }
     /* div */ &__container {
       margin: 0 auto;
       max-width: em($content-width, $base-font-size);

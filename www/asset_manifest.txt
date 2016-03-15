@@ -3,4 +3,3 @@ git-favicon.png
 git-logo.png
 gitweb.css
 gitweb.js
-page-background.png
