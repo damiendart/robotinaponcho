@@ -91,15 +91,14 @@ h1, h2, footer, header {
 
 /* header */ .header {
   text-align: left;
-  border-bottom: em(1px, $base-font-size) solid $base-secondary-colour;
   /* a */ &__homepage-link {
-    background-color: $base-background-colour;
+    border-bottom: em(1px, $base-font-size) solid $base-secondary-colour;
     color: $base-secondary-colour;
     display: block;
     text-decoration: none;
     &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $base-link-colour;
-      color: $base-background-colour; }
+      border-color: $base-link-colour;
+      color: $base-link-colour; }
     &:visited {
       color: $base-secondary-colour; }
     /* div */ &__container {
