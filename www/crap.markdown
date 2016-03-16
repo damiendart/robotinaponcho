@@ -1,3 +1,7 @@
+<!--
+  {"title": "The Folder of Crap", "output": "public/crap/index.html"}
+-->
+
 The Folder of Crap
 ==================
 

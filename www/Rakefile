@@ -4,9 +4,9 @@
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
 
-require "erb"
-require "rubygems"
 require "bundler/setup"
+require "json"
+require "rubygems"
 Bundler.require(:default)
 
 Haml::Filters::Scss.options[:cache] = false
@@ -14,7 +14,6 @@ Haml::Filters::Scss.options[:style] = :compressed
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
-Haml::Options.defaults[:remove_whitespace] = true
 # Increase the degree of precision of values that Sass spits out to
 # prevent some browsers from rendering elements a pixel narrower than
 # intended. See <https://github.com/nex3/sass/issues/319> for more
@@ -23,61 +22,31 @@ Sass::Script::Number.precision = 8
 
 MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     disable_indented_code_blocks: true, fenced_code_blocks: true)
-
-def tidyHTML(html)
-  html = html.gsub(/>\s+</, "><") # Remove whitespace between HTML tags.
-  html = html.gsub(/^\s*$\n/, "")
-  html = html.gsub(%r{^\s*//.*\n}, "")
-  html = html.gsub(/\s*<(\/)?(script|style)>\s*/m, "<\\1\\2>")
-  return html
-end
-
-%w{403 404 410}.each do |error_code|
-  desc "Spit out the #{error_code} HTTP error document."
-  file "public/#{error_code}.html" => FileList["error.*"] do |task|
-    puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("error.haml")).render(
-        Object.new, :error_code => error_code)
-    output = tidyHTML(output)
-    mkdir_p task.name.pathmap("%d")
-    File.open(task.name, "w") do |file|
-      file.write(output)
-    end
-  end
-end
+OUTPUT_FILES = []
 
 FileList["*.markdown"].each do |markdown_file|
-  output_filename = markdown_file.gsub(/(.*).markdown/, "\\1.html")
-  if output_filename !~ /index/
-    output_filename.gsub!(".html", "/index.html")
-  end
-  output_filename = "public/" + output_filename
+  content = Nokogiri::HTML::DocumentFragment.parse(
+      MARKDOWN.render(File.read(markdown_file)))
+  metadata = JSON.parse(content.at_xpath("comment()[1]").text)
+  OUTPUT_FILES << metadata["output"]
 
-  desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["base.*", "Rakefile",
-      markdown_file] do |task|
-    page_body = File.read(markdown_file)
-    puts "# Spitting out \"" + task.name + "\"."
-    output = Haml::Engine.new(File.read("base.haml")).render(
-        Object.new, :page_body => MARKDOWN.render(page_body),
-        :page_title => page_body.split(/\s*==+\s*/)[0])
-    output = output.gsub(/<!--.*-->\n/m, "")
-    output = tidyHTML(output)
-    output = Redcarpet::Render::SmartyPants.render(output)
+  desc "Spit out \"#{metadata["title"]}\" HTML."
+  file metadata["output"] => FileList["base.*", markdown_file] do |task|
+    puts "# Spitting out \"#{metadata["output"]}\"."
+    output = Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
+        File.read("base.haml")).render(Object.new, 
+        {:body => content.to_html}.merge(metadata)))
     mkdir_p task.name.pathmap("%d")
     File.open(task.name, "w") do |file|
       file.write(output)
     end
-  end
-
-  desc "Spit out the compressed version of \"#{output_filename}\"."
-  file "#{output_filename}.compressed" => output_filename do |task|
-    puts "# Spitting out \"" + task.name + "\"."
-    `gzip -9c #{output_filename} > #{task.name}`
+    # Versions of Tiny prior to version 5 crap out when given HTML5.
+    if `tidy -v` =~ /version 5/
+      `tidy --hide-comments yes --quiet yes --tidy-mark false \
+          --wrap 0 --write-back true #{task.name}`
+    end
   end
 end
 
-OUTPUT_FILES = Rake.application.tasks.collect{ |task| task.name }.reject {
-    |task_name| ["clean", "clobber"].include?(task_name) }
 CLOBBER.include(OUTPUT_FILES)
 task :default => OUTPUT_FILES

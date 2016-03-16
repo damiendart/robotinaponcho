@@ -1,3 +1,7 @@
+<!--
+  {"title": "Drawings and Doodles", "output": "public/art/index.html"}
+-->
+
 Drawings and Doodles
 ====================
 

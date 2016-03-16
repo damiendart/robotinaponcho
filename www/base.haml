@@ -9,16 +9,15 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    :javascript
-      #{`uglifyjs base.typekit.js -c -m`}
+    %script #{`uglifyjs base.typekit.js -c --inline-script -m`}
     :scss
       #{File.read("base.scss")}
-    %title #{page_title} (www.robotinaponcho.net)
+    %title #{title} (www.robotinaponcho.net)
   %body
     %header.header
       %a.header__homepage-link{:href => "/"}
         .header__homepage-link__container www.robotinaponcho.net
-    %article.body= page_body
+    %article.body= body
     %footer.footer
       %hr.footer__rule
       %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart

@@ -1,3 +1,7 @@
+<!--
+  {"title": "Damien Dart's Homepage", "output": "public/index.html"}
+-->
+
 Damien Dart's Homepage
 ======================
 

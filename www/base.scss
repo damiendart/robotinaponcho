@@ -60,7 +60,13 @@ h1, h2, footer, header {
     font-variant-ligatures: common-ligatures contextual;
     line-height: em($font-size, $font-size);
     margin: 0 0 em($base-line-height, $font-size) 0;
-    text-rendering: optimizeLegibility; }
+    text-rendering: optimizeLegibility;
+    &.http-error {
+      $font-size: $base-line-height * 6;
+      text-align: center;
+      font-size: percentage($font-size / $base-font-size);
+      font-family: monospace;
+      line-height: 1em; } }
   h2 {
     font-size: 100%;
     line-height: em($base-line-height, $base-font-size);
@@ -106,6 +112,7 @@ h1, h2, footer, header {
       max-width: em($content-width, $base-font-size);
       padding: em($base-line-height / 4, $base-font-size)
           em($base-line-height, $base-font-size); } } }
+
 
 /* img */.robotinaponcho-image {
   @include prefixer(shape-outside, url("/assets/robotinaponcho.png"), webkit spec);

@@ -1,0 +1,5 @@
+<!--
+  {"title": "410", "output": "public/410.html"}
+-->
+
+<h1 class="http-error">410</h1>
