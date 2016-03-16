@@ -2,6 +2,5 @@ User-agent: *
 Disallow: /403.html
 Disallow: /404.html
 Disallow: /410.html
-Disallow: /assets/
 Disallow: /git/*a=
 Disallow: /git/*.git/
