@@ -30,13 +30,14 @@ FileList["pages/*.markdown"].each do |markdown_file|
   metadata = JSON.parse(content.at_xpath("comment()[1]").text)
   OUTPUT_FILES << metadata["output"]
 
+  directory metadata["output"].pathmap("%d")
   desc "Spit out \"#{metadata["title"]}\" HTML."
-  file metadata["output"] => FileList["base.*", markdown_file] do |task|
+  file metadata["output"] => FileList["base.*", markdown_file,
+      metadata["output"].pathmap("%d"), "Rakefile"] do |task|
     puts "# Spitting out \"#{metadata["output"]}\"."
     output = Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
         File.read("base.haml")).render(Object.new, 
         {:body => content.to_html}.merge(metadata)))
-    mkdir_p task.name.pathmap("%d")
     File.open(task.name, "w") do |file|
       file.write(output)
     end
