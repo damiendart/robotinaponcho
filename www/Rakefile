@@ -21,21 +21,18 @@ Haml::Options.defaults[:remove_whitespace] = true
 # information.
 Sass::Script::Number.precision = 8
 
-ERROR_CODES = %w{403 404 410}
 MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     disable_indented_code_blocks: true, fenced_code_blocks: true)
 
-def tidyHTML(html_document)
-  html_document = html_document.gsub(/^\s*$\n/, "")
-  html_document = html_document.gsub(%r{^\s*//.*\n}, "")
-  # HACK: Remove stray newlines from minified CSS which Sass 3.3 (and
-  # newer) leaves behind.
-  html_document = html_document.gsub(/}\s*(html|\.)/, "}\\1")
-  html_document = html_document.gsub(/\s*<(\/)?(script|style)>\s*/m, "<\\1\\2>")
-  return html_document
+def tidyHTML(html)
+  html = html.gsub(/>\s+</, "><") # Remove whitespace between HTML tags.
+  html = html.gsub(/^\s*$\n/, "")
+  html = html.gsub(%r{^\s*//.*\n}, "")
+  html = html.gsub(/\s*<(\/)?(script|style)>\s*/m, "<\\1\\2>")
+  return html
 end
 
-ERROR_CODES.each do |error_code|
+%w{403 404 410}.each do |error_code|
   desc "Spit out the #{error_code} HTTP error document."
   file "public/#{error_code}.html" => FileList["error.*"] do |task|
     puts "# Spitting out \"" + task.name + "\"."
