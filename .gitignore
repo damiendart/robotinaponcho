@@ -7,3 +7,6 @@
 Gemfile.lock
 www/protected/*
 www/public/*
+!www/public/.htaccess
+!www/public/googlefb3645e0f9f23eaf.html
+!www/public/robots.txt

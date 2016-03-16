@@ -24,7 +24,7 @@ MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     disable_indented_code_blocks: true, fenced_code_blocks: true)
 OUTPUT_FILES = []
 
-FileList["*.markdown"].each do |markdown_file|
+FileList["pages/*.markdown"].each do |markdown_file|
   content = Nokogiri::HTML::DocumentFragment.parse(
       MARKDOWN.render(File.read(markdown_file)))
   metadata = JSON.parse(content.at_xpath("comment()[1]").text)
