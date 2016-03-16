@@ -4,6 +4,9 @@ TODO
   * Add SSL support.
   * Add confetti to error pages.
   * Add [Windows Live Tile][1] and [iOS Web Clip][2] support.  
+  * Strip unnecessary CSS with [uncss][3]?
+  * Create FlippyWindow page.
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
+[3]: <https://github.com/giakki/uncss>
