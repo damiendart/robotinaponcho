@@ -43,6 +43,8 @@ h1, h2, footer, header {
   text-align: left;
   max-width: em($content-width, $base-font-size);
   padding: 0 em($base-line-height, $base-font-size);
+  @media screen and (max-width: em($content-width, 16px)) {
+    margin: em($base-line-height - 1px, $base-font-size) auto; }
   a {
     color: $base-link-colour;
     text-decoration: none;
@@ -119,4 +121,4 @@ h1, h2, footer, header {
   @include prefixer(shape-margin, em($base-line-height / 2, $base-font-size), webkit spec);
   float: right;
   @media screen and (max-width: em($content-width, 16px)) {
-    width: 50%; } }
+    width: 40%; } }
