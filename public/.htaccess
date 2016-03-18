@@ -84,7 +84,6 @@ SetEnv TZ Europe/London
   RewriteRule ^(.+)$ $1.compressed
   # Remove query strings from URLs.
   RewriteCond %{QUERY_STRING} !=""
-  RewriteCond %{REQUEST_URI} !^/crap/$
   RewriteCond %{REQUEST_URI} !^/git/
   RewriteRule ^(.*)$ /$1? [R=permanent,L]
   # Git web interface stuff.
@@ -92,4 +91,8 @@ SetEnv TZ Europe/London
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^.*git/([a-zA-Z0-9\.\-_]*\.git)/?$ /git/?p=$1 [L,NE,R=permanent]
   RewriteRule ^.*git/([a-zA-Z0-9\.\-_]*\.git)/ - [E=GIT_PROJECT_ROOT:/home/protected/git/$1,L]
+  # Remove action parameter when unnecessary.
+  RewriteCond %{QUERY_STRING} ^(.*);a=summary(.*)$ [OR]
+  RewriteCond %{QUERY_STRING} ^(.*)a=project_list(.*)$
+  RewriteRule ^(.*)$ /$1?%1%2 [L,NE,R=permanent]
 </IfModule>
