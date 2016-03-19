@@ -47,7 +47,7 @@ if __name__ == "__main__":
           json.load(urllib2.urlopen("https://api.github.com/users/%s?access_token=%s" %
           (repository["owner"]["login"], sys.argv[3])))["name"]])
       subprocess.check_call(["git", "config", "--add", "gitweb.url",
-          "http://www.robotinaponcho.net/git/%s" %
+          "https://www.robotinaponcho.net/git/%s" %
           os.path.basename(repository["git_url"])])
       with open("README.html", "w") as f:
         f.write("<pre>%s</pre>\n" % cgi.escape(subprocess.Popen(["git",

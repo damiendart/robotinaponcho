@@ -48,10 +48,13 @@ SetEnv TZ Europe/London
   ExpiresByType text/plain "access plus 0 seconds"
 </IfModule>
 
+<IfModule mod_headers.c>
+  Header set Strict-Transport-Security "max-age=15552000;includeSubDomains" "expr=%{req_novary:X-Forwarded-Proto}=='https'"
+</IfModule>
+
 <IfModule mod_mime.c>
   # Force UTF-8 encoding for other file formats.
   AddCharset utf-8 .css .js
-  AddEncoding x-gzip compressed
   AddHandler cgi-script .git
   AddType application/javascript js
   AddType application/vnd.ms-fontobject eot
@@ -60,7 +63,6 @@ SetEnv TZ Europe/London
   AddType application/x-shockwave-flash swf
   AddType font/opentype otf
   AddType image/x-icon ico
-  AddType text/html html.compressed
   AddType text/x-c c
   AddType text/x-diff patch
   AddType text/x-python py
@@ -77,22 +79,18 @@ SetEnv TZ Europe/London
   # Remove "gitweb.cgi", "index.cgi", and "index.html" from URLs.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteCond %{THE_REQUEST} ^.*/(gitweb\.cgi|index\.(cgi|html|html\.compressed))
-  RewriteRule ^(.*)(gitweb\.cgi|index\.(cgi|html|html\.compressed))$ /$1 [L,NE,R=permanent]
-  # Add GZIP compression support.
-  RewriteCond %{HTTP:Accept-Encoding} gzip
-  RewriteCond %{REQUEST_FILENAME}\.compressed -f
-  RewriteRule ^(.+)$ $1.compressed
+  RewriteRule ^(.*)(gitweb\.cgi|index\.(cgi|html|html\.compressed))$ https://www.robotinaponcho.net/$1 [L,NE,R=permanent]
   # Remove query strings from URLs.
   RewriteCond %{QUERY_STRING} !=""
   RewriteCond %{REQUEST_URI} !^/git/
-  RewriteRule ^(.*)$ /$1? [R=permanent,L]
+  RewriteRule ^(.*)$ https://www.robotinaponcho.net/$1? [R=permanent,L]
   # Git web interface stuff.
   RewriteCond %{REQUEST_URI} ^.*git/[a-zA-Z0-9\.\-_]*\.git/?$
   RewriteCond %{REQUEST_FILENAME} -f
-  RewriteRule ^.*git/([a-zA-Z0-9\.\-_]*\.git)/?$ /git/?p=$1 [L,NE,R=permanent]
+  RewriteRule ^.*git/([a-zA-Z0-9\.\-_]*\.git)/?$ https://www.robotinaponcho.net/git/?p=$1 [L,NE,R=permanent]
   RewriteRule ^.*git/([a-zA-Z0-9\.\-_]*\.git)/ - [E=GIT_PROJECT_ROOT:/home/protected/git/$1,L]
   # Remove action parameter when unnecessary.
   RewriteCond %{QUERY_STRING} ^(.*);a=summary(.*)$ [OR]
   RewriteCond %{QUERY_STRING} ^(.*)a=project_list(.*)$
-  RewriteRule ^(.*)$ /$1?%1%2 [L,NE,R=permanent]
+  RewriteRule ^(.*)$ https://www.robotinaponcho.net/$1?%1%2 [L,NE,R=permanent]
 </IfModule>
