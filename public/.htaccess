@@ -49,7 +49,7 @@ SetEnv TZ Europe/London
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set Strict-Transport-Security "max-age=15552000;includeSubDomains" "expr=%{req_novary:X-Forwarded-Proto}=='https'"
+  Header always set Strict-Transport-Security "max-age=15552000;includeSubDomains" "expr=%{req_novary:X-Forwarded-Proto}=='https'"
 </IfModule>
 
 <IfModule mod_mime.c>
@@ -76,6 +76,11 @@ SetEnv TZ Europe/London
 
 <IfModule mod_rewrite.c>
   RewriteEngine on
+  # Impelment NearlyFreeSpeech.NET's hard canonical name settings so can have
+  # more control over headers and stuff.
+  RewriteCond %{HTTP_HOST} !^www\.robotinaponcho\.net$ [OR]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^.*$ https://www.robotinaponcho.net%{REQUEST_URI} [L,R=permanent]
   # Remove "gitweb.cgi", "index.cgi", and "index.html" from URLs.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteCond %{THE_REQUEST} ^.*/(gitweb\.cgi|index\.(cgi|html|html\.compressed))
