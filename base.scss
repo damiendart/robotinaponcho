@@ -92,6 +92,8 @@ h1, h2, footer, header {
   color: $base-secondary-colour;
   margin: em($base-line-height * 2, $base-font-size) 0;
   text-align: center;
+  @media screen and (max-width: em($content-width, 16px)) {
+    margin: em($base-line-height, $base-font-size) 0; }
   /* hr */ &__rule {
     display: none; }
   /* p */ &__copyright {
