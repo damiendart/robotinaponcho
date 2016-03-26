@@ -36,7 +36,7 @@ FileList["pages/*.markdown"].each do |markdown_file|
       metadata["output"].pathmap("%d"), "Rakefile"] do |task|
     puts "# Spitting out \"#{metadata["output"]}\"."
     output = Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
-        File.read("base.haml")).render(Object.new, 
+        File.read("base.haml")).render(Object.new,
         {:body => content.to_html}.merge(metadata)))
     File.open(task.name, "w") do |file|
       file.write(output)
