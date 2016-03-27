@@ -107,7 +107,6 @@ h1, h2, footer, header {
     display: block;
     text-decoration: none;
     &:active, &:focus, &:hover, &:visited:hover {
-      border-color: $base-link-colour;
       color: $base-link-colour; }
     &:visited {
       color: $base-secondary-colour; }
