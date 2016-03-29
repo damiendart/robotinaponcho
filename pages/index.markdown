@@ -2,14 +2,15 @@
   {"title": "Damien Dart's Homepage", "output": "public/index.html"}
 -->
 
-Damien Dart's Homepage
+www.robotinaponcho.net
 ======================
 
 <img alt="" class="robotinaponcho-image"
     src="/assets/robotinaponcho.png"
     srcset="/assets/robotinaponcho@2x.png 2x">
 
-**Hello!** I'm [Damien Dart][1] and I occasionally make things, mainly nerdy and illustration stuff.
+**Hello!** I'm [Damien Dart][1], and this is my half-arsed website. I'll
+finish it tomorrow, I promise.
 
 [1]: </>
 
