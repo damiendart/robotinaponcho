@@ -6,13 +6,14 @@
 
 @import "bourbon";
 
-$base-background-colour: #ffffff;
+$base-background-colour: #d35400;
 $base-font-size: 18px;
-$base-foreground-colour: #000000;
+$base-foreground-colour: #ffffff;
 $base-line-height: $base-font-size * 1.5;
-$base-link-colour: #d35400;
-$base-secondary-colour: #cccccc;
-$base-code-background-colour: #dddddd;
+$body-background-colour: #ffffff;
+$body-code-background-colour: #dddddd;
+$body-foreground-colour: #000000;
+$body-link-colour: $base-background-colour;
 $content-width: $base-font-size * 30;
 
 body {
@@ -25,35 +26,38 @@ body {
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   -webkit-font-smoothing: antialiasing;
-  margin: 0;
+  margin: em($base-line-height * 2, $base-font-size) auto;
   // Internet Explorer 6 hates us and doesn't center block elements with
   // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
   -webkit-text-size-adjust: 100%;
-  @media screen and (max-width: em($content-width, 16px)) {
-    background-size: 600px;
-    font-size: 87.5%; } }
+  @media screen and (max-width: em($content-width, $base-font-size)) {
+    font-size: 87.5%;
+    margin: em($base-line-height, $base-font-size) auto; } }
 
 // HACK: Minimise the severity of FOUT.
 h1, h2, footer, header {
   font-family: sans-serif; }
 
 /* article */.body {
-  margin: em(($base-line-height * 2) - 1px, $base-font-size) auto;
+  background-color: $body-background-colour;
+  color: $body-foreground-colour;
+  margin: 0 auto;
   text-align: left;
   max-width: em($content-width, $base-font-size);
-  padding: 0 em($base-line-height, $base-font-size);
+  padding: em($base-line-height * 2, $base-font-size);
   @media screen and (max-width: em($content-width, 16px)) {
-    margin: em($base-line-height - 1px, $base-font-size) auto; }
+    margin: em($base-line-height, $base-font-size) auto;
+    padding: em($base-line-height, $base-font-size); }
   a {
-    color: $base-link-colour;
+    color: $body-link-colour;
     text-decoration: none;
     &:active, &:focus, &:hover, &:visited:hover {
       text-decoration: underline; }
     &:visited {
-      color: $base-link-colour; } }
+      color: $body-link-colour; } }
   code {
-    background-color: $base-code-background-colour;
+    background-color: $body-code-background-colour;
     font-size: 75%; }
   h1 {
     $font-size: $base-font-size * 2;
@@ -79,7 +83,7 @@ h1, h2, footer, header {
   p {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
   pre {
-    background-color: $base-code-background-colour;
+    background-color: $body-code-background-colour;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
     overflow-x: auto;
     padding: em($base-line-height / 2, $base-font-size); }
@@ -89,33 +93,16 @@ h1, h2, footer, header {
     padding: 0 0 0 em($base-line-height, $base-font-size); } }
 
 /* footer */ .footer {
-  color: $base-secondary-colour;
-  margin: em($base-line-height * 2, $base-font-size) 0;
+  color: $base-foreground-colour;
+  margin: em($base-line-height, $base-font-size) 0 0 0;
+  opacity: 0.5;
   text-align: center;
-  @media screen and (max-width: em($content-width, 16px)) {
+  @media screen and (max-width: em($content-width, $base-font-size)) {
     margin: em($base-line-height, $base-font-size) 0; }
   /* hr */ &__rule {
     display: none; }
   /* p */ &__copyright {
     margin: 0; } }
-
-/* header */ .header {
-  text-align: left;
-  /* a */ &__homepage-link {
-    border-bottom: em(1px, $base-font-size) solid $base-secondary-colour;
-    color: $base-secondary-colour;
-    display: block;
-    text-decoration: none;
-    &:active, &:focus, &:hover, &:visited:hover {
-      color: $base-link-colour; }
-    &:visited {
-      color: $base-secondary-colour; }
-    /* div */ &__container {
-      margin: 0 auto;
-      max-width: em($content-width, $base-font-size);
-      padding: em($base-line-height / 4, $base-font-size)
-          em($base-line-height, $base-font-size); } } }
-
 
 /* img */.robotinaponcho-image {
   @include prefixer(shape-outside, url("/assets/robotinaponcho.png"), webkit spec);
