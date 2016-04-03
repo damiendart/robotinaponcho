@@ -41,6 +41,8 @@ h1, h2, footer, header {
 
 /* article */.body {
   background-color: $body-background-colour;
+  box-shadow: 0 em($base-line-height / 2, $base-font-size)
+      em($base-line-height, $base-font-size) rgba(0, 0, 0, 0.1);
   color: $body-foreground-colour;
   margin: 0 auto;
   text-align: left;
