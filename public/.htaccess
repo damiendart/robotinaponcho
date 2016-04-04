@@ -5,7 +5,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 AddDefaultCharset utf-8
-DirectoryIndex gitweb.cgi index.cgi index.html
+DirectoryIndex gitweb.cgi index.html
 ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 ErrorDocument 410 /410.html
@@ -83,8 +83,8 @@ SetEnv TZ Europe/London
   RewriteRule ^.*$ https://www.robotinaponcho.net%{REQUEST_URI} [L,R=permanent]
   # Remove "gitweb.cgi", "index.cgi", and "index.html" from URLs.
   RewriteCond %{REQUEST_FILENAME} -f
-  RewriteCond %{THE_REQUEST} ^.*/(gitweb\.cgi|index\.(cgi|html|html\.compressed))
-  RewriteRule ^(.*)(gitweb\.cgi|index\.(cgi|html|html\.compressed))$ https://www.robotinaponcho.net/$1 [L,NE,R=permanent]
+  RewriteCond %{THE_REQUEST} ^.*/(gitweb\.cgi|index\.html)
+  RewriteRule ^(.*)(gitweb\.cgi|index\.html)$ https://www.robotinaponcho.net/$1 [L,NE,R=permanent]
   # Remove query strings from URLs.
   RewriteCond %{QUERY_STRING} !=""
   RewriteCond %{REQUEST_URI} !^/git/
