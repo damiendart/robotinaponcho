@@ -6,12 +6,11 @@
 # please refer to the accompanying "LICENCE" file.
 
 GIT_VERSION="2.6.4"
-trap "rm -rf git-$GIT_VERSION" EXIT
-USAGE=`cat <<USAGE;
-USAGE: $(basename $0) HTDOCS-FOLDER PROTECTED-FOLDER [MAKE-COMMAND]`
-[ "$#" -lt 2 ] && { printf "Not enough operands\n$USAGE\n" >&2; exit 2; }
-wget -O - https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -zxf -
-(cd git-${GIT_VERSION} && ${3:-make} bindir="/usr/local/bin" \
+trap 'rm -rf git-$GIT_VERSION' EXIT
+USAGE="USAGE: $(basename "$0") HTDOCS-FOLDER PROTECTED-FOLDER [MAKE-COMMAND]"
+[ "$#" -lt 2 ] && { printf "Not enough operands\n%s\n" "$USAGE" >&2; exit 2; }
+wget -O - "https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz" | tar -zxf -
+(cd "git-${GIT_VERSION}" && ${3:-make} bindir="/usr/local/bin" \
     GITWEB_CONFIG="${2%/}/gitweb_config.perl" \
     GITWEB_CSS="/assets/gitweb.css" GITWEB_FAVICON="/assets/git-favicon.png" \
     GITWEB_JS="/assets/gitweb.js" \
@@ -19,8 +18,8 @@ wget -O - https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -zxf -
     GITWEB_LOGO="/assets/git-logo.png" \
     GITWEB_PROJECTROOT="${2%/}/git" \
     gitwebdir="${1%/}/git" gitweb install-gitweb &&
-    mv ${1%/}/git/static/* ${1%/}/assets && rm -fr ${1%/}/git/static)
-cat << "STYLE" >> ${1%/}/assets/gitweb.css
+    mv "${1%/}/git/static/"* "${1%/}/assets" && rm -fr "${1%/}/git/static")
+cat << "STYLE" >> "${1%/}/assets/gitweb.css"
 
 /* "gitstreak" stuff */
 
@@ -34,7 +33,7 @@ span.fire {
 	pointer-events: none;
 }
 STYLE
-cat << 'CONFIG' > ${2%/}/gitweb_config.perl
+cat << 'CONFIG' > "${2%/}/gitweb_config.perl"
 $feature{"avatar"}{"default"} = ["gravatar"];
 $home_link_str = "Damien Dart&rsquo;s Git Repositories";
 $site_name = $home_link_str . ": Gitweb Edition";
