@@ -92,7 +92,11 @@ h1, h2, footer, header {
   ul {
     list-style: square;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
-    padding: 0 0 0 em($base-line-height, $base-font-size); } }
+    padding: 0 0 0 em($base-line-height, $base-font-size); }
+  &--error {
+    background-color: inherit;
+    box-shadow: none;
+    color: $body-background-colour; } }
 
 /* footer */ .footer {
   color: $base-foreground-colour;
