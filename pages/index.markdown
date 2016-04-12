@@ -10,7 +10,7 @@ Damien Dart
     srcset="/assets/robotinaponcho@2x.png 2x">
 
 **Hello!** I'm [Damien Dart][1], and this is my half-arsed website. I'll
-finish it tomorrow, I promise.
+finish it tomorrow, I promise. Here are some things.
 
 [1]: </>
 
