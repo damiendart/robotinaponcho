@@ -1,5 +1,5 @@
 <!--
-  {"title": "Drawings and Doodles", "output": "public/art/index.html"}
+  {"title": "Drawings and Doodles"}
 -->
 
 Drawings and Doodles

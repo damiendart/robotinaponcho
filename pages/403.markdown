@@ -1,5 +1,5 @@
 <!--
-  {"title": "403", "output": "public/403.html"}
+  {"title": "403"}
 -->
 
 <h1 class="http-error">403</h1>

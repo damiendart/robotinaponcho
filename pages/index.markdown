@@ -1,5 +1,5 @@
 <!--
-  {"title": "Damien Dart's Homepage", "output": "public/index.html"}
+  {"title": "Damien Dart's Homepage"}
 -->
 
 Damien Dart

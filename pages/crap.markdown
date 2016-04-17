@@ -1,5 +1,5 @@
 <!--
-  {"title": "The Folder of Crap", "output": "public/crap/index.html"}
+  {"title": "The Folder of Crap"}
 -->
 
 The Folder of Crap
