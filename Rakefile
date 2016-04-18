@@ -42,7 +42,7 @@ FileList["pages/*.markdown"].each do |markdown_file|
     File.open(task.name, "w") do |file|
       file.write(output)
     end
-    # Versions of HTML Tidy prior to version 5 crap out when given HTML5.
+    # HTML Tidy version 5 and earlier crap out when given HTML5.
     if `tidy -v` =~ /version 5/
       `tidy --hide-comments yes --quiet yes --tidy-mark false \
           --wrap 0 --write-back true #{task.name}`
