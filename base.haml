@@ -14,8 +14,8 @@
       #{File.read("base.scss")}
     %title #{title} (www.robotinaponcho.net)
   %body
-    %article.body{:class => defined?(type) && type == "error" ? "body--error" : ""}= body
-    - if not (defined?(type) && type == "error")
+    %article.body{:class => defined?(error) ? "body--error" : ""}= body
+    - if not defined?(error)
       %footer.footer
         %hr.footer__rule
         %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
