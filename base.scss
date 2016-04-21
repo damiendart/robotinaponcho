@@ -17,7 +17,7 @@ $body-link-colour: $base-background-colour;
 $content-width: $base-font-size * 30;
 
 body {
-  background-color: $base-background-colour;
+  background: $base-background-colour;
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
@@ -40,7 +40,7 @@ h1, h2, footer, header {
   font-family: sans-serif; }
 
 /* article */.body {
-  background-color: $body-background-colour;
+  background: $body-background-colour;
   box-shadow: 0 em($base-line-height / 2, $base-font-size)
       em($base-line-height, $base-font-size) rgba(0, 0, 0, 0.1);
   color: $body-foreground-colour;
@@ -59,7 +59,7 @@ h1, h2, footer, header {
     &:visited {
       color: $body-link-colour; } }
   code {
-    background-color: $body-code-background-colour;
+    background: $body-code-background-colour;
     font-size: 75%; }
   h1 {
     $font-size: $base-font-size * 2;
@@ -85,7 +85,7 @@ h1, h2, footer, header {
   p {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
   pre {
-    background-color: $body-code-background-colour;
+    background: $body-code-background-colour;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
     overflow-x: auto;
     padding: em($base-line-height / 2, $base-font-size); }
@@ -94,7 +94,7 @@ h1, h2, footer, header {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
     padding: 0 0 0 em($base-line-height, $base-font-size); }
   &--error {
-    background-color: inherit;
+    background: inherit;
     box-shadow: none;
     color: $body-background-colour; } }
 
