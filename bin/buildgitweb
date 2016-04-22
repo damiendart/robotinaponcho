@@ -36,5 +36,5 @@ STYLE
 cat << 'CONFIG' > "${2%/}/gitweb_config.perl"
 $feature{"avatar"}{"default"} = ["gravatar"];
 $home_link_str = "Damien Dart&rsquo;s Git Repositories";
-$site_name = $home_link_str . ": Gitweb Edition";
+$site_name = $home_link_str;
 CONFIG
