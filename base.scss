@@ -14,7 +14,7 @@ $body-background-colour: #ffffff;
 $body-code-background-colour: #dddddd;
 $body-foreground-colour: #000000;
 $body-link-colour: $base-background-colour;
-$content-width: $base-font-size * 30;
+$content-width: $base-font-size * 35;
 
 body {
   background: $base-background-colour;
@@ -25,8 +25,9 @@ body {
   font: 100%/1.5 serif;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
+  height: 100%;
   -webkit-font-smoothing: antialiasing;
-  margin: em($base-line-height * 2, $base-font-size) auto;
+  margin: 0;
   // Internet Explorer 6 hates us and doesn't center block elements with
   // just "margin-left: auto; margin-right: auto" alone.
   text-align: center;
@@ -39,18 +40,10 @@ body {
 h1, h2, footer, header {
   font-family: sans-serif; }
 
+html {
+  height: 100%; }
+
 /* article */.body {
-  background: $body-background-colour;
-  box-shadow: 0 em($base-line-height / 2, $base-font-size)
-      em($base-line-height, $base-font-size) rgba(0, 0, 0, 0.1);
-  color: $body-foreground-colour;
-  margin: 0 auto;
-  text-align: left;
-  max-width: em($content-width, $base-font-size);
-  padding: em($base-line-height * 2, $base-font-size);
-  @media screen and (max-width: em($content-width, 16px)) {
-    margin: em($base-line-height, $base-font-size) auto;
-    padding: em($base-line-height, $base-font-size); }
   a {
     color: $body-link-colour;
     text-decoration: none;
@@ -92,14 +85,29 @@ h1, h2, footer, header {
   ul {
     list-style: square;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
-    padding: 0 0 0 em($base-line-height, $base-font-size); }
+    padding: 0 0 0 em($base-line-height, $base-font-size); } }
+
+/* div */.container {
+  background: $body-background-colour;
+  box-shadow: 0 0 
+      em($base-line-height * 4, $base-font-size) rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  color: $body-foreground-colour;
+  min-height: 100%;
+  margin: 0 auto;
+  max-width: em($content-width, $base-font-size);
+  padding: em($base-line-height * 2, $base-font-size);
+  text-align: left;
+  @media screen and (max-width: em($content-width, 16px)) {
+    margin: em($base-line-height, $base-font-size) auto;
+    padding: em($base-line-height, $base-font-size); }
   &--error {
     background: inherit;
     box-shadow: none;
     color: $body-background-colour; } }
 
 /* footer */ .footer {
-  color: $base-foreground-colour;
+  color: $body-foreground-colour;
   margin: em($base-line-height, $base-font-size) 0 0 0;
   opacity: 0.5;
   text-align: center;
