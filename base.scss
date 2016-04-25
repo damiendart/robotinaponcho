@@ -33,8 +33,7 @@ body {
   text-align: center;
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    font-size: 87.5%;
-    margin: em($base-line-height, $base-font-size) auto; } }
+    font-size: 87.5%; } }
 
 // HACK: Minimise the severity of FOUT.
 h1, h2, footer, header {
@@ -99,7 +98,6 @@ html {
   padding: em($base-line-height * 2, $base-font-size);
   text-align: left;
   @media screen and (max-width: em($content-width, 16px)) {
-    margin: em($base-line-height, $base-font-size) auto;
     padding: em($base-line-height, $base-font-size); }
   &--error {
     background: inherit;
