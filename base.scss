@@ -97,7 +97,7 @@ html {
   max-width: em($content-width, $base-font-size);
   padding: em($base-line-height * 2, $base-font-size);
   text-align: left;
-  @media screen and (max-width: em($content-width, 16px)) {
+  @media screen and (max-width: em($content-width, $base-font-size)) {
     padding: em($base-line-height, $base-font-size); }
   &--error {
     background: inherit;
@@ -105,12 +105,9 @@ html {
     color: $body-background-colour; } }
 
 /* footer */ .footer {
-  color: $body-foreground-colour;
   margin: em($base-line-height, $base-font-size) 0 0 0;
   opacity: 0.5;
   text-align: center;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    margin: em($base-line-height, $base-font-size) 0; }
   /* hr */ &__rule {
     display: none; }
   /* p */ &__copyright {
