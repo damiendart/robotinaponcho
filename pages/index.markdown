@@ -1,37 +1,52 @@
 <!--
-  {"title": "Damien Dart's Homepage"}
+  {"title": "Damien Dart's Homepage", "javascript": "pages/index.js"}
 -->
 
 Damien Dart
 ===========
 
-<img alt="" class="robotinaponcho-image"
-    src="/assets/robotinaponcho.png"
-    srcset="/assets/robotinaponcho@2x.png 2x">
+## Featured Projects
 
-**Hello!** I'm [Damien Dart][1], and this is my half-arsed website. I'll
-finish it tomorrow, I promise. Here are some things.
+<ul class="project-list">
+  <li class="project-list__item">
+    <div class="project-list__item__image project-list__item__image--kathryn-site"></div>
+    <div class="project-list__item__description"><b><a
+    href="http://www.kathryncraigdaillie.co.uk/">Kathryn Craigdaillie
+    Designs</a></b>: A graphics design portfolio website I developed
+    from scratch.</div>
+  </li>
+  <li class="project-list__item">
+    <div class="project-list__item__image" data-code-example="/git/gitweb.cgi?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#93"></div>
+    <div class="project-list__item__description"><b><a
+    href="/git/?p=nfsnapi-python.git">nfsnapi</a></b>: A Python package
+    that makes the NearlyFreeSpeech.NET API a little easier to
+    use.</div>
+  </li>
+  <li class="project-list__item">
+    <div class="project-list__item__image" data-code-example="/git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38"></div>
+    <div class="project-list__item__description"><b><a
+    href="/git/?p=brainfuck.git">brainfuck</a></b>: Experiments with the
+    brainfuck programming language, including an interpreter and
+    embeddable library written in C.</div>
+  </li>
+</ul>
 
-[1]: </>
+## Other Projects and Things
 
-  - My various [open-source projects][2] (also hosted on [GitHub][3]).
-  - My [doodles and drawings][4].
-  - I've built a few websites: [Kathryn Craigdaillie Designs (2015)][5],
-    a graphic design portfolio website, and [Radical Apps (2014)][6], a
-    mobile app showcase website.
+  - I designed and built the [Radical Apps website][1].
+  - Check out my [open-source projects][2] (also hosted on [GitHub][3]).
+  - My [doodles and drawings][4] (see also my [Instagram][5] and
+    [Tumblr][6] profiles).
   - [The Folder of Crap][7], where I put random bits and pieces.
+  - Other places I've polluted: [Twitter][8].
+  - [I have an email address][9].
 
+[1]: <http://www.radicalapps.co.uk/>
 [2]: </git/>
 [3]: <https://github.com/damiendart>
 [4]: </art/>
-[5]: <http://www.kathryncraigdaillie.co.uk/>
-[6]: <http://www.radicalapps.co.uk/>
+[5]: <https://instagram.com/damiendart>
+[6]: <http://blog.robotinaponcho.net>
 [7]: </crap/>
-
-Other places I've polluted include [Instagram][8], [Tumblr][9], and
-[Twitter][10]. [I have an email address][11].
-
-[8]: <https://instagram.com/damiendart>
-[9]: <http://blog.robotinaponcho.net>
-[10]: <https://twitter.com/damiendart>
-[11]: <mailto:damiendart@pobox.com>
+[8]: <https://twitter.com/damiendart>
+[9]: <mailto:damiendart@pobox.com>

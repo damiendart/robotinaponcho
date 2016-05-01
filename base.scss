@@ -6,15 +6,13 @@
 
 @import "bourbon";
 
-$base-background-colour: #d35400;
+$base-background-colour: #34495e;
 $base-font-size: 18px;
 $base-foreground-colour: #ffffff;
 $base-line-height: $base-font-size * 1.5;
-$body-background-colour: #ffffff;
-$body-code-background-colour: #dddddd;
-$body-foreground-colour: #000000;
-$body-link-colour: $base-background-colour;
-$content-width: $base-font-size * 45;
+$base-link-colour: lighten($base-background-colour, 40);
+$code-background-colour: darken($base-background-colour, 10);
+$content-width: $base-font-size * 35;
 
 body {
   background: $base-background-colour;
@@ -25,33 +23,30 @@ body {
   font: 100%/1.5 serif;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  height: 100%;
   -webkit-font-smoothing: antialiasing;
-  margin: 0;
-  // Internet Explorer 6 hates us and doesn't center block elements with
-  // just "margin-left: auto; margin-right: auto" alone.
-  text-align: center;
+  margin: em($base-line-height * 2, $base-font-size) auto;
+  max-width: em($content-width, $base-font-size);
+  padding: 0 em($base-line-height, $base-font-size);
   -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
-    font-size: 87.5%; } }
+    font-size: 87.5%;
+    margin: em($base-line-height, $base-font-size) 0; } }
 
 // HACK: Minimise the severity of FOUT.
 h1, h2, footer, header {
   font-family: sans-serif; }
 
-html {
-  height: 100%; }
-
 /* article */.body {
   a {
-    color: $body-link-colour;
+    color: $base-link-colour;
+    font-weight: bold;
     text-decoration: none;
     &:active, &:focus, &:hover, &:visited:hover {
       text-decoration: underline; }
     &:visited {
-      color: $body-link-colour; } }
+      color: $base-link-colour; } }
   code {
-    background: $body-code-background-colour;
+    background: $code-background-colour;
     font-size: 75%; }
   h1 {
     $font-size: $base-font-size * 2;
@@ -77,32 +72,50 @@ html {
   p {
     margin: em($base-line-height / 2, $base-font-size) 0 0 0; }
   pre {
-    background: $body-code-background-colour;
+    background: $code-background-colour;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
     overflow-x: auto;
     padding: em($base-line-height / 2, $base-font-size); }
   ul {
     list-style: square;
     margin: em($base-line-height / 2, $base-font-size) 0 0 0;
-    padding: 0 0 0 em($base-line-height, $base-font-size); } }
-
-/* div */.container {
-  background: $body-background-colour;
-  box-shadow: 0 0 
-      em($base-line-height * 4, $base-font-size) rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  color: $body-foreground-colour;
-  min-height: 100%;
-  margin: 0 auto;
-  max-width: em($content-width, $base-font-size);
-  padding: em($base-line-height * 2, $base-font-size);
-  text-align: left;
-  @media screen and (max-width: em($content-width, $base-font-size)) {
-    padding: em($base-line-height, $base-font-size); }
-  &--error {
-    background: inherit;
-    box-shadow: none;
-    color: $body-background-colour; } }
+    padding: 0 0 0 em($base-line-height, $base-font-size);
+    &.project-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      /* li */ .project-list__item {
+        @include clearfix;
+        margin: em($base-line-height / 2, $base-font-size) 0 0 0;
+        /* div */ &__description { }
+        /* div */ &__image {
+          background: $base-foreground-colour;
+          float: left;
+          height: em($base-line-height * 5, $base-font-size);
+          margin: 0 em($base-line-height / 2, $base-font-size) 0 0;
+          overflow: hidden;
+          position: relative;
+          width: 50%;
+          @media screen and (max-width: em($content-width, $base-font-size)) {
+            float: none;
+            margin: 0 0 em($base-line-height / 2, $base-font-size) 0;
+            width: 100%; }
+          @each $classname in kathryn-site {
+            &--#{$classname} {
+              background-image: url(/assets/#{$classname}.png);
+              background-size: 100%; } }
+          /* pre */ &__js-code {
+            $font-size: 12px;
+            @include transform(rotate(5deg));
+            @include user-select(none);
+            background: $base-foreground-colour;
+            color: $base-background-colour;
+            font-size: percentage($font-size / $base-font-size);
+            font-weight: bold;
+            margin: em($base-line-height * -1, $font-size) 0 0 0;
+            overflow: hidden; 
+            padding: 0;
+            position: absolute; } } } } } }
 
 /* footer */ .footer {
   margin: em($base-line-height, $base-font-size) 0 0 0;
@@ -112,10 +125,3 @@ html {
     display: none; }
   /* p */ &__copyright {
     margin: 0; } }
-
-/* img */.robotinaponcho-image {
-  @include prefixer(shape-outside, url("/assets/robotinaponcho.png"), webkit spec);
-  @include prefixer(shape-margin, em($base-line-height / 2, $base-font-size), webkit spec);
-  float: right;
-  @media screen and (max-width: em($content-width, 16px)) {
-    width: 40%; } }
