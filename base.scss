@@ -23,11 +23,9 @@ body {
   font: 100%/1.5 serif;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  -webkit-font-smoothing: antialiasing;
   margin: em($base-line-height * 2, $base-font-size) auto;
   max-width: em($content-width, $base-font-size);
   padding: 0 em($base-line-height, $base-font-size);
-  -webkit-text-size-adjust: 100%;
   @media screen and (max-width: em($content-width, $base-font-size)) {
     font-size: 87.5%;
     margin: em($base-line-height, $base-font-size) 0; } }
@@ -50,12 +48,9 @@ h1, h2, footer, header {
     font-size: 75%; }
   h1 {
     $font-size: $base-font-size * 2;
-    @include font-feature-settings("calt", "clig", "liga");
     font-size: percentage($font-size / $base-font-size);
-    font-variant-ligatures: common-ligatures contextual;
     line-height: em($font-size, $font-size);
     margin: 0 0 em($base-line-height, $font-size) 0;
-    text-rendering: optimizeLegibility;
     &.http-error {
       $font-size: $base-line-height * 6;
       text-align: center;
@@ -97,7 +92,6 @@ h1, h2, footer, header {
           position: relative;
           width: 50%;
           @media screen and (max-width: em($content-width, $base-font-size)) {
-            float: none;
             margin: 0 0 em($base-line-height / 2, $base-font-size) 0;
             width: 100%; }
           @each $classname in kathryn-site {
@@ -113,7 +107,6 @@ h1, h2, footer, header {
             font-size: percentage($font-size / $base-font-size);
             font-weight: bold;
             margin: em($base-line-height * -1, $font-size) 0 0 0;
-            overflow: hidden; 
             padding: 0;
             position: absolute; } } } } } }
 
