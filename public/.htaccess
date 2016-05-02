@@ -28,7 +28,7 @@ SetEnv TZ Europe/London
   RedirectMatch gone /assets/foc-(footer|header)\.html$
   RedirectMatch gone /assets/glyphiconshalflings-regular\.(eot|otf|svg|ttf|woff)$
   RedirectMatch gone /assets/(jquery-1\.11\.3|moment|selectnav|spin)\.min\.js$
-  RedirectMatch gone /assets/(kathryn|obtaincornhoop|radicalapps)(@2x)?\.png$
+  RedirectMatch gone /assets/(kathryn|obtaincornhoop|radicalapps|robotinaponcho)(@2x)?\.png$
   RedirectMatch gone /assets/site-header(@2x)?\.png$
   RedirectMatch gone /crap/blog-background2?\.gif$
   RedirectMatch gone /crap/blog-(date|source|tags)-icon\.png$
