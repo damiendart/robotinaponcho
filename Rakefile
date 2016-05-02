@@ -33,7 +33,8 @@ FileList["pages/*.markdown"].each do |markdown_file|
   OUTPUT_FILES << output_filepath
   directory output_filepath.pathmap("%d")
   desc "Spit out \"#{output_filepath}\"."
-  file output_filepath => FileList["base.*", markdown_file,
+  file output_filepath => FileList["base.*",
+      markdown_file.gsub("markdown", "*"),
       output_filepath.pathmap("%d"), "Rakefile"] do |task|
     puts "# Spitting out \"#{task.name}\"."
     output = Redcarpet::Render::SmartyPants.render(Haml::Engine.new(

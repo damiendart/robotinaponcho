@@ -6,12 +6,12 @@
 
 @import "bourbon";
 
-$base-background-colour: #34495e;
+$base-background-colour: #34495e !default;
 $base-font-size: 18px;
-$base-foreground-colour: #ffffff;
+$base-foreground-colour: #ffffff !default;
 $base-line-height: $base-font-size * 1.5;
-$base-link-colour: lighten($base-background-colour, 40);
-$code-background-colour: darken($base-background-colour, 10);
+$base-link-colour: lighten($base-background-colour, 40) !default;
+$code-background-colour: darken($base-background-colour, 10) !default;
 $content-width: $base-font-size * 35;
 
 body {

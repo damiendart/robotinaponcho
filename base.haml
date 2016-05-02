@@ -11,6 +11,7 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     %script #{`uglifyjs base.typekit.js -c --inline-script -m`}
     :scss
+      #{File.read(scss_override) if defined?(scss_override)}
       #{File.read("base.scss")}
     %title #{title} (www.robotinaponcho.net)
   %body
