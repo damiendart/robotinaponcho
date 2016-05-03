@@ -8,7 +8,7 @@ for (var i = 0; i < images.length; i++) {
         return function() {
           if (request.readyState === XMLHttpRequest.DONE) {
             var code_html = document.createElement("pre");
-            code_html.className = "project-list__item__image__js-code tk-source-code-pro";
+            code_html.className = "project-list__item__image__js-code";
             var line_number = parseInt(
                 el.getAttribute("data-code-example").split("#")[1]);
             code_html.innerHTML = this.responseText.split(
