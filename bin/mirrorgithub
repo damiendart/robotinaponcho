@@ -8,13 +8,14 @@ This file is distributed under the MIT licence. For more information,
 please refer to the accompanying "LICENCE" file.
 """
 
-import cgi
 import json
 import os
 import re
 import sys
 import urllib2
 import subprocess
+
+from django.utils.html import urlize
 
 if __name__ == "__main__":
   if len(sys.argv) < 4:
@@ -50,12 +51,12 @@ if __name__ == "__main__":
           "https://www.robotinaponcho.net/git/%s" %
           os.path.basename(repository["git_url"])])
       with open("README.html", "w") as f:
-        f.write("<pre>%s</pre>\n" % cgi.escape(subprocess.Popen(["git",
+        f.write("<pre>%s</pre>\n" % urlize(subprocess.Popen(["git",
             "cat-file", "blob", "HEAD:%s" % filter(lambda i:
             re.compile(r"README").search(i), subprocess.Popen(["git",
             "ls-tree", "HEAD", "--name-only"],
             stdout=subprocess.PIPE).communicate()[0].split("\n"))[0]],
-            stdout=subprocess.PIPE).communicate()[0]))
+            stdout=subprocess.PIPE).communicate()[0], autoescape = True))
       with open("description", "w") as f:
         f.write(repository["description"] + "\n")
       open("git-daemon-export-ok", "a").close() # For "git http-backend".
