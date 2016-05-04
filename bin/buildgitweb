@@ -34,7 +34,8 @@ span.fire {
 }
 STYLE
 cat << 'CONFIG' > "${2%/}/gitweb_config.perl"
+our @extra_breadcrumbs = (["www.robotinaponcho.net" => "/"]);
 $feature{"avatar"}{"default"} = ["gravatar"];
-$home_link_str = "Damien Dart&rsquo;s Git Repositories";
-$site_name = $home_link_str;
+$home_link_str = "git";
+$site_name = "Damien Dart&rsquo;s Git Repositories";
 CONFIG
