@@ -98,7 +98,7 @@ h1, h2, footer, header {
             &--#{$classname} {
               background-image: url(/assets/#{$classname}.png);
               background-size: 100%; } }
-          /* pre */ &__js-code {
+          /* pre */ .js-code-example {
             $font-size: 12px;
             @include transform(rotate(5deg));
             @include user-select(none);
