@@ -43,10 +43,10 @@ FileList["pages/*.markdown"].each do |markdown_file|
     File.open(task.name, "w") do |file|
       file.write(output)
     end
-    # HTML Tidy version 5 and earlier crap out when given HTML5.
-    if `tidy -v` =~ /version 5/
-      `tidy --hide-comments yes --quiet yes --tidy-mark false \
-          --wrap 0 --write-back true #{task.name}`
+    # FIXME: Find a better way of using "html-minifier".
+    minified = `html-minifier --remove-comments --decode-entities --collapse-whitespace #{task.name}`
+    File.open(task.name, "w") do |file|
+      file.write(minified)
     end
   end
 end
