@@ -9,7 +9,7 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    %script #{`uglifyjs base.typekit.js -c --inline-script -m`}
+    %script= `uglifyjs base.typekit.js -c --inline-script -m`
     :scss
       #{File.read("base.scss")}
     %title #{title} (www.robotinaponcho.net)
