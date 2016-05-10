@@ -54,4 +54,20 @@
       C.</div>
     </div>
   </li>
+  <li class="project-list__item">
+    <div class="panel panel--git">
+      <div class="panel__description"><strong><a
+      href="https://www.robotinaponcho.net/git/">My Git
+      Repositories</a></strong><br>Includes all the other bits of
+      software I've written that wasn't worth highlighting.</div>
+    </div>
+  </li>
+  <li class="project-list__item">
+    <div class="panel panel--folder-of-crap">
+      <div class="panel__description"><strong><a
+      href="https://www.robotinaponcho.net/crap/">The Folder of
+      Crap</a></strong><br>My random bits and pieces that don't belong
+      anywhere else.</div>
+    </div>
+  </li>
 </ul>

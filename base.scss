@@ -129,7 +129,7 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
-  @each $classname in my-art, kathryn-site, radicalapps-site {
+  @each $classname in git, my-art, folder-of-crap, kathryn-site, radicalapps-site {
     &--#{$classname} {
       background-image: url(/assets/#{$classname}.png); } }
   /* div */ &__description {
