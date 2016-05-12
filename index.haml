@@ -23,46 +23,38 @@
       %h1.header__title Hello! I'm Damien Dart.
       %h2.header__subtitle I occasionally create things.
     %ul.project-list
-      %li.project-list__item
-        .panel.panel--my-art
-          .panel__description 
-            %strong <a href="/art/">My Artwork and Illustrations</a>
-            <br>Personal and for-the-monies artwork, doodles, and illustrations.
-      %li.project-list__item
-        .panel.panel--kathryn-site 
-          .panel__description 
-            %strong <a href="http://www.kathryncraigdaillie.co.uk/">Kathryn Craigdaillie Designs</a>
-            <br>A graphic design portfolio website I built from scratch.
-      %li.project-list__item
-        .panel{:"data-code-example" => "/git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115"}
-          .panel__description 
-            %strong <a href="/git/?p=robotinaponcho.git">robotinaponcho</a>
-            <br>The source code to this very site. Uses all of the programming things.
-      %li.project-list__item
-        .panel{:"data-code-example" => "/git/gitweb.cgi?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#100"}
-          .panel__description
-            %strong <a href="https://pypi.python.org/pypi/nfsnapi">nfsnapi</a>
-            <br>A simple Python package that makes the NearlyFreeSpeech.NET API a little easier to use.
-      %li.project-list__item
-        .panel.panel--radicalapps-site
-          .panel__description
-            %strong <a href="http://www.radicalapps.co.uk/">Radical Apps</a>
-            <br>A mobile app portfolio website I designed and built from scratch.
-      %li.project-list__item
-        .panel{:"data-code-example" => "/git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38"}
-          .panel__description 
-            %strong <a href="https://github.com/damiendart/brainfuck">brainfuck</a>
-            <br>A simple brainfuck interpreter and embeddable library written in C.
-      %li.project-list__item
-        .panel.panel--git
-          .panel__description 
-            %strong <a href="https://www.robotinaponcho.net/git/">My Git Repositories</a>
-            <br>Includes all the other bits of software I've written that wasn't worth highlighting.
-      %li.project-list__item
-        .panel.panel--folder-of-crap
-          .panel__description 
-            %strong <a href="https://www.robotinaponcho.net/crap/">The Folder of Crap</a>
-            <br>My random bits and pieces that don't belong anywhere else.
+      %li.project-list__item.project-list__item--my-art
+        .project-list__item__description 
+          %strong <a href="/art/">My Artwork and Illustrations</a>
+          <br>Personal and for-the-monies artwork, doodles, and illustrations.
+      %li.project-list__item.project-list__item--kathryn-site 
+        .project-list__item__description 
+          %strong <a href="http://www.kathryncraigdaillie.co.uk/">Kathryn Craigdaillie Designs</a>
+          <br>A graphic design portfolio website I built from scratch.
+      %li.project-list__item{:"data-code-example" => "/git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115"}
+        .project-list__item__description 
+          %strong <a href="/git/?p=robotinaponcho.git">robotinaponcho</a>
+          <br>The source code to this very site. Uses all of the programming things.
+      %li.project-list__item{:"data-code-example" => "/git/gitweb.cgi?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#100"}
+        .project-list__item__description 
+          %strong <a href="https://pypi.python.org/pypi/nfsnapi">nfsnapi</a>
+          <br>A simple Python package that makes the NearlyFreeSpeech.NET API a little easier to use.
+      %li.project-list__item.project-list__item--radicalapps-site
+        .project-list__item__description 
+          %strong <a href="http://www.radicalapps.co.uk/">Radical Apps</a>
+          <br>A mobile app portfolio website I designed and built from scratch.
+      %li.project-list__item{:"data-code-example" => "/git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38"}
+        .project-list__item__description 
+          %strong <a href="https://github.com/damiendart/brainfuck">brainfuck</a>
+          <br>A simple brainfuck interpreter and embeddable library written in C.
+      %li.project-list__item.project-list__item--git
+        .project-list__item__description 
+          %strong <a href="https://www.robotinaponcho.net/git/">My Git Repositories</a>
+          <br>Includes all the other bits of software I've written that wasn't worth highlighting.
+      %li.project-list__item.project-list__item--folder-of-crap
+        .project-list__item__description 
+          %strong <a href="https://www.robotinaponcho.net/crap/">The Folder of Crap</a>
+          <br>My random bits and pieces that don't belong anywhere else.
     %footer.footer
       %hr.footer__rule
       %ul.footer__link-list
