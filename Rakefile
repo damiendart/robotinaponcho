@@ -24,7 +24,7 @@ Sass::Script::Number.precision = 8
 
 def process_haml_file(input_filename, output_filename, locals = {})
   puts "# Spitting out \"#{output_filename}\"."
-  stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " + 
+  stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
       "--decode-entities --collapse-whitespace -o #{output_filename}")
   stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
       File.read(input_filename)).render(Object.new, locals)))
