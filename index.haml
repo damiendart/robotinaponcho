@@ -1,0 +1,75 @@
+-# Homepage Haml markup for Damien Dart's personal website.
+-#
+-# Copyright (C) 2013-2016 Damien Dart, <damiendart@pobox.com>.
+-# This file is distributed under the MIT licence. For more information,
+-# please refer to the accompanying "LICENCE" file.
+
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
+    %script= `uglifyjs index.typekit.js -c --inline-script -m`
+    :scss
+      #{File.read("index.scss")}
+    %title Damien Dart's Homepage (www.robotinaponcho.net)
+  %body
+    %header.header
+      %h1.header__title Hello! I'm Damien Dart.
+      %h2.header__subtitle I occasionally create things.
+    %ul.project-list
+      %li.project-list__item
+        .panel.panel--my-art
+          .panel__description 
+            %strong <a href="/art/">My Artwork and Illustrations</a>
+            <br>Personal and for-the-monies artwork, doodles, and illustrations.
+      %li.project-list__item
+        .panel.panel--kathryn-site 
+          .panel__description 
+            %strong <a href="http://www.kathryncraigdaillie.co.uk/">Kathryn Craigdaillie Designs</a>
+            <br>A graphic design portfolio website I built from scratch.
+      %li.project-list__item
+        .panel{:"data-code-example" => "/git/gitweb.cgi?p=robotinaponcho.git;a=blob_plain;f=www/public/_index.scss#115"}
+          .panel__description 
+            %strong <a href="/git/?p=robotinaponcho.git">robotinaponcho</a>
+            <br>The source code to this very site. Uses all of the programming things.
+      %li.project-list__item
+        .panel{:"data-code-example" => "/git/gitweb.cgi?p=nfsnapi-python.git;a=blob_plain;f=nfsnapi.py#100"}
+          .panel__description
+            %strong <a href="https://pypi.python.org/pypi/nfsnapi">nfsnapi</a>
+            <br>A simple Python package that makes the NearlyFreeSpeech.NET API a little easier to use.
+      %li.project-list__item
+        .panel.panel--radicalapps-site
+          .panel__description
+            %strong <a href="http://www.radicalapps.co.uk/">Radical Apps</a>
+            <br>A mobile app portfolio website I designed and built from scratch.
+      %li.project-list__item
+        .panel{:"data-code-example" => "/git/gitweb.cgi?p=brainfuck.git;a=blob_plain;f=src/brainfuck.c#38"}
+          .panel__description 
+            %strong <a href="https://github.com/damiendart/brainfuck">brainfuck</a>
+            <br>A simple brainfuck interpreter and embeddable library written in C.
+      %li.project-list__item
+        .panel.panel--git
+          .panel__description 
+            %strong <a href="https://www.robotinaponcho.net/git/">My Git Repositories</a>
+            <br>Includes all the other bits of software I've written that wasn't worth highlighting.
+      %li.project-list__item
+        .panel.panel--folder-of-crap
+          .panel__description 
+            %strong <a href="https://www.robotinaponcho.net/crap/">The Folder of Crap</a>
+            <br>My random bits and pieces that don't belong anywhere else.
+    %footer.footer
+      %hr.footer__rule
+      %ul.footer__link-list
+        %li.footer__link-list__item<>
+          %a{:href => "mailto:damiendart@pobox.com"} Email
+        %li.footer__link-list__item<>
+          %a{:href => "https://github.com/damiendart"} GitHub
+        %li.footer__link-list__item<>
+          %a{:href => "https://instagram.com/damiendart"} Instagram
+        %li.footer__link-list__item<>
+          %a{:href => "http://blog.robotinaponcho.net/"} Tumblr
+        %li.footer__link-list__item<>
+          %a{:href => "https://twitter.com/damiendart"} Twitter
+      %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
+    %script= `uglifyjs index.js -c --inline-script -m`

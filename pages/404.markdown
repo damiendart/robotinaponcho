@@ -1,5 +1,0 @@
-<!--
-  {"error": true, "title": "404"}
--->
-
-<h1 class="http-error">404</h1>

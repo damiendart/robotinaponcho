@@ -5,9 +5,10 @@
 # please refer to the accompanying "LICENCE" file.
 
 require "bundler/setup"
-require "json"
+require "open3"
 require "rubygems"
 Bundler.require(:default)
+
 
 Haml::Filters::Scss.options[:cache] = false
 Haml::Filters::Scss.options[:style] = :compressed
@@ -20,36 +21,43 @@ Haml::Options.defaults[:format] = :html5
 # information.
 Sass::Script::Number.precision = 8
 
-MARKDOWN = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-    disable_indented_code_blocks: true, fenced_code_blocks: true)
-OUTPUT_FILES = []
 
-FileList["pages/*.markdown"].each do |markdown_file|
-  content = Nokogiri::HTML::DocumentFragment.parse(
-      MARKDOWN.render(File.read(markdown_file)))
-  metadata = JSON.parse(content.at_xpath("comment()[1]").text)
-  output_filepath = markdown_file.gsub(".markdown", markdown_file.match(
-      /index|\d{3}/) ? ".html" : "/index.html").gsub("pages", "public")
-  OUTPUT_FILES << output_filepath
-  directory output_filepath.pathmap("%d")
-  desc "Spit out \"#{output_filepath}\"."
-  file output_filepath => FileList["base.*",
-      markdown_file.gsub("markdown", "*"),
-      output_filepath.pathmap("%d"), "Rakefile"] do |task|
-    puts "# Spitting out \"#{task.name}\"."
-    output = Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
-        File.read("base.haml")).render(Object.new,
-        {:body => content.to_html}.merge(metadata)))
-    File.open(task.name, "w") do |file|
-      file.write(output)
-    end
-    # FIXME: Find a better way of using "html-minifier".
-    minified = `html-minifier --remove-comments --decode-entities --collapse-whitespace #{task.name}`
-    File.open(task.name, "w") do |file|
-      file.write(minified)
-    end
+def process_haml_file(input_filename, output_filename, locals = {})
+  puts "# Spitting out \"#{output_filename}\"."
+  stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " + 
+      "--decode-entities --collapse-whitespace -o #{output_filename}")
+  stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
+      File.read(input_filename)).render(Object.new, locals)))
+end
+
+
+%w{403 404 410}.each do |error_code|
+  CLOBBER << "public/#{error_code}.html"
+  desc "Spit out the #{error_code} HTTP error document."
+  file "public/#{error_code}.html" => FileList["error.*", "Rakefile"] do |task|
+    process_haml_file("error.haml", task.name, :error_code => error_code)
   end
 end
 
-CLOBBER.include(OUTPUT_FILES)
-task :default => OUTPUT_FILES
+CLOBBER << "public/index.html"
+desc "Spit out the homepage."
+file "public/index.html" => FileList["index.*", "Rakefile"] do |task|
+  process_haml_file("index.haml", task.name)
+end
+
+CLOBBER << "public/art/index.html"
+directory "public/art"
+desc "Spit out the art page."
+file "public/art/index.html" => FileList["art.*", "Rakefile", "public/art"] do |task|
+  process_haml_file("art.haml", task.name)
+end
+
+CLOBBER << "public/crap/index.html"
+directory "public/crap"
+desc "Spit out The Folder of Crap page."
+file "public/crap/index.html" => FileList["crap.*", "Rakefile", "public/crap"] do |task|
+  process_haml_file("crap.haml", task.name)
+end
+
+
+task :default => CLOBBER

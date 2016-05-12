@@ -34,15 +34,6 @@ $two-columns: ($panel-width * 2) + ($base-line-height / 2);
       background-color: $background-colour;
       color: $foreground-colour; } } }
 
-@mixin responsive-junk() {
-  width: em($three-columns, $base-font-size);
-  @media screen and (max-width: em($three-columns +
-      $breakpoint-padding, $base-font-size)) {
-    width: em($two-columns, $base-font-size); }
-  @media screen and (max-width: em($two-columns +
-      $breakpoint-padding, $base-font-size)) {
-    width: em($panel-width, $base-font-size); } }
-
 body {
   background: $base-background-colour;
   color: $base-foreground-colour;
@@ -52,14 +43,18 @@ body {
   font: 100%/1.5 $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  margin: em($base-line-height * 3, $base-font-size) 0;
+  margin: em($base-line-height * 3, $base-font-size) auto;
+  width: em($three-columns, $base-font-size);
+  @media screen and (max-width: em($three-columns + $breakpoint-padding, $base-font-size)) {
+    width: em($two-columns, $base-font-size); }
+  @media screen and (max-width: em($two-columns + $breakpoint-padding, $base-font-size)) {
+    width: em($panel-width, $base-font-size); }
   @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {
     font-size: 87.5%;
-    margin: em($base-line-height, $base-font-size) 0; } }
+    margin: em($base-line-height, $base-font-size) auto; } }
 
 /* footer */ .footer {
   @include clearfix;
-  @include responsive-junk;
   margin: em($base-line-height, $base-font-size) auto 0 auto;
   /* hr */ &__rule {
     display: none; }
@@ -92,7 +87,6 @@ body {
         text-align: center; } } } }
 
 /* header */.header {
-  @include responsive-junk;
   $font-size: 24px;
   $line-height: 32px;
   margin: 0 auto;
@@ -105,19 +99,6 @@ body {
     font-weight: normal;
     line-height: em($line-height, $font-size);
     margin: 0; } }
-
-/* article */.main-content {
-  background: $panel-background-colour;
-  color: $panel-foreground-colour;
-  margin: em($base-line-height, $base-font-size) auto 0 auto;
-  width: 100%;
-  &--homepage {
-    @include responsive-junk;
-    background: none; }
-  /* div */ &__container {
-    margin: 0 auto;
-    max-width: em(560px, $base-font-size);
-    padding: em($base-line-height * 2, $base-font-size); } }
 
 /* div */.panel {
   @include link-junk($panel-background-colour, $panel-foreground-colour, false);
