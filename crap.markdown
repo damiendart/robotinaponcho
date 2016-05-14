@@ -12,9 +12,11 @@ finding a proper home for. Don't expect much.
     [Photoshop techniques I often use][2].
   - [A *really* old Flash version][3] of [Bastard Snake][4].
   - [A TeamSpeak server banner][5] that I should really take down.
+  - [Trevor the alien][6].
 
 [1]: <synology-notes.html>
 [2]: <photoshop-notes.html>
 [3]: <bastardsnake.swf>
 [4]: </git/?p=bastardsnake.git>
 [5]: <teamspeak-banner-jpeg>
+[6]: <trevor.html>
