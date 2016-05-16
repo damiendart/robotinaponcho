@@ -6,9 +6,9 @@
 
 @import "bourbon";
 
-$base-background-colour: #c0392b;
+$base-background-colour: #ecf0f1;
 $base-font-size: 16px;
-$base-foreground-colour: #ffffff;
+$base-foreground-colour: #000000;
 $base-line-height: $base-font-size * 1.5;
 $breakpoint-padding: $base-line-height * 2;
 $panel-background-colour: #ffffff;
@@ -109,6 +109,7 @@ body {
   /* li */ &__item {
     @include link-junk($panel-background-colour, $panel-foreground-colour, false);
     background: $panel-background-colour;
+    background-size: 100%;
     border-radius: em($base-line-height / 4, $base-font-size);
     box-sizing: border-box;
     color: $panel-foreground-colour;
@@ -121,29 +122,27 @@ body {
     overflow: hidden;
     vertical-align: top;
     width: em($panel-width, $base-font-size);
-    @each $classname in git, my-art, folder-of-crap, kathryn-site, radicalapps-site {
+    @each $classname in my-art, kathryn-site, radicalapps-site {
       &--#{$classname} {
-        background-image: url(/assets/#{$classname}.png);
-        @if $classname == "git" {
-          background-color: #F34F29; // "Git Orange".
-          background-position: center 25%;
-          background-repeat: no-repeat;
-          background-size: 50%;
-        } @else {
-          background-size: 100%; } } }
+        background-image: url(/assets/#{$classname}.png); } }
+    &--old-school {
+      background: #7f8c8d; }
+    &--python {
+      background: #27ae60; }
+    &--ruby {
+      background: #e74c3c; }
     @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {
       height: em($base-line-height * 10, $base-font-size); }
     /* div */ &__description {
       background-color: $panel-background-colour;
       bottom: 0;
-      box-shadow: 0 em($base-line-height / -4, $base-font-size)
-          em($base-line-height / 2, $base-font-size) rgba(0, 0, 0, 0.1);
+      color: $panel-foreground-colour;
       padding: em($base-line-height, $base-font-size);
       position: absolute; }
     /* pre */.js-code-example {
       @include transform(rotate(4deg));
       @include user-select(none);
-      color: $base-background-colour;
+      color: #ffffff;
       margin: 0;
       padding: 0;
       position: absolute; } } }
