@@ -122,13 +122,19 @@ body {
     overflow: hidden;
     vertical-align: top;
     width: em($panel-width, $base-font-size);
-    @each $classname in my-art, kathryn-site, radicalapps-site {
-      &--#{$classname} {
-        background-image: url(/assets/#{$classname}.png); } }
+    &--artwork {
+      background-image: url(/assets/artwork.svg);
+      background-position: center -0.75em;
+      background-repeat: no-repeat;
+      background-size: 50%; }
+    &--kathryn {
+      background-image: url(/assets/kathryn.png); }
     &--old-school {
       background: #7f8c8d; }
     &--python {
       background: #27ae60; }
+    &--radicalapps {
+      background-image: url(/assets/radicalapps.png); }
     &--ruby {
       background: #e74c3c; }
     @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {
