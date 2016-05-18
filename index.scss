@@ -151,7 +151,6 @@ body {
     @include link-junk($panel-background-colour, $panel-foreground-colour, false);
     background: $panel-background-colour;
     background-size: 100%;
-    border-radius: em($base-line-height / 4, $base-font-size);
     box-sizing: border-box;
     color: $panel-foreground-colour;
     display: inline-block;
