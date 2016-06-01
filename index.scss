@@ -6,33 +6,17 @@
 
 @import "bourbon";
 
-$base-background-colour: #ecf0f1;
+$base-background-colour: #f14040;
 $base-font-size: 16px;
-$base-foreground-colour: #000000;
-$base-line-height: $base-font-size * 1.5;
-$breakpoint-padding: $base-line-height * 2;
-$panel-background-colour: #ffffff;
-$panel-foreground-colour: #000000;
-$panel-width: 314px;
-$three-columns: ($panel-width * 3) + $base-line-height;
-$two-columns: ($panel-width * 2) + ($base-line-height / 2);
+$base-foreground-colour: #ffffff;
+$base-line-height: $base-font-size;
+$big-font-size: $base-font-size * 3;
+$big-line-height: $base-font-size * 3.5;
+$header-font-size: $base-font-size * 6;
 
-@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
-  a {
-    @include transition(background-color 0.1s, color 0.2s);
-    border-radius: em($base-line-height / 4, $base-font-size);
-    color: $foreground-colour;
-    margin: 0 em($base-line-height / -4, $base-font-size);
-    padding: 0 em($base-line-height / 4, $base-font-size);
-    white-space: pre;
-    @if ($underline == false) {
-      text-decoration: none; }
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $foreground-colour;
-      color: $background-colour; }
-    &:visited {
-      background-color: $background-colour;
-      color: $foreground-colour; } } }
+a {
+  color: inherit; 
+  text-decoration: none; }
 
 body {
   background: $base-background-colour;
@@ -40,155 +24,35 @@ body {
   // Setting the font size initially to 100% avoids the Internet
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
   // (see <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/1.5 $helvetica;
+  font: 100%/#{$base-line-height} $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  margin: em($base-line-height * 3, $base-font-size) auto;
-  width: em($three-columns, $base-font-size);
-  @media screen and (max-width: em($three-columns + $breakpoint-padding, $base-font-size)) {
-    width: em($two-columns, $base-font-size); }
-  @media screen and (max-width: em($two-columns + $breakpoint-padding, $base-font-size)) {
-    width: em($panel-width, $base-font-size); }
-  @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {
-    font-size: 87.5%;
-    margin: em($base-line-height, $base-font-size) auto; } }
+  margin: em($base-line-height * 6, $base-font-size) auto;
+  text-align: center; }
 
-/* footer */.footer {
-  @include clearfix;
-  margin: em($base-line-height, $base-font-size) auto 0 auto;
-  /* hr */ &__rule {
-    display: none; }
-  /* p */ &__copyright {
-    float: right;
-    margin: 0;
-    @media screen and (max-width:
-        em($two-columns + $breakpoint-padding, $base-font-size)) {
-      float: none;
-      margin: em($base-line-height, $base-font-size) 0 0 0;
-      text-align: center; } }
-  /* ul */ &__link-list {
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    @media screen and (max-width:
-        em($two-columns + $breakpoint-padding, $base-font-size)) {
-      float: none; }
-    /* li */ &__item {
-      @include link-junk($base-background-colour, $base-foreground-colour, false);
-      display: inline-block;
-      font-weight: bold;
-      margin-right: em($base-line-height / 2, $base-font-size);
-      @media screen and (max-width:
-          em($two-columns + $breakpoint-padding, $base-font-size)) {
-        display: block;
-        margin: 0;
-        text-align: center; } } } }
+h1 { 
+  font: bold #{percentage($header-font-size / $base-font-size)}/1 "Sniglet";
+  margin: 0;
+  position: absolute; 
+  opacity: 0.25;
+  top: em($header-font-size * -0.4, $header-font-size); 
+  width: 100%; }
 
-/* header */.header {
-  $font-size: 24px;
-  $line-height: 32px;
-  margin: 0 auto;
-  /* h1 */ &__title {
-    font-size: percentage($font-size / $base-font-size);
-    line-height: em($line-height, $font-size);
-    margin: 0; }
-  /* h2 */ &__subtitle {
-    font-size: percentage($font-size / $base-font-size);
-    font-weight: normal;
-    line-height: em($line-height, $font-size);
-    margin: 0; } }
+dt {
+  font: bold percentage($big-font-size / $base-font-size) "Sniglet"; 
+  margin: em($base-line-height, $big-font-size) 0 0 0; }
 
-.javascript {
-  .loading--js-fade-away {
-    opacity: 0; }
-  .project-list__item {
-    opacity: 0;
-    transform: translateY($base-line-height * -1);
-    &--js-show {
-      opacity: 1;
-      transform: translateX(0); }
-    @for $i from 0 to 9 {
-      &:nth-child(#{$i}) {
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        transition-delay: #{$i * 0.25}s; } } } }
+dd {
+  margin: 0; }
 
-/* div */.loading {
-  margin: em($base-line-height / -2, $base-font-size) 0 0
-    em($base-line-height * -1.5, $base-font-size);
-  left: 50%;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  transition: opacity 0.25s;
-  & div {
+@for $i from 1 to 5 {
+  .a#{$i} {
     @at-root {
-      @include keyframes(loading) {
-        0%, 80%, 100% {
-          @include transform(scale(0)); }
-        40% {
-          @include transform(scale(1.0)); } } }
-    @include animation(loading 1.4s infinite ease-in-out both);
-    background-color: $base-foreground-colour;
-    border-radius: 100%;
-    display: inline-block;
-    height: em($base-line-height, $base-font-size);
-    margin: 0 em($base-line-height / 4, $base-font-size) 0 0;
-    width: em($base-line-height, $base-font-size);
-    &:nth-child(1) {
-      @include animation-delay(-0.32s); }
-    &:nth-child(2) {
-      @include animation-delay(-0.16s); } } }
-
-/* ul */.project-list {
-  list-style: none;
-  margin: em($base-line-height, $base-font-size) 0
-      em($base-line-height / -2, $base-font-size)
-      em($base-line-height / -2, $base-font-size);
-  padding: 0;
-  /* li */ &__item {
-    @include link-junk($panel-background-colour, $panel-foreground-colour, false);
-    background: $panel-background-colour;
-    background-size: 100%;
-    box-sizing: border-box;
-    color: $panel-foreground-colour;
-    display: inline-block;
-    height: em($base-line-height * 12, $base-font-size);
-    margin: 0 0 em($base-line-height / 2, $base-font-size)
-        em($base-line-height / 2, $base-font-size);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-    vertical-align: top;
-    width: em($panel-width, $base-font-size);
-    &--artwork {
-      background-image: url(/assets/artwork.svg);
-      background-position: center -0.75em;
-      background-repeat: no-repeat;
-      background-size: 50%; }
-    &--kathryn {
-      background-image: url(/assets/kathryn.png); }
-    &--old-school {
-      background: #7f8c8d; }
-    &--python {
-      background: #27ae60; }
-    &--radicalapps {
-      background-image: url(/assets/radicalapps.png); }
-    &--ruby {
-      background: #e74c3c; }
-    @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {
-      height: em($base-line-height * 10, $base-font-size); }
-    /* div */ &__description {
-      background-color: $panel-background-colour;
-      bottom: 0;
-      color: $panel-foreground-colour;
-      padding: em($base-line-height, $base-font-size);
-      position: absolute; }
-    /* pre */.js-code-example {
-      @include transform(rotate(4deg));
-      @include user-select(none);
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-      position: absolute; } } }
+      @include keyframes(animation-#{$i}) {
+       0%, #{$i * 5}% {
+        opacity: 0;
+        transform: translateY($base-line-height * -1); }
+       100% {
+        opacity: 1;
+        transform: translateY(0); } } }
+    @include animation(animation-#{$i} 1s ease); } }
