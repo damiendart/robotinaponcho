@@ -19,7 +19,9 @@ SetEnv TZ Europe/London
   Redirect gone /assets/animate.min.css
   Redirect gone /assets/drawings-on-tumblr-background.png
   Redirect gone /assets/html5shiv.js
+  Redirect gone /crap/bastardsnake.swf
   Redirect gone /crap/blog-header.png
+  Redirect gone /crap/teamspeak-banner.jpeg
   Redirect gone /crap/thingy.swf
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png

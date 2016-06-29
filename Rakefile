@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # Rakefile for Damien Dart's personal website.
 #
 # Copyright (C) 2013-2016 Damien Dart, <damiendart@pobox.com>.
@@ -56,8 +58,7 @@ CLOBBER << "public/crap/index.html"
 directory "public/crap"
 desc "Spit out The Folder of Crap page."
 file "public/crap/index.html" => FileList["crap.*", "Rakefile", "public/crap"] do |task|
-  process_haml_file("crap.haml", task.name)
+  process_haml_file("error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
 end
-
 
 task :default => CLOBBER
