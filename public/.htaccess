@@ -34,6 +34,7 @@ SetEnv TZ Europe/London
   RedirectMatch gone /crap/blog-background2?\.gif$
   RedirectMatch gone /crap/blog-(date|source|tags)-icon\.png$
   RedirectMatch 301 /assets/jquery-1\.10\.1\.min\.js$ /assets/jquery-1\.11\.3\.min\.js
+  RedirectMatch 301 /crap/(photoshop|synology)-notes.html$ /notes/$1
   RedirectMatch 301 /(crap|obtaincornhoop)/glyphiconshalflings-regular\.(eot|otf|svg|ttf|woff)$ \
       /assets/glyphiconshalflings-regular\.$2
   RedirectMatch 301 /obtaincornhoop/(html5shiv|selectnav\.min)\.js$ /assets/$1\.js
@@ -90,6 +91,11 @@ SetEnv TZ Europe/London
   RewriteCond %{QUERY_STRING} !=""
   RewriteCond %{REQUEST_URI} !^/git/
   RewriteRule ^(.*)$ https://www.robotinaponcho.net/$1? [R=permanent,L]
+  # Remove file extensions from some URLs.
+  RewriteCond %{THE_REQUEST} ^.*notes/(photoshop|synology)\.html
+  RewriteRule ^(.*).html$ https://www.robotinaponcho.net/$1 [L,NE,R=permanent]
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^([^\.]+)$ $1.html [L,NC]
   # Git web interface stuff.
   RewriteCond %{REQUEST_URI} ^.*git/[a-zA-Z0-9\.\-_]*\.git/?$
   RewriteCond %{REQUEST_FILENAME} -f
