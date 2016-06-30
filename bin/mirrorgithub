@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 """Maintains mirrors of a GitHub user's public repositories.
 
 Optionally does some per-repository stuff for Gitweb's benefit.
