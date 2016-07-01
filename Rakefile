@@ -57,7 +57,7 @@ end
 CLOBBER << "public/crap/index.html"
 directory "public/crap"
 desc "Spit out The Folder of Crap page."
-file "public/crap/index.html" => FileList["crap.*", "Rakefile", "public/crap"] do |task|
+file "public/crap/index.html" => FileList["error.*", "Rakefile", "public/crap"] do |task|
   process_haml_file("error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
 end
 
