@@ -15,14 +15,16 @@ ServerSignature off
 SetEnv TZ Europe/London
 
 <IfModule mod_alias.c>
-  Redirect gone /demons_souls_theodore.jpg
-  Redirect gone /assets/animate.min.css
-  Redirect gone /assets/drawings-on-tumblr-background.png
-  Redirect gone /assets/html5shiv.js
-  Redirect gone /crap/bastardsnake.swf
-  Redirect gone /crap/blog-header.png
-  Redirect gone /crap/teamspeak-banner.jpeg
-  Redirect gone /crap/thingy.swf
+  # My current host doesn't like "Redirect gone ..." for some reason,
+  # but "RedirectMatch gone ,,," works fine.
+  RedirectMatch gone /demons_souls_theodore\.jpg$
+  RedirectMatch gone /assets/animate\.min\.css$
+  RedirectMatch gone /assets/drawings-on-tumblr-background\.png$
+  RedirectMatch gone /assets/html5shiv\.js$
+  RedirectMatch gone /crap/bastardsnake\.swf$
+  RedirectMatch gone /crap/blog-header\.png$
+  RedirectMatch gone /crap/teamspeak-banner\.jpeg$
+  RedirectMatch gone /crap/thingy\.swf$
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
   RedirectMatch gone /(deadlypremonition|robotinaponcho)\.jpeg$
