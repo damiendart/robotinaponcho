@@ -17,26 +17,26 @@ SetEnv TZ Europe/London
 <IfModule mod_alias.c>
   # My current host doesn't like "Redirect gone ..." for some reason,
   # but "RedirectMatch gone ,,," works fine.
-  RedirectMatch gone /demons_souls_theodore\.jpg$
-  RedirectMatch gone /assets/animate\.min\.css$
-  RedirectMatch gone /assets/drawings-on-tumblr-background\.png$
-  RedirectMatch gone /assets/html5shiv\.js$
-  RedirectMatch gone /crap/bastardsnake\.swf$
-  RedirectMatch gone /crap/blog-header\.png$
-  RedirectMatch gone /crap/teamspeak-banner\.jpeg$
-  RedirectMatch gone /crap/thingy\.swf$
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
+  RedirectMatch gone /demons_souls_theodore\.jpg$
   RedirectMatch gone /(deadlypremonition|robotinaponcho)\.jpeg$
+  RedirectMatch gone /assets/animate\.min\.css$
   RedirectMatch gone /assets/blog-(background.png|style\.css)$
+  RedirectMatch gone /assets/drawings-on-tumblr-background\.png$
   RedirectMatch gone /assets/foc-(footer|header)\.html$
   RedirectMatch gone /assets/glyphiconshalflings-regular\.(eot|otf|svg|ttf|woff)$
+  RedirectMatch gone /assets/html5shiv\.js$
   RedirectMatch gone /assets/(jquery-1\.11\.3|moment|selectnav|spin)\.min\.js$
   RedirectMatch gone /assets/(obtaincornhoop|robotinaponcho)(@2x)?\.png$
   RedirectMatch gone /assets/(kathryn|radicalapps)@2x?\.png$
   RedirectMatch gone /assets/site-header(@2x)?\.png$
+  RedirectMatch gone /crap/bastardsnake\.swf$
   RedirectMatch gone /crap/blog-background2?\.gif$
   RedirectMatch gone /crap/blog-(date|source|tags)-icon\.png$
+  RedirectMatch gone /crap/blog-header\.png$
+  RedirectMatch gone /crap/teamspeak-banner\.jpeg$
+  RedirectMatch gone /crap/thingy\.swf$
   RedirectMatch 301 /assets/jquery-1\.10\.1\.min\.js$ /assets/jquery-1\.11\.3\.min\.js
   RedirectMatch 301 /crap/(photoshop|synology)-notes.html$ /notes/$1
   RedirectMatch 301 /(crap|obtaincornhoop)/glyphiconshalflings-regular\.(eot|otf|svg|ttf|woff)$ \
