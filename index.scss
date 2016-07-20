@@ -62,9 +62,9 @@ dd {
     @at-root {
       @include keyframes(animation-#{$i}) {
        0%, #{$i * 5}% {
+        @include transform(translateY($base-line-height * -1));
         opacity: 0;
-        transform: translateY($base-line-height * -1); }
        100% {
-        opacity: 1;
-        transform: translateY(0); } } }
+        @include transform(translateY(0));
+        opacity: 1; } } } }
     @include animation(animation-#{$i} 1s ease); } }
