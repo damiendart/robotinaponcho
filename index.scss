@@ -6,7 +6,7 @@
 
 @import "bourbon";
 
-$base-background-colour: #f14040;
+$base-background-colour: #2980b9;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
 $base-line-height: $base-font-size * 1.5;
@@ -24,7 +24,7 @@ body {
   // Setting the font size initially to 100% avoids the Internet
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
   // (see <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/#{em($base-line-height, $base-font-size)} $helvetica;
+  font: 100%/#{em($base-line-height, $base-font-size)} "Dekko", cursive;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   margin: em($base-line-height * 6, $base-font-size) auto;
@@ -54,8 +54,11 @@ dt {
       display: none; } } }
 
 dd {
-  font-weight: bold;
-  margin: 0; }
+  font-size: percentage($base-line-height / $base-font-size);
+  line-height: 1.5em;
+  margin: 0;
+  @media screen and (max-width: em(900px, $base-font-size)) {
+    font-size: 100%; } }
 
 @for $i from 1 to 5 {
   .a#{$i} {
