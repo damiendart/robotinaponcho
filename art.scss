@@ -2,32 +2,12 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-@import "bourbon";
+@import "common";
 
-$adelle: "adelle", $georgia;
-$adelle-sans: "adelle-sans", $helvetica;
 $base-background-colour: #2980b9;
 $base-font-size: 18px;
 $base-foreground-colour: #ffffff;
 $base-line-height: $base-font-size * 1.5;
-
-@mixin link-junk($background-colour, $foreground-colour, $underline: true,
-    $font-size: $base-font-size) {
-  a {
-    @include transition(background-color 0.1s, color 0.2s);
-    border-radius: em($base-line-height / 4, $font-size);
-    color: $foreground-colour;
-    margin: 0 em($base-line-height / -4, $font-size);
-    padding: 0 em($base-line-height / 4, $font-size);
-    white-space: pre;
-    @if ($underline == false) {
-      text-decoration: none; }
-    &:active, &:focus, &:hover, &:visited:hover {
-      background-color: $foreground-colour;
-      color: $background-colour; }
-    &:visited {
-      background-color: $background-colour;
-      color: $foreground-colour; } } }
 
 body {
   background-color: $base-background-colour;

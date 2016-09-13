@@ -1,0 +1,21 @@
+@import "bourbon";
+
+$adelle: "adelle", $georgia;
+$adelle-sans: "adelle-sans", $helvetica;
+
+@mixin link-junk($background-colour, $foreground-colour, $underline: true) {
+  a {
+    @include transition(background-color 0.1s, color 0.2s);
+    border-radius: em($base-line-height / 4, $base-font-size);
+    color: $foreground-colour;
+    margin: 0 em($base-line-height / -4, $base-font-size);
+    padding: 0 em($base-line-height / 4, $base-font-size);
+    white-space: pre;
+    @if ($underline == false) {
+      text-decoration: none; }
+    &:active, &:focus, &:hover, &:visited:hover {
+      background-color: $foreground-colour;
+      color: $background-colour; }
+    &:visited {
+      background-color: $background-colour;
+      color: $foreground-colour; } } }

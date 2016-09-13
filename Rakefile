@@ -43,14 +43,15 @@ end
 
 CLOBBER << "public/index.html"
 desc "Spit out the homepage."
-file "public/index.html" => FileList["index.*", "Rakefile"] do |task|
+file "public/index.html" => FileList["index.*", "common.*", "Rakefile"] do |task|
   process_haml_file("index.haml", task.name)
 end
 
 CLOBBER << "public/art/index.html"
 directory "public/art"
 desc "Spit out the art page."
-file "public/art/index.html" => FileList["art.*", "Rakefile", "public/art"] do |task|
+file "public/art/index.html" => FileList["art.*", "common.*",
+    "Rakefile", "public/art"] do |task|
   process_haml_file("art.haml", task.name)
 end
 
