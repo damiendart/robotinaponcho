@@ -6,8 +6,29 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
+    %meta{:content => "Damien Dart's artwork and illustration portfolio.", "name" => "description"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
-    %title Damien Dart's Artwork (www.robotinaponcho.net)
+    %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
+    %meta{:content => "Damien Dart's Artwork and Illustrations", :property => "og:title"}
+    %meta{:content => "website", :property => "og:type"}
+    %meta{:content => "https://www.robotinaponcho.net/art/", :property => "og:url"}
+    %script= `uglifyjs index.typekit.js -c --inline-script -m`
+    %script document.documentElement.className += " javascript";
+    :scss
+      #{File.read("art.scss")}
+    %title Damien Dart's Artwork and Illustrations (www.robotinaponcho.net)
   %body
-    %h1 Damien Dart's Artwork
-    %p Coming soon, in the meantime check out my <a href="https://instagram.com/damiendart">Instagram</a> and <a href="http://blog.robotinaponcho.net/">Tumblr</a> profiles.
+    .header
+      %h1.header__header Damien<span> Dart</span>'s Artwork
+      %ul.header__navigation-list
+        %li.header__navigation-list__item
+          %a{:href => "/"} &larr; Damien Dart's Homepage
+        %li.header__navigation-list__item
+          %a{:href => "https://instagram.com/damiendart"} Instagram
+        %li.header__navigation-list__item
+          %a{:href => "http://blog.robotinaponcho.net/"} Tumblr
+    %img.image.image--no-border{:src => "one.png"}
+    %img.image{:src => "two.png"}
+    %footer.footer
+      %p.footer__copyright Copyright &copy; #{Date.today.strftime("%Y")} Damien Dart
+    %script= `uglifyjs art.js -c --inline-script -m`
