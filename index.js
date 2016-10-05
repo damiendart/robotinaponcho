@@ -1,23 +1,22 @@
 setTimeout(function() {
   if (document.readyState != "complete") {
-    var document_body = document.querySelector("body");
     var loading = document.createElement("div");
-    loading.className = "loading";
-    document_body.parentNode.insertBefore(loading, document_body.nextSibling);
+    loading.className = "js-loading";
     for (var i = 0; i < 3; i++) {
       loading.insertBefore(document.createElement("div"), loading.firstChild);
     }
+    document.body.appendChild(loading);
   }
 }, 750);
 window.onload = function() {
+  if (document.querySelector(".js-loading")) {
+    document.querySelector(".js-loading").className += " js-loading--hidden";
+  }
   var panels = document.querySelectorAll(".project-list__item");
   for (var i = 0; i < panels.length; i++) {
     panels[i].className += " project-list__item--js-show";
   }
-  if (document.querySelector(".loading")) {
-    document.querySelector(".loading").className += " loading--js-fade-away";
-  }
-}
+};
 var images = document.querySelectorAll("[data-code-example]");
 for (var i = 0; i < images.length; i++) {
   (function() {
