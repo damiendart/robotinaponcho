@@ -125,13 +125,17 @@ body {
       background-repeat: no-repeat;
       background-size: 125%; }
     &--kathryn {
-      background-image: url(/assets/kathryn.png); }
+      background-image: url(/assets/kathryn.png); 
+      @include hidpi {
+        background-image: url(/assets/kathryn@2x.png); } }
     &--old-school {
       background: #7f8c8d; }
     &--python {
       background: #27ae60; }
     &--radicalapps {
-      background-image: url(/assets/radicalapps.png); }
+      background-image: url(/assets/radicalapps.png);
+      @include hidpi {
+        background-image: url(/assets/radicalapps@2x.png); } }
     &--ruby {
       background: #e74c3c; }
     @media screen and (max-width: em($panel-width + $breakpoint-padding, $base-font-size)) {

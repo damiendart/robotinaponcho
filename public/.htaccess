@@ -29,7 +29,6 @@ SetEnv TZ Europe/London
   RedirectMatch gone /assets/html5shiv\.js$
   RedirectMatch gone /assets/(jquery-1\.11\.3|moment|selectnav|spin)\.min\.js$
   RedirectMatch gone /assets/(obtaincornhoop|robotinaponcho)(@2x)?\.png$
-  RedirectMatch gone /assets/(kathryn|radicalapps)@2x?\.png$
   RedirectMatch gone /assets/site-header(@2x)?\.png$
   RedirectMatch gone /crap/bastardsnake\.swf$
   RedirectMatch gone /crap/blog-background2?\.gif$
