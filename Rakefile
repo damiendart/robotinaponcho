@@ -50,9 +50,8 @@ end
 CLOBBER << "public/art/index.html"
 directory "public/art"
 desc "Spit out the art page."
-file "public/art/index.html" => FileList["art.*", "common.*",
-    "Rakefile", "public/art"] do |task|
-  process_haml_file("art.haml", task.name)
+file "public/art/index.html" => FileList["error.*", "Rakefile", "public/art"] do |task|
+  process_haml_file("error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
 end
 
 CLOBBER << "public/crap/index.html"
