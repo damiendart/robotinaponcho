@@ -38,12 +38,14 @@ body {
   height: 100%;
   margin: 0 auto;
   max-width: em($content-width, $base-font-size);
-  padding: em($base-line-height * 3, $base-font-size) auto; 
+  padding: em($base-line-height * 3, $base-font-size) 0;
   text-align: center;
-  @if ($base-font-size != 16px) {
-    @media screen and (max-width: em($content-width, 16px)) {
-      font-size: 100%; 
-      max-width: em($small-content-width, 16px); } } }
+  @media screen and (max-width: em($content-width, 16px)) {
+    @if ($base-font-size != 16px) {
+      font-size: 100%; }
+    max-width: em($small-content-width, 16px);
+    padding: em($base-line-height, 16px); 
+    text-align: left; } }
 
 html {
   height: 100%; }
@@ -51,7 +53,9 @@ html {
 h1 {
   font-size: 300%;
   line-height: em($base-line-height * 3, $base-font-size * 3); 
-  margin: 0; }
+  margin: 0;
+  @media screen and (max-width: em($content-width, 16px)) {
+    font-size: 200%; } }
 
 p {
   margin: em($base-line-height / 4, $base-font-size) 0 0 0; }
