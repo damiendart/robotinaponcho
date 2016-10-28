@@ -38,7 +38,7 @@ body {
   height: 100%;
   margin: 0 auto;
   max-width: em($content-width, $base-font-size);
-  padding: em($base-line-height * 3, $base-font-size) 0;
+  padding: em($base-line-height * 6, $base-font-size) 0;
   text-align: center;
   @media screen and (max-width: em($content-width, 16px)) {
     @if ($base-font-size != 16px) {
