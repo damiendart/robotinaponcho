@@ -38,4 +38,5 @@ our @extra_breadcrumbs = (["www.robotinaponcho.net" => "/"]);
 $feature{"avatar"}{"default"} = ["gravatar"];
 $home_link_str = "git";
 $site_name = "Damien Dart&rsquo;s Git Repositories";
+$projects_list_description_width = 999;
 CONFIG
