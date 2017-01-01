@@ -55,6 +55,12 @@ SetEnv TZ Europe/London
 
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=15552000;includeSubDomains" "expr=%{req_novary:X-Forwarded-Proto}=='https'"
+  # BUG: HTTP 304 responses have been recently causing a bunch of
+  # browsers to bomb out; until a solution is available stop generating
+  # those responses. (Last checked on 1/1/17.) For more information, see
+  # <https://members.nearlyfreespeech.net/forums/viewtopic.php?t=9176>.
+  RequestHeader unset If-Modified-Since
+  RequestHeader unset If-None-Match
 </IfModule>
 
 <IfModule mod_mime.c>
