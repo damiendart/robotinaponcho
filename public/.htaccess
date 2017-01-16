@@ -16,7 +16,7 @@ SetEnv TZ Europe/London
 
 <IfModule mod_alias.c>
   # My current host doesn't like "Redirect gone ..." for some reason,
-  # but "RedirectMatch gone ,,," works fine.
+  # but "RedirectMatch gone ..." works fine.
   Redirect 301 /obtaincornhoop/style.css /assets/blog-style.css
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
   RedirectMatch gone /demons_souls_theodore\.jpg$
