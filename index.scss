@@ -7,10 +7,10 @@
 @import "bourbon";
 
 $base-background-colour: #1d448e;
-$base-font-size: 18px;
+$base-font-size: 24px;
 $base-foreground-colour: #ffffff;
-$base-line-height: $base-font-size * 1.5;
-$content-width: 512px;
+$base-line-height: $base-font-size * 1.3;
+$content-width: 600px;
 $small-content-width: 320px;
 
 
@@ -23,39 +23,46 @@ a {
     color: black; } }
 
 body {
-  @include display(flex);
-  @include flex-direction(column);
-  @include justify-content(center);
   background: $base-background-colour;
   box-sizing: border-box;
   color: $base-foreground-colour;
   // Setting the font size initially to 100% avoids the Internet
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
   // (see <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/1.5 "Raleway", $helvetica;
+  font: 100%/#{em($base-line-height, $base-font-size)}
+      "proxima-nova-condensed", $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
-  height: 100%;
-  margin: 0 auto;
+  margin: em($base-line-height * 2, $base-font-size);
   max-width: em($content-width, $base-font-size);
-  padding: em($base-line-height * 6, $base-font-size) 0;
-  text-align: center;
-  @media screen and (max-width: em($content-width, 16px)) {
+  padding: 0;
+  @media screen and (max-width: em(
+      $content-width + ($base-line-height * 4), 16px)) {
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(center);
     @if ($base-font-size != 16px) {
       font-size: 100%; }
+    height: 100%;
+    margin: 0 auto;
     max-width: em($small-content-width, 16px);
-    padding: em($base-line-height, 16px);
-    text-align: left; } }
+    padding: em($base-line-height, 16px); } }
+
+canvas {
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%; }
 
 html {
   height: 100%; }
 
 h1 {
-  font-size: 300%;
-  line-height: em($base-line-height * 3, $base-font-size * 3);
-  margin: 0;
-  @media screen and (max-width: em($content-width, 16px)) {
-    font-size: 200%; } }
+  font-size: 200%;
+  line-height: em($base-line-height * 2, $base-font-size * 2);
+  margin: 0; }
 
 p {
   margin: em($base-line-height / 4, $base-font-size) 0 0 0; }
