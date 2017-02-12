@@ -10,7 +10,7 @@ $base-background-colour: #1d448e;
 $base-font-size: 24px;
 $base-foreground-colour: #ffffff;
 $base-line-height: $base-font-size * 1.3;
-$content-width: 600px;
+$content-width: 624px;
 $small-content-width: 320px;
 
 
@@ -30,7 +30,7 @@ body {
   // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
   // (see <http://alistapart.com/article/howtosizetextincss#section5>).
   font: 100%/#{em($base-line-height, $base-font-size)}
-      "proxima-nova-condensed", $helvetica;
+      "ff-enzo-web", $helvetica;
   @if ($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   margin: em($base-line-height * 2, $base-font-size);
