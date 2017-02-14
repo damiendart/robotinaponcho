@@ -1,8 +1,8 @@
 var engine = Matter.Engine.create();
 var render = Matter.Render.create({ element: document.body, engine: engine,
-    options: { background: "none", hasBounds: true,  wireframes: false } });
+    options: { background: "none", hasBounds: true, wireframes: false } });
 
-for(var i = 0; i < 15; i++) {
+for(var i = 0; i < 30; i++) {
   var x = Matter.Common.random(-50, 50);
   var y = -2000 - (i > 0 ? 2000 : 0) - (i * 400);
   Matter.World.add(engine.world, Matter.Body.create({ parts: [
@@ -26,8 +26,9 @@ Matter.Events.on(render, "beforeRender", function(event) {
   // <http://brm.io/matter-js/docs/classes/Render.html#property_bounds>.
   event.source.options.width = event.source.canvas.width;
   event.source.options.height = event.source.canvas.height;
-  event.source.bounds = { min: { x: -event.source.canvas.width + 200,
-      y: -event.source.canvas.height }, max: { x: 200, y: 0 } };
+  event.source.bounds = { min: { x: -event.source.canvas.width / 2,
+      y: -event.source.canvas.height }, max: { x:
+      event.source.canvas.width / 2, y: 0 } };
 });
 
 Matter.Engine.run(engine);
