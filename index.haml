@@ -16,7 +16,7 @@
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
     %script= `uglifyjs index.typekit.js -c --inline-script -m`
     :scss
-      #{File.read("index.scss")}
+      @import "index";
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
     %h1 Damien Dart

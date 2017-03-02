@@ -4,14 +4,13 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-@import "bourbon";
 
 $base-background-colour: #1d448e;
 $base-font-size: 18px;
 $base-foreground-colour: #ffffff;
-$base-line-height: $base-font-size * 1.4;
-$content-width: $base-font-size * 28;
-$small-content-width: 320px;
+$base-line-height: 1.575rem;
+$content-width: 31.5rem;
+$small-content-width: 22.5rem;
 
 
 a {
@@ -26,21 +25,15 @@ body {
   background: $base-background-colour;
   box-sizing: border-box;
   color: $base-foreground-colour;
-  // Setting the font size initially to 100% avoids the Internet
-  // Explorer 6 and Internet Explorer 7 exaggerated text-resizing bug
-  // (see <http://alistapart.com/article/howtosizetextincss#section5>).
-  font: 100%/#{em($base-line-height, $base-font-size)} "proxima-nova", $helvetica;
-  @if ($base-font-size != 16px) {
-    font-size: percentage($base-font-size / 16px); }
-  margin: em($base-line-height * 4, $base-font-size);
-  max-width: em($content-width, $base-font-size);
+  font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: percentage($base-font-size / 16px);
+  line-height: $base-line-height;
+  margin: $base-line-height * 4;
+  max-width: $content-width;
   padding: 0;
-  @media screen and (max-width: em(
-      $content-width + ($base-line-height * 4), 16px)) {
-    @if ($base-font-size != 16px) {
-      font-size: 100%; }
+  @media screen and (max-width: $content-width + ($base-line-height * 4)) {
     max-width: 100%;
-    margin: em($base-line-height, 16px); } }
+    margin: $base-line-height; } }
 
 canvas {
   height: 100%;
@@ -52,29 +45,30 @@ canvas {
   z-index: -9999; }
 
 html {
+  font-size: 100%;
   height: 100%; }
 
 h1 {
   font-size: 200%;
-  line-height: em($base-line-height * 2, $base-font-size * 2);
+  line-height: $base-line-height * 2;
   margin: 0; }
 
 p {
-  margin: em($base-line-height / 4, $base-font-size) 0 0 0; }
+  margin: $base-line-height / 4 0 0 0; }
 
 /* Typekit stuff. */
 .wf-active body > * {
-  @include transition(opacity 0.5s ease-in-out);
+  transition: opacity 0.5s ease-in-out;
   opacity: 1;
   visibility: visible;
   &:nth-child(2) {
-    @include transition-delay(0.125s); }
+    transition-delay: 0.125s; }
   &:nth-child(3) {
-    @include transition-delay(0.25s); }
+    transition-delay: 0.25s; }
   &:nth-child(4) {
-    @include transition-delay(0.375s); }
+    transition-delay: 0.375s; }
   &:nth-child(5) {
-    @include transition-delay(0.5s); } }
+    transition-delay: 0.5s; } }
 
 /* Typekit stuff. */
 .wf-loading body > * {
