@@ -20,24 +20,10 @@
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
     %h1 Damien Dart
-    :markdown
-      **Hello!** I'm an occasional illustrator and computer person.
-
-      Recent work: FlippyWindow, [Kathryn Craigdaillie Designs][2],
-      [various drawings and illustrations][3] and [open-source stuff][4].
-
-      See also: [GitHub][5], [Instagram][6], [my notes][7], [Tumblr][8], and
-      [Twitter][9].
-
-      You can contact me by [email][1].
-
-      [1]: <mailto:damiendart@pobox.com>
-      [2]: <https://www.kathryncraigdaillie.co.uk/>
-      [3]: <http://blog.robotinaponcho.net/>
-      [4]: </git/>
-      [5]: <https://github.com/damiendart>
-      [6]: <https://instagram.com/damiendart>
-      [7]: </notes/>
-      [8]: <http://blog.robotinaponcho.net/>
-      [9]: <https://twitter.com/damiendart>
+    %h2 Occasional computer person&nbsp;and&nbsp;illustrator
+    %ul
+      %li
+        %a{:href => "#"} Projects
+      %li
+        %a{:href => "#"} Contact
     %script= `uglifyjs index.js -c --inline-script -m`
