@@ -54,6 +54,16 @@ file "public/art/index.html" => FileList["error.*", "Rakefile", "public/art"] do
   process_haml_file("error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
 end
 
+CLOBBER << "public/assets/index-vendor.js"
+directory "public/assets"
+desc "Spit out the concatenated vendor JavaScript file for the homepage."
+file "public/assets/index-vendor.js" => FileList["Rakefile",
+    "public/assets/pathseg.js", "public/assets/decomp.min.js",
+    "public/assets/matter.min.js"] do |task|
+  puts "# Spitting out \"#{task.name}\"."
+  `uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name}`
+end
+
 CLOBBER << "public/crap/index.html"
 directory "public/crap"
 desc "Spit out The Folder of Crap page."
