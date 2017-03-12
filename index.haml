@@ -8,10 +8,10 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
-    %meta{:content => "Damien Dart's homepage.", "name" => "description"}
+    %meta{:content => "The homepage of Damien Dart, an occasional computer person and illustrator.", "name" => "description"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
-    %meta{:content => "Damien Dart's Homepage", :property => "og:title"}
+    %meta{:content => "Damien Dart: Occasional computer person and illustrator", :property => "og:title"}
     %meta{:content => "website", :property => "og:type"}
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
     %script= `uglifyjs index.typekit.js -c --inline-script -m`
@@ -20,10 +20,9 @@
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
     %h1 Damien Dart
-    %h2 Occasional computer person&nbsp;and&nbsp;illustrator
     %ul
       %li
-        %a{:href => "#"} Projects
+        %a{:href => "/projects"} Projects
       %li
-        %a{:href => "#"} Contact
+        %a{:href => "mailto:damiendart@pobox.com"} Contact via email
     %script= `uglifyjs index.js -c --inline-script -m`

@@ -9,8 +9,7 @@ $base-background-colour: #f96e00;
 $base-font-size: 18px;
 $base-foreground-colour: #ffffff;
 $base-line-height: 1.575rem;
-$content-width: 31.5rem;
-$small-content-width: 22.5rem;
+$fallback-font-stack: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 
 
 a {
@@ -18,10 +17,13 @@ a {
   border-radius: $base-line-height;
   color: $base-background-colour;
   display: block;
-  font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-family: "proxima-nova", $fallback-font-stack;
   padding: $base-line-height / 2 $base-line-height;
   text-decoration: none;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  @media only screen and (max-width: 480px) {
+    padding: $base-line-height / 4 $base-line-height / 2; } }
+
 
 body {
   align-items: center;
@@ -30,7 +32,7 @@ body {
   color: $base-foreground-colour;
   display: flex;
   flex-direction: column;
-  font-family: "omnes-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-family: "omnes-pro", $fallback-font-stack;
   font-size: percentage($base-font-size / 16px);
   font-weight: bold;
   height: 100%;
@@ -53,14 +55,9 @@ h1 {
   font-size: 400%;
   line-height: $base-line-height * 3;
   margin: 0;
-  @media only screen and (max-width : 480px) {
+  @media only screen and (max-width: 480px) {
     font-size: 300%;
     line-height: $base-line-height * 2; } }
-
-h2 {
-  font-size: 150%;
-  line-height: $base-line-height;
-  margin: $base-line-height / 4 $base-line-height 0; }
 
 html {
   font-size: 100%;
@@ -70,15 +67,8 @@ html {
 
 ul {
   list-style: none;
-  margin: 0;
+  margin: $base-line-height / 2 0 0 0;
   padding: 0;
-  position: absolute;
-  right: $base-line-height;
-  top: $base-line-height;
-  @media only screen and (max-width : 480px) {
-    left: 0;
-    text-align: center;
-    width: 100%; }
   li {
     display: inline-block;
     padding: 0;
@@ -93,14 +83,7 @@ ul {
   &:nth-child(2) {
     transition-delay: 0.125s; }
   &:nth-child(3) {
-    opacity: 0.25;
-    transition-delay: 0.25s;
-    @media only screen and (max-width : 480px) {
-      opacity: 1;
-      transition-delay: 0s; }
-    &:hover {
-      opacity: 1;
-      transition-delay: 0s; } } }
+    transition-delay: 0.25s; } }
 
 /* Typekit stuff. */
 .wf-loading body > * {
