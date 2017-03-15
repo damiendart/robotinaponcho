@@ -19,10 +19,16 @@
       @import "index";
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
-    %h1 Damien Dart
-    %ul
-      %li
-        %a{:href => "/projects"} Projects
-      %li
-        %a{:href => "mailto:damiendart@pobox.com"} Contact via email
+    .hero
+      %h1.hero__title Damien Dart
+      %ul.hero__navigation-list
+        %li.hero__navigation-list__item
+          %a{:href => "#projects"} Projects
+        %li.hero__navigation-list__item
+          %a{:href => "mailto:damiendart@pobox.com"} Contact via email
+    .projects
+      %a{:id => "projects"}
+      .projects__container
+        :markdown
+          #{File.read("index.markdown")}
     %script= `uglifyjs index.js -c --inline-script -m`

@@ -9,36 +9,16 @@ $base-background-colour: #f96e00;
 $base-font-size: 18px;
 $base-foreground-colour: #ffffff;
 $base-line-height: 1.575rem;
+$content-width: 37.5rem;
 $fallback-font-stack: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 
 
-a {
-  background: $base-foreground-colour;
-  border-radius: $base-line-height;
-  color: $base-background-colour;
-  display: block;
-  font-family: "proxima-nova", $fallback-font-stack;
-  padding: $base-line-height / 2 $base-line-height;
-  text-decoration: none;
-  text-transform: uppercase;
-  &:hover {
-    text-decoration: underline; }
-  @media only screen and (max-width: 480px) {
-    padding: $base-line-height / 4 $base-line-height / 2; } }
-
-
 body {
-  align-items: center;
   background: $base-background-colour;
-  box-align: center;
   color: $base-foreground-colour;
-  display: flex;
-  flex-direction: column;
-  font-family: "omnes-pro", $fallback-font-stack;
+  font-family: "proxima-nova", $fallback-font-stack;
   font-size: percentage($base-font-size / 16px);
-  font-weight: bold;
   height: 100%;
-  justify-content: center;
   line-height: $base-line-height;
   margin: 0;
   padding: 0;
@@ -56,29 +36,102 @@ canvas {
   width: 100%;
   z-index: -9999; }
 
-h1 {
-  font-size: 400%;
-  line-height: $base-line-height * 3;
-  margin: 0;
-  @media only screen and (max-width: 480px) {
-    font-size: 300%;
-    line-height: $base-line-height * 2; } }
-
 html {
   font-size: 100%;
-  height: 100%;
   @media only screen and (max-width: 480px) {
     font-size: 87.5%; } }
 
-ul {
-  list-style: none;
-  margin: $base-line-height / 2 0 0 0;
-  padding: 0;
-  li {
-    display: inline-block;
+/* div*/.hero {
+  align-items: center;
+  box-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  /* h1 */ &__title {
+    font-family: "omnes-pro", $fallback-font-stack;
+    font-size: 400%;
+    line-height: $base-line-height * 3;
+    margin: 0;
+    @media only screen and (max-width: 480px) {
+      font-size: 300%;
+      line-height: $base-line-height * 2; } }
+  /* ul */ &__navigation-list {
+    list-style: none;
+    margin: $base-line-height / 2 0 0 0;
     padding: 0;
-    &:first-child {
-      margin: 0 $base-line-height / 2 0 0; } } }
+    /* li */ &__item {
+      display: inline-block;
+      padding: 0;
+      &:first-child {
+        margin: 0 $base-line-height / 2 0 0; }
+      a {
+        background: $base-foreground-colour;
+        border-radius: $base-line-height;
+        color: $base-background-colour;
+        display: block;
+        font-weight: bold;
+        padding: $base-line-height / 2 $base-line-height;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+          text-decoration: underline; }
+        @media only screen and (max-width: 480px) {
+          padding: $base-line-height / 4 $base-line-height / 2; } } } } }
+
+/* div */.projects {
+  background: #000;
+  color: #fff;
+  /* div */ &__container {
+    margin: 0 auto;
+    max-width: $content-width;
+    padding: $base-line-height * 3 $base-line-height;
+    text-align: left;
+    @media only screen and (max-width: 480px) {
+      padding: $base-line-height; }
+    a {
+      background: $base-foreground-colour;
+      color: $base-background-colour;
+      padding: 0 $base-line-height / 4;
+      border-radius: $base-line-height / 2;
+      text-decoration: none;
+      &:active, &:focus, &:hover, &:visited:hover {
+        text-decoration: underline; } }
+    h2 {
+      font-family: "proxima-nova", $fallback-font-stack;
+      font-size: 150%;
+      line-height: $base-line-height * 1.5;
+      margin: $base-line-height 0 0 0; }
+
+    h3 {
+      font-family: "proxima-nova", $fallback-font-stack;
+      font-size: 100%;
+      line-height: $base-line-height;
+      margin: $base-line-height / 2 0 0 0; 
+      text-transform: uppercase;
+      a {
+        margin-left: $base-line-height * -0.25; } }
+      img {
+        max-width: 100%; }
+      p {
+        margin: $base-line-height / 2 0 0 0; }
+      ol {
+        margin: $base-line-height / 2 0 0 $base-line-height;
+        padding: 0;
+        & > * {
+          margin: 0;
+          padding: 0;
+          & > ul {
+            margin: 0 0 0 $base-line-height; } } }
+      ul {
+        list-style: square;
+        margin: $base-line-height / 2 0 0 $base-line-height;
+        padding: 0;
+        & > * {
+          margin: 0;
+          padding: 0;
+          & > ul {
+            margin: 0 0 0 $base-line-height; } } } } }
 
 /* Typekit stuff. */
 .wf-active body > * {
