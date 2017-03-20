@@ -2,7 +2,7 @@
 
 Hello! I'm Damien Dart, and this is my personal site. I'm an occasional
 computer person, specialising in front-end web development with HTML,
-CSS, JavaScript, and stuff. I'm an even less frequent illustrator, too.
+CSS, JavaScript, and stuff. I'm also an even less frequent illustrator.
 
 ## Stuff I've made
 

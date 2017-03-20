@@ -20,10 +20,12 @@
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
     %input.navigation-trigger#navigation-trigger{:type => "checkbox"}
-    %label{:for => "navigation-trigger"} <span>Toggle </span>Menu
+    %label.toggle.toggle--open{:for => "navigation-trigger"} Open Menu
     #container
     .information
       .information__container
+        .close-container
+          %label.toggle{:for => "navigation-trigger"} Close Menu
         :markdown
           #{File.read("index.markdown")}
     %script= `uglifyjs index.js -c --inline-script -m`

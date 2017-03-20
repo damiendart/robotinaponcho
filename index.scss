@@ -41,19 +41,6 @@ html {
   @media only screen and (max-width: 480px) {
     font-size: 87.5%; } }
 
-label {
-  &[for="navigation-trigger"] {
-  cursor: pointer;
-  font-weight: bold;
-  line-height: $base-line-height;
-  position: fixed;
-  right: $base-line-height * 2;
-  text-transform: uppercase;
-  top: $base-line-height * 2;
-  z-index: 1;
-  &:hover {
-    text-decoration: underline; } } }
-
 /* div */#container {
   background: $base-background-colour;
   height: 100vh;
@@ -63,6 +50,9 @@ label {
   transition: filter 0.5s ease, transform 0.5s ease;
   width: 100%;
   z-index: 0; }
+
+/* div */.close-container {
+  text-align: right; }
 
 /* nav */.information {
   background: $navigation-background-colour;
@@ -110,8 +100,23 @@ label {
     & ~ #container {
       filter: brightness(75%);
       transform: translateX(-$navigation-width); }
-    & + label {
+    & + .toggle--open {
+      opacity: 0;
       transform: translateX(-$navigation-width); } } }
+
+/* label */.toggle {
+  cursor: pointer;
+  font-weight: bold;
+  line-height: $base-line-height;
+  text-align: right;
+  text-transform: uppercase;
+  z-index: 1;
+  &:hover {
+    text-decoration: underline; }
+  &--open {
+    position: fixed;
+    right: $base-line-height * 2;
+    top: $base-line-height * 2; } }
 
 /* Typekit stuff. */
 /* html */.wf-active {
