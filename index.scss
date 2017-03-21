@@ -57,9 +57,10 @@ html {
 /* nav */.information {
   background: $navigation-background-colour;
   color: $navigation-foreground-colour;
-  height: 100%;
+  height: 100vh;
   left: 0;
-  position: fixed;
+  overflow-y: scroll;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: -9999;
@@ -69,6 +70,8 @@ html {
     padding: $base-line-height * 2;
     text-align: left;
     width: $navigation-width;
+    @media only screen and (max-width: $navigation-width) {
+      width: 100%; }
     a {
       color: $navigation-foreground-colour;
       font-weight: bold;
@@ -99,10 +102,14 @@ html {
   &:checked {
     & ~ #container {
       filter: brightness(75%);
-      transform: translateX(-$navigation-width); }
+      transform: translateX(-$navigation-width);
+      @media only screen and (max-width: $navigation-width) {
+        transform: translateX(-100vw); } }
     & + .toggle--open {
       opacity: 0;
-      transform: translateX(-$navigation-width); } } }
+      transform: translateX(-$navigation-width);
+      @media only screen and (max-width: $navigation-width) {
+        transform: translateX(-100vw); } } } }
 
 /* label */.toggle {
   cursor: pointer;
@@ -116,17 +123,18 @@ html {
   &--open {
     position: fixed;
     right: $base-line-height * 2;
-    top: $base-line-height * 2; } }
+    top: $base-line-height * 2;
+    transition: opacity 0.5s ease, transform 0.5s ease; } }
 
 /* Typekit stuff. */
 /* html */.wf-active {
-  & .header, & label {
+  .header, label {
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 1;
     visibility: visible; } }
 
 /* Typekit stuff. */
 /* html */.wf-loading {
-  & .header, & label {
+  .header, label {
     opacity: 0;
     visibility: hidden; } }
