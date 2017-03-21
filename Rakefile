@@ -12,8 +12,6 @@ require "rubygems"
 Bundler.require(:default)
 
 
-Haml::Filters::Scss.options[:cache] = false
-Haml::Filters::Scss.options[:style] = :compressed
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
@@ -24,10 +22,22 @@ Haml::Options.defaults[:format] = :html5
 Sass::Script::Number.precision = 8
 
 
+module Haml::Filters::AutoPrefixScss
+  include Haml::Filters::Base
+  def render(text)
+    stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
+    stdin.puts(Sass::Engine.new(File.read("index.scss"), {:cache => false,
+        :syntax => :scss}).render)
+    stdin.close
+    "<style>#{stdout.read}</style>"
+  end
+end
+
+
 def process_haml_file(input_filename, output_filename, locals = {})
   puts "# Spitting out \"#{output_filename}\"."
   stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
-      "--decode-entities --collapse-whitespace -o #{output_filename}")
+      "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{output_filename}")
   stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
       File.read(input_filename)).render(Object.new, locals)))
 end
@@ -43,7 +53,8 @@ end
 
 CLOBBER << "public/index.html"
 desc "Spit out the homepage."
-file "public/index.html" => FileList["index.*", "common.*", "Rakefile"] do |task|
+file "public/index.html" => FileList["index.*", "Rakefile",
+    "public/assets/index-vendor.js"] do |task|
   process_haml_file("index.haml", task.name)
 end
 

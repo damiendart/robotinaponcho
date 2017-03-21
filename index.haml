@@ -15,7 +15,7 @@
     %meta{:content => "website", :property => "og:type"}
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
     %script= `uglifyjs index.typekit.js -c --inline-script -m`
-    :scss
+    :autoprefixscss
       @import "index";
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
@@ -28,4 +28,4 @@
           %label.toggle{:for => "navigation-trigger"} Close Menu
         :markdown
           #{File.read("index.markdown")}
-    %script= `uglifyjs index.js -c --inline-script -m`
+    %script= File.read("index.js")
