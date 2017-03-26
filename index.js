@@ -13,10 +13,9 @@ vendor.onload = function() {
     document.getElementsByTagName("canvas")[0]);
 
   for(var i = 0; i < 30; i++) {
-    Matter.World.add(engine.world, Matter.Bodies.fromVertices(
-        Matter.Common.random(-150, 150),
-        -2000 - (i > 0 ? 2000 : 0) - (i * 400),
-        Matter.Svg.pathToVertices(robot_path), { robot: true }));
+    Matter.World.add(engine.world, Matter.Bodies.fromVertices(0,
+        -2000 - (i > 0 ? 2000 : 0) - (i * 400), Matter.Svg.pathToVertices(
+        robot_path), { robot: true }));
   }
   Matter.World.add(engine.world, Matter.Bodies.rectangle(
       0, 6, 5000, 10, { isStatic: true, render: { visible: false } }));
