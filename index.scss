@@ -127,7 +127,7 @@ html {
     position: absolute;
     top: $base-line-height;
     right: 0;
-    transition: none;
+    transition: opacity 0.5s ease;
     width: 100%;
     &:before {
       content: "Scroll down for "; } }
@@ -148,13 +148,13 @@ html {
 
 /* Typekit stuff. */
 /* html */.wf-active {
-  .header, label {
+  label {
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 1;
     visibility: visible; } }
 
 /* Typekit stuff. */
 /* html */.wf-loading {
-  .header, label {
+  label {
     opacity: 0;
     visibility: hidden; } }
