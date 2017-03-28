@@ -149,9 +149,11 @@ html {
 /* Typekit stuff. */
 /* html */.wf-active {
   label {
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease 5s, transform 0.5s ease;
     opacity: 1;
-    visibility: visible; } }
+    visibility: visible;
+    @media only screen and (min-height: $navigation-height) {
+      transition: opacity 0.5s ease, transform 0.5s ease; } } }
 
 /* Typekit stuff. */
 /* html */.wf-loading {
