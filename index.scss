@@ -18,7 +18,7 @@ $navigation-height: $base-line-height * 28;
 
 
 body {
-  background: $base-background-colour;
+  background: $base-foreground-colour;
   color: $base-foreground-colour;
   font-family: $font-stack;
   @if($base-font-size != 16px) {
@@ -45,13 +45,17 @@ html {
 
 /* div */#container {
   background: $base-background-colour;
-  height: 100vh;
+  // Do not use "height: 100%" on mobile devices because scrolling
+  // becomes janky as the browser UI resizes, for more information see
+  // <http://stackoverflow.com/a/25020295>.
+  height: $base-line-height * 18;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 0;
   @media only screen and (min-height: $navigation-height) {
+    height: 100%;
     transition: filter 0.5s ease, transform 0.5s ease; } }
 
 /* div */.close-container {
@@ -66,11 +70,11 @@ html {
   color: $navigation-foreground-colour;
   left: 0;
   position: absolute;
-  top: 100vh;
+  top: $base-line-height * 18;
   width: 100%;
   z-index: -9999;
   @media only screen and (min-height: $navigation-height) {
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
     top: 0; }
   /* div */ &__container {
@@ -122,25 +126,19 @@ html {
           transform: translateX(-100vw); } } } } }
 
 /* label */.toggle {
-  line-height: $base-line-height;
-  text-transform: uppercase;
-  z-index: 1;
-  &--open {
-    position: absolute;
-    top: $base-line-height;
-    right: 0;
-    transition: opacity 0.5s ease;
-    width: 100%;
-    &:before {
-      content: "Scroll down for "; } }
+  display: none;
   @media only screen and (min-height: $navigation-height) {
+    line-height: $base-line-height;
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
     text-align: right;
+    text-transform: uppercase;
+    z-index: 1;
     &:hover {
       text-decoration: underline; }
     &--open {
+      position: absolute;
       right: $base-line-height * 2;
       top: $base-line-height * 2;
       transition: opacity 0.5s ease, transform 0.5s ease;
