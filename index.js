@@ -63,3 +63,8 @@ vendor.onload = function() {
 };
 
 document.getElementsByTagName("head")[0].appendChild(vendor);
+
+document.getElementById("navigation-trigger").onchange = function(event) {
+  document.documentElement.classList.toggle("js-show");
+  document.body.classList.toggle("js-show");
+};
