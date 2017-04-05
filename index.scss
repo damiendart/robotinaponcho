@@ -5,21 +5,20 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-$base-background-colour: #f96e00;
+$base-background-colour: #000000;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
+$base-header-colour: darken($base-foreground-colour, 30);
 $base-line-height: 1.5rem;
-$font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-$navigation-background-colour: #000000;
-$navigation-foreground-colour: #ffffff;
-$navigation-header-colour: darken(#ffffff, 30);
-$navigation-width: $base-line-height * 16;
+$base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+$information-width: $base-line-height * 16;
+$robots-background-colour: #f96e00; 
 
 
 body {
-  background: $navigation-background-colour;
+  background: $base-background-colour;
   color: $base-foreground-colour;
-  font-family: $font-stack;
+  font-family: $base-font-stack;
   @if($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   height: 100%;
@@ -43,7 +42,7 @@ html {
     font-size: 87.5%; } }
 
 /* div */#container {
-  background: $base-background-colour;
+  background: $robots-background-colour;
   height: 150%;
   left: 0;
   position: fixed;
@@ -56,40 +55,24 @@ html {
   margin: 0 0 $base-line-height 0;
   text-align: right; }
 
-/* html */.javascript {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden; } }
-
-/* body */.js-show {
-  width: auto;
-  height: auto;
-  overflow: auto; }
-
 /* nav */.information {
-  background: $navigation-background-colour;
-  color: $navigation-foreground-colour;
   width: 100%;
   z-index: -9999;
   /* div */ &__container {
     box-sizing: border-box;
     margin: 0 0 0 auto;
     padding: $base-line-height * 2;
-    width: $navigation-width;
-    @media only screen and (max-width: $navigation-width) {
+    width: $information-width;
+    @media only screen and (max-width: $information-width) {
       width: 100%; }
     a {
-      color: $navigation-foreground-colour;
+      color: inherit;
       font-weight: bold;
       text-decoration: none;
       &:hover {
         text-decoration: underline; } }
     h2 {
-      color: $navigation-header-colour;
+      color: $base-header-colour;
       font-size: 100%;
       font-weight: bold;
       margin: $base-line-height 0 0 0;
@@ -104,19 +87,19 @@ html {
       padding: 0;
       text-transform: uppercase; } } }
 
-/* input */.navigation-trigger {
+/* input */.information-trigger {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   &:checked {
     & ~ #container {
       filter: brightness(75%);
-      transform: translateX(-$navigation-width);
-      @media only screen and (max-width: $navigation-width) {
+      transform: translateX(-$information-width);
+      @media only screen and (max-width: $information-width) {
         transform: translateX(-100vw); } }
     & + .toggle--open {
       opacity: 0;
-      transform: translateX(-$navigation-width);
-        @media only screen and (max-width: $navigation-width) {
+      transform: translateX(-$information-width);
+        @media only screen and (max-width: $information-width) {
           transform: translateX(-100vw); } } } } 
 
 /* label */.toggle {
@@ -137,13 +120,35 @@ html {
     width: auto;
     z-index: 1; } }
 
-/* Typekit stuff. */
-/* html */.wf-active {
+// Typekit stuff.
+/* html */.wf-active, .wf-inactive {
   .toggle--open {
     opacity: 1;
     visibility: visible; } }
 
-/* Typekit stuff. */
+// We can use Typekit's CSS font events to detect JavaScript support.
+/* html */.wf-active, .wf-inactive, .wf-loading {
+  width: 100%;
+  height: 100%;
+  // Prevent scrolling when additional information is hidden. See
+  // <http://stackoverflow.com/a/21958711> for more information.
+  overflow: hidden;
+  body {
+    // Tweak background colour for browsers with translucent UIs.
+    background: $robots-background-colour;
+    height: 100%;
+    overflow: hidden;
+    transition: background 0s 0.5s;
+    width: 100%; }
+  &[class~="javascript-info-visible"], /* body */.javascript-info-visible {
+    // Tweak background colour for browsers with translucent UIs.
+    background: $base-background-colour;
+    height: auto;
+    overflow: auto;
+    transition: background 0s 0s;
+    width: auto; } }
+
+// Typekit stuff.
 /* html */.wf-loading {
   .toggle--open {
     opacity: 0;

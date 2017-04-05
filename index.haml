@@ -14,19 +14,18 @@
     %meta{:content => "Damien Dart: Occasional computer person and illustrator", :property => "og:title"}
     %meta{:content => "website", :property => "og:type"}
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
-    %script= `uglifyjs index.typekit.js -c --inline-script -m`
-    %script document.documentElement.className += " javascript";
+    %script= File.read("index.typekit.js")
     :autoprefixscss
       @import "index";
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
-    %input.navigation-trigger#navigation-trigger{:type => "checkbox"}
-    %label.toggle.toggle--open{:for => "navigation-trigger"} More Info
+    %input.information-trigger#information-trigger{:type => "checkbox"}
+    %label.toggle.toggle--open{:for => "information-trigger"} More Info
     #container
     .information
       .information__container
         .close-container
-          %label.toggle{:for => "navigation-trigger"} Less Info
+          %label.toggle{:for => "information-trigger"} Less Info
         :markdown
           #{File.read("index.markdown")}
     %script= File.read("index.js")
