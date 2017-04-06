@@ -51,7 +51,7 @@ vendor.onload = function() {
       if (bodies[i].render.visible && bodies[i].robot) {
         context.translate(bodies[i].position.x, bodies[i].position.y);
         context.rotate(bodies[i].angle);
-        context.drawImage(render.textures["assets/robot.png"], 
+        context.drawImage(render.textures["assets/robot.png"],
             render.textures["assets/robot.png"].width * -0.50,
             render.textures["assets/robot.png"].height * -0.55,
             render.textures["assets/robot.png"].width,
