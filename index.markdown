@@ -7,7 +7,7 @@ illustrator.
 ## Websites I've built
 
   - [Kathryn Craigdaillie Designs][1]
-  - [Radical Apps][2]
+  - [Radical Apps][2] (unmaintained)
 
 [1]: <https://www.kathryncraigdaillie.co.uk/>
 [2]: <http://www.radicalapps.co.uk/>
