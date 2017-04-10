@@ -1,4 +1,5 @@
 var vendor = document.createElement("script");
+var vendor_ready = false;
 var loading = document.createElement("div");
 var finished_loading = false;
 
@@ -12,7 +13,12 @@ setTimeout(function() {
 }, 750);
 
 vendor.src = "assets/index-vendor.js";
-vendor.onload = function() {
+vendor.onload = vendor.onreadystatechange = function() {
+  if(vendor_ready || this.readyState && this.readyState != "complete" &&
+      this.readyState != "loaded") {
+    return;
+  }
+  vendor_ready = true;
   var engine = Matter.Engine.create();
   var render = Matter.Render.create({
       element: document.getElementById("container"), engine: engine,
