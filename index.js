@@ -81,6 +81,11 @@ vendor.onload = vendor.onreadystatechange = function() {
 
 document.getElementsByTagName("head")[0].appendChild(vendor);
 
+if(document.getElementById("information-trigger").checked) {
+  document.documentElement.classList.toggle("javascript-info-visible");
+  document.body.classList.toggle("javascript-info-visible");
+}
+
 document.getElementById("information-trigger").onchange = function(event) {
   document.documentElement.classList.toggle("javascript-info-visible");
   document.body.classList.toggle("javascript-info-visible");
