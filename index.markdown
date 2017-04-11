@@ -1,7 +1,7 @@
 ## What?
 
-Hello! I'm Damien Dart, and this is my personal site. I'm an occasional
-computer person, specialising in front-end web development, and cartoon
+Hello! I'm Damien Dart, and this is my personal site. I'm a part-time
+computer person, specialising in front-end web development, and
 illustrator.
 
 ## Websites I've built
