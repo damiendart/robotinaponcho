@@ -156,6 +156,8 @@ html {
     width: $base-line-height * 4;
     &--show {
       opacity: 1; }
+    &--complete {
+      opacity: 0 !important; }
     @at-root {
       @keyframes loading {
         0% {
