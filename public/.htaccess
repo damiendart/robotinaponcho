@@ -95,7 +95,7 @@ SetEnv TZ Europe/London
   RewriteCond %{REQUEST_URI} !^/git/
   RewriteRule ^(.*)$ https://www.robotinaponcho.net/$1? [R=permanent,L]
   # Remove file extensions from some URLs.
-  RewriteCond %{THE_REQUEST} ^.*notes/(photoshop|synology)\.html
+  RewriteCond %{THE_REQUEST} ^.*notes/(computer|photoshop|synology)\.html
   RewriteRule ^(.*).html$ https://www.robotinaponcho.net/$1 [L,NE,R=permanent]
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^([^\.]+)$ $1.html [L,NC]
