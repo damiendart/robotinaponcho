@@ -51,17 +51,36 @@ vendor.onload = vendor.onreadystatechange = function() {
 
           canvas.width = canvas.offsetWidth;
           canvas.height = canvas.offsetHeight;
+          context.fillStyle = "transparent";
+          context.fillRect(0, 0, canvas.width, canvas.height);
           for (i = 0; i < bodies.length; i++) {
             if(!bodies[i].isStatic) {
-              // TODO: Add debug drawing stuff?
               context.translate(bodies[i].position.x + (canvas.width / 2),
                   bodies[i].position.y + canvas.height);
               context.rotate(bodies[i].angle);
-              context.drawImage(robot, robot.width * -0.50,
-                  robot.height * -0.55, robot.width, robot.height);
+              context.drawImage(robot, robot.width * -0.25,
+                  robot.height * -0.275, robot.width / 2, robot.height / 2);
               context.rotate(-bodies[i].angle);
               context.translate(-bodies[i].position.x - (canvas.width / 2),
                   -bodies[i].position.y - canvas.height);
+              /* // Start debugging bits.
+              context.beginPath();
+              context.moveTo(
+                  bodies[i].parts[1].vertices[0].x + (canvas.width / 2),
+                  bodies[i].parts[1].vertices[0].y + canvas.height);
+              for(j = 1; j < bodies[i].parts.length; j++) {
+                for(k = 0; k < bodies[i].parts[j].vertices.length; k++) {
+                  context.lineTo(
+                      bodies[i].parts[j].vertices[k].x + (canvas.width / 2),
+                      bodies[i].parts[j].vertices[k].y + canvas.height);
+                }
+              }
+              context.lineTo(
+                  bodies[i].parts[1].vertices[0].x + (canvas.width / 2),
+                  bodies[i].parts[1].vertices[0].y + canvas.height);
+              context.closePath();
+              context.stroke();
+              // End debugging bits. */
             }
           }
           // TODO: Handle IE9's lack of "requestAnimationFrame"?
