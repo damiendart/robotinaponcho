@@ -17,7 +17,7 @@
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
     %script= File.read("index.typekit.js")
     :autoprefixscss
-      @import "index";
+      #{File.read("index.scss")}
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
     %input.information-trigger#information-trigger{:type => "checkbox"}

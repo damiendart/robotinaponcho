@@ -26,8 +26,7 @@ module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
-    stdin.puts(Sass::Engine.new(File.read("index.scss"), {:cache => false,
-        :syntax => :scss}).render)
+    stdin.puts(Sass::Engine.new(text, {:cache => false, :syntax => :scss}).render)
     stdin.close
     "<style>#{stdout.read}</style>"
   end
