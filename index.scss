@@ -108,16 +108,21 @@ noscript {
           transform: translateX(-100vw); } } } }
 
 /* label */.toggle {
+  border: $base-line-height / 8 solid $base-foreground-colour;
+  border-radius: $base-line-height;
   cursor: pointer;
   display: inline-block;
   font-weight: bold;
   line-height: $base-line-height;
+  padding: $base-line-height / 8 ($base-line-height * 3) / 8;
   text-align: right;
   text-transform: uppercase;
   z-index: inherit;
   &:hover {
     text-decoration: underline; }
   &--open {
+    background: $base-foreground-colour;
+    color: $robots-background-colour;
     position: fixed;
     right: $base-line-height * 2;
     top: $base-line-height * 2;
