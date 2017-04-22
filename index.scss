@@ -177,10 +177,10 @@ noscript {
   &[class~="javascript-info-visible"], /* body */.javascript-info-visible {
     // Tweak background colour for browsers with translucent UIs.
     background: $base-background-colour;
-    height: auto;
-    overflow: auto;
-    transition: background 0s 0s;
-    width: auto; } }
+    overflow: initial;
+    // Fix funky scrolling in iOS Safari.
+    -webkit-overflow-scrolling: touch;
+    transition: background 0s 0s; } }
 
 // Typekit stuff.
 /* html */.wf-loading {
