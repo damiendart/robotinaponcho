@@ -8,11 +8,11 @@
 $base-background-colour: #000000;
 $base-font-size: 16px;
 $base-foreground-colour: #ffffff;
-$base-header-colour: darken($base-foreground-colour, 30);
+$base-header-colour: #f96e00;
 $base-line-height: 1.5rem;
 $base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 $information-width: $base-line-height * 16;
-$robots-background-colour: #f96e00;
+$robots-background-colour: $base-header-colour;
 
 
 body {
@@ -122,6 +122,7 @@ noscript {
     text-decoration: underline; }
   &--open {
     background: $base-foreground-colour;
+    box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
     color: $robots-background-colour;
     position: fixed;
     right: $base-line-height * 2;
