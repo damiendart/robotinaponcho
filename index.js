@@ -51,6 +51,11 @@ vendor.onload = vendor.onreadystatechange = function() {
 
           canvas.width = canvas.offsetWidth;
           canvas.height = canvas.offsetHeight;
+          // Show more robots on smaller screens.
+          if (screen.width < 768) {
+            canvas.width *= 1.5;
+            canvas.height *= 1.5;
+          }
           context.fillStyle = "transparent";
           context.fillRect(0, 0, canvas.width, canvas.height);
           for (i = 0; i < bodies.length; i++) {
