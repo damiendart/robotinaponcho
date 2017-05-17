@@ -178,7 +178,7 @@ noscript {
   &[class~="javascript-info-visible"], /* body */.javascript-info-visible {
     // Tweak background colour for browsers with translucent UIs.
     background: $base-background-colour;
-    overflow: auto; // Internet Explorer 10 doesn't like "initial".
+    overflow: visible;
     transition: background 0s 0s; } }
 
 // Typekit stuff.
