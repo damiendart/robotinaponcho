@@ -6,32 +6,34 @@ illustrator.
 
 ## Websites I've built
 
-  - [Kathryn Craigdaillie Designs][1]
-  - [Radical Apps][2] (unmaintained)
+  - [Steve Wadsworth][1]
+  - [Kathryn Craigdaillie Designs][2]
+  - [Radical Apps][3] (unmaintained)
 
-[1]: <https://www.kathryncraigdaillie.co.uk/>
-[2]: <http://www.radicalapps.co.uk/>
+[1]: <https://www.stevewadsworth.co.uk/>
+[2]: <https://www.kathryncraigdaillie.co.uk/>
+[3]: <http://www.radicalapps.co.uk/>
 
 ## Other things
 
-  - [My art on Tumblr][3]
-  - [Open-source bits and pieces][4]
-  - [Notes about stuff][5]
+  - [My art on Tumblr][4]
+  - [Open-source bits and pieces][5]
+  - [Notes about stuff][6]
 
-[3]: <http://blog.robotinaponcho.net/>
-[4]: </git/>
-[5]: </notes/>
+[4]: <http://blog.robotinaponcho.net/>
+[5]: </git/>
+[6]: </notes/>
 
 ## Elsewhere
 
-  - [Email][6]
-  - [GitHub][7]
-  - [Instagram][8]
-  - [Tumblr][9]
-  - [Twitter][10]
+  - [Email][7]
+  - [GitHub][8]
+  - [Instagram][9]
+  - [Tumblr][10]
+  - [Twitter][11]
 
-[6]: <mailto:damiendart@pobox.com>
-[7]: <https://github.com/damiendart>
-[8]: <https://instagram.com/damiendart>
-[9]: <http://blog.robotinaponcho.net/>
-[10]: <https://twitter.com/damiendart>
+[7]: <mailto:damiendart@pobox.com>
+[8]: <https://github.com/damiendart>
+[9]: <https://instagram.com/damiendart>
+[10]: <http://blog.robotinaponcho.net/>
+[11]: <https://twitter.com/damiendart>
