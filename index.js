@@ -1,3 +1,5 @@
+var accumulated_time = 0;
+var current_time = performance.now(); // TODO: Older broswers?
 var canvas = document.createElement("canvas");
 var loading_animation = document.createElement("div");
 var vendor = document.createElement("script");
@@ -43,12 +45,27 @@ vendor.onload = vendor.onreadystatechange = function() {
     robot.onload = robot.onreadystatechange = function() {
       if (!this.readyState || /loaded|complete/.test(this.readyState)) {
         loading_animation.className += " javascript-loading--complete";
-        Matter.Engine.run(engine);
         (function render() {
           // TODO: Add support for Retina displays?
-          var bodies = Matter.Composite.allBodies(engine.world);
+          var bodies;
+          var dt;
           var context = canvas.getContext("2d");
+          var new_time = performance.now(); // TODO: Older browsers?
+          // Setting "tick_length" to 60 often causes the first robot to
+          // topple over in an unconvincing manner, because reasons.
+          var tick_length = 61;
 
+          dt = new_time - current_time;
+          current_time = new_time;
+          // Clamp "dt" to prevent the spiral of death that may occur if
+          // updating start taking too long. For more information, see
+          // <http://gafferongames.com/game-physics/fix-your-timestep/>.
+          accumulated_time += (dt > 100) ? 100 : dt;
+          while (accumulated_time >= (1000 / tick_length)) {
+            Matter.Engine.update(engine, 1000 / tick_length, 0);
+            accumulated_time -= (1000 / tick_length);
+          }
+          bodies = Matter.Composite.allBodies(engine.world);
           canvas.width = canvas.offsetWidth;
           canvas.height = canvas.offsetHeight;
           // Show more robots on smaller screens.
