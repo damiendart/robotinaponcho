@@ -177,7 +177,12 @@ noscript {
           transform: rotate(360deg); } } } }
   &[class~="javascript-info-visible"], /* body */.javascript-info-visible {
     // Tweak background colour for browsers with translucent UIs.
-    background: $base-background-colour;
+    background: linear-gradient(to left, $base-background-colour,
+        $base-background-colour $information-width,
+        $robots-background-colour $information-width),
+        $base-background-colour;
+    @media only screen and (max-width: $information-width) {
+      background: $base-background-colour; }
     overflow: visible;
     transition: background 0s 0s; } }
 
