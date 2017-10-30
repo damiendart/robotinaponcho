@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """Maintains mirrors of a GitHub user's public repositories.
 
 Optionally does some per-repository stuff for Gitweb's benefit.
@@ -12,7 +12,7 @@ import json
 import os
 import re
 import sys
-import urllib2
+import urllib.request
 import subprocess
 
 from django.utils.html import urlize
@@ -26,9 +26,9 @@ if __name__ == "__main__":
   if "--gitweb" in sys.argv:
     sys.argv.remove("--gitweb")
     gitweb = True
-  repositories = json.load(urllib2.urlopen(
+  repositories = json.loads(urllib.request.urlopen(
       "https://api.github.com/users/%s/repos?access_token=%s" %
-      (sys.argv[1], sys.argv[3])))
+      (sys.argv[1], sys.argv[3])).read().decode("utf-8"))
   for repository in repositories:
     os.chdir(os.path.normpath(sys.argv[2]))
     if (os.path.isdir(os.path.basename(repository["git_url"]))):
@@ -41,21 +41,21 @@ if __name__ == "__main__":
     if gitweb:
       os.chdir(os.path.basename(repository["git_url"]))
       for k, v in {"url": repository["clone_url"],
-          "description": repository["description"]}.iteritems():
+          "description": repository["description"]}.items():
         subprocess.check_call(["git", "config", "--replace-all",
             "gitweb.%s" % k, v])
       subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
-          json.load(urllib2.urlopen("https://api.github.com/users/%s?access_token=%s" %
-          (repository["owner"]["login"], sys.argv[3])))["name"]])
+          json.loads(urllib.request.urlopen("https://api.github.com/users/%s?access_token=%s" %
+          (repository["owner"]["login"], sys.argv[3])).read().decode())["name"]])
       subprocess.check_call(["git", "config", "--add", "gitweb.url",
           "https://www.robotinaponcho.net/git/%s" %
           os.path.basename(repository["git_url"])])
       with open("README.html", "w") as f:
         f.write("<pre>%s</pre>\n" % urlize(subprocess.Popen(["git",
-            "cat-file", "blob", "HEAD:%s" % filter(lambda i:
+            "cat-file", "blob", "HEAD:%s" % next(filter(lambda i:
             re.compile(r"README").search(i), subprocess.Popen(["git",
             "ls-tree", "HEAD", "--name-only"],
-            stdout=subprocess.PIPE).communicate()[0].split("\n"))[0]],
+            stdout=subprocess.PIPE).communicate()[0].decode("utf-8").split("\n")))],
             stdout=subprocess.PIPE).communicate()[0], autoescape = True))
       with open("description", "w") as f:
         f.write(repository["description"] + "\n")
