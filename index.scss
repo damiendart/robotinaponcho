@@ -48,7 +48,9 @@ noscript {
   top: percentage(2/3); }
 
 /* div */#container {
-  background: $robots-background-colour;
+  background: linear-gradient(bottom, darken($robots-background-colour, 10),
+      $robots-background-colour 25vh) no-repeat;
+  border-bottom: $base-line-height * 2 solid $robots-background-colour;
   height: 150%;
   left: 0;
   position: fixed;
