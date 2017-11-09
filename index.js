@@ -45,6 +45,8 @@ vendor.onload = vendor.onreadystatechange = function() {
     robot.onload = robot.onreadystatechange = function() {
       if (!this.readyState || /loaded|complete/.test(this.readyState)) {
         loading_animation.className += " javascript-loading--complete";
+        document.getElementById("container").className =
+            "container--javascript-show-background";
         (function render() {
           // TODO: Add support for Retina displays?
           var bodies;

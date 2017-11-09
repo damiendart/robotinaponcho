@@ -49,12 +49,14 @@ noscript {
 
 /* div */#container {
   background: linear-gradient(bottom, darken($robots-background-colour, 10),
-      $robots-background-colour 25vh) no-repeat;
+      $robots-background-colour 25vh) no-repeat, $robots-background-colour;
+  background-position: center 25vh;
   border-bottom: $base-line-height * 2 solid $robots-background-colour;
   height: 150%;
   left: 0;
   position: fixed;
-  transition: filter 0.5s ease, transform 0.5s ease;
+  transition: background-position 1s ease,
+      filter 0.5s ease, transform 0.5s ease;
   bottom: 0;
   width: 100%;
   z-index: 0; }
@@ -154,6 +156,8 @@ noscript {
     overflow: hidden;
     transition: background 0s 0.5s;
     width: 100%; }
+  .container--javascript-show-background {
+    background-position: center !important; }
   /* div */.javascript-loading {
     animation: loading 0.75s infinite linear;
     border: $base-line-height / 2 solid rgba($base-foreground-colour, 0.2);
