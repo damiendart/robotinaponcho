@@ -1,0 +1,86 @@
+$base-background-colour: #ffffff;
+$base-foreground-colour: #000000;
+$base-line-height: 1.5rem;
+$base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+
+
+body {
+  background: $base-background-colour;
+  color: $base-foreground-colour;
+  font-family: $base-font-stack;
+  line-height: $base-line-height;
+  margin: $base-line-height * 2 auto;
+  text-size-adjust: none;
+  text-align: center; }
+
+html {
+  font-size: 100%;
+  @media only screen and (max-width: 765px) {
+    font-size: 87.5%; } }
+
+
+/* footer */.footer {
+  margin: $base-line-height * 2 0 0 0;
+  /* a */ &__link {
+    border: $base-line-height / 8 solid $base-foreground-colour;
+    border-radius: $base-line-height;
+    color: inherit;
+    display: inline-block;
+    font-weight: bold;
+    line-height: $base-line-height;
+    padding: $base-line-height / 8 ($base-line-height * 3) / 8;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      text-decoration: underline; } }
+  /* hr */ &__rule {
+    display: none; } }
+
+/* div */.gallery {
+  line-height: 0;
+  margin: 0 auto;
+  max-width: 2100px; // Based on the images being 700 pixels wide.
+  text-align: left;
+  /* article */ &__item {
+    display: inline-block;
+    height: 0;
+    position: relative;
+    padding: 0 0 percentage(1/3) 0;
+    width: percentage(1/3);
+    // TODO: Tweak breakpoints.
+    @media only screen and (max-width: 1400px) {
+      padding: 0 0 50% 0;
+      width: 50%; }
+    @media only screen and (max-width: 700px) {
+      padding: 0 0 100% 0;
+      width: 100%; }
+    &:hover &__description {
+        color: #fff;
+        opacity: 1 !important;
+        pointer-events: auto; }
+    &:hover &__image {
+      filter: brightness(25%); }
+    /* p */ &__description {
+      line-height: $base-line-height;
+      margin: 0;
+      opacity: 0;
+      padding: $base-line-height * 2;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%); }
+    /* img */ &__image {
+      display: block;
+      transition: filter 0.25s;
+      width: 100%; } } }
+
+/* p */.other-links {
+  margin: $base-line-height * 2 0 0 0;
+  a {
+    color: inherit; } }
+
+/* h1 */.title {
+  font-size: $base-line-height * 2;
+  line-height: $base-line-height * 2;
+  margin: 0 0 $base-line-height * 2 0;
+  text-transform: uppercase; }
