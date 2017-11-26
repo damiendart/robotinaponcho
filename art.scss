@@ -80,7 +80,10 @@ html {
 /* p */.other-links {
   margin: $base-line-height * 2 0 0 0;
   a {
-    color: inherit; } }
+    color: inherit; }
+  @media only screen and (max-width: $image-size) {
+    span {
+      display: none; } } }
 
 /* h1 */.title {
   font-size: $base-line-height * 2;

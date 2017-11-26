@@ -31,7 +31,7 @@
         %article.gallery__item{:style => "background-color: #{item['colour']};"}
           %img.gallery__item__image{:alt => item["alt"], :src => item["filename"]}
           %p.gallery__item__description <b>#{item["year"]}</b>&mdash;#{item["description"]}
-    %p.other-links See also <a href="#">Instagram</a> and <a href="#">Tumblr</a>.
+    %p.other-links See also <a href="#">Instagram</a> and <a %%href="#">Tumblr</a>.<br>Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
     %footer.footer
       %hr.footer__rule
       %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
