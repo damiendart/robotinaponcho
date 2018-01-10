@@ -16,11 +16,11 @@ illustrator.
 
 ## Other things
 
-  - [My art on Tumblr][4]
+  - [My art on Instagram][4]
   - [Open-source bits and pieces][5]
   - [Notes about stuff][6]
 
-[4]: <http://blog.robotinaponcho.net/>
+[4]: <https://instagram.com/damiendart>
 [5]: </git/>
 [6]: </notes/>
 
