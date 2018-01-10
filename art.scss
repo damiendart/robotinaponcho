@@ -56,26 +56,40 @@ html {
     @media only screen and (max-width: $image-size) {
       padding: 0 0 100% 0;
       width: 100%; }
-    &:hover &__description {
+    /* a */ &__link {
+      &:hover &__description {
         color: #fff;
         opacity: 1 !important;
         pointer-events: auto; }
-    &:hover &__image {
-      filter: brightness(20%);
-      transform: scale(1.05); }
-    /* p */ &__description {
-      line-height: $base-line-height;
-      margin: 0;
-      opacity: 0;
-      padding: $base-line-height * 2;
-      pointer-events: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%); }
-    /* img */ &__image {
-      display: block;
-      transition: all 0.25s;
-      width: 100%; } } }
+      &:hover &__image {
+        filter: brightness(20%);
+        transform: scale(1.05); }
+      /* p */ &__description {
+        line-height: $base-line-height;
+        margin: 0;
+        opacity: 0;
+        padding: $base-line-height * 2;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        /* a */ &__link {
+          border: $base-line-height / 8 solid #fff;
+          border-radius: $base-line-height;
+          color: inherit;
+          display: inline-block;
+          font-weight: bold;
+          line-height: $base-line-height;
+          margin: $base-line-height / 2 0 0 0;
+          padding: $base-line-height / 8 ($base-line-height * 3) / 8;
+          text-decoration: none;
+          text-transform: uppercase;
+          &:hover {
+            text-decoration: underline; } } }
+      /* img */ &__image {
+          display: block;
+          transition: all 0.25s;
+          width: 100%; } } } }
 
 /* p */.other-links {
   margin: $base-line-height * 2 0 0 0;

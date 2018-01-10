@@ -5,8 +5,10 @@
 -# please refer to the accompanying "LICENCE" file.
 
 
-- require "yaml"
-- gallery_items = YAML.load_file("art.yaml")
+- require "date"
+- require "open-uri"
+- require "json"
+- instagram = JSON.load(open("https://www.instagram.com/damiendart/?__a=1"))
 
 
 !!! 5
@@ -27,11 +29,12 @@
   %body
     %h1.title Damien's Art
     .gallery
-      - gallery_items.each do |item|
-        %article.gallery__item{:style => "background-color: #{item['colour']};"}
-          %img.gallery__item__image{:alt => item["alt"], :src => item["filename"]}
-          %p.gallery__item__description <b>#{item["year"]}</b>&mdash;#{item["description"]}
-    %p.other-links <b>See also <a href="#">Instagram</a> and <a %%href="#">Tumblr</a>.</b><br>Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
+      - instagram["user"]["media"]["nodes"].each do |item|
+        %article.gallery__item
+          %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"}
+            %img.gallery__item__link__image{:alt => item["caption"], :src => item["display_src"]}
+            %p.gallery__item__link__description <b>#{DateTime.strptime(item["date"].to_s, "%s").year}</b>&mdash;#{item["caption"]}<br><span class="gallery__item__link__description__link">View on Instagram</a>
+    %p.other-links Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
     %footer.footer
       %hr.footer__rule
       %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
