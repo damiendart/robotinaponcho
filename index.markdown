@@ -16,11 +16,11 @@ illustrator.
 
 ## Other things
 
-  - [My art on Instagram][4]
+  - [My artwork and drawings][4]
   - [Open-source bits and pieces][5]
   - [Notes about stuff][6]
 
-[4]: <https://instagram.com/damiendart>
+[4]: </art/>
 [5]: </git/>
 [6]: </notes/>
 
