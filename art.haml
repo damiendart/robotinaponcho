@@ -28,12 +28,12 @@
     %title Damien Dart's Art (www.robotinaponcho.net)
   %body
     %h1.title Damien's Art
+    %p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a> and <a href="https://twitter.com/damiendart">Twitter</a>.
     .gallery
       - instagram["user"]["media"]["nodes"].each do |item|
         %article.gallery__item
-          %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"}
-            %img.gallery__item__link__image{:alt => item["caption"], :src => item["display_src"]}
-            %p.gallery__item__link__description <b>#{DateTime.strptime(item["date"].to_s, "%s").year}</b>&mdash;#{item["caption"]}<br><span class="gallery__item__link__description__link">View on Instagram</a>
+          %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"]}
+          %p.gallery__item__description <b>#{DateTime.strptime(item["date"].to_s, "%s").year}</b>&mdash;#{item["caption"]}<br><a class="gallery__item__description__link" href="https://www.instagram.com/p/#{item['code']}">View on Instagram</a>
     %p.other-links Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
     %footer.footer
       %hr.footer__rule
