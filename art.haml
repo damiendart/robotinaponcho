@@ -33,8 +33,9 @@
       - instagram["user"]["media"]["nodes"].each do |item|
         %article.gallery__item
           %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"]}
-          %p.gallery__item__description <b>#{DateTime.strptime(item["date"].to_s, "%s").year}</b>&mdash;#{item["caption"]}<br><a class="gallery__item__description__link" href="https://www.instagram.com/p/#{item['code']}">View on Instagram</a>
+          %p.gallery__item__description <b data-timestamp="#{item['date']}">#{DateTime.strptime(item["date"].to_s, "%s").year}</b>&mdash;#{item["caption"]}<br><a class="gallery__item__description__link" href="https://www.instagram.com/p/#{item['code']}">View on Instagram</a>
     %p.other-links Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
     %footer.footer
       %hr.footer__rule
       %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
+    %script= File.read("art.js")
