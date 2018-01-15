@@ -1,6 +1,12 @@
 TODO
 ====
 
+  * Finish the art porfolio:
+    * [ ] Tweak no-JavaScript gallery timestamps.
+    * [ ] Add my art-related twitter posts to the page.
+    * [ ] Fix hover thing for touch device users.
+    * [ ] Filter non-art posts (by hashtag).
+  * Create a "common.scss".
   * Create FlippyWindow page.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
 
