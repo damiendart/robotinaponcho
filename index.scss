@@ -5,19 +5,17 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-$base-background-colour: #000000;
-$base-font-size: 16px;
-$base-foreground-colour: #ffffff;
-$base-header-colour: #f96e00;
-$base-line-height: 1.5rem;
-$base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+@import "common";
+
+
 $information-width: $base-line-height * 16;
-$robots-background-colour: $base-header-colour;
+$side-panel-background-colour: $base-foreground-colour;
+$side-panel-foreground-colour: $base-background-colour;
 
 
 body {
-  background: $base-background-colour;
-  color: $base-foreground-colour;
+  background: $side-panel-background-colour;
+  color: $side-panel-foreground-colour;
   font-family: $base-font-stack;
   @if($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
@@ -48,10 +46,10 @@ noscript {
   top: percentage(2/3); }
 
 /* div */#container {
-  background: linear-gradient(bottom, darken($robots-background-colour, 10),
-      $robots-background-colour 25vh) no-repeat, $robots-background-colour;
+  background: linear-gradient(bottom, darken($base-feature-colour, 10),
+      $base-feature-colour 25vh) no-repeat, $base-feature-colour;
   background-position: center 25vh;
-  border-bottom: $base-line-height * 2 solid $robots-background-colour;
+  border-bottom: $base-line-height * 2 solid $base-feature-colour;
   height: 150%;
   left: 0;
   position: fixed;
@@ -82,7 +80,7 @@ noscript {
       &:hover {
         text-decoration: underline; } }
     h2 {
-      color: $base-header-colour;
+      color: $base-feature-colour;
       font-size: 100%;
       font-weight: bold;
       margin: $base-line-height 0 0 0;
@@ -113,7 +111,7 @@ noscript {
           transform: translateX(-100vw); } } } }
 
 /* label */.toggle {
-  border: $base-line-height / 8 solid $base-foreground-colour;
+  border: $base-line-height / 8 solid $side-panel-foreground-colour;
   border-radius: $base-line-height;
   cursor: pointer;
   display: inline-block;
@@ -126,9 +124,9 @@ noscript {
   &:hover {
     text-decoration: underline; }
   &--open {
-    background: $base-foreground-colour;
+    background: $side-panel-foreground-colour;
     box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
-    color: $robots-background-colour;
+    color: $base-feature-colour;
     position: fixed;
     right: $base-line-height * 2;
     top: $base-line-height * 2;
@@ -151,7 +149,7 @@ noscript {
   overflow: hidden;
   body {
     // Tweak background colour for browsers with translucent UIs.
-    background: $robots-background-colour;
+    background: $base-feature-colour;
     height: 100%;
     overflow: hidden;
     transition: background 0s 0.5s;
@@ -160,9 +158,9 @@ noscript {
     background-position: center !important; }
   /* div */.javascript-loading {
     animation: loading 0.75s infinite linear;
-    border: $base-line-height / 2 solid rgba($base-foreground-colour, 0.2);
+    border: $base-line-height / 2 solid rgba($side-panel-foreground-colour, 0.2);
     border-radius: 50%;
-    border-top: $base-line-height / 2 solid $base-foreground-colour;
+    border-top: $base-line-height / 2 solid $side-panel-foreground-colour;
     box-sizing: border-box;
     height: $base-line-height * 4;
     left: 50%;
@@ -184,12 +182,12 @@ noscript {
           transform: rotate(360deg); } } } }
   &[class~="javascript-info-visible"], /* body */.javascript-info-visible {
     // Tweak background colour for browsers with translucent UIs.
-    background: linear-gradient(to left, $base-background-colour,
-        $base-background-colour $information-width,
-        $robots-background-colour $information-width),
-        $base-background-colour;
+    background: linear-gradient(to left, $side-panel-background-colour,
+        $side-panel-background-colour $information-width,
+        $base-feature-colour $information-width),
+        $side-panel-background-colour;
     @media only screen and (max-width: $information-width) {
-      background: $base-background-colour; }
+      background: $side-panel-background-colour; }
     overflow: visible;
     transition: background 0s 0s; } }
 

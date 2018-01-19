@@ -11,7 +11,9 @@ require "open3"
 require "rubygems"
 Bundler.require(:default)
 
-
+# As of Sass 3.4.0, the current working directory will no longer be
+# placed onto the Sass load path by default.
+ENV['SASS_PATH'] = "."
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
