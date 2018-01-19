@@ -8,6 +8,8 @@ TODO
     * [ ] Filter non-art posts (by hashtag).
   * Create a "common.scss".
   * Create FlippyWindow page.
+  * Update copyright notices.
+  * Replace JavaScript Typekit stuff with CSS-only stuff.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
 
 [1]: <http://www.buildmypinnedsite.com/en>
