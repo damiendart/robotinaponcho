@@ -61,6 +61,7 @@ html {
   max-width: $image-size * 3;
   text-align: left;
   /* article */ &__item {
+    background: $base-foreground-colour;
     display: inline-block;
     height: 0;
     position: relative;
@@ -85,6 +86,7 @@ html {
       span {
         font-weight: bold;
         line-height: $base-line-height;
+        margin: 0 $base-line-height / 4 0 0;
         opacity: 0;
         text-decoration: underline;
         text-transform: uppercase;
@@ -102,16 +104,8 @@ html {
       display: block;
       width: 100%; } } }
 
-/* p */.other-links {
-  margin: $base-line-height * 2 0 0 0;
-  a {
-    color: inherit; }
-  @media only screen and (max-width: $image-size) {
-    span {
-      display: none; } } }
-
 /* h1 */.title {
   font-size: $base-line-height * 2;
-  line-height: $base-line-height * 2;
-  margin: 0 0 $base-line-height * 2 0;
+  line-height: 1;
+  margin: 0;
   text-transform: uppercase; }
