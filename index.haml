@@ -8,6 +8,7 @@
 %html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
+    %link{:href => "https://use.typekit.net/rvl0fuw.css", :rel => "stylesheet"}
     %meta{:content => "Visit the homepage of Damien Dart, a part-time illustrator and web developer.", "name" => "description"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %meta{:content => "Visit the homepage of Damien Dart, a part-time illustrator and web developer.", "property" => "og:description"}
@@ -15,12 +16,12 @@
     %meta{:content => "Damien Dart's Homepage", :property => "og:title"}
     %meta{:content => "website", :property => "og:type"}
     %meta{:content => "https://www.robotinaponcho.net/", :property => "og:url"}
-    %script= File.read("index.typekit.js")
+    %script document.documentElement.className += "javascript";
     :autoprefixscss
       #{File.read("index.scss")}
     %title Damien Dart's Homepage (www.robotinaponcho.net)
   %body
-    %input.information-trigger#information-trigger{:type => "checkbox"}
+    %input.information-trigger#information-trigger{:autocomplete => "off", :type => "checkbox"}
     %label.toggle.toggle--open{:for => "information-trigger"} More Info
     #container
       %noscript Enable JavaScript for tumbling robots!
