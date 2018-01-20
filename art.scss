@@ -8,13 +8,15 @@
 @import "common";
 
 
-$image-size: 500px;
+$image-size: 400px;
 
 
 body {
   background: $base-background-colour;
   color: $base-foreground-colour;
   font-family: $base-font-stack;
+  @if($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
   line-height: $base-line-height;
   margin: $base-line-height * 2 auto;
   text-size-adjust: none;
@@ -24,6 +26,7 @@ html {
   font-size: 100%;
   @media only screen and (max-width: 765px) {
     font-size: 87.5%; } }
+
 
 /* p */.blurb {
   font-size: 150%;
@@ -64,46 +67,40 @@ html {
     padding: 0 0 percentage(1/3) 0;
     overflow: hidden;
     width: percentage(1/3);
-    // TODO: Tweak breakpoints.
     @media only screen and (max-width: $image-size * 2) {
       padding: 0 0 50% 0;
       width: 50%; }
     @media only screen and (max-width: $image-size) {
       padding: 0 0 100% 0;
       width: 100%; }
-    &:hover &__description {
-      color: #fff;
-      opacity: 1 !important;
-      pointer-events: auto; }
-    &:hover &__image {
-      filter: brightness(20%);
-      transform: scale(1.05); }
-    /* p */ &__description {
+    /* a */ &__link {
+      bottom: 0;
+      color: $base-background-colour;
+      display: inline-block;
       line-height: $base-line-height;
-      margin: 0;
-      opacity: 0;
-      padding: $base-line-height * 2;
-      pointer-events: none;
+      margin: $base-line-height;
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      /* a */ &__link {
-        border: $base-line-height / 8 solid #fff;
-        border-radius: $base-line-height;
-        color: inherit;
-        display: inline-block;
+      right: 0;
+      text-decoration: none;
+      span {
         font-weight: bold;
         line-height: $base-line-height;
-        margin: $base-line-height / 2 0 0 0;
-        padding: $base-line-height / 8 ($base-line-height * 3) / 8;
-        text-decoration: none;
+        opacity: 0;
+        text-decoration: underline;
         text-transform: uppercase;
-        &:hover {
-          text-decoration: underline; } } }
+        transition: opacity 0.25s;
+        vertical-align: bottom; }
+      &:hover {
+        span {
+          opacity: 1; } }
+      /* img */ &__icon {
+        height: $base-line-height;
+        width: $base-line-height;
+        vertical-align: bottom; } }
+      text-decoration: none;
     /* img */ &__image {
-        display: block;
-        transition: all 0.25s;
-        width: 100%; } } }
+      display: block;
+      width: 100%; } } }
 
 /* p */.other-links {
   margin: $base-line-height * 2 0 0 0;
