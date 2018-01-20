@@ -1,40 +1,16 @@
--# Homepage Haml markup for Damien Dart's personal website.
--#
--# Copyright (C) 2013-2017 Damien Dart, <damiendart@pobox.com>.
--# This file is distributed under the MIT licence. For more information,
--# please refer to the accompanying "LICENCE" file.
-
-
-- require "date"
 - require "open-uri"
 - require "json"
 - instagram = JSON.load(open("https://www.instagram.com/damiendart/?__a=1"))
 
 
-!!! 5
-%html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
-  %head
-    %meta{:charset => "utf-8"}
-    %link{:href => "https://use.typekit.net/rvl0fuw.css", :rel => "stylesheet"}
-    %meta{:content => "View Damien Dart’s artwork and illustrations.", "name" => "description"}
-    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
-    %meta{:content => "View Damien Dart’s artwork and illustrations.", "property" => "og:description"}
-    %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
-    %meta{:content => "Damien Dart's Art", :property => "og:title"}
-    %meta{:content => "website", :property => "og:type"}
-    %meta{:content => "https://www.robotinaponcho.net/art/", :property => "og:url"}
-    :autoprefixscss
-      #{File.read("art.scss")}
-    %title Damien Dart's Art (www.robotinaponcho.net)
-  %body
-    %h1.title Damien's Art
-    %p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a> and <a href="https://twitter.com/damiendart">Twitter</a>.
-    .gallery
-      - instagram["user"]["media"]["nodes"].each do |item|
-        %article.gallery__item
-          %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"], :title => item["caption"]}
-          %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"} <span>View on Instagram</span> <img class="gallery__item__link__icon" src="/assets/instagram.svg">
-    %p.other-links Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
-    %footer.footer
-      %hr.footer__rule
-      %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
+%h1.title Damien's Art
+%p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a> and <a href="https://twitter.com/damiendart">Twitter</a>.
+.gallery
+  - instagram["user"]["media"]["nodes"].each do |item|
+    %article.gallery__item
+      %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"], :title => item["caption"]}
+      %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"} <span>View on Instagram</span> <img class="gallery__item__link__icon" src="/assets/instagram.svg">
+%p.other-links Copyright (c) #{`date +%Y`} Damien Dart.<span> All rights reserved.</span>
+%footer.footer
+  %hr.footer__rule
+  %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net

@@ -1,0 +1,24 @@
+// Base page Haml source for Damien Dart's personal website.
+//
+// Copyright (C) 2013-2017 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+!!! 5
+%html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
+  %head
+    %meta{:charset => "utf-8"}
+    %link{:href => "https://use.typekit.net/rvl0fuw.css", :rel => "stylesheet"}
+    %meta{:content => page_description, "name" => "description"}
+    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
+    %meta{:content => page_description, "property" => "og:description"}
+    %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
+    %meta{:content => page_title, :property => "og:title"}
+    %meta{:content => "website", :property => "og:type"}
+    %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
+    %script document.documentElement.className += "javascript";
+    :autoprefixscss
+      #{page_scss}
+    %title #{page_title} (www.robotinaponcho.net)
+  %body
+    = page_content
