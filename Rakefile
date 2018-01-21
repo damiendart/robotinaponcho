@@ -52,23 +52,19 @@ end
   end
 end
 
-CLOBBER << "public/index.html"
-desc "Spit out the homepage."
-file "public/index.html" => FileList["base.*", "index.*", "Rakefile",
-    "public/assets/index-vendor.js"] do |task|
-  parsed = FrontMatterParser::Parser.parse_file("index.haml")
-  process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
-      :page_content => Haml::Engine.new(parsed.content).render()))
-end
-
-CLOBBER << "public/art/index.html"
-directory "public/art"
-desc "Spit out the art page."
-file "public/art/index.html" => FileList["base.*", "art.*", "Rakefile", 
-    "public/art"] do |task|
-  parsed = FrontMatterParser::Parser.parse_file("art.haml")
-  process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
-      :page_content => Haml::Engine.new(parsed.content).render()))
+FileList["pages/*.haml"].map do |file|
+  parsed = FrontMatterParser::Parser.parse_file(file)
+  CLOBBER << "public/#{parsed.front_matter["output_file"]}"
+  directory "public/#{File.dirname(parsed.front_matter["output_file"])}"
+  desc "Spit out \"#{parsed.front_matter["output_file"]}\"."
+  file "public/#{parsed.front_matter["output_file"]}" => FileList["Rakefile",
+      # TODO: Support multiple dependencies.
+      parsed.front_matter["rake_dependencies"],
+      "#{parsed.front_matter["layout"]}.*",
+      "pages/#{File.basename(file, ".haml")}.*"].compact do |task|
+    process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
+        :page_content => Haml::Engine.new(parsed.content).render()))
+  end
 end
 
 CLOBBER << "public/assets/index-vendor.js"
