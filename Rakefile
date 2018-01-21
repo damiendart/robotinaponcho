@@ -11,17 +11,13 @@ require "open3"
 require "rubygems"
 Bundler.require(:default)
 
+
 # As of Sass 3.4.0, the current working directory will no longer be
 # placed onto the Sass load path by default.
 ENV['SASS_PATH'] = "."
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
-# Increase the degree of precision of values that Sass spits out to
-# prevent some browsers from rendering elements a pixel narrower than
-# intended. See <https://github.com/nex3/sass/issues/319> for more
-# information.
-Sass::Script::Number.precision = 8
 
 
 module Haml::Filters::AutoPrefixScss

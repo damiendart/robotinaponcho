@@ -10,4 +10,4 @@ gem "front_matter_parser"
 gem "haml"
 gem "rake", :require => ["rake", "rake/clean"]
 gem "redcarpet"
-gem "sass", ">=3.3"
+gem "sass", ">=3.5.0"
