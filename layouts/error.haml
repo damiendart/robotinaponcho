@@ -9,9 +9,17 @@
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width", "name" => "viewport"}
     :autoprefixscss
       a, a:active, a:focus, a:hover, a:visited {
-        color: inherit;
-        text-decoration: none }
+        animation: fancy 1s ease-in-out infinite;
+        display: inline-block;
+        color: yellow;
+        text-decoration: none;
+        @at-root {
+          @keyframes fancy {
+            50% {
+              filter: hue-rotate(360deg);
+              transform: scale(1.5); } } } }
       body {
+        background: black;
         font: 100%/1.5 "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace;
         margin: 0;
         text-align: center }
@@ -23,7 +31,7 @@
         padding: 0;
         position: absolute;
         top: 50%;
-        width: 100% }
+        width: 100%; }
     %title #{error_code} (www.robotinaponcho.net)
   %body
     %h1.error_code <a href="/">#{error_code}</a>
