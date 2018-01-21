@@ -44,15 +44,8 @@ def process_haml_file(input_filename, output_filename, locals = {})
 end
 
 
-%w{403 404 410}.each do |error_code|
-  CLOBBER << "public/#{error_code}.html"
-  desc "Spit out the #{error_code} HTTP error document."
-  file "public/#{error_code}.html" => FileList["layouts/error.*", "Rakefile"] do |task|
-    process_haml_file("layouts/error.haml", task.name, :error_code => error_code)
-  end
-end
-
 FileList["pages/*.haml"].map do |file|
+  # TODO: Be more graceful when "front matter" is unavailable.
   parsed = FrontMatterParser::Parser.parse_file(file)
   CLOBBER << "public/#{parsed.front_matter["output_file"]}"
   directory "public/#{File.dirname(parsed.front_matter["output_file"])}"
@@ -62,8 +55,8 @@ FileList["pages/*.haml"].map do |file|
       parsed.front_matter["rake_dependencies"],
       "layouts/#{parsed.front_matter["layout"]}.*",
       "pages/#{File.basename(file, ".haml")}.*"].compact do |task|
-    process_haml_file("layouts/#{parsed.front_matter["layout"]}", task.name,
-        parsed.front_matter.merge("page_content" =>
+    process_haml_file("layouts/#{parsed.front_matter["layout"]}.haml",
+        task.name, parsed.front_matter.merge("page_content" =>
         Haml::Engine.new(parsed.content).render()))
   end
 end
@@ -82,11 +75,5 @@ file "public/assets/index-vendor.js" => FileList["Rakefile",
       --preamble "/* <#{urls.join(">, <")}> */"`
 end
 
-CLOBBER << "public/crap/index.html"
-directory "public/crap"
-desc "Spit out The Folder of Crap page."
-file "public/crap/index.html" => FileList["layouts/error.*", "Rakefile", "public/crap"] do |task|
-  process_haml_file("layouts/error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
-end
 
 task :default => CLOBBER
