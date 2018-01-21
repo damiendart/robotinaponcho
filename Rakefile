@@ -47,8 +47,8 @@ end
 %w{403 404 410}.each do |error_code|
   CLOBBER << "public/#{error_code}.html"
   desc "Spit out the #{error_code} HTTP error document."
-  file "public/#{error_code}.html" => FileList["error.*", "Rakefile"] do |task|
-    process_haml_file("error.haml", task.name, :error_code => error_code)
+  file "public/#{error_code}.html" => FileList["layouts/error.*", "Rakefile"] do |task|
+    process_haml_file("layouts/error.haml", task.name, :error_code => error_code)
   end
 end
 
@@ -60,10 +60,11 @@ FileList["pages/*.haml"].map do |file|
   file "public/#{parsed.front_matter["output_file"]}" => FileList["Rakefile",
       # TODO: Support multiple dependencies.
       parsed.front_matter["rake_dependencies"],
-      "#{parsed.front_matter["layout"]}.*",
+      "layouts/#{parsed.front_matter["layout"]}.*",
       "pages/#{File.basename(file, ".haml")}.*"].compact do |task|
-    process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
-        :page_content => Haml::Engine.new(parsed.content).render()))
+    process_haml_file("layouts/#{parsed.front_matter["layout"]}", task.name,
+        parsed.front_matter.merge("page_content" =>
+        Haml::Engine.new(parsed.content).render()))
   end
 end
 
@@ -84,8 +85,8 @@ end
 CLOBBER << "public/crap/index.html"
 directory "public/crap"
 desc "Spit out The Folder of Crap page."
-file "public/crap/index.html" => FileList["error.*", "Rakefile", "public/crap"] do |task|
-  process_haml_file("error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
+file "public/crap/index.html" => FileList["layouts/error.*", "Rakefile", "public/crap"] do |task|
+  process_haml_file("layouts/error.haml", task.name, :error_code => "¯\\_(ツ)_/¯")
 end
 
 task :default => CLOBBER
