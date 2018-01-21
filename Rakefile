@@ -35,15 +35,6 @@ module Haml::Filters::AutoPrefixScss
 end
 
 
-def process_haml_file(input_filename, output_filename, locals = {})
-  puts "# Spitting out \"#{output_filename}\"."
-  stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
-      "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{output_filename}")
-  stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
-      File.read(input_filename)).render(Object.new, locals)))
-end
-
-
 FileList["pages/*.haml"].map do |file|
   # TODO: Be more graceful when "front matter" is unavailable.
   parsed = FrontMatterParser::Parser.parse_file(file)
@@ -55,9 +46,13 @@ FileList["pages/*.haml"].map do |file|
       parsed.front_matter["rake_dependencies"],
       "layouts/#{parsed.front_matter["layout"]}.*",
       "pages/#{File.basename(file, ".haml")}.*"].compact do |task|
-    process_haml_file("layouts/#{parsed.front_matter["layout"]}.haml",
-        task.name, parsed.front_matter.merge("page_content" =>
-        Haml::Engine.new(parsed.content).render()))
+    puts "# Spitting out \"#{task.name}\"."
+    stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
+        "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
+    stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
+        File.read("layouts/#{parsed.front_matter["layout"]}.haml")).render(
+        Object.new, parsed.front_matter.merge("page_content" =>
+        Haml::Engine.new(parsed.content).render()))))
   end
 end
 
