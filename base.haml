@@ -18,7 +18,7 @@
     %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
     %script document.documentElement.className += "javascript";
     :autoprefixscss
-      #{page_scss}
+      #{File.read(page_scss)}
     %title #{page_title} (www.robotinaponcho.net)
   %body
     = page_content

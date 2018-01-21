@@ -6,6 +6,7 @@
 
 source "https://rubygems.org"
 
+gem "front_matter_parser"
 gem "haml"
 gem "rake", :require => ["rake", "rake/clean"]
 gem "redcarpet"

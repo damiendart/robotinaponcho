@@ -56,11 +56,9 @@ CLOBBER << "public/index.html"
 desc "Spit out the homepage."
 file "public/index.html" => FileList["base.*", "index.*", "Rakefile",
     "public/assets/index-vendor.js"] do |task|
-  process_haml_file("base.haml", task.name, {
-      :page_content => Haml::Engine.new(File.read("index.haml")).render(),
-      :page_description => "Visit the homepage of Damien Dart, a part-time illustrator and web developer.",
-      :page_scss => File.read("index.scss"), :page_slug => "",
-      :page_title => "Damien Dart's Homepage" })
+  parsed = FrontMatterParser::Parser.parse_file("index.haml")
+  process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
+      :page_content => Haml::Engine.new(parsed.content).render()))
 end
 
 CLOBBER << "public/art/index.html"
@@ -68,11 +66,9 @@ directory "public/art"
 desc "Spit out the art page."
 file "public/art/index.html" => FileList["base.*", "art.*", "Rakefile", 
     "public/art"] do |task|
-  process_haml_file("base.haml", task.name, {
-      :page_content => Haml::Engine.new(File.read("art.haml")).render(),
-      :page_description => "View Damien Dart’s artwork and illustrations.",
-      :page_scss => File.read("art.scss"), :page_slug => "art/",
-      :page_title => "Damien Dart's Art" })
+  parsed = FrontMatterParser::Parser.parse_file("art.haml")
+  process_haml_file("base.haml", task.name, parsed.front_matter.merge( 
+      :page_content => Haml::Engine.new(parsed.content).render()))
 end
 
 CLOBBER << "public/assets/index-vendor.js"
