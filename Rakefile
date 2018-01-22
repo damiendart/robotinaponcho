@@ -41,7 +41,8 @@ FileList["pages/*.haml"].map do |file|
       # TODO: Support multiple dependencies.
       parsed.front_matter["rake_dependencies"],
       "layouts/#{parsed.front_matter["layout"]}.*",
-      "pages/#{File.basename(file, ".haml")}.*"].compact do |task|
+      "pages/#{File.basename(file, ".haml")}.*",
+      "public/#{File.dirname(parsed.front_matter["output_file"])}"].compact do |task|
     puts "# Spitting out \"#{task.name}\"."
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
