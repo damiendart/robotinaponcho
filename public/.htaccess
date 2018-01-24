@@ -21,6 +21,7 @@ SetEnv TZ Europe/London
   Redirect 301 /obtaincornhoop/page-background.png /assets/blog-background.png
   RedirectMatch gone /demons_souls_theodore\.jpg$
   RedirectMatch gone /(deadlypremonition|robotinaponcho)\.jpeg$
+  RedirectMatch gone /art/2015-12-18-christmas-card(@2x)?\.png$
   RedirectMatch gone /assets/animate\.min\.css$
   RedirectMatch gone /assets/blog-(background.png|style\.css)$
   RedirectMatch gone /assets/drawings-on-tumblr-background\.png$
