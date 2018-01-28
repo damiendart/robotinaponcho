@@ -6,8 +6,159 @@
 
 
 $base-background-colour: #ffffff;
-$base-feature-colour: #f96e00;
+$base-feature-colour: #d8d8d8;
 $base-font-size: 16px;
-$base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 $base-foreground-colour: #000000;
+$base-header-colour: #f96e00;
 $base-line-height: 1.5rem;
+$base-link-colour: #8383e2;
+$container-width: $base-line-height * 29;
+$header-font-stack: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+
+
+@mixin clearfix {
+  zoom: 1;
+  &:after {
+    clear: both; }
+  &:before, &:after {
+    content: "";
+    display: table; } }
+
+
+body {
+  background: $base-feature-colour;
+  color: $base-foreground-colour;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  @if($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  line-height: $base-line-height;
+  margin: 0;
+  // Webkit on iOS devices (at least the ones I've tried) require the
+  // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; // Just In Case(tm).
+  text-size-adjust: 100%;
+  @if($base-font-size != 16px) {
+    @media only screen and (max-width: 480px) {
+      font-size: 100%; } } }
+
+html {
+  font-size: 100%;
+  @media only screen and (max-width: 480px) {
+    font-size: 87.5%; } }
+
+
+/* div */.content {
+  a {
+    color: $base-link-colour;
+    text-decoration: none;
+    &:active, &:focus, &:hover, &:visited:hover {
+      text-decoration: underline; } }
+  code {
+    line-height: 1rem; }
+  h1 {
+    color: $base-header-colour;
+    font-family: $header-font-stack;
+    font-size: 300%;
+    line-height: $base-line-height * 2;
+    margin: $base-line-height * 2 0;
+    text-transform: uppercase; }
+  h2 {
+    color: $base-header-colour;
+    font-family: $header-font-stack;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: $base-line-height 0 0 0; }
+  h3 {
+    font-family: $header-font-stack;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: $base-line-height / 2 0 0 0; }
+  p {
+    margin: $base-line-height / 2 0 0 0; }
+  ol {
+    margin: $base-line-height / 2 0 0 $base-line-height;
+    padding: 0;
+    & > * {
+      margin: 0;
+      padding: 0;
+      & > ul {
+        margin: 0 0 0 $base-line-height; } } }
+  ul {
+    list-style: square;
+    margin: $base-line-height / 2 0 0 $base-line-height;
+    padding: 0;
+    & > * {
+      margin: 0;
+      padding: 0;
+      & > ul {
+        margin: 0 0 0 $base-line-height; } } } }
+
+/* ul */.metadata {
+  list-style: none;
+  margin: $base-line-height / 2 0 0 0;
+  strong {
+    text-transform: uppercase; } }
+
+/* div */.page-container {
+  background: $base-background-colour;
+  box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  max-width: $container-width;
+  margin: $base-line-height * 2 auto;
+  padding: $base-line-height * 2;
+  @media only screen and (max-width: $container-width) {
+    margin: 0 auto; } }
+
+/* header */.site-header {
+  @include clearfix;
+  border-bottom: $base-line-height / 16 solid $base-feature-colour;
+  margin: $base-line-height * -1 $base-line-height * -2 0;
+  padding: 0 $base-line-height * 2 $base-line-height * (15 / 16);
+  a {
+    color: inherit;
+    text-decoration: none; }
+  /* h1 */ &__title {
+    float: left;
+    font-family: $header-font-stack;
+    font-size: 100%;
+    line-height: $base-line-height;
+    margin: 0;
+    text-transform: uppercase; }
+  /* ul */ &__navigation-list {
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* li */ &__item {
+      display: inline-block;
+      margin: 0;
+      padding: 0 $base-line-height 0 0;
+      position: relative;
+      &:hover &__sub-menu {
+        left: $base-line-height / -2;
+        opacity: 1; }
+      &:last-child {
+        padding-right: 0; }
+      &--has-sub-menu:hover {
+        & > a {
+          transition: opacity 0.25s;
+          opacity: 0.5; } }
+      /* ul */ &__sub-menu {
+        background: $base-background-colour; // HACK: For Internet Explorer 9.
+        box-shadow: 0 $base-line-height / 2 $base-line-height rgba(0, 0, 0, 0.1);
+        left: -9999px;
+        list-style: none;
+        margin: 0;
+        opacity: 0;
+        text-align: left;
+        transition: opacity 0.25s;
+        padding: $base-line-height / 2;
+        position: absolute;
+        z-index: 9999;
+        /* li */ &__item {
+          padding: 0;
+          white-space: nowrap;
+          &:first-child {
+           margin: 0; } } } } } }

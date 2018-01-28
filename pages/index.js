@@ -5,25 +5,12 @@ var loading_animation = document.createElement("div");
 var vendor = document.createElement("script");
 
 loading_animation.className = "javascript-loading";
-document.getElementById("container").appendChild(loading_animation);
-document.getElementById("container").appendChild(canvas);
+document.getElementById("robots").appendChild(loading_animation);
+document.getElementById("robots").appendChild(canvas);
 
 setTimeout(function() {
   loading_animation.className += " javascript-loading--show";
 }, 750);
-
-(function toggle_background() {
-  if (document.getElementById("information-trigger").checked) {
-    document.body.className = "javascript-info-visible";
-    document.documentElement.className += " javascript-info-visible";
-  } else {
-    document.body.className = "";
-    document.documentElement.className =
-        document.documentElement.className.replace(
-            "javascript-info-visible", "").trim();
-  }
-  document.getElementById("information-trigger").onchange = toggle_background;
-})();
 
 vendor.src = "assets/index-vendor.js";
 vendor.onload = vendor.onreadystatechange = function() {
@@ -46,8 +33,8 @@ vendor.onload = vendor.onreadystatechange = function() {
     robot.onload = robot.onreadystatechange = function() {
       if (!this.readyState || /loaded|complete/.test(this.readyState)) {
         loading_animation.className += " javascript-loading--complete";
-        document.getElementById("container").className =
-            "container--javascript-show-background";
+        document.getElementById("robots").className =
+            "robots--javascript-show-background";
         (function render() {
           // TODO: Add support for Retina displays?
           var bodies;

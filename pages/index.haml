@@ -16,14 +16,8 @@
   ---
 
 
-%input.information-trigger#information-trigger{:autocomplete => "off", :type => "checkbox"}
-%label.toggle.toggle--open{:for => "information-trigger"} More Info
-#container
+#robots
   %noscript Enable JavaScript for tumbling robots!
-.information
-  .information__container
-    .close-container
-      %label.toggle{:for => "information-trigger"} Less Info
-    :markdown
-      #{File.read("pages/index.markdown")}
+:markdown
+  #{File.read("pages/index.markdown")}
 %script= File.read("pages/index.js")

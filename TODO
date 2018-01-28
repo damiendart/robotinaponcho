@@ -1,14 +1,22 @@
 TODO
 ====
 
+  * Do a bunch of text editin'.
+  * Have my notes use the same site style.
+  * Fix navigation for smaller screens.
+  * Use base layout for error pages.
+    * [ ] Add ability to suppress social media junk.
+  * Tweak tumbling robots thing for new design.
+    * [ ] Add full-screen and restart controls.
+    * [ ] Fix position of loading spinner.
+  * Add option to suppress site header border.
   * Finish the art porfolio:
     * [ ] Add my art-related Twitter posts to the page.
     * [ ] Filter non-art posts (by hashtag).
-  * Create a "common.scss".
   * Speed up the building process.
     * [ ] Replace Haml with HTML/Erb?
+    * [ ] Move CSS to a seperate file?
   * Create FlippyWindow page.
-  * Update copyright notices.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
 
 [1]: <http://www.buildmypinnedsite.com/en>
