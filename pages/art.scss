@@ -21,7 +21,7 @@
     padding: 0 0 50% 0;
     overflow: hidden;
     width: 50%;
-    @media only screen and (max-width: $container-width) {
+    @media only screen and (max-width: $content-width) {
       padding: 0 0 100% 0;
       width: 100%; }
     /* a */ &__link {

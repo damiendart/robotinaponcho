@@ -20,21 +20,19 @@
       #{File.read("pages/#{page_scss}")}
     %title #{page_title} (www.robotinaponcho.net)
   %body
-    .page-container
-      %header.site-header
-        %h1.site-header__title 
-          %a{:href => "/"} Damien Dart
-        %ul.site-header__navigation-list
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--has-sub-menu
-            %a{:href => "javascript:void(0);"} Projects
-            %ul.site-header__navigation-list__item__sub-menu>
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "#"}> FlippyWindow (soon)
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "/art/"}> My Artwork and Drawings
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "/git/"}> Open Source Bits and Pieces
-          %li.site-header__navigation-list__item
-            %a{:href => "/notes/"} Notes
-      .content
-        = page_content
+    %header.site-header
+      %h1.site-header__title 
+        %a{:href => "/"} Damien Dart
+      %ul.site-header__navigation-list
+        %li.site-header__navigation-list__item.site-header__navigation-list__item--has-sub-menu
+          %a{:href => "javascript:void(0);"} Projects
+          %ul.site-header__navigation-list__item__sub-menu>
+            %li.site-header__navigation-list__item__sub-menu__item
+              %a{:href => "#"}> FlippyWindow (soon)
+            %li.site-header__navigation-list__item__sub-menu__item
+              %a{:href => "/art/"}> My Artwork and Drawings
+            %li.site-header__navigation-list__item__sub-menu__item
+              %a{:href => "/git/"}> Open Source Bits and Pieces
+        %li.site-header__navigation-list__item
+          %a{:href => "/notes/"} Notes
+    = page_content

@@ -28,9 +28,10 @@ noscript {
   background-position: center 25vh;
   border-bottom: $base-line-height * 2 solid $base-feature-colour;
   height: $base-line-height * 20;
-  margin: 0 $base-line-height * -2 $base-line-height * 2;
+  margin: 0 0 $base-line-height * 2;
   transition: background-position 1s ease,
-      filter 0.5s ease, transform 0.5s ease; }
+      filter 0.5s ease, transform 0.5s ease;
+  width: 100%; }
 
 /* html */.javascript {
   .robots--javascript-show-background {

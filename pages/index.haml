@@ -18,6 +18,7 @@
 
 #robots
   %noscript Enable JavaScript for tumbling robots!
-:markdown
-  #{File.read("pages/index.markdown")}
+.markdown
+  :markdown
+    #{File.read("pages/index.markdown")}
 %script= File.read("pages/index.js")

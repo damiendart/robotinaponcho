@@ -20,8 +20,15 @@
 - instagram = JSON.load(open("https://www.instagram.com/damiendart/?__a=1"))
 
 
-%h1 Damien's Art
-%p Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a> and <a href="https://twitter.com/damiendart">Twitter</a>.
+.markdown
+  :markdown
+    # Damien's Art
+    
+    Until I get round to setting up an actual gallery, here is some stuff
+    I've posted on [Instagram][1] and [Twitter][2].
+
+    [1]: <https://instagram.com/damiendart>
+    [2]: <https://twitter.com/damiendart>
 .gallery
   - instagram["user"]["media"]["nodes"].each do |item|
     %article.gallery__item
