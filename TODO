@@ -9,7 +9,6 @@ TODO
   * Tweak tumbling robots thing for new design.
     * [ ] Add full-screen and restart controls.
     * [ ] Fix position of loading spinner.
-  * Add option to suppress site header border.
   * Finish the art porfolio:
     * [ ] Add my art-related Twitter posts to the page.
     * [ ] Filter non-art posts (by hashtag).
