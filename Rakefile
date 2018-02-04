@@ -31,18 +31,18 @@ module Haml::Filters::AutoPrefixScss
 end
 
 
-FileList["pages/*.haml"].map do |file|
+FileList["pages/**/*.haml"].map do |file|
   # TODO: Be more graceful when "front matter" is unavailable.
   parsed = FrontMatterParser::Parser.parse_file(file)
-  CLOBBER << "public/#{parsed.front_matter["output_file"]}"
-  directory "public/#{File.dirname(parsed.front_matter["output_file"])}"
-  desc "Spit out \"#{parsed.front_matter["output_file"]}\"."
-  file "public/#{parsed.front_matter["output_file"]}" => FileList["Rakefile",
+  output_filename = file.ext("html").gsub!("pages", "public")
+  CLOBBER << output_filename
+  directory File.dirname(output_filename)
+  desc "Spit out \"#{output_filename}\"."
+  file output_filename => FileList["Rakefile",
       # TODO: Support multiple dependencies.
       parsed.front_matter["rake_dependencies"],
-      "layouts/#{parsed.front_matter["layout"]}.*",
-      "pages/#{File.basename(file, ".haml")}.*",
-      "public/#{File.dirname(parsed.front_matter["output_file"])}"].compact do |task|
+      "layouts/#{parsed.front_matter["layout"]}.*", file.ext("*"),
+      "#{File.dirname(output_filename)}"].compact do |task|
     puts "# Spitting out \"#{task.name}\"."
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
