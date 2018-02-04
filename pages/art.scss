@@ -8,25 +8,30 @@
 @import "layouts/base";
 
 
+$image-size: 400px;
+
+
 /* div */.gallery {
   line-height: 0;
-  margin: $base-line-height $base-line-height * -2
-      $base-line-height * -2;
+  margin: $base-line-height auto 0;
+  max-width: $image-size * 3;
   text-align: left;
   /* article */ &__item {
     background: $base-foreground-colour;
     display: inline-block;
     height: 0;
     position: relative;
-    padding: 0 0 50% 0;
+    padding: 0 0 percentage(1/3) 0;
     overflow: hidden;
-    width: 50%;
-    @media only screen and (max-width: $content-width) {
+    width: percentage(1/3);
+    @media only screen and (max-width: $image-size * 2) {
+      padding: 0 0 50% 0;
+      width: 50%; }
+    @media only screen and (max-width: $image-size) {
       padding: 0 0 100% 0;
       width: 100%; }
     /* a */ &__link {
       bottom: 0;
-      color: $base-background-colour;
       display: inline-block;
       line-height: $base-line-height;
       margin: $base-line-height;
