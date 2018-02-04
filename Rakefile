@@ -31,7 +31,7 @@ module Haml::Filters::AutoPrefixScss
 end
 
 
-FileList["pages/**/*.haml"].map do |file|
+FileList["pages/**/*.{haml,md}"].map do |file|
   # TODO: Be more graceful when "front matter" is unavailable.
   parsed = FrontMatterParser::Parser.parse_file(file)
   output_filename = file.ext("html").gsub!("pages", "public")
@@ -49,7 +49,8 @@ FileList["pages/**/*.haml"].map do |file|
     stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
         File.read("layouts/#{parsed.front_matter["layout"]}.haml")).render(
         Object.new, parsed.front_matter.merge("page_content" =>
-        Haml::Engine.new(parsed.content).render()))))
+        (File.extname(file) == ".haml" ? Haml::Engine.new(parsed.content).render() :
+        "<div class=\"markdown\">#{Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(parsed.content)}</div>")))))
   end
 end
 

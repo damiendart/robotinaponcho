@@ -48,3 +48,5 @@
           %a{:href => "https://twitter.com/damiendart"}
             = File.read("layouts/base-twitter.svg")
     = page_content
+    - if(defined?(page_javascript))
+      %script= File.read("pages/#{page_javascript}")
