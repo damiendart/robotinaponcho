@@ -8,6 +8,7 @@
 %html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
+    %link{:href => "/assets/style.css", :rel => "stylesheet"}
     %meta{:content => page_description, "name" => "description"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %meta{:content => page_description, "property" => "og:description"}
@@ -16,8 +17,9 @@
     %meta{:content => "website", :property => "og:type"}
     %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
     %script document.documentElement.className += "javascript";
-    :autoprefixscss
-      #{File.read("pages/#{page_scss}")}
+    - if(defined?(page_scss))
+      :autoprefixscss
+        #{File.read("pages/#{page_scss}")}
     %title #{page_title} (www.robotinaponcho.net)
   %body
     %header.site-header{:class => defined?(page_no_header_line) ? "site-header--no-line" : ""}

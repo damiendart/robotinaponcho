@@ -12,9 +12,7 @@ require "rubygems"
 Bundler.require(:default)
 
 
-# As of Sass 3.4.0, the current working directory will no longer be
-# placed onto the Sass load path by default.
-ENV['SASS_PATH'] = "."
+ENV['SASS_PATH'] = "./sass"
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
@@ -66,6 +64,17 @@ file "public/assets/index-vendor.js" => FileList["Rakefile",
   puts "# Spitting out \"#{task.name}\"."
   `uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \
       --preamble "/* <#{urls.join(">, <")}> */"`
+end
+
+CLOBBER << "public/assets/style.css"
+directory "public/assets"
+desc "Spit out the site-wide CSS file."
+file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
+  puts "# Spitting out \"#{task.name}\"."
+  stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer -o #{task.name}")
+  stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), 
+      {:cache => false, :syntax => :scss}).render)
+  stdin.close
 end
 
 

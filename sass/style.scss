@@ -5,23 +5,7 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-$base-background-colour: #ffffff;
-$base-font-size: 16px;
-$base-foreground-colour: #000000;
-$base-header-colour: #f96e00;
-$base-line-height: 1.5rem;
-$base-link-colour: #8383e2;
-$content-width: $base-line-height * 29;
-$header-font-stack: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-
-
-@mixin clearfix {
-  zoom: 1;
-  &:after {
-    clear: both; }
-  &:before, &:after {
-    content: "";
-    display: table; } }
+@import "base";
 
 
 a {
