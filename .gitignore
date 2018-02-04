@@ -5,6 +5,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 Gemfile.lock
+layouts/base-*.svg
 public/*
 !public/.htaccess
 !public/googlefb3645e0f9f23eaf.html

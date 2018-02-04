@@ -158,12 +158,13 @@ html {
         & > a {
           transition: opacity 0.25s;
           opacity: 0.5; } }
+      svg {
+        fill: $base-link-colour;
+        height: $base-line-height;
+        width: $base-line-height; }
       &--social {
         line-height: 0;
         vertical-align: bottom; }
-      /* img */ &__icon {
-        height: $base-line-height;
-        width: $base-line-height; }
       /* ul */ &__sub-menu {
         background: $base-background-colour; // HACK: For Internet Explorer 9.
         box-shadow: 0 $base-line-height / 2 $base-line-height rgba(0, 0, 0, 0.1);

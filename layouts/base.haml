@@ -37,14 +37,14 @@
           %a{:href => "/notes/"} Notes
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
           %a{:href => "mailto:damiendart@gmail.com"}
-            %img.site-header__navigation-list__item__icon{:alt => "Email", :src => "/assets/envelope.svg", :title => "My email address"}
+            = File.read("layouts/base-envelope.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
           %a{:href => "https://github.com/damiendart"}
-            %img.site-header__navigation-list__item__icon{:alt => "Github icon", :src => "/assets/github.svg", :title => "My Github profile" }
+            = File.read("layouts/base-github.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
           %a{:href => "https://instagram.com/damiendart"}
-            %img.site-header__navigation-list__item__icon{:alt => "Instagram icon", :src => "/assets/instagram.svg", :title => "My Instagram profile"}
+            = File.read("layouts/base-instagram.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
           %a{:href => "https://twitter.com/damiendart"}
-            %img.site-header__navigation-list__item__icon{:alt => "Twitter icon", :src => "/assets/twitter.svg", :title => "My Twitter profile"}
+            = File.read("layouts/base-twitter.svg")
     = page_content
