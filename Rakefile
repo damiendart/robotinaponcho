@@ -30,25 +30,44 @@ end
 
 
 FileList["pages/**/*.{haml,md}"].map do |file|
-  # TODO: Be more graceful when "front matter" is unavailable.
-  parsed = FrontMatterParser::Parser.parse_file(file)
   output_filename = file.ext("html").gsub!("pages", "public")
+  # The render queue (there's definitely a better name for this) allows
+  # pages to be rendered using multiple templates, where the output of
+  # one template is fed into the next.
+  (render_queue ||= []) << FrontMatterParser::Parser.parse_file(file)
+  render_queue.last.front_matter["filename"] = file
+  if not render_queue.last.front_matter.key?("page_slug")
+    render_queue.last.front_matter["page_slug"] = output_filename.gsub(/(index)?\.html/, "")
+  end
+  while render_queue.last.front_matter.key?("layout") do
+    render_queue << FrontMatterParser::Parser.parse_file(
+        "layouts/#{render_queue.last.front_matter["layout"]}.haml")
+    render_queue.last.front_matter["filename"] =
+        "layouts/#{render_queue[-2].front_matter["layout"]}.haml"
+  end
   CLOBBER << output_filename
   directory File.dirname(output_filename)
   desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["Rakefile",
-      # TODO: Support multiple dependencies.
-      parsed.front_matter["rake_dependencies"],
-      "layouts/#{parsed.front_matter["layout"]}.*", file.ext("*"),
-      "#{File.dirname(output_filename)}"].compact do |task|
+  file output_filename => FileList["Rakefile", file.ext("*"),
+      render_queue.collect { |i| "layouts/#{i.front_matter["layout"]}.*" },
+      render_queue.collect { |i| i.front_matter["rake_dependencies"] },
+      File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
+    output = { content: "", front_matter: Hash.new }
     puts "# Spitting out \"#{task.name}\"."
+    render_queue.each do |item|
+      output[:front_matter].merge!(item.front_matter)
+      case File.extname(item.front_matter["filename"])
+      when ".haml"
+        output[:content] = Haml::Engine.new(item.content).render(Object.new,
+            output[:front_matter].merge("page_content" => output[:content]))
+      when ".md"
+        output[:content] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item.content)
+      end 
+    end
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
-    stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
-        File.read("layouts/#{parsed.front_matter["layout"]}.haml")).render(
-        Object.new, parsed.front_matter.merge("page_content" =>
-        (File.extname(file) == ".haml" ? Haml::Engine.new(parsed.content).render() :
-        "<div class=\"markdown\">#{Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(parsed.content)}</div>")))))
+    stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
+    stdin.close
   end
 end
 
