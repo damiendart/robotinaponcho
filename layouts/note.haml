@@ -13,7 +13,6 @@
 .markdown
   %h1= page_title
   %ul.metadata
-    %li <strong>Author</strong>: <a href="#{author_website}">#{author_name}</a>, <a href="mailto:#{author_email}">#{author_email}</a>
-    %li <strong>Last updated</strong>: <a data-timestamp="#{git_last_commit_timestamp}" href="https://www.robotinaponcho.net/git/?p=notes.git;h=#{git_last_commit_hash}">#{git_last_commit_datetime}</a>
-    %li <strong>Licence</strong>: <a href="#{licence_website}">#{licence_name}</a>
+    %li <strong>Last updated</strong>: <a data-timestamp="#{page_git_last_commit_timestamp}" href="https://www.robotinaponcho.net/git/?p=notes.git;h=#{page_git_last_commit_hash}">#{page_git_last_commit_datetime}</a>
+    %li <strong>Licence</strong>: <a href="#{page_licence_website}">#{page_licence_name}</a>
   = page_content

@@ -35,13 +35,14 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # pages to be rendered using multiple templates, where the output of
   # one template is fed into the next.
   (render_queue ||= []) << FrontMatterParser::Parser.parse_file(file)
-  render_queue.last.front_matter["filename"] = file
+  render_queue.last.front_matter["page_filename"] = file
   # To retrieve Git-related information on a file in a Git submodule, the
   # working directory must be set to the folder containing the submodule. This
   # does not affect retrieving Git-related information in the superproject.
   Dir.chdir(File.dirname(file)) do
+    # TODO: Add repository name?
     { "datetime" => "aD", "hash" => "H", "timestamp" => "at"}.each do |k, v|
-      render_queue.last.front_matter["git_last_commit_#{k}"] =
+      render_queue.last.front_matter["page_git_last_commit_#{k}"] =
         `git log -n 1 --pretty=format:%#{v} #{File.basename(file)}`
     end
   end
@@ -51,7 +52,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   while render_queue.last.front_matter.key?("layout") do
     render_queue << FrontMatterParser::Parser.parse_file(
         "layouts/#{render_queue.last.front_matter["layout"]}.haml")
-    render_queue.last.front_matter["filename"] =
+    render_queue.last.front_matter["page_filename"] =
         "layouts/#{render_queue[-2].front_matter["layout"]}.haml"
   end
   CLOBBER << output_filename
@@ -59,13 +60,13 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   desc "Spit out \"#{output_filename}\"."
   file output_filename => FileList["Rakefile", file.ext("*"),
       render_queue.collect { |i| "layouts/#{i.front_matter["layout"]}.*" },
-      render_queue.collect { |i| i.front_matter["rake_dependencies"] },
+      render_queue.collect { |i| i.front_matter["page_dependencies"] },
       File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
     output = { content: "", front_matter: Hash.new }
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
       output[:front_matter].merge!(item.front_matter)
-      case File.extname(item.front_matter["filename"])
+      case File.extname(item.front_matter["page_filename"])
       when ".haml"
         output[:content] = Haml::Engine.new(item.content).render(Object.new,
             output[:front_matter].merge("page_content" => output[:content]))

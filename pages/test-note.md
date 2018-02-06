@@ -1,11 +1,14 @@
 ---
-author_name: Damien Dart
-author_email: damiendart@pobox.com
-author_website: "https://www.robotinaponcho.net/"
+file_comment: |
+  "pages/test-note.md" for Damien Dart's personal website.
+
+  Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
+  This file is distributed under the MIT licence. For more information,
+  please refer to the accompanying "LICENCE" file.
 layout: note
-licence_name: Creative Commons Attribution 4.0 International License
-licence_website: http://creativecommons.org/licenses/by/4.0/
 page_description: This is a test!
+page_licence_name: MIT
+page_licence_website: "https://www.robotinaponcho.net/git/?p=robotinaponcho.git;a=blob;f=LICENCE"
 page_slug: "test-note.html"
 page_title: Computer Notes
 ---
