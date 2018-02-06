@@ -7,11 +7,13 @@
     This file is distributed under the MIT licence. For more
     information, please refer to the accompanying "LICENCE" file.
   layout: base
+  layout_javascript: note.js
   ---
 
 .markdown
   %h1= page_title
   %ul.metadata
     %li <strong>Author</strong>: <a href="#{author_website}">#{author_name}</a>, <a href="mailto:#{author_email}">#{author_email}</a>
+    %li <strong>Last updated</strong>: <a data-timestamp="#{git_last_commit_timestamp}" href="https://www.robotinaponcho.net/git/?p=notes.git;h=#{git_last_commit_hash}">#{git_last_commit_datetime}</a>
     %li <strong>Licence</strong>: <a href="#{licence_website}">#{licence_name}</a>
   = page_content

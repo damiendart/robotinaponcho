@@ -53,3 +53,5 @@
     = page_content
     - if(defined?(page_javascript))
       %script= File.read("pages/#{page_javascript}")
+    - if(defined?(layout_javascript))
+      %script= File.read("layouts/#{layout_javascript}")
