@@ -2,6 +2,7 @@ TODO
 ====
 
   * Add customised Font Awesome SVGs to project?
+    * [ ] Add ARIA stuff.
   * Do a bunch of text editin'.
   * Tweak tumbling robots thing for new design.
     * [ ] Add full-screen and restart controls.
@@ -11,8 +12,11 @@ TODO
     * [ ] Filter non-art posts (by hashtag).
   * Speed up the building process.
     * [ ] Move CSS to a seperate file?
+    * [ ] Don't download Instagram JSON everytime?
   * Create FlippyWindow page.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
+  * "Rakefile": Add support for hook functions, like Jekyll?
+  * Add a few notes to "README".
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
