@@ -5,10 +5,10 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-$base-background-colour: #ffffff;
+$base-background-colour: #fcfcfc;
 $base-font-size: 16px;
-$base-foreground-colour: #000000;
-$base-header-colour: #f96e00;
+$base-foreground-colour: #1d1d1d;
+$base-header-colour: $base-foreground-colour;
 $base-line-height: 1.5rem;
 $base-link-colour: #8383e2;
 $content-width: $base-line-height * 29;

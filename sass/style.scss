@@ -41,8 +41,7 @@ h1 {
   font-family: $header-font-stack;
   font-size: 300%;
   line-height: $base-line-height * 2;
-  margin: $base-line-height * 2 0;
-  text-transform: uppercase; }
+  margin: $base-line-height * 2 0; }
 
 h2 {
   color: $base-header-colour;
@@ -101,9 +100,9 @@ ul {
 
 /* header */.site-header {
   @include clearfix;
-  border-bottom: $base-line-height / 16 solid #ccc;
+  background: $base-foreground-colour;
   box-sizing: border-box;
-  padding: $base-line-height $base-line-height * 2 $base-line-height * (15 / 16);
+  padding: $base-line-height $base-line-height * 2 $base-line-height;
   width: 100%;
   @media only screen and (max-width: 480px) {
     padding-left: $base-line-height;
@@ -111,15 +110,16 @@ ul {
   &--no-line {
     border: 0;
     padding-bottom: $base-line-height; }
+  a {
+    color: $base-background-colour; }
   /* h1 */ &__title {
+    color: $base-background-colour;
     float: left;
     font-size: 150%;
     line-height: $base-line-height;
     margin: 0;
     @media only screen and (max-width: 480px) {
-      float: none; }
-    a {
-      color: inherit; } }
+      float: none; } }
   /* ul */ &__navigation-list {
     float: right;
     font-weight: bold;
@@ -146,14 +146,16 @@ ul {
           transition: opacity 0.25s;
           opacity: 0.5; } }
       svg {
-        fill: $base-link-colour;
+        fill: $base-background-colour;
         height: $base-line-height;
-        width: $base-line-height; }
+        width: $base-line-height;
+        &:hover {
+          fill: $base-link-colour; } }
       &--social {
         line-height: 0;
         vertical-align: bottom; }
       /* ul */ &__sub-menu {
-        background: $base-background-colour; // HACK: For Internet Explorer 9.
+        background: $base-foreground-colour; // HACK: For Internet Explorer 9.
         box-shadow: 0 $base-line-height / 2 $base-line-height rgba(0, 0, 0, 0.1);
         left: -9999px;
         list-style: none;
