@@ -36,16 +36,15 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # one template is fed into the next.
   (render_queue ||= []) << FrontMatterParser::Parser.parse_file(file)
   render_queue.last.front_matter["page_filename"] = file
-  # To retrieve Git-related information on a file in a Git submodule, the
-  # working directory must be set to the folder containing the submodule. This
-  # does not affect retrieving Git-related information in the superproject.
-  Dir.chdir(File.dirname(file)) do
-    # TODO: Add repository name?
-    { "datetime" => "aD", "hash" => "H", "timestamp" => "at"}.each do |k, v|
-      render_queue.last.front_matter["page_git_last_commit_#{k}"] =
-        `git log -n 1 --pretty=format:%#{v} #{File.basename(file)}`
-    end
-  end
+  # TODO: Add repository name?
+  render_queue.last.front_matter["page_git_last_commit_hash"],
+      render_queue.last.front_matter["page_git_last_commit_timestamp"],
+      render_queue.last.front_matter["page_git_last_commit_datetime"] =
+      # To retrieve Git-related information on a file in a Git
+      # submodule, the working directory must be set to the folder
+      # containing the submodule. This does not affect retrieving
+      # Git-related information in the superproject.
+      `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 2)
   if not render_queue.last.front_matter.key?("page_slug")
     render_queue.last.front_matter["page_slug"] = output_filename.gsub(/(index)?\.html/, "")
   end
