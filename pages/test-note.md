@@ -10,8 +10,11 @@ page_description: This is a test!
 page_licence_name: MIT
 page_licence_website: "https://www.robotinaponcho.net/git/?p=robotinaponcho.git;a=blob;f=LICENCE"
 page_slug: "test-note.html"
-page_title: Computer Notes
 ---
+
+
+Computer Notes
+==============
 
 
 This is a test!

@@ -48,6 +48,12 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   if not render_queue.last.front_matter.key?("page_slug")
     render_queue.last.front_matter["page_slug"] = output_filename.gsub(/(index)?\.html/, "")
   end
+  if File.extname(file) == ".md" and not render_queue.last.front_matter.key?("page_title")
+    # TODO: Support Atx-style headers?
+    render_queue.last.front_matter["page_title"] =
+        render_queue.last.content[/^(.*)\n=+$/,1]
+    render_queue.last.content.gsub!(/^(.*\n=+)$/,"")
+  end
   while render_queue.last.front_matter.key?("layout") do
     render_queue << FrontMatterParser::Parser.parse_file(
         "layouts/#{render_queue.last.front_matter["layout"]}.haml")
