@@ -8,6 +8,7 @@
 
 require "bundler/setup"
 require "open3"
+require "open-uri"
 require "rubygems"
 Bundler.require(:default)
 
@@ -28,6 +29,20 @@ module Haml::Filters::AutoPrefixScss
   end
 end
 
+
+CLOBBER << "pages/art/index.json"
+directory "pages/art"
+desc "Spit out \"pages/art/index.json\"."
+file "pages/art/index.json" do |task|
+  open("https://www.instagram.com/damiendart/?__a=1",
+      "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
+    puts f.status[0]
+    open(task.name, "w") do |io|
+      puts "# Spitting out \"#{task.name}\"."
+      io.write f.read
+    end if f.status[0] == "200"
+  end
+end
 
 FileList["pages/**/*.{haml,md}"].map do |file|
   output_filename = file.ext("html").gsub!("pages", "public")
