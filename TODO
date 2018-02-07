@@ -3,7 +3,6 @@ TODO
 
   * Add customised Font Awesome SVGs to project?
   * Do a bunch of text editin'.
-  * Have my notes use the same site style.
   * Tweak tumbling robots thing for new design.
     * [ ] Add full-screen and restart controls.
     * [ ] Fix position of loading spinner.
@@ -11,7 +10,6 @@ TODO
     * [ ] Add my art-related Twitter posts to the page.
     * [ ] Filter non-art posts (by hashtag).
   * Speed up the building process.
-    * [ ] Replace Haml with HTML/Erb?
     * [ ] Move CSS to a seperate file?
   * Create FlippyWindow page.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
