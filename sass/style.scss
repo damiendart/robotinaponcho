@@ -107,9 +107,6 @@ ul {
   @media only screen and (max-width: 480px) {
     padding-left: $base-line-height;
     padding-right: $base-line-height; }
-  &--no-line {
-    border: 0;
-    padding-bottom: $base-line-height; }
   a {
     color: $base-background-colour; }
   /* h1 */ &__title {
