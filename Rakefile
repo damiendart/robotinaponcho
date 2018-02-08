@@ -36,7 +36,6 @@ desc "Spit out \"pages/art/index.json\"."
 file "pages/art/index.json" do |task|
   open("https://www.instagram.com/damiendart/?__a=1",
       "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
-    puts f.status[0]
     open(task.name, "w") do |io|
       puts "# Spitting out \"#{task.name}\"."
       io.write f.read
