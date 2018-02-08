@@ -23,7 +23,7 @@ module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
-    stdin.puts(Sass::Engine.new(text, {:cache => false, :syntax => :scss}).render)
+    stdin.puts(Sass::Engine.new(text, {:syntax => :scss}).render)
     stdin.close
     "<style>#{stdout.read}</style>"
   end
@@ -121,8 +121,7 @@ desc "Spit out the site-wide CSS file."
 file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
   puts "# Spitting out \"#{task.name}\"."
   stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer -o #{task.name}")
-  stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), 
-      {:cache => false, :syntax => :scss}).render)
+  stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), {:syntax => :scss}).render)
   stdin.close
 end
 
