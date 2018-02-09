@@ -91,7 +91,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
             output[:front_matter].merge("page_content" => output[:content]))
       when ".md"
         output[:content] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item.content)
-      end 
+      end
     end
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
