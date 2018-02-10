@@ -102,11 +102,8 @@ ul {
   @include clearfix;
   background: $base-foreground-colour;
   box-sizing: border-box;
-  padding: $base-line-height $base-line-height * 2 $base-line-height;
+  padding: $base-line-height;
   width: 100%;
-  @media only screen and (max-width: 480px) {
-    padding-left: $base-line-height;
-    padding-right: $base-line-height; }
   a {
     color: $base-background-colour; }
   /* h1 */ &__title {
