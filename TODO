@@ -1,6 +1,7 @@
 TODO
 ====
 
+  * Fix funky site header when viewing on small screens.
   * Add customised Font Awesome SVGs to project?
     * [ ] Add ARIA stuff.
   * Do a bunch of text editin'.

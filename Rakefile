@@ -7,6 +7,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 require "bundler/setup"
+require "digest"
 require "open3"
 require "open-uri"
 require "rubygems"
@@ -18,6 +19,9 @@ ENV['SASS_PATH'] = "./sass"
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
+
+
+site_config = YAML.load_file("config.yml")
 
 
 module Haml::Filters::AutoPrefixScss
@@ -84,7 +88,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       render_queue.collect { |i| i.front_matter["page_dependencies"] },
       File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
     output = { content: "", front_matter: Hash.new }
-    output[:front_matter].merge!(YAML.load_file("config.yml"))
+    output[:front_matter].merge!(site_config)
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
       output[:front_matter].merge!(item.front_matter)
@@ -101,6 +105,19 @@ FileList["pages/**/*.{haml,md}"].map do |file|
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
     stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
     stdin.close
+  end
+end
+
+CLOBBER << "public/assets/avatar.jpg"
+directory "pages/assets"
+desc "Spit out \"public/assets/avatar.jpg\"."
+file "public/assets/avatar.jpg" do |task|
+  open("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(site_config["site_author_email"])}",
+      "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
+    open(task.name, "wb") do |io|
+      puts "# Spitting out \"#{task.name}\"."
+      io.write f.read
+    end if f.status[0] == "200"
   end
 end
 

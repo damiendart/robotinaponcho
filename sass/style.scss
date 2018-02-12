@@ -106,6 +106,16 @@ ul {
   width: 100%;
   a {
     color: $base-background-colour; }
+  /* img */ &__image {
+    border-radius: 50%;
+    float: left;
+    height: $base-line-height * 1.5;
+    margin: $base-line-height / -4 $base-line-height / 2 $base-line-height / -4 0 ;
+    width: $base-line-height * 1.5;
+    @media only screen and (max-width: 480px) {
+      height: $base-line-height * 2.25;
+      margin: 0 $base-line-height / 2 0 0;
+      width: $base-line-height * 2.25; } }
   /* h1 */ &__title {
     color: $base-background-colour;
     float: left;
