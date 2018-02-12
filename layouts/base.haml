@@ -15,7 +15,7 @@
       %meta{:content => "#{site_url}assets/og.png", :property => "og:image"}
       %meta{:content => page_title, :property => "og:title"}
       %meta{:content => "website", :property => "og:type"}
-      %meta{:content => "#{site_url}#{page_slug}", :property => "og:url"}
+      %meta{:content => "#{page_url}", :property => "og:url"}
       %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %script document.documentElement.className += "javascript";
     - if(defined?(page_scss))

@@ -21,7 +21,7 @@ Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
 
 
-site_config = YAML.load_file("config.yml")
+config = YAML.load_file("config.yml")
 
 
 module Haml::Filters::AutoPrefixScss
@@ -39,8 +39,9 @@ CLOBBER << "pages/art/index.json"
 directory "pages/art"
 desc "Spit out \"pages/art/index.json\"."
 file "pages/art/index.json" do |task|
-  open("https://www.instagram.com/#{site_author_instagram}/?__a=1",
-      "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
+  open("https://www.instagram.com/#{config["site_author_instagram"]}/?__a=1",
+      "If-Modified-Since" => File.exists?(task.name) ?
+      File.stat(task.name).mtime.rfc2822 : "") do |f|
     open(task.name, "w") do |io|
       puts "# Spitting out \"#{task.name}\"."
       io.write f.read
@@ -49,62 +50,62 @@ file "pages/art/index.json" do |task|
 end
 
 FileList["pages/**/*.{haml,md}"].map do |file|
-  output_filename = file.ext("html").gsub!("pages", "public")
   # The render queue (there's definitely a better name for this) allows
   # pages to be rendered using multiple templates, where the output of
   # one template is fed into the next.
-  (render_queue ||= []) << FrontMatterParser::Parser.parse_file(file)
-  render_queue[0].front_matter["page_filename"] = file
+  render_queue = []
+  variables = Hash.new.merge(config)
+  loop do 
+    parsed = FrontMatterParser::Parser.parse_file(
+        render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml")
+    variables.merge!(parsed.front_matter)
+    render_queue << {"content" => parsed.content,
+        "filename" => render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml",
+        "layout" => parsed.front_matter["layout"]}
+    break if not render_queue.last["layout"]
+  end
   # TODO: Add repository name?
-  render_queue[0].front_matter["page_git_last_commit_hash"],
-      render_queue[0].front_matter["page_git_last_commit_timestamp"],
-      render_queue[0].front_matter["page_git_last_commit_datetime"] =
+  variables["page_git_last_commit_hash"],
+      variables["page_git_last_commit_timestamp"],
+      variables["page_git_last_commit_datetime"] =
       # To retrieve Git-related information on a file in a Git
       # submodule, the working directory must be set to the folder
       # containing the submodule. This does not affect retrieving
       # Git-related information in the superproject.
       `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 3)
-  if not render_queue[0].front_matter.key?("page_slug")
-    render_queue[0].front_matter["page_slug"] =
-        output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
-  end
-  if File.extname(file) == ".md" and not render_queue[0].front_matter.key?("page_title")
+  variables["output_filename"] = file.gsub("pages", "public").ext("html")
+  variables["page_slug"] ||= output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
+  variables["page_url"] = config["site_url"] + variables["page_slug"]
+  if File.extname(file) == ".md" and not variables["page_title"]
     # TODO: Support Atx-style headers?
-    render_queue[0].front_matter["page_title"] = render_queue[0].content[/^(.*)\n=+$/,1]
-    render_queue[0].content.gsub!(/^(.*\n=+)$/,"")
+    variables["page_title"] = render_queue[0]["content"][/^(.*)\n=+$/,1]
+    render_queue.first["content"].gsub!(/^(.*\n=+)$/,"")
   end
-  while render_queue.last.front_matter.key?("layout") do
-    render_queue << FrontMatterParser::Parser.parse_file(
-        "layouts/#{render_queue.last.front_matter["layout"]}.haml")
-    render_queue.last.front_matter["page_filename"] =
-        "layouts/#{render_queue[-2].front_matter["layout"]}.haml"
-  end
-  CLOBBER << output_filename
-  directory File.dirname(output_filename)
-  desc "Spit out \"#{output_filename}\"."
+  CLOBBER << variables["output_filename"]
+  directory File.dirname(variables["output_filename"])
+  desc "Spit out \"#{variables["output_filename"]}\"."
   file output_filename => FileList["Rakefile", file.ext("*"),
-      render_queue.collect { |i| "layouts/#{i.front_matter["layout"]}.*" },
-      render_queue.collect { |i| i.front_matter["page_dependencies"] },
-      File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
-    output = { content: "", variables: Hash.new.merge!(site_config) }
+      render_queue.collect { |i| "layouts/#{i["layout"]}.*" },
+      render_queue.collect { |i| i["page_dependencies"] },
+      File.dirname(variables["output_filename"])].compact.reject { |i| i =~ /\.+?$/ } do |task|
+    output = "" 
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
-      output[:variables].merge!(item.front_matter)
-      case File.extname(output[:variables]["page_filename"])
+      case File.extname(item["filename"])
       when ".haml"
-        output[:content] = Haml::Engine.new(item.content).render(Object.new,
-            output[:variables].merge("page_content" => output[:content]))
+        output = Haml::Engine.new(item["content"]).render(Object.new,
+            variables.merge("page_content" => output))
       when ".md"
-        output[:content] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item.content)
+        output = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item["content"])
       end
     end
     stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
-        "--decode-entities --minify-js --minify-css " +
-        (output[:variables].key?("no_minify_urls") ? "" : "--minify-ur-ls #{output[:variables]["site_url"]}#{output[:variables]["page_slug"]} ") +
+        "--decode-entities --minify-js --minify-css --remove-comments " +
+        (variables["no_minify_urls"] ? "" : "--minify-ur-ls #{variables["page_url"]} ") +
         # HACK: Decode semi-colons and equals signs in GitWeb-related
         # URLs with sed after the HTML minification encodes them.
-        "--remove-comments -o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
-    stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
+        "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
+    stdin.puts(Redcarpet::Render::SmartyPants.render(output))
     stdin.close
   end
 end
@@ -113,8 +114,9 @@ CLOBBER << "public/assets/avatar.jpg"
 directory "pages/assets"
 desc "Spit out \"public/assets/avatar.jpg\"."
 file "public/assets/avatar.jpg" do |task|
-  open("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(site_config["site_author_email"])}",
-      "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
+  open("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(config["site_author_email"])}",
+      "If-Modified-Since" => File.exists?(task.name) ?
+      File.stat(task.name).mtime.rfc2822 : "") do |f|
     open(task.name, "wb") do |io|
       puts "# Spitting out \"#{task.name}\"."
       io.write f.read
