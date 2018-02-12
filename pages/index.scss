@@ -28,6 +28,7 @@ noscript {
   background-position: center 25vh;
   height: $base-line-height * 20;
   margin: 0 0 $base-line-height * 2;
+  position: relative;
   transition: background-position 1s ease,
       filter 0.5s ease, transform 0.5s ease;
   width: 100%; }
@@ -46,7 +47,7 @@ noscript {
     margin: -$base-line-height * 2 0 0 0 -$base-line-height * 2;
     opacity: 0;
     position: absolute;
-    top: percentage(2/3);
+    top: 50%;
     transition: opacity 0.5s;
     width: $base-line-height * 4;
     &--show {
