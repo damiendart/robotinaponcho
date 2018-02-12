@@ -100,7 +100,8 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       end
     end
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
-        "--minify-ur-ls https://www.robotinaponcho.net/#{output[:front_matter]["page_slug"]} " +
+        (output[:front_matter].key?("no_minify_urls") ? "" :
+        "--minify-ur-ls #{output[:front_matter]["site_url"]}#{output[:front_matter]["page_slug"]} ") +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
     stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
     stdin.close
