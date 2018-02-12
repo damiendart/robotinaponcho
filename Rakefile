@@ -22,6 +22,7 @@ Haml::Options.defaults[:format] = :html5
 
 
 config = YAML.load_file("config.yml")
+pages = []
 
 
 module Haml::Filters::AutoPrefixScss
@@ -81,6 +82,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
     variables["page_title"] = render_queue[0]["content"][/^(.*)\n=+$/,1]
     render_queue.first["content"].gsub!(/^(.*\n=+)$/,"")
   end
+  pages << variables.merge(render_queue.first)
   CLOBBER << variables["output_filename"]
   directory File.dirname(variables["output_filename"])
   desc "Spit out \"#{variables["output_filename"]}\"."
@@ -94,7 +96,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       case File.extname(item["filename"])
       when ".haml"
         output = Haml::Engine.new(item["content"]).render(Object.new,
-            variables.merge("page_content" => output))
+            variables.merge("pages" => pages, "page_content" => output))
       when ".md"
         output = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item["content"])
       end
