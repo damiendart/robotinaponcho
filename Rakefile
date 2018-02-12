@@ -10,6 +10,7 @@ require "bundler/setup"
 require "open3"
 require "open-uri"
 require "rubygems"
+require "yaml"
 Bundler.require(:default)
 
 
@@ -83,6 +84,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       render_queue.collect { |i| i.front_matter["page_dependencies"] },
       File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
     output = { content: "", front_matter: Hash.new }
+    output[:front_matter].merge!(YAML.load_file("config.yml"))
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
       output[:front_matter].merge!(item.front_matter)

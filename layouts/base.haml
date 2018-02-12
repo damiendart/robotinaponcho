@@ -8,14 +8,14 @@
 %html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
-    %link{:href => "https://www.robotinaponcho.net/assets/style.css", :rel => "stylesheet"}
+    %link{:href => "#{site_url}assets/style.css", :rel => "stylesheet"}
     - if(!defined?(no_social))
       %meta{:content => page_description, "name" => "description"}
       %meta{:content => page_description, "property" => "og:description"}
-      %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
+      %meta{:content => "#{site_url}ssets/og.png", :property => "og:image"}
       %meta{:content => page_title, :property => "og:title"}
       %meta{:content => "website", :property => "og:type"}
-      %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
+      %meta{:content => "#{site_url}#{page_slug}", :property => "og:url"}
       %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %script document.documentElement.className += "javascript";
     - if(defined?(page_scss))
@@ -25,7 +25,7 @@
   %body
     %header.site-header{:class => defined?(page_no_header_line) ? "site-header--no-line" : ""}
       %h1.site-header__title
-        %a{:href => "/"} Damien Dart
+        %a{:href => "#{site_url}"} Damien Dart
       %ul.site-header__navigation-list
         %li.site-header__navigation-list__item.site-header__navigation-list__item--has-sub-menu
           %a{:href => "javascript:void(0);"} Projects
@@ -33,22 +33,22 @@
             %li.site-header__navigation-list__item__sub-menu__item
               %a{:href => "#"}> FlippyWindow (soon)
             %li.site-header__navigation-list__item__sub-menu__item
-              %a{:href => "/art/"}> My Artwork and Drawings
+              %a{:href => "#{site_url}art/"}> My Artwork and Drawings
             %li.site-header__navigation-list__item__sub-menu__item
-              %a{:href => "/git/"}> Open Source Bits and Pieces
+              %a{:href => "#{site_url}git/"}> Open Source Bits and Pieces
         %li.site-header__navigation-list__item
-          %a{:href => "/notes/"} Notes
+          %a{:href => "#{site_url}notes/"} Notes
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-          %a{:href => "mailto:damiendart@gmail.com"}
+          %a{:href => "mailto:#{site_author_email}"}
             = File.read("layouts/base-envelope.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-          %a{:href => "https://github.com/damiendart"}
+          %a{:href => "https://github.com/#{site_author_github}"}
             = File.read("layouts/base-github.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-          %a{:href => "https://instagram.com/damiendart"}
+          %a{:href => "https://instagram.com/#{site_author_instagram}"}
             = File.read("layouts/base-instagram.svg")
         %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-          %a{:href => "https://twitter.com/damiendart"}
+          %a{:href => "https://twitter.com/#{site_author_twitter}"}
             = File.read("layouts/base-twitter.svg")
     = page_content
     - if(defined?(page_javascript))
