@@ -2,15 +2,22 @@ var accumulated_time = 0;
 var current_time = performance.now(); // TODO: Older broswers?
 var canvas = document.createElement("canvas");
 var loading_animation = document.createElement("div");
+var robots_container = document.getElementById("robots");
 var vendor = document.createElement("script");
 
 loading_animation.className = "javascript-loading";
-document.getElementById("robots").appendChild(loading_animation);
-document.getElementById("robots").appendChild(canvas);
+robots_container.appendChild(loading_animation);
+robots_container.appendChild(canvas);
 
 setTimeout(function() {
   loading_animation.className += " javascript-loading--show";
 }, 750);
+
+if (window.innerHeight <
+    (robots_container.offsetHeight + robots_container.offsetTop)) {
+  robots_container.style.height =
+      window.innerHeight - robots_container.offsetTop + "px";
+}
 
 vendor.src = "assets/index-vendor.js";
 vendor.onload = vendor.onreadystatechange = function() {
@@ -33,8 +40,7 @@ vendor.onload = vendor.onreadystatechange = function() {
     robot.onload = robot.onreadystatechange = function() {
       if (!this.readyState || /loaded|complete/.test(this.readyState)) {
         loading_animation.className += " javascript-loading--complete";
-        document.getElementById("robots").className =
-            "robots--javascript-show-background";
+        robots_container.className = "robots--javascript-show-background";
         (function render() {
           // TODO: Add support for Retina displays?
           var bodies;
