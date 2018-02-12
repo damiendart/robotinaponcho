@@ -60,7 +60,8 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       # Git-related information in the superproject.
       `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 2)
   if not render_queue.last.front_matter.key?("page_slug")
-    render_queue.last.front_matter["page_slug"] = output_filename.gsub(/(index)?\.html/, "")
+    render_queue.last.front_matter["page_slug"] =
+        output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
   end
   if File.extname(file) == ".md" and not render_queue.last.front_matter.key?("page_title")
     # TODO: Support Atx-style headers?
@@ -94,6 +95,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       end
     end
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
+        "--minify-ur-ls https://www.robotinaponcho.net/#{output[:front_matter]["page_slug"]} " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
     stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
     stdin.close
