@@ -86,23 +86,22 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       render_queue.collect { |i| "layouts/#{i.front_matter["layout"]}.*" },
       render_queue.collect { |i| i.front_matter["page_dependencies"] },
       File.dirname(output_filename)].compact.reject { |i| i =~ /\.\.?$/ } do |task|
-    output = { content: "", front_matter: Hash.new }
-    output[:front_matter].merge!(site_config)
+    output = { content: "", variables: Hash.new.merge!(site_config) }
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
-      output[:front_matter].merge!(item.front_matter)
-      case File.extname(item.front_matter["page_filename"])
+      output[:variables].merge!(item.front_matter)
+      case File.extname(output[:variables]["page_filename"])
       when ".haml"
         output[:content] = Haml::Engine.new(item.content).render(Object.new,
-            output[:front_matter].merge("page_content" => output[:content]))
+            output[:variables].merge("page_content" => output[:content]))
       when ".md"
         output[:content] = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item.content)
       end
     end
-    stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
-        (output[:front_matter].key?("no_minify_urls") ? "" :
-        "--minify-ur-ls #{output[:front_matter]["site_url"]}#{output[:front_matter]["page_slug"]} ") +
-        "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
+    stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
+        "--decode-entities --minify-js --minify-css " +
+        (output[:variables].key?("no_minify_urls") ? "" : "--minify-ur-ls #{output[:variables]["site_url"]}#{output[:variables]["page_slug"]} ") +
+        "--remove-comments -o #{task.name}")
     stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
     stdin.close
   end
