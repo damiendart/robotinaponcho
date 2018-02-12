@@ -39,7 +39,7 @@ CLOBBER << "pages/art/index.json"
 directory "pages/art"
 desc "Spit out \"pages/art/index.json\"."
 file "pages/art/index.json" do |task|
-  open("https://www.instagram.com/damiendart/?__a=1",
+  open("https://www.instagram.com/#{site_author_instagram}/?__a=1",
       "If-Modified-Since" => File.exists?(task.name) ? File.stat(task.name).mtime.rfc2822 : "") do |f|
     open(task.name, "w") do |io|
       puts "# Spitting out \"#{task.name}\"."
@@ -54,25 +54,24 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # pages to be rendered using multiple templates, where the output of
   # one template is fed into the next.
   (render_queue ||= []) << FrontMatterParser::Parser.parse_file(file)
-  render_queue.last.front_matter["page_filename"] = file
+  render_queue[0].front_matter["page_filename"] = file
   # TODO: Add repository name?
-  render_queue.last.front_matter["page_git_last_commit_hash"],
-      render_queue.last.front_matter["page_git_last_commit_timestamp"],
-      render_queue.last.front_matter["page_git_last_commit_datetime"] =
+  render_queue[0].front_matter["page_git_last_commit_hash"],
+      render_queue[0].front_matter["page_git_last_commit_timestamp"],
+      render_queue[0].front_matter["page_git_last_commit_datetime"] =
       # To retrieve Git-related information on a file in a Git
       # submodule, the working directory must be set to the folder
       # containing the submodule. This does not affect retrieving
       # Git-related information in the superproject.
       `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 2)
-  if not render_queue.last.front_matter.key?("page_slug")
-    render_queue.last.front_matter["page_slug"] =
+  if not render_queue[0].front_matter.key?("page_slug")
+    render_queue[0].front_matter["page_slug"] =
         output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
   end
-  if File.extname(file) == ".md" and not render_queue.last.front_matter.key?("page_title")
+  if File.extname(file) == ".md" and not render_queue[0].front_matter.key?("page_title")
     # TODO: Support Atx-style headers?
-    render_queue.last.front_matter["page_title"] =
-        render_queue.last.content[/^(.*)\n=+$/,1]
-    render_queue.last.content.gsub!(/^(.*\n=+)$/,"")
+    render_queue[0].front_matter["page_title"] = render_queue[0].content[/^(.*)\n=+$/,1]
+    render_queue[0].content.gsub!(/^(.*\n=+)$/,"")
   end
   while render_queue.last.front_matter.key?("layout") do
     render_queue << FrontMatterParser::Parser.parse_file(

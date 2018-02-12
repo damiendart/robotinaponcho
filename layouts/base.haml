@@ -23,7 +23,7 @@
         #{File.read("pages/#{page_scss}")}
     %title #{page_title} (www.robotinaponcho.net)
   %body
-    %header.site-header{:class => defined?(page_no_header_line) ? "site-header--no-line" : ""}
+    %header.site-header
       %img.site-header__image{:alt => "#{site_author_name}'s Gravatar.", :src => "#{site_url}assets/avatar.jpg", :title => "#{site_author_name}'s Gravatar."}
       %h1.site-header__title
         %a{:href => "#{site_url}"} Damien Dart
