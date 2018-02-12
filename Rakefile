@@ -63,7 +63,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       # submodule, the working directory must be set to the folder
       # containing the submodule. This does not affect retrieving
       # Git-related information in the superproject.
-      `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 2)
+      `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 3)
   if not render_queue[0].front_matter.key?("page_slug")
     render_queue[0].front_matter["page_slug"] =
         output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
@@ -101,7 +101,9 @@ FileList["pages/**/*.{haml,md}"].map do |file|
     stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css " +
         (output[:variables].key?("no_minify_urls") ? "" : "--minify-ur-ls #{output[:variables]["site_url"]}#{output[:variables]["page_slug"]} ") +
-        "--remove-comments -o #{task.name}")
+        # HACK: Decode semi-colons and equals signs in GitWeb-related
+        # URLs with sed after the HTML minification encodes them.
+        "--remove-comments -o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
     stdin.puts(Redcarpet::Render::SmartyPants.render(output[:content]))
     stdin.close
   end
