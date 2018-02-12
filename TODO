@@ -10,7 +10,6 @@ TODO
     * [ ] Filter non-art posts (by hashtag).
   * Create FlippyWindow page.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
-  * "Rakefile": Add support for hook functions, like Jekyll?
   * Add a few notes to "README".
 
 [1]: <http://www.buildmypinnedsite.com/en>
