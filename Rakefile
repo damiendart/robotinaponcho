@@ -74,7 +74,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       # Git-related information in the superproject.
       `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 3)
   variables["output_filename"] = file.gsub("pages", "public").ext("html")
-  variables["page_slug"] ||= output_filename.gsub(/(index)?\.html/, "").gsub(/public\//, "")
+  variables["page_slug"] ||= variables["output_filename"].gsub(/(index)?\.html/, "").gsub(/public\//, "")
   variables["page_url"] = config["site_url"] + variables["page_slug"]
   if File.extname(file) == ".md" and not variables["page_title"]
     # TODO: Support Atx-style headers?
@@ -84,7 +84,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   CLOBBER << variables["output_filename"]
   directory File.dirname(variables["output_filename"])
   desc "Spit out \"#{variables["output_filename"]}\"."
-  file output_filename => FileList["Rakefile", file.ext("*"),
+  file variables["output_filename"] => FileList["Rakefile", file.ext("*"),
       render_queue.collect { |i| "layouts/#{i["layout"]}.*" },
       render_queue.collect { |i| i["page_dependencies"] },
       File.dirname(variables["output_filename"])].compact.reject { |i| i =~ /\.+?$/ } do |task|
