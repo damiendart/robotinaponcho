@@ -56,7 +56,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # one template is fed into the next.
   render_queue = []
   variables = Hash.new.merge(config)
-  loop do 
+  loop do
     parsed = FrontMatterParser::Parser.parse_file(
         render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml")
     variables.merge!(parsed.front_matter)
@@ -90,7 +90,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       render_queue.collect { |i| "layouts/#{i["layout"]}.*" },
       render_queue.collect { |i| i["page_dependencies"] },
       File.dirname(variables["output_filename"])].compact.reject { |i| i =~ /\.+?$/ } do |task|
-    output = "" 
+    output = ""
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
       case File.extname(item["filename"])
