@@ -59,7 +59,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   loop do
     parsed = FrontMatterParser::Parser.parse_file(
         render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml")
-    variables.merge!(parsed.front_matter)
+    variables.merge!(parsed.front_matter) # FIXME: Handle overwriting values?
     render_queue << {"content" => parsed.content,
         "filename" => render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml",
         "layout" => parsed.front_matter["layout"]}
@@ -88,8 +88,9 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   desc "Spit out \"#{variables["output_filename"]}\"."
   file variables["output_filename"] => FileList["Rakefile", file.ext("*"),
       render_queue.collect { |i| "layouts/#{i["layout"]}.*" },
-      render_queue.collect { |i| i["page_dependencies"] },
-      File.dirname(variables["output_filename"])].compact.reject { |i| i =~ /\.+?$/ } do |task|
+      variables["layout_dependencies"], variables["page_dependencies"],
+      File.dirname(variables["output_filename"])].flatten.compact.reject { 
+      |i| i =~ /\.+?$/ } do |task|
     output = ""
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
