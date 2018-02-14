@@ -56,15 +56,15 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # one template is fed into the next.
   render_queue = []
   variables = Hash.new.merge(config)
-  loop do
-    parsed = FrontMatterParser::Parser.parse_file(
-        render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml")
-    variables.merge!(parsed.front_matter) # FIXME: Handle overwriting values?
-    render_queue << {"content" => parsed.content,
-        "filename" => render_queue.empty? ? file : "layouts/#{render_queue.last["layout"]}.haml",
-        "layout" => parsed.front_matter["layout"]}
-    break if not render_queue.last["layout"]
-  end
+  # For more information about recursive lambdas using Object#tap, see
+  # <https://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/>.
+  lambda do |r, filename|
+    parsed = FrontMatterParser::Parser.parse_file(filename)
+    # FIXME: Handle overwriting values?
+    layout = variables.merge!(parsed.front_matter).delete("layout")
+    render_queue << {"content" => parsed.content, "filename" => filename}
+    r.call(r, "layouts/#{layout}.haml") if layout
+  end.tap { |r| r.call(r, file) }
   # TODO: Add repository name?
   variables["page_git_last_commit_hash"],
       variables["page_git_last_commit_timestamp"],
@@ -86,11 +86,10 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   CLOBBER << variables["output_filename"]
   directory File.dirname(variables["output_filename"])
   desc "Spit out \"#{variables["output_filename"]}\"."
-  file variables["output_filename"] => FileList["Rakefile", file.ext("*"),
-      render_queue.collect { |i| "layouts/#{i["layout"]}.*" },
+  file variables["output_filename"] => FileList["Rakefile",
+      render_queue.collect { |i| i["filename"].ext("*") },
       variables["layout_dependencies"], variables["page_dependencies"],
-      File.dirname(variables["output_filename"])].flatten.compact.reject { 
-      |i| i =~ /\.+?$/ } do |task|
+      File.dirname(variables["output_filename"])].flatten.compact do |task|
     output = ""
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
