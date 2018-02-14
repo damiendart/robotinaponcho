@@ -60,8 +60,8 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # <https://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/>.
   lambda do |r, filename|
     parsed = FrontMatterParser::Parser.parse_file(filename)
-    # FIXME: Handle overwriting values?
-    layout = variables.merge!(parsed.front_matter).delete("layout")
+    layout = variables.merge!(parsed.front_matter){ |k, old, new|
+        k == "dependencies" ? [old, new].flatten : new }.delete("layout")
     render_queue << {"content" => parsed.content, "filename" => filename}
     r.call(r, "layouts/#{layout}.haml") if layout
   end.tap { |r| r.call(r, file) }
@@ -87,8 +87,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   directory File.dirname(variables["output_filename"])
   desc "Spit out \"#{variables["output_filename"]}\"."
   file variables["output_filename"] => FileList["Rakefile",
-      render_queue.collect { |i| i["filename"].ext("*") },
-      variables["layout_dependencies"], variables["page_dependencies"],
+      render_queue.collect { |i| i["filename"].ext("*") }, variables["dependencies"],
       File.dirname(variables["output_filename"])].flatten.compact do |task|
     output = ""
     puts "# Spitting out \"#{task.name}\"."
