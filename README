@@ -1,11 +1,13 @@
 robotinaponcho
 ==============
 
-The source code to my [personal website][1].
+The source code to my [personal website][1]. I've inadvertantly created
+a poor-man's [Jekyll][2].
 
 Feel free to use whatever you find useful here for your own projects.
-Other than that, you're on your own, I'm afraid.
+Other than that, you're on your own I'm afraid.
 
 -- Damien
 
 [1]: <https://www.robotinaponcho.net>
+[2]: <https://jekyllrb.com/>
