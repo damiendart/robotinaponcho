@@ -13,6 +13,8 @@ $base-line-height: 1.5rem;
 $base-link-colour: #8383e2;
 $content-width: $base-line-height * 29;
 $header-font-stack: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+$iphone-se-height: 568px; // based on logical resolution.
+$iphone-se-width: 320px; // based on logical resolution.
 
 
 @mixin clearfix {
