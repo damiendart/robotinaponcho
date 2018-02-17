@@ -36,20 +36,6 @@ module Haml::Filters::AutoPrefixScss
 end
 
 
-CLOBBER << "pages/art/index.json"
-directory "pages/art"
-desc "Spit out \"pages/art/index.json\"."
-file "pages/art/index.json" do |task|
-  open("https://www.instagram.com/#{config["site_author_instagram"]}/?__a=1",
-      "If-Modified-Since" => File.exists?(task.name) ?
-      File.stat(task.name).mtime.rfc2822 : "") do |f|
-    open(task.name, "w") do |io|
-      puts "# Spitting out \"#{task.name}\"."
-      io.write f.read
-    end if f.status[0] == "200"
-  end
-end
-
 FileList["pages/**/*.{haml,md}"].map do |file|
   # The render queue (there's definitely a better name for this) allows
   # pages to be rendered using multiple templates, where the output of
@@ -60,8 +46,8 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # <https://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/>.
   lambda do |r, filename|
     parsed = FrontMatterParser::Parser.parse_file(filename)
-    layout = variables.merge!(parsed.front_matter){ |k, old, new|
-        k == "dependencies" ? [old, new].flatten : new }.delete("layout")
+    layout = variables.merge!(parsed.front_matter){ |key, old, new|
+        key == "dependencies" ? [old, new].flatten : new }.delete("layout")
     render_queue << {"content" => parsed.content, "filename" => filename}
     r.call(r, "layouts/#{layout}.haml") if layout
   end.tap { |r| r.call(r, file) }
@@ -111,20 +97,6 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   end
 end
 
-CLOBBER << "public/assets/avatar.jpg"
-directory "pages/assets"
-desc "Spit out \"public/assets/avatar.jpg\"."
-file "public/assets/avatar.jpg" do |task|
-  open("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(config["site_author_email"])}",
-      "If-Modified-Since" => File.exists?(task.name) ?
-      File.stat(task.name).mtime.rfc2822 : "") do |f|
-    open(task.name, "wb") do |io|
-      puts "# Spitting out \"#{task.name}\"."
-      io.write f.read
-    end if f.status[0] == "200"
-  end
-end
-
 CLOBBER << "public/assets/index-vendor.js"
 directory "public/assets"
 desc "Spit out the concatenated vendor JavaScript file for the homepage."
@@ -147,6 +119,25 @@ file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
   stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer -o #{task.name}")
   stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), {:syntax => :scss}).render)
   stdin.close
+end
+
+{ "pages/art/index.json" =>
+      "https://www.instagram.com/#{config["site_instagram"]}/?__a=1",
+  "public/assets/avatar.jpg" =>
+      "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(config["site_email"])}",
+}.each do |filename, url|
+  CLOBBER << filename
+  directory File.dirname(filename)
+  desc "Spit out \"#{filename}\"."
+  file filename do |task|
+    open(url, "If-Modified-Since" => File.exists?(filename) ?
+        File.stat(filename).mtime.rfc2822 : "") do |f|
+      open(filename, filename.match?(/jpg$/) ? "wb" : "w") do |io|
+        puts "# Spitting out \"#{filename}\"."
+        io.write f.read
+      end if f.status[0] == "200"
+    end
+  end
 end
 
 
