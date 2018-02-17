@@ -25,9 +25,9 @@
       %meta{:content => "#{page_url}", :property => "og:url"}
       %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %script document.documentElement.className += "javascript";
-    - if(defined?(page_scss))
+    - scss.each do |i|
       :autoprefixscss
-        #{File.read("pages/#{page_scss}")}
+        #{File.read(i)}
     %title #{page_title} (www.robotinaponcho.net)
   %body
     %header.site-header
@@ -59,7 +59,5 @@
           %a{:href => "https://twitter.com/#{site_twitter}"}
             = File.read("layouts/base-twitter.svg")
     = page_content
-    - if(defined?(page_javascript))
-      %script= File.read("pages/#{page_javascript}")
-    - if(defined?(layout_javascript))
-      %script= File.read("layouts/#{layout_javascript}")
+    - javascript.each do |i|
+      %script= File.read(i)

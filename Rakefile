@@ -42,12 +42,15 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   # one template is fed into the next.
   render_queue = []
   variables = Hash.new.merge(config)
+  variables["javascript"] = []
+  variables["scss"] = []
   # For more information about recursive lambdas using Object#tap, see
   # <https://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/>.
   lambda do |r, filename|
     parsed = FrontMatterParser::Parser.parse_file(filename)
     layout = variables.merge!(parsed.front_matter){ |key, old, new|
-        key == "dependencies" ? [old, new].flatten : new }.delete("layout")
+        ["dependencies", "javascript", "scss"].include?(key) ? 
+        [old, new].flatten : new }.delete("layout")
     render_queue << {"content" => parsed.content, "filename" => filename}
     r.call(r, "layouts/#{layout}.haml") if layout
   end.tap { |r| r.call(r, file) }
@@ -73,8 +76,9 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   directory File.dirname(variables["output_filename"])
   desc "Spit out \"#{variables["output_filename"]}\"."
   file variables["output_filename"] => FileList["Rakefile",
-      render_queue.collect { |i| i["filename"].ext("*") }, variables["dependencies"],
-      File.dirname(variables["output_filename"])].flatten.compact do |task|
+      render_queue.collect { |i| i["filename"].ext("*") }, 
+      variables["dependencies"], variables["javascript"], variables["scss"],
+      File.dirname(variables["output_filename"])].flatten.compact.uniq do |task|
     output = ""
     puts "# Spitting out \"#{task.name}\"."
     render_queue.each do |item|
