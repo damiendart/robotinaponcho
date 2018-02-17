@@ -98,6 +98,25 @@ ul {
   strong {
     text-transform: uppercase; } }
 
+/* table */.note-list {
+  border-collapse: collapse;
+  margin: $base-line-height / 2 0 0 0;
+  width: 100%;
+  tbody {
+    tr:nth-of-type(odd) {
+      background-color: darken($base-background-colour, 3); } }
+  td, th {
+    padding: 0;
+    vertical-align: top; }
+  td:first-child, th:first-child {
+    text-align: left; }
+  td:last-child, th:last-child {
+    text-align: right; }
+  thead {
+    tr {
+      th {
+        vertical-align: bottom; } } } }
+
 /* header */.site-header {
   @include clearfix;
   $magic-number: 520px; // based on playing around with what looks good.

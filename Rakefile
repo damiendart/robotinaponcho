@@ -59,7 +59,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
       # submodule, the working directory must be set to the folder
       # containing the submodule. This does not affect retrieving
       # Git-related information in the superproject.
-      `cd #{File.dirname(file)} && git log -n 1 --pretty=format:"%H %at %aD" #{File.basename(file)}`.split(" ", 3)
+      `cd #{File.dirname(file)} && git log -n 1 --date=short --pretty=format:"%H %at %ad" #{File.basename(file)}`.split(" ", 3)
   variables["output_filename"] = file.gsub("pages", "public").ext("html")
   variables["page_slug"] ||= variables["output_filename"].gsub(/(index)?\.html/, "").gsub(/public\//, "")
   variables["page_url"] = config["site_url"] + variables["page_slug"]
