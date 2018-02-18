@@ -31,17 +31,8 @@ $image-size: 400px;
       padding: 0 0 100% 0;
       width: 100%; }
     /* a */ &__link {
-      bottom: 0;
-      display: inline-block;
-      line-height: $base-line-height;
-      margin: $base-line-height;
-      position: absolute;
-      right: 0;
-      text-decoration: none;
-      /* img */ &__icon {
-        height: $base-line-height;
-        width: $base-line-height;
-        vertical-align: bottom; } }
+      border: 0;
+      display: block; }
     /* img */ &__image {
       display: block;
       width: 100%; } } }
