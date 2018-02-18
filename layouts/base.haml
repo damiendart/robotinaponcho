@@ -12,7 +12,7 @@
   ---
 
 !!! 5
-%html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
+%html{:lang => "en", :prefix => defined?(no_social) ? nil : "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
     %link{:href => "#{site_url}assets/style.css", :rel => "stylesheet"}
@@ -24,7 +24,8 @@
       %meta{:content => "website", :property => "og:type"}
       %meta{:content => "#{page_url}", :property => "og:url"}
       %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
-    %script document.documentElement.className += "javascript";
+    - if not javascript.empty?
+      %script document.documentElement.className += "javascript";
     - scss.each do |i|
       :autoprefixscss
         #{File.read(i)}
