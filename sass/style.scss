@@ -84,6 +84,15 @@ ul {
       margin: 0 0 0 $base-line-height; } } }
 
 
+/* div */.header-container {
+  @media only screen and (max-width: $content-width + ($base-line-height * 4)) {
+    background: $base-foreground-colour; }
+  &--over {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 9999; } }
+
 // TODO: Find a better name?
 /* div */.markdown {
   margin: $base-line-height * 2 auto 0;
@@ -102,9 +111,10 @@ ul {
   @include clearfix;
   $magic-number: 520px; // based on playing around with what looks good.
   background: $base-foreground-colour;
-  box-sizing: border-box;
+  border-radius: 0 0 $base-line-height / 2 $base-line-height / 2;
+  margin: 0 auto;
+  max-width: $content-width;
   padding: $base-line-height;
-  width: 100%;
   a {
     color: $base-background-colour; }
   /* img */ &__image {
@@ -144,7 +154,8 @@ ul {
       margin: 0 $base-line-height 0 0;
       padding: 0;
       position: relative;
-      @media only screen and (max-width: $iphone-se-height) {
+      // Prevent site header elements from getting too smushed up.
+      @media only screen and (max-width: $iphone-se-height + 20px) {
         margin: 0 $base-line-height / 2 0 0; }
       &:hover &__sub-menu {
         left: $base-line-height / -2;
