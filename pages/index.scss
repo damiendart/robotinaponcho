@@ -26,7 +26,7 @@ noscript {
   background: linear-gradient(bottom, darken($base-feature-colour, 10),
       $base-feature-colour 25vh) no-repeat, $base-feature-colour;
   background-position: center 25vh;
-  height: $base-line-height * 20;
+  height: $base-line-height * 25;
   margin: 0 0 $base-line-height * 2;
   position: relative;
   transition: background-position 1s ease,
@@ -60,3 +60,10 @@ noscript {
           transform: rotate(0deg); }
         100% {
           transform: rotate(360deg); } } } } }
+
+
+/* div */.header-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9999; }

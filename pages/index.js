@@ -13,10 +13,8 @@ setTimeout(function() {
   loading_animation.className += " javascript-loading--show";
 }, 750);
 
-if (window.innerHeight <
-    (robots_container.offsetHeight + robots_container.offsetTop)) {
-  robots_container.style.height =
-      window.innerHeight - robots_container.offsetTop + "px";
+if (window.innerHeight < robots_container.offsetHeight) {
+  robots_container.style.height = window.innerHeight + "px";
 }
 
 vendor.src = "assets/index-vendor.js";

@@ -86,12 +86,7 @@ ul {
 
 /* div */.header-container {
   @media only screen and (max-width: $content-width + ($base-line-height * 4)) {
-    background: $base-foreground-colour; }
-  &--over {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 9999; } }
+    background: $base-foreground-colour; } }
 
 // TODO: Find a better name?
 /* div */.markdown {
