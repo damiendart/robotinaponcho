@@ -49,7 +49,7 @@ FileList["pages/**/*.{haml,md}"].map do |file|
   lambda do |r, filename|
     parsed = FrontMatterParser::Parser.parse_file(filename)
     layout = variables.merge!(parsed.front_matter){ |key, old, new|
-        ["dependencies", "javascript", "scss"].include?(key) ? 
+        ["dependencies", "javascript", "scss"].include?(key) ?
         [old, new].flatten : new }.delete("layout")
     render_queue << {"content" => parsed.content, "filename" => filename}
     r.call(r, "layouts/#{layout}.haml") if layout
