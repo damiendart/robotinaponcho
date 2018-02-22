@@ -121,7 +121,7 @@ directory "public/assets"
 desc "Spit out the site-wide CSS file."
 file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
   puts "# Spitting out \"#{task.name}\"."
-  stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer -o #{task.name}")
+  stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer | cleancss -o #{task.name}")
   stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), {:syntax => :scss}).render)
   stdin.close
 end
