@@ -37,10 +37,34 @@ body {
   text-size-adjust: 100%;
   @if($base-font-size != 16px) {
     @media only screen and (max-width: 480px) {
-      font-size: 100%; } } }
+      font-size: 100%; } }
+  // This is similar to the "gross hack" found at
+  // <https://github.com/markdowncss/splendor/blob/master/index.css#L19>
+  // which allows extra-wide or "bleeding" elements.
+  & > *:not(div):not(footer) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $content-width;
+  padding-left: $base-line-height * 2;
+  padding-right: $base-line-height * 2;
+  @media only screen and (max-width: 480px) {
+    padding-left: $base-line-height;
+    padding-right: $base-line-height; } } }
 
 code {
   line-height: 1rem; }
+
+footer {
+  border-top: 1 / 16 * 1rem solid #eee; // a single-pixel border.
+  font-style: italic;
+  margin: $base-line-height * 2 auto 0;
+  padding: $base-line-height - (1 / 16 * 1rem) $base-line-height * 2 0;
+  max-width: $content-width;
+  @media only screen and (max-width: 480px) {
+    padding-left: $base-line-height;
+    padding-right: $base-line-height; }
+  hr {
+    display: none; } }
 
 h1 {
   color: $base-header-colour;
@@ -71,125 +95,29 @@ p {
   margin: $base-line-height / 2 0 0 0; }
 
 ol {
-  margin: $base-line-height / 2 0 0 $base-line-height;
+  margin: $base-line-height / 2 0 0 0;
   padding: 0;
-  & > * {
-    margin: 0;
+  & > li {
+    margin: 0 0 0 $base-line-height;
     padding: 0;
     & > ul {
       margin: 0 0 0 $base-line-height; } } }
 
 ul {
   list-style: square;
-  margin: $base-line-height / 2 0 0 $base-line-height;
+  margin: $base-line-height / 2 0 0 0;
   padding: 0;
-  & > * {
-    margin: 0;
+  & > li {
+    margin: 0 0 0 $base-line-height;
     padding: 0;
     & > ul {
-      margin: 0 0 0 $base-line-height; } } }
+      margin: 0; } } }
 
-
-/* div */.header-container {
-  @media only screen and (max-width: $content-width + ($base-line-height * 4)) {
-    background: $base-foreground-colour; } }
-
-// TODO: Find a better name?
-/* div */.markdown {
-  margin: $base-line-height * 2 auto 0;
-  max-width: $content-width;
-  padding: 0 $base-line-height * 2;
-  @media only screen and (max-width: 480px) {
-    padding: 0 $base-line-height; } }
 
 /* ul */.metadata {
   list-style: none;
-  margin: $base-line-height / 2 0 0 0;
+  margin: $base-line-height / 2 auto 0;
+  & > li {
+    margin: 0; }
   strong {
     text-transform: uppercase; } }
-
-/* header */.site-header {
-  @include clearfix;
-  $magic-number: 520px; // based on playing around with what looks good.
-  background: $base-foreground-colour;
-  border-radius: 0 0 $base-line-height / 2 $base-line-height / 2;
-  margin: 0 auto;
-  max-width: $content-width;
-  padding: $base-line-height;
-  a {
-    color: $base-background-colour; }
-  /* img */ &__image {
-    border-radius: 50%;
-    float: left;
-    height: $base-line-height * 1.5;
-    margin: $base-line-height / -4 $base-line-height / 2 $base-line-height / -4 0 ;
-    width: $base-line-height * 1.5;
-    @media only screen and (max-width: $magic-number) {
-      height: $base-line-height * 2.25;
-      margin: 0 $base-line-height / 2 0 0;
-      width: $base-line-height * 2.25; }
-    // Using just "$iphone-se-width" in this media query would still
-    // cause icons to sometimes appear on two lines.
-    @media only screen and (max-width: $iphone-se-width + 10px) {
-      display: none; } }
-  /* h1 */ &__title {
-    color: $base-background-colour;
-    float: left;
-    font-size: 150%;
-    line-height: $base-line-height;
-    margin: 0;
-    @media only screen and (max-width: $magic-number) {
-      float: none; } }
-  /* ul */ &__navigation-list {
-    float: right;
-    font-weight: bold;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    @media only screen and (max-width: $magic-number) {
-      display: block;
-      margin: $base-line-height / 4 0 0 0;
-      float: none; }
-    /* li */ &__item {
-      display: inline-block;
-      margin: 0 $base-line-height 0 0;
-      padding: 0;
-      position: relative;
-      // Prevent site header elements from getting too smushed up.
-      @media only screen and (max-width: $iphone-se-height + 20px) {
-        margin: 0 $base-line-height / 2 0 0; }
-      &:hover &__sub-menu {
-        left: $base-line-height / -2;
-        opacity: 1; }
-      &:last-child {
-        margin-right: 0; }
-      &--has-sub-menu:hover {
-        & > a {
-          transition: opacity 0.25s;
-          opacity: 0.5; } }
-      svg {
-        fill: $base-background-colour;
-        height: $base-line-height;
-        width: $base-line-height;
-        &:hover {
-          fill: $base-link-colour; } }
-      &--social {
-        line-height: 0;
-        vertical-align: bottom; }
-      /* ul */ &__sub-menu {
-        background: $base-foreground-colour; // HACK: For Internet Explorer 9.
-        box-shadow: 0 $base-line-height / 2 $base-line-height rgba(0, 0, 0, 0.1);
-        left: -9999px;
-        list-style: none;
-        margin: 0;
-        opacity: 0;
-        text-align: left;
-        transition: opacity 0.25s;
-        padding: $base-line-height / 2;
-        position: absolute;
-        z-index: 9999;
-        /* li */ &__item {
-          padding: 0;
-          white-space: nowrap;
-          &:first-child {
-           margin: 0; } } } } } }

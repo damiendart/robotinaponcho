@@ -126,24 +126,5 @@ file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
   stdin.close
 end
 
-{ "pages/art/index.json" =>
-      "https://www.instagram.com/#{config["site_instagram"]}/?__a=1",
-  "public/assets/avatar.jpg" =>
-      "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(config["site_email"])}",
-}.each do |filename, url|
-  CLOBBER << filename
-  directory File.dirname(filename)
-  desc "Spit out \"#{filename}\"."
-  file filename do |task|
-    open(url, "If-Modified-Since" => File.exists?(filename) ?
-        File.stat(filename).mtime.rfc2822 : "") do |f|
-      open(filename, filename.match?(/jpg$/) ? "wb" : "w") do |io|
-        puts "# Spitting out \"#{filename}\"."
-        io.write f.read
-      end if f.status[0] == "200"
-    end
-  end
-end
-
 
 task :default => CLOBBER

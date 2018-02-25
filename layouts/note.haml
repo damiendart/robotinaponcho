@@ -10,9 +10,8 @@
   javascript: layouts/note.js
   ---
 
-.markdown
-  %h1= page_title
-  %ul.metadata
-    %li <strong>Last updated</strong>: <a data-timestamp="#{page_git_last_commit_timestamp}" href="https://www.robotinaponcho.net/git/?p=notes.git;h=#{page_git_last_commit_hash}">#{page_git_last_commit_datetime}</a>
-    %li <strong>Licence</strong>: <a href="#{page_licence_website}">#{page_licence}</a>
-  = page_content
+%h1= page_title
+%ul.metadata
+  %li <strong>Last updated</strong>: <a data-timestamp="#{page_git_last_commit_timestamp}" href="https://www.robotinaponcho.net/git/?p=notes.git;h=#{page_git_last_commit_hash}">#{page_git_last_commit_datetime}</a>
+  %li <strong>Licence</strong>: <a href="#{page_licence_website}">#{page_licence}</a>
+= page_content

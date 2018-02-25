@@ -7,7 +7,6 @@
     This file is distributed under the MIT licence. For more information,
     please refer to the accompanying "LICENCE" file.
   dependencies:
-    - public/assets/avatar.jpg
     - public/assets/style.css
   ---
 
@@ -31,35 +30,10 @@
         #{File.read(i)}
     %title #{page_title} (www.robotinaponcho.net)
   %body
-    .header-container
-      %header.site-header
-        %img.site-header__image{:alt => "#{site_author}'s Gravatar", :src => "#{site_url}assets/avatar.jpg", :title => "#{site_author}'s Gravatar"}
-        %h1.site-header__title
-          %a{:href => "#{site_url}"} #{site_author}
-        %ul.site-header__navigation-list
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--has-sub-menu
-            %a{:href => "javascript:void(0);"} Projects
-            %ul.site-header__navigation-list__item__sub-menu>
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "#"}> FlippyWindow (soon)
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "#{site_url}art/"}> My Artwork and Drawings
-              %li.site-header__navigation-list__item__sub-menu__item
-                %a{:href => "#{site_url}git/"}> Open Source Bits and Pieces
-          %li.site-header__navigation-list__item
-            %a{:href => "#{site_url}notes/"} Notes
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-            %a{:href => "mailto:#{site_email}"}
-              = File.read("layouts/base-envelope.svg")
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-            %a{:href => "https://github.com/#{site_github}"}
-              = File.read("layouts/base-github.svg")
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-            %a{:href => "https://instagram.com/#{site_instagram}"}
-              = File.read("layouts/base-instagram.svg")
-          %li.site-header__navigation-list__item.site-header__navigation-list__item--social
-            %a{:href => "https://twitter.com/#{site_twitter}"}
-              = File.read("layouts/base-twitter.svg")
     = page_content
+    - if page_url != "https://www.robotinaponcho.net/"
+      %footer
+        %hr
+        %a{:href => site_url} www.robotinaponcho.net
     - javascript.each do |i|
       %script= File.read(i)
