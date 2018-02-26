@@ -26,15 +26,15 @@ body {
   font-size: percentage($base-font-size / 16px); }
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased; // Autoprefixer omits this.
-  -moz-osx-font-smoothing: grayscale; // Autoprefixer omits this.
+  -moz-osx-font-smoothing: grayscale;
   line-height: $base-line-height;
   margin: 0 0 $base-line-height * 2;
   text-rendering: optimizeLegibility;
   // Webkit on iOS devices (at least the ones I've tried) require the
   // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; // Just In Case(tm).
   text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; // Just In Case(tm).
+  -webkit-text-size-adjust: 100%;
   @if($base-font-size != 16px) {
     @media only screen and (max-width: 480px) {
       font-size: 100%; } }
