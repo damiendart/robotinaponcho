@@ -2,20 +2,28 @@ var accumulated_time = 0;
 var current_time = performance.now(); // TODO: Older broswers?
 var canvas = document.createElement("canvas");
 var loading_animation = document.createElement("div");
-var robots_container = document.getElementById("robots");
 var vendor = document.createElement("script");
 
 loading_animation.className = "javascript-loading";
-robots_container.appendChild(loading_animation);
-robots_container.appendChild(canvas);
+document.getElementById("container").appendChild(loading_animation);
+document.getElementById("container").appendChild(canvas);
 
 setTimeout(function() {
   loading_animation.className += " javascript-loading--show";
 }, 750);
 
-if (window.innerHeight < robots_container.offsetHeight) {
-  robots_container.style.height = window.innerHeight + "px";
-}
+(function toggle_background() {
+  if (document.getElementById("information-trigger").checked) {
+    document.body.className = "javascript-info-visible";
+    document.documentElement.className += " javascript-info-visible";
+  } else {
+    document.body.className = "";
+    document.documentElement.className =
+        document.documentElement.className.replace(
+            "javascript-info-visible", "").trim();
+  }
+  document.getElementById("information-trigger").onchange = toggle_background;
+})();
 
 vendor.src = "assets/index-vendor.js";
 vendor.onload = vendor.onreadystatechange = function() {
@@ -38,7 +46,8 @@ vendor.onload = vendor.onreadystatechange = function() {
     robot.onload = robot.onreadystatechange = function() {
       if (!this.readyState || /loaded|complete/.test(this.readyState)) {
         loading_animation.className += " javascript-loading--complete";
-        robots_container.className = "robots--javascript-show-background";
+        document.getElementById("container").className =
+            "container--javascript-show-background";
         (function render() {
           // TODO: Add support for Retina displays?
           var bodies;

@@ -6,31 +6,24 @@
     Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
     This file is distributed under the MIT licence. For more information,
     please refer to the accompanying "LICENCE" file.
-  dependencies: public/assets/index-vendor.js
-  javascript: pages/index.js
   layout: base
-  page_description: Visit the personal website of Damien Dart, a front-end web developer and illustrator working in Dorset and Hampshire.
-  page_title: Damien Dart's Personal Website
-  scss: pages/index.scss
+  output_file: index.html
+  page_description: Visit the homepage of Damien Dart, a part-time illustrator and web developer.
+  page_scss: index.scss
+  page_slug: ""
+  page_title: Damien Dart's Homepage
+  rake_dependencies: public/assets/index-vendor.js
   ---
 
 
-#robots
+%input.information-trigger#information-trigger{:autocomplete => "off", :type => "checkbox"}
+%label.toggle.toggle--open{:for => "information-trigger"} More Info
+#container
   %noscript Enable JavaScript for tumbling robots!
-:markdown
-  **Hello!** I'm Damien Dart, and this is my personal website.
-
-  I'm a part-time (and [currently available][1]) front-end web developer
-  working in Dorset and Hampshire. My résumé is available [on request][1].
-
-  [1]: <mailto:damiendart@pobox.com>
-
-  I make all kinds of computer-related nonsense and software as a hobby,
-  most of which is available on this website and [on Github][2].
-
-  [2]: <https://github.com/damiendart>
-
-  I also occasionally [draw][3] and [make notes][4].
-
-  [3]: <https://www.robotinaponcho.net/art/>
-  [4]: <https://www.robotinaponcho.net/notes/>
+.information
+  .information__container
+    .close-container
+      %label.toggle{:for => "information-trigger"} Less Info
+    :markdown
+      #{File.read("pages/index.markdown")}
+%script= File.read("pages/index.js")

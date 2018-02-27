@@ -1,39 +1,24 @@
--#
-  ---
-  file_comment: |
-    Base page Haml source for Damien Dart's personal website.
-
-    Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
-    This file is distributed under the MIT licence. For more information,
-    please refer to the accompanying "LICENCE" file.
-  dependencies:
-    - public/assets/style.css
-  ---
+// Base page Haml source for Damien Dart's personal website.
+//
+// Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
 
 !!! 5
-%html{:lang => "en", :prefix => defined?(no_social) ? nil : "og: http://ogp.me/ns#"}
+%html{:lang => "en", :prefix => "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
-    %link{:href => "#{site_url}assets/style.css", :rel => "stylesheet"}
-    - if(!defined?(no_social))
-      %meta{:content => page_description, "name" => "description"}
-      %meta{:content => page_description, "property" => "og:description"}
-      %meta{:content => "#{site_url}assets/og.png", :property => "og:image"}
-      %meta{:content => page_title, :property => "og:title"}
-      %meta{:content => "website", :property => "og:type"}
-      %meta{:content => "#{page_url}", :property => "og:url"}
-      %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
-    - if not javascript.empty?
-      %script document.documentElement.className += "javascript";
-    - scss.each do |i|
-      :autoprefixscss
-        #{File.read(i)}
+    %link{:href => "https://use.typekit.net/rvl0fuw.css", :rel => "stylesheet"}
+    %meta{:content => page_description, "name" => "description"}
+    %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
+    %meta{:content => page_description, "property" => "og:description"}
+    %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
+    %meta{:content => page_title, :property => "og:title"}
+    %meta{:content => "website", :property => "og:type"}
+    %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
+    %script document.documentElement.className += "javascript";
+    :autoprefixscss
+      #{File.read("pages/#{page_scss}")}
     %title #{page_title} (www.robotinaponcho.net)
   %body
     = page_content
-    - if page_url != "https://www.robotinaponcho.net/"
-      %footer
-        %hr
-        %a{:href => site_url} www.robotinaponcho.net
-    - javascript.each do |i|
-      %script= File.read(i)

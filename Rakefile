@@ -7,98 +7,49 @@
 # please refer to the accompanying "LICENCE" file.
 
 require "bundler/setup"
-require "digest"
 require "open3"
-require "open-uri"
 require "rubygems"
-require "yaml"
 Bundler.require(:default)
 
 
-ENV['SASS_PATH'] = "./sass"
+# As of Sass 3.4.0, the current working directory will no longer be
+# placed onto the Sass load path by default.
+ENV['SASS_PATH'] = "."
 Haml::Options.defaults[:attr_wrapper] = "\""
 Haml::Options.defaults[:escape_attrs] = false
 Haml::Options.defaults[:format] = :html5
-
-
-config = YAML.load_file("config.yml")
-pages = []
 
 
 module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
-    stdin.puts(Sass::Engine.new(text, {:syntax => :scss}).render)
+    stdin.puts(Sass::Engine.new(text, {:cache => false, :syntax => :scss}).render)
     stdin.close
     "<style>#{stdout.read}</style>"
   end
 end
 
 
-FileList["pages/**/*.{haml,md}"].map do |file|
-  # The render queue (there's definitely a better name for this) allows
-  # pages to be rendered using multiple templates, where the output of
-  # one template is fed into the next.
-  render_queue = []
-  variables = Hash.new.merge(config)
-  variables["javascript"] = []
-  variables["scss"] = []
-  # For more information about recursive lambdas using Object#tap, see
-  # <https://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/>.
-  lambda do |r, filename|
-    parsed = FrontMatterParser::Parser.parse_file(filename)
-    layout = variables.merge!(parsed.front_matter){ |key, old, new|
-        ["dependencies", "javascript", "scss"].include?(key) ?
-        [old, new].flatten : new }.delete("layout")
-    render_queue << {"content" => parsed.content, "filename" => filename}
-    r.call(r, "layouts/#{layout}.haml") if layout
-  end.tap { |r| r.call(r, file) }
-  # TODO: Add repository name?
-  variables["page_git_last_commit_hash"],
-      variables["page_git_last_commit_timestamp"],
-      variables["page_git_last_commit_datetime"] =
-      # To retrieve Git-related information on a file in a Git
-      # submodule, the working directory must be set to the folder
-      # containing the submodule. This does not affect retrieving
-      # Git-related information in the superproject.
-      `cd #{File.dirname(file)} && git log -n 1 --date=short --pretty=format:"%H %at %ad" #{File.basename(file)}`.split(" ", 3)
-  variables["output_filename"] = file.gsub("pages", "public").ext("html")
-  variables["page_slug"] = variables["output_filename"].gsub(/(index)?\.html/, "").gsub(/public\//, "")
-  variables["page_url"] = config["site_url"] + variables["page_slug"]
-  if File.extname(file) == ".md" and not variables["page_title"]
-    # TODO: Support Atx-style headers?
-    variables["page_title"] = render_queue[0]["content"][/^(.*)\n=+$/,1]
-    render_queue.first["content"].gsub!(/^(.*\n=+)$/,"")
-  end
-  pages << variables.merge(render_queue.first)
-  CLOBBER << variables["output_filename"]
-  directory File.dirname(variables["output_filename"])
-  desc "Spit out \"#{variables["output_filename"]}\"."
-  # TODO: Include files imported in Sass via "@import".
-  file variables["output_filename"] => FileList["Rakefile", "config.yml",
-      render_queue.collect { |i| i["filename"].ext("*") },
-      variables["dependencies"], variables["javascript"], variables["scss"],
-      File.dirname(variables["output_filename"])].flatten.compact.uniq do |task|
-    output = ""
+FileList["pages/*.haml"].map do |file|
+  # TODO: Be more graceful when "front matter" is unavailable.
+  parsed = FrontMatterParser::Parser.parse_file(file)
+  CLOBBER << "public/#{parsed.front_matter["output_file"]}"
+  directory "public/#{File.dirname(parsed.front_matter["output_file"])}"
+  desc "Spit out \"#{parsed.front_matter["output_file"]}\"."
+  file "public/#{parsed.front_matter["output_file"]}" => FileList["Rakefile",
+      # TODO: Support multiple dependencies.
+      parsed.front_matter["rake_dependencies"],
+      "layouts/#{parsed.front_matter["layout"]}.*",
+      "pages/#{File.basename(file, ".haml")}.*",
+      "public/#{File.dirname(parsed.front_matter["output_file"])}"].compact do |task|
     puts "# Spitting out \"#{task.name}\"."
-    render_queue.each do |item|
-      case File.extname(item["filename"])
-      when ".haml"
-        output = Haml::Engine.new(item["content"]).render(Object.new,
-            variables.merge("pages" => pages, "page_content" => output))
-      when ".md"
-        output = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(item["content"])
-      end
-    end
-    stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
-        "--decode-entities --minify-js --minify-css --remove-comments " +
-        (variables["no_minify_urls"] ? "" : "--minify-ur-ls #{variables["page_url"]} ") +
-        # HACK: Decode semi-colons and equals signs in GitWeb-related
-        # URLs with sed after the HTML minification encodes them.
-        "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
-    stdin.puts(Redcarpet::Render::SmartyPants.render(output))
-    stdin.close
+    stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
+        "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
+    stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
+        File.read("layouts/#{parsed.front_matter["layout"]}.haml")).render(
+        Object.new, parsed.front_matter.merge("page_content" =>
+        Haml::Engine.new(parsed.content).render()))))
   end
 end
 
@@ -114,16 +65,6 @@ file "public/assets/index-vendor.js" => FileList["Rakefile",
   puts "# Spitting out \"#{task.name}\"."
   `uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \
       --preamble "/* <#{urls.join(">, <")}> */"`
-end
-
-CLOBBER << "public/assets/style.css"
-directory "public/assets"
-desc "Spit out the site-wide CSS file."
-file "public/assets/style.css" => FileList["Rakefile", "sass/*.scss"] do |task|
-  puts "# Spitting out \"#{task.name}\"."
-  stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer | cleancss -o #{task.name}")
-  stdin.puts(Sass::Engine.new(File.read("sass/style.scss"), {:syntax => :scss}).render)
-  stdin.close
 end
 
 

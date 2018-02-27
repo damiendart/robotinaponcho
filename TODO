@@ -1,15 +1,15 @@
 TODO
 ====
 
-  * Tweak GitWeb stuff:
-    * [ ] Add "fire.gif" credit.
-    * [ ] Add some information to projects overview page.
-  * Add customised Font Awesome SVGs to project?
-    * [ ] Add ARIA stuff.
-  * Do a bunch of text editin'.
+  * Finish the art porfolio:
+    * [ ] Add my art-related Twitter posts to the page.
+    * [ ] Filter non-art posts (by hashtag).
+  * Create a "common.scss".
+  * Speed up the building process.
+    * [ ] Replace Haml with HTML/Erb?
   * Create FlippyWindow page.
+  * Update copyright notices.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
-  * Look into using pjax-type stuff.
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
