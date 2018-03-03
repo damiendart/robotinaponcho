@@ -13,9 +13,6 @@ Bundler.require(:default)
 # As of Sass 3.4.0, the current working directory will no longer be
 # placed onto the Sass load path by default.
 ENV['SASS_PATH'] = "."
-Haml::Options.defaults[:attr_wrapper] = "\""
-Haml::Options.defaults[:escape_attrs] = false
-Haml::Options.defaults[:format] = :html5
 
 
 module Haml::Filters::AutoPrefixScss
@@ -51,7 +48,8 @@ FileList["pages/**/*.haml"].map do |file|
         "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
     puts "# Spitting out \"#{task.name}\"."
     stdin.puts(Redcarpet::Render::SmartyPants.render(base_template.render(
-        Object.new, variables.merge("page_content" => Haml::Engine.new(File.read(file)).render))))
+        Object.new, variables.merge(
+            "page_content" => Haml::Engine.new(File.read(file)).render))))
   end
 end
 
