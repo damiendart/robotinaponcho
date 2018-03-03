@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # Rakefile for Damien Dart's personal website.
 #
 # Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
@@ -31,25 +29,25 @@ module Haml::Filters::AutoPrefixScss
 end
 
 
+base_template = Haml::Engine.new(File.read("base.haml"))
+
+
 FileList["pages/**/*.haml"].map do |file|
-  # TODO: Be more graceful when "front matter" is unavailable.
-  parsed = FrontMatterParser::Parser.parse_file(file)
-  output_filename = file.ext("html").gsub!("pages", "public")
-  CLOBBER << output_filename
-  directory File.dirname(output_filename)
-  desc "Spit out \"#{output_filename}\"."
-  file output_filename => FileList["Rakefile",
-      # TODO: Support multiple dependencies.
-      parsed.front_matter["rake_dependencies"],
-      "layouts/#{parsed.front_matter["layout"]}.*", file.ext("*"),
-      "#{File.dirname(output_filename)}"].compact do |task|
-    puts "# Spitting out \"#{task.name}\"."
+  variables = { :javascript => [], :no_social => false, :scss => [] }
+  variables.merge!(FrontMatterParser::Parser.parse_file(file).front_matter)
+  variables["output_filename"] = file.gsub("pages", "public").ext("html")
+  variables["page_slug"] = variables["output_filename"].gsub(/(index)?\.html/, "").gsub(/public\//, "")
+  CLOBBER << variables["output_filename"]
+  directory File.dirname(variables["output_filename"])
+  desc "Spit out \"#{variables["output_filename"]}\"."
+  file variables["output_filename"] => FileList["base.*", "Rakefile", 
+      file.ext("*"), variables["dependencies"], 
+      File.dirname(variables["output_filename"])].flatten.compact.uniq do |task|
     stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
         "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
-    stdin.puts(Redcarpet::Render::SmartyPants.render(Haml::Engine.new(
-        File.read("layouts/#{parsed.front_matter["layout"]}.haml")).render(
-        Object.new, parsed.front_matter.merge("page_content" =>
-        Haml::Engine.new(parsed.content).render()))))
+    puts "# Spitting out \"#{task.name}\"."
+    stdin.puts(Redcarpet::Render::SmartyPants.render(base_template.render(
+        Object.new, variables.merge("page_content" => Haml::Engine.new(File.read(file)).render))))
   end
 end
 
