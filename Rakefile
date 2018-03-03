@@ -43,8 +43,12 @@ FileList["pages/**/*.haml"].map do |file|
   file variables["output_filename"] => FileList["base.*", "Rakefile", 
       file.ext("*"), variables["dependencies"], 
       File.dirname(variables["output_filename"])].flatten.compact.uniq do |task|
-    stdin, stdout, stderr = Open3.popen3("html-minifier --remove-comments " +
-        "--minify-js --minify-css --decode-entities --collapse-whitespace -o #{task.name}")
+    stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
+        "--decode-entities --minify-js --minify-css --remove-comments " +
+        (variables["no_minify_urls"] ? "" : "--minify-ur-ls https://www.robotinaponcho.net/#{variables["page_slug"]} ") +
+        # HACK: Decode semi-colons and equals signs in GitWeb-related
+        # URLs with sed after the HTML minification encodes them.
+        "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
     puts "# Spitting out \"#{task.name}\"."
     stdin.puts(Redcarpet::Render::SmartyPants.render(base_template.render(
         Object.new, variables.merge("page_content" => Haml::Engine.new(File.read(file)).render))))
