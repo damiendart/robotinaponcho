@@ -19,9 +19,16 @@ module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
-    stdin.puts(Sass::Engine.new(text, {:cache => false, :syntax => :scss}).render)
+    stdin.puts(Sass::Engine.new(text, :syntax => :scss).render)
     stdin.close
     "<style>#{stdout.read}</style>"
+  end
+end
+
+module Haml::Filters::Haml
+  include Haml::Filters::Base
+  def render(text)
+    Haml::Engine.new(text).render
   end
 end
 
@@ -30,26 +37,27 @@ base_template = Haml::Engine.new(File.read("base.haml"))
 
 
 FileList["pages/**/*.haml"].map do |file|
-  variables = { :javascript => [], :no_social => false, :scss => [] }
-  variables.merge!(FrontMatterParser::Parser.parse_file(file).front_matter)
-  variables["output_filename"] = file.gsub("pages", "public").ext("html")
-  variables["page_slug"] = variables["output_filename"].gsub(/(index)?\.html/, "").gsub(/public\//, "")
-  CLOBBER << variables["output_filename"]
-  directory File.dirname(variables["output_filename"])
-  desc "Spit out \"#{variables["output_filename"]}\"."
-  file variables["output_filename"] => FileList["base.*", "Rakefile", 
-      file.ext("*"), variables["dependencies"], 
-      File.dirname(variables["output_filename"])].flatten.compact.uniq do |task|
+  page = { :no_social => false }
+  parsed = FrontMatterParser::Parser.parse_file(file)
+  page.merge!(parsed.front_matter)
+  page["content"] = parsed.content
+  page["filename"] = file.gsub("pages", "public").ext("html")
+  page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
+  CLOBBER << page["filename"]
+  directory File.dirname(page["filename"])
+  desc "Spit out \"#{page["filename"]}\"."
+  file page["filename"] => FileList[
+      "base.*", "Rakefile", file.ext("*"), page["dependencies"],
+      File.dirname(page["filename"])].flatten.compact.uniq do |task|
     stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
-        (variables["no_minify_urls"] ? "" : "--minify-ur-ls https://www.robotinaponcho.net/#{variables["page_slug"]} ") +
+        (page["no_minify_urls"] ? "" : "--minify-ur-ls https://www.robotinaponcho.net/#{page["slug"]} ") +
         # HACK: Decode semi-colons and equals signs in GitWeb-related
         # URLs with sed after the HTML minification encodes them.
         "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
     puts "# Spitting out \"#{task.name}\"."
-    stdin.puts(Redcarpet::Render::SmartyPants.render(base_template.render(
-        Object.new, variables.merge(
-            "page_content" => Haml::Engine.new(File.read(file)).render))))
+    stdin.puts(Redcarpet::Render::SmartyPants.render(
+        base_template.render(Object.new, page)))
   end
 end
 

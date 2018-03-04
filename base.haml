@@ -10,17 +10,18 @@
     %meta{:charset => "utf-8"}
     - if not no_social
       %meta{:content => "Damien Dart", :name => "author"}
-      %meta{:content => page_description, "name" => "description"}
+      %meta{:content => description, "name" => "description"}
       %meta{:content => "Damien Dart", :name => "og:author"}
-      %meta{:content => page_description, "property" => "og:description"}
+      %meta{:content => description, "property" => "og:description"}
       %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
-      %meta{:content => "#{page_title} (www.robotinaponcho.net)", :property => "og:title"}
+      %meta{:content => "#{title} (www.robotinaponcho.net)", :property => "og:title"}
       %meta{:content => "website", :property => "og:type"}
-      %meta{:content => "https://www.robotinaponcho.net/#{page_slug}", :property => "og:url"}
+      %meta{:content => "https://www.robotinaponcho.net/#{slug}", :property => "og:url"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     %script document.documentElement.className += "javascript";
     :autoprefixscss
-      #{File.read("pages/#{page_scss}")}
-    %title #{page_title} (www.robotinaponcho.net)
+      #{File.read("pages/#{scss}")}
+    %title #{title} (www.robotinaponcho.net)
   %body
-    = page_content
+    :haml
+      #{content}
