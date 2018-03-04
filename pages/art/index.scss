@@ -57,7 +57,7 @@ html {
 
 /* div */.gallery {
   line-height: 0;
-  margin: $base-line-height * 2 auto 0;
+  margin: $base-line-height auto 0;
   max-width: $image-size * 3;
   text-align: left;
   /* article */ &__item {
@@ -75,31 +75,8 @@ html {
       padding: 0 0 100% 0;
       width: 100%; }
     /* a */ &__link {
-      bottom: 0;
-      color: $base-background-colour;
-      display: inline-block;
-      line-height: $base-line-height;
-      margin: $base-line-height;
-      position: absolute;
-      right: 0;
-      text-decoration: none;
-      span {
-        font-weight: bold;
-        line-height: $base-line-height;
-        margin: 0 $base-line-height / 4 0 0;
-        opacity: 0;
-        text-decoration: underline;
-        text-transform: uppercase;
-        transition: opacity 0.25s;
-        vertical-align: bottom; }
-      &:hover {
-        span {
-          opacity: 1; } }
-      /* img */ &__icon {
-        height: $base-line-height;
-        width: $base-line-height;
-        vertical-align: bottom; } }
-      text-decoration: none;
+      border: 0;
+      display: block; }
     /* img */ &__image {
       display: block;
       width: 100%; } } }

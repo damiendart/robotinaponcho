@@ -15,15 +15,16 @@
 - require "open-uri"
 - require "json"
 - instagram = JSON.load(open("https://www.instagram.com/damiendart/?__a=1"))
+- keywords = %w(art doodle drawing doodle illustration watercolour)
 
 
 %h1.title Damien's Art
-%p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a> and <a href="https://twitter.com/damiendart">Twitter</a>.
+%p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a>.
 .gallery
-  - instagram["user"]["media"]["nodes"].each do |item|
+  - instagram["user"]["media"]["nodes"].select{ |i| keywords.any?{ |s| i["caption"].include?(s) } }.take(12).each do |item|
     %article.gallery__item
-      %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"], :title => item["caption"]}
-      %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"} <span>View on Instagram</span><img class="gallery__item__link__icon" src="/assets/instagram.svg">
+      %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"}
+        %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"], :title => item["caption"]}
 %footer.footer
   %hr.footer__rule
   %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
