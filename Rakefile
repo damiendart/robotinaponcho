@@ -34,12 +34,14 @@ end
 
 
 base_template = Haml::Engine.new(File.read("base.haml"))
+default_page_values = YAML.load_file("base.yaml")
 
 
 FileList["pages/**/*.haml"].map do |file|
-  page = { :no_social => false }
   parsed = FrontMatterParser::Parser.parse_file(file)
-  page.merge!(parsed.front_matter)
+  page = default_page_values.merge(parsed.front_matter) do |key, old, new|
+    old.is_a?(Array) ? [new, old].flatten : new
+  end
   page["content"] = parsed.content
   page["filename"] = file.gsub("pages", "public").ext("html")
   page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
