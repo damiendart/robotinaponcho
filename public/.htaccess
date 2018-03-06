@@ -112,4 +112,8 @@ SetEnv TZ Europe/London
   RewriteCond %{QUERY_STRING} ^(.*);a=summary(.*)$ [OR]
   RewriteCond %{QUERY_STRING} ^(.*)a=project_list(.*)$
   RewriteRule ^(.*)$ https://www.robotinaponcho.net/$1?%1%2 [L,NE,R=permanent]
+  # Remove groups of slashes.
+  RewriteBase /
+  RewriteCond %{THE_REQUEST} //
+  RewriteRule ^.*$ $0 [L,NE,R=permanent]
 </IfModule>
