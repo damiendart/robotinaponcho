@@ -18,7 +18,8 @@
       %meta{:content => "website", :property => "og:type"}
       %meta{:content => "https://www.robotinaponcho.net/#{slug}", :property => "og:url"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
-    %script document.documentElement.className += "javascript";
+    - if (javascript.any? or javascript_external.any?)
+      %script document.documentElement.className += "javascript";
     - scss.each do |i|
       :autoprefixscss
         #{File.read(i)}
