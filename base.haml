@@ -8,6 +8,8 @@
 %html{:lang => "en", :prefix => no_social ? nil : "og: http://ogp.me/ns#"}
   %head
     %meta{:charset => "utf-8"}
+    - css_external.each do |i|
+      %link{:href => i, :rel => "stylesheet"}
     - if not no_social
       %meta{:content => "Damien Dart", :name => "author"}
       %meta{:content => description, "name" => "description"}

@@ -12,8 +12,6 @@ $base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Aria
 $base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
 
-@import url("https://use.typekit.net/rvl0fuw.css");
-
 
 @mixin nice-font-rendering {
   // Based on <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.
