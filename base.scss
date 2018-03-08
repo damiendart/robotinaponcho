@@ -13,3 +13,16 @@ $base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
 
 @import url("https://use.typekit.net/rvl0fuw.css");
+
+
+@mixin nice-font-rendering {
+  // Based on <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; // Autoprefixer omits this.
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  // Webkit on iOS devices (at least the ones I've tried) require the
+  // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; // Just In Case(tm).
+  text-size-adjust: none; }

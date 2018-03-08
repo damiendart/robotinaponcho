@@ -12,6 +12,7 @@ $image-size: 400px;
 
 
 body {
+  @include nice-font-rendering;
   background: $base-background-colour;
   color: $base-foreground-colour;
   font-family: $base-font-stack;

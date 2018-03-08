@@ -14,6 +14,7 @@ $side-panel-foreground-colour: $base-background-colour;
 
 
 body {
+  @include nice-font-rendering;
   background: $side-panel-background-colour;
   color: $side-panel-foreground-colour;
   font-family: $base-font-stack;
