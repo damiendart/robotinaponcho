@@ -18,7 +18,7 @@
       %meta{:content => "https://www.robotinaponcho.net/assets/og.png", :property => "og:image"}
       %meta{:content => "#{title} (www.robotinaponcho.net)", :property => "og:title"}
       %meta{:content => "website", :property => "og:type"}
-      %meta{:content => "https://www.robotinaponcho.net/#{slug}", :property => "og:url"}
+      %meta{:content => url, :property => "og:url"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     - if (javascript.any? or javascript_external.any?)
       %script document.documentElement.className += "javascript";

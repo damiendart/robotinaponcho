@@ -40,11 +40,12 @@ default_page_values = YAML.load_file("base.yaml")
 FileList["pages/**/*.haml"].map do |file|
   parsed = FrontMatterParser::Parser.parse_file(file)
   page = default_page_values.merge(parsed.front_matter) do |key, old, new|
-    old.is_a?(Array) ? [new, old].flatten : new
+    old.is_a?(Array) ? [old, new].flatten : new
   end
   page["content"] = parsed.content
   page["filename"] = file.gsub("pages", "public").ext("html")
   page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
+  page["url"] = page["url_base"] + page["slug"]
   CLOBBER << page["filename"]
   directory File.dirname(page["filename"])
   desc "Spit out \"#{page["filename"]}\"."
@@ -53,7 +54,7 @@ FileList["pages/**/*.haml"].map do |file|
       File.dirname(page["filename"])].flatten.compact.uniq do |task|
     stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
-        (page["no_minify_urls"] ? "" : "--minify-ur-ls https://www.robotinaponcho.net/#{page["slug"]} ") +
+        (page["no_minify_urls"] ? "" : "--minify-ur-ls #{page["url"]} ") +
         # HACK: Decode semi-colons and equals signs in GitWeb-related
         # URLs with sed after the HTML minification encodes them.
         "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
