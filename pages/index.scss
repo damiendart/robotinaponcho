@@ -9,6 +9,7 @@
 
 
 $information-width: $base-line-height * 16;
+$panel-easing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 $side-panel-background-colour: $base-foreground-colour;
 $side-panel-foreground-colour: $base-background-colour;
 
@@ -55,7 +56,8 @@ noscript {
   left: 0;
   position: fixed;
   transition: background-position 1s ease,
-      filter 0.5s ease, transform 0.5s ease;
+      filter 0.5s $panel-easing-function, 
+      transform 0.5s $panel-easing-function;
   bottom: 0;
   width: 100%;
   z-index: 0; }
@@ -131,7 +133,7 @@ noscript {
     position: fixed;
     right: $base-line-height * 2;
     top: $base-line-height * 2;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s $panel-easing-function;
     width: auto;
     z-index: 1; } }
 
