@@ -21,10 +21,10 @@
 %h1.title Damien's Art
 %p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a>.
 .gallery
-  - instagram["user"]["media"]["nodes"].select{ |i| keywords.any?{ |s| i["caption"].include?(s) } }.take(12).each do |item|
+  - instagram["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"].select{ |i| keywords.any?{ |s| i["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"].include?(s) } }.take(12).each do |item|
     %article.gallery__item
-      %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item['code']}"}
-        %img.gallery__item__image{:alt => item["caption"], :src => item["display_src"], :title => item["caption"]}
+      %a.gallery__item__link{:href => "https://www.instagram.com/p/#{item["node"]["shortcode"]}"}
+        %img.gallery__item__image{:alt => item["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"], :src => item["node"]["thumbnail_resources"][-1]["src"], :title => item["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"]}
 %footer.footer
   %hr.footer__rule
   %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
