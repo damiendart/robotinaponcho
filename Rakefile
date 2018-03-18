@@ -68,10 +68,8 @@ CLOBBER << "public/assets/index-vendor.js"
 directory "public/assets"
 desc "Spit out the concatenated vendor JavaScript file for the homepage."
 file "public/assets/index-vendor.js" => FileList["Rakefile",
-    "public/assets/pathseg.js", "public/assets/decomp.min.js",
-    "public/assets/matter.min.js"] do |task|
-  urls = ["https://github.com/progers/pathseg",
-      "https://github.com/schteppe/poly-decomp.js",
+    "public/assets/decomp.min.js", "public/assets/matter.min.js"] do |task|
+  urls = ["https://github.com/schteppe/poly-decomp.js",
       "https://github.com/liabru/matter-js/"]
   puts "# Spitting out \"#{task.name}\"."
   `uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \

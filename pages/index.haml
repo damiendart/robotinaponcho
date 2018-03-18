@@ -9,11 +9,13 @@
   dependencies: public/assets/index-vendor.js
   description: Visit the homepage of Damien Dart, a part-time illustrator and web developer.
   javascript: pages/index.js
+  javascript_external: assets/index-vendor.js
   scss: pages/index.scss
   title: Damien Dart's Homepage
   ---
 
 
+%img.robot{:src => "assets/robot.png"}
 %input.information-trigger#information-trigger{:autocomplete => "off", :type => "checkbox"}
 %label.toggle.toggle--open{:for => "information-trigger"} More Info
 #container

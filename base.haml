@@ -30,6 +30,6 @@
     :haml
       #{content}
     - javascript_external.each do |i|
-      %script{:src => i}
+      %script{:async => true, :src => i}
     - javascript.each do |i|
       %script= File.read(i)
