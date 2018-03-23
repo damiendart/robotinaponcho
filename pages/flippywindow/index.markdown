@@ -1,19 +1,3 @@
-# FlippyWindow
-
-<div class="blurb blurb--image"><img src="flippywindow.png"></div>
-
-FlippyWindow is a simple Windows application that non-destructively
-flips any part of your screen horizontally, in realtime and using
-minimal resources.
-
-Flipping images (or viewing things with a mirror) is a technique used to
-[help view things with "fresh eyes"][1] which can aid with [spotting
-visual issues][2].
-
-[1]: <http://yourfirstproduct.com/info/bmreverse>
-[2]: <http://www.comic-tools.com/2008/10/my-mirror-is-most-important.html>
-
-
 ## Download FlippyWindow
 
 FlippyWindow is free to download from itch.io. There's nothing to

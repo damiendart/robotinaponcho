@@ -13,9 +13,15 @@
   title: FlippyWindow
   ---
 
-
+%h1 FlippyWindow
+.flippywindow
+  %h2.flippywindow__blurb FlippyWindow is a simple Windows application that non-destructively flips any part of your screen horizontally, in realtime and using minimal resources.
+  .flippywindow__screenshot
+    %img{:src => %"https://www.robotinaponcho.net/flippywindow/screenshot.png"}
+  %p.flippywindow__blurb.flippywindow__blurb--second Flipping images (or viewing things with a mirror) is a technique used to <a href="#">help view things with "fresh eyes"</a> which can aid with <a href="#">spotting visual issues</a>.
 :markdown
   #{File.read("pages/flippywindow/index.markdown")}
 %footer.footer
   %hr.footer__rule
+  %p.footer__copyright Copyright &copy; 2018 Damien Dart.<span> All rights reserved.</span>
   %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
