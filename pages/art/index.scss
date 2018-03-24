@@ -96,6 +96,29 @@ ul {
   padding: 0 $base-line-height;
   text-align: center; }
 
+/* div */.download {
+  margin: $base-line-height * 2 0;
+  text-align: center;
+  padding: 0 $base-line-height;
+  /* h2 */ &__download {
+    margin: 0;
+    /* a */ &__link {
+      background: #fa5c5c;
+      color: #ffffff;
+      padding: $base-line-height / 2 $base-line-height;
+      border-radius: $base-line-height;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline; }
+      img {
+        height: $base-line-height;
+        vertical-align: bottom; } } }
+  /* ul */ &__information-list {
+    list-style: none;
+    margin: $base-line-height 0 0 0;
+    & > * {
+      margin: 0; } } }
+
 /* footer */.footer {
   margin: $base-line-height * 2 auto 0;
   text-align: center;
