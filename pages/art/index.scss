@@ -77,8 +77,9 @@ p {
   margin: $base-line-height auto 0;
   max-width: $image-size * 3;
   text-align: left;
-  /* div */ &__item {
+  /* div */ &__link {
     background: $base-foreground-colour;
+    border: 0;
     display: inline-block;
     height: 0;
     position: relative;
@@ -91,9 +92,6 @@ p {
     @media only screen and (max-width: $image-size) {
       padding: 0 0 100% 0;
       width: 100%; }
-    /* a */ &__link {
-      border: 0;
-      display: block; }
-    /* img */ &__image {
-      display: block;
-      width: 100%; } } }
+      /* img */ &__image {
+        display: block;
+        width: 100%; } } }
