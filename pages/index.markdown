@@ -16,22 +16,26 @@ illustrator.
 
 ## Other things
 
-  - [My artwork and drawings][4]
-  - [Open-source bits and pieces][5]
-  - [Notes about stuff][6]
+  - [FlippyWindow][4]
+  - [My artwork and drawings][5]
+  - [Open-source bits and pieces][6]
+  - [Notes about stuff][7]
 
-[4]: <https://www.robotinaponcho.net/art/>
-[5]: <https://www.robotinaponcho.net/git/>
-[6]: <https://www.robotinaponcho.net/notes/>
+[4]: <https://www.robotinaponcho.net/flippywindow/>
+[5]: <https://www.robotinaponcho.net/art/>
+[6]: <https://www.robotinaponcho.net/git/>
+[7]: <https://www.robotinaponcho.net/notes/>
 
 ## Elsewhere
 
-  - [Email][7]
-  - [GitHub][8]
-  - [Instagram][9]
-  - [Twitter][10]
+  - [Email][8]
+  - [GitHub][9]
+  - [itch.io][10]
+  - [Instagram][11]
+  - [Twitter][12]
 
-[7]: <mailto:damiendart@pobox.com>
-[8]: <https://github.com/damiendart>
-[9]: <https://instagram.com/damiendart>
-[10]: <https://twitter.com/damiendart>
+[8]: <mailto:damiendart@pobox.com>
+[9]: <https://github.com/damiendart>
+[10]: <https://damiendart.itch.io/>
+[11]: <https://instagram.com/damiendart>
+[12]: <https://twitter.com/damiendart>
