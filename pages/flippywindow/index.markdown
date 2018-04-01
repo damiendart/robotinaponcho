@@ -30,10 +30,12 @@ download FlippyWindow without paying or signing up to anything.
 [5]: <https://itch.io/>
 [6]: <https://www.robotinaponcho.net/git/?p=flippywindow.git;a=blob;f=TODO;hb=HEAD>
 
+### Will earlier versions of Windows, Linux and macOS be supported?
 
-### Will Linux and macOS be supported?
-
-Not at the moment.
+FlippyWindow uses APIs (specifically the second release of the
+Magnification API) that were introduced in Windows 8. At the moment
+there are no plans to rewrite FlippyWindow to support earlier versions
+of Windows and other operating systems.
 
 
 ## Changelog
