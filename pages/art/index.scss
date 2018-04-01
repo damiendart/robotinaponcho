@@ -56,7 +56,10 @@ p {
   margin: $base-line-height * 2 auto 0;
   text-align: center;
   /* p */ &__copyright {
-    margin: $base-line-height / 2 0; }
+    font-size: 100%;
+    line-height: $base-line-height;
+    margin: $base-line-height / 2 0;
+    max-width: 100%; }
   /* a */ &__link {
     border: $base-line-height / 8 solid $base-foreground-colour;
     border-radius: $base-line-height;
