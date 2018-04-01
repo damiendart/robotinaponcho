@@ -40,6 +40,6 @@ of Windows and other operating systems.
 
 ## Changelog
 
-### Version 1.0 (23/03/2018)
+### Version 1.0.0 (01/04/2018)
 
   - Initial release.
