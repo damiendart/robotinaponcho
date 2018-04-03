@@ -9,7 +9,6 @@
 
 
 $information-width: $base-line-height * 16;
-$panel-easing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 $side-panel-background-colour: $base-foreground-colour;
 $side-panel-foreground-colour: $base-background-colour;
 
@@ -55,9 +54,8 @@ noscript {
   height: 150%;
   left: 0;
   position: fixed;
-  transition: background-position 1s ease,
-      filter 0.5s $panel-easing-function,
-      transform 0.5s $panel-easing-function;
+  transition: background-position 1s ease, filter 0.5s ease,
+      transform 0.5s ease;
   bottom: 0;
   width: 100%;
   z-index: 0; }
@@ -133,7 +131,7 @@ noscript {
     position: fixed;
     right: $base-line-height * 2;
     top: $base-line-height * 2;
-    transition: opacity 0.5s ease, transform 0.5s $panel-easing-function;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     width: auto;
     z-index: 1; } }
 
@@ -153,7 +151,7 @@ noscript {
   .container--javascript-show-background {
     background-position: center !important; }
   /* div */.javascript-loading {
-    animation: loading 0.75s infinite cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation: loading 0.75s infinite linear;
     border: $base-line-height / 2 solid rgba($side-panel-foreground-colour, 0.2);
     border-radius: 50%;
     border-top: $base-line-height / 2 solid $side-panel-foreground-colour;
