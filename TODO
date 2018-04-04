@@ -3,9 +3,10 @@ TODO
 
   * Add syntax highlighting to Gitweb.
   * Write something for Gitweb index view.
-  * Create FlippyWindow page.
   * Update copyright notices.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
+  * Add GPG public key?
+  * Add cookies notice to FlippyWindow page.
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
