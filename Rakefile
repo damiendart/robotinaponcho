@@ -10,16 +10,12 @@ require "rubygems"
 Bundler.require(:default)
 
 
-# As of Sass 3.4.0, the current working directory will no longer be
-# placed onto the Sass load path by default.
-ENV['SASS_PATH'] = "."
-
-
 module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
-    stdin, stdout, stderr = Open3.popen3("postcss --use autoprefixer")
-    stdin.puts(Sass::Engine.new(text, :syntax => :scss).render)
+    stdin, stdout, stderr = Open3.popen3(
+        "npx sass --stdin | npx postcss --use autoprefixer")
+    stdin.puts(text)
     stdin.close
     "<style>#{stdout.read}</style>"
   end
@@ -52,7 +48,7 @@ FileList["pages/**/*.haml"].map do |file|
   file page["filename"] => FileList[
       "base.*", "Rakefile", file.ext("*"), page["dependencies"],
       File.dirname(page["filename"])].flatten.compact.uniq do |task|
-    stdin, stdout, stderr = Open3.popen3("html-minifier --collapse-whitespace " +
+    stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
         (page["no_minify_urls"] ? "" : "--minify-ur-ls #{page["url"]} ") +
         # HACK: Decode semi-colons and equals signs in GitWeb-related
@@ -72,8 +68,8 @@ file "public/assets/index-vendor.js" => FileList["Rakefile",
   urls = ["https://github.com/schteppe/poly-decomp.js",
       "https://github.com/liabru/matter-js/"]
   puts "# Spitting out \"#{task.name}\"."
-  `uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \
-      --preamble "/* <#{urls.join(">, <")}> */"`
+  `npx uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \
+      -b beautify=false,preamble="'/* <#{urls.join(">, <")}> */'"`
 end
 
 

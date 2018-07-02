@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "autoprefixer": "*",
+    "html-minifier": "*",
+    "postcss-cli": "*",
+    "sass": "*",
+    "uglify-js": "*"
+  }
+}
