@@ -12,18 +12,8 @@
   ---
 
 
-- require "open-uri"
-- require "json"
-- instagram = JSON.load(open("https://www.instagram.com/damiendart/?__a=1"))
-- keywords = %w(art doodle drawing doodle illustration watercolour)
-
-
 %h1.title Damien's Art
-%p.blurb Until I get round to setting up an actual gallery, here is some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a>.
-.gallery
-  - instagram["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"].select{ |i| keywords.any?{ |s| i["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"].include?(s) } }.take(12).each do |item|
-    %a.gallery__link{:href => "https://www.instagram.com/p/#{item["node"]["shortcode"]}"}
-      %img.gallery__link__image{:alt => item["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"], :src => item["node"]["thumbnail_resources"][-1]["src"], :title => item["node"]["edge_media_to_caption"]["edges"][0]["node"]["text"]}
+%p.blurb Until I get round to setting up an actual gallery, have a look at some stuff I've posted on <a href="https://instagram.com/damiendart">Instagram</a>.
 %footer.footer
   %hr.footer__rule
   %p.footer__copyright Copyright &copy; 2018 Damien Dart.
