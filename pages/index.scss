@@ -47,7 +47,7 @@ noscript {
   top: percentage(2/3); }
 
 /* div */#container {
-  background: linear-gradient(bottom, darken($base-feature-colour, 10),
+  background: linear-gradient(to top, darken($base-feature-colour, 10),
       $base-feature-colour 25vh) no-repeat, $base-feature-colour;
   background-position: center 25vh;
   border-bottom: $base-line-height * 2 solid $base-feature-colour;
