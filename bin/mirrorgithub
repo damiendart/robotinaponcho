@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Maintains mirrors of a GitHub user's public repositories.
 
-Optionally does some per-repository stuff for Gitweb's benefit.
-
 Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
 This file is distributed under the MIT licence. For more information,
 please refer to the accompanying "LICENCE" file.
@@ -15,17 +13,12 @@ import sys
 import urllib.request
 import subprocess
 
-from django.utils.html import urlize
 
 if __name__ == "__main__":
   if len(sys.argv) < 4:
     sys.stderr.write("Not enough operands\n")
-    sys.stderr.write("USAGE: %s [--gitweb] GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
+    sys.stderr.write("USAGE: %s GITHUB-USERNAME FOLDER OAUTH2-TOKEN\n" % sys.argv[0])
     sys.exit(1)
-  gitweb = False
-  if "--gitweb" in sys.argv:
-    sys.argv.remove("--gitweb")
-    gitweb = True
   repositories = json.loads(urllib.request.urlopen(
       "https://api.github.com/users/%s/repos?access_token=%s" %
       (sys.argv[1], sys.argv[3])).read().decode("utf-8"))
@@ -38,31 +31,8 @@ if __name__ == "__main__":
     else:
       subprocess.check_call(["git", "clone", "-q", "--mirror",
           repository["git_url"]])
-    if gitweb:
-      os.chdir(os.path.basename(repository["git_url"]))
-      for k, v in {"url": repository["clone_url"],
-          "description": repository["description"]}.items():
-        subprocess.check_call(["git", "config", "--replace-all",
-            "gitweb.%s" % k, v])
-      subprocess.check_call(["git", "config", "--replace-all", "gitweb.owner",
-          json.loads(urllib.request.urlopen("https://api.github.com/users/%s?access_token=%s" %
-          (repository["owner"]["login"], sys.argv[3])).read().decode())["name"]])
-      subprocess.check_call(["git", "config", "--add", "gitweb.url",
-          "https://www.robotinaponcho.net/git/%s" %
-          os.path.basename(repository["git_url"])])
-      with open("README.html", "w") as f:
-        f.write("<pre>%s</pre>\n" % urlize(subprocess.Popen(["git",
-            "cat-file", "blob", "HEAD:%s" % next(filter(lambda i:
-            re.compile(r"README").search(i), subprocess.Popen(["git",
-            "ls-tree", "HEAD", "--name-only"],
-            stdout=subprocess.PIPE).communicate()[0].decode("utf-8").split("\n")))],
-            stdout=subprocess.PIPE).communicate()[0], autoescape = True))
-      with open("description", "w") as f:
-        f.write(repository["description"] + "\n")
-      open("git-daemon-export-ok", "a").close() # For "git http-backend".
-      subprocess.check_call(["git", "update-server-info"])
-      # HACK: Resets overstrict permissions after
-      # "git update-server-info". For more information, see:
-      # <https://www.mail-archive.com/git@vger.kernel.org/msg63438.html>.
-      subprocess.check_call(["chmod", "0664", "info/refs"])
-      subprocess.check_call(["chmod", "0664", "objects/info/packs"])
+    os.chdir(os.path.basename(repository["git_url"]))
+    subprocess.check_call(["git", "config", "--replace-all",
+        "gitweb.description", repository["description"]])
+    open("git-daemon-export-ok", "a").close() # For "git http-backend".
+    subprocess.check_call(["git", "update-server-info"])

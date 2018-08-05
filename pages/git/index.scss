@@ -1,0 +1,101 @@
+// "pages/git/index.scss" for Damien Dart's personal website.
+//
+// Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+
+@import "base";
+
+
+$content-width: 37.5rem;
+
+
+a {
+  color: inherit; }
+
+body {
+  @include nice-font-rendering;
+  background: $base-background-colour;
+  color: $base-foreground-colour;
+  font-family: $base-font-stack;
+  @if($base-font-size != 16px) {
+    font-size: percentage($base-font-size / 16px); }
+  line-height: $base-line-height;
+  margin: $base-line-height * 2 0;
+  text-size-adjust: none;
+  & > *:not(div) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $content-width;
+    padding-left: $base-line-height * 2;
+    padding-right: $base-line-height * 2;
+    @media only screen and (max-width: 767px) {
+      padding-left: $base-line-height;
+      padding-right: $base-line-height; } } }
+
+h1 {
+  font-size: 300%;
+  line-height: $base-line-height * 2;
+  margin: $base-line-height * 2 0;
+  text-align: center;
+  text-transform: uppercase;
+  @media only screen and (max-width: 767px) {
+    font-size: 200%;
+    line-height: $base-line-height * 1.5; } }
+
+h2 {
+  font-size: 150%;
+  line-height: $base-line-height;
+  margin: $base-line-height * 2 0 0 0; }
+
+h3 {
+  font-size: 100%;
+  line-height: $base-line-height;
+  margin: $base-line-height / 2 0 0 0; }
+
+html {
+  font-size: 100%;
+  @media only screen and (max-width: 767px) {
+    font-size: 87.5%; } }
+
+img {
+  max-width: 100%; }
+
+p {
+  margin: $base-line-height / 2 0 0 0; }
+
+ul {
+  list-style: square;
+  margin: $base-line-height / 2 0 0 0;
+  padding: 0;
+  & > * {
+    margin: 0 0 0 $base-line-height;
+    padding: 0;
+    & > ul {
+      margin: 0; } } }
+
+
+@media only screen and (max-width: 767px) {
+  /* span */.collapsable {
+    display: none; } }
+
+/* footer */.footer {
+  margin: $base-line-height * 2 auto 0;
+  text-align: center;
+  /* p */ &__copyright {
+    margin: $base-line-height / 2 0; }
+  /* a */ &__link {
+    border: $base-line-height / 8 solid $base-foreground-colour;
+    border-radius: $base-line-height;
+    color: inherit;
+    display: inline-block;
+    font-weight: bold;
+    line-height: $base-line-height;
+    padding: $base-line-height / 8 ($base-line-height * 3) / 8;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      text-decoration: underline; } }
+  /* hr */ &__rule {
+    display: none; } }

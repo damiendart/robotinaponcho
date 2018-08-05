@@ -1,0 +1,20 @@
+-#
+  ---
+  # "pages/git/index.haml" for Damien Dart's personal website.
+  #
+  # Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
+  # This file is distributed under the MIT licence. For more
+  # information, please refer to the accompanying "LICENCE" file.
+
+  description: View a bunch of Git Repositories.
+  scss: pages/git/index.scss
+  title: Git Repositories
+  ---
+
+%h1 Git Repositories
+:markdown
+  #{File.read("pages/git/index.markdown")}
+%footer.footer
+  %hr.footer__rule
+  %p.footer__copyright Copyright &copy; 2018 Damien Dart.
+  %a.footer__link{:href => "https://www.robotinaponcho.net/"} www.robotinaponcho.net
