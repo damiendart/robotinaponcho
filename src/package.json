@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "autoprefixer": "*",
+    "clean-css-cli": "*",
     "html-minifier": "*",
     "postcss-cli": "*",
     "sass": "*",

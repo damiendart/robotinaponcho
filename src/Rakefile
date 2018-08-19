@@ -3,11 +3,30 @@
 # Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
+#
+# TODO: Document the folder structure this Rakefile expects.
 
-require "bundler/setup"
+
+# The following kludges allow this Rakefile to be easily used in other
+# projects by using Node packages and Ruby gems already installed
+# alongside it. NPM will install packages locally by default, while
+# Bundler can be made to do so with "bundle install --standalone".
+ENV["PATH"] = "#{File.dirname(File.expand_path(__FILE__))}/node_modules/.bin:" + ENV["PATH"]
+
+begin
+  require_relative "bundle/bundler/setup"
+rescue LoadError
+  require "bundler"
+  Bundler.setup
+end
+
 require "open3"
-require "rubygems"
-Bundler.require(:default)
+require "yaml"
+require "front_matter_parser"
+require "haml"
+require "rake"
+require "rake/clean"
+require "redcarpet"
 
 
 module Haml::Filters::AutoPrefixScss
@@ -28,48 +47,62 @@ module Haml::Filters::Haml
   end
 end
 
-
-base_template = Haml::Engine.new(File.read("base.haml"))
-default_page_values = YAML.load_file("base.yaml")
-
-
-FileList["pages/**/*.haml"].map do |file|
-  parsed = FrontMatterParser::Parser.parse_file(file)
-  page = default_page_values.merge(parsed.front_matter) do |key, old, new|
-    old.is_a?(Array) ? [old, new].flatten : new
-  end
-  page["content"] = parsed.content
-  page["filename"] = file.gsub("pages", "public").ext("html")
-  page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
-  page["url"] = page["url_base"] + page["slug"]
-  CLOBBER << "../#{page["filename"]}"
-  directory "../#{File.dirname(page["filename"])}"
-  desc "Spit out \"../#{page["filename"]}\"."
-  file "../#{page["filename"]}"=> FileList[
-      "base.*", "Rakefile", file.ext("*"), page["dependencies"],
-      "../#{File.dirname(page["filename"])}"].flatten.compact.uniq do |task|
-    stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
-        "--decode-entities --minify-js --minify-css --remove-comments " +
-        (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} ") +
-        # HACK: Decode semi-colons and equals signs in GitWeb-related
-        # URLs with sed after the HTML minification encodes them.
-        "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
-    puts "# Spitting out \"#{task.name}\"."
-    stdin.puts(Redcarpet::Render::SmartyPants.render(
-        base_template.render(Object.new, page)))
+if (File.exist?("base.haml") and File.exist?("base.yaml"))
+  base_template = Haml::Engine.new(File.read("base.haml"))
+  default_page_values = YAML.load_file("base.yaml")
+  FileList["pages/**/*.haml"].map do |file|
+    parsed = FrontMatterParser::Parser.parse_file(file)
+    page = default_page_values.merge(parsed.front_matter) do |key, old, new|
+      old.is_a?(Array) ? [old, new].flatten : new
+    end
+    page["content"] = parsed.content
+    page["filename"] = file.gsub("pages", "public").ext("html")
+    page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
+    page["url"] = page["url_base"] + page["slug"]
+    CLOBBER << "../#{page["filename"]}"
+    directory "../#{File.dirname(page["filename"])}"
+    desc "Spit out \"../#{page["filename"]}\"."
+    file "../#{page["filename"]}"=> FileList[
+        "base.*", File.expand_path(__FILE__), file.ext("*"), page["dependencies"],
+        "../#{File.dirname(page["filename"])}"].flatten.compact.uniq do |task|
+      stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
+          "--decode-entities --minify-js --minify-css --remove-comments " +
+          (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} ") +
+          # HACK: Decode semi-colons and equals signs in GitWeb-related
+          # URLs with sed after the HTML minification encodes them.
+          "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
+      puts "# Spitting out \"#{task.name}\"."
+      stdin.puts(Redcarpet::Render::SmartyPants.render(
+          base_template.render(Object.new, page)))
+    end
   end
 end
 
-CLOBBER << "../public/assets/index-vendor.js"
-directory "../public/assets"
-desc "Spit out the concatenated vendor JavaScript file for the homepage."
-file "../public/assets/index-vendor.js" => FileList["Rakefile",
-    "../public/assets/decomp.min.js", "../public/assets/matter.min.js"] do |task|
-  urls = ["https://github.com/schteppe/poly-decomp.js",
-      "https://github.com/liabru/matter-js/"]
-  puts "# Spitting out \"#{task.name}\"."
-  `npx uglifyjs #{task.prerequisites.drop(1).join(" ")} -o #{task.name} \
-      -b beautify=false,preamble="'/* <#{urls.join(">, <")}> */'"`
+if (File.exist?("assets.yaml"))
+  assets_to_process = YAML.load_file("assets.yaml")
+  assets_to_process.each do |asset|
+    filename = asset["output"]
+    CLOBBER << "#{filename}"
+    directory "#{File.dirname(asset["output"])}"
+    desc "Spit out \"#{asset["output"]}\"."
+    file asset["output"] => FileList[File.expand_path(__FILE__),
+        "assets.yaml", asset["input"]] do |task|
+      puts "# Spitting out \"#{task.name}\"."
+      case asset["processor"]
+        # TODO: Add image processing?
+        # TODO: Process by file extension?
+        when "sass"
+          `npx sass #{task.prerequisites.drop(2).join(" ")} | \
+              npx postcss --use autoprefixer | \
+              npx cleancss -o #{task.name}`
+        when "uglifyjs"
+          `npx uglifyjs #{task.prerequisites.drop(2).join(" ")} \
+              -o #{task.name} -b beautify=false,preamble="'#{asset["preamble"]}'"`
+        else
+          `cat #{task.prerequisites.drop(2).join(" ")} > #{task.name}`
+      end
+    end
+  end
 end
 
 

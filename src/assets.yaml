@@ -1,0 +1,7 @@
+---
+  - input:
+    - vendor/decomp.min.js
+    - vendor/matter.min.js
+    preamble: "/* <https://github.com/schteppe/poly-decomp.js>, <https://github.com/liabru/matter-js/> */"
+    processor: uglifyjs
+    output: ../public/assets/index-vendor.js
