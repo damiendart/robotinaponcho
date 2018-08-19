@@ -1,12 +1,11 @@
 TODO
 ====
 
-  * Add syntax highlighting to Gitweb.
-  * Write something for Gitweb index view.
   * Update copyright notices.
   * Add [iOS Web Clip][2] and [Windows Live Tile][1] bumf.
   * Add GPG public key?
   * Add cookies notice to FlippyWindow page.
+  * Flesh out Git Repositories.
 
 [1]: <http://www.buildmypinnedsite.com/en>
 [2]: <https://goo.gl/oIulD7>
