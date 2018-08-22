@@ -5,3 +5,7 @@
     preamble: "/* <https://github.com/schteppe/poly-decomp.js>, <https://github.com/liabru/matter-js/> */"
     processor: uglifyjs
     output: ../public/assets/index-vendor.js
+  - input: robots.txt
+    output: ../public/robots.txt
+  - input: googlefb3645e0f9f23eaf.html
+    output: ../public/googlefb3645e0f9f23eaf.html

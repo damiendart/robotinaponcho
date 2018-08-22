@@ -7,6 +7,3 @@
 src/Gemfile.lock
 src/vendor/*
 public/*
-!public/.htaccess
-!public/googlefb3645e0f9f23eaf.html
-!public/robots.txt
