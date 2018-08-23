@@ -2,7 +2,7 @@
   "dependencies": {
     "autoprefixer": "*",
     "clean-css-cli": "*",
-    "html-minifier": "*",
+    "html-minifier": "3.5.17",
     "postcss-cli": "*",
     "sass": "*",
     "uglify-js": "*"
