@@ -9,3 +9,6 @@
     output: ../public/robots.txt
   - input: googlefb3645e0f9f23eaf.html
     output: ../public/googlefb3645e0f9f23eaf.html
+  - input: basic.scss
+    processor: sass
+    output: ../public/assets/basic.css
