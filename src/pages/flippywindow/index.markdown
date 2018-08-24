@@ -28,7 +28,7 @@ your price before downloading. This is completely optional; you can
 download FlippyWindow without paying or signing up to anything.
 
 [5]: <https://itch.io/>
-[6]: <https://www.robotinaponcho.net/git/?p=flippywindow.git;a=blob;f=TODO;hb=HEAD>
+[6]: <https://github.com/damiendart/flippywindow/blob/master/TODO>
 
 ### Will earlier versions of Windows, Linux and macOS be supported?
 

@@ -12,3 +12,6 @@
   - input: basic.scss
     processor: sass
     output: ../public/assets/basic.css
+    # Available from <https://itch.io/press-kit/>.
+  - input: vendor/itchio.svg
+    output: ../public/assets/itchio.svg
