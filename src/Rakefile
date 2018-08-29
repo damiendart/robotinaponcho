@@ -86,20 +86,20 @@ if (File.exist?("assets.yaml"))
     directory "#{File.dirname(asset["output"])}"
     desc "Spit out \"#{asset["output"]}\"."
     file asset["output"] => FileList[File.expand_path(__FILE__),
-        "assets.yaml", asset["input"]] do |task|
+        "assets.yaml", File.dirname(asset["output"]), asset["input"]] do |task|
       puts "# Spitting out \"#{task.name}\"."
       case asset["processor"]
         # TODO: Add image processing?
         # TODO: Process by file extension?
         when "sass"
-          `npx sass #{task.prerequisites.drop(2).join(" ")} | \
+          `npx sass #{task.prerequisites.drop(3).join(" ")} | \
               npx postcss --use autoprefixer | \
               npx cleancss -o #{task.name}`
         when "uglifyjs"
-          `npx uglifyjs #{task.prerequisites.drop(2).join(" ")} \
+          `npx uglifyjs #{task.prerequisites.drop(3).join(" ")} \
               -o #{task.name} -b beautify=false,preamble="'#{asset["preamble"]}'"`
         else
-          `cat #{task.prerequisites.drop(2).join(" ")} > #{task.name}`
+          `cat #{task.prerequisites.drop(3).join(" ")} > #{task.name}`
       end
     end
   end
