@@ -1,6 +1,6 @@
 ## Frequently asked questions
 
-### Can't I just use any image editor to do what FlippyWindow does? 
+### Can't I just use any image editor to do what FlippyWindow does?
 
 As far as I'm aware, [Clip Paint Studio][1], [Krita][2], and [PaintTool
 SAI][3] have features that allow you to non-destructively change how you
