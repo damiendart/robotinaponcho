@@ -4,14 +4,14 @@
     - vendor/matter.min.js
     preamble: "/* <https://github.com/schteppe/poly-decomp.js>, <https://github.com/liabru/matter-js/> */"
     processor: uglifyjs
-    output: ../public/assets/index-vendor.js
+    output: assets/index-vendor.js
   - input: robots.txt
-    output: ../public/robots.txt
+    output: robots.txt
   - input: googlefb3645e0f9f23eaf.html
-    output: ../public/googlefb3645e0f9f23eaf.html
+    output: googlefb3645e0f9f23eaf.html
   - input: basic.scss
     processor: sass
-    output: ../public/assets/basic.css
+    output: assets/basic.css
     # Available from <https://itch.io/press-kit/>.
   - input: vendor/itchio.svg
-    output: ../public/assets/itchio.svg
+    output: assets/itchio.svg

@@ -47,6 +47,10 @@ module Haml::Filters::Haml
   end
 end
 
+
+OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "../public"
+
+
 if (File.exist?("base.haml") and File.exist?("base.yaml"))
   base_template = Haml::Engine.new(File.read("base.haml"))
   default_page_values = YAML.load_file("base.yaml")
@@ -56,15 +60,15 @@ if (File.exist?("base.haml") and File.exist?("base.yaml"))
       old.is_a?(Array) ? [old, new].flatten : new
     end
     page["content"] = parsed.content
-    page["filename"] = file.gsub("pages", "public").ext("html")
-    page["slug"] = page["filename"].gsub(/(public\/|(index)?\.html)/, "")
+    page["filename"] = file.gsub("pages/", "").ext("html")
+    page["slug"] = page["filename"].gsub(/index\.html/, "")
     page["url"] = page["url_base"] + page["slug"]
-    CLOBBER << "../#{page["filename"]}"
-    directory "../#{File.dirname(page["filename"])}"
-    desc "Spit out \"../#{page["filename"]}\"."
-    file "../#{page["filename"]}"=> FileList[
-        "base.*", File.expand_path(__FILE__), file.ext("*"), page["dependencies"],
-        "../#{File.dirname(page["filename"])}"].flatten.compact.uniq do |task|
+    CLOBBER << File.join(OUTPUT_DIRECTORY, page["filename"])
+    directory File.dirname(CLOBBER.last)
+    desc "Spit out \"#{CLOBBER.last}\"."
+    file CLOBBER.last => FileList["base.*", File.expand_path(__FILE__),
+        file.ext("*"), [page["dependencies"]].flatten.map{|d| d.gsub(/%OUTPUT_DIRECTORY%/, OUTPUT_DIRECTORY)},
+        File.dirname(CLOBBER.last)].flatten.compact.uniq do |task|
       stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
           "--decode-entities --minify-js --minify-css --remove-comments " +
           (page["no_minify_urls"] ? "" : "--minify-ur-ls #{page["url"]} ") +
@@ -74,19 +78,18 @@ if (File.exist?("base.haml") and File.exist?("base.yaml"))
       puts "# Spitting out \"#{task.name}\"."
       stdin.puts(Redcarpet::Render::SmartyPants.render(
           base_template.render(Object.new, page)))
-    end
+  end
   end
 end
 
 if (File.exist?("assets.yaml"))
   assets_to_process = YAML.load_file("assets.yaml")
   assets_to_process.each do |asset|
-    filename = asset["output"]
-    CLOBBER << "#{filename}"
-    directory "#{File.dirname(asset["output"])}"
-    desc "Spit out \"#{asset["output"]}\"."
-    file asset["output"] => FileList[File.expand_path(__FILE__),
-        "assets.yaml", File.dirname(asset["output"]), asset["input"]] do |task|
+    CLOBBER << File.join(OUTPUT_DIRECTORY, asset["output"])
+    directory File.dirname(CLOBBER.last)
+    desc "Spit out \"#{CLOBBER.last}\"."
+    file CLOBBER.last => FileList[File.expand_path(__FILE__), "assets.yaml",
+        File.dirname(CLOBBER.last), asset["input"]] do |task|
       puts "# Spitting out \"#{task.name}\"."
       case asset["processor"]
         # TODO: Add image processing?
