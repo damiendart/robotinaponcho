@@ -11,7 +11,7 @@
 # projects by using Node packages and Ruby gems already installed
 # alongside it. NPM will install packages locally by default, while
 # Bundler can be made to do so with "bundle install --standalone".
-ENV["PATH"] = "#{File.dirname(File.expand_path(__FILE__))}/node_modules/.bin:" + ENV["PATH"]
+ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
 
 begin
   require_relative "bundle/bundler/setup"
