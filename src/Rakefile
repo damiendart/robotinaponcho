@@ -51,12 +51,12 @@ end
 OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "../public"
 
 
-if (File.exist?("base.haml") and File.exist?("base.yaml"))
-  base_template = Haml::Engine.new(File.read("base.haml"))
-  default_page_values = YAML.load_file("base.yaml")
+if (File.exist?("base.haml"))
+  base = FrontMatterParser::Parser.parse_file("base.haml")
+  base_template = Haml::Engine.new(base.content)
   FileList["pages/**/*.haml"].map do |file|
     parsed = FrontMatterParser::Parser.parse_file(file)
-    page = default_page_values.merge(parsed.front_matter) do |key, old, new|
+    page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
     page["content"] = parsed.content
