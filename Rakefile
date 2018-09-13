@@ -48,7 +48,7 @@ module Haml::Filters::Haml
 end
 
 
-OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "../public"
+OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "./public"
 
 
 if (File.exist?("base.haml"))
