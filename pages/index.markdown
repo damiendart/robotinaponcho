@@ -6,13 +6,13 @@ illustrator.
 
 ## Websites I've built recently
 
-  - [Steve Wadsworth][1]
-  - [Kathryn Craigdaillie Designs][2]
-  - [Radical Apps][3] (unmaintained)
+  - [Wyrd Workshop][1]
+  - [Steve Wadsworth][2]
+  - [Kathryn Craigdaillie Designs][3]
 
-[1]: <https://www.stevewadsworth.co.uk/>
-[2]: <https://www.kathryncraigdaillie.co.uk/>
-[3]: <http://www.radicalapps.co.uk/>
+[1]: <https://www.wyrdworkshop.com/>
+[2]: <https://www.stevewadsworth.co.uk/>
+[3]: <https://www.kathryncraigdaillie.co.uk/>
 
 ## Other things
 
