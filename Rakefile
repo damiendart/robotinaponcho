@@ -24,6 +24,7 @@ require "open3"
 require "yaml"
 require "front_matter_parser"
 require "haml"
+require "html-proofer"
 require "rake"
 require "rake/clean"
 require "redcarpet"
@@ -106,6 +107,10 @@ if (File.exist?("assets.yaml"))
       end
     end
   end
+end
+
+task :check do
+  HTMLProofer.check_directory(OUTPUT_DIRECTORY).run
 end
 
 

@@ -8,5 +8,6 @@ source "https://rubygems.org"
 
 gem "front_matter_parser"
 gem "haml"
+gem "html-proofer"
 gem "rake"
 gem "redcarpet"
