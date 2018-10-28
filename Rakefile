@@ -55,6 +55,8 @@ OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "./public"
 if (File.exist?("base.haml"))
   base = FrontMatterParser::Parser.parse_file("base.haml")
   base_template = Haml::Engine.new(base.content)
+  sitemap_entries = []
+
   FileList["pages/**/*.haml"].map do |file|
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
@@ -65,6 +67,7 @@ if (File.exist?("base.haml"))
     page["slug"] = page["filename"].gsub(/index\.html/, "")
     page["url"] = page["url_base"] + page["slug"]
     CLOBBER << File.join(OUTPUT_DIRECTORY, page["filename"])
+    sitemap_entries << { :filename => CLOBBER.last, :url => page["url"] }
     directory File.dirname(CLOBBER.last)
     desc "Spit out \"#{CLOBBER.last}\"."
     file CLOBBER.last => FileList["base.*", File.expand_path(__FILE__),
@@ -79,7 +82,23 @@ if (File.exist?("base.haml"))
       puts "# Spitting out \"#{task.name}\"."
       stdin.puts(Redcarpet::Render::SmartyPants.render(
           base_template.render(Object.new, page)))
+    end
   end
+
+  CLOBBER << File.join(OUTPUT_DIRECTORY, "sitemap.xml")
+  directory File.dirname(CLOBBER.last)
+  desc "Spit out \"#{CLOBBER.last}\"."
+  file CLOBBER.last => FileList[sitemap_entries.map{|e| e[:filename]}] do |task|
+    puts "# Spitting out \"#{task.name}\"."
+    File.open(task.name, "w") do |file|
+      file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+      file.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
+      sitemap_entries.each do |entry|
+        # TODO: Add last modified attribute?
+        file.write("<url><loc>#{entry[:url]}</loc></url>")
+      end
+      file.write("</urlset>")
+    end
   end
 end
 
