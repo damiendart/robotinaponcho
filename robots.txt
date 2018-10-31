@@ -4,3 +4,4 @@ Disallow: /404.html
 Disallow: /410.html
 Disallow: /crap/
 Disallow: /git/*.git/
+Sitemap: https://www.robotinaponcho.net/sitemap.xml
