@@ -9,3 +9,4 @@ bundle/
 Gemfile.lock
 vendor/
 public/
+pages/notes/*.haml
