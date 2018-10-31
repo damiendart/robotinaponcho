@@ -64,7 +64,7 @@ if (File.exist?("base.haml"))
     end
     page["content"] = parsed.content
     page["filename"] = file.gsub("pages/", "").ext("html")
-    page["slug"] = page["filename"].gsub(/index\.html/, "")
+    page["slug"] = page["filename"].gsub(/(index)?\.html/, "")
     page["url"] = page["url_base"] + page["slug"]
     CLOBBER << File.join(OUTPUT_DIRECTORY, page["filename"])
     sitemap_entries << { :filename => CLOBBER.last, :url => page["url"] }
