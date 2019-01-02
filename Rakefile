@@ -34,7 +34,7 @@ module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3(
-        "npx sass --stdin | npx postcss --use autoprefixer")
+        "npx sass --stdin -I #{__dir__} | npx postcss --use autoprefixer")
     stdin.puts(text)
     stdin.close
     "<style>#{stdout.read}</style>"
@@ -115,7 +115,7 @@ if (File.exist?("assets.yaml"))
         # TODO: Add image processing?
         # TODO: Process by file extension?
         when "sass"
-          `npx sass #{task.prerequisites.drop(3).join(" ")} | \
+          `npx sass -I #{__dir__} #{task.prerequisites.drop(3).join(" ")} | \
               npx postcss --use autoprefixer | \
               npx cleancss -o #{task.name}`
         when "uglifyjs"

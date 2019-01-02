@@ -1,0 +1,44 @@
+// A little library of Sass bits and pieces.
+//
+// Copyright (C) 2013-2019 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+
+@function sqrt($number) {
+  // This function is based on code from
+  // <https://css-tricks.com/snippets/sass/strip-unit-function/> and
+  // <http://www.antimath.info/css/sass-sqrt-function/>.
+  $x: 1;
+  @if type-of($number) == "number" and not unitless($number) {
+    $number: $number / ($number * 0 + 1); }
+  @for $i from 1 through 10 {
+    $x: $x - ($x * $x - abs($number)) / (2 * $x); }
+  @return $x; }
+
+
+@mixin clearfix {
+  zoom: 1;
+  &:after {
+    clear: both; }
+  &:before, &:after {
+    content: "";
+    display: table; } }
+
+@mixin clickable-reset {
+  // Correct inability to style clickable types in iOS and Safari. For
+  // more information, see <https://github.com/necolas/normalize.css>.
+  -webkit-appearance: button;
+  border-radius: 0; }
+
+@mixin nice-font-rendering {
+  // Based on <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; // Autoprefixer omits this.
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  // Webkit on iOS devices (at least the ones I've tried) require the
+  // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; // Just In Case(tm).
+  text-size-adjust: none; }

@@ -5,6 +5,9 @@
 // please refer to the accompanying "LICENCE" file.
 
 
+@import "toolkit";
+
+
 $base-background-colour: #ffffff;
 $base-feature-colour: #f96e00;
 $base-font-size: 16px;
@@ -12,15 +15,3 @@ $base-font-stack: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Aria
 $base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
 
-
-@mixin nice-font-rendering {
-  // Based on <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased; // Autoprefixer omits this.
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  // Webkit on iOS devices (at least the ones I've tried) require the
-  // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; // Just In Case(tm).
-  text-size-adjust: none; }
