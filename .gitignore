@@ -7,6 +7,10 @@
 .bundle/
 bundle/
 Gemfile.lock
-vendor/
 public/
 pages/notes/*.haml
+# The following third-party files are available elsewhere and do not
+# need to be tracked. See "assets.yaml" for more information.
+static/decomp.min.js
+static/itchio.svg
+static/matter.min.js

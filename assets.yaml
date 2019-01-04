@@ -1,13 +1,13 @@
 ---
   - input:
-    - vendor/decomp.min.js
-    - vendor/matter.min.js
+    - static/decomp.min.js
+    - static/matter.min.js
     preamble: "/* <https://github.com/schteppe/poly-decomp.js>, <https://github.com/liabru/matter-js/> */"
     processor: uglifyjs
     output: assets/index-vendor.js
-  - input: robots.txt
+  - input: static/robots.txt
     output: robots.txt
-  - input: googlefb3645e0f9f23eaf.html
+  - input: static/googlefb3645e0f9f23eaf.html
     output: googlefb3645e0f9f23eaf.html
   - input: basic.scss
     processor: sass
@@ -16,5 +16,5 @@
     processor: sass
     output: notes/notes.css
     # Available from <https://itch.io/press-kit/>.
-  - input: vendor/itchio.svg
+  - input: static/itchio.svg
     output: assets/itchio.svg
