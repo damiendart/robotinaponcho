@@ -116,8 +116,7 @@ if (File.exist?("assets.yaml"))
         # TODO: Process by file extension?
         when "sass"
           `npx sass -I #{__dir__} #{task.prerequisites.drop(3).join(" ")} | \
-              npx postcss --use autoprefixer | \
-              npx cleancss -o #{task.name}`
+              npx postcss --use autoprefixer | npx cleancss -o #{task.name}`
         when "uglifyjs"
           `npx uglifyjs #{task.prerequisites.drop(3).join(" ")} \
               -o #{task.name} -b beautify=false,preamble="'#{asset["preamble"]}'"`
