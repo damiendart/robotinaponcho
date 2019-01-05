@@ -18,3 +18,9 @@
     # Available from <https://itch.io/press-kit/>.
   - input: static/itchio.svg
     output: assets/itchio.svg
+  - input: static/flippywindow-arrow.png
+    output: flippywindow/arrow.png
+  - input: static/flippywindow-background.svg
+    output: flippywindow/background.svg
+  - input: static/flippywindow-screenshot.png
+    output: flippywindow/screenshot.png

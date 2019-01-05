@@ -9,8 +9,11 @@ bundle/
 Gemfile.lock
 public/
 pages/notes/*.haml
-# The following third-party files are available elsewhere and do not
-# need to be tracked. See "assets.yaml" for more information.
+# The following files are available elsewhere and do not need to be
+# tracked. See "assets.yaml" for more information.
 static/decomp.min.js
+static/flippywindow-arrow.png
+static/flippywindow-background.svg
+static/flippywindow-screenshot.png
 static/itchio.svg
 static/matter.min.js
