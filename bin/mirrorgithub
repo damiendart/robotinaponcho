@@ -8,6 +8,7 @@ please refer to the accompanying "LICENCE" file.
 
 import json
 import os
+import pathlib
 import re
 import sys
 import urllib.request
@@ -26,13 +27,14 @@ if __name__ == "__main__":
   repositories = json.loads(urllib.request.urlopen(
       "https://api.github.com/users/%s/repos?access_token=%s" %
       (sys.argv[1], sys.argv[3])).read().decode("utf-8"))
+  base_directory = pathlib.Path(os.path.normpath(sys.argv[2])).resolve()
   for repository in repositories:
-    os.chdir(os.path.normpath(sys.argv[2]))
+    os.chdir(base_directory)
     if not (no_forks and repository["fork"]):
-      if (os.path.isdir(os.path.basename(repository["git_url"]))):
-        os.chdir(os.path.basename(repository["git_url"]))
-        subprocess.check_call(["git", "fetch", "-q"])
-        os.chdir(os.path.normpath(sys.argv[2]))
+      if os.path.isdir(os.path.join(
+          base_directory, os.path.basename(repository["git_url"]))):
+        subprocess.check_call(["git", "fetch", "-q"],
+            cwd=os.path.basename(repository["git_url"]))
       else:
         subprocess.check_call(["git", "clone", "-q", "--mirror",
             repository["git_url"]])
