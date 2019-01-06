@@ -24,10 +24,13 @@ if __name__ == "__main__":
   if "--no-forks" in sys.argv:
     sys.argv.remove("--no-forks")
     no_forks = True
-  repositories = json.loads(urllib.request.urlopen(
+  api_response = urllib.request.urlopen(
       "https://api.github.com/users/%s/repos?access_token=%s" %
-      (sys.argv[1], sys.argv[3])).read().decode("utf-8"))
+      (sys.argv[1], sys.argv[3])).read().decode("utf-8")
+  repositories = json.loads(api_response)
   base_directory = pathlib.Path(os.path.normpath(sys.argv[2])).resolve()
+  with open(os.path.join(base_directory, "api_response.json"), "w") as f:
+    f.write(api_response)
   for repository in repositories:
     os.chdir(base_directory)
     if not (no_forks and repository["fork"]):
