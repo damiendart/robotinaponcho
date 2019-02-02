@@ -75,10 +75,7 @@ if (File.exist?("base.haml"))
         File.dirname(CLOBBER.last)].flatten.compact.uniq do |task|
       stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
           "--decode-entities --minify-js --minify-css --remove-comments " +
-          (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} ") +
-          # HACK: Decode semi-colons and equals signs in GitWeb-related
-          # URLs with sed after the HTML minification encodes them.
-          "-o #{task.name} && sed -i 's/%3B/;/g; s/%3D/=/g' #{task.name}")
+          (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} ") + "-o #{task.name}")
       puts "# Spitting out \"#{task.name}\"."
       stdin.puts(Redcarpet::Render::SmartyPants.render(
           base_template.render(Object.new, page)))
