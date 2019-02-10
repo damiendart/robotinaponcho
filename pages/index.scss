@@ -85,7 +85,6 @@ noscript {
       font-size: 100%;
       font-weight: bold;
       margin: $base-line-height 0 0 0;
-      text-transform: uppercase;
       &:first-of-type {
         margin: 0; } }
     p {
@@ -93,8 +92,7 @@ noscript {
     ul {
       list-style: none;
       margin: 0;
-      padding: 0;
-      text-transform: uppercase; } } }
+      padding: 0; } } }
 
 /* input */.information-trigger {
   position: absolute;
