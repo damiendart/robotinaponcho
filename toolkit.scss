@@ -16,7 +16,6 @@
     $x: $x - ($x * $x - abs($number)) / (2 * $x); }
   @return $x; }
 
-
 @mixin clearfix {
   zoom: 1;
   &:after {
@@ -30,6 +29,39 @@
   // more information, see <https://github.com/necolas/normalize.css>.
   -webkit-appearance: button;
   border-radius: 0; }
+
+// TODO: Clean this up and add documentation.
+@mixin hamburger($width, $layer-height, $spacing-height, $colour) {
+  /* div */.hamburger {
+    $height: $layer-height * 3 + $spacing-height * 2;
+    display: inline-block;
+    height: $height;
+    position: relative;
+    width: $width;
+    &__filling {
+      margin: $layer-height / -2 0 0 0;
+      top: 50%;
+      &:after {
+        bottom: ($spacing-height + $layer-height) * -1; }
+      &:before {
+        top: ($spacing-height + $layer-height) * -1; }
+      &:after, &:before {
+        content: ""; }
+      &, &:after, &:before {
+        background: var(--hamburger-colour, $colour);
+        border-radius: $layer-height;
+        display: block;
+        height: $layer-height;
+        position: absolute;
+        width: 100%; } }
+    &--active {
+      transform: rotate(-45deg);
+      .hamburger__filling {
+        &:after {
+          transform: translate3d(0, ($spacing-height + $layer-height) * -1, 0) rotate(-90deg); }
+        &:before {
+          opacity: 0;
+          transform: translate3d(0, $spacing-height + $layer-height, 0) rotate(45deg); } } } } }
 
 @mixin nice-font-rendering {
   // Based on <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.

@@ -9,19 +9,6 @@ setTimeout(function() {
   loading_animation.className += " javascript-loading--show";
 }, 750);
 
-(function toggle_background() {
-  if (document.getElementById("information-trigger").checked) {
-    document.body.className = "javascript-info-visible";
-    document.documentElement.className += " javascript-info-visible";
-  } else {
-    document.body.className = "";
-    document.documentElement.className =
-        document.documentElement.className.replace(
-            "javascript-info-visible", "").trim();
-  }
-  document.getElementById("information-trigger").onchange = toggle_background;
-})();
-
 window.onload = window.onreadystatechange = function() {
   if (!this.readyState || /loaded|complete/.test(this.readyState)) {
     var accumulated_time = 0;

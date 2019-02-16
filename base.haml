@@ -7,7 +7,8 @@
     This file is distributed under the MIT licence. For more information,
     please refer to the accompanying "LICENCE" file.
   css_external: []
-  javascript: []
+  javascript:
+    - base.js
   javascript_external: []
   no_social: false
   scss: []
@@ -40,6 +41,29 @@
         #{File.read(i)}
     %title #{title} (www.robotinaponcho.net)
   %body
+    %header.header
+      %h1.header__title
+        %a{:href => "/"} Damien Dart
+      %nav.header__navigation.dropdown-menu
+        %h2.dropdown-menu__title
+          %span.hamburger
+            %span.hamburger__filling
+          %span.dropdown-menu__title__text Menu
+        %ul.dropdown-menu__list
+          %li.dropdown-menu__list__item
+            %a{:href => "/"} Home
+          %li.dropdown-menu__list__item
+            %a{:href => "#"} About
+          %li.dropdown-menu__list__item
+            %a{:href => "/flippywindow/"} FlippyWindow
+          %li.dropdown-menu__list__item
+            %a{:href => "/git/"} Open-source bits and pieces
+          %li.dropdown-menu__list__item
+            %a{:href => "/notes/"} Notes about stuff
+          %li.dropdown-menu__list__item
+            %a{:href => "/art/"} My artwork and drawings
+          %li.dropdown-menu__list__item
+            %a{:href => "#"} Privacy Policy
     :haml
       #{content}
     - javascript_external.each do |i|

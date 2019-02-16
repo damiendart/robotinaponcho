@@ -11,6 +11,10 @@
 $content-width: 37.5rem;
 
 
+@include hamburger($base-line-height * 1.5, $base-line-height / 6,
+    $base-line-height / 4, #000);
+
+
 a {
   color: inherit; }
 
@@ -22,9 +26,12 @@ body {
   @if($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   line-height: $base-line-height;
-  margin: $base-line-height * 3 0;
+  margin: 0 0 $base-line-height * 3 0;
   text-size-adjust: none;
-  & > *:not(div) {
+  @if($base-font-size != 16px) {
+    @media only screen and (max-width: 480px) {
+      font-size: 100%; } }
+  & > *:not(div):not(footer):not(header) {
     margin-left: auto;
     margin-right: auto;
     max-width: $content-width;
@@ -39,7 +46,6 @@ h1 {
   line-height: $base-line-height * 2;
   margin: $base-line-height * 3 0;
   text-align: center;
-  text-transform: uppercase;
   @media only screen and (max-width: 767px) {
     font-size: 200%;
     line-height: $base-line-height * 1.5; } }
@@ -104,6 +110,59 @@ ul {
     & > * {
       margin: 0; } } }
 
+/* div */.dropdown-menu {
+  cursor: default;
+  display: inline-block;
+  margin: $base-line-height / -2;
+  padding: $base-line-height / 2;
+  position: relative;
+  @media (hover: hover) {
+    &:focus-within, &:hover {
+      --hamburger-colour: #{$base-background-colour};
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
+    &:focus-within > &__list, &:hover > &__list {
+      right: 0; } }
+  @media (hover: none) {
+    &--open {
+      --hamburger-colour: #{$base-background-colour};
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
+    &--open &__list {
+      right: 0; }
+    @at-root {
+      html:not(.javascript) & {
+        --hamburger-colour: #{$base-background-colour};
+        background: $base-foreground-colour;
+        color: $base-background-colour; } } }
+  /* h2 */ &__title {
+    font-size: 100%;
+    font-weight: bold;
+    line-height: 0;
+    margin: 0;
+    * {
+      display: inline-block;
+      vertical-align: middle; }
+    /* span */ &__text {
+      padding: 0 0 0 $base-line-height / 2; } }
+  /* ul */ &__list {
+    background: inherit;
+    color: inherit;
+    list-style: none;
+    margin: 0;
+    padding: $base-line-height;
+    position: absolute;
+    right: 9999px;
+    top: $base-line-height * 2;
+    white-space: pre;
+    @media (hover: none) {
+      @at-root {
+        html:not(.javascript) & {
+          right: 0; } } }
+    /* li */ &__item {
+      margin: 0;
+      padding: 0; } } }
+
 /* footer */.footer {
   margin: $base-line-height * 3 auto 0;
   text-align: center;
@@ -155,3 +214,29 @@ ul {
       width: 100%; }
     img {
       display: block; } } }
+
+/* header */.header {
+  @include clearfix;
+  box-sizing: border-box;
+  padding: $base-line-height * 2;
+  margin: 0 auto;
+  width: 100%;
+  a {
+    text-decoration: none;
+    &[href="#"] {
+      opacity: 0.5;
+      pointer-events: none;
+      &:after {
+        content: " (Coming soon)";
+        font-style: italic; } }
+    &:focus, &:hover {
+      text-decoration: underline; } }
+  > * {
+    margin: $base-line-height / -2;
+    padding: $base-line-height / 2; }
+  /* h1 */ &__title {
+    float: left;
+    font-size: 150%;
+    line-height: $base-line-height; }
+  /* div */ &__navigation {
+    float: right; } }

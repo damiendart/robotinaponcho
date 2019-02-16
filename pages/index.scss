@@ -13,21 +13,6 @@ $side-panel-background-colour: $base-foreground-colour;
 $side-panel-foreground-colour: $base-background-colour;
 
 
-body {
-  @include nice-font-rendering;
-  background: $side-panel-background-colour;
-  color: $side-panel-foreground-colour;
-  font-family: $base-font-stack;
-  @if($base-font-size != 16px) {
-    font-size: percentage($base-font-size / 16px); }
-  height: 100%;
-  line-height: $base-line-height;
-  margin: 0;
-  text-size-adjust: 100%;
-  @if($base-font-size != 16px) {
-    @media only screen and (max-width: 480px) {
-      font-size: 100%; } } }
-
 canvas {
   left: 0;
   height: 100%;
@@ -35,11 +20,6 @@ canvas {
   position: absolute;
   top: 0;
   width: 100%; }
-
-html {
-  font-size: 100%;
-  @media only screen and (max-width: 480px) {
-    font-size: 87.5%; } }
 
 noscript {
   position: absolute;
@@ -58,94 +38,9 @@ noscript {
       transform 0.5s ease;
   bottom: 0;
   width: 100%;
-  z-index: 0; }
-
-/* div */.close-container {
-  margin: 0 0 $base-line-height 0;
-  text-align: right; }
-
-/* nav */.information {
-  width: 100%;
-  z-index: -9999;
-  /* div */ &__container {
-    box-sizing: border-box;
-    margin: 0 0 0 auto;
-    padding: $base-line-height * 2;
-    width: $information-width;
-    @media only screen and (max-width: $information-width) {
-      width: 100%; }
-    a {
-      color: inherit;
-      font-weight: bold;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline; } }
-    h2 {
-      color: $base-feature-colour;
-      font-size: 100%;
-      font-weight: bold;
-      margin: $base-line-height 0 0 0;
-      &:first-of-type {
-        margin: 0; } }
-    p {
-      margin: 0; }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0; } } }
-
-/* input */.information-trigger {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  &:checked {
-    & ~ #container {
-      filter: brightness(75%);
-      transform: translateX(-$information-width);
-      @media only screen and (max-width: $information-width) {
-        transform: translateX(-100vw); } }
-    & + .toggle--open {
-      opacity: 0;
-      transform: translateX(-$information-width);
-        @media only screen and (max-width: $information-width) {
-          transform: translateX(-100vw); } } } }
-
-/* label */.toggle {
-  border: $base-line-height / 8 solid $side-panel-foreground-colour;
-  border-radius: $base-line-height;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: bold;
-  line-height: $base-line-height;
-  padding: $base-line-height / 8 ($base-line-height * 3) / 8;
-  text-align: right;
-  text-transform: uppercase;
-  z-index: inherit;
-  &:hover {
-    text-decoration: underline; }
-  &--open {
-    background: $side-panel-foreground-colour;
-    box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
-    color: $base-feature-colour;
-    position: fixed;
-    right: $base-line-height * 2;
-    top: $base-line-height * 2;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    width: auto;
-    z-index: 1; } }
+  z-index: -1; }
 
 /* html */.javascript {
-  width: 100%;
-  height: 100%;
-  // Prevent scrolling when additional information is hidden. See
-  // <http://stackoverflow.com/a/21958711> for more information.
-  overflow: hidden;
-  body {
-    // Tweak background colour for browsers with translucent UIs.
-    background: $base-feature-colour;
-    height: 100%;
-    overflow: hidden;
-    transition: background 0s 0.5s;
-    width: 100%; }
   .container--javascript-show-background {
     background-position: center !important; }
   /* div */.javascript-loading {
@@ -181,7 +76,12 @@ noscript {
     @media only screen and (max-width: $information-width) {
       background: $side-panel-background-colour; }
     overflow: visible;
-    transition: background 0s 0s; } }
+    transition: background 0s 0s;
+    #container {
+      filter: brightness(75%);
+      transform: translateX(-$information-width);
+      @media only screen and (max-width: $information-width) {
+        transform: translateX(-100vw); } } } }
 
 /* img */.robot {
   display: none; }
