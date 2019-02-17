@@ -76,8 +76,7 @@ Dir.glob(File.join(SOURCE_DIRECTORY, "**/*")).each do |file|
     directory File.dirname(CLOBBER.last)
     desc "Spit out \"#{CLOBBER.last}\"."
     file CLOBBER.last => FileList["base.*", File.expand_path(__FILE__),
-        file.ext("*"), [page["dependencies"]].flatten.map{|d| d.gsub(/%OUTPUT_DIRECTORY%/, OUTPUT_DIRECTORY)},
-        File.dirname(CLOBBER.last)].flatten.compact.uniq do |task|
+        page["dependencies"], File.dirname(CLOBBER.last)].flatten.compact.uniq do |task|
       stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
           "--decode-entities --minify-js --minify-css --remove-comments " +
           (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} ") + "-o #{task.name}")
