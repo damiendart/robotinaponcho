@@ -8,12 +8,16 @@
 bundle/
 Gemfile.lock
 public/
+# The following file is the concatenation of two JavaScript files:
+#   - the latest version of "build/decomp.min.js" from
+#   <https://github.com/schteppe/poly-decomp.js> and
+#   - version 0.14.0 of "build/matter.min.js" from
+#   <https://github.com/liabru/matter-js>.
+pages/assets/index-vendor.js
+# The following file is available from <https://itch.io/press-kit/>.
+pages/assets/itchio.svg
+# The following three files are tracked elsewhere.
+pages/flippywindow/arrow.png
+pages/flippywindow/background.svg
+pages/flippywindow/screenshot.png
 pages/notes/*.haml
-# The following files are available elsewhere and do not need to be
-# tracked. See "assets.yaml" for more information.
-static/decomp.min.js
-static/flippywindow-arrow.png
-static/flippywindow-background.svg
-static/flippywindow-screenshot.png
-static/itchio.svg
-static/matter.min.js

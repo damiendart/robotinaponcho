@@ -50,20 +50,25 @@ end
 
 
 OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "./public"
+SOURCE_DIRECTORY = ENV["ROBOT_SOURCE"] || "./pages"
 
-
-if (File.exist?("base.haml"))
-  base = FrontMatterParser::Parser.parse_file("base.haml")
+if (File.exist?(File.join(SOURCE_DIRECTORY, "_base.haml")))
+  base = FrontMatterParser::Parser.parse_file(
+      File.join(SOURCE_DIRECTORY, "_base.haml"))
   base_template = Haml::Engine.new(base.content)
   sitemap_entries = []
+end
 
-  FileList["pages/**/*.haml"].map do |file|
+Dir.glob(File.join(SOURCE_DIRECTORY, "**/*")).each do |file|
+  next if (File.directory?(file)) or (file =~ /\/_/)
+  case File.extname(file)
+  when ".haml"
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
     page["content"] = parsed.content
-    page["filename"] = file.gsub("pages/", "").ext("html")
+    page["filename"] = file.gsub(SOURCE_DIRECTORY, "").ext("html")
     page["slug"] = page["filename"].gsub(/(index)?\.html/, "")
     page["url"] = page["url_base"] + page["slug"]
     CLOBBER << File.join(OUTPUT_DIRECTORY, page["filename"])
@@ -80,8 +85,39 @@ if (File.exist?("base.haml"))
       stdin.puts(Redcarpet::Render::SmartyPants.render(
           base_template.render(Object.new, page)))
     end
+  when ".js"
+    CLOBBER << file.gsub(SOURCE_DIRECTORY, OUTPUT_DIRECTORY)
+    directory File.dirname(CLOBBER.last)
+    desc "Spit out \"#{CLOBBER.last}\"."
+    file CLOBBER.last => FileList[file, File.dirname(CLOBBER.last),
+        File.expand_path(__FILE__)] do |task|
+      puts "# Spitting out \"#{task.name}\"."
+      `npx uglifyjs #{task.prerequisites[0]} -o #{task.name} -b beautify=false`
+    end
+  when ".scss"
+    CLOBBER << file.gsub(SOURCE_DIRECTORY, OUTPUT_DIRECTORY).ext("css")
+    directory File.dirname(CLOBBER.last)
+    desc "Spit out \"#{CLOBBER.last}\"."
+    file CLOBBER.last => FileList[file, File.dirname(CLOBBER.last),
+        File.expand_path(__FILE__)] do |task|
+      puts "# Spitting out \"#{task.name}\"."
+      `npx sass -I #{__dir__} #{task.prerequisites[0]} | \
+          npx postcss --use autoprefixer | npx cleancss -o #{task.name}`
+    end
+  else
+    # TODO: Add ".html" files to Sitemap.
+    CLOBBER << file.gsub(SOURCE_DIRECTORY, OUTPUT_DIRECTORY)
+    directory File.dirname(CLOBBER.last)
+    desc "Copy \"#{file}\" to \"#{CLOBBER.last}\"."
+    file CLOBBER.last => FileList[file, File.dirname(CLOBBER.last),
+        File.expand_path(__FILE__)] do |task|
+      puts "# Copying \"#{file}\" to \"#{task.name}\"."
+      FileUtils.cp(file, task.name)
+    end
   end
+end
 
+unless (sitemap_entries.empty?)
   CLOBBER << File.join(OUTPUT_DIRECTORY, "sitemap.xml")
   directory File.dirname(CLOBBER.last)
   desc "Spit out \"#{CLOBBER.last}\"."
@@ -95,31 +131,6 @@ if (File.exist?("base.haml"))
         file.write("<url><loc>#{entry[:url]}</loc></url>")
       end
       file.write("</urlset>")
-    end
-  end
-end
-
-if (File.exist?("assets.yaml"))
-  assets_to_process = YAML.load_file("assets.yaml")
-  assets_to_process.each do |asset|
-    CLOBBER << File.join(OUTPUT_DIRECTORY, asset["output"])
-    directory File.dirname(CLOBBER.last)
-    desc "Spit out \"#{CLOBBER.last}\"."
-    file CLOBBER.last => FileList[File.expand_path(__FILE__), "assets.yaml",
-        File.dirname(CLOBBER.last), asset["input"]] do |task|
-      puts "# Spitting out \"#{task.name}\"."
-      case asset["processor"]
-        # TODO: Add image processing?
-        # TODO: Process by file extension?
-        when "sass"
-          `npx sass -I #{__dir__} #{task.prerequisites.drop(3).join(" ")} | \
-              npx postcss --use autoprefixer | npx cleancss -o #{task.name}`
-        when "uglifyjs"
-          `npx uglifyjs #{task.prerequisites.drop(3).join(" ")} \
-              -o #{task.name} -b beautify=false,preamble="'#{asset["preamble"]}'"`
-        else
-          `cat #{task.prerequisites.drop(3).join(" ")} > #{task.name}`
-      end
     end
   end
 end
