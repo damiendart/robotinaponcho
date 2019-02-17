@@ -34,7 +34,7 @@ module Haml::Filters::AutoPrefixScss
   include Haml::Filters::Base
   def render(text)
     stdin, stdout, stderr = Open3.popen3(
-        "npx sass --stdin -I #{__dir__} | npx postcss --use autoprefixer")
+        "npx sass --stdin -I #{File.join(__dir__, "sass")} | npx postcss --use autoprefixer")
     stdin.puts(text)
     stdin.close
     "<style>#{stdout.read}</style>"
@@ -50,7 +50,7 @@ end
 
 
 OUTPUT_DIRECTORY = ENV["ROBOT_OUTPUT"] || "./public"
-SOURCE_DIRECTORY = ENV["ROBOT_SOURCE"] || "./pages"
+SOURCE_DIRECTORY = ENV["ROBOT_SOURCE"] || "./src"
 
 if (File.exist?(File.join(SOURCE_DIRECTORY, "_base.haml")))
   base = FrontMatterParser::Parser.parse_file(
@@ -100,7 +100,7 @@ Dir.glob(File.join(SOURCE_DIRECTORY, "**/*")).each do |file|
     file CLOBBER.last => FileList[file, File.dirname(CLOBBER.last),
         File.expand_path(__FILE__)] do |task|
       puts "# Spitting out \"#{task.name}\"."
-      `npx sass -I #{__dir__} #{task.prerequisites[0]} | \
+      `npx sass -I #{File.join(__dir__, "sass")} #{task.prerequisites[0]} | \
           npx postcss --use autoprefixer | npx cleancss -o #{task.name}`
     end
   else
