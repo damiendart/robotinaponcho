@@ -12,9 +12,6 @@
   - input: basic.scss
     processor: sass
     output: assets/basic.css
-  - input: pages/notes/notes.scss
-    processor: sass
-    output: notes/notes.css
     # Available from <https://itch.io/press-kit/>.
   - input: static/itchio.svg
     output: assets/itchio.svg

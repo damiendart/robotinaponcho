@@ -1,12 +1,12 @@
 var canvas = document.createElement("canvas");
 var loading_animation = document.createElement("div");
 
-loading_animation.className = "javascript-loading";
-document.getElementById("container").appendChild(loading_animation);
-document.getElementById("container").appendChild(canvas);
+loading_animation.className = "loading-spinner";
+document.getElementById("tumbling-robots").appendChild(loading_animation);
+document.getElementById("tumbling-robots").appendChild(canvas);
 
 setTimeout(function() {
-  loading_animation.className += " javascript-loading--show";
+  loading_animation.className += " loading-spinner--show";
 }, 750);
 
 window.onload = window.onreadystatechange = function() {
@@ -22,9 +22,9 @@ window.onload = window.onreadystatechange = function() {
     }
     Matter.World.add(engine.world,
         Matter.Bodies.rectangle(0, 6, 5000, 10, { isStatic: true }));
-    loading_animation.className += " javascript-loading--complete";
-    document.getElementById("container").className =
-        "container--javascript-show-background";
+    loading_animation.className += " loading-spinner--complete";
+    document.getElementById("tumbling-robots").className +=
+        " tumbling-robots--show-background";
     (function render() {
       // TODO: Add support for Retina displays?
       var bodies;
