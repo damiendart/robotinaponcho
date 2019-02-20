@@ -6,103 +6,64 @@
 # please refer to the accompanying "LICENCE" file.
 
 
-# The following kludges allow this script to be used in other projects
-# by using Node packages and Ruby gems already installed alongside it.
-# NPM will install packages locally by default, while Bundler can be
-# made to do so with "bundle install --standalone".
+# Use locally-installed gems and packages. NPM installs packages locally
+# by default while Bundler can do so with "bundle install --standalone".
+ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
 begin
   require_relative "bundle/bundler/setup"
-  ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
 rescue LoadError
   require "bundler"
   Bundler.setup
 end
 
 
-require "getoptlong"
+require "fileutils"
 require "open3"
 require "yaml"
 require "front_matter_parser"
 require "haml"
-require "html-proofer"
 require "redcarpet"
 
 
-def compile_sass(sass)
-  stdin, stdout, _ = Open3.popen3(
-      "npx sass -I #{File.join(__dir__, "sass-toolkit")} --stdin | " +
-      "npx postcss --use autoprefixer | npx cleancss")
-  stdin.puts(sass)
-  stdin.close
-  stdout.read
-end
-
-
-module Haml::Filters::AutoPrefixScss
-  include Haml::Filters::Base
-  def render(text)
-    "<style>#{compile_sass(text)}</style>"
+def sass(sass, source_file = nil)
+  css, error, _ = Open3.capture3(
+    "npx sass -I #{File.join(File.dirname(__dir__), "sass-toolkit")} --stdin | " +
+      "npx postcss --use autoprefixer | npx cleancss", :stdin_data => sass)
+  unless error.empty?
+    puts "# ERROR while processing \"#{source_file}\"!" unless source_file.empty?
+    STDERR.puts error
+    exit 2
   end
+  css
 end
 
-module Haml::Filters::Haml
-  include Haml::Filters::Base
-  def render(text)
-    Haml::Engine.new(text).render
-  end
+def haml(haml)
+  Haml::Engine.new(haml).render
 end
 
 
-HELP_MESSAGE = "INSERT HELP MESSAGE HERE."
-output_directory = "./public"
-source_directory = "./src"
-proof = false
-
-begin
-  options = GetoptLong.new(
-      ["--help", "-?", GetoptLong::NO_ARGUMENT ],
-      ["--input-directory", "-i", GetoptLong::OPTIONAL_ARGUMENT],
-      ["--output-directory", "-o", GetoptLong::OPTIONAL_ARGUMENT])
-  options.each do |option, argument|
-    case option
-    when "--help"
-      puts HELP_MESSAGE
-      exit
-    when "--input-directory"
-      source_directory = argument
-    when "--output-directory"
-      output_directory = argument
-    when "--proof"
-      proof = true
-    end
-  end
-rescue GetoptLong::Error
-  STDERR.puts HELP_MESSAGE
-  exit 2
-end
+output_directory = File.expand_path(ENV["BARF_OUTPUT"] || "./public")
+source_directory = File.expand_path(ENV["BARF_SOURCE"] || "./src")
 
 if (File.exist?(File.join(source_directory, "_base.haml")))
   base = FrontMatterParser::Parser.parse_file(
       File.join(source_directory, "_base.haml"))
   base_template = Haml::Engine.new(base.content)
-  sitemap_entries = []
 end
 
 Dir.glob(File.join(source_directory, "**/*")).each do |file|
   next if (File.directory?(file)) or (file =~ /\/_/)
   output_file = file.gsub(source_directory, output_directory)
-  compiled_output = nil
   case File.extname(file)
   when ".haml"
+    output_file.gsub!(/haml$/, "html")
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
     page["content"] = parsed.content
-    page["slug"] = file.gsub(source_directory, "").gsub(/(index)?\.html/, "")
-    page["url"] = File.join(page["url_base"], page["slug"])
-    output_file.gsub!(/haml$/, "html")
-    sitemap_entries << page["url"]
+    page["slug"] = output_file.gsub(output_directory + "/", "").gsub(/(index)?\.html/, "")
+    (sitemap_entries ||= []) << File.join(page["url_base"], page["slug"])
     stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
         (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} "))
@@ -114,18 +75,18 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
     compiled_output = `npx uglifyjs #{file} -b beautify=false`
   when ".scss"
     output_file.gsub!(/scss$/, "css")
-    compiled_output = compile_sass(File.read(file))
+    compiled_output = sass(File.read(file), file)
   end
   FileUtils.mkdir_p(File.dirname(output_file))
-  if compiled_output
+  if defined? compiled_output
     File.write(output_file, compiled_output)
   else
     FileUtils.cp(file, output_file)
   end
-  puts "- Written \"#{output_file}\"."
+  puts "#{"\u2713".force_encoding("utf-8")} Written \"#{output_file}\"."
 end
 
-unless (sitemap_entries.empty?)
+if defined? sitemap_entries
   sitemap_file = File.join(output_directory, "sitemap.xml")
   File.open(sitemap_file, "w") do |file|
     file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
@@ -135,9 +96,5 @@ unless (sitemap_entries.empty?)
     end
     file.write("</urlset>")
   end
-  puts "- Written \"#{sitemap_file}\"."
-end
-
-if proof
-  HTMLProofer.check_directory(output_directory).run
+  puts "\r#{"\u2713".force_encoding("utf-8")} Written \"#{sitemap_file}\"!"
 end

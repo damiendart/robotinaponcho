@@ -33,14 +33,13 @@
       %meta{:content => "#{url_base}#{social_image}", :property => "og:image"}
       %meta{:content => "#{title}", :property => "og:title"}
       %meta{:content => "website", :property => "og:type"}
-      %meta{:content => url, :property => "og:url"}
+      %meta{:content => "#{url_base}#{slug}", :property => "og:url"}
       %meta{:content => "@damiendart", :name => "twitter:creator"}
     %meta{:content => "initial-scale=1.0, maximum-scale=1.0, width=device-width", "name" => "viewport"}
     - if (javascript.any? or javascript_external.any?)
       %script document.documentElement.className += "javascript";
     - scss.each do |i|
-      :autoprefixscss
-        #{File.read(i)}
+      %style= sass(File.read(i))
     %title #{title} (www.robotinaponcho.net)
   %body
     %header.header
@@ -66,8 +65,7 @@
             %a{:href => "/art/"} My artwork and drawings
           %li.dropdown-menu__list__item
             %a{:href => "#"} Privacy Policy
-    :haml
-      #{content}
+    = haml(content)
     - javascript_external.each do |i|
       %script{:async => true, :src => i}
     - javascript.each do |i|
