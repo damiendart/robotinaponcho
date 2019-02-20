@@ -1,0 +1,143 @@
+#!/usr/bin/env ruby
+# A really simple static site generator.
+#
+# Copyright (C) 2013-2018 Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more information,
+# please refer to the accompanying "LICENCE" file.
+
+
+# The following kludges allow this Rakefile to be easily used in other
+# projects by using Node packages and Ruby gems already installed
+# alongside it. NPM will install packages locally by default, while
+# Bundler can be made to do so with "bundle install --standalone".
+ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
+
+begin
+  require_relative "bundle/bundler/setup"
+rescue LoadError
+  require "bundler"
+  Bundler.setup
+end
+
+require "getoptlong"
+require "open3"
+require "yaml"
+require "front_matter_parser"
+require "haml"
+require "html-proofer"
+require "redcarpet"
+
+
+def compile_sass(sass)
+  stdin, stdout, _ = Open3.popen3(
+      "npx sass -I #{File.join(__dir__, "sass-toolkit")} --stdin | " +
+      "npx postcss --use autoprefixer | npx cleancss")
+  stdin.puts(sass)
+  stdin.close
+  stdout.read
+end
+
+
+module Haml::Filters::AutoPrefixScss
+  include Haml::Filters::Base
+  def render(text)
+    "<style>#{compile_sass(text)}</style>"
+  end
+end
+
+module Haml::Filters::Haml
+  include Haml::Filters::Base
+  def render(text)
+    Haml::Engine.new(text).render
+  end
+end
+
+
+HELP_MESSAGE = "INSERT HELP MESSAGE HERE."
+output_directory = "./public"
+source_directory = "./src"
+proof = false
+
+begin
+  options = GetoptLong.new(
+      ["--help", "-?", GetoptLong::NO_ARGUMENT ],
+      ["--input-directory", "-i", GetoptLong::OPTIONAL_ARGUMENT],
+      ["--output-directory", "-o", GetoptLong::OPTIONAL_ARGUMENT])
+  options.each do |option, argument|
+    case option
+    when "--help"
+      puts HELP_MESSAGE
+      exit
+    when "--input-directory"
+      source_directory = argument
+    when "--output-directory"
+      output_directory = argument
+    when "--proof"
+      proof = true
+    end
+  end
+rescue GetoptLong::Error
+  STDERR.puts HELP_MESSAGE
+  exit 2
+end
+
+if (File.exist?(File.join(source_directory, "_base.haml")))
+  base = FrontMatterParser::Parser.parse_file(
+      File.join(source_directory, "_base.haml"))
+  base_template = Haml::Engine.new(base.content)
+  sitemap_entries = []
+end
+
+Dir.glob(File.join(source_directory, "**/*")).each do |file|
+  next if (File.directory?(file)) or (file =~ /\/_/)
+  output_file = file.gsub(source_directory, output_directory)
+  compiled_output = nil
+  case File.extname(file)
+  when ".haml"
+    parsed = FrontMatterParser::Parser.parse_file(file)
+    page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
+      old.is_a?(Array) ? [old, new].flatten : new
+    end
+    page["content"] = parsed.content
+    page["slug"] = file.gsub(source_directory, "").gsub(/(index)?\.html/, "")
+    page["url"] = File.join(page["url_base"], page["slug"])
+    output_file.gsub!(/haml$/, "html")
+    sitemap_entries << page["url"]
+    stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
+        "--decode-entities --minify-js --minify-css --remove-comments " +
+        (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} "))
+    stdin.puts(Redcarpet::Render::SmartyPants.render(
+        base_template.render(Object.new, page)))
+    stdin.close
+    compiled_output = stdout.read
+  when ".js"
+    compiled_output = `npx uglifyjs #{file} -b beautify=false`
+  when ".scss"
+    output_file.gsub!(/scss$/, "css")
+    compiled_output = compile_sass(File.read(file))
+  end
+  FileUtils.mkdir_p(File.dirname(output_file))
+  if compiled_output
+    File.write(output_file, compiled_output)
+  else
+    FileUtils.cp(file, output_file)
+  end
+  puts "- Written \"#{output_file}\"."
+end
+
+unless (sitemap_entries.empty?)
+  sitemap_file = File.join(output_directory, "sitemap.xml")
+  File.open(sitemap_file, "w") do |file|
+    file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+    file.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
+    sitemap_entries.each do |entry|
+      file.write("<url><loc>#{entry}</loc></url>")
+    end
+    file.write("</urlset>")
+  end
+  puts "- Written \"#{sitemap_file}\"."
+end
+
+if proof
+  HTMLProofer.check_directory(output_directory).run
+end
