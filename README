@@ -3,14 +3,14 @@ robotinaponcho
 
 A hodgepodge of:
 
-  - source code to my [personal website][1],
-  - a basic static site generator script, and
-  - some reusable [Sass][2] bits and pieces.
+  - a basic static site generator (_bin/barf_),
+  - some reusable [Sass][1] bits and pieces (_sass-toolkit_), and
+  - source code to my [personal website][2] (everything else).
 
 Feel free to use whatever you find useful here for your own projects.
 Other than that, you're on your own, I'm afraid.
 
 -- Damien
 
-[1]: <https://www.robotinaponcho.net/>
-[2]: <https://sass-lang.com/>
+[1]: <https://sass-lang.com/>
+[2]: <https://www.robotinaponcho.net/>
