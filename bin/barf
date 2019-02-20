@@ -6,18 +6,18 @@
 # please refer to the accompanying "LICENCE" file.
 
 
-# The following kludges allow this Rakefile to be easily used in other
-# projects by using Node packages and Ruby gems already installed
-# alongside it. NPM will install packages locally by default, while
-# Bundler can be made to do so with "bundle install --standalone".
-ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
-
+# The following kludges allow this script to be used in other projects
+# by using Node packages and Ruby gems already installed alongside it.
+# NPM will install packages locally by default, while Bundler can be
+# made to do so with "bundle install --standalone".
 begin
   require_relative "bundle/bundler/setup"
+  ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
 rescue LoadError
   require "bundler"
   Bundler.setup
 end
+
 
 require "getoptlong"
 require "open3"
