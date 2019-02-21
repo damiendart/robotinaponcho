@@ -201,7 +201,7 @@ ul {
   /* hr */ &__rule {
     display: none; } }
 
-/* div */.introduction {
+/* div */.flippywindow-introduction {
   background: url("https://www.robotinaponcho.net/flippywindow/background.svg"), #65b3eb;
   background-size: cover;
   color: #ffffff;
@@ -231,7 +231,9 @@ ul {
       top: $base-line-height / -2;
       width: 100%; }
     img {
-      display: block; } } }
+      display: block; } }
+  /* h1 */ &__title {
+    margin: 0 0 $base-line-height * 3 0; } }
 
 /* header */.header {
   @include clearfix;
