@@ -66,7 +66,7 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
     (sitemap_entries ||= []) << File.join(page["url_base"], page["slug"])
     stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
-        (page["no_minify_urls"] ? "" : "--minify-urls #{page["url"]} "))
+        (page["no_minify_urls"] ? "" : "--minify-urls #{sitemap_entries.last} "))
     stdin.puts(Redcarpet::Render::SmartyPants.render(
         base_template.render(Object.new, page)))
     stdin.close
@@ -78,11 +78,8 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
     compiled_output = sass(File.read(file), file)
   end
   FileUtils.mkdir_p(File.dirname(output_file))
-  if defined? compiled_output
-    File.write(output_file, compiled_output)
-  else
-    FileUtils.cp(file, output_file)
-  end
+  compiled_output ? File.write(output_file, compiled_output) :
+      FileUtils.cp(file, output_file)
   puts "#{"\u2713".force_encoding("utf-8")} Written \"#{output_file}\"."
 end
 
