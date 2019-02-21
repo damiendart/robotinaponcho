@@ -9,6 +9,7 @@
   css_external:
     - https://use.typekit.net/rvl0fuw.css
     - /assets/style.css
+  footer_show: true
   header_bem_modifiers: []
   javascript:
     - src/_base.js
@@ -68,6 +69,10 @@
             %a{:href => "#"} Privacy Policy
       %hr.header__rule
     = haml(content)
+    - if footer_show
+      %footer.footer
+        %hr.footer__rule
+        %p.footer__copyright Copyright &copy; 2019 <a href="#{url_base}">Damien Dart</a>.
     - javascript_external.each do |i|
       %script{:async => true, :src => i}
     - javascript.each do |i|
