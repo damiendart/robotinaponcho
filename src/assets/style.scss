@@ -9,12 +9,14 @@
 
 
 $base-background-colour: #ffffff;
-$base-feature-colour: #f96e00;
 $base-font-size: 16px;
 $base-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 $base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
 $content-width: 37.5rem;
+$tumbling-robots-background-colour: #f96e00;
+$tumbling-robots-foreground-colour: #ffffff;
+$tumbling-robots-menu-text-colour: #000000;
 
 
 @include hamburger($base-line-height * 1.5, $base-line-height / 6,
@@ -124,23 +126,33 @@ ul {
   position: relative;
   @media (hover: hover) {
     &:focus-within, &:hover {
-      --hamburger-colour: #{$base-background-colour};
+      --hamburger-colour:
+          var(--menu-foreground-colour, #{$base-background-colour});
       background: $base-foreground-colour;
-      color: $base-background-colour; }
+      background: var(--menu-background-colour, #{$base-foreground-colour});
+      color: $base-background-colour;
+      color: var(--menu-foreground-colour, #{$base-background-colour}); }
     &:focus-within > &__list, &:hover > &__list {
       right: 0; } }
   @media (hover: none) {
     &--open {
-      --hamburger-colour: #{$base-background-colour};
-      background: $base-foreground-colour;
-      color: $base-background-colour; }
+      --hamburger-colour:
+          var(--menu-foreground-colour, #{$base-background-colour});
+      // TODO: Remove "!important" kludges.
+      background: $base-foreground-colour !important;
+      background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
+      color: $base-background-colour;
+      color: var(--menu-foreground-colour, #{$base-background-colour}); }
     &--open &__list {
       right: 0; }
     @at-root {
       html:not(.javascript) & {
-        --hamburger-colour: #{$base-background-colour};
+        --hamburger-colour:
+            var(--menu-foreground-colour, #{$base-background-colour});
         background: $base-foreground-colour;
-        color: $base-background-colour; } } }
+        background: var(--menu-background-colour, #{$base-foreground-colour});
+        color: $base-background-colour;
+        color: var(--menu-foreground-colour, #{$base-background-colour}); } } }
   /* h2 */ &__title {
     font-size: 100%;
     font-weight: bold;
@@ -223,10 +235,24 @@ ul {
 
 /* header */.header {
   @include clearfix;
+  border-bottom: $base-line-height / 16 solid #ccc;
   box-sizing: border-box;
   padding: $base-line-height * 2;
-  margin: 0 auto;
+  margin: 0 0 $base-line-height / -16 0;
   width: 100%;
+  @media only screen and (max-width: 767px) {
+    padding: $base-line-height; }
+  &--homepage {
+    --hamburger-colour: #{$tumbling-robots-foreground-colour};
+    --menu-background-colour: #{$tumbling-robots-foreground-colour};
+    --menu-foreground-colour: #{$tumbling-robots-menu-text-colour};
+    border: 0;
+    color: $tumbling-robots-foreground-colour;
+    margin: 0 auto;
+    > * {
+      background: $tumbling-robots-background-colour; } }
+  &--no-border {
+    border: 0; }
   a {
     text-decoration: none;
     &[href="#"] {
@@ -245,7 +271,9 @@ ul {
     font-size: 150%;
     line-height: $base-line-height; }
   /* div */ &__navigation {
-    float: right; } }
+    float: right; }
+  /* hr */ &__rule {
+    display: none; } }
 
 /* div */ .loading-spinner {
   animation: loading 0.75s infinite linear;
@@ -273,10 +301,12 @@ ul {
         transform: rotate(360deg); } } } }
 
 /* div */.tumbling-robots {
-  background: linear-gradient(to top, darken($base-feature-colour, 10),
-      $base-feature-colour 25vh) no-repeat, $base-feature-colour;
+  background: linear-gradient(to top,
+      darken($tumbling-robots-background-colour, 10),
+      $tumbling-robots-background-colour 25vh) no-repeat,
+      $tumbling-robots-background-colour;
   background-position: center 25vh;
-  border-bottom: $base-line-height * 2 solid $base-feature-colour;
+  border-bottom: $base-line-height * 2 solid $tumbling-robots-background-colour;
   height: 150%;
   left: 0;
   position: fixed;

@@ -9,6 +9,7 @@
   css_external:
     - https://use.typekit.net/rvl0fuw.css
     - /assets/style.css
+  header_bem_modifiers: []
   javascript:
     - src/_base.js
   javascript_external: []
@@ -42,7 +43,7 @@
       %style= sass(File.read(i))
     %title #{title} (www.robotinaponcho.net)
   %body
-    %header.header
+    %header.header{:class => header_bem_modifiers.map{ |m| "header--#{m}" }}
       %h1.header__title
         %a{:href => "/"} Damien Dart
       %nav.header__navigation.dropdown-menu
@@ -65,6 +66,7 @@
             %a{:href => "/art/"} My artwork and drawings
           %li.dropdown-menu__list__item
             %a{:href => "#"} Privacy Policy
+      %hr.header__rule
     = haml(content)
     - javascript_external.each do |i|
       %script{:async => true, :src => i}
