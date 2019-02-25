@@ -25,6 +25,15 @@ require "haml"
 require "redcarpet"
 
 
+module FrontMatterParser::SyntaxParser
+  Markdown = MultiLineComment["<!--", "-->"]
+end
+
+
+def markdown(markdown)
+  Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(markdown)
+end
+
 def sass(sass, source_file = nil)
   css, error, _ = Open3.capture3(
     "npx sass -I #{File.join(File.dirname(__dir__), "sass-toolkit")} --stdin | " +
@@ -55,13 +64,13 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
   next if (File.directory?(file)) or (file =~ /\/_/)
   output_file = file.gsub(source_directory, output_directory)
   case File.extname(file)
-  when ".haml"
-    output_file.gsub!(/haml$/, "html")
+  when /.(haml|markdown)$/
+    output_file.gsub!(/(haml|markdown)$/, "html")
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
-    page["content"] = parsed.content
+    page["content"] = send($1, parsed.content)
     page["slug"] = output_file.gsub(output_directory + "/", "").gsub(/(index)?\.html/, "")
     (sitemap_entries ||= []) << File.join(page["url_base"], page["slug"])
     stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
