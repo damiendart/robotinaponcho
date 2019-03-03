@@ -85,6 +85,8 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
   when ".scss"
     output_file.gsub!(/scss$/, "css")
     compiled_output = sass(File.read(file), file)
+  when ".svg"
+    compiled_output = `npx svgo #{file} -o -`
   end
   FileUtils.mkdir_p(File.dirname(output_file))
   compiled_output ? File.write(output_file, compiled_output) :

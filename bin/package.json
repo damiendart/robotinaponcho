@@ -5,6 +5,7 @@
     "html-minifier": "*",
     "postcss-cli": "*",
     "sass": "*",
+    "svgo": "*",
     "uglify-js": "*"
   }
 }
