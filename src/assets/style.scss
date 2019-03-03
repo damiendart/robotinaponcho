@@ -99,6 +99,21 @@ ul {
       margin: 0; } } }
 
 
+/* div */.admonition {
+  background-position: $base-line-height $base-line-height;
+  background-repeat: no-repeat;
+  background-size: $base-line-height * 2;
+  box-sizing: border-box;
+  margin: $base-line-height auto;
+  max-width: $content-width + ($base-line-height * 2);
+  padding: $base-line-height $base-line-height
+      $base-line-height $base-line-height * 4;
+  > *:first-child {
+    margin: 0; }
+  &--metadata {
+    background-color: #dddddd;
+    background-image: url("/assets/icon-help.svg"); } }
+
 @media only screen and (max-width: 767px) {
   /* span */.collapsable {
     display: none; } }
@@ -302,6 +317,11 @@ ul {
         transform: rotate(0deg); }
       100% {
         transform: rotate(360deg); } } } }
+
+/* ul */.metadata-list {
+  list-style: none;
+  /* li */ &__item {
+    margin: 0; } }
 
 /* div */.tumbling-robots {
   background: linear-gradient(to top,

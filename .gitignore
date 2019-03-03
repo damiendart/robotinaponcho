@@ -8,6 +8,8 @@ bin/.bundle/
 bin/bundle/
 bin/Gemfile.lock
 public/
+# The following icons are available from <https://iconsvg.xyz/>.
+src/assets/icon-*.svg
 # The following file is the concatenation of two JavaScript files:
 #   - the latest version of "build/decomp.min.js" from
 #   <https://github.com/schteppe/poly-decomp.js> and
