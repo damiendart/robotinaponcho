@@ -20,4 +20,4 @@ src/assets/itchio.svg
 src/flippywindow/arrow.png
 src/flippywindow/background.svg
 src/flippywindow/screenshot.png
-src/notes/*.haml
+src/notes/*.markdown
