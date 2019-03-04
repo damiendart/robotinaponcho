@@ -15,7 +15,7 @@ function update_modified() {
         time_since < 5184000 && "a month ago" ||
         time_since < 31536000 && Math.floor(time_since / 2592000) + " months ago" ||
         time_since < 63072000 && "a year ago" ||
-        Math.floor(time_since / 31536000) + " years ago";
+        Math.ceil(time_since / 31536000) + " years ago";
   }
 }
 
