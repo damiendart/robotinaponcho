@@ -31,7 +31,7 @@
   border-radius: 0; }
 
 // TODO: Clean this up and add documentation.
-@mixin hamburger($width, $layer-height, $spacing-height, $colour) {
+@mixin hamburger($width, $layer-height, $spacing-height) {
   /* div */.hamburger {
     $height: $layer-height * 3 + $spacing-height * 2;
     display: inline-block;
@@ -42,13 +42,13 @@
       margin: $layer-height / -2 0 0 0;
       top: 50%;
       &:after {
-        bottom: ($spacing-height + $layer-height) * -1; }
-      &:before {
-        top: ($spacing-height + $layer-height) * -1; }
-      &:after, &:before {
+        bottom: ($spacing-height + $layer-height) * -1;
         content: ""; }
+      &:before {
+        content: "";
+        top: ($spacing-height + $layer-height) * -1; }
       &, &:after, &:before {
-        background: var(--hamburger-colour, $colour);
+        background: currentColor;
         border-radius: $layer-height;
         display: block;
         height: $layer-height;

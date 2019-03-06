@@ -19,8 +19,8 @@ $tumbling-robots-foreground-colour: #ffffff;
 $tumbling-robots-menu-text-colour: #000000;
 
 
-@include hamburger($base-line-height * 1.5, $base-line-height / 6,
-    $base-line-height / 4, #000);
+@include hamburger(
+  $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4);
 
 
 a {
@@ -153,8 +153,6 @@ ul {
   position: relative;
   @media (hover: hover) {
     &:focus-within, &:hover {
-      --hamburger-colour:
-          var(--menu-foreground-colour, #{$base-background-colour});
       background: $base-foreground-colour;
       background: var(--menu-background-colour, #{$base-foreground-colour});
       color: $base-background-colour;
@@ -163,8 +161,6 @@ ul {
       right: 0; } }
   @media (hover: none) {
     &--open {
-      --hamburger-colour:
-          var(--menu-foreground-colour, #{$base-background-colour});
       // TODO: Remove "!important" kludges.
       background: $base-foreground-colour !important;
       background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
@@ -174,8 +170,6 @@ ul {
       right: 0; }
     @at-root {
       html:not(.javascript) & {
-        --hamburger-colour:
-            var(--menu-foreground-colour, #{$base-background-colour});
         background: $base-foreground-colour;
         background: var(--menu-background-colour, #{$base-foreground-colour});
         color: $base-background-colour;
@@ -264,7 +258,6 @@ ul {
   @media only screen and (max-width: 767px) {
     padding: $base-line-height; }
   &--homepage {
-    --hamburger-colour: #{$tumbling-robots-foreground-colour};
     --menu-background-colour: #{$tumbling-robots-foreground-colour};
     --menu-foreground-colour: #{$tumbling-robots-menu-text-colour};
     border: 0;
