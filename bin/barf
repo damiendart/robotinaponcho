@@ -5,7 +5,6 @@
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
 
-
 require 'bundler/inline'
 require 'fileutils'
 require 'open3'
@@ -13,94 +12,103 @@ require 'yaml'
 
 gemfile do
   source 'https://rubygems.org'
-  gem "front_matter_parser"
-  gem "haml"
-  gem "html-proofer", :require => false
-  gem "redcarpet"
+  gem 'front_matter_parser'
+  gem 'haml'
+  gem 'html-proofer', require: false
+  gem 'redcarpet'
 end
 
 # The accompanying "package.json" lists all Node.js-related depedencies.
-ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
+ENV['PATH'] = "#{__dir__}/node_modules/.bin:" + ENV['PATH']
 
-module FrontMatterParser::SyntaxParser
-  Markdown = MultiLineComment["<!--", "-->"]
+module FrontMatterParser
+  module SyntaxParser
+    Markdown = MultiLineComment['<!--', '-->']
+  end
 end
-
 
 def markdown(markdown)
   Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(markdown)
 end
 
-def sass(sass, source_file = nil)
-  css, error, _ = Open3.capture3(
-    "npx sass -I #{File.join(File.dirname(__dir__), "sass-toolkit")} --stdin | " +
-      "npx postcss --use autoprefixer | npx cleancss", :stdin_data => sass)
-  unless error.empty?
-    puts "# ERROR while processing \"#{source_file}\"!" unless source_file.empty?
-    STDERR.puts error
-    exit 2
-  end
-  css
+def sass(sass)
+  # TODO: Add error handling.
+  Open3.capture3(
+    "npx sass -I #{File.join(__dir__, '..', 'sass-toolkit')} --stdin | " \
+      'npx postcss --use autoprefixer | npx cleancss',
+    stdin_data: sass
+  )
 end
 
 def haml(haml)
   Haml::Engine.new(haml).render
 end
 
-
-output_directory = File.expand_path(ENV["BARF_OUTPUT"] || "./public")
-source_directory = File.expand_path(ENV["BARF_SOURCE"] || "./src")
+output_directory = File.expand_path(ENV['BARF_OUTPUT'] || './public')
+source_directory = File.expand_path(ENV['BARF_SOURCE'] || './src')
 sitemap_entries = []
 
-if (File.exist?(File.join(source_directory, "_base.haml")))
+if File.exist?(File.join(source_directory, '_base.haml'))
   base = FrontMatterParser::Parser.parse_file(
-      File.join(source_directory, "_base.haml"))
+    File.join(source_directory, '_base.haml')
+  )
   base_template = Haml::Engine.new(base.content)
 end
 
-Dir.glob(File.join(source_directory, "**/*")).each do |file|
-  next if (File.directory?(file)) or (file =~ /\/_/)
+Dir.glob(File.join(source_directory, '**/*')).each do |file|
+  next if File.directory?(file) || file =~ %r{\/_}
+
   output_file = file.gsub(source_directory, output_directory)
   case File.extname(file)
   when /.(haml|markdown)$/
-    output_file.gsub!(/(haml|markdown)$/, "html")
+    output_file.gsub!(/(haml|markdown)$/, 'html')
     parsed = FrontMatterParser::Parser.parse_file(file)
-    page = base.front_matter.merge(parsed.front_matter) do |key, old, new|
+    page = base.front_matter.merge(parsed.front_matter) do |_, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
-    page["content"] = send($1, parsed.content)
-    page["slug"] = output_file.gsub(output_directory + "/", "").gsub(/(index)?\.html/, "")
-    sitemap_entries << File.join(page["url_base"], page["slug"])
-    stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
-        "--decode-entities --minify-js --minify-css --remove-comments " +
-        (page["no_minify_urls"] ? "" : "--minify-urls #{sitemap_entries.last} "))
-    stdin.puts(Redcarpet::Render::SmartyPants.render(
-        base_template.render(Object.new, page)))
+    page['content'] = send(File.extname(file)[1..-1], parsed.content)
+    page['slug'] = output_file.gsub(
+      output_directory + '/', ''
+    ).gsub(/(index)?\.html/, '')
+    sitemap_entries << File.join(page['url_base'], page['slug'])
+    stdin, stdout, = Open3.popen3(
+      'npx html-minifier --collapse-whitespace --decode-entities ' +
+      '--minify-js --minify-css --remove-comments' +
+      (page['no_minify_urls'] ? '' : " --minify-urls #{sitemap_entries.last}")
+    )
+    stdin.puts(
+      Redcarpet::Render::SmartyPants.render(
+        base_template.render(Object.new, page)
+      )
+    )
     stdin.close
     compiled_output = stdout.read
-  when ".js"
+  when '.js'
     compiled_output = `npx uglifyjs #{file} -b beautify=false`
-  when ".scss"
-    output_file.gsub!(/scss$/, "css")
-    compiled_output = sass(File.read(file), file)
-  when ".svg"
+  when '.scss'
+    output_file.gsub!(/scss$/, 'css')
+    compiled_output = sass(File.read(file))
+  when '.svg'
     compiled_output = `npx svgo #{file} -o -`
   end
   FileUtils.mkdir_p(File.dirname(output_file))
-  compiled_output ? File.write(output_file, compiled_output) :
-      FileUtils.cp(file, output_file)
-  puts "#{"\u2713".force_encoding("utf-8")} Written \"#{output_file}\"."
+  if compiled_output
+    File.write(output_file, compiled_output)
+  else
+    FileUtils.cp(file, output_file)
+  end
+  puts "#{"\u2713".force_encoding('utf-8')} Written \"#{output_file}\"."
 end
 
 unless sitemap_entries.empty?
-  sitemap_file = File.join(output_directory, "sitemap.xml")
-  File.open(sitemap_file, "w") do |file|
-    file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
-    file.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
+  sitemap_file = File.join(output_directory, 'sitemap.xml')
+  File.open(sitemap_file, 'w') do |file|
+    file.write('<?xml version="1.0" encoding="UTF-8"?>')
+    file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     sitemap_entries.each do |entry|
       file.write("<url><loc>#{entry}</loc></url>")
     end
-    file.write("</urlset>")
+    file.write('</urlset>')
   end
-  puts "\r#{"\u2713".force_encoding("utf-8")} Written \"#{sitemap_file}\"."
+  puts "\r#{"\u2713".force_encoding('utf-8')} Written \"#{sitemap_file}\"."
 end
