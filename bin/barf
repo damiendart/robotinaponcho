@@ -6,24 +6,21 @@
 # please refer to the accompanying "LICENCE" file.
 
 
-# Use locally-installed gems and packages. NPM installs packages locally
-# by default while Bundler can do so with "bundle install --standalone".
-ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
-begin
-  require_relative "bundle/bundler/setup"
-rescue LoadError
-  require "bundler"
-  Bundler.setup
+require 'bundler/inline'
+require 'fileutils'
+require 'open3'
+require 'yaml'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem "front_matter_parser"
+  gem "haml"
+  gem "html-proofer", :require => false
+  gem "redcarpet"
 end
 
-
-require "fileutils"
-require "open3"
-require "yaml"
-require "front_matter_parser"
-require "haml"
-require "redcarpet"
-
+# The accompanying "package.json" lists all Node.js-related depedencies.
+ENV["PATH"] = "#{__dir__}/node_modules/.bin:" + ENV["PATH"]
 
 module FrontMatterParser::SyntaxParser
   Markdown = MultiLineComment["<!--", "-->"]
