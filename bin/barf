@@ -53,6 +53,7 @@ end
 
 output_directory = File.expand_path(ENV["BARF_OUTPUT"] || "./public")
 source_directory = File.expand_path(ENV["BARF_SOURCE"] || "./src")
+sitemap_entries = []
 
 if (File.exist?(File.join(source_directory, "_base.haml")))
   base = FrontMatterParser::Parser.parse_file(
@@ -72,7 +73,7 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
     end
     page["content"] = send($1, parsed.content)
     page["slug"] = output_file.gsub(output_directory + "/", "").gsub(/(index)?\.html/, "")
-    (sitemap_entries ||= []) << File.join(page["url_base"], page["slug"])
+    sitemap_entries << File.join(page["url_base"], page["slug"])
     stdin, stdout, stderr = Open3.popen3("npx html-minifier --collapse-whitespace " +
         "--decode-entities --minify-js --minify-css --remove-comments " +
         (page["no_minify_urls"] ? "" : "--minify-urls #{sitemap_entries.last} "))
@@ -94,7 +95,7 @@ Dir.glob(File.join(source_directory, "**/*")).each do |file|
   puts "#{"\u2713".force_encoding("utf-8")} Written \"#{output_file}\"."
 end
 
-if defined? sitemap_entries
+unless sitemap_entries.empty?
   sitemap_file = File.join(output_directory, "sitemap.xml")
   File.open(sitemap_file, "w") do |file|
     file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
@@ -104,5 +105,5 @@ if defined? sitemap_entries
     end
     file.write("</urlset>")
   end
-  puts "\r#{"\u2713".force_encoding("utf-8")} Written \"#{sitemap_file}\"!"
+  puts "\r#{"\u2713".force_encoding("utf-8")} Written \"#{sitemap_file}\"."
 end
