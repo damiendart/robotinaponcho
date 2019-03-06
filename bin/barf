@@ -72,9 +72,8 @@ Dir.glob(File.join(source_directory, '**/*')).each do |file|
     ).gsub(/(index)?\.html/, '')
     sitemap_entries << File.join(page['url_base'], page['slug'])
     stdin, stdout, = Open3.popen3(
-      'npx html-minifier --collapse-whitespace --decode-entities ' +
-      '--minify-js --minify-css --remove-comments' +
-      (page['no_minify_urls'] ? '' : " --minify-urls #{sitemap_entries.last}")
+      'npx html-minifier --collapse-whitespace --decode-entities ' \
+      '--minify-js --minify-css --remove-comments'
     )
     stdin.puts(
       Redcarpet::Render::SmartyPants.render(
