@@ -37,7 +37,7 @@ def sass(sass)
     "npx sass -I #{File.join(__dir__, '..', 'sass-toolkit')} --stdin | " \
       'npx postcss --use autoprefixer | npx cleancss',
     stdin_data: sass
-  )
+  )[0]
 end
 
 def haml(haml)
