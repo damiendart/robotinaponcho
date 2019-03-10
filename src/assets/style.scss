@@ -320,6 +320,7 @@ ul {
       border: 0;
       color: $tumbling-robots-foreground-colour;
       margin: 0 auto;
+      position: fixed;
       > * {
         background: $tumbling-robots-background-colour; } } } }
 
