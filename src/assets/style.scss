@@ -153,8 +153,9 @@ ul {
   position: relative;
   @media (hover: hover) {
     &:focus-within, &:hover {
-      background: $base-foreground-colour;
-      background: var(--menu-background-colour, #{$base-foreground-colour});
+      // TODO: Remove "!important" kludges.
+      background: $base-foreground-colour !important;
+      background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
       color: $base-background-colour;
       color: var(--menu-foreground-colour, #{$base-background-colour}); }
     &:focus-within > &__list, &:hover > &__list {
@@ -170,8 +171,8 @@ ul {
       right: 0; }
     @at-root {
       html:not(.javascript) & {
-        background: $base-foreground-colour;
-        background: var(--menu-background-colour, #{$base-foreground-colour});
+        background: $base-foreground-colour !important;
+        background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
         color: $base-background-colour;
         color: var(--menu-foreground-colour, #{$base-background-colour}); } } }
   /* h2 */ &__title {
@@ -257,14 +258,6 @@ ul {
   width: 100%;
   @media only screen and (max-width: 767px) {
     padding: $base-line-height; }
-  &--homepage {
-    --menu-background-colour: #{$tumbling-robots-foreground-colour};
-    --menu-foreground-colour: #{$tumbling-robots-menu-text-colour};
-    border: 0;
-    color: $tumbling-robots-foreground-colour;
-    margin: 0 auto;
-    > * {
-      background: $tumbling-robots-background-colour; } }
   &--no-border {
     border: 0; }
   a {
@@ -318,6 +311,17 @@ ul {
   list-style: none;
   /* li */ &__item {
     margin: 0; } }
+
+/* body */.page {
+  &--homepage {
+    .header {
+      --menu-background-colour: #{$tumbling-robots-foreground-colour};
+      --menu-foreground-colour: #{$tumbling-robots-menu-text-colour};
+      border: 0;
+      color: $tumbling-robots-foreground-colour;
+      margin: 0 auto;
+      > * {
+        background: $tumbling-robots-background-colour; } } } }
 
 /* div */.tumbling-robots {
   background: linear-gradient(to top,

@@ -10,7 +10,7 @@
     - https://use.typekit.net/rvl0fuw.css
     - /assets/style.css
   footer_show: true
-  header_bem_modifiers: []
+  page_bem_modifiers: []
   javascript:
     - src/_base.js
   javascript_external: []
@@ -43,8 +43,8 @@
     - scss.each do |i|
       %style= sass(File.read(i))
     %title #{title} (www.robotinaponcho.net)
-  %body
-    %header.header{:class => header_bem_modifiers.map{ |m| "header--#{m}" }}
+  %body{:class => page_bem_modifiers.map{ |m| "page--#{m}" }}
+    %header.header
       %h1.header__title
         %a{:href => "/"} Damien Dart
       %nav.header__navigation.dropdown-menu

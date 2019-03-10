@@ -72,7 +72,7 @@ Dir.glob(File.join(source_directory, '**/*')).each do |file|
     sitemap_entries << File.join(page['url_base'], page['slug'])
     stdin, stdout, = Open3.popen3(
       'npx html-minifier --collapse-whitespace --decode-entities ' \
-      '--minify-js --minify-css --remove-comments'
+      '--minify-js --minify-css --remove-comments --remove-empty-attributes'
     )
     stdin.puts(
       Redcarpet::Render::SmartyPants.render(
