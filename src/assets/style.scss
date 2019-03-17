@@ -113,6 +113,10 @@ ul {
       $base-line-height $base-line-height * 4;
   > *:first-child {
     margin: 0; }
+  &--info {
+    background-color: #0fbcf9;
+    background-image: url("icon-info.svg");
+    color: #ffffff; }
   &--metadata {
     background-color: #dddddd;
     background-image: url("/assets/icon-help.svg"); } }
