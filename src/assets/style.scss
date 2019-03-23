@@ -13,6 +13,10 @@ $base-font-size: 16px;
 $base-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 $base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
+
+$colour-admonition-info: #0fbcf9;
+$colour-admonition-metadata: #dddddd;
+
 $content-width: 37.5rem;
 $tumbling-robots-background-colour: #f96e00;
 $tumbling-robots-foreground-colour: #ffffff;
@@ -114,12 +118,13 @@ ul {
   > *:first-child {
     margin: 0; }
   &--info {
-    background-color: #0fbcf9;
+    background-color: $colour-admonition-info;
     background-image: url("icon-info.svg");
-    color: #ffffff; }
+    color: contrasting-colour($colour-admonition-info); }
   &--metadata {
-    background-color: #dddddd;
-    background-image: url("/assets/icon-help.svg"); } }
+    background-color: $colour-admonition-metadata;
+    background-image: url("/assets/icon-help.svg");
+    color: contrasting-colour($colour-admonition-metadata)} }
 
 @media only screen and (max-width: 767px) {
   /* span */.collapsable {

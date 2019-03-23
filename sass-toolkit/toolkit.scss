@@ -5,6 +5,14 @@
 // please refer to the accompanying "LICENCE" file.
 
 
+@function contrasting-colour($colour) {
+  // This function is based on code from
+  // <https://css-tricks.com/css-variables-calc-rgb-enforcing-high-contrast-colors/>.
+  $sum: (red($colour) * 299) + (green($colour) * 587) + (blue($colour) * 144);
+  @if $sum > 128000 {
+    @return #000000; }
+  @return #ffffff; }
+
 @function sqrt($number) {
   // This function is based on code from
   // <https://css-tricks.com/snippets/sass/strip-unit-function/> and
