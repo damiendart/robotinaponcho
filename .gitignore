@@ -4,9 +4,9 @@
 # This file is distributed under the MIT licence. For more information,
 # please refer to the accompanying "LICENCE" file.
 
-bin/.bundle/
-bin/bundle/
-bin/Gemfile.lock
+.bundle/
+bundle/
+Gemfile.lock
 public/
 # The following icons are available from <https://iconsvg.xyz/>.
 src/assets/icon-help.svg

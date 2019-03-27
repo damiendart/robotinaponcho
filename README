@@ -3,8 +3,8 @@ robotinaponcho
 
 A hodgepodge of:
 
-  - a basic static site generator (_bin/barf_),
-  - some reusable [Sass][1] bits and pieces (_sass-toolkit_), and
+  - a basic static site generator (_builtstaticsite_),
+  - some reusable [Sass][1] bits and pieces (_resources/sass_), and
   - source code to my [personal website][2] (everything else).
 
 Feel free to use whatever you find useful here for your own projects.

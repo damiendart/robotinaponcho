@@ -34,7 +34,7 @@ end
 def sass(sass)
   # TODO: Add error handling.
   Open3.capture3(
-    "npx sass -I #{File.join(__dir__, '..', 'sass-toolkit')} --stdin | " \
+    "npx sass -I #{File.join(__dir__, 'resources', 'sass')} --stdin | " \
       'npx postcss --use autoprefixer | npx cleancss',
     stdin_data: sass
   )[0]
