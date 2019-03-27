@@ -37,7 +37,7 @@
       %meta{:content => "website", :property => "og:type"}
       %meta{:content => "#{url_base}#{slug}", :property => "og:url"}
       %meta{:content => "@damiendart", :name => "twitter:creator"}
-    %meta{:content => "initial-scale=1.0, width=device-width, user-scalable=yes", "name" => "viewport"}
+    %meta{:content => "initial-scale=1.0, width=device-width, user-scalable=1", "name" => "viewport"}
     - if (javascript.any? or javascript_external.any?)
       %script document.documentElement.className += "javascript";
     - scss.each do |i|
