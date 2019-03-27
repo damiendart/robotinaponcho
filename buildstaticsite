@@ -44,8 +44,8 @@ def haml(haml)
   Haml::Engine.new(haml).render
 end
 
-output_directory = File.expand_path(ENV['BARF_OUTPUT'] || './public')
-source_directory = File.expand_path(ENV['BARF_SOURCE'] || './src')
+output_directory = File.expand_path(ENV['BSS_OUTPUT'] || './public')
+source_directory = File.expand_path(ENV['BSS_SOURCE'] || './src')
 sitemap_entries = []
 
 if File.exist?(File.join(source_directory, '_base.haml'))
