@@ -3,7 +3,7 @@ robotinaponcho
 
 A hodgepodge of:
 
-  - a basic static site generator (_builtstaticsite_),
+  - a basic static site generator (_builtstatic_),
   - some reusable [Sass][1] bits and pieces (_resources/sass_), and
   - source code to my [personal website][2] (everything else).
 
