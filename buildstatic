@@ -27,6 +27,10 @@ module FrontMatterParser
   end
 end
 
+def read_source_file(file)
+  File.read(File.join(ENV['BS_SOURCE'] || './static_src', file))
+end
+
 def markdown(markdown)
   Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(markdown)
 end

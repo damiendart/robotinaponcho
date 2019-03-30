@@ -12,7 +12,7 @@
   footer_show: true
   page_bem_modifiers: []
   javascript:
-    - static_src/_base.js
+    - _base.js
   javascript_external: []
   no_social: false
   scss: []
@@ -41,7 +41,7 @@
     - if (javascript.any? or javascript_external.any?)
       %script document.documentElement.className += "javascript";
     - scss.each do |i|
-      %style= sass(File.read(i))
+      %style= sass(read_source_file(i))
     %title #{title} (www.robotinaponcho.net)
   %body{:class => page_bem_modifiers.map{ |m| "page--#{m}" }}
     %header.header
@@ -76,4 +76,4 @@
     - javascript_external.each do |i|
       %script{:async => true, :src => i}
     - javascript.each do |i|
-      %script= File.read(i)
+      %script= read_source_file(i)
