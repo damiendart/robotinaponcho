@@ -31,72 +31,79 @@ def read_source_file(file)
   File.read(File.join(ENV['BS_SOURCE'] || './static_src', file))
 end
 
-def markdown(markdown)
-  Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(markdown)
+def convert_markdown(input)
+  Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(input)
 end
 
-def sass(sass)
+def convert_scss(input)
   # TODO: Add error handling.
   Open3.capture3(
     "npx sass -I #{File.join(__dir__, 'resources', 'sass')} --stdin | " \
       'npx postcss --use autoprefixer | npx cleancss',
-    stdin_data: sass
+    stdin_data: input
   )[0]
 end
 
-def haml(haml)
-  Haml::Engine.new(haml).render
+def convert_haml(input)
+  Haml::Engine.new(input).render
 end
 
-output_directory = File.expand_path(ENV['BS_OUTPUT'] || './public')
-source_directory = File.expand_path(ENV['BS_SOURCE'] || './static_src')
+def convert_html(input)
+  Open3.capture3(
+    'npx html-minifier --collapse-whitespace --decode-entities ' \
+      '--minify-js --minify-css --remove-comments --remove-empty-attributes',
+    stdin_data: Redcarpet::Render::SmartyPants.render(input)
+  )[0]
+end
+
+def convert_js(input)
+  Open3.capture3('npx uglifyjs -b beautify=false', stdin_data: input)[0]
+end
+
+def convert_svg(input)
+  Open3.capture3('npx svgo -i -', stdin_data: input)[0]
+end
+
+def convert_ext(input)
+  case input
+  when /(.haml|.markdown)/ then return '.html'
+  when '.scss' then return '.css'
+  end
+  input
+end
+
+output_dir = File.expand_path(ENV['BS_OUTPUT'] || './public')
+source_dir = File.expand_path(ENV['BS_SOURCE'] || './static_src')
 sitemap_entries = []
 
-if File.exist?(File.join(source_directory, '_base.haml'))
+if File.exist?(File.join(source_dir, '_base.haml'))
   base = FrontMatterParser::Parser.parse_file(
-    File.join(source_directory, '_base.haml')
+    File.join(source_dir, '_base.haml')
   )
   base_template = Haml::Engine.new(base.content)
 end
 
-Dir.glob(File.join(source_directory, '**/*')).each do |file|
+Dir.glob(File.join(source_dir, '**/*')).each do |file|
   next if File.directory?(file) || file =~ %r{\/_}
 
-  output_file = file.sub(source_directory, output_directory)
-  case File.extname(file)
-  when /.(haml|markdown)$/
+  output_file = file.sub(source_dir, output_dir)
+  output_file.sub!(File.extname(file), convert_ext(File.extname(file)))
+  case File.extname(file)[1..-1]
+  when /(haml|markdown)$/
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |_, old, new|
       old.is_a?(Array) ? [old, new].flatten : new
     end
-    page['content'] = send(File.extname(file)[1..-1], parsed.content)
-    page['slug'] = output_file.sub(
-      output_directory + '/', ''
-    ).sub(/(index)?\.html/, '')
+    page['content'] = send("convert_#{Regexp.last_match(1)}", parsed.content)
+    page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.html)}, '')
     sitemap_entries << File.join(page['url_base'], page['slug'])
-    stdin, stdout, = Open3.popen3(
-      'npx html-minifier --collapse-whitespace --decode-entities ' \
-      '--minify-js --minify-css --remove-comments --remove-empty-attributes'
-    )
-    stdin.puts(
-      Redcarpet::Render::SmartyPants.render(
-        base_template.render(Object.new, page)
-      )
-    )
-    stdin.close
-    compiled_output = stdout.read
-    output_file.sub!(/(haml|markdown)$/, 'html')
-  when '.js'
-    compiled_output = `npx uglifyjs #{file} -b beautify=false`
-  when '.scss'
-    compiled_output = sass(File.read(file))
-    output_file.sub!(/scss$/, 'css')
-  when '.svg'
-    compiled_output = `npx svgo #{file} -o -`
+    output = convert_html(base_template.render(Object.new, page))
+  when /(js|scss|svg)/
+    output = send("convert_#{Regexp.last_match(1)}", File.read(file))
   end
   FileUtils.mkdir_p(File.dirname(output_file))
-  if compiled_output
-    File.write(output_file, compiled_output)
+  if output
+    File.write(output_file, output)
   else
     FileUtils.cp(file, output_file)
   end
@@ -104,7 +111,7 @@ Dir.glob(File.join(source_directory, '**/*')).each do |file|
 end
 
 unless sitemap_entries.empty?
-  sitemap_file = File.join(output_directory, 'sitemap.xml')
+  sitemap_file = File.join(output_dir, 'sitemap.xml')
   File.open(sitemap_file, 'w') do |file|
     file.write('<?xml version="1.0" encoding="UTF-8"?>')
     file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')

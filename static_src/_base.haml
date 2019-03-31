@@ -41,7 +41,7 @@
     - if (javascript.any? or javascript_external.any?)
       %script document.documentElement.className += "javascript";
     - scss.each do |i|
-      %style= sass(read_source_file(i))
+      %style= convert_scss(read_source_file(i))
     %title #{title} (www.robotinaponcho.net)
   %body{:class => page_bem_modifiers.map{ |m| "page--#{m}" }}
     %header.header
