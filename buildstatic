@@ -96,7 +96,9 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
     end
     page['content'] = send("convert_#{Regexp.last_match(1)}", parsed.content)
     page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.html)}, '')
-    sitemap_entries << File.join(page['url_base'], page['slug'])
+    if page['add_to_sitemap']
+      sitemap_entries << File.join(page['url_base'], page['slug'])
+    end
     output = convert_html(base_template.render(Object.new, page))
   when /(js|scss|svg)/
     output = send("convert_#{Regexp.last_match(1)}", File.read(file))
