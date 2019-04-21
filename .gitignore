@@ -20,6 +20,8 @@ static_src/assets/index-vendor.js
 # The following file is available from <https://itch.io/press-kit/>.
 static_src/assets/itchio.svg
 # The following three files are tracked elsewhere.
+static_src/assets/og.png
+static_src/assets/robot.png
 static_src/flippywindow/arrow.png
 static_src/flippywindow/background.svg
 static_src/flippywindow/screenshot.png
