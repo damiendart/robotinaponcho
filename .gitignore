@@ -11,12 +11,6 @@ public/
 # The following icons are available from <https://iconsvg.xyz/>.
 static_src/assets/icon-help.svg
 static_src/assets/icon-info.svg
-# The following file is the concatenation of two JavaScript files:
-#   - the latest version of "build/decomp.min.js" from
-#   <https://github.com/schteppe/poly-decomp.js> and
-#   - version 0.14.0 of "build/matter.min.js" from
-#   <https://github.com/liabru/matter-js>.
-static_src/assets/index-vendor.js
 # The following file is available from <https://itch.io/press-kit/>.
 static_src/assets/itchio.svg
 # The following three files are tracked elsewhere.

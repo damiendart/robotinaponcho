@@ -60,6 +60,10 @@ def convert_js(input)
   Open3.capture3('npx uglifyjs -b beautify=false', stdin_data: input)[0]
 end
 
+def convert_jserb(input)
+  convert_js(ERB.new(input).result)
+end
+
 def convert_svg(input)
   Open3.capture3('npx svgo -i -', stdin_data: input)[0]
 end
@@ -67,6 +71,7 @@ end
 def convert_ext(input)
   case input
   when /(.haml|.markdown)/ then return '.html'
+  when '.jserb' then return '.js'
   when '.scss' then return '.css'
   end
   input
@@ -100,7 +105,7 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
       sitemap_entries << File.join(page['url_base'], page['slug'])
     end
     output = convert_html(base_template.render(Object.new, page))
-  when /(js|scss|svg)/
+  when /(jserb|js|scss|svg)/
     output = send("convert_#{Regexp.last_match(1)}", File.read(file))
   end
   FileUtils.mkdir_p(File.dirname(output_file))

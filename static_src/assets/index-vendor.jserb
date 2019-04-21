@@ -1,0 +1,2 @@
+<%= File.read('node_modules/poly-decomp/build/decomp.min.js') %>
+<%= File.read('node_modules/matter-js/build/matter.min.js') %>

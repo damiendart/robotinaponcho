@@ -3,6 +3,8 @@
     "autoprefixer": "*",
     "clean-css-cli": "*",
     "html-minifier": "*",
+    "matter-js": "*",
+    "poly-decomp": "0.2.1",
     "postcss-cli": "*",
     "sass": "*",
     "svgo": "*",
