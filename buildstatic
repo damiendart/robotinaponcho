@@ -36,12 +36,14 @@ def convert_markdown(input)
 end
 
 def convert_scss(input)
-  # TODO: Add error handling.
-  Open3.capture3(
+  stdout, stderr, = Open3.capture3(
     "npx sass -I #{File.join(__dir__, 'resources', 'sass')} --stdin | " \
       'npx postcss --use autoprefixer | npx cleancss',
     stdin_data: input
-  )[0]
+  )
+  raise stderr unless stderr.empty?
+
+  stdout
 end
 
 def convert_haml(input)
@@ -49,15 +51,24 @@ def convert_haml(input)
 end
 
 def convert_html(input)
-  Open3.capture3(
+  stdout, stderr, = Open3.capture3(
     'npx html-minifier --collapse-whitespace --decode-entities ' \
       '--minify-js --minify-css --remove-comments --remove-empty-attributes',
     stdin_data: Redcarpet::Render::SmartyPants.render(input)
-  )[0]
+  )
+  raise stderr unless stderr.empty?
+
+  stdout
 end
 
 def convert_js(input)
-  Open3.capture3('npx uglifyjs -b beautify=false', stdin_data: input)[0]
+  stdout, stderr, = Open3.capture3(
+    'npx uglifyjs -b beautify=false',
+    stdin_data: input
+  )
+  raise stderr unless stderr.empty?
+
+  stdout
 end
 
 def convert_jserb(input)
