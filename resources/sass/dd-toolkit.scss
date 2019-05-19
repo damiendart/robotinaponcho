@@ -11,10 +11,10 @@ $base-line-height: 1.5rem !default;
 // Foundation 5's handling of media queries. For more information, see
 // <https://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html>.
 
-$one-pixel: (1 / $base-line-height) * 1rem; 
+$one-pixel: (1 / $base-line-height) * 1rem;
 
 $small-breakpoint: (480px / $base-font-size) * 1rem;
-$medium-breakpoint: (768px / $base-font-size) * 1rem; 
+$medium-breakpoint: (768px / $base-font-size) * 1rem;
 $large-breakpoint: (1024px / $base-font-size) * 1rem;
 $x-large-breakpoint: (1440px / $base-font-size) * 1rem;
 
