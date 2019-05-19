@@ -8,19 +8,19 @@
 @import "dd-toolkit";
 
 
-$base-background-colour: #ffffff;
 $base-font-size: 16px;
-$base-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-$base-foreground-colour: #000000;
 $base-line-height: 1.5rem;
 
-$colour-admonition-info: #0fbcf9;
-$colour-admonition-metadata: #dddddd;
-
 $content-width: 37.5rem;
-$tumbling-robots-background-colour: #f96e00;
-$tumbling-robots-foreground-colour: #ffffff;
-$tumbling-robots-menu-text-colour: #000000;
+$default-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+
+$black: #000000;
+$blue: #0fbcf9;
+$flippywindow-blue: #65b3eb;
+$gray: #dddddd;
+$itchio-pink: #fa5c5c;
+$orange: #f96e00;
+$white: #ffffff;
 
 
 @include hamburger(
@@ -32,9 +32,9 @@ a {
 
 body {
   @include nice-font-rendering;
-  background: $base-background-colour;
-  color: $base-foreground-colour;
-  font-family: $base-font-stack;
+  background: $white;
+  color: $black;
+  font-family: $default-font-stack;
   @if($base-font-size != 16px) {
     font-size: percentage($base-font-size / 16px); }
   line-height: $base-line-height;
@@ -118,13 +118,13 @@ ul {
   > *:first-child {
     margin: 0; }
   &--info {
-    background-color: $colour-admonition-info;
+    background-color: $blue;
     background-image: url("icon-info.svg");
-    color: contrasting-colour($colour-admonition-info); }
+    color: contrasting-colour($gray); }
   &--metadata {
-    background-color: $colour-admonition-metadata;
+    background-color: $gray;
     background-image: url("/assets/icon-help.svg");
-    color: contrasting-colour($colour-admonition-metadata)} }
+    color: contrasting-colour($blue)} }
 
 @media only screen and (max-width: 767px) {
   /* span */.collapsable {
@@ -137,8 +137,8 @@ ul {
   /* h2 */ &__button {
     margin: 0;
     /* a */ &__link {
-      background: #fa5c5c; // itch.io colour.
-      color: #ffffff;
+      background: $itchio-pink;
+      color: $white;
       display: inline-block;
       padding: $base-line-height / 2 $base-line-height;
       border-radius: $base-line-height;
@@ -165,19 +165,19 @@ ul {
     // ":focus-within" pseudo-class; if we include the pseudo-class in a
     // group of selectors those browsers ignore the whole thing.
     &:focus-within {
-      background: $base-foreground-colour;
-      color: $base-background-colour; }
+      background: $black;
+      color: $white; }
     &:focus-within > &__list {
       right: 0; }
     &:hover {
-      background: $base-foreground-colour;
-      color: $base-background-colour; }
+      background: $black;
+      color: $white; }
     &:hover > &__list {
       right: 0; } }
   @media (hover: none) {
     &--open {
-      background: $base-foreground-colour;
-      color: $base-background-colour; }
+      background: $black;
+      color: $white; }
     &--open &__list {
       right: 0; }
     @at-root {
@@ -198,8 +198,8 @@ ul {
   // Internet Explorer doesn't support interaction-related media queries.
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     &:hover {
-      background: $base-foreground-colour;
-      color: $base-background-colour; }
+      background: $black;
+      color: $white; }
     &:hover > &__list {
       right: 0; } }
   /* h2 */ &__title {
@@ -231,7 +231,7 @@ ul {
       padding: 0; } } }
 
 /* footer */.footer {
-  border-top: $base-line-height / 16 solid #ccc;
+  border-top: $base-line-height / 16 solid $gray;
   margin: $base-line-height * 3 auto 0;
   padding: $base-line-height * 2;
   text-align: center;
@@ -243,9 +243,9 @@ ul {
     display: none; } }
 
 /* div */.flippywindow-introduction {
-  background: url("https://www.robotinaponcho.net/flippywindow/background.svg"), #65b3eb;
+  background: url("/flippywindow/background.svg"), $flippywindow-blue;
   background-size: cover;
-  color: #ffffff;
+  color: $white;
   padding: $base-line-height * 3 $base-line-height;
   /* div */ &__blurb {
     font-size: 150%;
@@ -263,7 +263,7 @@ ul {
     margin: $base-line-height auto 0;
     max-width: 776px; // width of screenshot.
     &:after {
-      background: url("https://www.robotinaponcho.net/flippywindow/arrow.png") no-repeat 81% top;
+      background: url("/flippywindow/arrow.png") no-repeat 81% top;
       background-size: contain;
       content: "";
       display: block;
@@ -278,15 +278,13 @@ ul {
 
 /* header */.header {
   @include clearfix;
-  border-bottom: $base-line-height / 16 solid #ccc;
+  border-bottom: $base-line-height / 16 solid $gray;
   box-sizing: border-box;
   padding: $base-line-height * 2;
   margin: 0 0 $base-line-height / -16 0;
   width: 100%;
   @media only screen and (max-width: 767px) {
     padding: $base-line-height; }
-  &--no-border {
-    border: 0; }
   a {
     text-decoration: none;
     &[href="#"] {
@@ -309,9 +307,9 @@ ul {
 
 /* div */ .loading-spinner {
   animation: loading 0.75s infinite linear;
-  border: $base-line-height / 2 solid rgba($base-background-colour, 0.2);
+  border: $base-line-height / 2 solid rgba($white, 0.2);
   border-radius: 50%;
-  border-top: $base-line-height / 2 solid $base-background-colour;
+  border-top: $base-line-height / 2 solid $white;
   box-sizing: border-box;
   height: $base-line-height * 4;
   left: 50%;
@@ -340,18 +338,15 @@ ul {
 /* body */.page {
   &--homepage {
     .header {
-      background: $base-background-colour;
+      background: $white;
       border: 0;
       margin: 0 auto;
       position: fixed; } } }
 
 /* div */.tumbling-robots {
-  background: linear-gradient(to top,
-      darken($tumbling-robots-background-colour, 10),
-      $tumbling-robots-background-colour 25vh) no-repeat,
-      $tumbling-robots-background-colour;
+  background: linear-gradient(to top, darken($orange, 10), $orange 25vh) no-repeat, $orange;
   background-position: center 25vh;
-  border-bottom: $base-line-height * 2 solid $tumbling-robots-background-colour;
+  border-bottom: $base-line-height * 2 solid $orange;
   height: 150%;
   left: 0;
   position: fixed;
