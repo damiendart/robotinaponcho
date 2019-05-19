@@ -8,9 +8,6 @@
 @import "dd-toolkit";
 
 
-$base-font-size: 16px;
-$base-line-height: 1.5rem;
-
 $content-width: 37.5rem;
 $default-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 
@@ -40,30 +37,27 @@ body {
   line-height: $base-line-height;
   margin: 0;
   text-size-adjust: none;
-  @if($base-font-size != 16px) {
-    @media only screen and (max-width: 480px) {
-      font-size: 100%; } }
   & > *:not(div):not(footer):not(header) {
     margin-left: auto;
     margin-right: auto;
     max-width: $content-width;
-    padding-left: $base-line-height * 2;
-    padding-right: $base-line-height * 2;
-    @media only screen and (max-width: 767px) {
-      padding-left: $base-line-height;
-      padding-right: $base-line-height; } } }
+    padding-left: $base-line-height;
+    padding-right: $base-line-height;
+    @media #{$media-large} {
+      padding-left: $base-line-height * 2;
+      padding-right: $base-line-height * 2; } } }
 
 code {
   line-height: 1; }
 
 h1 {
-  font-size: 300%;
-  line-height: $base-line-height * 2;
+  font-size: 200%;
+  line-height: $base-line-height * 1.5;
   margin: $base-line-height * 3 0;
   text-align: center;
-  @media only screen and (max-width: 767px) {
-    font-size: 200%;
-    line-height: $base-line-height * 1.5; } }
+  @media #{$media-medium} {
+    font-size: 300%;
+    line-height: $base-line-height * 2; } }
 
 h2 {
   font-size: 150%;
@@ -76,9 +70,9 @@ h3 {
   margin: $base-line-height 0 0 0; }
 
 html {
-  font-size: 100%;
-  @media only screen and (max-width: 767px) {
-    font-size: 87.5%; } }
+  font-size: 87.5%;
+  @media #{$media-medium} {
+    font-size: 100%; } }
 
 img {
   max-width: 100%; }
@@ -126,7 +120,7 @@ ul {
     background-image: url("/assets/icon-help.svg");
     color: contrasting-colour($blue)} }
 
-@media only screen and (max-width: 767px) {
+@media #{$media-small-down} {
   /* span */.collapsable {
     display: none; } }
 
@@ -196,7 +190,7 @@ ul {
           top: 0;
           width: 100%; } } } }
   // Internet Explorer doesn't support interaction-related media queries.
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @media #{media-ie-10} {
     &:hover {
       background: $black;
       color: $white; }
@@ -233,10 +227,10 @@ ul {
 /* footer */.footer {
   border-top: $base-line-height / 16 solid $gray;
   margin: $base-line-height * 3 auto 0;
-  padding: $base-line-height * 2;
+  padding: $base-line-height;
   text-align: center;
-  @media only screen and (max-width: 767px) {
-    padding: $base-line-height; }
+  @media #{$media-medium} {
+    padding: $base-line-height * 2; }
   /* p */ &__copyright {
     margin: 0; }
   /* hr */ &__rule {
@@ -280,11 +274,11 @@ ul {
   @include clearfix;
   border-bottom: $base-line-height / 16 solid $gray;
   box-sizing: border-box;
-  padding: $base-line-height * 2;
+  padding: $base-line-height;
   margin: 0 0 $base-line-height / -16 0;
   width: 100%;
-  @media only screen and (max-width: 767px) {
-    padding: $base-line-height; }
+  @media #{$media-medium} {
+    padding: $base-line-height * 2; }
   a {
     text-decoration: none;
     &[href="#"] {
