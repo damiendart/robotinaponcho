@@ -161,29 +161,47 @@ ul {
   padding: $base-line-height / 2;
   position: relative;
   @media (hover: hover) {
-    &:focus-within, &:hover {
-      // TODO: Remove "!important" kludges.
-      background: $base-foreground-colour !important;
-      background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
-      color: $base-background-colour;
-      color: var(--menu-foreground-colour, #{$base-background-colour}); }
-    &:focus-within > &__list, &:hover > &__list {
+    // Microsoft Edge and Internet Explorer do not support the
+    // ":focus-within" pseudo-class; if we include the pseudo-class in a
+    // group of selectors those browsers ignore the whole thing.
+    &:focus-within {
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
+    &:focus-within > &__list {
+      right: 0; }
+    &:hover {
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
+    &:hover > &__list {
       right: 0; } }
   @media (hover: none) {
     &--open {
-      // TODO: Remove "!important" kludges.
-      background: $base-foreground-colour !important;
-      background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
-      color: $base-background-colour;
-      color: var(--menu-foreground-colour, #{$base-background-colour}); }
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
     &--open &__list {
       right: 0; }
     @at-root {
       html:not(.javascript) & {
-        background: $base-foreground-colour !important;
-        background: var(--menu-background-colour, #{$base-foreground-colour}) !important;
-        color: $base-background-colour;
-        color: var(--menu-foreground-colour, #{$base-background-colour}); } } }
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        &__title {
+          display: none; }
+        &__list {
+          left: 0;
+          float: none;
+          margin: $base-line-height 0 0 0;
+          padding: 0;
+          position: relative;
+          top: 0;
+          width: 100%; } } } }
+  // Internet Explorer doesn't support interaction-related media queries.
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &:hover {
+      background: $base-foreground-colour;
+      color: $base-background-colour; }
+    &:hover > &__list {
+      right: 0; } }
   /* h2 */ &__title {
     font-size: 100%;
     font-weight: bold;
@@ -279,13 +297,11 @@ ul {
         font-style: italic; } }
     &:focus, &:hover {
       text-decoration: underline; } }
-  > * {
-    margin: $base-line-height / -2;
-    padding: $base-line-height / 2; }
   /* h1 */ &__title {
     float: left;
     font-size: 150%;
-    line-height: $base-line-height; }
+    line-height: $base-line-height;
+    margin: 0; }
   /* div */ &__navigation {
     float: right; }
   /* hr */ &__rule {
@@ -324,14 +340,10 @@ ul {
 /* body */.page {
   &--homepage {
     .header {
-      --menu-background-colour: #{$tumbling-robots-foreground-colour};
-      --menu-foreground-colour: #{$tumbling-robots-menu-text-colour};
+      background: $base-background-colour;
       border: 0;
-      color: $tumbling-robots-foreground-colour;
       margin: 0 auto;
-      position: fixed;
-      > * {
-        background: $tumbling-robots-background-colour; } } } }
+      position: fixed; } } }
 
 /* div */.tumbling-robots {
   background: linear-gradient(to top,
