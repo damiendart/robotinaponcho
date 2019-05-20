@@ -4,27 +4,29 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-$base-font-size: 16px !default;
-$base-line-height: 1.5rem !default;
+$rem-base: 16px;
 
 // The following media-query-related bits-and-pieces are based on
 // Foundation 5's handling of media queries. For more information, see
 // <https://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html>.
 
-$one-pixel: (1px / $base-font-size) * 1rem;
+$one-pixel: (1px / $rem-base) * 1rem;
 
-$small-breakpoint: (480px / $base-font-size) * 1rem;
-$medium-breakpoint: (768px / $base-font-size) * 1rem;
-$large-breakpoint: (1024px / $base-font-size) * 1rem;
-$x-large-breakpoint: (1440px / $base-font-size) * 1rem;
+$x-small-breakpoint: (320px / $rem-base) * 1rem;
+$small-breakpoint: (480px / $rem-base) * 1rem;
+$medium-breakpoint: (768px / $rem-base) * 1rem;
+$large-breakpoint: (1024px / $rem-base) * 1rem;
+$x-large-breakpoint: (1440px / $rem-base) * 1rem;
 
 $media-screen: "only screen";
 
-$media-small: "#{$media-screen}";
+$media-x-small: "#{$media-screen}";
+$media-small: "#{$media-screen} and (min-width: #{$x-small-breakpoint + $one-pixel})";
 $media-medium: "#{$media-screen} and (min-width: #{$small-breakpoint + $one-pixel})";
 $media-large: "#{$media-screen} and (min-width: #{$medium-breakpoint + $one-pixel})";
 $media-x-large: "#{$media-screen} and (min-width: #{$large-breakpoint + $one-pixel})";
 
+$media-x-small-down: "#{$media-screen} and (max-width: #{$x-small-breakpoint})";
 $media-small-down: "#{$media-screen} and (max-width: #{$small-breakpoint})";
 $media-medium-down: "#{$media-screen} and (max-width: #{$medium-breakpoint})";
 $media-large-down: "#{$media-screen} and (max-width: #{$large-breakpoint})";
