@@ -22,10 +22,6 @@ $orange: #f96e00;
 $white: #ffffff;
 
 
-@include dd-hamburger(
-  $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4);
-
-
 a {
   color: inherit; }
 
@@ -271,6 +267,10 @@ ul {
       display: block; } }
   /* h1 */ &__title {
     margin: 0 0 $base-line-height * 3 0; } }
+
+/* div */.hamburger {
+  @include dd-hamburger(
+    $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4); }
 
 /* header */.header {
   @include dd-clearfix;
