@@ -2,6 +2,7 @@
   "dependencies": {
     "autoprefixer": "*",
     "clean-css-cli": "*",
+    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git",
     "html-minifier": "*",
     "matter-js": "*",
     "poly-decomp": "0.2.1",

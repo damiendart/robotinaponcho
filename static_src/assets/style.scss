@@ -5,10 +5,10 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-@import "dd-toolkit";
+@import "node_modules/toolbox-sass/dd-toolbox";
 
 
-$base-font-size: $rem-base;
+$base-font-size: $dd-rem-base;
 $base-line-height: 1.5rem;
 $content-width: 37.5rem;
 $default-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -22,7 +22,7 @@ $orange: #f96e00;
 $white: #ffffff;
 
 
-@include hamburger(
+@include dd-hamburger(
   $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4);
 
 
@@ -30,7 +30,7 @@ a {
   color: inherit; }
 
 body {
-  @include nice-font-rendering;
+  @include dd-nice-font-rendering;
   background: $white;
   color: $black;
   font-family: $default-font-stack;
@@ -45,7 +45,7 @@ body {
     max-width: $content-width;
     padding-left: $base-line-height;
     padding-right: $base-line-height;
-    @media #{$media-large} {
+    @media #{$dd-media-large} {
       padding-left: $base-line-height * 2;
       padding-right: $base-line-height * 2; } } }
 
@@ -57,7 +57,7 @@ h1 {
   line-height: $base-line-height * 1.5;
   margin: $base-line-height * 3 0;
   text-align: center;
-  @media #{$media-medium} {
+  @media #{$dd-media-medium} {
     font-size: 300%;
     line-height: $base-line-height * 2; } }
 
@@ -73,7 +73,7 @@ h3 {
 
 html {
   font-size: 87.5%;
-  @media #{$media-medium} {
+  @media #{$dd-media-medium} {
     font-size: 100%; } }
 
 img {
@@ -122,7 +122,7 @@ ul {
     background-image: url("/assets/icon-help.svg");
     color: contrasting-colour($blue)} }
 
-@media #{$media-small-down} {
+@media #{$dd-media-small-down} {
   /* span */.collapsable {
     display: none; } }
 
@@ -231,7 +231,7 @@ ul {
   margin: $base-line-height * 3 auto 0;
   padding: $base-line-height;
   text-align: center;
-  @media #{$media-medium} {
+  @media #{$dd-media-medium} {
     padding: $base-line-height * 2; }
   /* p */ &__copyright {
     margin: 0; }
@@ -273,13 +273,13 @@ ul {
     margin: 0 0 $base-line-height * 3 0; } }
 
 /* header */.header {
-  @include clearfix;
+  @include dd-clearfix;
   border-bottom: $base-line-height / 16 solid $gray;
   box-sizing: border-box;
   padding: $base-line-height;
   margin: 0 0 $base-line-height / -16 0;
   width: 100%;
-  @media #{$media-medium} {
+  @media #{$dd-media-medium} {
     padding: $base-line-height * 2; }
   a {
     text-decoration: none;

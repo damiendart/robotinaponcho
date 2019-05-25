@@ -37,8 +37,7 @@ end
 
 def convert_scss(input)
   stdout, stderr, = Open3.capture3(
-    "npx sass -I #{File.join(__dir__, 'resources', 'sass')} --stdin | " \
-      'npx postcss --use autoprefixer | npx cleancss',
+    'npx sass --stdin | npx postcss --use autoprefixer | npx cleancss',
     stdin_data: input
   )
   raise stderr unless stderr.empty?
