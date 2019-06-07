@@ -79,6 +79,7 @@ def convert_svg(input)
 end
 
 def convert_ext(input)
+  input.gsub!(/php\.haml$/, 'php')
   input.gsub!(/(haml|markdown)$/, 'html')
   input.gsub!(/js\.erb$/, 'js')
   input.gsub!(/scss$/, 'css')
