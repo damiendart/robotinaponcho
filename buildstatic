@@ -70,7 +70,7 @@ def convert_js(input)
   stdout
 end
 
-def convert_jserb(input)
+def convert_js_erb(input)
   convert_js(ERB.new(input).result)
 end
 
@@ -79,17 +79,15 @@ def convert_svg(input)
 end
 
 def convert_ext(input)
-  case input
-  when /(.haml|.markdown)/ then return '.html'
-  when '.jserb' then return '.js'
-  when '.scss' then return '.css'
-  end
+  input.gsub!(/(haml|markdown)$/, 'html')
+  input.gsub!(/js\.erb$/, 'js')
+  input.gsub!(/scss$/, 'css')
   input
 end
 
 output_dir = File.expand_path(ENV['BS_OUTPUT'] || './public')
 source_dir = File.expand_path(ENV['BS_SOURCE'] || './static_src')
-sitemap_entries = []
+sitemap = []
 
 if File.exist?(File.join(source_dir, '_base.haml'))
   base = FrontMatterParser::Parser.parse_file(
@@ -101,9 +99,8 @@ end
 Dir.glob(File.join(source_dir, '**/*')).each do |file|
   next if File.directory?(file) || file =~ %r{\/_}
 
-  output_file = file.sub(source_dir, output_dir)
-  output_file.sub!(File.extname(file), convert_ext(File.extname(file)))
-  case File.extname(file)[1..-1]
+  output_file = convert_ext(file.sub(source_dir, output_dir))
+  case file
   when /(haml|markdown)$/
     parsed = FrontMatterParser::Parser.parse_file(file)
     page = base.front_matter.merge(parsed.front_matter) do |_, old, new|
@@ -111,12 +108,13 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
     end
     page['content'] = send("convert_#{Regexp.last_match(1)}", parsed.content)
     page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.html)}, '')
-    if page['add_to_sitemap']
-      sitemap_entries << File.join(page['url_base'], page['slug'])
-    end
+    sitemap << "#{page['url_base']}#{page['slug']}" if page['add_to_sitemap']
     output = convert_html(base_template.render(Object.new, page))
-  when /(jserb|js|scss|svg)/
-    output = send("convert_#{Regexp.last_match(1)}", File.read(file))
+  when /(js|js\.erb|scss|svg)$/
+    output = send(
+      "convert_#{Regexp.last_match(1).sub('.', '_')}",
+      File.read(file)
+    )
   end
   FileUtils.mkdir_p(File.dirname(output_file))
   if output
@@ -127,12 +125,12 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
   puts "Written \"#{output_file}\"."
 end
 
-unless sitemap_entries.empty?
+unless sitemap.empty?
   sitemap_file = File.join(output_dir, 'sitemap.xml')
   File.open(sitemap_file, 'w') do |file|
     file.write('<?xml version="1.0" encoding="UTF-8"?>')
     file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    sitemap_entries.each do |entry|
+    sitemap.each do |entry|
       file.write("<url><loc>#{entry}</loc></url>")
     end
     file.write('</urlset>')
