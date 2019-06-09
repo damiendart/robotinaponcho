@@ -108,7 +108,7 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
       old.is_a?(Array) ? [old, new].flatten : new
     end
     page['content'] = send("convert_#{Regexp.last_match(1)}", parsed.content)
-    page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.html)}, '')
+    page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.(html|php))}, '')
     sitemap << "#{page['url_base']}#{page['slug']}" if page['add_to_sitemap']
     output = convert_html(base_template.render(Object.new, page))
   when /(js|js\.erb|scss|svg)$/

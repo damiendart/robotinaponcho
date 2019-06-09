@@ -97,6 +97,37 @@ ul {
     background-image: url("/assets/icon-help.svg");
     color: contrasting-colour($blue)} }
 
+.anchor {
+  position: absolute;
+  visibility: hidden; }
+
+.button {
+  background: $black;
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  padding: ($base-line-height / 2) ($base-line-height);
+  border-radius: $base-line-height;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline; }
+  &--inverse {
+    background: $white;
+    border: $base-line-height / 8 solid currentColor;
+    color: $black;
+    padding: ($base-line-height * 0.375) ($base-line-height * 0.875);
+  } }
+
+.button-list {
+  list-style: none;
+  margin-top: $base-line-height * 0.75;
+  li {
+    display: inline-block;
+    margin: ($base-line-height / 4) ($base-line-height / 2) 0 0;
+    padding: 0; } }
+
+
+
 @media #{$dd-media-small-down} {
   /* span */.collapsable {
     display: none; } }

@@ -6,9 +6,9 @@
   # This file is distributed under the MIT licence. For more
   # information, please refer to the accompanying "LICENCE" file.
   description: View a bunch of Damien Dart's open-source stuff.
+  javascript_external: /assets/prettydate.js
   title: Open-source stuff
   ---
 
 %h1 Open-source stuff
-:markdown
-  #{read_source_file("git/_index.markdown")}
+\<?= file_get_contents('/var/www/www.robotinaponcho.net/shared/git/repositories.html'); ?>
