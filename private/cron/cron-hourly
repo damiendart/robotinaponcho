@@ -1,0 +1,6 @@
+#!/bin/bash
+
+umask 027
+source /var/www/www.robotinaponcho.net/shared/protected/.env
+python3 /var/www/www.robotinaponcho.net/current_release/private/bin/mirrorgithub \
+    "$GITHUB_TOKEN" /var/www/www.robotinaponcho.net/shared/protected/git
