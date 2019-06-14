@@ -20,5 +20,6 @@ static_src/assets/og.png
 static_src/assets/robot.png
 static_src/flippywindow/arrow.png
 static_src/flippywindow/background.svg
+static_src/flippywindow/opengraph.png
 static_src/flippywindow/screenshot.png
 static_src/notes/*.markdown
