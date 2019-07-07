@@ -28,11 +28,12 @@ overrides = {
   }
 }
 
-template = """<a class="anchor" id="{}"></a><h2>{} ({})</h2><p>{}</p><ul><li>Nerdy bits-and-pieces used: {}</li><li>Last updated <span data-timestamp="{}">on {}</span></li></ul><ul class="button-list"><li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/{}.git">Copy git clone URL</a></li><li class="button-list__item"><a class="button button--inverse" href="{}">View project on GitHub</a></li></ul>""" 
+template = """<a class="anchor" id="{}"></a><h2>{} ({})</h2>{}<ul><li>Nerdy bits-and-pieces used: {}</li><li>Last updated <span data-timestamp="{}">on {}</span></li></ul><ul class="button-list"><li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/{}.git">Copy git clone URL</a></li><li class="button-list__item"><a class="button button--inverse" href="{}">View project on GitHub</a></li></ul>""" 
 
 
 if __name__ == "__main__":
   no_forks = False
+
   if len(sys.argv) < 2:
     sys.stderr.write("Not enough operands\n")
     sys.stderr.write("USAGE: %s [--no-forks] OAUTH2-TOKEN FOLDER\n" % sys.argv[0])
@@ -40,13 +41,16 @@ if __name__ == "__main__":
   if "--no-forks" in sys.argv:
     sys.argv.remove("--no-forks")
     no_forks = True
+
   api_response = urllib.request.urlopen(
       "https://api.github.com/users/damiendart/repos?access_token=%s" %
       (sys.argv[1])).read().decode("utf-8")
   repositories = json.loads(api_response)
   base_directory = pathlib.Path(os.path.normpath(sys.argv[2])).resolve()
+
   with open(os.path.join(base_directory, "api_response.json"), "w") as f:
     f.write(api_response)
+
   for repository in repositories:
     os.chdir(base_directory)
     if not (no_forks and repository["fork"]):
@@ -57,11 +61,24 @@ if __name__ == "__main__":
       else:
         subprocess.check_call(["git", "clone", "-q", "--mirror",
             repository["git_url"]])
+
       os.chdir(os.path.basename(repository["git_url"]))
       subprocess.check_call(["git", "config", "--replace-all",
           "gitweb.description", repository["description"]])
       open("git-daemon-export-ok", "a").close() # For "git http-backend".
       subprocess.check_call(["git", "update-server-info"])
+      repository['first_commit_year'] = subprocess.run(
+          ["git", "rev-list", "--max-parents=0", "HEAD", "--date=short", "--pretty=format:%ad"],
+          stdout=subprocess.PIPE).stdout.decode("utf-8").split("\n")[1].split("-")[0]
+      repository['last_commit_timestamp'] = subprocess.run(
+          ["git", "log", "-n", "1", "--pretty=format:%at"],
+          stdout=subprocess.PIPE).stdout.decode("utf-8")
+      repository['last_commit_pretty'] = subprocess.run(
+          ["git", "log", "-n", "1", "--date=short", "--pretty=format:%ad"],
+          stdout=subprocess.PIPE).stdout.decode("utf-8")
+
+  repositories.sort(key=lambda r: r["first_commit_year"], reverse=True)
+
   with open(os.path.join(base_directory, "repositories.html"), "w") as f:
     for repository in repositories:
       try:
@@ -69,19 +86,13 @@ if __name__ == "__main__":
       except KeyError:
         o = collections.defaultdict(int)
       if not repository["fork"]:
-        os.chdir(base_directory)
-        os.chdir(os.path.basename(repository["git_url"]))
         f.write(template.format(
             repository["name"],
             o["name"] or repository["name"],
-            subprocess.run(
-              ["git", "rev-list", "--max-parents=0", "HEAD", "--date=short", "--pretty=format:%ad"],
-              stdout=subprocess.PIPE).stdout.decode("utf-8").split("\n")[1].split("-")[0],
+            repository["first_commit_year"],
             o["description"] or "<p>" + repository["description"] + "</p>",
             o["language"] or repository["language"],
-            subprocess.run(["git", "log", "-n", "1", "--pretty=format:%at"],
-                stdout=subprocess.PIPE).stdout.decode("utf-8"),
-            subprocess.run(["git", "log", "-n", "1", "--date=short", "--pretty=format:%ad"],
-                stdout=subprocess.PIPE).stdout.decode("utf-8"),
+            repository["last_commit_timestamp"],
+            repository["last_commit_pretty"],
             repository["name"],
             repository["html_url"]))
