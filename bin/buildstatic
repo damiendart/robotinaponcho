@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+const chalk = require('chalk');
 const svgo = require('svgo');
 const fse = require('fs-extra');
 const path = require('path');
@@ -105,16 +106,19 @@ glob('**/*', {
           }
         })
         .then(_ => {
-          console.log(`-> Written ${outputFilename}`);
+          console.log(chalk.green(`WRITTEN: ${outputFilename}`));
         })
         .catch(e => {
-          console.error(`!! Unable to create ${outputFilename}!`);
-          console.error(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
+          console.error(chalk.red(`ERROR: ${outputFilename}!`));
+          console.error(
+            chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
+          );
         });
     }));
   })
   .then(_ => {
     if (sitemapEntries.length > 0) {
+      const sitemapFilename = path.join(config.outputDirectory, 'sitemap.xml');
       var sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>';
 
       sitemapXML += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -124,16 +128,13 @@ glob('**/*', {
       );
       sitemapXML += '</urlset>';
 
-      return fse.writeFile(
-        path.join(config.outputDirectory, 'sitemap.xml'),
-        sitemapXML
-      )
+      return fse.writeFile(sitemapFilename, sitemapXML)
         .then(_ => {
-          console.log(`Written sitemap.xml`);
+          console.log(chalk.green(`WRITTEN: ${sitemapFilename}`));
         });
     }
   })
   .catch(e => {
-    console.error('An error has occured!');
-    console.error(e)
+    console.error(chalk.red('An error has occured!'));
+    console.error(chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`));
   });

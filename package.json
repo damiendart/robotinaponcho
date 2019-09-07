@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "autoprefixer": "*",
+    "chalk": "^2.4.2",
     "clean-css-cli": "*",
     "fs-extra": "*",
     "glob": "*",
