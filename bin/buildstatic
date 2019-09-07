@@ -59,6 +59,7 @@ glob('**/*', {
                     {
                       collapseWhitespace: true,
                       decodeEntities: true,
+                      minifyJS: true,
                       removeComments: true,
                       removeEmptyAttributes: true
                     }
