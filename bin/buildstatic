@@ -16,7 +16,13 @@ const lodash = require('lodash');
 const { TwingEnvironment, TwingLoaderFilesystem } = require('twing');
 const { minify } = require('html-minifier');
 
-const config = require(path.resolve('./buildstatic.config.js'));
+try {
+  var config = require(path.resolve('./buildstatic.config.js'));
+} catch(_) {
+  console.log(chalk.yellow('WARNING: "./buildstatic.config.js" not found.'));
+  var config = {};
+}
+
 config.sourceDirectory = config.sourceDirectory || './static_src';
 config.outputDirectory = config.outputDirectory || './public';
 
@@ -46,7 +52,7 @@ glob('**/*', {
                   new TwingLoaderFilesystem(config.sourceDirectory),
                   { strict_variables: true }
                 ).load(file);
-                resolve(template.render({ slug: slug }));
+                resolve(template.render({ ...config, slug: slug }));
               })
                 .then(html => {
                   return minify(html,
@@ -119,6 +125,10 @@ glob('**/*', {
   })
   .then(_ => {
     if (sitemapEntries.length > 0) {
+      if (!config.baseURL) {
+        throw new Error('"baseURL" must be set to generate a sitemap');
+      }
+
       const sitemapFilename = path.join(config.outputDirectory, 'sitemap.xml');
       var sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>';
 

@@ -1,6 +1,3 @@
-{% set urlBase = 'https://www.robotinaponcho.net/' %} 
-{% set pageOpenGraphImage = 'assets/og.png' %} 
-
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
@@ -15,11 +12,11 @@
     <meta content="{{ block('pageDescription')|trim }}" property="og:description">
   {% endif %}
   {% if pageOpenGraphImage is defined %}
-    <meta content="{{ urlBase }}{{ pageOpenGraphImage }}" property="og:image">
+    <meta content="{{ baseURL }}{{ pageOpenGraphImage }}" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
   {% endif %}
   <meta content="website" property="og:type">
-  <meta content="{{ urlBase }}{{ slug }}" property="og:url">
+  <meta content="{{ baseURL }}{{ slug }}" property="og:url">
   <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
   <script>
     {% block headJavaScript %}
