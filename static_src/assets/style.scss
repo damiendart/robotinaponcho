@@ -347,7 +347,9 @@ ul {
       background: $white;
       border: 0;
       margin: 0 auto;
-      position: fixed; } } }
+      position: fixed; }
+    .footer {
+      display: none; } } }
 
 /* div */.tumbling-robots {
   background: linear-gradient(to top, darken($orange, 10), $orange 25vh) no-repeat, $orange;
