@@ -13,6 +13,8 @@ static_src/_privacy-policy.markdown
 # The following icons are available from <https://iconsvg.xyz/>.
 static_src/assets/icon-help.svg
 static_src/assets/icon-info.svg
+# The following file is generated.
+static_src/assets/index-vendor.js
 # The following file is available from <https://itch.io/press-kit/>.
 static_src/assets/itchio.svg
 # The following three files are tracked elsewhere.

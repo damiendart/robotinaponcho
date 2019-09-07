@@ -1,0 +1,139 @@
+#!/usr/bin/node
+
+const svgo = require('svgo');
+const fse = require('fs-extra');
+const path = require('path');
+const { promisify } = require('util');
+const glob = promisify(require('glob'));
+const cleanCSS = require('clean-css');
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
+const sass = require('sass');
+const rollup = require('rollup');
+const rollupUglify = require('rollup-plugin-uglify');
+const lodash = require('lodash');
+const { TwingEnvironment, TwingLoaderFilesystem } = require('twing');
+const { minify } = require('html-minifier');
+
+const config = require(path.resolve('./buildstatic.config.js'));
+config.sourceDirectory = config.sourceDirectory || './static_src';
+config.outputDirectory = config.outputDirectory || './public';
+
+var sitemapEntries = [];
+
+fse.emptyDirSync(config.outputDirectory);
+
+glob('**/*', {
+  cwd: config.sourceDirectory,
+  ignore: ['_*', '*/_*'],
+  nodir: true
+})
+  .then(files => {
+    return Promise.all(files.map(file => {
+      const inputFilename = path.join(config.sourceDirectory, file);
+      var outputFilename = path.join(config.outputDirectory, file);
+
+      return fse.mkdirs(path.dirname(outputFilename))
+        .then(_ => {
+          switch (path.extname(inputFilename)) {
+            case '.twig':
+              const slug = file.replace(/(index)?\.(html|php)(.twig)/, '');
+              outputFilename = outputFilename.replace('.twig', '');
+
+              return new Promise((resolve, reject) => {
+                const template = new TwingEnvironment(
+                  new TwingLoaderFilesystem(config.sourceDirectory),
+                  { strict_variables: true }
+                ).load(file);
+                resolve(template.render({ slug: slug }));
+              })
+                .then(html => {
+                  return minify(html,
+                    {
+                      collapseWhitespace: true,
+                      decodeEntities: true,
+                      removeComments: true,
+                      removeEmptyAttributes: true
+                    }
+                  );
+                })
+                .then(html => {
+                  sitemapEntries.push(slug);
+                  fse.writeFile(outputFilename, html);
+                });
+
+            case '.js':
+              return rollup.rollup({
+                input: inputFilename,
+                plugins: [rollupUglify.uglify()]
+              })
+                .then(bundle => {
+                  return bundle.write({
+                    file: outputFilename,
+                    format: 'iife',
+                    name: path.basename(outputFilename) !== 'app.js'
+                      ? lodash.camelCase(path.basename(outputFilename, '.js'))
+                      : null,
+                    sourcemap: false
+                  });
+                })
+
+            case '.scss':
+              return postcss([autoprefixer]).process(
+                sass.renderSync({ file: inputFilename }).css.toString(),
+                { from: inputFilename }
+              )
+                .then(postcssOutput => {
+                  return new cleanCSS().minify(postcssOutput.css).styles;
+                })
+                .then(css => {
+                  outputFilename = outputFilename.replace('scss', 'css');
+                  return fse.writeFile(outputFilename, css);
+                });
+
+            case '.svg':
+              return fse.readFile(path.join(config.sourceDirectory, file), 'utf8')
+                .then(svg => {
+                  return new svgo().optimize(svg)
+                    .then(svgoOutput => {
+                      return fse.writeFile(outputFilename, svgoOutput.data);
+                    });
+                });
+
+            default:
+              return fse.copySync(inputFilename, outputFilename);
+          }
+        })
+        .then(_ => {
+          console.log(`-> Written ${outputFilename}`);
+        })
+        .catch(e => {
+          console.error(`!! Unable to create ${outputFilename}!`);
+          console.error(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
+        });
+    }));
+  })
+  .then(_ => {
+    if (sitemapEntries.length > 0) {
+      var sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>';
+
+      sitemapXML += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+      sitemapXML += sitemapEntries.reduce(
+        (carry, entry) => `${carry}<url><loc>${config.baseURL}${entry}</loc></url>`,
+        ''
+      );
+      sitemapXML += '</urlset>';
+
+      return fse.writeFile(
+        path.join(config.outputDirectory, 'sitemap.xml'),
+        sitemapXML
+      )
+        .then(_ => {
+          console.log(`Written sitemap.xml`);
+        });
+    }
+  })
+  .catch(e => {
+    console.error('An error has occured!');
+    console.error(e)
+  });

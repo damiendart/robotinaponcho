@@ -3,7 +3,6 @@
   author: Damien Dart
   author_website: https://www.robotinaponcho.net/
   description: Damien Dart's notes on setting up, using, and troubleshooting Synology DiskStations.
-  javascript_external: /assets/prettydate.js
   title: Synology Notes
   ---
 -->

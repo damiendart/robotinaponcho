@@ -3,18 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "bin": {
-    "buildstatic": "./buildstatic"
+    "buildstatic": "./buildstatic",
+    "buildstatic-js": "./bin/buildstatic"
   },
   "files": [
-    "buildstatic"
+    "buildstatic",
+    "bin/buildstatic"
   ],
   "dependencies": {
     "autoprefixer": "*",
     "clean-css-cli": "*",
+    "fs-extra": "*",
+    "glob": "*",
     "html-minifier": "*",
+    "lodash": "^4.17.15",
     "postcss-cli": "*",
+    "rollup": "*",
+    "rollup-plugin-uglify": "^6.0.2",
     "sass": "*",
     "svgo": "*",
+    "twing": "^2.3.4",
     "uglify-js": "*"
   },
   "devDependencies": {
@@ -25,7 +33,8 @@
   },
   "scripts": {
     "assets": "cp -r ./node_modules/assets/www.robotinaponcho.net/* static_src",
-    "prelastupdated": "git config filter.lastupdated.clean \"./bin/lastupdated\" && git config filter.lastupdated.smudge \"./bin/lastupdated %f\"", 
-    "lastupdated": "touch static_src/notes/*.markdown && git checkout static_src/notes/*.markdown"
+    "prelastupdated": "git config filter.lastupdated.clean \"./bin/lastupdated\" && git config filter.lastupdated.smudge \"./bin/lastupdated %f\"",
+    "lastupdated": "touch static_src/notes/*.markdown && git checkout static_src/notes/*.markdown",
+    "index-vendor": "cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js"
   }
 }

@@ -1,17 +1,27 @@
-var canvas = document.createElement("canvas");
-var loading_animation = document.createElement("div");
+function updatePrettyDates() {
+  document.querySelectorAll("[data-timestamp]").forEach(function(el) {
+    var time_since = Math.floor((new Date().getTime() / 1000) -
+        parseInt(el.getAttribute("data-timestamp")));
+    // This mess of code is based on <http://ejohn.org/files/pretty.js>.
+    el.innerHTML =
+        time_since < 60 && Math.floor(time_since) + " seconds ago" ||
+        time_since < 120 && "a minute ago" ||
+        time_since < 3600 && Math.floor(time_since / 60) + " minutes ago" ||
+        time_since < 7200 && "an hour ago" ||
+        time_since < 86400 && Math.floor(time_since / 3600) + " hours ago" ||
+        time_since < 172800 && "a day ago" ||
+        time_since < 2592000 && Math.floor(time_since / 86400) + " days ago" ||
+        time_since < 5184000 && "a month ago" ||
+        time_since < 31536000 && Math.floor(time_since / 2592000) + " months ago" ||
+        time_since < 63072000 && "a year ago" ||
+        Math.ceil(time_since / 31536000) + " years ago";
+  });
+}
 
-loading_animation.className = "loading-spinner";
-document.getElementById("tumbling-robots").appendChild(loading_animation);
-document.getElementById("tumbling-robots").appendChild(canvas);
-
-setTimeout(function() {
-  loading_animation.className += " loading-spinner--show";
-}, 750);
-
-window.onload = window.onreadystatechange = function() {
+function initialiseRobots() {
   if (!this.readyState || /loaded|complete/.test(this.readyState)) {
     var accumulated_time = 0;
+    var canvas = document.querySelector('#tumbling-robots canvas');
     var current_time = performance.now(); // TODO: Older broswers?
     var engine = Matter.Engine.create();
 
@@ -22,7 +32,8 @@ window.onload = window.onreadystatechange = function() {
     }
     Matter.World.add(engine.world,
         Matter.Bodies.rectangle(0, 6, 5000, 10, { isStatic: true }));
-    loading_animation.className += " loading-spinner--complete";
+    document.querySelector('#tumbling-robots .loading-spinner').className += 
+      " loading-spinner--complete";
     document.getElementById("tumbling-robots").className +=
         " tumbling-robots--show-background";
     (function render() {
@@ -93,3 +104,64 @@ window.onload = window.onreadystatechange = function() {
     })();
   }
 };
+
+if (document.getElementById('tumbling-robots') !== null) {
+  var canvas = document.createElement("canvas");
+  var loading_animation = document.createElement("div");
+
+  loading_animation.className = "loading-spinner";
+  document.getElementById("tumbling-robots").appendChild(loading_animation);
+  document.getElementById("tumbling-robots").appendChild(canvas);
+
+  setTimeout(function() {
+    loading_animation.className += " loading-spinner--show";
+  }, 750);
+
+  window.addEventListener('load', initialiseRobots);
+}
+
+updatePrettyDates();
+window.setInterval(updatePrettyDates, 1000);
+
+var dropdowns = document.getElementsByClassName("dropdown-menu");
+for (var i = 0; i < dropdowns.length; i++) {
+  dropdowns[i].onclick = function() {
+    if (window.matchMedia("(hover: none)").matches) {
+      this.classList.toggle("dropdown-menu--open");
+      this.getElementsByClassName("hamburger")[0].classList.toggle(
+          "hamburger--active");
+    }
+  };
+}
+
+// ---
+
+var gitCloneLinks = document.querySelectorAll('.button[href$=".git"');
+
+for (var i = 0; gitCloneLinks[i]; i++) {
+  gitCloneLinks[i].addEventListener('click', function(event) {
+    var el = document.createElement('textarea');
+    var selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false;
+
+    event.preventDefault();
+
+    el.value = event.target.href;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+
+    document.body.appendChild(el);
+
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    if (selected) {
+      document.getSelection().removeAllRanges();
+      document.getSelection().addRange(selected);
+    }
+  });
+}

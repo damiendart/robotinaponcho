@@ -79,16 +79,11 @@ def convert_svg(input)
 end
 
 def convert_ext(input)
-  input.gsub!(/php\.haml$/, 'php')
-  input.gsub!(/(haml|markdown)$/, 'html')
-  input.gsub!(/js\.erb$/, 'js')
-  input.gsub!(/scss$/, 'css')
-  input
+  input.gsub(/(haml|markdown)$/, 'html')
 end
 
 output_dir = File.expand_path(ENV['BS_OUTPUT'] || './public')
 source_dir = File.expand_path(ENV['BS_SOURCE'] || './static_src')
-sitemap = []
 
 if File.exist?(File.join(source_dir, '_base.haml'))
   base = FrontMatterParser::Parser.parse_file(
@@ -109,32 +104,9 @@ Dir.glob(File.join(source_dir, '**/*')).each do |file|
     end
     page['content'] = send("convert_#{Regexp.last_match(1)}", parsed.content)
     page['slug'] = output_file.gsub(%r{(#{output_dir}\/|(index)?\.(html|php))}, '')
-    sitemap << "#{page['url_base']}#{page['slug']}" if page['add_to_sitemap']
     output = convert_html(base_template.render(Object.new, page))
-  when /(js|js\.erb|scss|svg)$/
-    output = send(
-      "convert_#{Regexp.last_match(1).sub('.', '_')}",
-      File.read(file)
-    )
-  end
-  FileUtils.mkdir_p(File.dirname(output_file))
-  if output
+    FileUtils.mkdir_p(File.dirname(output_file))
     File.write(output_file, output)
-  else
-    FileUtils.cp(file, output_file)
+    puts "Written \"#{output_file}\"."
   end
-  puts "Written \"#{output_file}\"."
-end
-
-unless sitemap.empty?
-  sitemap_file = File.join(output_dir, 'sitemap.xml')
-  File.open(sitemap_file, 'w') do |file|
-    file.write('<?xml version="1.0" encoding="UTF-8"?>')
-    file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    sitemap.each do |entry|
-      file.write("<url><loc>#{entry}</loc></url>")
-    end
-    file.write('</urlset>')
-  end
-  puts "Written \"#{sitemap_file}\"."
 end
