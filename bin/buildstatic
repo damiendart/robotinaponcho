@@ -113,6 +113,7 @@ glob('**/*', {
           console.error(
             chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
           );
+          process.exit(1);
         });
     }));
   })
@@ -137,4 +138,5 @@ glob('**/*', {
   .catch(e => {
     console.error(chalk.red('An error has occured!'));
     console.error(chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`));
+    process.exit(1);
   });
