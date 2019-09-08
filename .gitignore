@@ -8,8 +8,6 @@
 bundle/
 Gemfile.lock
 public/
-# Privacy policy text is tracked elsewhere.
-static_src/_privacy-policy.markdown
 # The following icons are available from <https://iconsvg.xyz/>.
 static_src/assets/icon-help.svg
 static_src/assets/icon-info.svg
