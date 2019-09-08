@@ -1,6 +1,7 @@
 #!/usr/bin/node
 
 const chalk = require('chalk');
+const commander = require('commander');
 const svgo = require('svgo');
 const fse = require('fs-extra');
 const path = require('path');
@@ -16,29 +17,35 @@ const lodash = require('lodash');
 const { TwingEnvironment, TwingLoaderFilesystem } = require('twing');
 const { minify } = require('html-minifier');
 
+const program = new commander.Command();
+var sitemapEntries = [];
+
+program.version('0.1.0');
+program
+  .option('-i, --input <dir>', 'specify input directory', './static_src')
+  .option('-o, --output <dir>', 'specify output directory', './public');
+program.parse(process.argv);
+
 try {
-  var config = require(path.resolve('./buildstatic.config.js'));
+  var config = require(
+    path.resolve(path.join(program.input, '.buildstatic.config.js'))
+  );
 } catch(_) {
-  console.log(chalk.yellow('WARNING: "./buildstatic.config.js" not found.'));
+  console.log(chalk.yellow('WARNING: ".buildstatic.config.js" not found.'));
   var config = {};
 }
 
-config.sourceDirectory = config.sourceDirectory || './static_src';
-config.outputDirectory = config.outputDirectory || './public';
-
-var sitemapEntries = [];
-
-fse.emptyDirSync(config.outputDirectory);
+fse.emptyDirSync(program.output);
 
 glob('**/*', {
-  cwd: config.sourceDirectory,
+  cwd: program.input,
   ignore: ['_*', '*/_*'],
   nodir: true
 })
   .then(files => {
     return Promise.all(files.map(file => {
-      const inputFilename = path.join(config.sourceDirectory, file);
-      var outputFilename = path.join(config.outputDirectory, file);
+      const inputFilename = path.join(program.input, file);
+      var outputFilename = path.join(program.output, file);
 
       return fse.mkdirs(path.dirname(outputFilename))
         .then(_ => {
@@ -49,7 +56,7 @@ glob('**/*', {
 
               return new Promise((resolve, reject) => {
                 const template = new TwingEnvironment(
-                  new TwingLoaderFilesystem(config.sourceDirectory),
+                  new TwingLoaderFilesystem(program.input),
                   { strict_variables: true }
                 ).load(file);
                 resolve(template.render({ ...config, slug: slug }));
@@ -100,7 +107,7 @@ glob('**/*', {
                 });
 
             case '.svg':
-              return fse.readFile(path.join(config.sourceDirectory, file), 'utf8')
+              return fse.readFile(path.join(program.input, file), 'utf8')
                 .then(svg => {
                   return new svgo().optimize(svg)
                     .then(svgoOutput => {
@@ -130,7 +137,7 @@ glob('**/*', {
         throw new Error('"baseURL" must be set to generate a sitemap');
       }
 
-      const sitemapFilename = path.join(config.outputDirectory, 'sitemap.xml');
+      const sitemapFilename = path.join(program.output, 'sitemap.xml');
       var sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>';
 
       sitemapXML += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
