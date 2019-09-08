@@ -28,15 +28,18 @@
     "uglify-js": "*"
   },
   "devDependencies": {
-    "assets": "git+ssh://git@github.com/damiendart/assets.git#7eb507007b3880d77d4f638edd510bc1966ef30a",
+    "assets": "git+ssh://git@github.com/damiendart/assets.git#9027752c70a7f5f91cb56f098b808670b8fd736a",
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#e27c5b8269d6d7bc776c26d656878e5b40997f7e",
     "matter-js": "*",
     "poly-decomp": "0.2.1"
   },
   "scripts": {
-    "assets": "cp -r ./node_modules/assets/www.robotinaponcho.net/* static_src",
+    "build": "npm run lastupdated && npm run build:vendor && npm run build:static && npm run build:assets",
+    "build:assets": "node ./bin/buildstatic -i ./node_modules/assets/www.robotinaponcho.net -o ./public",
+    "build:static": "node ./bin/buildstatic -i ./static_src -o ./public",
+    "build:vendor": "cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js",
+    "clean": "rm -fr ./public",
     "prelastupdated": "git config filter.lastupdated.clean \"./bin/lastupdated\" && git config filter.lastupdated.smudge \"./bin/lastupdated %f\"",
-    "lastupdated": "touch static_src/notes/*.markdown && git checkout static_src/notes/*.markdown",
-    "index-vendor": "cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js"
+    "lastupdated": "touch static_src/notes/*.markdown && git checkout static_src/notes/*.markdown"
   }
 }

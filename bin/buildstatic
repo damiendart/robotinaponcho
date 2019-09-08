@@ -35,8 +35,6 @@ try {
   var config = {};
 }
 
-fse.emptyDirSync(program.output);
-
 glob('**/*', {
   cwd: program.input,
   ignore: ['_*', '*/_*'],
