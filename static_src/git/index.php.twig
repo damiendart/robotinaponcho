@@ -1,0 +1,9 @@
+{% extends '_base.html.twig' %}
+
+{% set pageDescription = "View a bunch of Damien Dart’s open-source stuff" %}
+{% set pageTitle = "Open-source Stuff" %}
+
+{% block pageContent %}
+  <h1>Open-source stuff</h1>
+  <?= file_get_contents('/var/www/www.robotinaponcho.net/shared/protected/git/repositories.html'); ?>
+{% endblock %}

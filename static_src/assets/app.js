@@ -1,3 +1,5 @@
+import './.modules/clipboard.mjs';
+
 function updatePrettyDates() {
   document.querySelectorAll("[data-timestamp]").forEach(function(el) {
     var time_since = Math.floor((new Date().getTime() / 1000) -
@@ -132,36 +134,4 @@ for (var i = 0; i < dropdowns.length; i++) {
           "hamburger--active");
     }
   };
-}
-
-// ---
-
-var gitCloneLinks = document.querySelectorAll('.button[href$=".git"');
-
-for (var i = 0; gitCloneLinks[i]; i++) {
-  gitCloneLinks[i].addEventListener('click', function(event) {
-    var el = document.createElement('textarea');
-    var selected =
-      document.getSelection().rangeCount > 0
-        ? document.getSelection().getRangeAt(0)
-        : false;
-
-    event.preventDefault();
-
-    el.value = event.target.href;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-
-    document.body.appendChild(el);
-
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-
-    if (selected) {
-      document.getSelection().removeAllRanges();
-      document.getSelection().addRange(selected);
-    }
-  });
 }
