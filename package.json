@@ -19,6 +19,7 @@
     "glob": "*",
     "html-minifier": "*",
     "lodash": "^4.17.15",
+    "marked": "^0.7.0",
     "postcss-cli": "*",
     "rollup": "*",
     "rollup-plugin-uglify": "^6.0.2",
@@ -40,6 +41,6 @@
     "build:vendor": "cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js",
     "clean": "rm -fr ./public",
     "prelastupdated": "git config filter.lastupdated.clean \"./bin/lastupdated\" && git config filter.lastupdated.smudge \"./bin/lastupdated %f\"",
-    "lastupdated": "touch static_src/notes/*.markdown && git checkout static_src/notes/*.markdown"
+    "lastupdated": "touch static_src/notes/*.twig && git checkout static_src/notes/*.twig"
   }
 }

@@ -1,0 +1,27 @@
+{% extends '_base.html.twig' %}
+
+{% set pageTitle = "Adobe Illustrator Notes" %} 
+
+{% block pageDescription "Damien Dart’s notes on Adobe Illustrator" %}
+
+{% block pageContent %}
+  <h1>Adobe Illustrator Notes</h1>
+
+  <div class="admonition admonition--metadata">
+    <ul class="metadata-list">
+      <li class="metadata-list__item"><b>Last Updated</b>: <i>See accompanying <code>bin/addlastupdated</code> script.</i></li>
+      <li class="metadata-list__item">
+        <b>Licence</b>: <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+      </li>
+    </ul>
+  </div>
+
+  {% apply markdown %}
+    Miscellaneous notes
+    -------------------
+
+      - Check the document colour mode is set correctly.
+      - Occasionally run the _Delete Unused Panel Items_ action (located in
+        the _Default Actions_ folder) to keep document filesizes in check.
+  {% endapply %}
+{% endblock %}

@@ -1,1 +1,2 @@
 *.markdown filter=lastupdated
+static_src/notes/*.html.twig filter=lastupdated

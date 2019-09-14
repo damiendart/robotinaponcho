@@ -14,8 +14,9 @@ const sass = require('sass');
 const rollup = require('rollup');
 const rollupUglify = require('rollup-plugin-uglify');
 const lodash = require('lodash');
-const { TwingEnvironment, TwingLoaderFilesystem } = require('twing');
+const { TwingEnvironment, TwingFilter, TwingLoaderFilesystem } = require('twing');
 const { minify } = require('html-minifier');
+const marked = require('marked');
 
 const program = new commander.Command();
 var sitemapEntries = [];
@@ -35,6 +36,35 @@ try {
   var config = {};
 }
 
+const twingEnvironment = new TwingEnvironment(
+  new TwingLoaderFilesystem(program.input),
+  { strict_variables: true }
+);
+
+twingEnvironment.addFilter(
+  new TwingFilter(
+    'markdown', 
+    markup => { 
+      const markdown = markup.toString();
+      const indentation = markdown.match(/^\s*/);
+      const indentationRegex = new RegExp('^' +
+        (indentation && indentation.length) ? indentation[0] : '');
+
+      return marked(
+        markdown.split(/\r?\n/).reduce(
+          (carry, line) => `${carry}${line.replace(indentationRegex, '')}\n`,
+          ''
+        ),
+        { 
+          headerIds: false,
+          smartypants: true
+        }
+      );
+    }, 
+    { is_safe: ['html'] }
+  )
+);
+
 glob('**/*', {
   cwd: program.input,
   ignore: ['_*', '*/_*'],
@@ -53,10 +83,8 @@ glob('**/*', {
               outputFilename = outputFilename.replace('.twig', '');
 
               return new Promise((resolve, reject) => {
-                const template = new TwingEnvironment(
-                  new TwingLoaderFilesystem(program.input),
-                  { strict_variables: true }
-                ).load(file);
+                const template = twingEnvironment.load(file);
+
                 resolve(template.render({ ...config, slug: slug }));
               })
                 .then(html => {
