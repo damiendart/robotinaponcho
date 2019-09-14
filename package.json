@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "bin": {
-    "buildstatic": "./buildstatic",
-    "buildstatic-js": "./bin/buildstatic"
+    "buildstatic": "./bin/buildstatic"
   },
   "files": [
-    "buildstatic",
     "bin/buildstatic"
   ],
   "dependencies": {
