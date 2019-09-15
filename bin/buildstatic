@@ -1,22 +1,22 @@
 #!/usr/bin/node
 
-const chalk = require('chalk');
-const commander = require('commander');
-const svgo = require('svgo');
-const fse = require('fs-extra');
-const path = require('path');
+const { minify } = require('html-minifier');
 const { promisify } = require('util');
-const glob = promisify(require('glob'));
-const cleanCSS = require('clean-css');
+const { TwingEnvironment, TwingFilter, TwingLoaderFilesystem } = require('twing');
 const autoprefixer = require('autoprefixer');
+const chalk = require('chalk');
+const cleanCSS = require('clean-css');
+const commander = require('commander');
+const fse = require('fs-extra');
+const glob = promisify(require('glob'));
+const lodash = require('lodash');
+const marked = require('marked');
+const path = require('path');
 const postcss = require('postcss');
-const sass = require('sass');
 const rollup = require('rollup');
 const rollupUglify = require('rollup-plugin-uglify');
-const lodash = require('lodash');
-const { TwingEnvironment, TwingFilter, TwingLoaderFilesystem } = require('twing');
-const { minify } = require('html-minifier');
-const marked = require('marked');
+const sass = require('sass');
+const svgo = require('svgo');
 
 const program = new commander.Command();
 var fileWrittenCount = 0;
@@ -68,7 +68,6 @@ twingEnvironment.addFilter(
 
 glob('**/*', {
   cwd: program.input,
-  ignore: ['_*', '*/_*'],
   nodir: true
 })
   .then(files => {
@@ -166,14 +165,13 @@ glob('**/*', {
       }
 
       const sitemapFilename = path.join(program.output, 'sitemap.xml');
-      var sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>';
 
-      sitemapXML += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-      sitemapXML += sitemapEntries.reduce(
-        (carry, entry) => `${carry}<url><loc>${config.baseURL}${entry}</loc></url>`,
-        ''
-      );
-      sitemapXML += '</urlset>';
+      sitemapXML =
+        sitemapEntries.reduce(
+          (carry, entry) => `${carry}<url><loc>${config.baseURL}${entry}</loc></url>`,
+          '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        )
+        + '</urlset>';
 
       return fse.writeFile(sitemapFilename, sitemapXML)
         .then(_ => {
