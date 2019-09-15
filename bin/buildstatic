@@ -19,6 +19,7 @@ const { minify } = require('html-minifier');
 const marked = require('marked');
 
 const program = new commander.Command();
+var fileWrittenCount = 0;
 var sitemapEntries = [];
 
 program.version('0.1.0');
@@ -146,10 +147,11 @@ glob('**/*', {
           }
         })
         .then(_ => {
-          console.log(chalk.green(`WRITTEN: ${outputFilename}`));
+          console.log(`WRITTEN: ${path.resolve(outputFilename)}`);
+          fileWrittenCount++;
         })
         .catch(e => {
-          console.error(chalk.red(`ERROR: ${outputFilename}!`));
+          console.error(chalk.red(`ERROR: ${path.resolve(outputFilename)}`));
           console.error(
             chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
           );
@@ -175,9 +177,13 @@ glob('**/*', {
 
       return fse.writeFile(sitemapFilename, sitemapXML)
         .then(_ => {
-          console.log(chalk.green(`WRITTEN: ${sitemapFilename}`));
+          console.log(`WRITTEN: ${path.resolve(sitemapFilename)}`);
+          fileWrittenCount++;
         });
     }
+  })
+  .then(_ => {
+    console.log(chalk.green(`SUCCESS: ${fileWrittenCount} file(s) written!`));
   })
   .catch(e => {
     console.error(chalk.red('An error has occured!'));
