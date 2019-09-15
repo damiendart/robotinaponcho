@@ -224,13 +224,21 @@ ul {
     right: 9999px;
     top: $base-line-height * 2;
     white-space: pre;
+    @media #{$dd-media-medium} {
+      columns: 2;
+      column-gap: $base-line-height / 2; }
     @media (hover: none) {
       @at-root {
         html:not(.javascript) & {
           right: 0; } } }
     /* li */ &__item {
       margin: 0;
-      padding: 0; } } }
+      padding: 0;
+      &--gap {
+        break-before: column;
+        margin: $base-line-height 0 0 0;
+        @media #{$dd-media-medium} {
+          margin: 0; } } } } }
 
 /* footer */.footer {
   border-top: $base-line-height / 16 solid $gray;
