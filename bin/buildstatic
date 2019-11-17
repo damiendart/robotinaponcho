@@ -4,7 +4,6 @@ const { minify } = require('html-minifier');
 const { promisify } = require('util');
 const { TwingEnvironment, TwingFilter, TwingLoaderFilesystem } = require('twing');
 const autoprefixer = require('autoprefixer');
-const chalk = require('chalk');
 const cleanCSS = require('clean-css');
 const commander = require('commander');
 const fse = require('fs-extra');
@@ -34,7 +33,7 @@ var sitemapEntries = [];
 try {
   var config = require(configPath);
 } catch(_) {
-  console.log(chalk.yellow(`[!] "${configPath}" not found`));
+  console.log(`[!] "${configPath}" not found`);
 }
 
 const twingEnvironment = new TwingEnvironment(
@@ -150,10 +149,8 @@ glob('**/*', {
           fileWrittenCount++;
         })
         .catch(e => {
-          console.error(chalk.red(`[✘] Unable to write "${path.resolve(outputFilename)}"`));
-          console.error(
-            chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`)
-          );
+          console.error(`[✘] Unable to write "${path.resolve(outputFilename)}"`);
+          console.error(`\n${e.toString()}`);
           process.exit(1);
         });
     }));
@@ -181,10 +178,10 @@ glob('**/*', {
     }
   })
   .then(_ => {
-    console.log(chalk.green(`\n${fileWrittenCount} file(s) written!`));
+    console.log(`\n${fileWrittenCount} file(s) written!`);
   })
   .catch(e => {
-    console.error(chalk.red('[!] An error has occured!'));
-    console.error(chalk.red(`\n  ${e.toString().replace('\n', '\n  ')}\n`));
+    console.error(`[✘] An error has occured!`);
+    console.error(`\n${e.toString()}`);
     process.exit(1);
   });

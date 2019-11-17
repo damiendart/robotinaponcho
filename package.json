@@ -10,7 +10,6 @@
   ],
   "dependencies": {
     "autoprefixer": "*",
-    "chalk": "^2.4.2",
     "clean-css-cli": "*",
     "commander": "^3.0.1",
     "fs-extra": "*",
