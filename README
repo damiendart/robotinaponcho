@@ -3,14 +3,12 @@ robotinaponcho
 
 A hodgepodge of:
 
-  - a basic static site generator (_builtstatic_),
-  - some reusable [Sass][1] bits and pieces (_resources/sass_), and
-  - source code to my [personal website][2] (everything else).
+  - a basic static site generator (_bin/builtstatic_), and
+  - source code to my [personal website][1] (everything else).
+
+[1]: <https://www.robotinaponcho.net/>
 
 Feel free to use whatever you find useful here for your own projects.
 Other than that, you're on your own, I'm afraid.
 
 -- Damien
-
-[1]: <https://sass-lang.com/>
-[2]: <https://www.robotinaponcho.net/>
