@@ -32,12 +32,10 @@
     "poly-decomp": "0.2.1"
   },
   "scripts": {
-    "build": "npm run lastupdated && npm run build:vendor && npm run build:static && npm run build:assets",
+    "build": "npm run build:vendor && npm run build:static && npm run build:assets",
     "build:assets": "node ./bin/buildstatic -i ./node_modules/assets/www.robotinaponcho.net -o ./public",
     "build:static": "node ./bin/buildstatic -i ./static_src -o ./public",
     "build:vendor": "cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js",
-    "clean": "rm -fr ./public",
-    "prelastupdated": "git config filter.lastupdated.clean \"./bin/lastupdated\" && git config filter.lastupdated.smudge \"./bin/lastupdated %f\"",
-    "lastupdated": "touch static_src/notes/*.twig && git checkout static_src/notes/*.twig"
+    "clean": "rm -fr ./public"
   }
 }
