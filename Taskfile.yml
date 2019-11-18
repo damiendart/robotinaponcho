@@ -1,0 +1,54 @@
+---
+version: 2
+
+output: prefixed
+
+tasks:
+  default:
+    deps:
+      - task: ci
+
+  ci:
+    cmds:
+      - task: dependencies
+      - task: build
+    desc: Run all CI-related tasks
+
+  build:
+    cmds:
+      - task: build:assets
+      - task: build:vendor
+      - task: build:static
+
+  build:assets:
+    cmds:
+      - node bin/buildstatic -i ./node_modules/assets/www.robotinaponcho.net -o ./public
+    desc: Build asset files
+
+  build:static:
+    cmds:
+      - node bin/buildstatic -i ./static_src -o ./public
+    desc: Build static files
+
+  build:vendor:
+    cmds:
+      - cat ./node_modules/poly-decomp/build/decomp.min.js ./node_modules/matter-js/build/matter.js > ./static_src/assets/index-vendor.js
+    desc: Build vendor file
+
+  clean:
+    cmds:
+      - rm -fr node_modules public
+    desc: Delete all buildable files and JavaScript dependencies
+
+  dependencies:
+    cmds:
+      - task: dependencies:javascript
+    desc: Run all dependency-installing-related tasks
+
+  dependencies:javascript:
+    cmds:
+      # <http://www.tiernok.com/posts/2019/faster-npm-installs-during-ci/>
+      - npm ci --prefer-offline --no-audit
+    env:
+      CI: true
+    desc: Install JavaScript dependencies for building, development, and testing
