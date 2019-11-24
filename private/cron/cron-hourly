@@ -1,6 +1,89 @@
-#!/bin/bash
+#!/usr/bin/env php
+<?php
 
-umask 027
-source /var/www/www.robotinaponcho.net/shared/protected/.env
-python3 /var/www/www.robotinaponcho.net/current_release/private/bin/mirrorgithub \
-    "$GITHUB_TOKEN" /var/www/www.robotinaponcho.net/shared/protected/git
+require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'protected/vendor/autoload.php';
+
+use GuzzleHttp\Client;
+
+function echoStep(string $step) : void {
+    if (!getenv('CRON')) {
+        echo "$step\n";
+    }
+}
+
+function git(string $command, ?string $cwd = NULL) : string {
+    $pipes = [];
+    echoStep("(cd $cwd && git $command)");
+    $resource = proc_open(
+        "git $command",
+        [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
+        $pipes,
+        $cwd
+    );
+    $stderr = stream_get_contents($pipes[2]);
+    $stdout = stream_get_contents($pipes[1]);
+
+    foreach ($pipes as $pipe) {
+        fclose($pipe);
+    }
+
+    if (proc_close($resource) !== 0) {
+        throw new Exception(
+            "Git command \"$command\" exited with a non-zero status\n$stderr"
+        );
+    }
+
+    return $stdout;
+}
+
+$baseDirectory = join(
+    [getenv('SHARED_ROOT'), 'protected', 'git'],
+    DIRECTORY_SEPARATOR
+);
+$gitHubResponse = (new Client())->request(
+    'GET',
+    'https://api.github.com/users/damiendart/repos'
+);
+$repositoryMetadata = [];
+
+if (!is_dir($baseDirectory)) {
+    if (mkdir($baseDirectory) === false) {
+        throw new Exception("Unable to create directory \"$baseDirectory\"");
+    }
+}
+
+foreach (json_decode($gitHubResponse->getBody()) as $repository) {
+    $repositoryDirectory = join(
+        [$baseDirectory, basename($repository->git_url)],
+        DIRECTORY_SEPARATOR
+    );
+
+    if ($repository->fork === true) {
+        continue;
+    }
+
+    if (is_dir($repositoryDirectory)) {
+        git('fetch -q', $repositoryDirectory);
+    } else {
+        git("clone -q --mirror $repository->git_url", $baseDirectory);
+    }
+
+    touch($repositoryDirectory . DIRECTORY_SEPARATOR . 'git-daemon-export-ok');
+    git('update-server-info', $repositoryDirectory);
+
+    $repositoryMetadata[$repository->name]['last_commit_pretty'] =
+        git(
+            'log -n 1 --date=short --pretty=format:%ad',
+            $repositoryDirectory
+        );
+    $repositoryMetadata[$repository->name]['last_commit_timestamp'] =
+        git('log -n 1 --pretty=format:%at', $repositoryDirectory);
+}
+
+echoStep('# Writing respository metadata');
+file_put_contents(
+    $baseDirectory . DIRECTORY_SEPARATOR . 'metadata.json',
+    json_encode($repositoryMetadata)
+);
+
+return 0;
