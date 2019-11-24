@@ -12,6 +12,7 @@ tasks:
     cmds:
       - task: dependencies
       - task: build
+      - task: lint
     desc: Run all CI-related tasks
 
   build:
@@ -52,3 +53,13 @@ tasks:
     env:
       CI: true
     desc: Install JavaScript dependencies for building, development, and testing
+
+  lint:
+    cmds:
+      - task: lint:php
+    desc: Run all linting-related tasks
+
+  lint:php:
+    cmds:
+      - protected/vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --diff --diff-format=udiff
+    desc: Lint PHP scripts with PHP Coding Standards Fixer
