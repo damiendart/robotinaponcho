@@ -3,7 +3,151 @@
 {% set pageDescription = "View a bunch of Damien Dart’s open-source stuff" %}
 {% set pageTitle = "Open-source Stuff" %}
 
+{% block phpPreamble %}
+  <?php
+    $repositories = json_decode(
+        file_get_contents(
+            join(
+                [getenv('SHARED_ROOT'), 'protected', 'git', 'metadata.json'],
+                DIRECTORY_SEPARATOR
+            )
+        ),
+        true
+    );
+  ?>
+{% endblock %}
+
 {% block pageContent %}
   <h1>Open-source stuff</h1>
-  <?= file_get_contents('/var/www/www.robotinaponcho.net/shared/protected/git/repositories.html'); ?>
+  <a class="anchor" id="toolbox-sass"></a>
+  <h2>toolbox-sass (2019)</h2>
+  <p>Assorted Sass bits-and-pieces.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: CSS</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['toolbox-sass']['last_commit_timestamp'] ?>">on <?= $repositories['toolbox-sass']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/toolbox-sass.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/toolbox-sass">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="setup"></a>
+  <h2>setup (2018)</h2>
+  <p>A bunch of Ansible stuff I use to setup various things.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: Shell</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['setup']['last_commit_timestamp'] ?>">on <?= $repositories['setup']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/setup.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/setup">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="flippywindow"></a>
+  <h2>FlippyWindow (2016)</h2>
+  <p>FlippyWindow is a simple Windows application that non-destructively flips any part of your screen horizontally.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: C++</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['flippywindow']['last_commit_timestamp'] ?>">on <?= $repositories['flippywindow']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/flippywindow.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/flippywindow">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="notes"></a>
+  <h2>notes (2014)</h2>
+  <p>Notes on stuff.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: Ruby</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['notes']['last_commit_timestamp'] ?>">on <?= $repositories['notes']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/notes.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/notes">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="bastardsnake"></a>
+  <h2>Bastard Snake (2013)</h2>
+  <p>A snake clone that doesn't want you getting many points.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: Haxe</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['bastardsnake']['last_commit_timestamp'] ?>">on <?= $repositories['bastardsnake']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/bastardsnake.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/bastardsnake">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="nfsnapi-python"></a>
+  <h2>nfsnapi-python (2013)</h2>
+  <p>A simple Python package that makes using the NearlyFreeSpeech.NET API a little easier.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: Python</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['nfsnapi-python']['last_commit_timestamp'] ?>">on <?= $repositories['nfsnapi-python']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/nfsnapi-python.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/nfsnapi-python">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="obtaincornhoop"></a>
+  <h2>obtaincornhoop (2013)</h2>
+  <p>The retired theme for my Tumblr-powered weblog, written in Haml and Sass.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: CSS</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['obtaincornhoop']['last_commit_timestamp'] ?>">on <?= $repositories['obtaincornhoop']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/obtaincornhoop.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/obtaincornhoop">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="robotinaponcho"></a>
+  <h2>robotinaponcho (2013)</h2>
+  <p>The source code to my personal website.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: HTML</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['robotinaponcho']['last_commit_timestamp'] ?>">on <?= $repositories['robotinaponcho']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/robotinaponcho.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/robotinaponcho">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="brainfuck"></a>
+  <h2>brainfuck (2012)</h2>
+  <p>A simple brainfuck interpreter written in C.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: C</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['brainfuck']['last_commit_timestamp'] ?>">on <?= $repositories['brainfuck']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/brainfuck.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/brainfuck">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="toolbox"></a>
+  <h2>toolbox (2012)</h2>
+  <p>Miscellaneous bits and pieces.</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: Perl</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['toolbox']['last_commit_timestamp'] ?>">on <?= $repositories['toolbox']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/toolbox.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/toolbox">View project on GitHub</a></li>
+  </ul>
+
+  <a class="anchor" id="knr-solutions"></a>
+  <h2>knr-solutions (2011)</h2>
+  <p>My solutions to the exercises in The C Programming Language (Second Edition).</p>
+  <ul>
+    <li>Nerdy bits-and-pieces used: C</li>
+    <li>Last updated <span data-timestamp="<?= $repositories['knr-solutions']['last_commit_timestamp'] ?>">on <?= $repositories['knr-solutions']['last_commit_pretty'] ?></span></li>
+  </ul>
+  <ul class="button-list">
+    <li class="button-list__item"><a class="button" href="https://www.robotinaponcho.net/git/knr-solutions.git">Copy git clone URL</a></li>
+    <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/knr-solutions">View project on GitHub</a></li>
+  </ul>
 {% endblock %}
