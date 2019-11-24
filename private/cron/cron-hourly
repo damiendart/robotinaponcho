@@ -15,13 +15,15 @@ if (getenv('SENTRY_DSN')) {
     );
 }
 
-function echoStep(string $step) : void {
+function echoStep(string $step) : void
+{
     if (!getenv('CRON')) {
         echo "$step\n";
     }
 }
 
-function git(string $command, ?string $cwd = NULL) : string {
+function git(string $command, ?string $cwd = null) : string
+{
     $pipes = [];
     echoStep("(cd $cwd && git $command)");
     $resource = proc_open(
