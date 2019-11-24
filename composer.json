@@ -4,6 +4,7 @@
     "vendor-dir": "protected/vendor"
   },
   "require": {
-    "guzzlehttp/guzzle": "^6.4"
+    "guzzlehttp/guzzle": "^6.4",
+    "sentry/sdk": "^2.0"
   }
 }

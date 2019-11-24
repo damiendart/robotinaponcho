@@ -5,6 +5,16 @@ require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'protected/vendor/auto
 
 use GuzzleHttp\Client;
 
+if (getenv('SENTRY_DSN') {
+    Sentry\init(
+        [
+            'dsn' => getenv('SENTRY_DSN'),
+            'environment' => getenv('APP_ENV'),
+            'release' => getenv('DEPLOYED_RELEASE'),
+        ]
+    )
+}
+
 function echoStep(string $step) : void {
     if (!getenv('CRON')) {
         echo "$step\n";
