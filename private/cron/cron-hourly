@@ -83,6 +83,8 @@ foreach (json_decode($gitHubResponse->getBody()) as $repository) {
     touch($repositoryDirectory . DIRECTORY_SEPARATOR . 'git-daemon-export-ok');
     git('update-server-info', $repositoryDirectory);
 
+    $repositoryMetadata[$repository->name]['last_commit_hash'] =
+        git('log -n 1 --pretty=format:%H', $repositoryDirectory);
     $repositoryMetadata[$repository->name]['last_commit_pretty'] =
         git(
             'log -n 1 --date=short --pretty=format:%ad',
