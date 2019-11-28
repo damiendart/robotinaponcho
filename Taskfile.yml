@@ -44,6 +44,7 @@ tasks:
   dependencies:
     cmds:
       - task: dependencies:javascript
+      - task: dependencies:php
     desc: Run all dependency-installing-related tasks
 
   dependencies:javascript:
@@ -53,6 +54,11 @@ tasks:
     env:
       CI: true
     desc: Install JavaScript dependencies for building, development, and testing
+
+  dependencies:php:
+    cmds:
+      - composer install --no-ansi --no-interaction --no-progress --no-suggest
+    desc: Install PHP dependencies for building, development, and testing
 
   lint:
     cmds:
