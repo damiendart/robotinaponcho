@@ -11,7 +11,6 @@
 $base-font-size: $dd-em-base;
 $base-line-height: 1.5rem;
 $content-width: 37.5rem;
-$default-font-stack: "acumin-pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
 
 $black: #000000;
 $blue: #4bcffa;
@@ -22,7 +21,7 @@ $orange: #f96e00;
 $white: #ffffff;
 
 
-@include dd-body-html-base($default-font-stack, $white, $black,
+@include dd-body-html-base($dd-font-stack-system, $white, $black,
     $content-width, $base-font-size, $base-line-height);
 
 

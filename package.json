@@ -29,6 +29,6 @@
     "assets": "git+ssh://git@github.com/damiendart/assets.git#21287a3e269943b170990efab93f9aaaeb3bf2a5",
     "matter-js": "*",
     "poly-decomp": "0.2.1",
-    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#c55ac1cd615bd788739521f92b162ab84d3452b9"
+    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#45a766421ec0ec5ec69bbb680f7aadc1513105be"
   }
 }
