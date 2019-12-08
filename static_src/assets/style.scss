@@ -339,10 +339,6 @@ ul {
   padding: $base-line-height;
   text-align: center;
 
-  @media #{$dd-media-medium} {
-    padding: $base-line-height * 2;
-  }
-
   &__copyright {
     margin: 0;
   }
@@ -412,10 +408,6 @@ ul {
   padding: $base-line-height;
   margin: 0 0 ($base-line-height / -16) 0;
   width: 100%;
-
-  @media #{$dd-media-medium} {
-    padding: $base-line-height * 2;
-  }
 
   a {
     text-decoration: none;
