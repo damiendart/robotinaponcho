@@ -7,5 +7,3 @@
 .php_cs.cache
 public/
 protected/vendor
-# The following file is generated.
-static_src/assets/index-vendor.js
