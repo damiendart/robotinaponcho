@@ -5,10 +5,10 @@
 // please refer to the accompanying "LICENCE" file.
 
 
-@import "node_modules/toolbox-sass/dd-toolbox";
+@use "node_modules/toolbox-sass";
 
 
-$base-font-size: $dd-em-base;
+$base-font-size: toolbox-sass.$base-one-em;
 $base-line-height: 1.5rem;
 $content-width: 37.5rem;
 
@@ -21,8 +21,14 @@ $orange: #f96e00;
 $white: #ffffff;
 
 
-@include dd-body-html-base($dd-font-stack-system, $white, $black,
-    $content-width, $base-font-size, $base-line-height);
+@include toolbox-sass.body-html-base(
+  toolbox-sass.$font-stack-system,
+  $white,
+  $black,
+  $content-width,
+  $base-font-size,
+  $base-line-height
+);
 
 
 a {
@@ -39,7 +45,7 @@ h1 {
   margin: $base-line-height * 3 0;
   text-align: center;
 
-  @media #{$dd-media-medium} {
+  @media #{toolbox-sass.$media-medium} {
     font-size: 300%;
     line-height: $base-line-height * 2;
   }
@@ -159,7 +165,7 @@ ul {
   }
 }
 
-@media #{$dd-media-small-down} {
+@media #{toolbox-sass.$media-small-down} {
   .collapsable {
     display: none;
   }
@@ -266,7 +272,7 @@ ul {
   }
 
   // Internet Explorer doesn't support interaction-related media queries.
-  @media #{media-ie-10} {
+  @media #{toolbox-sass.$media-ie-10} {
     &:hover {
       background: $black;
       color: $white;
@@ -304,7 +310,7 @@ ul {
     top: $base-line-height * 2;
     white-space: pre;
 
-    @media #{$dd-media-medium} {
+    @media #{toolbox-sass.$media-medium} {
       columns: 2;
       column-gap: $base-line-height / 2;
     }
@@ -325,7 +331,7 @@ ul {
         break-before: column;
         margin: $base-line-height 0 0 0;
 
-        @media #{$dd-media-medium} {
+        @media #{toolbox-sass.$media-medium} {
           margin: 0;
         }
       }
@@ -396,12 +402,12 @@ ul {
 }
 
 /* div */.hamburger {
-  @include dd-hamburger(
+  @include toolbox-sass.hamburger(
     $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4);
 }
 
 /* header */.header {
-  @include dd-clearfix;
+  @include toolbox-sass.clearfix;
 
   border-bottom: ($base-line-height / 16) solid $gray;
   box-sizing: border-box;
