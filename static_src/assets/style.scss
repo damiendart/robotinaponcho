@@ -418,16 +418,6 @@ ul {
   a {
     text-decoration: none;
 
-    &[href="#"] {
-      opacity: 0.5;
-      pointer-events: none;
-
-      &:after {
-        content: " (Coming soon)";
-        font-style: italic;
-      }
-    }
-
     &:focus, &:hover {
       text-decoration: underline;
     }
