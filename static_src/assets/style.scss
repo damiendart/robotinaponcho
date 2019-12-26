@@ -142,23 +142,34 @@ ul {
 }
 
 .button {
-  background: $black;
+  background: $blue;
   color: $white;
   display: inline-block;
   font-weight: bold;
-  padding: ($base-line-height / 2) ($base-line-height);
+  padding: ($base-line-height / 2) $base-line-height;
   border-radius: $base-line-height;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
+    text-decoration-thickness: $base-line-height / 16;
   }
 
   &--inverse {
     background: $white;
     border: ($base-line-height / 8) solid currentColor;
-    color: $black;
+    color: $blue;
     padding: ($base-line-height * 0.375) ($base-line-height * 0.875);
+  }
+
+  &--itchio {
+    background: $itchio-pink;
+    color: $white;
+  }
+
+  img {
+    height: $base-line-height;
+    vertical-align: bottom;
   }
 }
 
@@ -184,26 +195,8 @@ ul {
   text-align: center;
   padding: 0 $base-line-height;
 
-  &__button {
+  &__link {
     margin: 0;
-
-    &__link {
-      background: $itchio-pink;
-      color: $white;
-      display: inline-block;
-      padding: ($base-line-height / 2) $base-line-height;
-      border-radius: $base-line-height;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      img {
-        height: $base-line-height;
-        vertical-align: bottom;
-      }
-    }
   }
 
   &__information-list {
