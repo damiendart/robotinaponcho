@@ -329,12 +329,7 @@ ul {
       padding: 0;
 
       &--gap {
-        break-before: column;
         margin: $base-line-height 0 0 0;
-
-        @media #{toolbox-sass.$media-medium} {
-          margin: 0;
-        }
       }
     }
   }
