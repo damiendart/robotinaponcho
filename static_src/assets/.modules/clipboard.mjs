@@ -17,6 +17,7 @@ window.addEventListener('click', function(e) {
       : false;
 
   e.preventDefault();
+  e.target.classList.remove('clipboard-success');
 
   el.value = e.target.href;
   el.setAttribute('readonly', '');
@@ -33,4 +34,6 @@ window.addEventListener('click', function(e) {
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(selected);
   }
+
+  e.target.classList.add('clipboard-success');
 });
