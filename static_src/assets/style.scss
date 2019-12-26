@@ -37,6 +37,10 @@ a {
   font-weight: bold;
   text-decoration: underline $gray;
   text-decoration-thickness: $base-line-height / 16;
+
+  &:hover {
+    text-decoration-color: $blue;
+  }
 }
 
 code {
