@@ -17,7 +17,7 @@ $blue: #0984e3;
 $flippywindow-blue: #65b3eb;
 $gray: #dddddd;
 $itchio-pink: #fa5c5c;
-$orange: #f96e00;
+$orange: #fdcb6e;
 $white: #ffffff;
 
 
@@ -119,15 +119,15 @@ ul {
   }
 
   &--info {
-    background-color: $blue;
+    background-color: $orange;
     background-image: url("icon-info.svg");
-    color: contrasting-colour($gray);
+    color: contrasting-colour($orange);
   }
 
   &--metadata {
     background-color: $gray;
     background-image: url("/assets/icon-help.svg");
-    color: contrasting-colour($blue)
+    color: contrasting-colour($gray)
   }
 
   a {
