@@ -13,7 +13,7 @@ $base-line-height: 1.5rem;
 $content-width: 37.5rem;
 
 $black: #000000;
-$blue: #4bcffa;
+$blue: #0984e3;
 $flippywindow-blue: #65b3eb;
 $gray: #dddddd;
 $itchio-pink: #fa5c5c;
@@ -32,7 +32,10 @@ $white: #ffffff;
 
 
 a {
-  color: inherit;
+  color: $blue;
+  font-weight: bold;
+  text-decoration: underline $gray;
+  text-decoration-thickness: $base-line-height / 16;
 }
 
 code {
@@ -125,6 +128,11 @@ ul {
     background-color: $gray;
     background-image: url("/assets/icon-help.svg");
     color: contrasting-colour($blue)
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: currentColor;
   }
 }
 
@@ -373,6 +381,11 @@ ul {
       font-weight: normal;
       margin: $base-line-height auto 0;
     }
+
+    a {
+      color: inherit;
+      text-decoration-color: currentColor;
+    }
   }
 
   &__screenshot-with-arrow {
@@ -417,6 +430,7 @@ ul {
 
   a {
     text-decoration: none;
+    color: inherit;
 
     &:focus, &:hover {
       text-decoration: underline;
