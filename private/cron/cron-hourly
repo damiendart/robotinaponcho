@@ -66,8 +66,8 @@ if (!is_dir($baseDirectory)) {
 
 foreach (json_decode($gitHubResponse->getBody()) as $repository) {
     $repositoryDirectory = join(
-        [$baseDirectory, basename($repository->git_url)],
-        DIRECTORY_SEPARATOR
+        DIRECTORY_SEPARATOR,
+        [$baseDirectory, basename($repository->git_url)]
     );
 
     if ($repository->fork === true) {
