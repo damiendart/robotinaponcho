@@ -38,33 +38,22 @@
 
   <a class="anchor" id="setup"></a>
   <h2>setup (2018)</h2>
-  <p>A bunch of Ansible stuff I use to setup various things.</p>
+  <p>A mess of Ansible playbooks and roles that I use to provision and
+  maintain my personal development environment and a couple of servers
+  that I host this and a few other small websites on.</p>
   {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Ansible', 'project': 'setup' } %}
 
   <a class="anchor" id="flippywindow"></a>
   <h2>FlippyWindow (2016)</h2>
-  <p>FlippyWindow is a simple Windows application that non-destructively flips any part of your screen horizontally.</p>
+  <p>FlippyWindow is a simple Windows application that non-destructively
+  flips any part of your screen horizontally. To find out more,
+  check out <a href="/flippywindow/">the FlippyWindow website</a>.</p>
   {% include 'git/.metadata.html.twig' with { 'nerd_list': 'C++', 'project': 'flippywindow' } %}
-
-  <a class="anchor" id="notes"></a>
-  <h2>notes (2014)</h2>
-  <p>Notes on stuff.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Markdown', 'project': 'notes' } %}
 
   <a class="anchor" id="bastardsnake"></a>
   <h2>Bastard Snake (2013)</h2>
-  <p>A snake clone that doesn't want you getting many points.</p>
+  <p>A snake clone that doesn’t want you getting many points.</p>
   {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Haxe', 'project': 'bastardsnake' } %}
-
-  <a class="anchor" id="nfsnapi-python"></a>
-  <h2>nfsnapi-python (2013)</h2>
-  <p>A simple Python package that makes using the NearlyFreeSpeech.NET API a little easier.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Python', 'project': 'nfsnapi-python' } %}
-
-  <a class="anchor" id="obtaincornhoop"></a>
-  <h2>obtaincornhoop (2013)</h2>
-  <p>The retired theme for my Tumblr-powered weblog, written in Haml and Sass.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'JavaScript, Haml, and Sass', 'project': 'obtaincornhoop' } %}
 
   <a class="anchor" id="robotinaponcho"></a>
   <h2>robotinaponcho (2013)</h2>
@@ -78,11 +67,32 @@
 
   <a class="anchor" id="toolbox"></a>
   <h2>toolbox (2012)</h2>
-  <p>Miscellaneous bits and pieces.</p>
+  <p>This repository is where any convenience and helper scripts that
+  don’t warrant their own repository end up.</p>
   {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Perl and Shell', 'project': 'toolbox' } %}
 
   <a class="anchor" id="knr-solutions"></a>
   <h2>knr-solutions (2011)</h2>
   <p>My solutions to the exercises in The C Programming Language (Second Edition).</p>
   {% include 'git/.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'knr-solutions' } %}
+
+  <a class="anchor" id="nfsnapi-python"></a>
+  <a class="anchor" id="notes"></a>
+  <a class="anchor" id="obtaincornhoop"></a>
+  <h2>Archived and old projects</h2>
+
+  <p>The following projects are no longer being worked on:</p>
+
+  <ul>
+    <li><a href="https://github.com/damiendart/notes">notes</a>: Notes
+    on stuff. (These notes have since been merged into <a
+    href="#robotinaponcho">my personal website repository</a>, where I
+    continue to update them.)</li>
+    <li><a href="https://github.com/damiendart/nfsnapi-python">nfsnapi-python</a>:
+    When I used NearlyFreeSpeech.NET to host websites, I wrote a simple
+    Python package that makes using the their API a little easier.</li> 
+    <li><a href="https://github.com/damiendart/obtaincornhoop">obtaincornhoop</a>:
+    I once had a Tumblr weblog. This was the custom theme I made for
+    it.</li>
+  </ul>
 {% endblock %}
