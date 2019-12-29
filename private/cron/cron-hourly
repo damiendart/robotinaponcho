@@ -49,8 +49,8 @@ function git(string $command, ?string $cwd = null) : string
 }
 
 $baseDirectory = join(
-    [getenv('SHARED_ROOT'), 'protected', 'git'],
-    DIRECTORY_SEPARATOR
+    DIRECTORY_SEPARATOR,
+    [getenv('SHARED_ROOT'), 'protected', 'git']
 );
 $gitHubResponse = (new Client())->request(
     'GET',

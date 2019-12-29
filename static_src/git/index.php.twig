@@ -20,8 +20,8 @@
     $repositories = json_decode(
         file_get_contents(
             join(
-                [getenv('SHARED_ROOT'), 'protected', 'git', 'metadata.json'],
-                DIRECTORY_SEPARATOR
+                DIRECTORY_SEPARATOR,
+                [getenv('SHARED_ROOT'), 'protected', 'git', 'metadata.json']
             )
         ),
         true
