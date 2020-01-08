@@ -2,17 +2,9 @@
 
 const { promisify } = require('util');
 
-const commander = require('commander');
 const fse = require('fs-extra');
 const glob = promisify(require('glob'));
 const path = require('path');
-
-const program = new commander.Command();
-
-program.version('0.1.0');
-program.option('-i, --input <dir>', 'specify input directory', './static_src').
-    option('-o, --output <dir>', 'specify output directory', './public');
-program.parse(process.argv);
 
 const processors = [
   require('./processors/JavaScriptProcessor'),
@@ -20,8 +12,25 @@ const processors = [
   require('./processors/SVGProcessor'),
   require('./processors/TwigProcessor'),
 ];
-const inputDirectory = path.resolve(program.input);
-const outputDirectory = path.resolve(program.output);
+
+if (
+  process.argv.length !== 4
+  || process.argv.includes('--help')
+  || process.argv.includes('-h')
+) {
+  const askingForHelp = process.argv.includes('--help')
+    || process.argv.includes('-h');
+
+  (askingForHelp ? console.log : console.error)(
+    `"${path.basename(process.argv[1])}" is a real basic static site generator.
+    Usage: ${path.basename(process.argv[1])} [INPUT-DIRECTORY] [OUTPUT-DIRECTORY]`
+      .trim().replace(/\n {4}/g, '\n')
+  );
+  process.exit(askingForHelp ? 0 : 1);
+}
+
+const inputDirectory = path.resolve(process.argv[2]);
+const outputDirectory = path.resolve(process.argv[3]);
 let writtenFilesCount = 0;
 
 glob('**/*', { cwd: inputDirectory, nodir: true }).then(files => {

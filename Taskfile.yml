@@ -22,12 +22,12 @@ tasks:
 
   build:assets:
     cmds:
-      - node bin/buildstatic -i ./node_modules/assets/www.robotinaponcho.net -o ./public
+      - node bin/buildstatic ./node_modules/assets/www.robotinaponcho.net ./public
     desc: Build asset files
 
   build:static:
     cmds:
-      - node bin/buildstatic -i ./static_src -o ./public
+      - node bin/buildstatic ./static_src ./public
     desc: Build static files
 
   clean:
