@@ -11,12 +11,10 @@
     <meta content="{{ block('pageDescription')|trim }}" name="description">
     <meta content="{{ block('pageDescription')|trim }}" property="og:description">
   {% endif %}
-  {% if pageOpenGraphImage is defined %}
-    <meta content="{{ baseURL }}{{ pageOpenGraphImage }}" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-  {% endif %}
+  <meta content="https://www.robotinaponcho.net/{{ pageOpenGraphImage | default('assets/og.png') }}" property="og:image">
+  <meta content="summary_large_image" name="twitter:card">
   <meta content="website" property="og:type">
-  <meta content="{{ baseURL }}{{ slug }}" property="og:url">
+  <meta content="https://www.robotinaponcho.net/{{ pageSlug }}" property="og:url">
   <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
   <script>
     {% block headJavaScript %}

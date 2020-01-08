@@ -1,6 +1,7 @@
-{% extends '.base.html.twig' %}
+{% extends '../.base.html.twig' %}
 
 {% set pageDescription = "View a bunch of Damien Dart’s open-source stuff" %}
+{% set pageSlug = 'git/' %}
 {% set pageTitle = "Open-source Stuff" %}
 
 {% block phpPreamble %}
@@ -34,47 +35,47 @@
   <a class="anchor" id="toolbox-sass"></a>
   <h2>toolbox-sass (2019)</h2>
   <p>Assorted Sass bits-and-pieces.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Sass', 'project': 'toolbox-sass' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'Sass', 'project': 'toolbox-sass' } %}
 
   <a class="anchor" id="setup"></a>
   <h2>setup (2018)</h2>
   <p>A mess of Ansible playbooks and roles that I use to provision and
   maintain my personal development environment and a couple of servers
   that I host this and a few other small websites on.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Ansible', 'project': 'setup' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'Ansible', 'project': 'setup' } %}
 
   <a class="anchor" id="flippywindow"></a>
   <h2>FlippyWindow (2016)</h2>
   <p>FlippyWindow is a simple Windows application that non-destructively
   flips any part of your screen horizontally. To find out more,
   check out <a href="/flippywindow/">the FlippyWindow website</a>.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'C++', 'project': 'flippywindow' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'C++', 'project': 'flippywindow' } %}
 
   <a class="anchor" id="bastardsnake"></a>
   <h2>Bastard Snake (2013)</h2>
   <p>A snake clone that doesn’t want you getting many points.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Haxe', 'project': 'bastardsnake' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'Haxe', 'project': 'bastardsnake' } %}
 
   <a class="anchor" id="robotinaponcho"></a>
   <h2>robotinaponcho (2013)</h2>
   <p>The source code to my personal website.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'JavaScript, HTML/Twig, and Sass', 'project': 'robotinaponcho' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'JavaScript, HTML/Twig, and Sass', 'project': 'robotinaponcho' } %}
 
   <a class="anchor" id="brainfuck"></a>
   <h2>brainfuck (2012)</h2>
   <p>A simple brainfuck interpreter written in C.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'brainfuck' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'brainfuck' } %}
 
   <a class="anchor" id="toolbox"></a>
   <h2>toolbox (2012)</h2>
   <p>This repository is where any convenience and helper scripts that
   don’t warrant their own repository end up.</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'Perl and Shell', 'project': 'toolbox' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'Perl and Shell', 'project': 'toolbox' } %}
 
   <a class="anchor" id="knr-solutions"></a>
   <h2>knr-solutions (2011)</h2>
   <p>My solutions to the exercises in The C Programming Language (Second Edition).</p>
-  {% include 'git/.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'knr-solutions' } %}
+  {% include '.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'knr-solutions' } %}
 
   <a class="anchor" id="nfsnapi-python"></a>
   <a class="anchor" id="notes"></a>

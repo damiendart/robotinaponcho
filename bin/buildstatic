@@ -1,197 +1,82 @@
 #!/usr/bin/env node
 
-const { minify } = require('html-minifier');
 const { promisify } = require('util');
-const { TwingEnvironment, TwingFilter, TwingLoaderFilesystem } = require('twing');
-const autoprefixer = require('autoprefixer');
-const cleanCSS = require('clean-css');
+
 const commander = require('commander');
-const exec = promisify(require('child_process').exec);
 const fse = require('fs-extra');
 const glob = promisify(require('glob'));
-const lodash = require('lodash');
-const marked = require('marked');
 const path = require('path');
-const postcss = require('postcss');
-const rollup = require('rollup');
-const rollupUglify = require('rollup-plugin-uglify');
-const sass = require('sass');
-const svgo = require('svgo');
 
 const program = new commander.Command();
 
 program.version('0.1.0');
-program
-  .option('-i, --input <dir>', 'specify input directory', './static_src')
-  .option('-o, --output <dir>', 'specify output directory', './public');
+program.option('-i, --input <dir>', 'specify input directory', './static_src').
+    option('-o, --output <dir>', 'specify output directory', './public');
 program.parse(process.argv);
 
-const configPath = path.resolve(path.join(program.input, '.buildstatic.config.js'));
-var config = {};
-var fileWrittenCount = 0;
-var sitemapEntries = [];
+const processors = [
+  require('./processors/JavaScriptProcessor'),
+  require('./processors/SassProcessor'),
+  require('./processors/SVGProcessor'),
+  require('./processors/TwigProcessor'),
+];
+const inputDirectory = path.resolve(program.input);
+const outputDirectory = path.resolve(program.output);
+let writtenFilesCount = 0;
 
-try {
-  var config = require(configPath);
-} catch(_) {
-  console.log(`[!] "${configPath}" not found`);
-}
+glob('**/*', { cwd: inputDirectory, nodir: true }).then(files => {
+  return Promise.all(files.map(file => {
+    const applicableProcessors = processors.filter(processor => {
+      return processor.INPUT_EXTENSION === path.extname(file);
+    });
 
-const twingEnvironment = new TwingEnvironment(
-  new TwingLoaderFilesystem(program.input),
-  { strict_variables: true }
-);
+    if (applicableProcessors.length > 0) {
+      return Promise.all(
+          applicableProcessors.map(processor => {
+            const inputFile = path.join(inputDirectory, file);
+            const outputFile = path.join(outputDirectory, file)
+              .replace(processor.INPUT_EXTENSION, processor.OUTPUT_EXTENSION);
 
-twingEnvironment.addFilter(
-  new TwingFilter(
-    'markdown', 
-    markup => { 
-      const markdown = markup.toString();
-      const indentation = markdown.match(/^\s*/);
-      const indentationRegex = new RegExp('^' +
-        (indentation && indentation.length) ? indentation[0] : '');
-
-      return marked(
-        markdown.split(/\r?\n/).reduce(
-          (carry, line) => `${carry}${line.replace(indentationRegex, '')}\n`,
-          ''
-        ),
-        { 
-          headerIds: false,
-          smartypants: true
-        }
-      );
-    }, 
-    { is_safe: ['html'] }
-  )
-);
-
-glob('**/*', {
-  cwd: program.input,
-  nodir: true
-})
-  .then(files => {
-    return Promise.all(files.map(file => {
-      const inputFilename = path.join(program.input, file);
-      var outputFilename = path.join(program.output, file);
-
-      return fse.mkdirs(path.dirname(outputFilename))
-        .then(_ => {
-          switch (path.extname(inputFilename)) {
-            case '.twig':
-              const slug = file.replace(/(index)?\.(html|php)(.twig)/, '');
-              outputFilename = outputFilename.replace('.twig', '');
-
-              return exec(`git log -n 1 --pretty=format:'%H %at' ${inputFilename}`)
-                .then(output => {
-                  return new Promise((resolve, reject) => {
-                    const template = twingEnvironment.load(file);
-                    const [gitHash, modified] = output.stdout.split(' ');
-
-                    resolve(template.render({
-                      ...config,
-                      gitHash,
-                      modified: new Date(parseInt(modified)),
-                      slug: slug
-                    }));
-                  })
-                })
-                .then(html => {
-                  return minify(html,
-                    {
-                      collapseWhitespace: true,
-                      decodeEntities: true,
-                      minifyJS: true,
-                      removeComments: true,
-                      removeEmptyAttributes: true
-                    }
-                  );
-                })
-                .then(html => {
-                  sitemapEntries.push(slug);
-                  fse.writeFile(outputFilename, html);
-                });
-
-            case '.js':
-              return rollup.rollup({
-                input: inputFilename,
-                plugins: [rollupUglify.uglify()]
+            return fse.mkdirs(path.dirname(outputFile))
+              .then(_ => fse.readFile(inputFile, 'utf8'))
+              .then(fileContents => {
+                return (new processor()).process(fileContents, inputFile, outputFile);
               })
-                .then(bundle => {
-                  return bundle.write({
-                    file: outputFilename,
-                    format: 'iife',
-                    name: path.basename(outputFilename) !== 'app.js'
-                      ? lodash.camelCase(path.basename(outputFilename, '.js'))
-                      : null,
-                    sourcemap: false
-                  });
-                })
+              .then(output => {
+                return fse.writeFile(outputFile, output);
+              })
+              .then(_ => {
+                console.log(`[✔] Written "${outputFile}"`);
+                writtenFilesCount++;
+              })
+              .catch(e => {
+                console.error(`[✘] Unable to write "${outputFile}"`);
+                console.error(`\n${e.toString()}`);
+                process.exit(1);
+              });
+          }),
+      );
+    } else {
+      const outputFile = path.join(outputDirectory, file);
 
-            case '.scss':
-              return postcss([autoprefixer]).process(
-                sass.renderSync({ file: inputFilename }).css.toString(),
-                { from: inputFilename }
-              )
-                .then(postcssOutput => {
-                  return new cleanCSS().minify(postcssOutput.css).styles;
-                })
-                .then(css => {
-                  outputFilename = outputFilename.replace('scss', 'css');
-                  return fse.writeFile(outputFilename, css);
-                });
-
-            case '.svg':
-              return fse.readFile(path.join(program.input, file), 'utf8')
-                .then(svg => {
-                  return new svgo().optimize(svg)
-                    .then(svgoOutput => {
-                      return fse.writeFile(outputFilename, svgoOutput.data);
-                    });
-                });
-
-            default:
-              return fse.copySync(inputFilename, outputFilename);
-          }
-        })
+      return fse.copy(path.join(inputDirectory, file), outputFile)
         .then(_ => {
-          console.log(`[✔] Written "${path.resolve(outputFilename)}"`);
-          fileWrittenCount++;
+          console.log(`[✔] Written "${outputFile}"`);
+          writtenFilesCount++;
         })
         .catch(e => {
-          console.error(`[✘] Unable to write "${path.resolve(outputFilename)}"`);
+          console.error(`[✘] Unable to write "${outputFile}"`);
           console.error(`\n${e.toString()}`);
           process.exit(1);
         });
-    }));
-  })
-  .then(_ => {
-    if (sitemapEntries.length > 0) {
-      if (!config.baseURL) {
-        throw new Error('"baseURL" must be set to generate a sitemap');
-      }
-
-      const sitemapFilename = path.join(program.output, 'sitemap.xml');
-
-      sitemapXML =
-        sitemapEntries.reduce(
-          (carry, entry) => `${carry}<url><loc>${config.baseURL}${entry}</loc></url>`,
-          '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        )
-        + '</urlset>';
-
-      return fse.writeFile(sitemapFilename, sitemapXML)
-        .then(_ => {
-          console.log(`[✔] Written "${path.resolve(sitemapFilename)}"`);
-          fileWrittenCount++;
-        });
     }
-  })
+  }));
+})
   .then(_ => {
-    console.log(`\n${fileWrittenCount} file(s) written!`);
+    console.log(`\n${writtenFilesCount} file(s) written!`);
   })
   .catch(e => {
-    console.error(`[✘] An error has occured!`);
+    console.error(`[✘] An error has occurred!`);
     console.error(`\n${e.toString()}`);
     process.exit(1);
   });
