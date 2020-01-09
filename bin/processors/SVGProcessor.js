@@ -1,21 +1,20 @@
-const svgo = require('svgo');
+/* eslint-env node */
 
-class SVGProcessor
-{
-    static get INPUT_EXTENSION()
-    {
-        return '.svg';
-    }
+const SVGO = require('svgo');
 
-    static get OUTPUT_EXTENSION()
-    {
-        return this.INPUT_EXTENSION;
-    }
+class SVGProcessor {
+  static get INPUT_EXTENSION() {
+    return '.svg';
+  }
 
-    process(content, inputFile, outputFile)
-    {
-        return new svgo().optimize(content).then(output => output.data);
-    }
+  static get OUTPUT_EXTENSION() {
+    return this.INPUT_EXTENSION;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  process(content) {
+    return new SVGO().optimize(content).then((output) => output.data);
+  }
 }
 
 module.exports = SVGProcessor;

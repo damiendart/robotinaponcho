@@ -1,27 +1,26 @@
+/* eslint-env node */
+
 const autoprefixer = require('autoprefixer');
-const cleanCSS = require('clean-css');
+const CleanCSS = require('clean-css');
 const postcss = require('postcss');
 const sass = require('sass');
 
-class SassProcessor
-{
-  static get INPUT_EXTENSION()
-  {
+class SassProcessor {
+  static get INPUT_EXTENSION() {
     return '.scss';
   }
 
-  static get OUTPUT_EXTENSION()
-  {
+  static get OUTPUT_EXTENSION() {
     return '.css';
   }
 
-  process(content, inputFile, outputFile)
-  {
+  // eslint-disable-next-line class-methods-use-this
+  process(content, inputFile) {
     return postcss([autoprefixer]).process(
       sass.renderSync({ data: content }).css.toString(),
-      { from: inputFile }
+      { from: inputFile },
     )
-      .then(postCSSOutput => new cleanCSS().minify(postCSSOutput.css).styles);
+      .then((postCSSOutput) => new CleanCSS().minify(postCSSOutput.css).styles);
   }
 }
 

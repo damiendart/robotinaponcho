@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-
-const { promisify } = require('util');
+/* eslint no-console: 0 global-require: 0 */
+/* eslint-env node */
 
 const fse = require('fs-extra');
-const glob = promisify(require('glob'));
+const glob = require('util').promisify(require('glob'));
 const path = require('path');
-
 const processors = [
   require('./processors/JavaScriptProcessor'),
   require('./processors/SassProcessor'),
@@ -24,7 +23,7 @@ if (
   (askingForHelp ? console.log : console.error)(
     `"${path.basename(process.argv[1])}" is a real basic static site generator.
     Usage: ${path.basename(process.argv[1])} [INPUT-DIRECTORY] [OUTPUT-DIRECTORY]`
-      .trim().replace(/\n {4}/g, '\n')
+      .trim().replace(/\n {4}/g, '\n'),
   );
   process.exit(askingForHelp ? 0 : 1);
 }
@@ -33,59 +32,57 @@ const inputDirectory = path.resolve(process.argv[2]);
 const outputDirectory = path.resolve(process.argv[3]);
 let writtenFilesCount = 0;
 
-glob('**/*', { cwd: inputDirectory, nodir: true }).then(files => {
-  return Promise.all(files.map(file => {
-    const applicableProcessors = processors.filter(processor => {
-      return processor.INPUT_EXTENSION === path.extname(file);
-    });
+glob('**/*', { cwd: inputDirectory, nodir: true })
+  .then((files) => Promise.all(files.map((file) => {
+    const applicableProcessors = processors.filter(
+      (processor) => processor.INPUT_EXTENSION === path.extname(file),
+    );
 
     if (applicableProcessors.length > 0) {
       return Promise.all(
-          applicableProcessors.map(processor => {
-            const inputFile = path.join(inputDirectory, file);
-            const outputFile = path.join(outputDirectory, file)
-              .replace(processor.INPUT_EXTENSION, processor.OUTPUT_EXTENSION);
+        applicableProcessors.map((processor) => {
+          const inputFile = path.join(inputDirectory, file);
+          const outputFile = path.join(outputDirectory, file)
+            .replace(processor.INPUT_EXTENSION, processor.OUTPUT_EXTENSION);
 
-            return fse.mkdirs(path.dirname(outputFile))
-              .then(_ => fse.readFile(inputFile, 'utf8'))
-              .then(fileContents => {
-                return (new processor()).process(fileContents, inputFile, outputFile);
-              })
-              .then(output => {
-                return fse.writeFile(outputFile, output);
-              })
-              .then(_ => {
-                console.log(`[✔] Written "${outputFile}"`);
-                writtenFilesCount++;
-              })
-              .catch(e => {
-                console.error(`[✘] Unable to write "${outputFile}"`);
-                console.error(`\n${e.toString()}`);
-                process.exit(1);
-              });
-          }),
+          return fse.mkdirs(path.dirname(outputFile))
+            .then(() => fse.readFile(inputFile, 'utf8'))
+            .then(
+              // eslint-disable-next-line new-cap
+              (fileContents) => (new processor()).process(fileContents, inputFile, outputFile),
+            )
+            .then((output) => fse.writeFile(outputFile, output))
+            .then(() => {
+              console.log(`[✔] Written "${outputFile}"`);
+              writtenFilesCount += 1;
+            })
+            .catch((e) => {
+              console.error(`[✘] Unable to write "${outputFile}"`);
+              console.error(`\n${e.toString()}`);
+              process.exit(1);
+            });
+        }),
       );
-    } else {
-      const outputFile = path.join(outputDirectory, file);
-
-      return fse.copy(path.join(inputDirectory, file), outputFile)
-        .then(_ => {
-          console.log(`[✔] Written "${outputFile}"`);
-          writtenFilesCount++;
-        })
-        .catch(e => {
-          console.error(`[✘] Unable to write "${outputFile}"`);
-          console.error(`\n${e.toString()}`);
-          process.exit(1);
-        });
     }
-  }));
-})
-  .then(_ => {
+
+    const outputFile = path.join(outputDirectory, file);
+
+    return fse.copy(path.join(inputDirectory, file), outputFile)
+      .then(() => {
+        console.log(`[✔] Written "${outputFile}"`);
+        writtenFilesCount += 1;
+      })
+      .catch((e) => {
+        console.error(`[✘] Unable to write "${outputFile}"`);
+        console.error(`\n${e.toString()}`);
+        process.exit(1);
+      });
+  })))
+  .then(() => {
     console.log(`\n${writtenFilesCount} file(s) written!`);
   })
-  .catch(e => {
-    console.error(`[✘] An error has occurred!`);
+  .catch((e) => {
+    console.error('[✘] An error has occurred!');
     console.error(`\n${e.toString()}`);
     process.exit(1);
   });

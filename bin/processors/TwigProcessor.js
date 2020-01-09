@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const { minify } = require('html-minifier');
 const { promisify } = require('util');
 const { TwingEnvironment, TwingFilter, TwingLoaderRelativeFilesystem } = require('twing');
@@ -5,33 +7,29 @@ const { TwingEnvironment, TwingFilter, TwingLoaderRelativeFilesystem } = require
 const exec = promisify(require('child_process').exec);
 const marked = require('marked');
 
-class TwigProcessor
-{
-  static get INPUT_EXTENSION()
-  {
+class TwigProcessor {
+  static get INPUT_EXTENSION() {
     return '.twig';
   }
 
-  static get OUTPUT_EXTENSION()
-  {
+  static get OUTPUT_EXTENSION() {
     return '';
   }
 
-  constructor()
-  {
-    this._twingEnvironment = new TwingEnvironment(
-        new TwingLoaderRelativeFilesystem(),
-        { strict_variables: true },
+  constructor() {
+    this.twingEnvironment = new TwingEnvironment(
+      new TwingLoaderRelativeFilesystem(),
+      { strict_variables: true },
     );
 
-    this._twingEnvironment.addFilter(
+    this.twingEnvironment.addFilter(
       new TwingFilter(
         'markdown',
-        markup => {
+        (markup) => {
           const markdown = markup.toString();
           const indentation = markdown.match(/^\s*/);
           const indentationRegex = new RegExp(
-            '^' + (indentation && indentation.length) ? indentation[0] : ''
+            `^${indentation && indentation.length}` ? indentation[0] : '',
           );
 
           return marked(
@@ -47,31 +45,25 @@ class TwigProcessor
     );
   }
 
-  process(content, inputFile, outputFile)
-  {
+  process(content, inputFile) {
     return exec(`git log -n 1 --pretty=format:'%H %at' ${inputFile}`)
-      .then(gitOutput => {
-        return new Promise((resolve, reject) => {
-          const [gitHash, modified] = gitOutput.stdout.split(' ');
-          const template = this._twingEnvironment.load(inputFile);
+      .then((gitOutput) => new Promise((resolve) => {
+        const [gitHash, modified] = gitOutput.stdout.split(' ');
+        const template = this.twingEnvironment.load(inputFile);
 
-          resolve(template.render({
-            gitHash,
-            modified: new Date(parseInt(modified)),
-          }));
-        });
-      })
-      .then(html => {
-        return minify(html,
-          {
-            collapseWhitespace: true,
-            decodeEntities: true,
-            minifyJS: true,
-            removeComments: true,
-            removeEmptyAttributes: true,
-          },
-        );
-      });
+        resolve(template.render({
+          gitHash,
+          modified: new Date(parseInt(modified, 10)),
+        }));
+      }))
+      .then((html) => minify(html,
+        {
+          collapseWhitespace: true,
+          decodeEntities: true,
+          minifyJS: true,
+          removeComments: true,
+          removeEmptyAttributes: true,
+        }));
   }
 }
 
