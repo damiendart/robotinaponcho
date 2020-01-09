@@ -56,8 +56,14 @@ tasks:
 
   lint:
     cmds:
+      - task: lint:javascript
       - task: lint:php
     desc: Run all linting-related tasks
+
+  lint:javascript:
+    cmds:
+      - npx eslint bin/**
+    desc: Lint JavaScript files with ESLint
 
   lint:php:
     cmds:

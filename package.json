@@ -26,6 +26,9 @@
   },
   "devDependencies": {
     "assets": "git+ssh://git@github.com/damiendart/assets.git#21287a3e269943b170990efab93f9aaaeb3bf2a5",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#f9fb0e4d75f42c8c9414ca2b4b087d8f3bd7b84b"
   }
 }
