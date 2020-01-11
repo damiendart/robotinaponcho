@@ -398,7 +398,7 @@ ul {
   }
 }
 
-/* div */.flippywindow-introduction {
+.flippywindow-introduction {
   background: url("/flippywindow/background.svg"), $flippywindow-blue;
   background-size: cover;
   color: $white;
@@ -450,12 +450,12 @@ ul {
   }
 }
 
-/* div */.hamburger {
+.hamburger {
   @include toolbox-sass.hamburger(
     $base-line-height * 1.5, $base-line-height / 6, $base-line-height / 4);
 }
 
-/* header */.header {
+.header {
   @include toolbox-sass.clearfix;
 
   border-bottom: ($base-line-height / 16) solid $gray;
