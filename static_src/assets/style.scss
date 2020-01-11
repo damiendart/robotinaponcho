@@ -110,34 +110,58 @@ ul {
 
 
 .admonition {
-  background-position: $base-line-height $base-line-height;
-  background-repeat: no-repeat;
-  background-size: $base-line-height * 2;
+  border-style: solid;
+  border-width: 0;
+  border-left-width: $base-line-height * 3;
   box-sizing: border-box;
   margin: $base-line-height auto;
   max-width: $content-width + ($base-line-height * 2);
-  padding: $base-line-height $base-line-height
-      $base-line-height ($base-line-height * 4);
+  position: relative;
+  padding: $base-line-height $base-line-height 
+      $base-line-height ($base-line-height * 0.875);
 
   > *:first-child {
     margin: 0;
   }
 
+  &:before {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: '';
+    display: block;
+    height: $base-line-height * 2;
+    left: $base-line-height * -2.5;
+    position: absolute;
+    top: $base-line-height;
+    width: $base-line-height * 2;
+  }
+
   &--info {
-    background-color: $orange;
-    background-image: url("icon-info.svg");
-    color: contrasting-colour($orange);
+    border-color: $orange;
+
+    &:before {
+      background-image: url("/assets/icon-info.svg");
+    }
   }
 
   &--metadata {
-    background-color: $gray;
-    background-image: url("/assets/icon-help.svg");
-    color: contrasting-colour($gray)
+    border-color: $gray;
+
+    &:before {
+      background-image: url("/assets/icon-help.svg");
+    }
   }
 
-  a {
-    color: inherit;
-    text-decoration-color: currentColor;
+  @media #{toolbox-sass.$media-large} {
+    border-bottom-width: $base-line-height / 8;
+    border-radius: $base-line-height / 2;
+    border-right-width: $base-line-height / 8;
+    border-top-width: $base-line-height / 8;
+    padding: $base-line-height * 0.875;
+
+    &:before {
+      top: $base-line-height * 0.875;
+    }
   }
 }
 
