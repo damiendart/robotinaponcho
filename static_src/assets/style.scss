@@ -152,7 +152,7 @@ ul {
     }
   }
 
-  @media #{toolbox-sass.$media-large} {
+  @media screen and (min-width: #{$content-width + $base-line-height * 2}) {
     border-bottom-width: $base-line-height / 8;
     border-radius: $base-line-height / 2;
     border-right-width: $base-line-height / 8;
