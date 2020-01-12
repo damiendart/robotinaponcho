@@ -358,6 +358,7 @@ ul {
     right: 9999px;
     top: $base-line-height * 2;
     white-space: pre;
+    z-index: 1;
 
     @media #{toolbox-sass.$media-medium} {
       columns: 2;
