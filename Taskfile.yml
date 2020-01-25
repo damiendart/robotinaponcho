@@ -22,12 +22,12 @@ tasks:
 
   build:assets:
     cmds:
-      - node bin/buildstatic ./node_modules/assets/www.robotinaponcho.net ./public
+      - npx buildstatic ./node_modules/assets/www.robotinaponcho.net ./public
     desc: Build asset files
 
   build:static:
     cmds:
-      - node bin/buildstatic ./static_src ./public
+      - npx buildstatic ./static_src ./public
     desc: Build static files
 
   clean:
@@ -56,14 +56,8 @@ tasks:
 
   lint:
     cmds:
-      - task: lint:javascript
       - task: lint:php
     desc: Run all linting-related tasks
-
-  lint:javascript:
-    cmds:
-      - npx eslint bin/**
-    desc: Lint JavaScript files with ESLint
 
   lint:php:
     cmds:

@@ -1,10 +1,7 @@
 robotinaponcho
 ==============
 
-A hodgepodge of:
-
-  - a basic static site generator (_bin/builtstatic_), and
-  - source code to my [personal website][1] (everything else).
+Source code to my [personal website][1].
 
 [1]: <https://www.robotinaponcho.net/>
 
