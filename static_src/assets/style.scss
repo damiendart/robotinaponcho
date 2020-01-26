@@ -132,7 +132,8 @@ ul {
     height: $base-line-height * 2;
     left: $base-line-height * -2.5;
     position: absolute;
-    top: $base-line-height;
+    top: 50%;
+    transform: translateY(-50%);
     width: $base-line-height * 2;
   }
 
@@ -158,10 +159,6 @@ ul {
     border-right-width: $base-line-height / 8;
     border-top-width: $base-line-height / 8;
     padding: $base-line-height * 0.875;
-
-    &:before {
-      top: $base-line-height * 0.875;
-    }
   }
 }
 
