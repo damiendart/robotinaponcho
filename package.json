@@ -1,7 +1,10 @@
 {
   "name": "robotinaponcho",
+  "description": "Source code to Damien Dart's personal site.",
   "version": "0.1.0",
   "private": true,
+  "author": "Damien Dart",
+  "license": "MIT",
   "dependencies": {
     "assets": "git+ssh://git@github.com/damiendart/assets.git#21287a3e269943b170990efab93f9aaaeb3bf2a5",
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#6048a0a1db59b278914f42b947bf122c6a9233cf"
