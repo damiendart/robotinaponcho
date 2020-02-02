@@ -1,4 +1,30 @@
-import './.modules/clipboard.mjs';
+import Clipboard from 'toolbox-sass/javascript/clipboard';
+
+// <https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill>
+if (!Element.prototype.matches) {
+  Element.prototype.matches = Element.prototype.msMatchesSelector
+    || Element.prototype.webkitMatchesSelector;
+}
+
+const gitCloneClipboard = new Clipboard(
+  document.body,
+  {
+    errorCallback: () => {},
+    successCallback: (target) => {
+      target.classList.add('clipboard-success');
+      target.addEventListener(
+        'mouseout',
+        (event) => {
+          event.target.classList.remove('clipboard-success');
+        },
+        { once: true },
+      );
+    },
+    targetCallback: (target) => target.matches('a[href$=".git"]'),
+    textCallback: (target) => target.getAttribute('href'),
+  },
+);
+gitCloneClipboard.init();
 
 function updatePrettyDates() {
   document.querySelectorAll("[data-timestamp]").forEach(function(el) {
