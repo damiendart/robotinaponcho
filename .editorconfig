@@ -1,0 +1,19 @@
+# Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more information,
+# please refer to the accompanying "LICENCE" file.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[cron-hourly]
+indent_size = 4
+
+[*.{php,twig}]
+indent_size = 4
