@@ -1,18 +1,14 @@
 {% extends '.base.html.twig' %}
 
-{% set pageDescription = "Visit the personal website of Damien Dart, a full-time web developer based in South West England." %}
-{% set pageSlug = "" %}
-{% set pageTitle = "Damien Dart’s Personal Website" %}
+{% set pageDescription = 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.' %}
+{% set pageSlug = '' %}
+{% set pageTitle = 'Damien Dart’s Personal Website' %}
 
 {% block pageContent %}
-  <div class="homepage-content">
-    <h1 class="homepage-content__picture">
-      <img alt="Hello!" src="/assets/robot.png" srcset="/assets/robot@2x.png 2x" title="">
+    <h1>
+      <img alt="Hello!" height="372" src="/assets/robot.png" srcset="/assets/robot@2x.png 2x" title="" width="300">
     </h1>
-    <div class="homepage-content__words">
-      <p><b>Hello!</b> I'm Damien Dart, a full-time web developer based
-      in South West England, and this is my personal website.</p>
-      <p><code>TODO: Write some more to go here.</code></p>
-    </div>
-  </div>
+    <p><b>Hello!</b> I'm Damien Dart, a full-time web developer based
+        in South West England, and this is my personal website.</p>
+    <p><code>TODO: Write some more to go here.</code></p>
 {% endblock %}
