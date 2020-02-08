@@ -29,7 +29,7 @@ a {
   text-decoration-thickness: $base-line-height / 16;
 
   &:hover {
-    text-decoration-color: $blue;
+    text-decoration-color: currentColor;
   }
 }
 
@@ -195,7 +195,6 @@ ul {
 
   &:hover {
     text-decoration: underline;
-    text-decoration-thickness: $base-line-height / 16;
   }
 
   &.clipboard-success {
