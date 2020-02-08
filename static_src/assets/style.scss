@@ -286,7 +286,7 @@ ul {
       color: $white;
     }
 
-    &:focus-within > &__list {
+    &:focus-within > &__lists {
       right: 0;
     }
 
@@ -295,7 +295,7 @@ ul {
       color: $white;
     }
 
-    &:hover > &__list {
+    &:hover > &__lists {
       right: 0;
     }
   }
@@ -306,7 +306,7 @@ ul {
       color: $white;
     }
 
-    &--open &__list {
+    &--open &__lists {
       right: 0;
     }
 
@@ -320,7 +320,7 @@ ul {
           display: none;
         }
 
-        &__list {
+        &__lists {
           left: 0;
           float: none;
           margin: $base-line-height 0 0 0;
@@ -340,7 +340,7 @@ ul {
       color: $white;
     }
 
-    &:hover > &__list {
+    &:hover > &__lists {
       right: 0;
     }
   }
@@ -361,16 +361,13 @@ ul {
     }
   }
 
-  &__list {
+  &__lists {
     background: inherit;
     color: inherit;
-    list-style: none;
-    margin: 0;
     padding: $base-line-height;
     position: absolute;
     right: 9999px;
     top: $base-line-height * 2;
-    white-space: pre;
     z-index: 1;
 
     @media #{toolbox-sass.$media-medium} {
@@ -386,12 +383,19 @@ ul {
       }
     }
 
-    &__item {
+    &__list {
+      break-inside: avoid;
+      list-style: none;
       margin: 0;
-      padding: 0;
+      white-space: pre;
 
-      &--gap {
+      &:last-child {
         margin: $base-line-height 0 0 0;
+      }
+
+      &__item {
+        margin: 0;
+        padding: 0;
       }
     }
   }
