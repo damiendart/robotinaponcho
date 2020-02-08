@@ -1,61 +1,63 @@
-{% if block('phpPreamble') is defined %}{{ block('phpPreamble') }}{% endif %}
+{% if block('phpPreamble') is defined %}
+    {{ block('phpPreamble') }}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-  <meta charset="utf-8">
-  <link href="/assets/style.css" rel="stylesheet">
-  <meta content="Damien Dart" name="author">
-  <meta content="Damien Dart" property="og:author">
-  <meta content="@damiendart" property="twitter:creator">
-  {% if block('pageDescription') is defined %}
-    <meta content="{{ block('pageDescription')|trim }}" name="description">
-    <meta content="{{ block('pageDescription')|trim }}" property="og:description">
-  {% endif %}
-  <meta content="https://www.robotinaponcho.net/{{ pageOpenGraphImage | default('assets/og.png') }}" property="og:image">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="website" property="og:type">
-  <meta content="https://www.robotinaponcho.net/{{ pageSlug }}" property="og:url">
-  <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
-  <script>
-    {% block headJavaScript %}
-      document.documentElement.className+="javascript"
-    {% endblock %}
-  </script>
-  <title>{{ pageTitle }} (www.robotinaponcho.net)</title>
-  <meta content="{{ pageTitle }}" property="og:title">
+    <meta charset="utf-8">
+    <link href="/assets/style.css" rel="stylesheet">
+    <meta content="Damien Dart" name="author">
+    <meta content="Damien Dart" property="og:author">
+    <meta content="@damiendart" property="twitter:creator">
+    {% if block('pageDescription') is defined %}
+        <meta content="{{ block('pageDescription') | trim }}" name="description">
+        <meta content="{{ block('pageDescription') | trim }}" property="og:description">
+    {% endif %}
+    <meta content="https://www.robotinaponcho.net/{{ pageOpenGraphImage | default('assets/og.png') }}" property="og:image">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta content="website" property="og:type">
+    <meta content="https://www.robotinaponcho.net/{{ pageSlug }}" property="og:url">
+    <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
+    <script>
+        {% block headJavaScript "document.documentElement.className+='javascript'" %}
+    </script>
+    <title>{{ pageTitle }} (www.robotinaponcho.net)</title>
+    <meta content="{{ pageTitle }}" property="og:title">
 </head>
 <body{% if pageBodyClass is defined %} class="{{ pageBodyClass }}"{% endif %}>
-  <header class="header">
-    <h1 class="header__title">
-      <a href="/">Damien Dart</a>
-    </h1>
-    <nav class="dropdown-menu header__navigation">
-      <h2 class="dropdown-menu__title">
-        <span class="hamburger">
-          <span class="hamburger__filling"></span>
-        </span>
-        <span class="dropdown-menu__title__text">Menu</span>
-      </h2>
-      <ul class="dropdown-menu__list">
-        <li class="dropdown-menu__list__item"><a href="/">Home</a></li>
-        <li class="dropdown-menu__list__item"><a href="/flippywindow/">FlippyWindow</a></li>
-        <li class="dropdown-menu__list__item"><a href="/git/">Open-source stuff</a></li>
-        <li class="dropdown-menu__list__item"><a href="/notes/">Notes about stuff</a></li>
-        <li class="dropdown-menu__list__item"><a href="/art/">Artwork and drawings</a></li>
-        <li class="dropdown-menu__list__item"><a href="/privacy-policy">Privacy policy</a></li>
-        <li class="dropdown-menu__list__item dropdown-menu__list__item--gap"><a href="mailto:damiendart@pobox.com" rel="me">Email</a></li>
-        <li class="dropdown-menu__list__item"><a href="https://github.com/damiendart" rel="me">GitHub</a></li>
-        <li class="dropdown-menu__list__item"><a href="https://www.instagram.com/damiendart/" rel="me">Instagram</a></li>
-        <li class="dropdown-menu__list__item"><a href="https://twitter.com/damiendart" rel="me">Twitter</a></li>
-      </ul>
-    </nav>
-    <hr class="header__rule">
-  </header>
-  {{ block('pageContent') }}
-  <footer class="footer">
-    <hr class="footer__rule">
-    <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a></p>
-  </footer>
-  <script async src="/assets/app.js"></script>
+    <header class="header">
+        <h1 class="header__title">
+            <a href="/">Damien Dart</a>
+        </h1>
+        <nav class="dropdown-menu header__navigation">
+            <h2 class="dropdown-menu__title">
+                <span class="hamburger">
+                  <span class="hamburger__filling"></span>
+                </span>
+                <span class="dropdown-menu__title__text">Menu</span>
+            </h2>
+            <ul class="dropdown-menu__list">
+                <li class="dropdown-menu__list__item"><a href="/">Home</a></li>
+                <li class="dropdown-menu__list__item"><a href="/flippywindow/">FlippyWindow</a></li>
+                <li class="dropdown-menu__list__item"><a href="/git/">Open-source stuff</a></li>
+                <li class="dropdown-menu__list__item"><a href="/notes/">Notes about stuff</a></li>
+                <li class="dropdown-menu__list__item"><a href="/art/">Artwork and drawings</a></li>
+                <li class="dropdown-menu__list__item"><a href="/privacy-policy">Privacy policy</a></li>
+                <li class="dropdown-menu__list__item dropdown-menu__list__item--gap"><a href="mailto:damiendart@pobox.com" rel="me">Email</a></li>
+                <li class="dropdown-menu__list__item"><a href="https://github.com/damiendart" rel="me">GitHub</a></li>
+                <li class="dropdown-menu__list__item"><a href="https://www.instagram.com/damiendart/" rel="me">Instagram</a></li>
+                <li class="dropdown-menu__list__item"><a href="https://twitter.com/damiendart" rel="me">Twitter</a></li>
+            </ul>
+        </nav>
+        <hr class="header__rule">
+    </header>
+
+    {{ block('pageContent') }}
+
+    <footer class="footer">
+        <hr class="footer__rule">
+        <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a></p>
+    </footer>
+    <script async src="/assets/app.js"></script>
 </body>
 </html>
