@@ -22,16 +22,6 @@ $orange: #fdcb6e;
 $white: #ffffff;
 
 
-@include toolbox-sass.body-html-base(
-  toolbox-sass.$font-stack-system,
-  $white,
-  $black,
-  $content-width,
-  $base-font-size,
-  $base-line-height
-);
-
-
 a {
   color: $blue;
   font-weight: bold;
@@ -40,6 +30,29 @@ a {
 
   &:hover {
     text-decoration-color: $blue;
+  }
+}
+
+body {
+  @include toolbox-sass.nice-font-rendering;
+
+  background: $white;
+  color: $black;
+  font-family: toolbox-sass.$font-stack-system;
+  line-height: $base-line-height;
+  margin: 0;
+
+  & > *:not(div):not(footer):not(header):not(main) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $content-width;
+    padding-left: $base-line-height;
+    padding-right: $base-line-height;
+
+    @media #{toolbox-sass.$media-large} {
+      padding-left: $base-line-height * 2;
+      padding-right: $base-line-height * 2;
+    }
   }
 }
 
@@ -69,6 +82,10 @@ h3 {
   font-size: 100%;
   line-height: $base-line-height;
   margin: $base-line-height 0 0 0;
+}
+
+html {
+  @include toolbox-sass.html-base($base-font-size);
 }
 
 img {
@@ -117,7 +134,7 @@ ul {
   margin: $base-line-height auto;
   max-width: $content-width + ($base-line-height * 2);
   position: relative;
-  padding: $base-line-height $base-line-height 
+  padding: $base-line-height $base-line-height
       $base-line-height ($base-line-height * 0.875);
 
   > *:first-child {
@@ -183,7 +200,7 @@ ul {
 
   &.clipboard-success {
     @keyframes clipboard-success {
-      0% { 
+      0% {
         background: $blue;
       }
 
