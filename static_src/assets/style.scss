@@ -421,7 +421,7 @@ ul {
     padding: $base-line-height;
     position: absolute;
     right: 9999px;
-    top: $base-line-height * 2;
+    top: 100%;
     z-index: 1;
 
     @media #{toolbox-sass.$media-medium} {
@@ -440,12 +440,8 @@ ul {
     &__list {
       break-inside: avoid;
       list-style: none;
-      margin: 0;
+      margin: 0 0 $base-line-height 0;
       white-space: pre;
-
-      &:last-child {
-        margin: $base-line-height 0 0 0;
-      }
 
       &__item {
         margin: 0;
