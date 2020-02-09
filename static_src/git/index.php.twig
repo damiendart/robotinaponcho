@@ -9,7 +9,7 @@
     require_once dirname(dirname(__DIR__)) . '/protected/vendor/autoload.php';
 
     if (getenv('SENTRY_DSN')) {
-        {# Backslashes as processed as an escape character. #}
+        {# Backslashes as processed as an escape character. -#}
         Sentry\\init(
             [
                 'dsn' => getenv('SENTRY_DSN'),
