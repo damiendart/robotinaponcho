@@ -6,28 +6,7 @@
 
 {% block phpPreamble %}
   <?php
-    require_once dirname(dirname(__DIR__)) . '/protected/vendor/autoload.php';
-
-    if (getenv('SENTRY_DSN')) {
-        {# Backslashes as processed as an escape character. -#}
-        Sentry\\init(
-            [
-                'dsn' => getenv('SENTRY_DSN'),
-                'environment' => getenv('APP_ENV'),
-                'release' => getenv('DEPLOYED_RELEASE'),
-            ]
-        );
-    }
-
-    $repositories = json_decode(
-        file_get_contents(
-            join(
-                DIRECTORY_SEPARATOR,
-                [getenv('SHARED_ROOT'), 'protected', 'git', 'metadata.json']
-            )
-        ),
-        true
-    );
+    require_once dirname(dirname(__DIR__)) . '/protected/controllers/git/index.php';
   ?>
 {% endblock %}
 
