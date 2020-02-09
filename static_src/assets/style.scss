@@ -527,11 +527,20 @@ ul {
 .header {
   @include toolbox-sass.clearfix;
 
+  background: $white;
   border-bottom: ($base-line-height / 16) solid $gray;
   box-sizing: border-box;
   padding: $base-line-height;
+  position: sticky;
+  top: 0;
+  transition: box-shadow 0.25s ease-in;
   margin: 0 0 ($base-line-height / -16) 0;
   width: 100%;
+  z-index: 1;
+
+  &--shadow {
+    box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
+  }
 
   a {
     text-decoration: none;

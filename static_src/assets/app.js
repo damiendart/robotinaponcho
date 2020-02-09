@@ -1,5 +1,7 @@
 import Clipboard from 'toolbox-sass/javascript/clipboard';
 
+let ticking = false;
+
 // <https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill>
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector
@@ -59,3 +61,21 @@ for (var i = 0; i < dropdowns.length; i++) {
     }
   };
 }
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const siteHeaderElement = document.querySelector('.header');
+
+      if (window.pageYOffset > 50) {
+        siteHeaderElement.classList.add('header--shadow');
+      } else {
+        siteHeaderElement.classList.remove('header--shadow');
+      }
+
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
