@@ -427,7 +427,7 @@ ul {
 
     @media #{toolbox-sass.$media-medium} {
       columns: 2;
-      column-gap: $base-line-height / 2;
+      column-gap: $base-line-height;
     }
 
     @media (hover: none) {
@@ -441,8 +441,16 @@ ul {
     &__list {
       break-inside: avoid;
       list-style: none;
-      margin: 0 0 $base-line-height 0;
+      margin: 0 0 ($base-line-height / 2) 0;
       white-space: pre;
+
+      @media #{toolbox-sass.$media-medium} {
+        margin: 0 0 $base-line-height 0;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
 
       &__item {
         margin: 0;
