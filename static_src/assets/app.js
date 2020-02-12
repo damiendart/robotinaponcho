@@ -51,16 +51,33 @@ function updatePrettyDates() {
 updatePrettyDates();
 window.setInterval(updatePrettyDates, 1000);
 
-var dropdowns = document.getElementsByClassName("dropdown-menu");
-for (var i = 0; i < dropdowns.length; i++) {
-  dropdowns[i].onclick = function() {
-    if (window.matchMedia("(hover: none)").matches) {
-      this.classList.toggle("dropdown-menu--open");
-      this.getElementsByClassName("hamburger")[0].classList.toggle(
-          "hamburger--active");
-    }
-  };
-}
+document.addEventListener('click', (event) => {
+  const dropDownMenuElement = document.querySelector('.dropdown-menu');
+
+  if (
+    window.matchMedia('(hover: hover)').matches
+    || dropDownMenuElement
+      .querySelector('.dropdown-menu__lists')
+      .contains(event.target)
+  ) {
+    return;
+  }
+
+  if (dropDownMenuElement.contains(event.target)) {
+    dropDownMenuElement.classList.toggle('dropdown-menu--open');
+    dropDownMenuElement
+      .querySelector('.hamburger')
+      .classList
+      .toggle('hamburger--active');
+
+    return;
+  }
+
+  dropDownMenuElement.classList.remove('dropdown-menu--open');
+  dropDownMenuElement.querySelector('.hamburger')
+    .classList
+    .remove('hamburger--active');
+});
 
 window.addEventListener('scroll', () => {
   if (!ticking) {
