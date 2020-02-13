@@ -51,6 +51,18 @@ function updatePrettyDates() {
 updatePrettyDates();
 window.setInterval(updatePrettyDates, 1000);
 
+// Account for iOS WebKit's busted handling of mouse events. See
+// <https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html>
+// for more information. This fix is based on one used by Bootstrap.
+if ('ontouchstart' in document.documentElement) {
+  // Internet Explorer 11 doesn't implement `NodeList.forEach()`, hence
+  // the `Array.prototype.forEach()` kludge. For more information, see
+  // <https://developer.mozilla.org/en-US/docs/Web/API/NodeList#Example>.
+  Array.prototype.forEach.call(document.body.children, (element) => {
+    element.addEventListener('mouseover', () => () => {});
+  });
+}
+
 document.addEventListener('click', (event) => {
   const dropDownMenuElement = document.querySelector('.dropdown-menu');
 

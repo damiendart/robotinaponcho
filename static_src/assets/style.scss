@@ -93,19 +93,6 @@ body {
   font-family: 'Inter', toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
-
-  & > *:not(div):not(footer):not(header):not(main) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $content-width;
-    padding-left: $base-line-height;
-    padding-right: $base-line-height;
-
-    @media #{toolbox-sass.$media-large} {
-      padding-left: $base-line-height * 2;
-      padding-right: $base-line-height * 2;
-    }
-  }
 }
 
 code {
@@ -145,6 +132,11 @@ html {
 img {
   height: auto;
   max-width: 100%;
+}
+
+main {
+  // Makes the "main" element behave correctly in Internet Explorer 11.
+  display: block;
 }
 
 ol {
@@ -572,6 +564,21 @@ ul {
 
   &__rule {
     display: none;
+  }
+}
+
+.main-content {
+  & > *:not(div) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $content-width;
+    padding-left: $base-line-height;
+    padding-right: $base-line-height;
+
+    @media #{toolbox-sass.$media-large} {
+      padding-left: $base-line-height * 2;
+      padding-right: $base-line-height * 2;
+    }
   }
 }
 
