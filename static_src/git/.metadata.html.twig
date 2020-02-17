@@ -1,3 +1,9 @@
+{#
+    Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+
 <ul>
   <li>Nerdy bits-and-pieces used: {{ nerd_list }}</li>
   <li>Last updated <a data-timestamp="<?= $repositories['{{ project }}']['last_commit_timestamp'] ?>" href="https://github.com/damiendart/{{ project }}/commit/<?= $repositories['{{ project }}']['last_commit_hash'] ?>">on <?= $repositories['{{ project }}']['last_commit_pretty'] ?></span></a></li>
