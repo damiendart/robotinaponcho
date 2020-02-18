@@ -18,24 +18,25 @@
 
 {% block pageContent %}
     <h1>Open-source stuff</h1>
+    <p>Here are some things I’ve written.</p>
 
     <a class="anchor" id="toolbox-sass"></a>
     <h2>toolbox-sass (2019)</h2>
-    <p>Assorted Sass bits-and-pieces.</p>
-    {% include '.metadata.html.twig' with { 'nerd_list': 'Sass', 'project': 'toolbox-sass' } %}
+    <p>A hodgepodge of web-development-related stuff.</p>
+    {% include '.metadata.html.twig' with { 'nerd_list': 'JavaScript and Sass', 'project': 'toolbox-sass' } %}
 
     <a class="anchor" id="setup"></a>
     <h2>setup (2018)</h2>
     <p>A mess of Ansible playbooks and roles that I use to provision and
-    maintain my personal development environment and a couple of servers
-    that I host this and a few other small websites on.</p>
+        maintain my personal development environment and a couple of
+        servers that I host this and a few other small websites on.</p>
     {% include '.metadata.html.twig' with { 'nerd_list': 'Ansible', 'project': 'setup' } %}
 
     <a class="anchor" id="flippywindow"></a>
     <h2>FlippyWindow (2016)</h2>
-    <p>FlippyWindow is a simple Windows application that non-destructively
-    flips any part of your screen horizontally. To find out more,
-    check out <a href="/flippywindow/">the FlippyWindow website</a>.</p>
+    <p>FlippyWindow is a simple Windows application that
+        non-destructively flips any part of your screen horizontally. To
+        find out more, check out <a href="/flippywindow/">the FlippyWindow website</a>.</p>
     {% include '.metadata.html.twig' with { 'nerd_list': 'C++', 'project': 'flippywindow' } %}
 
     <a class="anchor" id="bastardsnake"></a>
@@ -61,12 +62,13 @@
 
     <a class="anchor" id="knr-solutions"></a>
     <h2>knr-solutions (2011)</h2>
-    <p>My solutions to the exercises in The C Programming Language (Second Edition).</p>
+    <p>My solutions to the exercises in <i>The C Programming Language
+        (Second Edition)</i>. I may come back to this one day.</p>
     {% include '.metadata.html.twig' with { 'nerd_list': 'C', 'project': 'knr-solutions' } %}
 
     <h2>Miscellaneous things</h2>
     <ul>
-        <li>I contributed a <a href="https://github.com/kangax/html-minifier/pulls?q=is%3Apr+is%3Aclosed+author%3Adamiendart">couple</a>
+        <li>I’ve contributed a <a href="https://github.com/kangax/html-minifier/pulls?q=is%3Apr+is%3Aclosed+author%3Adamiendart">couple</a>
             of CLI bug-fixes to <a href="https://github.com/kangax/html-minifier">HTMLMinifier</a>,
             a JavaScript-based HTML minifier.</li>
     </ul>
@@ -74,14 +76,13 @@
     <a class="anchor" id="nfsnapi-python"></a>
     <a class="anchor" id="notes"></a>
     <a class="anchor" id="obtaincornhoop"></a>
-    <h2>Archived and old projects</h2>
-
+    <h2>Abandoned and deprecated projects</h2>
     <p>The following projects are no longer being worked on:</p>
     <ul>
         <li><a href="https://github.com/damiendart/notes">notes</a>:
-            Notes on stuff. (These notes have since been merged into <a
+            Notes on stuff. These notes have since been merged into <a
             href="#robotinaponcho">my personal website repository</a>,
-            where I continue to update them.)</li>
+            where I continue to update them.</li>
         <li><a href="https://github.com/damiendart/nfsnapi-python">nfsnapi-python</a>:
             When I used NearlyFreeSpeech.NET to host websites, I wrote a
             simple Python package that made using their API a little
