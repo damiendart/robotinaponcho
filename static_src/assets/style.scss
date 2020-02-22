@@ -433,8 +433,9 @@ ul {
 
     &__list {
       break-inside: avoid;
-      // Ensures each list keeps to its own column in all browsers.
-      display: table;
+      // This ensures that each list keeps to its own column in all
+      // supported browsers.
+      display: inline-table;
       list-style: none;
       margin: 0 0 ($base-line-height / 2) 0;
       white-space: pre;
