@@ -235,30 +235,33 @@ ul {
   display: inline-block;
   font-weight: bold;
   padding: ($base-line-height / 2) $base-line-height;
+  position: relative;
   border-radius: $base-line-height;
   text-decoration: none;
+
 
   &:hover {
     text-decoration: underline;
   }
 
-  &.clipboard-success {
-    @keyframes clipboard-success {
-      0% {
-        background: $blue;
-      }
-
-      12.5% {
-        background: $green;
-      }
-
-      100% {
-        background: $blue;
-      }
+  &--clipboard {
+    &::before {
+      background: inherit;
+      content: "Copied!";
+      left: 50%;
+      opacity: 0;
+      position: absolute;
+      text-align: center;
+      transform: translateX(-50%);
+      transition: opacity 0.125s ease-out;
+      width: calc(100% - #{$base-line-height * 2});
     }
 
-    animation: clipboard-success 1s;
-    animation-iteration-count: 1;
+    &.clipboard-success {
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--inverse {
