@@ -14,6 +14,7 @@ tasks:
 
   ci:
     cmds:
+      - task: clean
       - task: dependencies
       - task: build
       - task: lint
@@ -36,8 +37,8 @@ tasks:
 
   clean:
     cmds:
-      - rm -fr node_modules public
-    desc: Delete all buildable files and JavaScript dependencies
+      - rm -fr node_modules protected/vendor public
+    desc: Delete all buildable files and third-party dependencies
 
   dependencies:
     cmds:
