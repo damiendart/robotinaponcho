@@ -67,3 +67,9 @@ tasks:
     cmds:
       - protected/vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --diff --diff-format=udiff
     desc: Lint PHP scripts with PHP Coding Standards Fixer
+
+  release:
+    cmds:
+      - task: ci
+      - tar --exclude ./protected/vendor -cvf release.tgz ./composer.* ./private/ ./protected/ ./public/
+    desc: Create a release archive for deployment
