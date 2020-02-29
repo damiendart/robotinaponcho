@@ -11,7 +11,7 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="utf-8">
-    <link href="/assets/style.{{ deployment.releaseID | default('00000000000000') }}.css" rel="stylesheet">
+    <link href="/assets/style.{{ deployment.releaseTimestamp }}.css" rel="stylesheet">
     <meta content="Damien Dart" name="author">
     <meta content="Damien Dart" property="og:author">
     <meta content="@damiendart" property="twitter:creator">
@@ -68,6 +68,6 @@
         <hr class="footer__rule">
         <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a>.</p>
     </footer>
-    <script async src="/assets/app.{{ deployment.releaseID | default('00000000000000') }}.js"></script>
+    <script async src="/assets/app.{{ deployment.releaseTimestamp }}.js"></script>
 </body>
 </html>
