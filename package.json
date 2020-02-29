@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "assets": "git+ssh://git@github.com/damiendart/assets.git#8571524b7aadc8f390412233cd89eac1682a7219",
-    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#de86339884abdde9ad8e8bfe0275a4d1224a5b6f"
+    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#3495c041f0a17eb91fe40a5cf1514412d98cd0c0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
