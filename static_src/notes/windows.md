@@ -3,9 +3,9 @@
   # Attribution 4.0 International License. To view a copy of this
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
-  description: Damien Dart's notes on computer-related stuff
+  description: Damien Dart's notes on Microsoft Windows
   slug: notes/computer
-  title: Computer Notes
+  title: Microsoft Windows Notes
   twigTemplate: .templates/notes-base.html.twig
 -->
 
