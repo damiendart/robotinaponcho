@@ -8,30 +8,25 @@
 
 {% set pageDescription = "View Damien Dart's notes on stuff." %}
 {% set pageSlug = 'notes/' %}
-{% set pageTitle = "Damien's Notes" %}
+{% set pageTitle = 'Notes' %}
 
 {% block pageContent %}
-    {% apply markdown %}
-        Damien's Notes
-        ==============
-
-        Notes on various things. Don't expect much.
-
-          - [Adobe Illustrator Notes][3],
-          - [Computer Notes][4],
-          - [Photoshop Notes][5], and
-          - [Synology Notes][6].
-
-        [3]: </notes/illustrator>
-        [4]: </notes/computer>
-        [5]: </notes/photoshop>
-        [6]: </notes/synology>
-
-        ## Updates
-
-        Follow along [using Git][7] or [on GitHub][8].
-
-        [7]: </git/#robotinaponcho>
-        [8]: <https://github.com/damiendart/robotinaponcho>
-    {% endapply %}
+    <h1>Notes</h1>
+    <p>This is a test paragraph.</p>
+    <div class="notes-list">
+        <ul class="notes-list__list">
+            <li class="notes-list__list__item">
+                <a class="sheet-of-paper" href="/notes/illustrator"><h2>Adobe Illustrator</h2></a>
+            </li>
+            <li class="notes-list__list__item">
+                <a class="sheet-of-paper" href="/notes/photoshop"><h2>Adobe Photoshop</h2></a>
+            </li>
+            <li class="notes-list__list__item">
+                <a class="sheet-of-paper" href="/notes/computer"><h2>Computer</h2></a>
+            </li>
+            <li class="notes-list__list__item">
+                <a class="sheet-of-paper" href="/notes/synology"><h2>Synology DiskStation</h2></a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
