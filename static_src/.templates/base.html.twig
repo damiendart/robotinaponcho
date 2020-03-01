@@ -15,9 +15,9 @@
     <meta content="Damien Dart" name="author">
     <meta content="Damien Dart" property="og:author">
     <meta content="@damiendart" property="twitter:creator">
-    {% if block('pageDescription') is defined %}
-        <meta content="{{ block('pageDescription') | trim }}" name="description">
-        <meta content="{{ block('pageDescription') | trim }}" property="og:description">
+    {% if pageDescription is defined %}
+        <meta content="{{ pageDescription | smartypants | trim }}" name="description">
+        <meta content="{{ pageDescription | smartypants | trim }}" property="og:description">
     {% endif %}
     <meta content="https://www.robotinaponcho.net/{{ pageOpenGraphImage | default('assets/og.png') }}" property="og:image">
     <meta content="summary_large_image" name="twitter:card">
@@ -27,8 +27,8 @@
     <script>
         {% block headJavaScript "document.documentElement.className+='javascript'" %}
     </script>
-    <title>{{ pageTitle }} (www.robotinaponcho.net)</title>
-    <meta content="{{ pageTitle }}" property="og:title">
+    <title>{{ pageTitle | smartypants | trim }} (www.robotinaponcho.net)</title>
+    <meta content="{{ pageTitle | smartypants | trim }}" property="og:title">
 </head>
 <body{% if pageBodyClass is defined %} class="{{ pageBodyClass }}"{% endif %}>
     <header class="header">

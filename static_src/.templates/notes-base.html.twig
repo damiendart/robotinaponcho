@@ -6,11 +6,12 @@
 
 {% extends '.templates/base.html.twig' %}
 
+{% set pageDescription = frontmatter.description %}
 {% set pageSlug = frontmatter.slug  %}
 {% set pageTitle = frontmatter.title %}
 
 {% block pageContent %}
-    <h1>{{ frontmatter.title }}</h1>
+    <h1>{{ frontmatter.title | smartypants }}</h1>
     <div class="admonition admonition--metadata">
         <ul class="metadata-list">
             <li class="metadata-list__item"><b>Last Updated</b>:
@@ -26,4 +27,3 @@
     {{ renderedMarkdown | raw }}
 {% endblock %}
 
-{% block pageDescription %}{{ frontmatter.description }}{% endblock %}

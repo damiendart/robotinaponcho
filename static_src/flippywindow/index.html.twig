@@ -6,13 +6,10 @@
 
 {% extends '.templates/base.html.twig' %}
 
+{% set pageDescription = 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.' %}
 {% set pageSlug = 'flippywindow/' %}
 {% set pageTitle = 'FlippyWindow' %}
 {% set pageOpenGraphImage = 'flippywindow/opengraph.png' %}
-
-{% block pageDescription %}
-	Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.
-{% endblock %}
 
 {% block pageContent %}
   <div class="flippywindow-introduction">

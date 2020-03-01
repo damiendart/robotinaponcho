@@ -6,10 +6,9 @@
 
 {% extends '.templates/base.html.twig' %}
 
+{% set pageDescription = "View Damien Dart's notes on stuff." %}
 {% set pageSlug = 'notes/' %}
-{% set pageTitle = 'Damien’s Notes' %}
-
-{% block pageDescription 'View Damien Dart’s notes on stuff.' %}
+{% set pageTitle = "Damien's Notes" %}
 
 {% block pageContent %}
   {% apply markdown %}
