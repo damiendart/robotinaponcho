@@ -7,6 +7,10 @@ version: 2
 
 output: prefixed
 
+env:
+  RELEASE_TIMESTAMP:
+    sh: 'date +%Y%m%d%H%M%S'
+
 tasks:
   default:
     deps:
@@ -37,7 +41,7 @@ tasks:
 
   clean:
     cmds:
-      - rm -fr node_modules protected/vendor public
+      - rm -fr node_modules protected/vendor public release
     desc: Delete all buildable files and third-party dependencies
 
   dependencies:
@@ -71,6 +75,20 @@ tasks:
 
   release:
     cmds:
-      - task: ci
-      - tar --exclude ./protected/vendor -cvf release.tgz ./composer.* ./private/ ./protected/ ./public/
-    desc: Create a release archive for deployment
+      - cmd: |
+          {{ if .GIT_STATUS }}
+            echo 'Working directory is dirty! Aborting.'
+            exit 1
+          {{ end }}
+        silent: true
+      - task: 'ci'
+      - 'mkdir -p release'
+      - 'tar --exclude ./protected/vendor -cvf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
+      - 'envsubst < deploy.yml > release/release.yml'
+    desc: 'Create release archive and metadata for deployment'
+    env:
+      RELEASE_GIT_SHA:
+        sh: 'git log -n 1 --format=%H'
+    vars:
+      GIT_STATUS:
+        sh: 'git status --porcelain'
