@@ -3,6 +3,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 .php_cs.cache
+node_modules/
 public/
 protected/vendor
 release/
