@@ -6,17 +6,17 @@
 
 $base-font-size: toolbox-sass.$base-one-em;
 $base-line-height: 1.65rem;
+$colour-black: #000000;
+$colour-blue: #0984e3;
+$colour-flippywindow-blue: #65b3eb;
+$colour-gray: #dddddd;
+$colour-gray-light: #eeeeee;
+$colour-green: #55efc4;
+$colour-itchio-pink: #fa5c5c;
+$colour-orange: #fdcb6e;
+$colour-white: #ffffff;
 $content-width: 37.5rem;
 
-$black: #000000;
-$blue: #0984e3;
-$flippywindow-blue: #65b3eb;
-$gray: #dddddd;
-$gray-light: #eeeeee;
-$green: #55efc4;
-$itchio-pink: #fa5c5c;
-$orange: #fdcb6e;
-$white: #ffffff;
 
 @font-face {
   font-display: swap;
@@ -70,9 +70,9 @@ $white: #ffffff;
 }
 
 a {
-  color: $blue;
+  color: $colour-blue;
   font-weight: bold;
-  text-decoration: underline $gray;
+  text-decoration: underline $colour-gray;
   text-decoration-thickness: $base-line-height / 16;
 
   &:hover {
@@ -83,15 +83,15 @@ a {
 body {
   @include toolbox-sass.nice-font-rendering;
 
-  background: $white;
-  color: $black;
+  background: $colour-white;
+  color: $colour-black;
   font-family: 'Inter', toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
 }
 
 code {
-  background: $gray-light;
+  background: $colour-gray-light;
   font-family: 'Iosevka Web', monospace;
   line-height: 1;
 }
@@ -196,7 +196,7 @@ ul {
   }
 
   &--info {
-    border-color: $orange;
+    border-color: $colour-orange;
 
     &:before {
       background-image: url("/assets/icon-info.svg");
@@ -204,7 +204,7 @@ ul {
   }
 
   &--metadata {
-    border-color: $gray;
+    border-color: $colour-gray;
 
     &:before {
       background-image: url("/assets/icon-help.svg");
@@ -226,8 +226,8 @@ ul {
 }
 
 .button {
-  background: $blue;
-  color: $white;
+  background: $colour-blue;
+  color: $colour-white;
   display: inline-block;
   font-weight: bold;
   padding: ($base-line-height / 2) $base-line-height;
@@ -261,15 +261,15 @@ ul {
   }
 
   &--inverse {
-    background: $white;
+    background: $colour-white;
     border: ($base-line-height / 8) solid currentColor;
-    color: $blue;
+    color: $colour-blue;
     padding: ($base-line-height * 0.375) ($base-line-height * 0.875);
   }
 
   &--itchio {
-    background: $itchio-pink;
-    color: $white;
+    background: $colour-itchio-pink;
+    color: $colour-white;
   }
 
   img {
@@ -326,8 +326,8 @@ ul {
     // ":focus-within" pseudo-class; if we include the pseudo-class in a
     // group of selectors those browsers ignore the whole thing.
     &:focus-within {
-      background: $black;
-      color: $white;
+      background: $colour-black;
+      color: $colour-white;
     }
 
     &:focus-within > &__lists {
@@ -335,8 +335,8 @@ ul {
     }
 
     &:hover {
-      background: $black;
-      color: $white;
+      background: $colour-black;
+      color: $colour-white;
     }
 
     &:hover > &__lists {
@@ -346,8 +346,8 @@ ul {
 
   @media (hover: none) {
     &--open {
-      background: $black;
-      color: $white;
+      background: $colour-black;
+      color: $colour-white;
     }
 
     &--open &__lists {
@@ -380,8 +380,8 @@ ul {
   // Internet Explorer doesn't support interaction-related media queries.
   @media #{toolbox-sass.$media-ie-10} {
     &:hover {
-      background: $black;
-      color: $white;
+      background: $colour-black;
+      color: $colour-white;
     }
 
     &:hover > &__lists {
@@ -453,7 +453,7 @@ ul {
 }
 
 .footer {
-  border-top: ($base-line-height / 16) solid $gray;
+  border-top: ($base-line-height / 16) solid $colour-gray;
   margin: ($base-line-height * 3) auto 0;
   padding: $base-line-height;
   text-align: center;
@@ -468,9 +468,9 @@ ul {
 }
 
 .flippywindow-introduction {
-  background: url("/flippywindow/background.svg"), $flippywindow-blue;
+  background: url("/flippywindow/background.svg"), $colour-flippywindow-blue;
   background-size: cover;
-  color: $white;
+  color: $colour-white;
   padding: ($base-line-height * 3) $base-line-height;
 
   &__blurb {
@@ -527,8 +527,8 @@ ul {
 .header {
   @include toolbox-sass.clearfix;
 
-  background: $white;
-  border-bottom: ($base-line-height / 16) solid $gray;
+  background: $colour-white;
+  border-bottom: ($base-line-height / 16) solid $colour-gray;
   box-sizing: border-box;
   padding: $base-line-height;
   position: sticky;
@@ -629,7 +629,7 @@ ul {
 }
 
 .sheet-of-paper {
-  border: ($base-line-height / 8) solid $gray;
+  border: ($base-line-height / 8) solid $colour-gray;
   border-bottom: 0;
   display: flex;
   flex-direction: column-reverse;
@@ -639,7 +639,7 @@ ul {
 
   &::after {
     bottom: $base-line-height / -8;
-    background: linear-gradient(180deg, rgba($white , 0), rgba($white, 1));
+    background: linear-gradient(180deg, rgba($colour-white, 0), rgba($colour-white, 1));
     content: "";
     display: block;
     height: $base-line-height;
@@ -649,7 +649,7 @@ ul {
   }
 
   &::before {
-    background: linear-gradient(180deg, $gray, $gray 50%, $white 50%, $white);
+    background: linear-gradient(180deg, $colour-gray, $colour-gray 50%, $colour-white 50%, $colour-white);
     background-size: 100% $base-line-height;
     bottom: 0;
     content: "";
