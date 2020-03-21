@@ -4,6 +4,7 @@
     "vendor-dir": "protected/vendor"
   },
   "require": {
+    "ext-json": "*",
     "guzzlehttp/guzzle": "^6.4",
     "sentry/sdk": "^2.0"
   },

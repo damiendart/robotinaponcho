@@ -97,7 +97,7 @@ foreach (json_decode($gitHubResponse->getBody()) as $repository) {
         git('log -n 1 --pretty=format:%at', $repositoryDirectory);
 }
 
-echoStep('# Writing respository metadata');
+echoStep('# Writing repository metadata');
 file_put_contents(
     $baseDirectory . DIRECTORY_SEPARATOR . 'metadata.json',
     json_encode($repositoryMetadata)
