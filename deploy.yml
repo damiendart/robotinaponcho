@@ -3,5 +3,5 @@
 # please refer to the accompanying "LICENCE" file.
 ---
 
-release_id: '${RELEASE_TIMESTAMP}'
+release_timestamp: '${RELEASE_TIMESTAMP}'
 release_git_sha: '${RELEASE_GIT_SHA}'
