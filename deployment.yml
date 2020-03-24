@@ -3,5 +3,6 @@
 # please refer to the accompanying "LICENCE" file.
 ---
 
+github_project: 'damiendart/robotinaponcho'
 release_timestamp: '${RELEASE_TIMESTAMP}'
 release_git_sha: '${RELEASE_GIT_SHA}'
