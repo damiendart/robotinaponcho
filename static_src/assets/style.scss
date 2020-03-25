@@ -441,6 +441,9 @@ ul {
       }
 
       &:last-child {
+        // This removes extra unwanted empty space from the bottom of
+        // the dropdown in pre-Blink Microsoft Edge, because reasons.
+        display: table;
         margin: 0;
       }
 
