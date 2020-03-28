@@ -318,7 +318,6 @@ ul {
   cursor: default;
   display: inline-block;
   margin: $base-line-height / -2;
-  padding: $base-line-height / 2;
   position: relative;
 
   @media (hover: hover) {
@@ -394,6 +393,29 @@ ul {
     font-weight: bold;
     line-height: 0;
     margin: 0;
+    padding: $base-line-height / 2;
+
+    // Improve the user experience of the dropdown menu by adding a
+    // "pointer-movement path" from the hamburger icon to the far-left
+    // list of links. For more information, see
+    // <https://css-tricks.com/dropdown-menus-with-more-forgiving-mouse-movement-paths/>.
+    &:hover::before {
+      bottom: 0;
+      content: "";
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: 0;
+      transform: rotate(-35deg);
+      transform-origin: 100% 0;
+      width: 75%;
+      z-index: 1;
+
+      @media #{toolbox-sass.$media-medium} {
+        transform: rotate(-15deg);
+        width: 200%;
+      }
+    }
 
     * {
       display: inline-block;
