@@ -5,5 +5,5 @@
 .php_cs.cache
 node_modules/
 public/
-protected/vendor
+protected/vendor/
 release/
