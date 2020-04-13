@@ -4,7 +4,7 @@
 
 @use "node_modules/toolbox-sass";
 
-$base-font-size: toolbox-sass.$base-one-em;
+$base-font-size: toolbox-sass.$base-one-em-in-pixels;
 $base-line-height: 1.65rem;
 $colour-black: #000000;
 $colour-blue: #0984e3;
