@@ -1,7 +1,6 @@
 {
   "name": "robotinaponcho",
   "description": "Source code to Damien Dart's personal site.",
-  "version": "0.1.0",
   "private": true,
   "author": "Damien Dart",
   "license": "MIT",
