@@ -3,11 +3,9 @@
 // please refer to the accompanying "LICENCE" file.
 
 import 'toolbox-sass/javascript/pretty-date';
-
 import appleClickEventFix from 'toolbox-sass/javascript/apple-click-event-fix';
 import clipboard from 'toolbox-sass/javascript/clipboard';
-
-let ticking = false;
+import throttle from 'toolbox-sass/javascript/throttle';
 
 // <https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill>
 if (!Element.prototype.matches) {
@@ -16,6 +14,7 @@ if (!Element.prototype.matches) {
 }
 
 appleClickEventFix.applyFix();
+
 clipboard.addHandler(
   document.body,
   (target) => target.matches('a[href$=".git"]'),
@@ -61,20 +60,16 @@ document.addEventListener('click', (event) => {
     .remove('hamburger--active');
 });
 
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      const siteHeaderElement = document.querySelector('.header');
+window.addEventListener(
+  'scroll',
+  throttle(() => {
+    const siteHeaderElement = document.querySelector('.header');
 
-      if (window.pageYOffset > 50) {
-        siteHeaderElement.classList.add('header--shadow');
-      } else {
-        siteHeaderElement.classList.remove('header--shadow');
-      }
+    if (window.pageYOffset > 50) {
+      siteHeaderElement.classList.add('header--shadow');
+    } else {
+      siteHeaderElement.classList.remove('header--shadow');
+    }
+  }),
+);
 
-      ticking = false;
-    });
-
-    ticking = true;
-  }
-});
