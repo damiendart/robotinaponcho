@@ -17,7 +17,7 @@ appleClickEventFix.applyFix();
 
 clipboard.addHandler(
   document.body,
-  (target) => target.matches('a[href$=".git"]'),
+  (target) => target.matches('a[href$=".git"], .social-share-list__item--permalink a'),
   (target) => target.getAttribute('href'),
   (target) => {
     target.classList.add('clipboard-success');
@@ -30,6 +30,14 @@ clipboard.addHandler(
     );
   },
   () => {},
+);
+
+Array.prototype.forEach.call(
+  document.querySelectorAll('a[href$=".git"], .social-share-list__item--permalink a'),
+  (element) => {
+    // eslint-disable-next-line no-param-reassign
+    element.title = 'Copy to clipboard';
+  },
 );
 
 document.addEventListener('click', (event) => {

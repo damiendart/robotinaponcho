@@ -1,0 +1,10 @@
+<div class="share">
+    <hr class="share__rule">
+    <p class="share__title">Share this page:</p>
+    {%
+        include '@toolbox-sass/social-share-list.twig' with {
+            'link': link,
+            'twitterText': twitterText
+        }
+    %}
+</div>

@@ -5,7 +5,7 @@
   "author": "Damien Dart",
   "license": "MIT",
   "dependencies": {
-    "assets": "git+ssh://git@github.com/damiendart/assets.git#7eae9bb23e745e5a706d8ab422a96c72392106c2",
+    "assets": "git+ssh://git@github.com/damiendart/assets.git#84a8188ee15b5bbb7a3830dc6e955e3177cfb946",
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#b40deb62d14ec0b31fd6eb14feceff4956702a44"
   },
   "devDependencies": {

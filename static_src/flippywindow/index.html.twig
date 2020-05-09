@@ -102,4 +102,10 @@
 
           - Initial release.
     {% endapply %}
+    {%
+        include '.templates/share.html.twig' with {
+            'link': 'https://www.robotinaponcho.net/' ~ pageSlug,
+            'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
+        }
+    %}
 {% endblock %}
