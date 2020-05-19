@@ -14,10 +14,12 @@ My PhpStorm Customisations and Settings
 
 ### Plugins
 
-In addition to the plugins that come bundled with PhpStorm, I also use 
-[IdeaVim][1], because I'm one of those people.
+In addition to the plugins that come bundled with PhpStorm, I also use
+[IdeaVim][1], because I'm one of those people, and the
+[EditorConfig][2] plugin.
 
 [1]: <https://github.com/JetBrains/ideavim>
+[2]: <https://plugins.jetbrains.com/plugin/7294-editorconfig>
 
 ### Removing as much of the interface as possible
 
@@ -31,6 +33,7 @@ I'm also one of these people.
 
  - Hide all tool window bars by clicking the square icon in the lower
    left corner of the workspace.
+ - Turn off *Display icons in menu items*.
  - Turn on *Show memory indicator*.
  - Turn on *Widescreen tool window layout* (where appropriate).
  - Remove tabs completely (set *Tab Placement* to *None*) and instead
@@ -41,8 +44,12 @@ I'm also one of these people.
 
 ### Miscellaneous customisations and settings
 
- - I current use the Darcula theme throughout and [Iosekva][2] as my
+ - I current use the Darcula theme throughout and [Iosekva][3] as my
    editor font.
  - Set the *Project Opening*'s *Default directory*.
+ - Set some default visual guides at 70 and 78 characters.
+ - On macOS, make IdeaVim a more pleasant experience by running
+  `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
+  -bool false` in the terminal.
 
-[2]: <https://typeof.net/Iosevka/>
+[3]: <https://typeof.net/Iosevka/>
