@@ -47,7 +47,7 @@ I'm also one of these people.
  - I current use the Darcula theme throughout and [Iosekva][3] as my
    editor font.
  - Set the *Project Opening*'s *Default directory*.
- - Set some default visual guides at 70 and 78 characters.
+ - Set some default visual guides at 72 and 78 characters.
  - On macOS, make IdeaVim a more pleasant experience by running
   `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
   -bool false` in the terminal.
