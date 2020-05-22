@@ -65,8 +65,14 @@ tasks:
 
   lint:
     cmds:
+      - task: 'lint:javascript'
       - task: 'lint:php'
     desc: 'Run all linting-related tasks'
+
+  lint:javascript:
+    cmds:
+      - 'npx eslint static_src/**/*.js'
+    desc: 'Lint JavaScript files with ESLint'
 
   lint:php:
     cmds:
