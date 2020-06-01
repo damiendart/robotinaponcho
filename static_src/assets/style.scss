@@ -102,7 +102,7 @@ h1 {
   margin: $base-line-height * 3 0;
   text-align: center;
 
-  @media #{toolbox-sass.$media-medium} {
+  @media #{toolbox-sass.$media-medium-up} {
     font-size: 300%;
     line-height: $base-line-height * 2;
   }
@@ -491,7 +491,7 @@ ul {
       width: 75%;
       z-index: 1;
 
-      @media #{toolbox-sass.$media-medium} {
+      @media #{toolbox-sass.$media-medium-up} {
         transform: rotate(-15deg);
         width: 200%;
       }
@@ -516,7 +516,7 @@ ul {
     top: 100%;
     z-index: 1;
 
-    @media #{toolbox-sass.$media-medium} {
+    @media #{toolbox-sass.$media-medium-up} {
       columns: 2;
       column-gap: $base-line-height;
     }
@@ -538,7 +538,7 @@ ul {
       margin: 0 0 ($base-line-height / 2) 0;
       white-space: pre;
 
-      @media #{toolbox-sass.$media-medium} {
+      @media #{toolbox-sass.$media-medium-up} {
         margin: 0;
       }
 
@@ -680,7 +680,7 @@ ul {
     padding-left: $base-line-height;
     padding-right: $base-line-height;
 
-    @media #{toolbox-sass.$media-large} {
+    @media #{toolbox-sass.$media-large-up} {
       padding-left: $base-line-height * 2;
       padding-right: $base-line-height * 2;
     }
@@ -701,7 +701,7 @@ ul {
   padding-left: $base-line-height;
   padding-right: $base-line-height;
 
-  @media #{toolbox-sass.$media-large} {
+  @media #{toolbox-sass.$media-large-up} {
     max-width: $content-width * 1.5;
     padding-left: $base-line-height * 2;
     padding-right: $base-line-height * 2;
@@ -722,11 +722,11 @@ ul {
       padding: $base-line-height / 2;
       width: 100%;
 
-      @media #{toolbox-sass.$media-medium} {
+      @media #{toolbox-sass.$media-medium-up} {
         width: 50%;
       }
 
-      @media #{toolbox-sass.$media-large} {
+      @media #{toolbox-sass.$media-large-up} {
         width: percentage(1/3);
       }
     }
