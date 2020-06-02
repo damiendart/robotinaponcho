@@ -46,8 +46,9 @@ Cleaning up line art
 Image filesize reduction techniques
 -----------------------------------
 
-  - Use [ExifTool][3] and [jpegtran][3] to reduce JPEG image filesizes:
+  - Use [ExifTool][1] and [jpegtran][2] to reduce JPEG image filesizes:
     `jpegtran -optimize -progressive [IMAGE] > [OUTPUT] &&
     exiftool -all= --icc_profile:all [OUTPUT]`.
 
-[3]: <http://jpegclub.org/jpegtran/>
+[1]: <https://exiftool.org>
+[2]: <https://jpegclub.org/jpegtran/>
