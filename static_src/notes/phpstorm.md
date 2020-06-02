@@ -33,8 +33,8 @@ I'm also one of these people.
 
  - Hide all tool window bars by clicking the square icon in the lower
    left corner of the workspace.
+ - Right-click the status bar and turn on the *Memory Indicator*.
  - Turn off *Display icons in menu items*.
- - Turn on *Show memory indicator*.
  - Turn on *Widescreen tool window layout* (where appropriate).
  - Remove tabs completely (set *Tab Placement* to *None*) and instead
    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> (to switch between recent files)
