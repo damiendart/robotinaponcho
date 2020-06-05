@@ -6,11 +6,11 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageDescription = "View Damien Dart's notes on stuff." %}
-{% set pageSlug = 'notes/' %}
-{% set pageTitle = 'Notes' %}
+{% set description = "View Damien Dart's notes on stuff." | smartypants %}
+{% set slug = 'notes/' %}
+{% set title = 'Notes' %}
 
-{% block pageContent %}
+{% block content %}
     <h1>Notes</h1>
     <div class="notes-list">
         <ul class="notes-list__list">

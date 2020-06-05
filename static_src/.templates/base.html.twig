@@ -4,33 +4,14 @@
     information, please refer to the accompanying "LICENCE" file.
 #}
 
-{% if block('phpPreamble') is defined %}
-    {{ block('phpPreamble') }}
-{% endif %}
-<!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-<head>
-    <meta charset="utf-8">
-    <link href="/assets/style.{{ deployment.releaseTimestamp }}.css" rel="stylesheet">
-    <meta content="Damien Dart" name="author">
-    <meta content="Damien Dart" property="og:author">
-    <meta content="@damiendart" property="twitter:creator">
-    {% if pageDescription is defined %}
-        <meta content="{{ pageDescription | smartypants | trim }}" name="description">
-        <meta content="{{ pageDescription | smartypants | trim }}" property="og:description">
-    {% endif %}
-    <meta content="https://www.robotinaponcho.net/{{ pageOpenGraphImage | default('assets/opengraph.png') }}" property="og:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <meta content="website" property="og:type">
-    <meta content="https://www.robotinaponcho.net/{{ pageSlug }}" property="og:url">
-    <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
-    <script>
-        {% block headJavaScript "document.documentElement.className+='javascript'" %}
-    </script>
-    <title>{{ pageTitle | smartypants | trim }} (www.robotinaponcho.net)</title>
-    <meta content="{{ pageTitle | smartypants | trim }}" property="og:title">
-</head>
-<body{% if pageBodyClass is defined %} class="{{ pageBodyClass }}"{% endif %}>
+{% extends '@toolbox-sass/html-document.twig' %}
+
+{% set author = 'Damien Dart' %}
+{% set authorTwitter = '@damiendart' %}
+{% set urlBase = 'https://www.robotinaponcho.net/' %}
+{% set openGraphImagePath = 'assets/opengraph.png' %}
+
+{% block body %}
     <header class="header">
         <h1 class="header__title">
             <a href="/">Damien Dart</a>
@@ -63,12 +44,19 @@
         <hr class="header__rule">
     </header>
     <main class="main-content">
-        {{ block('pageContent') }}
+        {{ block('content') }}
     </main>
     <footer class="footer">
         <hr class="footer__rule">
         <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a>.</p>
     </footer>
     <script async src="/assets/app.{{ deployment.releaseTimestamp }}.js"></script>
-</body>
-</html>
+{% endblock %}
+
+{% block headCustom %}
+    <link href="/assets/style.{{ deployment.releaseTimestamp }}.css" rel="stylesheet">
+{% endblock %}
+
+{% block openGraphTitle title | smartypants | trim %}
+
+{% block title %}{{ title | smartypants | trim }} (www.robotinaponcho.net){% endblock %}

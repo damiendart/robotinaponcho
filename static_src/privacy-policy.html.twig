@@ -6,11 +6,11 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageDescription = "View the Privacy Policy for Damien Dart's personal site." %}
-{% set pageSlug = 'privacy-policy' %}
-{% set pageTitle = 'Privacy Policy' %}
+{% set description = "View the Privacy Policy for Damien Dart's personal site." | smartypants %}
+{% set slug = 'privacy-policy' %}
+{% set title = 'Privacy Policy' %}
 
-{% block pageContent %}
+{% block content %}
     <h1>Privacy Policy</h1>
     <p>This privacy policy covers how this website collects, uses, and
         maintains information collected from users, as well as how

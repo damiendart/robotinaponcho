@@ -6,11 +6,11 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageSlug = 'art/' %}
-{% set pageTitle = 'Artwork and Drawings' %}
-{% set pageDescription = "View Damien Dart's artwork, colouring pages, and illustration." %}
+{% set description = "View Damien Dart's artwork, colouring pages, and illustration." | smartypants %}
+{% set slug = 'art/' %}
+{% set title = 'Artwork and Drawings' %}
 
-{% block pageContent %}
+{% block content %}
     <h1>Artwork and Drawings</h1>
     <p>Until I get round to setting up an actual gallery, have a look at
         some stuff I’ve posted on <a href="https://instagram.com/damiendart">Instagram</a>.</p>
@@ -49,7 +49,7 @@
         <a href="https://www.buymeacoffee.com/damiendart">buying me a coffee</a>!</p>
     {%
         include '.templates/share.html.twig' with {
-        'link': 'https://www.robotinaponcho.net/' ~ pageSlug,
+        'link': urlBase ~ slug,
         'twitterText': 'View @damiendart’s artwork, colouring pages, and illustration.'
     }
     %}

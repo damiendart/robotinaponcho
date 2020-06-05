@@ -6,11 +6,11 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageDescription = frontmatter.description %}
-{% set pageSlug = frontmatter.slug  %}
-{% set pageTitle = frontmatter.title %}
+{% set description = frontmatter.description | smartypants | trim %}
+{% set slug = frontmatter.slug  %}
+{% set title = frontmatter.title  %}
 
-{% block pageContent %}
+{% block content %}
     <h1>{{ frontmatter.title | smartypants | widont }}</h1>
     <div class="admonition admonition--metadata">
         <ul class="metadata-list">

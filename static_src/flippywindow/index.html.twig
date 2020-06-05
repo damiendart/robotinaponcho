@@ -6,12 +6,12 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageDescription = 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.' %}
-{% set pageSlug = 'flippywindow/' %}
-{% set pageTitle = 'FlippyWindow' %}
-{% set pageOpenGraphImage = 'flippywindow/opengraph.png' %}
+{% set description = 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.' %}
+{% set openGraphImagePath = 'flippywindow/opengraph.png' %}
+{% set slug = 'flippywindow/' %}
+{% set title = 'FlippyWindow' %}
 
-{% block pageContent %}
+{% block content %}
     <div class="flippywindow-introduction">
         <h1 class="flippywindow-introduction__title">FlippyWindow</h1>
         <p class="flippywindow-introduction__blurb">FlippyWindow is a
@@ -104,7 +104,7 @@
     {% endapply %}
     {%
         include '.templates/share.html.twig' with {
-            'link': 'https://www.robotinaponcho.net/' ~ pageSlug,
+            'link': urlBase ~ slug,
             'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
         }
     %}

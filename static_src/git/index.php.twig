@@ -6,18 +6,18 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set pageDescription = "View a bunch of Damien Dart's open-source stuff." %}
-{% set pageSlug = 'git/' %}
-{% set pageTitle = 'Open-source Stuff' %}
+{% set description = "View a bunch of Damien Dart's open-source stuff." | smartypants %}
+{% set slug = 'git/' %}
+{% set title = "Open-source Stuff" %}
 
-{% block phpPreamble %}
+{% block preamble %}
     <?php
         $repositories = require
             __DIR__ . '/../../protected/controllers/git/index.php';
     ?>
 {% endblock %}
 
-{% block pageContent %}
+{% block content %}
     <h1>Open-source Stuff</h1>
     <p>Here are some things I’ve written.</p>
 
