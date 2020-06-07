@@ -5,7 +5,7 @@
 @use "node_modules/toolbox-sass";
 
 $base-font-size: toolbox-sass.$base-one-em-in-pixels;
-$base-line-height: 1.65rem;
+$base-line-height: 1.7rem;
 $colour-black: #000000;
 $colour-blue: #0984e3;
 $colour-flippywindow-blue: #65b3eb;
@@ -16,7 +16,6 @@ $colour-itchio-pink: #fa5c5c;
 $colour-orange: #fdcb6e;
 $colour-white: #ffffff;
 $content-width: 37.5rem;
-
 
 @font-face {
   font-display: swap;
