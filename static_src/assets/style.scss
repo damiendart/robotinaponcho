@@ -5,7 +5,9 @@
 @use "node_modules/toolbox-sass";
 
 $base-font-size: toolbox-sass.$base-one-em-in-pixels;
-$base-line-height: 1.7rem;
+// The not-quite-1.7 value prevents a bunch of decimal pixel values
+// that cause things to look ever-so-slightly off.
+$base-line-height: 1.6875rem;
 $colour-black: #000000;
 $colour-blue: #0984e3;
 $colour-flippywindow-blue: #65b3eb;
