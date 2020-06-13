@@ -664,6 +664,10 @@ ul {
   width: 100%;
   z-index: 1;
 
+  html:not(.javascript) & {
+    position: relative;
+  }
+
   &--shadow {
     box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
   }
