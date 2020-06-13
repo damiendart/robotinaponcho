@@ -414,6 +414,10 @@ ul {
       right: 0;
     }
 
+    &:focus-within > &__title {
+      background-image: url("icons-chevrons.svg#up");
+    }
+
     &:hover {
       background: $colour-black;
       color: $colour-white;
@@ -421,6 +425,10 @@ ul {
 
     &:hover > &__lists {
       right: 0;
+    }
+
+    &:hover > &__title {
+      background-image: url("icons-chevrons.svg#up");
     }
   }
 
@@ -432,6 +440,10 @@ ul {
 
     &--open &__lists {
       right: 0;
+    }
+
+    &--open &__title {
+      background-image: url("icons-chevrons.svg#up");
     }
 
     @at-root {
@@ -457,7 +469,8 @@ ul {
     }
   }
 
-  // Internet Explorer doesn't support interaction-related media queries.
+  // Internet Explorer 10 and 11 don't support interaction-related media
+  // queries or SVG fragment identifiers.
   @media #{toolbox-sass.$media-ie-10} {
     &:hover {
       background: $colour-black;
@@ -467,14 +480,25 @@ ul {
     &:hover > &__lists {
       right: 0;
     }
+
+    &__title {
+      padding: $base-line-height / 2 !important;
+    }
   }
 
   &__title {
+    background: url("icons-chevrons.svg#down") no-repeat right center;
+    background-size: $base-line-height * 0.625;
+    background-position-x: calc(100% - #{$base-line-height / 2});
     font-size: 100%;
     font-weight: bold;
-    line-height: 0;
+    line-height: $base-line-height;
     margin: 0;
-    padding: $base-line-height / 2;
+    padding:
+        ($base-line-height / 2)
+        ($base-line-height * 1.5)
+        ($base-line-height / 2)
+        ($base-line-height / 2);
 
     // Improve the user experience of the dropdown menu by adding a
     // "pointer-movement path" from the hamburger icon to the far-left
@@ -487,24 +511,20 @@ ul {
       position: absolute;
       right: 100%;
       top: 0;
-      transform: rotate(-35deg);
+      transform: rotate(-25deg);
       transform-origin: 100% 0;
-      width: 75%;
+      width: 135%;
       z-index: 1;
 
       @media #{toolbox-sass.$media-medium-up} {
-        transform: rotate(-15deg);
-        width: 200%;
+        transform: rotate(-10deg);
+        width: 325%;
       }
     }
 
     * {
       display: inline-block;
       vertical-align: middle;
-    }
-
-    &__text {
-      padding: 0 0 0 ($base-line-height / 2);
     }
   }
 

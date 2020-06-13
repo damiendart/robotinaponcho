@@ -54,18 +54,11 @@ document.addEventListener('click', (event) => {
 
   if (dropDownMenuElement.contains(event.target)) {
     dropDownMenuElement.classList.toggle('dropdown-menu--open');
-    dropDownMenuElement
-      .querySelector('.hamburger')
-      .classList
-      .toggle('hamburger--active');
 
     return;
   }
 
   dropDownMenuElement.classList.remove('dropdown-menu--open');
-  dropDownMenuElement.querySelector('.hamburger')
-    .classList
-    .remove('hamburger--active');
 });
 
 window.addEventListener(
