@@ -244,7 +244,7 @@ ul {
   position: relative;
   border-radius: $base-line-height;
   text-decoration: none;
-
+  white-space: nowrap;
 
   &:hover {
     text-decoration: underline;
@@ -299,9 +299,23 @@ ul {
   }
 }
 
-@media #{toolbox-sass.$media-small-down} {
-  .collapsible {
-    display: none;
+.collapsible {
+  &--x-small-down {
+    @media #{toolbox-sass.$media-x-small-down} {
+      display: none;
+    }
+  }
+
+  &--small-down {
+    @media #{toolbox-sass.$media-small-down} {
+      display: none;
+    }
+  }
+
+  &--medium-down {
+    @media #{toolbox-sass.$media-medium-down} {
+      display: none;
+    }
   }
 }
 
