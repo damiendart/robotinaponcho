@@ -242,7 +242,7 @@ ul {
   font-weight: bold;
   padding: ($base-line-height / 2) $base-line-height;
   position: relative;
-  border-radius: $base-line-height;
+  border-radius: $base-line-height / 2;
   text-decoration: none;
   white-space: nowrap;
 
