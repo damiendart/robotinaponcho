@@ -5,6 +5,7 @@
 import 'toolbox-sass/javascript/pretty-date';
 import appleClickEventFix from 'toolbox-sass/javascript/apple-click-event-fix';
 import clipboard from 'toolbox-sass/javascript/clipboard';
+import debounce from 'toolbox-sass/javascript/debounce';
 import throttle from 'toolbox-sass/javascript/throttle';
 
 // <https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill>
@@ -12,6 +13,13 @@ if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector
     || Element.prototype.webkitMatchesSelector;
 }
+
+const clipboardSuccessDebounceFunction = debounce(
+  (target) => {
+    target.classList.remove('clipboard-success');
+  },
+  1000,
+);
 
 appleClickEventFix.applyFix();
 
@@ -21,6 +29,7 @@ clipboard.addHandler(
   (target) => target.getAttribute('href'),
   (target) => {
     target.classList.add('clipboard-success');
+    clipboardSuccessDebounceFunction(target);
     target.addEventListener(
       'mouseout',
       (event) => {

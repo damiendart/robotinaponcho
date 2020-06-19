@@ -254,13 +254,14 @@ ul {
     &::before {
       background: inherit;
       content: "Copied!";
-      left: 50%;
+      left: $base-line-height / 2;
       opacity: 0;
+      padding: ($base-line-height / 2) 0;
       position: absolute;
+      right: $base-line-height / 2;
       text-align: center;
-      transform: translateX(-50%);
+      top: 0;
       transition: opacity 0.125s ease-out;
-      width: calc(100% - #{$base-line-height * 2});
     }
 
     &.clipboard-success {
