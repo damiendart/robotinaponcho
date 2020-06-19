@@ -497,6 +497,7 @@ ul {
     }
 
     &__title {
+      background-image: none !important;
       padding: $base-line-height / 2 !important;
     }
   }
