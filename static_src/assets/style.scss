@@ -111,8 +111,8 @@ h1 {
 
 h2 {
   font-size: 150%;
-  line-height: $base-line-height;
-  margin: ($base-line-height * 3) 0 0 0;
+  line-height: $base-line-height * 1.25;
+  margin: ($base-line-height * 2.75) 0 0 0;
 }
 
 h3 {
