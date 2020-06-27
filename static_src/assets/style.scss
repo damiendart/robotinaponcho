@@ -97,6 +97,30 @@ code {
   line-height: 1;
 }
 
+figure {
+  @media #{toolbox-sass.$media-small-down} {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  > *:last-child {
+    position: relative;
+
+    &::after {
+      @media #{toolbox-sass.$media-small-down} {
+        content: "";
+        display: block;
+        height: toolbox-sass.$base-one-pixel-in-rem;
+        position: absolute;
+        right: $base-line-height * -1;
+        width: $base-line-height;
+      }
+    }
+  }
+}
+
 h1 {
   font-size: 200%;
   line-height: $base-line-height * 1.5;
@@ -160,6 +184,30 @@ ol {
 
 p {
   margin: ($base-line-height / 2) 0 0 0;
+}
+
+table {
+  margin: ($base-line-height / 2) 0 0 0;
+  border-collapse: collapse;
+  width: 100%;
+
+  > :not(caption) > * > * {
+    padding: $base-line-height / 4;
+  }
+
+  > tbody > tr:nth-last-of-type(odd) {
+    background: $colour-gray-light;
+  }
+
+  > thead {
+    vertical-align: bottom;
+
+    > * > * {
+      border-bottom: $colour-black solid toolbox-sass.$base-one-pixel-in-rem;
+      padding-bottom: (($base-line-height / 4) - toolbox-sass.$base-one-pixel-in-rem);
+      padding-top: 0;
+    }
+  }
 }
 
 ul {
