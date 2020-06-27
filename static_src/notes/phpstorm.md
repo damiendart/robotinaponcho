@@ -31,29 +31,29 @@ I'm also one of these people.
     whole list of menus you need to drill down to find a setting.</p>
 </div>
 
- - Hide all tool window bars by clicking the square icon in the lower
-   left corner of the workspace.
- - Right-click the status bar and turn on the *Memory Indicator*.
- - Turn off *Display icons in menu items*.
- - Turn on *Widescreen tool window layout* (where appropriate).
- - Remove tabs completely (set *Tab Placement* to *None*) and instead
-   rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> (to switch between recent files)
-   and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (to switch between
-   recently edited files).
- - Turn off *Show browsers popup in the editor*.
+  - Hide all tool window bars by clicking the square icon in the lower
+    left corner of the workspace.
+  - Right-click the status bar and turn on the *Memory Indicator*.
+  - Turn off *Display icons in menu items*.
+  - Turn on *Widescreen tool window layout* (where appropriate).
+  - Remove tabs completely (set *Tab Placement* to *None*) and instead
+    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> (to switch between recent files)
+    and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (to switch between
+    recently edited files).
+  - Turn off *Show browsers popup in the editor*.
 
 ### IdeaVim customisation and settings
 
- - Swap the audible bell for the visual one with `:set visualbell`.
- - On macOS, make IdeaVim a more pleasant experience by running
-  `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
-  -bool false` in the terminal.
+  - Swap the audible bell for the visual one with `:set visualbell`.
+  - On macOS, make IdeaVim a more pleasant experience by running
+    `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
+    -bool false` in the terminal.
 
 ### Miscellaneous customisations and settings
 
- - I current use the Darcula theme throughout and [Iosekva][3] as my
-   editor font.
- - Set the *Project Opening*'s *Default directory*.
- - Set some default visual guides at 72 and 78 characters.
+  - I current use the Darcula theme throughout and [Iosekva][3] as my
+    editor font.
+  - Set the *Project Opening*'s *Default directory*.
+  - Set some default visual guides at 72 and 78 characters.
 
 [3]: <https://typeof.net/Iosevka/>
