@@ -76,8 +76,16 @@ a {
   text-decoration: underline $colour-gray;
   text-decoration-thickness: $base-line-height / 16;
 
-  &:hover {
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited,
+  &:visited:hover {
     text-decoration-color: currentColor;
+  }
+
+  &:focus {
+    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
   }
 }
 
@@ -681,6 +689,10 @@ ul {
     a {
       color: inherit;
       text-decoration-color: currentColor;
+
+      &:focus {
+        outline-color: $colour-white;
+      }
     }
   }
 
