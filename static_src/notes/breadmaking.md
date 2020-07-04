@@ -40,10 +40,11 @@ light dusting of flour, poppy seeds, etc).
   1. Chuck everything into a stand mixer set up with a dough hook and
      knead on a medium speed for two minutes. Bump the speed up a notch
      and knead for an additional three minutes.
-  2. Coat a bowl with a little olive oil (I just use the stand mixer
-     bowl), plop the dough in, and cover the bowl with a tea towel.
-     Let the dough rise until it has doubled in size.
-  3. Knead the dough by hand again for a minute.
+  2. Take the dough out, lightly oil the stand mixer bowl, and plop the 
+     dough back in. Cover the bowl with a tea towel and let the dough
+     rise until it has doubled in size.
+  3. Empty the bowl onto a lightly-dusted surface and knead the dough
+     for around a minute.
   4. Shape the dough as required (I put mine in a lightly-floured loaf
      tin). Cover with a tea towel and let it prove until it has doubled
      in size (or thereabout).
