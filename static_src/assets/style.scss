@@ -838,6 +838,10 @@ ul {
   }
 }
 
+.os-menu-item {
+  font-family: toolbox-sass.$font-stack-system;
+}
+
 .share {
   flex-direction: row;
   justify-content: center;

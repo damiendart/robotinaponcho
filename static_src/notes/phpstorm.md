@@ -42,7 +42,9 @@ I'm also one of these people.
     and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (to switch between
     recently edited files).
   - Turn off *Show browsers popup in the editor*.
-  - Hide the navigation bar (**View | Appearance | Navigation Bar**)
+  - Hide the navigation bar (<span class="os-menu-item">View</span>
+    &rarr; <span class="os-menu-item">Appearance</span> &rarr;
+    <span class="os-menu-item">Navigation Bar</span>)
 
 ### IdeaVim customisation and settings
 
