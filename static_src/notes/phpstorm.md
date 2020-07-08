@@ -31,8 +31,9 @@ I'm also one of these people.
     whole list of menus you need to drill down to find a setting.</p>
 </div>
 
-  - Hide all tool window bars by clicking the square icon in the lower
-    left corner of the workspace.
+  - Turn on *Use contrast scrollbars*.
+  - Turn on *Use smaller indents in trees*.
+  - Turn off *Show tool window bars*.
   - Right-click the status bar and turn on the *Memory Indicator*.
   - Turn off *Display icons in menu items*.
   - Turn on *Widescreen tool window layout* (where appropriate).
@@ -41,6 +42,7 @@ I'm also one of these people.
     and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (to switch between
     recently edited files).
   - Turn off *Show browsers popup in the editor*.
+  - Hide the navigation bar (**View | Appearance | Navigation Bar**)
 
 ### IdeaVim customisation and settings
 
