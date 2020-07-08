@@ -78,9 +78,7 @@ a {
 
   &:active,
   &:focus,
-  &:hover,
-  &:visited,
-  &:visited:hover {
+  &:hover {
     text-decoration-color: currentColor;
   }
 
