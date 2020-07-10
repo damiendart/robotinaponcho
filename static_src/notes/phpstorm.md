@@ -44,7 +44,9 @@ I'm also one of these people.
   - Turn off *Show browsers popup in the editor*.
   - Hide the navigation bar (<span class="os-menu-item">View</span>
     &rarr; <span class="os-menu-item">Appearance</span> &rarr;
-    <span class="os-menu-item">Navigation Bar</span>)
+    <span class="os-menu-item">Navigation Bar</span>); on macOS,
+    <kbd>&#8984;</kbd>+<kbd>&uarr;</kbd> will display a floating
+    navigation bar if required.
 
 ### IdeaVim customisation and settings
 
