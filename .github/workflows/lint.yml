@@ -1,0 +1,38 @@
+# Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more information,
+# please refer to the accompanying "LICENCE" file.
+
+---
+name: 'Lint Project'
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  lint-yaml:
+    name: 'Lint project'
+    runs-on: 'ubuntu-18.04'
+    steps:
+      - name: 'Check out repository'
+        uses: 'actions/checkout@v2'
+
+      - name: 'Set up Node environment'
+        uses: 'actions/setup-node@v2-beta'
+        with:
+          node-version: '14'
+
+      - name: 'Set up PHP environment'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '7.4'
+
+      - name: 'Install Task'
+        run: 'curl -sL https://taskfile.dev/install.sh | sh'
+
+      - name: 'Install project dependencies'
+        run: './bin/task dependencies'
+
+      - name: 'Run all linting-related tasks'
+        run: './bin/task lint'
