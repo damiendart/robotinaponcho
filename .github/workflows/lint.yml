@@ -31,6 +31,13 @@ jobs:
       - name: 'Install Task'
         run: 'curl -sL https://taskfile.dev/install.sh | sh'
 
+      - name: 'Set up SSH gubbins'
+        run: |
+          mkdir ~/.ssh
+          echo "${{ secrets.ASSETS_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com
+
       - name: 'Install project dependencies'
         run: './bin/task dependencies'
 
