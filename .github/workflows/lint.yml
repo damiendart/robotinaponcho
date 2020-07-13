@@ -36,10 +36,6 @@ jobs:
           mkdir ~/.ssh
           echo "${{ secrets.ASSETS_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa github.com
 
-      - name: 'Install project dependencies'
-        run: './bin/task dependencies'
-
-      - name: 'Run all linting-related tasks'
-        run: './bin/task lint'
+      - name: 'Ensure project builds and run all linting-related tasks'
+        run: './bin/task ci'
