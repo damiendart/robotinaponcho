@@ -40,7 +40,16 @@ module.exports = {
   },
   modifiers: [
     addSlugsToItems,
-    [addSitemap, { ignorePattern: /google(.*).html$/ }],
+    [
+      addSitemap,
+      {
+        additionalEntries: [
+          'art/colouring-pages-a4.pdf',
+          'art/colouring-pages-us.pdf',
+        ],
+        ignorePattern: /google(.*).html$/,
+      }
+    ],
     addGitMetadataToItems,
   ],
 };
