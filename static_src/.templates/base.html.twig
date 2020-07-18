@@ -6,11 +6,6 @@
 
 {% extends '@toolbox-sass/html-document.twig' %}
 
-{% set author = 'Damien Dart' %}
-{% set authorTwitter = '@damiendart' %}
-{% set urlBase = 'https://www.robotinaponcho.net/' %}
-{% set openGraphImagePath = 'assets/opengraph.png' %}
-
 {% block body %}
     <header class="header">
         <h1 class="header__title">
@@ -45,11 +40,11 @@
         <hr class="footer__rule">
         <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a>.</p>
     </footer>
-    <script async src="/assets/app.{{ deployment.releaseTimestamp }}.js"></script>
+    <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}
 
 {% block headCustom %}
-    <link href="/assets/style.{{ deployment.releaseTimestamp }}.css" rel="stylesheet">
+    <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
 {% endblock %}
 
 {% block openGraphTitle title | smartypants | trim %}

@@ -4,7 +4,6 @@
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
   description: Read Damien Dart's notes on Adobe Illustrator.
-  slug: notes/illustrator
   title: Adobe Illustrator Notes
   twigTemplate: .templates/notes-base.html.twig
 -->

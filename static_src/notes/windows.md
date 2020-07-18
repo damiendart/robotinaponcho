@@ -4,7 +4,6 @@
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
   description: Read Damien Dart's notes on Microsoft Windows.
-  slug: notes/computer
   title: Microsoft Windows Notes
   twigTemplate: .templates/notes-base.html.twig
 -->

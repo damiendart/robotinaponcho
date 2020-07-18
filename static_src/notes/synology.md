@@ -4,7 +4,6 @@
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
   description: Read Damien Dart's notes on setting up, using, and troubleshooting Synology DiskStation.
-  slug: notes/synology
   title: Synology Notes
   twigTemplate: .templates/notes-base.html.twig
 -->
