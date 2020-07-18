@@ -38,7 +38,7 @@
     </main>
     <footer class="footer">
         <hr class="footer__rule">
-        <p class="footer__copyright">Copyright © 2020 <a href="/">Damien Dart</a>.</p>
+        <p class="footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
     </footer>
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}
