@@ -495,9 +495,9 @@ ul {
   position: relative;
 
   @media (hover: hover) {
-    // Microsoft Edge and Internet Explorer do not support the
+    // Pre-Blink Microsoft Edge and Internet Explorer do not support the
     // ":focus-within" pseudo-class; if we include the pseudo-class in a
-    // group of selectors those browsers ignore the whole thing.
+    // group of selectors those browsers ignore the rule set.
     &:focus-within {
       background: $colour-black;
       color: $colour-white;
