@@ -84,6 +84,24 @@ a {
 
   &:focus {
     outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
+
+    // Combining selectors that use ":focus-visible" and
+    // ":-moz-focusring" causes some browsers to ignore the rule set.
+    &:not(:focus-visible) {
+      outline: initial;
+    }
+
+    &:not(:-moz-focusring) {
+      outline: initial;
+    }
+  }
+
+  &:focus-visible {
+    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
+  }
+
+  &:-moz-focusring {
+    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
   }
 }
 
