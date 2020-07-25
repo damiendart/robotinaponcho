@@ -19,6 +19,47 @@ $colour-orange: #fdcb6e;
 $colour-white: #ffffff;
 $content-width: 37.5rem;
 
+@mixin focus-ring($colour: currentColor, $boxShadow: false) {
+  &:focus {
+    @if ($boxShadow) {
+      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
+      outline: none;
+    } @else {
+      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+    }
+
+    // Combining selectors that use ":focus-visible" and
+    // ":-moz-focusring" causes some browsers to ignore the rule set.
+    &:not(:focus-visible) {
+      outline: initial;
+      box-shadow: none;
+    }
+
+    &:not(:-moz-focusring) {
+      box-shadow: none;
+      outline: initial;
+    }
+  }
+
+  &:focus-visible {
+    @if ($boxShadow) {
+      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
+      outline: none;
+    } @else {
+      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+    }
+  }
+
+  &:-moz-focusring {
+    @if ($boxShadow) {
+      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
+      outline: none;
+    } @else {
+      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+    }
+  }
+}
+
 @font-face {
   font-display: swap;
   font-family: 'Inter';
@@ -71,6 +112,8 @@ $content-width: 37.5rem;
 }
 
 a {
+  @include focus-ring;
+
   color: $colour-blue;
   font-weight: bold;
   text-decoration: underline $colour-gray;
@@ -80,28 +123,6 @@ a {
   &:focus,
   &:hover {
     text-decoration-color: currentColor;
-  }
-
-  &:focus {
-    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
-
-    // Combining selectors that use ":focus-visible" and
-    // ":-moz-focusring" causes some browsers to ignore the rule set.
-    &:not(:focus-visible) {
-      outline: initial;
-    }
-
-    &:not(:-moz-focusring) {
-      outline: initial;
-    }
-  }
-
-  &:focus-visible {
-    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
-  }
-
-  &:-moz-focusring {
-    outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour-blue;
   }
 }
 
@@ -313,6 +334,8 @@ ul {
 }
 
 .button {
+  @include focus-ring($colour-blue, true);
+
   background: $colour-blue;
   color: $colour-white;
   display: inline-block;
