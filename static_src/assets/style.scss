@@ -13,6 +13,7 @@ $colour-blue: #0984e3;
 $colour-flippywindow-blue: #65b3eb;
 $colour-gray: #dddddd;
 $colour-gray-light: #eeeeee;
+$colour-gray-lighter: #f9f9f9;
 $colour-green: #55efc4;
 $colour-itchio-pink: #fa5c5c;
 $colour-orange: #fdcb6e;
@@ -129,7 +130,7 @@ a {
 body {
   @include toolbox-sass.nice-font-rendering;
 
-  background: $colour-white;
+  background: $colour-gray-lighter;
   color: $colour-black;
   font-family: 'Inter', toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
@@ -1001,7 +1002,11 @@ ul {
 
   &::after {
     bottom: 0;
-    background: linear-gradient(180deg, rgba($colour-white, 0), rgba($colour-white, 1));
+    background: linear-gradient(
+      180deg,
+      rgba($colour-gray-lighter, 0),
+      rgba($colour-gray-lighter, 1)
+    );
     content: "";
     display: block;
     height: $base-line-height;
@@ -1011,7 +1016,13 @@ ul {
   }
 
   &::before {
-    background: linear-gradient(180deg, $colour-gray, $colour-gray 50%, $colour-white 50%, $colour-white);
+    background: linear-gradient(
+      180deg,
+      $colour-gray,
+      $colour-gray 50%,
+      $colour-gray-lighter 50%,
+      $colour-gray-lighter
+    );
     background-size: 100% $base-line-height;
     bottom: 0;
     content: "";
