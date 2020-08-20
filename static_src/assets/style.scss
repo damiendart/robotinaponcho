@@ -884,6 +884,24 @@ ul {
   font-family: toolbox-sass.$font-stack-system;
 }
 
+.robot-header {
+  max-width: 100% !important;
+  position: relative;
+
+  &::before {
+    content: "";
+    height: $base-line-height * 30;
+    transform: skewY(-5deg);
+    transform-origin: bottom center;
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    bottom: 150px;
+    background: #34ace0;
+    width: 100vw;
+  }
+}
+
 .share {
   flex-direction: row;
   justify-content: center;
