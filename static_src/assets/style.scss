@@ -943,7 +943,7 @@ ul {
           }
 
           &::after {
-            background: $colour-white url('icon-check-link.svg') no-repeat center;
+            background: $colour-gray-lighter url('icon-check-link.svg') no-repeat center;
             background-size: $base-line-height * 1.25;
             content: '';
             display: inline-block;
