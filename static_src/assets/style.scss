@@ -786,6 +786,10 @@ ul {
   width: 100%;
   z-index: 1;
 
+  @media print {
+    position: relative;
+  }
+
   html:not(.javascript) & {
     position: relative;
   }
