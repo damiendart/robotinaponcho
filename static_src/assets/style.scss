@@ -1004,6 +1004,15 @@ ul {
             background-size: $base-line-height * 1.25;
           }
         }
+
+        @media (hover: none) {
+          &:focus,
+          &:hover {
+            &::before {
+              background-size: $base-line-height;
+            }
+          }
+        }
       }
 
       span {
