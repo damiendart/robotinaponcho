@@ -6,6 +6,7 @@
   "require": {
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.1",
+    "php": "^7.4",
     "sentry/sdk": "^3.0"
   },
   "require-dev": {
