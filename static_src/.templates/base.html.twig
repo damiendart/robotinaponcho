@@ -6,10 +6,17 @@
 
 {% extends '@toolbox-sass/html-document.twig' %}
 
+{% set metaAuthor = author %}
+{% set metaCanonical = urlBase ~ slug %}
+{% set metaDescription = description | default(false) %}
+{% set metaOpengraphTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
+{% set metaOpengraphUrl = metaCanonical %}
+{% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
+
 {% block body %}
     <header class="header">
         <h1 class="header__title">
-            <a href="/">Damien Dart</a>
+            <a href="/">{{ author }}</a>
         </h1>
         <nav class="dropdown-menu header__navigation">
             <h2 class="dropdown-menu__title">Menu</h2>
@@ -46,7 +53,3 @@
 {% block headCustom %}
     <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
 {% endblock %}
-
-{% block openGraphTitle title | smartypants | trim %}
-
-{% block title %}{{ title | smartypants | trim }} (www.robotinaponcho.net){% endblock %}

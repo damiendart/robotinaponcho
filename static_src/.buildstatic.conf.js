@@ -33,8 +33,9 @@ function addGitMetadataToItems(globalData, items) {
 module.exports = {
   globalData: {
     author: 'Damien Dart',
-    authorTwitter: '@damiendart',
-    openGraphImagePath: 'assets/opengraph.png',
+    metaTwitterAuthor: '@damiendart',
+    metaTwitterSite: '@damiendart',
+    metaOpengraphImage: 'https://www.robotinaponcho.net/assets/opengraph.png',
     releaseTimestamp: process.env.RELEASE_TIMESTAMP || '00000000000000',
     urlBase: 'https://www.robotinaponcho.net/',
   },
