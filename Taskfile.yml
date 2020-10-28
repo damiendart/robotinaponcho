@@ -60,7 +60,7 @@ tasks:
 
   dependencies:php:
     cmds:
-      - 'composer install --no-ansi --no-interaction --no-progress --no-suggest'
+      - 'composer install --no-ansi --no-interaction --no-progress'
     desc: 'Install PHP dependencies for building, development, and testing'
 
   lint:
