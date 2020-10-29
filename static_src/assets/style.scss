@@ -513,6 +513,10 @@ ul {
 }
 
 .dropdown-menu {
+  $border-radius: $base-line-height / 4;
+  $animation-duration: 0.125s;
+
+  border-radius: $border-radius $border-radius 0 0;
   cursor: default;
   display: inline-block;
   margin: $base-line-height / -2;
@@ -522,45 +526,30 @@ ul {
     // Pre-Blink Microsoft Edge and Internet Explorer do not support the
     // ":focus-within" pseudo-class; if we include the pseudo-class in a
     // group of selectors those browsers ignore the rule set.
-    &:focus-within {
-      background: $colour-black;
-      color: $colour-white;
-    }
-
     &:focus-within > &__lists {
+      opacity: 1;
       right: 0;
+      transform: none;
     }
 
     &:focus-within > &__title {
-      background-image: url("icons-chevrons.svg#up");
-    }
-
-    &:hover {
-      background: $colour-black;
-      color: $colour-white;
+      opacity: 0.5;
     }
 
     &:hover > &__lists {
+      opacity: 1;
       right: 0;
+      transform: none;
     }
 
     &:hover > &__title {
-      background-image: url("icons-chevrons.svg#up");
+      opacity: 0.5;
     }
   }
 
   @media (hover: none) {
-    &--open {
-      background: $colour-black;
-      color: $colour-white;
-    }
-
     &--open &__lists {
       right: 0;
-    }
-
-    &--open &__title {
-      background-image: url("icons-chevrons.svg#up");
     }
 
     @at-root {
@@ -589,11 +578,6 @@ ul {
   // Internet Explorer 10 and 11 don't support interaction-related media
   // queries or SVG fragment identifiers.
   @media #{toolbox-sass.$media-ie-10} {
-    &:hover {
-      background: $colour-black;
-      color: $colour-white;
-    }
-
     &:hover > &__lists {
       right: 0;
     }
@@ -617,6 +601,7 @@ ul {
         ($base-line-height * 1.5)
         ($base-line-height / 2)
         ($base-line-height / 2);
+    transition: opacity $animation-duration ease-out;
 
     // Improve the user experience of the dropdown menu by adding a
     // "pointer-movement path" from the hamburger icon to the far-left
@@ -647,13 +632,36 @@ ul {
   }
 
   &__lists {
-    background: inherit;
-    color: inherit;
+    background: $colour-black;
+    box-shadow: 0 toolbox-sass.$base-one-pixel-in-rem toolbox-sass.$base-one-pixel-in-rem rgba($colour-black, 0.1),
+      0 (toolbox-sass.$base-one-pixel-in-rem * 2) (toolbox-sass.$base-one-pixel-in-rem * 2) rgba($colour-black, 0.1),
+      0 (toolbox-sass.$base-one-pixel-in-rem * 4) (toolbox-sass.$base-one-pixel-in-rem * 4) rgba($colour-black, 0.1),
+      0 (toolbox-sass.$base-one-pixel-in-rem * 8) (toolbox-sass.$base-one-pixel-in-rem * 8) rgba($colour-black, 0.1),
+      0 (toolbox-sass.$base-one-pixel-in-rem * 16) (toolbox-sass.$base-one-pixel-in-rem * 16) rgba($colour-black, 0.1);
+    border-radius: $border-radius;
+    color: $colour-white;
+    opacity: 0;
     padding: $base-line-height;
     position: absolute;
     right: 9999px;
     top: 100%;
+    transform: translateY($base-line-height / -3);
+    transition: opacity $animation-duration ease-out,
+      transform $animation-duration ease-out;
     z-index: 1;
+
+    &::before {
+      border-bottom: ($base-line-height / 3) solid black;
+      border-left: ($base-line-height / 3) solid transparent;
+      border-right: ($base-line-height / 3) solid transparent;
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
+      right: ($base-line-height / 2);
+      top: ($base-line-height / -3);
+      width: 0;
+    }
 
     @media #{toolbox-sass.$media-medium-up} {
       columns: 2;
