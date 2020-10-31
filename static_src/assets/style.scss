@@ -561,6 +561,18 @@ ul {
         transition-delay: $animation-duration;
       }
 
+      .dropdown-menu__lists__list {
+        &:last-child {
+          @media #{toolbox-sass.$media-small-down} {
+            @for $i from 1 through 10 {
+              .dropdown-menu__lists__list__item:nth-child(#{$i}) {
+                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+              }
+            }
+          }
+        }
+      }
+
       .dropdown-menu__lists__list__item {
         opacity: 1;
         transform: none;
@@ -594,6 +606,18 @@ ul {
         transition-delay: $animation-duration;
       }
 
+      .dropdown-menu__lists__list {
+        &:last-child {
+          @media #{toolbox-sass.$media-small-down} {
+            @for $i from 1 through 10 {
+              .dropdown-menu__lists__list__item:nth-child(#{$i}) {
+                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+              }
+            }
+          }
+        }
+      }
+
       .dropdown-menu__lists__list__item {
         opacity: 1;
         transform: none;
@@ -606,10 +630,10 @@ ul {
           }
         }
       }
+    }
 
-      &--open &__title {
-        opacity: 0.5;
-      }
+    &--open &__title {
+      opacity: 0.5;
     }
 
     @at-root {
@@ -623,8 +647,13 @@ ul {
         }
 
         &__lists {
-          left: 0;
+          background: transparent;
+          border-radius: 0;
+          box-shadow: none;
+          color: $colour-black;
+          columns: 1;
           float: none;
+          left: 0;
           margin: $base-line-height 0 0 0;
           padding: 0;
           position: relative;
@@ -633,9 +662,19 @@ ul {
           transform: none;
           width: 100%;
 
-          .dropdown-menu__lists__list__item {
-            opacity: 1;
-            transform: none;
+          &::before {
+            display: none;
+          }
+
+          &__list {
+            &:first-child {
+              margin: 0 0 ($base-line-height / 2);
+            }
+
+            &__item {
+              opacity: 1;
+              transform: none;
+            }
           }
         }
       }
@@ -645,25 +684,68 @@ ul {
   // Internet Explorer 10 and 11 don't support interaction-related media
   // queries or SVG fragment identifiers.
   @media #{toolbox-sass.$media-ie-10} {
+    &::after {
+      $height: ($base-line-height * 1.25) * (14.14 / 22.13);
+
+      // The chevron implementation is different for Internet Explorer
+      // 11 because, by default, using SVGs for background images can
+      // result in blurry backgrounds. For more information, see
+      // <https://ctidd.com/2015/svg-background-scaling>.
+      background: url("icons-chevrons.svg#down") no-repeat center;
+      background-size: cover;
+      content: "";
+      height: $height;
+      position: absolute;
+      right: $base-line-height * -0.3625;
+      top: calc(50% - #{$height / 2});
+      transform: scale(0.5);
+      transition: opacity $animation-duration ease-out;
+      transform-origin: center;
+      width: $base-line-height * 1.25;
+    }
+
+    &__title {
+      background: none !important;
+    }
+
     &:hover > &__lists {
       opacity: 1;
       right: $base-line-height / -2;
       transform: none;
 
-      &::before {
-        transform: translateY(
-            ($base-line-height * -0.3125) + toolbox-sass.$base-one-pixel-in-rem
-        );
-        transition: transform $animation-duration ease-out;
-        transition-delay: $animation-duration;
+      .dropdown-menu__lists__list {
+        &:last-child {
+          @media #{toolbox-sass.$media-small-down} {
+            @for $i from 1 through 10 {
+              .dropdown-menu__lists__list__item:nth-child(#{$i}) {
+                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+              }
+            }
+          }
+        }
       }
 
       .dropdown-menu__lists__list__item {
         opacity: 1;
+        // For Internet Explorer 11, setting the position property to a
+        // value that isn't the default ("static") fixes a bug where an
+        // item or two will sporadically disappear after the opacity
+        // transition finishes. For more information (sorta), please see
+        // <http://www.jacklmoore.com/notes/ie-opacity-inheritance/>.
+        position: relative;
         transform: none;
+        transition: opacity $animation-duration ease-out,
+          transform $animation-duration ease-out;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            transition-delay: ($animation-duration / 4) * $i;
+          }
+        }
       }
     }
 
+    &:hover::after,
     &:hover > &__title {
       opacity: 0.5;
     }
