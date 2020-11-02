@@ -895,27 +895,18 @@ ul {
   color: $colour-white;
   padding: ($base-line-height * 3) $base-line-height;
 
-  &__blurb {
-    font-size: 150%;
-    font-weight: bold;
-    line-height: $base-line-height * 1.5;
-    margin: 0 auto $base-line-height auto;
-    max-width: $content-width;
-    padding: 0 $base-line-height;
-    text-align: center;
+  a {
+    color: inherit;
+    text-decoration-color: currentColor;
 
-    &--more {
-      font-weight: normal;
-      margin: $base-line-height auto 0;
+    &:focus {
+      outline-color: $colour-white;
     }
+  }
 
-    a {
-      color: inherit;
-      text-decoration-color: currentColor;
-
-      &:focus {
-        outline-color: $colour-white;
-      }
+  .introductory-blurb {
+    &:first-child {
+      margin: 0;
     }
   }
 
@@ -996,6 +987,20 @@ ul {
   }
 }
 
+.introductory-blurb {
+  font-size: 150%;
+  font-weight: bold;
+  line-height: $base-line-height * 1.5;
+  margin: $base-line-height auto 0;
+  max-width: $content-width;
+  padding: 0 $base-line-height;
+  text-align: center;
+
+  @media #{toolbox-sass.$media-large-up} {
+    padding: 0 ($base-line-height * 2);
+  }
+}
+
 .main-content {
   & > *:not(div) {
     margin-left: auto;
@@ -1062,6 +1067,7 @@ ul {
 }
 
 .robot-header {
+  line-height: 0;
   max-width: 100% !important;
   position: relative;
 
