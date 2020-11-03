@@ -691,7 +691,7 @@ ul {
       // 11 because, by default, using SVGs for background images can
       // result in blurry backgrounds. For more information, see
       // <https://ctidd.com/2015/svg-background-scaling>.
-      background: url("icons-chevrons.svg#down") no-repeat center;
+      background: url("icon-chevron.svg") no-repeat center;
       background-size: cover;
       content: "";
       height: $height;
@@ -752,7 +752,7 @@ ul {
   }
 
   &__title {
-    background: url("icons-chevrons.svg#down") no-repeat right center;
+    background: url("icon-chevron.svg") no-repeat right center;
     background-size: $base-line-height * 0.625;
     background-position-x: 100%;
     font-size: 100%;
