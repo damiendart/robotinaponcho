@@ -2,7 +2,7 @@
   "author": "Damien Dart",
   "description": "Source code to Damien Dart's personal site.",
   "dependencies": {
-    "assets": "git+ssh://git@github.com/damiendart/assets.git#925ed96855129027338155db434965ece527ffc2",
+    "assets": "git+ssh://git@github.com/damiendart/assets.git#92368cade0554eb9d01451ffda82b792b38927a6",
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#80febbacf86372efa5fb43bbad1f1a7044ff980e"
   },
   "devDependencies": {

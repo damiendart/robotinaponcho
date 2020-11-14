@@ -272,6 +272,8 @@ ul {
 }
 
 .admonition {
+  $full-breakpoint:  $content-width + $base-line-height * 2.5;
+
   border-style: solid;
   border-bottom-width: $base-line-height / 8;
   border-left-width: $base-line-height / 8;
@@ -300,13 +302,29 @@ ul {
     top: $base-line-height * -3;
     width: $base-line-height * 3;
 
-    @media screen and (min-width: #{$content-width + $base-line-height * 2.5}) {
+    @media screen and (min-width: #{$full-breakpoint}) {
       background-size: 100%;
       height: $base-line-height * 2;
       left: $base-line-height * -2.5;
       top: 50%;
       transform: translateY(-50%);
       width: $base-line-height * 2;
+    }
+  }
+
+  &--colouring-book {
+    border-color: $colour-green;
+
+    &::before {
+      background-image: url("/assets/icon-download.svg");
+    }
+
+    @media screen and (min-width: #{$full-breakpoint}) {
+      border-left-width: $base-line-height * 8 !important;
+
+      &::before {
+        display: none;
+      }
     }
   }
 
@@ -326,15 +344,61 @@ ul {
     }
   }
 
-  @media screen and (min-width: #{$content-width + $base-line-height * 2.5}) {
+  @media screen and (min-width: #{$full-breakpoint}) {
     border-bottom-width: $base-line-height / 8;
     border-left-width: $base-line-height * 3;
-    border-radius: $base-line-height / 2;
     border-right-width: $base-line-height / 8;
     border-top-width: $base-line-height / 8;
     margin: $base-line-height auto;
     max-width: $content-width + ($base-line-height * 2);
     padding: $base-line-height * 0.875;
+  }
+
+  &__colouring-book-samples {
+    display: none;
+
+    &__heading {
+      display: none;
+    }
+
+    @media screen and (min-width: #{$full-breakpoint}) {
+      bottom: $base-line-height / -8;
+      display: block;
+      height: calc(100% + #{$base-line-height / 4});
+      left: $base-line-height * -9;
+      overflow: hidden;
+      position: absolute;
+      width: $base-line-height * 10;
+
+      &__sample {
+        $sheet-width: $base-line-height * 6;
+
+        top: -10%;
+        box-shadow: 0 0 ($base-line-height / 2) rgba(0, 0, 0, 0.1);
+        background: $colour-white;
+        display: block;
+        height: $sheet-width * 1.41429;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%) rotate(-2deg);
+        width: $sheet-width;
+
+        &--2 {
+          top: 20%;
+          transform: translateX(-50%) rotate(5deg);
+        }
+
+        &--3 {
+          top: 40%;
+          transform: translateX(-50%) rotate(-3deg);
+        }
+
+        &--4 {
+          top: 60%;
+          transform: translateX(-50%) rotate(4deg);
+        }
+      }
+    }
   }
 }
 
@@ -454,77 +518,6 @@ ul {
   &--medium-down {
     @media #{toolbox-sass.$media-medium-down} {
       display: none;
-    }
-  }
-}
-
-.colouring-page-cta {
-  border-color: $colour-green;
-  border-style: solid;
-  border-width: 0;
-  border-left-width: $base-line-height * 3;
-  box-sizing: border-box;
-  margin: $base-line-height auto;
-  max-width: $content-width + ($base-line-height * 2);
-  position: relative;
-  padding: $base-line-height $base-line-height
-  $base-line-height ($base-line-height * 0.875);
-
-  > *:first-child {
-    margin: 0;
-  }
-
-  @media screen and (min-width: #{$content-width + $base-line-height * 2}) {
-    border-width: ($base-line-height / 8) ($base-line-height / 8)
-      ($base-line-height / 8) ($base-line-height * 8);
-    border-radius: $base-line-height / 2;
-    padding: $base-line-height * 0.875;
-  }
-
-  &__samples {
-    display: none;
-
-    @media screen and (min-width: #{$content-width + $base-line-height * 2}) {
-      bottom: $base-line-height / -8;
-      display: block;
-      height: calc(100% + #{$base-line-height / 4});
-      left: $base-line-height * -9;
-      overflow: hidden;
-      position: absolute;
-      width: $base-line-height * 10;
-
-      &__heading {
-        display: none;
-      }
-
-      &__sample {
-        $sheet-width: $base-line-height * 6;
-
-        top: -10%;
-        box-shadow: 0 0 ($base-line-height / 2) rgba(0, 0, 0, 0.1);
-        background: $colour-white;
-        display: block;
-        height: $sheet-width * 1.41429;
-        left: 50%;
-        position: absolute;
-        transform: translateX(-50%) rotate(-2deg);
-        width: $sheet-width;
-
-        &--2 {
-          top: 20%;
-          transform: translateX(-50%) rotate(5deg);
-        }
-
-        &--3 {
-          top: 40%;
-          transform: translateX(-50%) rotate(-3deg);
-        }
-
-        &--4 {
-          top: 60%;
-          transform: translateX(-50%) rotate(4deg);
-        }
-      }
     }
   }
 }
