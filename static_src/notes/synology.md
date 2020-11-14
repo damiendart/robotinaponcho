@@ -3,8 +3,8 @@
   # Attribution 4.0 International License. To view a copy of this
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
-  description: Read Damien Dart's notes on setting up, using, and troubleshooting Synology DiskStation.
-  title: Synology Notes
+  description: Read Damien Dart's notes on setting up, using, and troubleshooting a Synology DiskStation.
+  title: Synology DiskStation Notes
   twigTemplate: .templates/notes-base.html.twig
 -->
 
