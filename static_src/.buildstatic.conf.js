@@ -14,15 +14,28 @@ function addGitMetadataToItems(globalData, items) {
         return item;
       }
 
-      const gitStdout = childProcess.execSync(
-        `git log -n 1 --pretty=format:'%H %at' ${item.data.inputFilePath}`,
-      );
-
-      const [hash, timestamp] = gitStdout.toString().split(' ');
+      const [createdHash, createdTimestamp] =
+        childProcess.execSync(
+          `git log --diff-filter=A --follow --format='%H %at' -1 -- ${item.data.inputFilePath}`,
+        )
+          .toString()
+          .split(' ');
+      const [lastModifiedHash, lastModifiedTimestamp] =
+        childProcess.execSync(
+          `git log -n 1 --pretty=format:'%H %at' ${item.data.inputFilePath}`,
+        )
+          .toString()
+          .split(' ');
 
       item.data.git = {
-        hash,
-        timestamp: new Date(parseInt(timestamp, 10)),
+        created: {
+          hash: createdHash,
+          timestamp: new Date(parseInt(createdTimestamp, 10)),
+        },
+        updated: {
+          hash: lastModifiedHash,
+          timestamp: new Date(parseInt(lastModifiedTimestamp, 10)),
+        }
       };
 
       return item;

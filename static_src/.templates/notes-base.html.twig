@@ -13,10 +13,14 @@
     <h1>{{ frontmatter.title | smartypants | widont }}</h1>
     <div class="admonition admonition--metadata">
         <ul class="metadata-list">
+            <li class="metadata-list__item"><b>Created</b>:
+                <a data-timestamp="{{ git.created.timestamp.getTime }}"
+                   href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
+                    {{ git.created.timestamp.getTime | date('d/m/Y') }}</a></li>
             <li class="metadata-list__item"><b>Last Updated</b>:
-                <a data-timestamp="{{ git.timestamp.getTime }}"
-                   href="https://github.com/damiendart/robotinaponcho/commit/{{ git.hash }}">
-                   {{ git.timestamp.getTime | date('d/m/Y') }}</a></li>
+                <a data-timestamp="{{ git.updated.timestamp.getTime }}"
+                   href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
+                   {{ git.updated.timestamp.getTime | date('d/m/Y') }}</a></li>
             <li class="metadata-list__item"><b>Licence</b>:
                 <a href="http://creativecommons.org/licenses/by/4.0/">Creative
                     Commons Attribution 4.0 International License</a></li>
