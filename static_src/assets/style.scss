@@ -273,30 +273,41 @@ ul {
 
 .admonition {
   border-style: solid;
-  border-width: 0;
-  border-left-width: $base-line-height * 3;
+  border-bottom-width: $base-line-height / 8;
+  border-left-width: $base-line-height / 8;
+  border-radius: $base-line-height / 2;
+  border-right-width: $base-line-height / 8;
+  border-top-width: $base-line-height * 3;
   box-sizing: border-box;
-  margin: $base-line-height auto;
-  max-width: $content-width + ($base-line-height * 2);
+  margin: $base-line-height;
+  max-width: $content-width;
   position: relative;
-  padding: $base-line-height $base-line-height
-      $base-line-height ($base-line-height * 0.875);
+  padding: $base-line-height * 0.875;
 
   > *:first-child {
     margin: 0;
   }
 
-  &:before {
+  &::before {
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 50%;
     content: '';
     display: block;
-    height: $base-line-height * 2;
-    left: $base-line-height * -2.5;
+    height: $base-line-height * 3;
+    left: 0;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: $base-line-height * 2;
+    top: $base-line-height * -3;
+    width: $base-line-height * 3;
+
+    @media screen and (min-width: #{$content-width + $base-line-height * 2.5}) {
+      background-size: 100%;
+      height: $base-line-height * 2;
+      left: $base-line-height * -2.5;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $base-line-height * 2;
+    }
   }
 
   &--info {
@@ -315,11 +326,14 @@ ul {
     }
   }
 
-  @media screen and (min-width: #{$content-width + $base-line-height * 2}) {
+  @media screen and (min-width: #{$content-width + $base-line-height * 2.5}) {
     border-bottom-width: $base-line-height / 8;
+    border-left-width: $base-line-height * 3;
     border-radius: $base-line-height / 2;
     border-right-width: $base-line-height / 8;
     border-top-width: $base-line-height / 8;
+    margin: $base-line-height auto;
+    max-width: $content-width + ($base-line-height * 2);
     padding: $base-line-height * 0.875;
   }
 }
