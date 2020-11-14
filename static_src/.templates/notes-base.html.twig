@@ -11,6 +11,11 @@
 
 {% block content %}
     <h1>{{ frontmatter.title | smartypants | widont }}</h1>
+    <ul class="sub-navigation-list">
+        <li class="sub-navigation-list__item sub-navigation-list__item--back">
+            <a class="button button--back" href="/notes/">View all notes</a>
+        </li>
+    </ul>
     <div class="admonition admonition--metadata">
         <ul class="metadata-list">
             <li class="metadata-list__item"><b>Created</b>:
