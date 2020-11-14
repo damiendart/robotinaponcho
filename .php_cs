@@ -17,4 +17,4 @@ return PhpCsFixer\Config::create()
             ->name('*.php')
             ->name('cron-*')
             ->name('*.twig')
-        );
+    );
