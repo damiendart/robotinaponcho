@@ -21,7 +21,7 @@ Setting up a Synology DiskStation
     and any guest accounts.
   - Enable SMB 3 in the _File Services_ control panel in DSM.
   - Hide the _homes_ shared folder in "My Network Places" by setting the
-    adforementioned option in the _Shared Folder_ control panel in DSM.
+    aforementioned option in the _Shared Folder_ control panel in DSM.
     This is purely for aesthetic purposes.
   - Go through the _Security_ control panel in DSM. (Check the control
     panel on a regular basis for new features.)
