@@ -276,12 +276,14 @@ ul {
 .admonition {
   $full-breakpoint:  $content-width + $base-line-height * 2.5;
 
+  background: $colour-white;
   border-style: solid;
   border-bottom-width: $base-line-height / 8;
   border-left-width: $base-line-height / 8;
   border-radius: $base-line-height / 2;
   border-right-width: $base-line-height / 8;
   border-top-width: $base-line-height * 3;
+  box-shadow: ($base-line-height / 8) ($base-line-height / 8) 0 0 rgba($colour-black, 0.05);
   box-sizing: border-box;
   margin: $base-line-height;
   max-width: $content-width;
@@ -418,6 +420,7 @@ ul {
   @include focus-ring($colour-blue, true);
 
   background: $colour-blue;
+  box-shadow: ($base-line-height / 8) ($base-line-height / 8) 0 0 rgba($colour-black, 0.05);
   color: $colour-white;
   display: inline-block;
   font-weight: bold;
