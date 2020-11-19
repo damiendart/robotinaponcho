@@ -494,6 +494,14 @@ ul {
     height: $base-line-height;
     vertical-align: bottom;
   }
+
+  &__download {
+    @media #{toolbox-sass.$media-small-only} {
+      &::after {
+        content: ":";
+      }
+    }
+  }
 }
 
 .button-list {
