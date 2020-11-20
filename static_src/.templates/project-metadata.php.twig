@@ -5,9 +5,9 @@
 #}
 
 <ul>
-    <li>Nerdy bits-and-pieces used: {{ nerd_list }}</li>
+    <li>Nerdy bits-and-pieces used: {{ nerd_list | raw }}</li>
     <li>Last updated <a data-timestamp="<?= $repositories['{{ project }}']['last_commit_timestamp'] ?>" href="https://github.com/damiendart/{{ project }}/commit/<?= $repositories['{{ project }}']['last_commit_hash'] ?>">on
-        <?= $repositories['{{ project }}']['last_commit_pretty'] ?></span></a></li>
+        <?= $repositories['{{ project }}']['last_commit_pretty'] ?></a></li>
 </ul>
 <ul class="button-list">
     <li class="button-list__item"><a class="button button--clipboard" href="https://www.robotinaponcho.net/git/{{ project }}.git">
