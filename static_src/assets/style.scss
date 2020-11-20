@@ -130,13 +130,10 @@ body {
 
   background: $colour-gray-lighter;
   color: $colour-black;
+  font-size: $base-font-size;
   font-family: 'Greycliff', toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
-
-  @media #{toolbox-sass.$media-medium-up} {
-    font-size: $base-font-size;
-  }
 }
 
 code {
@@ -188,7 +185,7 @@ h2 {
 }
 
 h3 {
-  font-size: 100%;
+  font-size: 112.5%;
   line-height: $base-line-height;
   margin: $base-line-height 0 0 0;
 }
