@@ -130,7 +130,7 @@ body {
 
   background: $colour-gray-lighter;
   color: $colour-black;
-  font-size: $base-font-size;
+  font-size: percentage($base-font-size / 16px);
   font-family: 'Greycliff', toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
@@ -282,10 +282,14 @@ ul {
   border-top-width: $base-line-height * 3;
   box-shadow: ($base-line-height / 8) ($base-line-height / 8) 0 0 rgba($colour-black, 0.05);
   box-sizing: border-box;
-  margin: $base-line-height;
+  margin: $base-line-height ($base-line-height / 2);
   max-width: $content-width;
   position: relative;
   padding: $base-line-height * 0.875;
+
+  @media #{toolbox-sass.$media-small-up} {
+    margin: $base-line-height;
+  }
 
   > *:first-child {
     margin: 0;
@@ -794,16 +798,19 @@ ul {
   }
 
   &__title {
-    background: url("icon-chevron.svg") no-repeat right center;
-    background-size: $base-line-height * 0.625;
-    background-position-x: 100%;
     font-size: 100%;
     font-weight: bold;
     line-height: $base-line-height;
     margin: 0;
-    padding: 0 $base-line-height 0 0;
     position: relative;
     transition: opacity $animation-duration ease-out;
+
+    @media #{toolbox-sass.$media-small-up} {
+      background: url("icon-chevron.svg") no-repeat right center;
+      background-size: $base-line-height * 0.625;
+      background-position-x: 100%;
+      padding: 0 $base-line-height 0 0;
+    }
 
     // Improve the user experience of the dropdown menu by adding a
     // "pointer-movement path" from the hamburger icon to the far-left
@@ -927,6 +934,10 @@ ul {
 
   &__copyright {
     margin: 0;
+
+    a {
+      white-space: pre;
+    }
   }
 
   &__rule {
@@ -1018,9 +1029,13 @@ ul {
 
   &__title {
     float: left;
-    font-size: 150%;
+    font-size: 125%;
     line-height: $base-line-height;
     margin: 0;
+
+    @media #{toolbox-sass.$media-small-up} {
+      font-size: 150%;
+    }
   }
 
   &__navigation {
@@ -1068,7 +1083,12 @@ ul {
   list-style: none;
 
   &__item {
-    margin: 0;
+    margin: 0 0 0 $base-line-height;
+    text-indent: $base-line-height * -1;
+
+    a[data-timestamp] {
+      white-space: pre;
+    }
   }
 }
 

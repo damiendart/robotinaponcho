@@ -5,7 +5,7 @@
 #}
 
 <ul>
-    <li>Nerdy bits-and-pieces used: {{ nerd_list | raw }}</li>
+    <li>Nerdy things used: {{ nerd_list | raw }}</li>
     <li>Last updated <a data-timestamp="<?= $repositories['{{ project }}']['last_commit_timestamp'] ?>" href="https://github.com/damiendart/{{ project }}/commit/<?= $repositories['{{ project }}']['last_commit_hash'] ?>">on
         <?= $repositories['{{ project }}']['last_commit_pretty'] ?></a></li>
 </ul>
@@ -13,5 +13,6 @@
     <li class="button-list__item"><a class="button button--clipboard" href="https://www.robotinaponcho.net/git/{{ project }}.git">
         Copy git clone URL</a></li>
     <li class="button-list__item"><a class="button button--inverse" href="https://github.com/damiendart/{{ project }}">
-        View project on GitHub</a></li>
+        View <span class="collapsible collapsible--x-small-down">project</span>
+        on GitHub</a></li>
 </ul>
