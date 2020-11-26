@@ -13,6 +13,7 @@ return PhpCsFixer\Config::create()
     ->setFinder(
         Symfony\Component\Finder\Finder::create()
             ->notPath('protected' . DIRECTORY_SEPARATOR . 'vendor')
+            ->notPath('node_modules')
             ->in(__DIR__)
             ->name('*.php')
             ->name('cron-*')

@@ -412,7 +412,7 @@ ul {
   margin: ($base-line-height * -2) 0 0;
   visibility: hidden;
 
-  @media #{toolbox-sass.$media-ie-10} {
+  @media #{toolbox-sass.$media-ie-11} {
     margin: ($base-line-height * 1.5) 0 0;
   }
 }
@@ -727,9 +727,9 @@ ul {
     }
   }
 
-  // Internet Explorer 10 and 11 don't support interaction-related media
+  // Internet Explorer 11 doesn't support interaction-related media
   // queries or SVG fragment identifiers.
-  @media #{toolbox-sass.$media-ie-10} {
+  @media #{toolbox-sass.$media-ie-11} {
     &::after {
       $height: ($base-line-height * 1.25) * (14.14 / 22.13);
 
