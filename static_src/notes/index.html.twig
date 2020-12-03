@@ -12,29 +12,12 @@
 {% block content %}
     <h1>Notes</h1>
     <p>Notes on stuff and things.</p>
-    <div class="notes-list">
-        <ul class="notes-list__list">
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/illustrator"><h2>Adobe Illustrator</h2></a>
+    <ul class="notes-list">
+        {% for note in collections.notes %}
+            <li class="notes-list__item">
+                <span class="notes-list__item__meta">{{ note.git.created.timestamp.getTime | date('d/m/Y') }}<span class="screen-reader-only">:</span></span>
+                <a href="/{{ note.slug }}">{{ note.title }}</a>
             </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/indesign"><h2>Adobe InDesign</h2></a>
-            </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/photoshop"><h2>Adobe Photoshop</h2></a>
-            </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/breadmaking"><h2>Breadmaking</h2></a>
-            </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/windows"><h2>Microsoft Windows</h2></a>
-            </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/phpstorm"><h2>PhpStorm</h2></a>
-            </li>
-            <li class="notes-list__list__item">
-                <a class="sheet-of-paper" href="/notes/synology"><h2>Synology DiskStation</h2></a>
-            </li>
-        </ul>
-    </div>
+        {% endfor %}
+    </ul>
 {% endblock %}

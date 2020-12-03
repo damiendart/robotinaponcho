@@ -43,6 +43,23 @@ function addGitMetadataToItems(globalData, items) {
   ];
 }
 
+function addNotesCollection(globalData, items) {
+  return [
+    {
+      ...globalData,
+      collections: {
+        notes: items.filter(
+          item => 'slug' in item.data && item.data.slug.match(/^notes\/.+/)
+        )
+          .map(item => item.data)
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .sort((a, b) => b.git.created.timestamp - a.git.created.timestamp),
+      }
+    },
+    items,
+  ]
+}
+
 module.exports = {
   globalData: {
     author: 'Damien Dart',
@@ -65,5 +82,6 @@ module.exports = {
       }
     ],
     addGitMetadataToItems,
+    addNotesCollection,
   ],
 };
