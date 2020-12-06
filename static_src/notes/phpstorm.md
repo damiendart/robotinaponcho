@@ -56,9 +56,12 @@ I'm also one of these people.
 
 ### Miscellaneous customisations and settings
 
-  - I current use the Darcula theme throughout and [Iosekva][3] as my
-    editor font.
+  - If using PhpStorm 2020.3 or later, sync the IDE theme with the OS
+    (on macOS change the preferred light theme to *macOS Light*).
+    Otherwise, use the Darcula theme throughout.
+  - Set the editor font to [Iosekva][3].
   - Set the *Project Opening*'s *Default directory*.
   - Set some default visual guides at 72 and 78 characters.
+  - Turn off the terminal's *Audible bell*.
 
 [3]: <https://typeof.net/Iosevka/>
