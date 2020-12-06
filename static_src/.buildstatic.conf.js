@@ -16,13 +16,13 @@ function addGitMetadataToItems(globalData, items) {
 
       const [createdHash, createdTimestamp] =
         childProcess.execSync(
-          `git log --diff-filter=A --follow --format='%H %at' -1 -- ${item.data.inputFilePath}`,
+          `git log --diff-filter=A --follow --format='%H %ct' -1 -- ${item.data.inputFilePath}`,
         )
           .toString()
           .split(' ');
       const [lastModifiedHash, lastModifiedTimestamp] =
         childProcess.execSync(
-          `git log -n 1 --pretty=format:'%H %at' ${item.data.inputFilePath}`,
+          `git log -n 1 --pretty=format:'%H %ct' ${item.data.inputFilePath}`,
         )
           .toString()
           .split(' ');
