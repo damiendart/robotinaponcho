@@ -80,5 +80,11 @@ window.addEventListener(
     } else {
       siteHeaderElement.classList.remove('header--shadow');
     }
+
+    if (window.pageYOffset > 150) {
+      siteHeaderElement.classList.add('header--slide-up');
+    } else {
+      siteHeaderElement.classList.remove('header--slide-up');
+    }
   }),
 );

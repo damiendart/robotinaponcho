@@ -1001,7 +1001,7 @@ ul {
   padding: $base-line-height;
   position: sticky;
   top: 0;
-  transition: box-shadow 0.25s ease-in;
+  transition: box-shadow 0.25s ease-in, transform 0.5s ease;
   margin: 0 0 (toolbox-sass.$base-one-pixel-in-rem * -1);
   width: 100%;
   z-index: 1;
@@ -1016,6 +1016,13 @@ ul {
 
   &--shadow {
     box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
+  }
+
+  &--slide-up {
+    @media #{toolbox-sass.$media-small-down} {
+      box-shadow: none;
+      transform: translateY(-100%);
+    }
   }
 
   a {
