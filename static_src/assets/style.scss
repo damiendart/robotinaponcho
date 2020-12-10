@@ -996,7 +996,6 @@ ul {
   @include toolbox-sass.clearfix;
 
   background: $colour-white;
-  border-bottom: toolbox-sass.$base-one-pixel-in-rem solid $colour-gray;
   box-sizing: border-box;
   padding: $base-line-height;
   position: sticky;
