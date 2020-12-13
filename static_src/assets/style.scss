@@ -116,7 +116,7 @@ a {
   color: $colour-blue;
   font-weight: bold;
   text-decoration: underline $colour-gray;
-  text-decoration-thickness: toolbox-sass.$base-one-pixel-in-rem;
+  text-decoration-thickness: toolbox-sass.$base-one-pixel-in-rem * 2;
 
   &:active,
   &:focus,
