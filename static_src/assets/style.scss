@@ -1018,9 +1018,11 @@ ul {
   }
 
   &--slide-up {
-    @media #{toolbox-sass.$media-small-down} {
-      box-shadow: none;
-      transform: translateY(-100%);
+    @supports (position: sticky) {
+      @media #{toolbox-sass.$media-small-down} {
+        box-shadow: none;
+        transform: translateY(-100%);
+      }
     }
   }
 

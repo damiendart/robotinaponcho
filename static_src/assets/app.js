@@ -8,6 +8,9 @@ import clipboard from 'toolbox-sass/javascript/clipboard';
 import debounce from 'toolbox-sass/javascript/debounce';
 import throttle from 'toolbox-sass/javascript/throttle';
 
+let currentScroll = window.pageYOffset;
+let initialScroll = true;
+
 // <https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill>
 if (!Element.prototype.matches) {
   Element.prototype.matches = Element.prototype.msMatchesSelector
@@ -81,10 +84,17 @@ window.addEventListener(
       siteHeaderElement.classList.remove('header--shadow');
     }
 
-    if (window.pageYOffset > 150) {
+    if (
+      !initialScroll
+      && window.pageYOffset > 150
+      && window.pageYOffset > currentScroll
+    ) {
       siteHeaderElement.classList.add('header--slide-up');
     } else {
       siteHeaderElement.classList.remove('header--slide-up');
     }
+
+    currentScroll = window.pageYOffset;
+    initialScroll = false;
   }),
 );
