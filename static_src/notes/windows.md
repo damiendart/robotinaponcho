@@ -11,6 +11,11 @@
 Setting up an Windows 10 install
 --------------------------------
 
+<div class="admonition admonition--info">
+  <p><b>Note</b>: I haven't used Windows regularly for a couple of years
+    now, so adjust your expectations accordingly.</p>
+</div>
+
   - Applications I install:
     - [1Password][3];
     - [Creative Cloud][4] for Bridge, Photoshop, and Illustrator;
