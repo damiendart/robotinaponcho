@@ -8,8 +8,8 @@
   twigTemplate: .templates/notes-base.html.twig
 -->
 
-Setting up an Windows 10 install
---------------------------------
+Setting up a Windows 10 install
+-------------------------------
 
 <div class="admonition admonition--info">
   <p><b>Note</b>: I haven't used Windows regularly for a couple of years
