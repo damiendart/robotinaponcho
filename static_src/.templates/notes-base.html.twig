@@ -6,7 +6,9 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set description = description | smartypants | trim %}
+{% if description is defined %}
+    {% set description = description | smartypants | trim %}
+{% endif %}
 
 {% block content %}
     <h1>{{ title | smartypants | widont }}</h1>
