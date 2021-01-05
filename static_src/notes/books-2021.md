@@ -13,6 +13,8 @@ books on my website will help me stay motivated.
 
 ## Completed books
 
-  - [The Northern Lights (His Dark Materials)][1] by Philip Pullman
+  - [The Subtle Knife (His Dark Materials)][1] by Philip Pullman
+  - [The Northern Lights (His Dark Materials)][2] by Philip Pullman
 
-[1]: <https://en.wikipedia.org/wiki/Northern_Lights_(novel)>
+[1]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
+[2]: <https://en.wikipedia.org/wiki/Northern_Lights_(novel)>
