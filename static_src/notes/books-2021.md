@@ -8,7 +8,7 @@
 -->
 
 I'm trying to read more, so I figured keeping a list of finished
-books on my website will help me stay motivated.
+books somewhere easily available will help me stay motivated.
 
 
 ## Completed books
