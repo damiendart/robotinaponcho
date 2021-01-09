@@ -12,6 +12,7 @@
 {% block content %}
     <h1>Notes</h1>
     <p>Notes on stuff and things.</p>
+    <p>Also available as an <a href="{{ urlBase }}notes/index.atom">Atom feed</a>.</p>
     <ul class="notes-list">
         {% for note in collections.notes %}
             <li class="notes-list__item">
@@ -20,4 +21,9 @@
             </li>
         {% endfor %}
     </ul>
+{% endblock %}
+
+{% block headCustom %}
+    {{ parent() }}
+    <link href="{{ urlBase }}notes/index.atom" rel="alternate" title="Damien Dart’s Notes (www.robotinaponcho.net)" type="application/atom+xml">
 {% endblock %}

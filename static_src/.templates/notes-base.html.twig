@@ -36,3 +36,8 @@
     {{ renderedMarkdown | raw }}
 {% endblock %}
 
+{% block headCustom %}
+    {{ parent() }}
+    <link href="{{ urlBase }}notes/index.atom" rel="alternate" title="Damien Dart’s Notes (www.robotinaponcho.net)" type="application/atom+xml">
+{% endblock %}
+

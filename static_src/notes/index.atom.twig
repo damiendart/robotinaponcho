@@ -1,0 +1,32 @@
+{% apply spaceless %}
+{#
+    Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+    <?xml version="1.0" encoding="utf-8"?>
+    <feed xmlns="http://www.w3.org/2005/Atom">
+        <title>Damien Dart’s Notes (www.robotinaponcho.net)</title>
+        <link href="{{ urlBase }}notes/"/>
+        <link href="{{ urlBase }}notes/index.atom" rel="self"/>
+        <updated>{{ 'now' | date('c') }}</updated>
+        <author>
+            <email>{{ authorEmail }}</email>
+            <uri>{{ urlBase }}</uri>
+            <name>{{ author }}</name>
+        </author>
+        <id>{{ urlBase }}notes/index.atom</id>
+        {% for note in collections.notes %}
+            <entry>
+                <id>{{ urlBase }}{{ note.slug }}</id>
+                <link href="{{ urlBase }}{{ note.slug }}"/>
+                <published>{{ note.git.created.timestamp.getTime | date('c') }}</published>
+                <summary type="html">
+                    <![CDATA[ {{ note.renderedMarkdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.git.updated.timestamp.getTime | date('c') }}</em></p> ]]>
+                </summary>
+                <title>{{ note.title }}</title>
+                <updated>{{ note.git.updated.timestamp.getTime | date('c') }}</updated>
+            </entry>
+        {% endfor %}
+    </feed>
+{% endapply %}

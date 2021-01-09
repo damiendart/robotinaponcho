@@ -63,6 +63,7 @@ function addNotesCollection(globalData, items) {
 module.exports = {
   globalData: {
     author: 'Damien Dart',
+    authorEmail: 'damiendart@pobox.com',
     metaTwitterAuthor: '@damiendart',
     metaTwitterSite: '@damiendart',
     metaOpengraphImage: 'https://www.robotinaponcho.net/assets/opengraph.png',
