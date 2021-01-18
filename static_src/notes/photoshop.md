@@ -20,8 +20,8 @@ Converting pencil artwork to non-repro blue
      and printer output.
 
 
-Cleaning up line art
---------------------
+Cleaning up scanned line art
+----------------------------
 
   1. Clean up the scanned line art in Photoshop with adjustment layers:
      -  Remove any non-repro blue underdrawings with a _Hue/Saturation_
