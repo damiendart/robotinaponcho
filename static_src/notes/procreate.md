@@ -13,7 +13,7 @@ Current brushes of choice
 Assuming a document set to 600 DPI, I use:
 
   - the stock _Wild Light_ (Artistic) for inking;
-  - the stock _Little Pine_ (Drawing) for under-drawings; and
+  - the stock _Little Pine_ (Drawing) for underdrawings; and
   - for erasing, take the stock _Dry Ink_ (Inking) brush and remove the
     grain (set the _Grain Source_ to the blank image from the _Source
     Library_).
