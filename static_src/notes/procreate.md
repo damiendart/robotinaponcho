@@ -10,8 +10,17 @@
 Current brushes of choice
 -------------------------
 
-  - Stock _Tinderbox_ (Inking) for general inking and colouring in.
-  - Stock _Little Pine_ (Drawing) for pencil-y type stuff.
-  - For colouring in and erasing, take the stock _Dry Ink_ (Inking)
-    brush and remove the grain (by setting the _Grain Source_ to the
-    blank image from the _Source Library_).
+Assuming a document set to 600 DPI, I use:
+
+  - the stock _Wild Light_ (Artistic) for inking;
+  - the stock _Little Pine_ (Drawing) for under-drawings; and
+  - for erasing, take the stock _Dry Ink_ (Inking) brush and remove the
+    grain (set the _Grain Source_ to the blank image from the _Source
+    Library_).
+
+I stick with the default brush sizes and opacity, except for the custom
+eraser brush. I also use the custom eraser brush to do a little
+colouring in when I can't be bothered to use [Photoshop][1].
+
+[1]: <https://www.robotinaponcho.net/notes/photoshop>
+
