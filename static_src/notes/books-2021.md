@@ -13,12 +13,14 @@ books somewhere easily available will help me stay motivated.
 
 ## Completed books
 
-  - [The Running Man][1] by Stephen King
-  - [The Amber Spyglass (His Dark Materials)][2] by Philip Pullman
-  - [The Subtle Knife (His Dark Materials)][3] by Philip Pullman
-  - [The Northern Lights (His Dark Materials)][4] by Philip Pullman
+  - [The Thursday Murder Club][1] by Richard Osman
+  - [The Running Man][2] by Stephen King
+  - [The Amber Spyglass (His Dark Materials)][3] by Philip Pullman
+  - [The Subtle Knife (His Dark Materials)][4] by Philip Pullman
+  - [The Northern Lights (His Dark Materials)][5] by Philip Pullman
 
-[1]: <https://en.wikipedia.org/wiki/The_Running_Man_(novel)>
-[2]: <https://en.wikipedia.org/wiki/The_Amber_Spyglass>
-[3]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
-[4]: <https://en.wikipedia.org/wiki/Northern_Lights_(novel)>
+[1]: <https://en.wikipedia.org/wiki/The_Thursday_Murder_Club>
+[2]: <https://en.wikipedia.org/wiki/The_Running_Man_(novel)>
+[3]: <https://en.wikipedia.org/wiki/The_Amber_Spyglass>
+[4]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
+[5]: <https://en.wikipedia.org/wiki/Northern_Lights_(novel)>
