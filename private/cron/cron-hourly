@@ -1,4 +1,4 @@
-#!/usr/bin/env php
+#!/usr/bin/env php7.4
 <?php
 // Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
 // This file is distributed under the MIT licence. For more information,
