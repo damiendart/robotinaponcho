@@ -1019,7 +1019,7 @@ ul {
 
   &--slide-up {
     @supports (position: sticky) {
-      @media #{toolbox-sass.$media-small-down} {
+      @media #{toolbox-sass.$media-medium-down} {
         box-shadow: none;
         transform: translateY(-100%);
       }
