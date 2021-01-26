@@ -191,7 +191,11 @@ h3 {
 }
 
 html {
-  font-size: 100%;
+  font-size: percentage(16px / $base-font-size);
+
+  @media #{toolbox-sass.$media-small-up} {
+    font-size: 100%;
+  }
 }
 
 img {
