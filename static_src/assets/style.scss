@@ -793,19 +793,16 @@ ul {
   }
 
   &__title {
+    background: url("icon-chevron.svg") no-repeat right center;
+    background-size: $base-line-height * 0.625;
+    background-position-x: 100%;
     font-size: 100%;
     font-weight: bold;
     line-height: $base-line-height;
     margin: 0;
+    padding: 0 $base-line-height 0 0;
     position: relative;
     transition: opacity $animation-duration ease-out;
-
-    @media #{toolbox-sass.$media-small-up} {
-      background: url("icon-chevron.svg") no-repeat right center;
-      background-size: $base-line-height * 0.625;
-      background-position-x: 100%;
-      padding: 0 $base-line-height 0 0;
-    }
 
     // Improve the user experience of the dropdown menu by adding a
     // "pointer-movement path" from the hamburger icon to the far-left
