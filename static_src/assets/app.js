@@ -88,6 +88,7 @@ window.addEventListener(
       !initialScroll
       && window.pageYOffset > 150
       && window.pageYOffset > currentScroll
+      && document.querySelector('.header__navigation:hover, .dropdown-menu--open') === null
     ) {
       siteHeaderElement.classList.add('header--slide-up');
     } else {
