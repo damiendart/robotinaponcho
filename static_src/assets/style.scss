@@ -1116,19 +1116,6 @@ ul {
   line-height: 0;
   max-width: 100% !important;
   position: relative;
-
-  &::before {
-    content: "";
-    height: $base-line-height * 30;
-    transform: skewY(-5deg);
-    transform-origin: bottom center;
-    z-index: -1;
-    position: absolute;
-    right: 0;
-    bottom: 150px;
-    background: #34ace0;
-    width: 100vw;
-  }
 }
 
 .screen-reader-only {
