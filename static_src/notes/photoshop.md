@@ -41,13 +41,20 @@ Cleaning up scanned line art
   5. Deselect the selection.
   6. Delete or hide the scanned artwork and adjustment layers.
 
+I also use the above, minus any underdrawing-removing steps, to prepare
+line art created in [Procreate][1] for colouring-in. (I colour final
+pieces in Photoshop as I'm too reliant on fill layers to make up for my
+terrible colour-picking skills.)
+
+[1]: <https://www.robotinaponcho.net/notes/procreate>
+
 
 Image filesize reduction techniques
 -----------------------------------
 
-  - Use [ExifTool][1] and [jpegtran][2] to reduce JPEG image filesizes:
+  - Use [ExifTool][2] and [jpegtran][3] to reduce JPEG image filesizes:
     `jpegtran -optimize -progressive [IMAGE] > [OUTPUT] &&
     exiftool -all= --icc_profile:all [OUTPUT]`.
 
-[1]: <https://exiftool.org>
-[2]: <https://jpegclub.org/jpegtran/>
+[2]: <https://exiftool.org>
+[3]: <https://jpegclub.org/jpegtran/>
