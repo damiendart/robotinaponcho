@@ -31,8 +31,7 @@ baking this will create a decent loaf without too much faff.
 [1]: <https://en.wikipedia.org/wiki/Baker_percentage>
 
 You'll also need extra flour for kneading, extra olive oil for coating
-whatever you put your dough in while it proves, and any loaf toppings
-(I sometimes use poppy seeds but fucking hell they get _everywhere_).
+whatever you put your dough in while it proves, and any loaf toppings.
 
 ### Method
 
