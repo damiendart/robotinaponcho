@@ -61,7 +61,7 @@ $content-width: 40rem;
 
 @font-face {
   font-display: swap;
-  font-family: 'Greycliff';
+  font-family: "Greycliff";
   font-style:  normal;
   font-weight: 400;
   src: url("greycliff-regular.woff2") format("woff2");
@@ -69,7 +69,7 @@ $content-width: 40rem;
 
 @font-face {
   font-display: swap;
-  font-family: 'Greycliff';
+  font-family: "Greycliff";
   font-style:  italic;
   font-weight: 400;
   src: url("greycliff-oblique.woff2") format("woff2");
@@ -77,7 +77,7 @@ $content-width: 40rem;
 
 @font-face {
   font-display: swap;
-  font-family: 'Greycliff';
+  font-family: "Greycliff";
   font-style:  normal;
   font-weight: 700;
   src: url("greycliff-bold.woff2") format("woff2");
@@ -85,29 +85,29 @@ $content-width: 40rem;
 
 @font-face {
   font-display: swap;
-  font-family: 'Iosevka Web';
+  font-family: "Iosevka Web";
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
-  src: url('iosevka-regular.woff2') format('woff2');
+  src: url("iosevka-regular.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Iosevka Web';
+  font-family: "Iosevka Web";
   font-stretch: normal;
   font-style: italic;
   font-weight: 400;
-  src: url('iosevka-italic.woff2') format('woff2');
+  src: url("iosevka-italic.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Iosevka Web';
+  font-family: "Iosevka Web";
   font-stretch: normal;
   font-style: normal;
   font-weight: 700;
-  src: url('iosevka-bold.woff2') format('woff2');
+  src: url("iosevka-bold.woff2") format("woff2");
 }
 
 a {
@@ -131,14 +131,14 @@ body {
   background: $colour-gray-lighter;
   color: $colour-black;
   font-size: percentage($base-font-size / 16px);
-  font-family: 'Greycliff', toolbox-sass.$font-stack-system;
+  font-family: "Greycliff", toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
 }
 
 code {
   background: $colour-gray-light;
-  font-family: 'Iosevka Web', monospace;
+  font-family: "Iosevka Web", monospace;
   line-height: 1;
 }
 
@@ -297,7 +297,7 @@ ul {
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100%;
-      content: '';
+      content: "";
       display: block;
       height: $base-line-height * 2;
       left: $base-line-height * -2.5;
@@ -554,8 +554,8 @@ ul {
 }
 
 .dropdown-menu {
-  $border-radius: $base-line-height / 4;
   $animation-duration: 0.125s;
+  $border-radius: $base-line-height / 4;
 
   border-radius: $border-radius $border-radius 0 0;
   cursor: default;
@@ -1102,7 +1102,7 @@ ul {
     padding: 0;
 
     &__meta {
-      font-family: 'Iosevka Web', monospace;
+      font-family: "Iosevka Web", monospace;
       margin: 0 ($base-line-height / 2) 0 0;
     }
   }
@@ -1159,13 +1159,13 @@ ul {
           position: relative;
 
           &::before {
-            background: url('icon-copy-link.svg');
+            background: url("icon-copy-link.svg");
           }
 
           &::after {
-            background: $colour-gray-lighter url('icon-check-link.svg') no-repeat center;
+            background: $colour-gray-lighter url("icon-check-link.svg") no-repeat center;
             background-size: $base-line-height * 1.25;
-            content: '';
+            content: "";
             display: inline-block;
             height: $base-line-height * 1.5;
             left: 0;
@@ -1187,7 +1187,7 @@ ul {
       &--facebook {
         a {
           &::before {
-            background: url('icon-facebook-link.svg');
+            background: url("icon-facebook-link.svg");
           }
         }
       }
@@ -1195,7 +1195,7 @@ ul {
       &--twitter {
         a {
           &::before {
-            background: url('icon-twitter-link.svg');
+            background: url("icon-twitter-link.svg");
           }
         }
       }
@@ -1207,7 +1207,7 @@ ul {
           background-position: center;
           background-repeat: no-repeat;
           background-size: $base-line-height;
-          content: '';
+          content: "";
           display: inline-block;
           height: $base-line-height * 1.5;
           transition: background-size 0.125s ease-out;
