@@ -13,6 +13,7 @@ books somewhere easily available will help me stay motivated.
 
 ## Completed books
 
+  - *Easy Peasy Puppy Squeezy* by Steve Mann
   - [The Thursday Murder Club][1] by Richard Osman
   - [The Running Man][2] by Stephen King
   - [The Amber Spyglass (His Dark Materials)][3] by Philip Pullman
