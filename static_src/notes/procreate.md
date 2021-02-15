@@ -18,9 +18,12 @@ Assuming a document set to 600 DPI, I use:
     grain (set the _Grain Source_ to the blank image from the _Source
     Library_).
 
-I stick with the default brush sizes and opacity, except for the custom
-eraser brush. I also use the custom eraser brush to do a little
-colouring in when I can't be bothered to use [Photoshop][1].
+I don't mess with brush sizes and opacity unless I'm erasing.
+
+I sometimes use the custom eraser brush to do a little colouring in, but
+I tend to use [Photoshop][1] to colour in final pieces because I am no
+good at picking colours and Photoshop's fill layers are a god-send for
+me when it comes to changing and trying out colours.
 
 [1]: <https://www.robotinaponcho.net/notes/photoshop>
 
