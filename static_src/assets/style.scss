@@ -4,6 +4,7 @@
 
 @use "node_modules/toolbox-sass";
 
+$base-border-width: toolbox-sass.$base-one-pixel-in-rem * 2;
 $base-font-size: 18px;
 $base-line-height: (30px / 16px) * 1rem;
 $colour-black: #000000;
@@ -24,7 +25,7 @@ $content-width: 40rem;
       box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
       outline: none;
     } @else {
-      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+      outline: $base-border-width solid $colour;
     }
 
     // Combining selectors that use ":focus-visible" and
@@ -45,7 +46,7 @@ $content-width: 40rem;
       box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
       outline: none;
     } @else {
-      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+      outline: $base-border-width solid $colour;
     }
   }
 
@@ -54,7 +55,7 @@ $content-width: 40rem;
       box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
       outline: none;
     } @else {
-      outline: (toolbox-sass.$base-one-pixel-in-rem * 2) solid $colour;
+      outline: $base-border-width solid $colour;
     }
   }
 }
@@ -116,7 +117,7 @@ a {
   color: $colour-blue;
   font-weight: bold;
   text-decoration: underline $colour-gray;
-  text-decoration-thickness: toolbox-sass.$base-one-pixel-in-rem * 2;
+  text-decoration-thickness: $base-border-width !important;
 
   &:active,
   &:focus,
@@ -260,7 +261,6 @@ table {
 }
 
 ul {
-  list-style: square;
   margin: ($base-line-height / 2) 0 0 0;
   padding: 0;
 
@@ -279,14 +279,13 @@ ul {
 
   background: $colour-white;
   border-style: solid;
-  border-width: $base-line-height / 8;
+  border-width: $base-border-width;
   border-radius: $base-line-height / 2;
-  box-shadow: ($base-line-height / 8) ($base-line-height / 8) 0 0 rgba($colour-black, 0.05);
   box-sizing: border-box;
   margin: $base-line-height ($base-line-height / 2);
   max-width: $content-width;
   position: relative;
-  padding: $base-line-height * 0.875;
+  padding: $base-line-height - $base-border-width;
 
   > *:first-child {
     margin: 0;
@@ -348,9 +347,9 @@ ul {
     }
 
     @media screen and (min-width: #{$full-breakpoint}) {
-      bottom: $base-line-height / -8;
+      bottom: $base-border-width * -1;
       display: block;
-      height: calc(100% + #{$base-line-height / 4});
+      height: calc(100% + #{$base-border-width * 2});
       left: $base-line-height * -9;
       overflow: hidden;
       position: absolute;
@@ -392,13 +391,10 @@ ul {
   }
 
   @media screen and (min-width: #{$full-breakpoint}) {
-    border-bottom-width: $base-line-height / 8;
     border-left-width: $base-line-height * 3;
-    border-right-width: $base-line-height / 8;
-    border-top-width: $base-line-height / 8;
     margin: $base-line-height auto;
     max-width: $content-width + ($base-line-height * 2);
-    padding: $base-line-height * 0.875;
+    padding-left: $base-line-height;
   }
 }
 
@@ -416,13 +412,12 @@ ul {
   @include focus-ring($colour-blue, true);
 
   background: $colour-blue;
-  box-shadow: ($base-line-height / 8) ($base-line-height / 8) 0 0 rgba($colour-black, 0.05);
   color: $colour-white;
   display: inline-block;
   font-weight: bold;
   padding: ($base-line-height / 2) $base-line-height;
   position: relative;
-  border-radius: $base-line-height / 2;
+  border-radius: $base-line-height;
   text-decoration: none;
   white-space: nowrap;
 
@@ -432,7 +427,7 @@ ul {
 
   &--back {
     background: $colour-white;
-    border: ($base-line-height / 8) solid currentColor;
+    border: $base-border-width solid $colour-gray;
     color: $colour-blue;
     padding:
       ($base-line-height / 8)
@@ -457,11 +452,11 @@ ul {
     &::before {
       background: inherit;
       content: "Copied!";
-      left: $base-line-height / 2;
+      left: $base-line-height;
       opacity: 0;
       padding: ($base-line-height / 2) 0;
       position: absolute;
-      right: $base-line-height / 2;
+      right: $base-line-height;
       text-align: center;
       top: 0;
       transition: opacity 0.125s ease-out;
@@ -476,9 +471,10 @@ ul {
 
   &--inverse {
     background: $colour-white;
-    border: ($base-line-height / 8) solid currentColor;
+    border: $base-border-width solid $colour-gray;
     color: $colour-blue;
-    padding: ($base-line-height * 0.375) ($base-line-height * 0.875);
+    padding: (($base-line-height / 2) - $base-border-width)
+      ($base-line-height - $base-border-width);
   }
 
   &--itchio {
@@ -916,10 +912,10 @@ ul {
 }
 
 .footer {
-  border-top: toolbox-sass.$base-one-pixel-in-rem solid $colour-gray;
+  border-top: $base-border-width solid $colour-gray;
   margin: ($base-line-height * 3) auto 0;
   padding:
-    ($base-line-height - toolbox-sass.$base-one-pixel-in-rem)
+    ($base-line-height - $base-border-width)
     $base-line-height
     $base-line-height;
   text-align: center;
@@ -934,6 +930,15 @@ ul {
 
   &__rule {
     display: none;
+  }
+}
+
+.project-start-date {
+  color: $colour-gray;
+
+  &::before {
+    content: " · ";
+    display: inline;
   }
 }
 
