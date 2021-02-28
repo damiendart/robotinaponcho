@@ -14,11 +14,9 @@ My PhpStorm Customisations and Settings
 ### Plugins
 
 In addition to the plugins that come bundled with PhpStorm, I also use
-[IdeaVim][1], because I'm one of those people, and the
-[EditorConfig][2] plugin.
+[IdeaVim][1], because I'm one of those people.
 
 [1]: <https://github.com/JetBrains/ideavim>
-[2]: <https://plugins.jetbrains.com/plugin/7294-editorconfig>
 
 ### Removing as much of the interface as possible
 
@@ -56,12 +54,12 @@ I'm also one of these people.
 
 ### Miscellaneous customisations and settings
 
-  - If using PhpStorm 2020.3 or later, sync the IDE theme with the OS
-    (on macOS change the preferred light theme to *macOS Light*).
-    Otherwise, use the Darcula theme throughout.
-  - Set the editor font to [Iosekva][3].
+  - If using PhpStorm 2020.3 or later, if the option is available sync
+    the IDE theme with the OS (on macOS change the preferred light theme
+    to *macOS Light*). Otherwise, use the Darcula theme throughout.
+  - Set the editor font to [Iosekva][2].
   - Set the *Project Opening*'s *Default directory*.
   - Set some default visual guides at 72 and 78 characters.
   - Turn off the terminal's *Audible bell*.
 
-[3]: <https://typeof.net/Iosevka/>
+[2]: <https://typeof.net/Iosevka/>
