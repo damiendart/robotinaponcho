@@ -48,6 +48,9 @@ I'm also one of these people.
 ### IdeaVim customisation and settings
 
   - Swap the audible bell for the visual one with `:set visualbell`.
+  - Use the IdeaVim _Settings_ window (click the IdeaVim icon in the
+    status bar) to set the <kbd>Ctrl</kbd>+<kbd>V</kbd> shortcut to be
+    handled by the IDE.
   - On macOS, make IdeaVim a more pleasant experience by running
     `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
     -bool false` in the terminal.
