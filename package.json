@@ -6,9 +6,9 @@
     "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#6a2bebdfb9850165500629296ac9f5e404f764ea"
   },
   "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0"
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   },
   "license": "MIT",
   "name": "robotinaponcho",
