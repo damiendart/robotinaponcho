@@ -1,8 +1,19 @@
 {
+  "authors": [
+    {
+      "name": "Damien Dart",
+      "email": "damiendart@pobox.com",
+      "homepage": "https://www.robotinaponcho.net",
+      "role": "Developer"
+    }
+  ],
   "config": {
     "optimize-autoloader": true,
     "vendor-dir": "protected/vendor"
   },
+  "description": "Source code to Damien Dart's personal site.",
+  "license": "MIT",
+  "name": "damiendart/robotinaponcho",
   "require": {
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.1",
@@ -11,5 +22,6 @@
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16"
-  }
+  },
+  "type": "project"
 }
