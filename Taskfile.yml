@@ -31,12 +31,12 @@ tasks:
 
   build:assets:
     cmds:
-      - 'npx buildstatic ./node_modules/assets/www.robotinaponcho.net ./public'
+      - 'node_modules/.bin/buildstatic ./node_modules/assets/www.robotinaponcho.net ./public'
     desc: 'Build asset files'
 
   build:static:
     cmds:
-      - 'npx buildstatic ./static_src ./public'
+      - 'node_modules/.bin/buildstatic ./static_src ./public'
     desc: 'Build static files'
 
   clean:
@@ -71,7 +71,7 @@ tasks:
 
   lint:javascript:
     cmds:
-      - 'npx eslint static_src/**/*.js'
+      - 'node_modules/.bin/eslint static_src/**/*.js'
     desc: 'Lint JavaScript files with ESLint'
 
   lint:php:
