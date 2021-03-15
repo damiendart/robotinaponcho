@@ -933,15 +933,6 @@ ul {
   }
 }
 
-.project-start-date {
-  color: $colour-gray;
-
-  &::before {
-    content: " · ";
-    display: inline;
-  }
-}
-
 .flippywindow-introduction {
   background: url("/flippywindow/background.svg"), $colour-flippywindow-blue;
   background-size: cover;
