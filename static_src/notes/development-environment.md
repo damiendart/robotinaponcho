@@ -12,7 +12,7 @@ Setting up an Ubuntu Desktop 20.04 install
 ------------------------------------------
 
 <div class="admonition admonition--info">
-  <p><b>Note</b>: For reference, I'm currently running everything off an
+  <p><b>Note</b>: For reference, I'm currently running everything on an
     <a href="https://www.intel.co.uk/content/www/uk/en/products/boards-kits/nuc/kits/nuc10i7fnh.html">Intel
     NUC10i7FNH</a> with 32 GB of RAM. For web development and the other
     sorts of nerdery I do, it works for me just fine.
