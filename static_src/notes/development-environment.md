@@ -60,7 +60,7 @@ Setting up Windows in VirtualBox
     [virtual machines][6] for testing websites in Internet Explorer 11
     and Edge Legacy.)
   - Manual steps to take after completing setup:
-    - Update the hosts file (<span class="os-menu-item">%SystemRoot%\System32\drivers\etc\hosts</span>)
+    - Update the hosts file (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
       to access websites hosted on the host.
 
 [5]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
