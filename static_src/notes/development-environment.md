@@ -33,6 +33,7 @@ Setting up an Ubuntu Desktop 20.04 install
       bookmarks and whatnot.
     - Set the terminal font to [Iosevka][3].
     - Install [JetBrains Toolbox][4] and use it to install PhpStorm.
+    - Install [Steam][5].
     - Connect to any network drives.
     - Set up Livepatch.
   - Set up a Windows VM in VirtualBox for cross-browser testing
@@ -43,6 +44,7 @@ Setting up an Ubuntu Desktop 20.04 install
 [2]: <https://1password.com/downloads/linux/#browsers>
 [3]: <https://typeof.net/Iosevka/>
 [4]: <https://www.jetbrains.com/help/phpstorm/installation-guide.html#toolbox>
+[5]: <https://github.com/ValveSoftware/steam-for-linux>
 
 
 Setting up Windows in VirtualBox
@@ -55,13 +57,13 @@ Setting up Windows in VirtualBox
     processors to be enough.
   - I haven't had great luck with turning on 3D acceleration.
   - When I can't be bothered setting up Windows, Microsoft provide
-    [evaluation development environment virtual machines][5] that are
+    [evaluation development environment virtual machines][6] that are
     good for doing some quick testing on. (Microsoft also provide
-    [virtual machines][6] for testing websites in Internet Explorer 11
+    [virtual machines][7] for testing websites in Internet Explorer 11
     and Edge Legacy.)
   - Manual steps to take after completing setup:
     - Update the hosts file (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
       to access websites hosted on the host.
 
-[5]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
-[6]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
+[6]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
+[7]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
