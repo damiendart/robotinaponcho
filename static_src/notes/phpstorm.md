@@ -35,9 +35,8 @@ I'm also one of these people.
   - Turn off *Display icons in menu items*.
   - Turn on *Widescreen tool window layout* (where appropriate).
   - Remove tabs completely (set *Tab Placement* to *None*) and instead
-    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> (to switch between recent files)
-    and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd> (to switch between
-    recently edited files).
+    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> (to switch between recent
+    files).
   - Turn off *Show browsers popup in the editor*.
   - Hide the navigation bar (<span class="os-menu-item">View</span>
     &rarr; <span class="os-menu-item">Appearance</span> &rarr;
@@ -49,8 +48,9 @@ I'm also one of these people.
 
   - Swap the audible bell for the visual one with `:set visualbell`.
   - Use the IdeaVim _Settings_ window (click the IdeaVim icon in the
-    status bar) to set the <kbd>Ctrl</kbd>+<kbd>V</kbd> shortcut to be
-    handled by the IDE.
+    status bar and select _Settings..._) to set the
+    <kbd>Ctrl</kbd>+<kbd>E</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd>
+    keyboard shortcuts to be handled by the IDE.
   - On macOS, make IdeaVim a more pleasant experience by running
     `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled
     -bool false` in the terminal.
