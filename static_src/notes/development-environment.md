@@ -57,15 +57,19 @@ with customisation and maintenance.
   - When installing Windows 10 from scratch, I've found allocating 50 GB
     of storage (in a dynamically-allocated virtual hard disk), 8 GB of
     memory, and four processors to be enough for my use cases.
-  - 3D acceleration is required for Photoshop, but things end up looking
-    [mega broken][6]. Turning [transparency effects off][7] helps
-    (Photoshop still looks semi-busted, but it's usable).
+  - Enable 3D acceleration with the maximum amount of available video
+    memory allocated. However, this causes some [hardcore funkiness][6].
+    Turning [transparency effects off in Windows][7] helps a little,
+    but things like Photoshop are still a little funky.
   - Once the initial installation is complete and updates are installed:
     - Install the VirtualBox Guest Additions.
     - Set the screen resolution (<span class="os-menu-item">View</span>
       &rarr; <span class="os-menu-item">Virtual Screen 1</span>) to
       1600×900, or the largest resolution that'll fit on-screen.
-    - Install Creative Cloud.
+    - Install Creative Cloud. (As my little Intel NUC doesn't have that
+      much video memory to spare, I'm limited to what I can do.
+      Fortunately, I have Creative Cloud available on another machine to
+      fall back on.)
     - Update the hosts file (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
       to access websites hosted on the host.
 
