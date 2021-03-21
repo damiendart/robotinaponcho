@@ -42,7 +42,7 @@ Setting up an Ubuntu Desktop 20.04 install
     - Set up Livepatch.
   - Set up Windows 10 VMs in VirtualBox for cross-browser testing, and
     the occasional piss-about in Creative Cloud and Visual Studio. (See
-    _Setting up Windows in VirtualBox_ for more information.)
+    _Setting up Windows 10 in VirtualBox_ for more information.)
 
 [1]: <https://www.robotinaponcho.net/git/#setup>
 [2]: <https://github.com/micheleg/dash-to-dock/issues/1188>
