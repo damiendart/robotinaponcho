@@ -77,16 +77,17 @@ with customisation and maintenance.
       Fortunately, I have Creative Cloud available on another machine to
       fall back on.)
     - Update the hosts file (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
-      to access websites hosted on the host.
+      to [access websites and other network services on the host][10].
 
-I only use Visual Studio for working on [FlippyWindow][10]; Microsoft
-provide [evaluation development environment virtual machines][11] that
+I only use Visual Studio for working on [FlippyWindow][11]; Microsoft
+provide [evaluation development environment virtual machines][12] that
 are perfect for the small amounts of Visual-Studio-ing that I do.
-(Microsoft also provide [virtual machines][12] for testing websites in
+(Microsoft also provide [virtual machines][13] for testing websites in
 Internet Explorer 11 and Edge Legacy.)
 
 [8]: <https://www.virtualbox.org/attachment/ticket/19365/VirtualBox_Windows%2010_03_06_2020_21_55_02.png>
 [9]: <https://www.virtualbox.org/ticket/19365#comment:16>
-[10]: <https://www.robotinaponcho.net/flippywindow/>
-[11]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
-[12]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
+[10]: <http://www.virtualbox.org/manual/ch06.html#network_nat>
+[11]: <https://www.robotinaponcho.net/flippywindow/>
+[12]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
+[13]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
