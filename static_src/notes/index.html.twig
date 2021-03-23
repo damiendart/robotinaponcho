@@ -11,13 +11,13 @@
 
 {% block content %}
     <h1>Notes</h1>
-    <p>Notes on stuff and things.</p>
-    <p>Also available as an <a href="{{ urlBase }}notes/index.atom">Atom feed</a>.</p>
+    <p>Notes on stuff and things. Also available as an
+        <a href="{{ urlBase }}notes/index.atom">Atom feed</a>.</p>
     <ul class="notes-list">
         {% for note in collections.notes %}
             <li class="notes-list__item">
-                <span class="notes-list__item__meta">{{ note.git.created.timestamp.getTime | date('d/m/Y') }}<span class="screen-reader-only">:</span></span>
                 <a href="/{{ note.slug }}">{{ note.title }}</a>
+                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated: </span>{{ note.git.updated.timestamp.getTime | date('d/m/Y') }}<span class="screen-reader-only">)</span></span>
             </li>
         {% endfor %}
     </ul>
