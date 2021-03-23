@@ -253,8 +253,8 @@ table {
     vertical-align: bottom;
 
     > * > * {
-      border-bottom: $colour-black solid toolbox-sass.$base-one-pixel-in-rem;
-      padding-bottom: (($base-line-height / 4) - toolbox-sass.$base-one-pixel-in-rem);
+      border-bottom: $colour-black solid $base-border-width;
+      padding-bottom: (($base-line-height / 4) - $base-border-width);
       padding-top: 0;
     }
   }
