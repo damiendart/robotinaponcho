@@ -968,6 +968,13 @@ ul {
       position: absolute;
       top: $base-line-height / -2;
       width: 100%;
+
+      @media
+        only screen and (-webkit-device-pixel-ratio: 2),
+        only screen and (min-resolution: 192dpi)
+      {
+        background-image: url("/flippywindow/arrow@2x.png");
+      }
     }
 
     img {
