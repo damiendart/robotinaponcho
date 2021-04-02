@@ -3,7 +3,7 @@
   "description": "Source code to Damien Dart's personal site.",
   "dependencies": {
     "assets": "git+ssh://git@github.com/damiendart/assets.git#383beadd5e41aec3796d97b0a5fddd183194514a",
-    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#6a2bebdfb9850165500629296ac9f5e404f764ea"
+    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#e6f066218604ddfa57965e1cfbda417a5ef4b2cf"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
