@@ -35,6 +35,9 @@ Setting up an Ubuntu Desktop 20.04 install
       default search engine to DuckDuckGo, and hide all the junk from
       the new tab screen. I also sign in to my Firefox account to get my
       bookmarks and whatnot.
+    - To handle Terraform secrets, find and copy over any existing GnuPG
+      bits-and-pieces (as far as I can tell, all you need is
+      _pubring.gpg_, _secring.gpg_, and _trustdb.gpg_).
     - Set the terminal font to [Iosevka][5].
     - Install [JetBrains Toolbox][6] and use it to install PhpStorm.
     - Install [Steam][7].
