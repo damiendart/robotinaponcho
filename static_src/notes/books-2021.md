@@ -30,4 +30,4 @@ books somewhere easily available will help me stay motivated.
 [5]: <https://en.wikipedia.org/wiki/The_Running_Man_(novel)>
 [6]: <https://en.wikipedia.org/wiki/The_Amber_Spyglass>
 [7]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
-[8]: <https://en.wikipedia.org/wiki/Northern_Lights_(novel)>
+[8]: <https://en.wikipedia.org/wiki/Northern_Lights_(Pullman_novel)>
