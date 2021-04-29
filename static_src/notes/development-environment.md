@@ -27,10 +27,10 @@ Setting up an Ubuntu Desktop 20.04 install
   - Go through _Settings_ to see if anything needs attention.
   - Most of my environment setup is handled by [my Ansible gubbins][1],
     but there's still a few steps that need doing manually afterwards:
-    - Fix a bug in the Dash to Dock Gnome Shell extension where,
-      starting with an empty dock, [icons take ages to update][2] by
-      manually applying a fix [available on GitHub][3] to
-      <span class="os-menu-item">/usr/<wbr>share/<wbr>gnome-shell/<wbr>extensions/<wbr>ubuntu-dock\@ubuntu.com/<wbr>dash.js</span>.
+    - Fix a bug in the Dash to Dock Gnome Shell extension that causes
+      [icons to take ages to update][2] when you start with an empty
+      dock by manually applying a fix [available on GitHub][3] (to
+      <span class="os-menu-item">/usr/<wbr>share/<wbr>gnome-shell/<wbr>extensions/<wbr>ubuntu-dock\@ubuntu.com/<wbr>dash.js</span>).
     - In Firefox: install the [1Password extension][4], change the
       default search engine to DuckDuckGo, and hide all the junk from
       the new tab screen. I also sign in to my Firefox account to get my
@@ -39,8 +39,9 @@ Setting up an Ubuntu Desktop 20.04 install
       bits-and-pieces (as far as I can tell, all you need is
       _pubring.gpg_, _secring.gpg_, and _trustdb.gpg_).
     - Set the terminal font to [Iosevka][5].
-    - Install [JetBrains Toolbox][6] and use it to install PhpStorm.
-    - Install [Steam][7].
+    - Install [JetBrains Toolbox][6] and use it to install PhpStorm (see
+      also: [my PhpStorm notes][7]).
+    - Install [Steam][8].
     - Connect to any network drives.
     - Set up Livepatch.
   - Set up Windows 10 VMs in VirtualBox for cross-browser testing, and
@@ -53,7 +54,8 @@ Setting up an Ubuntu Desktop 20.04 install
 [4]: <https://1password.com/downloads/linux/#browsers>
 [5]: <https://typeof.net/Iosevka/>
 [6]: <https://www.jetbrains.com/help/phpstorm/installation-guide.html#toolbox>
-[7]: <https://github.com/ValveSoftware/steam-for-linux>
+[7]: <https://www.robotinaponcho.net/notes/phpstorm>
+[8]: <https://github.com/ValveSoftware/steam-for-linux>
 
 
 Setting up Windows 10 in VirtualBox
@@ -67,8 +69,8 @@ with customisation and maintenance.
     of storage (in a dynamically-allocated virtual hard disk), 8 GB of
     memory, and four processors to be enough for my use cases.
   - Enable 3D acceleration with the maximum amount of available video
-    memory allocated. However, this causes some [hardcore funkiness][8].
-    Turning [transparency effects off in Windows][9] helps a little,
+    memory allocated. However, this causes some [hardcore funkiness][9].
+    Turning [transparency effects off in Windows][10] helps a little,
     but things like Photoshop are still a little funky.
   - Once the initial installation is complete and updates are installed:
     - Install the VirtualBox Guest Additions.
@@ -80,17 +82,17 @@ with customisation and maintenance.
       Fortunately, I have Creative Cloud available on another machine to
       fall back on.)
     - Update the hosts file (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
-      to [access websites and other network services on the host][10].
+      to [access websites and other network services on the host][11].
 
-I only use Visual Studio for working on [FlippyWindow][11]; Microsoft
-provide [evaluation development environment virtual machines][12] that
+I only use Visual Studio for working on [FlippyWindow][12]; Microsoft
+provide [evaluation development environment virtual machines][13] that
 are perfect for the small amounts of Visual-Studio-ing that I do.
-(Microsoft also provide [virtual machines][13] for testing websites in
+(Microsoft also provide [virtual machines][14] for testing websites in
 Internet Explorer 11 and Edge Legacy.)
 
-[8]: <https://www.virtualbox.org/attachment/ticket/19365/VirtualBox_Windows%2010_03_06_2020_21_55_02.png>
-[9]: <https://www.virtualbox.org/ticket/19365#comment:16>
-[10]: <http://www.virtualbox.org/manual/ch06.html#network_nat>
-[11]: <https://www.robotinaponcho.net/flippywindow/>
-[12]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
-[13]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
+[9]: <https://www.virtualbox.org/attachment/ticket/19365/VirtualBox_Windows%2010_03_06_2020_21_55_02.png>
+[10]: <https://www.virtualbox.org/ticket/19365#comment:16>
+[11]: <http://www.virtualbox.org/manual/ch06.html#network_nat>
+[12]: <https://www.robotinaponcho.net/flippywindow/>
+[13]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
+[14]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
