@@ -140,6 +140,7 @@ body {
 code {
   background: $colour-gray-light;
   font-family: "Iosevka Web", monospace;
+  font-size: 96%;
   line-height: 1;
 }
 
@@ -234,6 +235,38 @@ ol {
 
 p {
   margin: ($base-line-height / 2) 0 0 0;
+}
+
+pre {
+  $full-breakpoint: $content-width + $base-line-height * 2.5;
+
+  background: $colour-gray-light;
+  box-sizing: border-box;
+  margin: ($base-line-height / 2) 0 0;
+  max-width: $content-width;
+  overflow-x: scroll;
+  position: relative;
+  padding: ($base-line-height / 2) $base-line-height;
+
+  @media screen and (min-width: #{$full-breakpoint}) {
+    margin: ($base-line-height / 2) auto 0;
+    max-width: $content-width + ($base-line-height * 2);
+  }
+
+  code {
+    display: block;
+    line-height: $base-line-height;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      left: 100%;
+      top: 0;
+      width: $base-line-height;
+    }
+  }
 }
 
 table {
@@ -1068,7 +1101,7 @@ ul {
 }
 
 .main-content {
-  & > *:not(div) {
+  & > *:not(div):not(pre) {
     margin-left: auto;
     margin-right: auto;
     max-width: $content-width;

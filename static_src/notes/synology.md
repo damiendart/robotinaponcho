@@ -8,68 +8,47 @@
   twigTemplate: .templates/notes-base.html.twig
 -->
 
-Setting up a Synology DiskStation
----------------------------------
+Transferring files between DiskStations (and other machines) using rsync
+------------------------------------------------------------------------
 
-  <div class="admonition admonition--info">
-    <p><b>Note</b>: For context, most of the following was written in 2013 when setting up my current Synology DiskStation.</p>
-  </div>
+This is one of those infrequent things that I can never remember the
+right incantations for, so I'm jotting them down here to save myself any
+future faff.
 
-  - Ensure the DiskStation is given a static IP.
-  - Instead of using the default _admin_ account, create a new user and
-    give them admin privileges, then disable both the default _admin_
-    and any guest accounts.
-  - Enable SMB 3 in the _File Services_ control panel in DSM.
-  - Hide the _homes_ shared folder in "My Network Places" by setting the
-    aforementioned option in the _Shared Folder_ control panel in DSM.
-    This is purely for aesthetic purposes.
-  - Go through the _Security_ control panel in DSM. (Check the control
-    panel on a regular basis for new features.)
-  - When creating folders, remember to set reasonable permissions.
-  - Use rsync to transfer files. If using a different copying method,
-    rsync's dry-run mode with the `c` flag can be used to check
-    everything has copied correctly.
-  - Run the _Security Advisor_ to see if anything else needs attention,
-    and enable the regular scan schedule to perform a weekly scan.
-  - Make sure daily backup stuff (S3, external hard-drive) is set up.
-  - Git from the _Package Center_ in DSM craps out whenever you tried to
-    do anything via HTTPS. Fortunately, the [solution is simple][3]:
-    download [a recent CA Root certificate bundle][4] to your
-    DiskStation and point Git to it by setting `http.sslCAinfo` to the
-    location of that file in your global or system-wide _.gitignore_.
-  - Set up custom scheduled tasks.
-    - Use [getmail][5] to backup email every three hours.
-    - Use [mirrorgithub][6] to backup public GitHub repositories daily.
-    - Use [pinboardbackup][7] to backup Pinboard bookmarks daily.
-    - Even with NTP synchronisation enabled in DSM's _Regional Options_
-      control panel the date and time will occasionally get out of sync.
-      Creating a daily scheduled task to run the `ntpdate -u -b
-      [SOME-NTP-SERVER]` command as root seems to keep things in check.
-    - Daily and weekly scheduled tasks should be run at night.
-  - Manually downloaded Python packages are regularly removed as part of
-    some updates, so when reinstalling save time by keeping any source
-    code in _~/src_ or any easily reachable folder.
-  - When setting up DNS-O-Matic DDNS support in the _External Access_
-    control panel, use `all.dnsomatic.com` for the hostname and replace
-    any `@` characters in the username with `%30`.
-  - If using _File Station_'s shared links functionality, ensure the
-    _Advanced_ tab in the _External Access_ control panel is filled out
-    so that correct URLs are generated.
-  - Enable bad sector and disk lifespan warnings in _Storage Manager_.
+On the old device, enable the rsync service in the _File Services_
+control panel if it hasn't been already.
 
-[3]: <http://stackoverflow.com/a/8467406>
-[4]: <http://curl.haxx.se/ca/cacert.pem>
-[5]: <http://pyropus.ca/software/getmail/>
-[6]: <https://www.robotinaponcho.net/git/#robotinaponcho>
-[7]: <https://www.robotinaponcho.net/git/#toolbox>
+Log into the new device via SSH and run a big ol' rsync command:
+
+```
+$ rsync --exclude '.DS_Store' --exclude '@eaDir' --exclude 'desktop.ini' -avhPc [SRC] [DEST] |& tee /tmp/rsync-output.txt
+```
+
+<div class="admonition admonition--info">
+  <p><b>Note</b>: As the <code>-a</code> flag causes rsync to preserve
+    groups and owners, you might get the dreaded <em>some files/attrs
+    were not transferred</em> error at the end if there is any group or
+    owner inconsistencies. Either review the rsync output to make sure
+    it's nothing more serious, perform a dry-run transfer, or
+    <a href="https://explainshell.com/explain?cmd=rsync+-a">replace the
+    <code>-a</code> flag</a>.
+</div>
+
+After everything has been transferred over, you might need to clean up
+any group, owner, or permission issues. (I've used [an approach from the
+Synology knowledge base][2], but it's pretty heavy-handed.)
+
+[2]: <https://www.synology.com/en-us/knowledgebase/DSM/tutorial/Management/Revert_to_Windows_ACL_permission>
 
 
 Miscellaneous things
 --------------------
 
+  - Disable AFP (Apple Filling Protocol) support in the _File Services_
+    control panel in DSM as it has been [deprecated for a while][3].
   - The _Task Scheduler_ control panel in DSM doesn't tell you whether a
     task's last run failed or succeeded.  Running the command
     `synoschedtask --get` provides detailed information about tasks,
     including their last run statuses.
-  - Extracting _tar.gz_ files with tar: `tar -zxvf [FILENAME]` (I'm
-    always forgetting the combination of flags).
+
+[3]: <https://www.macworld.com/article/3600899/using-afp-to-share-a-mac-drive-its-time-to-change.html>
