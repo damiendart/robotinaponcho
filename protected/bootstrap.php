@@ -36,14 +36,14 @@ if (
     // the site locally, is a battle that I don't think is worth having.
     $whoops->pushHandler(new PlainTextHandler());
 } else {
-    $whoops->pushHandler(function (Throwable $throwable) {
+    $whoops->pushHandler(function (Throwable $throwable): int {
         include 'views/fatal.php';
 
         return Handler::DONE;
     });
 }
 
-$whoops->pushHandler(function (Throwable $throwable) {
+$whoops->pushHandler(function (Throwable $throwable): int {
     reportThrowable($throwable);
 
     return Handler::DONE;
