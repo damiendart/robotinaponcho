@@ -313,12 +313,14 @@ ul {
   background: $colour-white;
   border-style: solid;
   border-width: $base-border-width;
+  border-left-width: $base-line-height;
   border-radius: $base-line-height / 2;
   box-sizing: border-box;
   margin: $base-line-height ($base-line-height / 2);
   max-width: $content-width;
   position: relative;
   padding: $base-line-height - $base-border-width;
+  padding-left: $base-line-height;
 
   > *:first-child {
     margin: 0;
