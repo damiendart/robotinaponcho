@@ -53,7 +53,7 @@ function addNotesCollection(globalData, items) {
         )
           .map(item => item.data)
           .sort((a, b) => a.title.localeCompare(b.title))
-          .sort((a, b) => b.git.created.timestamp - a.git.created.timestamp),
+          .sort((a, b) => b.git.updated.timestamp - a.git.updated.timestamp),
       }
     },
     items,
