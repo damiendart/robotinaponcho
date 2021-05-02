@@ -638,7 +638,7 @@ ul {
           @media #{toolbox-sass.$media-small-down} {
             @for $i from 1 through 10 {
               .dropdown-menu__lists__list__item:nth-child(#{$i}) {
-                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+                transition-delay: ($animation-duration * 1.75) + ($animation-duration / 4) * $i;
               }
             }
           }

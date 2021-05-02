@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /crap/
 Disallow: /git/*.git/
 Sitemap: https://www.robotinaponcho.net/sitemap.xml
