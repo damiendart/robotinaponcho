@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__ . '/vendor/autoload.php';
 
 if (getenv('SENTRY_DSN')) {
@@ -19,7 +21,7 @@ use Whoops\Run;
 
 function reportThrowable(Throwable $throwable): void
 {
-    error_log($throwable, 0);
+    error_log($throwable->getMessage(), 0);
 
     if (getenv('SENTRY_DSN')) {
         Sentry\captureException($throwable);
