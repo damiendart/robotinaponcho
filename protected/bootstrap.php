@@ -31,7 +31,7 @@ function reportThrowable(Throwable $throwable): void
 $whoops = new Run();
 
 if (
-    getenv('APP_ENV') === 'local'
+    'local' === getenv('APP_ENV')
     || Whoops\Util\Misc::isCommandLine()
 ) {
     // Using the "PrettyPageHandler" requires faffing around with CSP

@@ -1,5 +1,6 @@
 #!/usr/bin/env php7.4
 <?php
+
 // Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
@@ -10,19 +11,19 @@ require __DIR__ . '/../../protected/bootstrap.php';
 
 use GuzzleHttp\Client;
 
-function echoStep(string $step) : void
+function echoStep(string $step): void
 {
     if (getenv('VERBOSE')) {
-        echo "$step\n";
+        echo "{$step}\n";
     }
 }
 
-function git(string $command, ?string $cwd = null) : string
+function git(string $command, ?string $cwd = null): string
 {
     $pipes = [];
-    echoStep("(cd $cwd && git $command)");
+    echoStep("(cd {$cwd} && git {$command})");
     $resource = proc_open(
-        "git $command",
+        "git {$command}",
         [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
         $pipes,
         $cwd
@@ -34,9 +35,9 @@ function git(string $command, ?string $cwd = null) : string
         fclose($pipe);
     }
 
-    if (proc_close($resource) !== 0) {
+    if (0 !== proc_close($resource)) {
         throw new Exception(
-            "Git command \"$command\" exited with a non-zero status\n$stderr"
+            "Git command \"{$command}\" exited with a non-zero status\n{$stderr}"
         );
     }
 
@@ -54,8 +55,8 @@ $gitHubResponse = (new Client())->request(
 $repositoryMetadata = [];
 
 if (!is_dir($baseDirectory)) {
-    if (mkdir($baseDirectory) === false) {
-        throw new Exception("Unable to create directory \"$baseDirectory\"");
+    if (false === mkdir($baseDirectory)) {
+        throw new Exception("Unable to create directory \"{$baseDirectory}\"");
     }
 }
 
@@ -65,14 +66,14 @@ foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
         [$baseDirectory, basename($repository->git_url)]
     );
 
-    if ($repository->fork === true) {
+    if (true === $repository->fork) {
         continue;
     }
 
     if (is_dir($repositoryDirectory)) {
         git('fetch -q', $repositoryDirectory);
     } else {
-        git("clone -q --mirror $repository->git_url", $baseDirectory);
+        git("clone -q --mirror {$repository->git_url}", $baseDirectory);
     }
 
     touch($repositoryDirectory . DIRECTORY_SEPARATOR . 'git-daemon-export-ok');
