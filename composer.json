@@ -14,12 +14,19 @@
   "description": "Source code to Damien Dart's personal site.",
   "license": "MIT",
   "name": "damiendart/robotinaponcho",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://www.robotinaponcho.net/git/toolbox-sass.git"
+    }
+  ],
   "require": {
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.1",
     "php": "^7.4",
     "sentry/sdk": "^3.0",
-    "filp/whoops": "^2.11"
+    "filp/whoops": "^2.11",
+    "damiendart/toolbox-sass": "dev-master#ad52fd976089347074f3028b4a35e9d2479754ac"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16"
