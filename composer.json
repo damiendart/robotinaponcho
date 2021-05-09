@@ -26,7 +26,7 @@
     "php": "^7.4",
     "sentry/sdk": "^3.0",
     "filp/whoops": "^2.11",
-    "damiendart/toolbox-sass": "dev-master#ad52fd976089347074f3028b4a35e9d2479754ac"
+    "damiendart/toolbox-sass": "dev-master#8ad8eeae71ceee3ac0fefa503b5dd8f6f6555894"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16"
