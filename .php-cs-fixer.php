@@ -6,17 +6,19 @@
 
 declare(strict_types=1);
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRules([
         '@PhpCsFixer' => true,
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
         'concat_space' => ['spacing' => 'one'],
-        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+        'declare_strict_types' => true,
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
+        'void_return' => true,
     ])
     ->setFinder(
-        Symfony\Component\Finder\Finder::create()
+        PhpCsFixer\Finder::create()
             ->notPath('node_modules')
             ->notPath('protected' . DIRECTORY_SEPARATOR . 'vendor')
             ->notPath('public')
