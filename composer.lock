@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c65c1f45f9eb04ea87db8490ef245535",
+    "content-hash": "49e39991ba5c2b207f29a9c052cc934b",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -78,13 +78,13 @@
             "source": {
                 "type": "git",
                 "url": "https://www.robotinaponcho.net/git/toolbox-sass.git",
-                "reference": "8ad8eeae71ceee3ac0fefa503b5dd8f6f6555894"
+                "reference": "c30cff18f408b2dde45c44fa092e5b074568630c"
             },
             "require": {
                 "php": ">=7.4"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16"
+                "friendsofphp/php-cs-fixer": "^3.0"
             },
             "default-branch": true,
             "type": "library",
@@ -104,7 +104,7 @@
                 }
             ],
             "description": "A hodgepodge of web-development-related stuff.",
-            "time": "2021-05-08T22:37:16+00:00"
+            "time": "2021-05-15T20:02:40+00:00"
         },
         {
             "name": "filp/whoops",
