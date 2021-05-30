@@ -27,6 +27,8 @@ tasks:
   build:
     cmds:
       - task: 'build:assets'
+      - task: 'build:css'
+      - task: 'build:javascript'
       - task: 'build:static'
 
   build:assets:
@@ -41,6 +43,15 @@ tasks:
     desc: 'Build CSS files with Sass and friends'
     vars:
       OUTPUT_FILE: 'public/assets/style.css'
+
+  build:javascript:
+    cmds:
+      - 'node_modules/.bin/esbuild resources/javascript/app.js --bundle --log-level=warning --outfile={{ .OUTPUT_FILE }}'
+      - 'node_modules/.bin/babel {{ .OUTPUT_FILE }} --out-file {{ .OUTPUT_FILE }} --presets=@babel/preset-env'
+      - 'node_modules/.bin/uglifyjs --compress --mangle -o {{ .OUTPUT_FILE }} -- {{ .OUTPUT_FILE }}'
+    desc: 'Build (IE11-compatible) JavaScript files with esbuild and friends'
+    vars:
+      OUTPUT_FILE: 'public/assets/app.js'
 
   build:static:
     cmds:
@@ -79,7 +90,7 @@ tasks:
 
   lint:javascript:
     cmds:
-      - 'node_modules/.bin/eslint static_src/**/*.js'
+      - 'node_modules/.bin/eslint resources/javascript/**'
     desc: 'Lint JavaScript files with ESLint'
 
   lint:php:
