@@ -34,6 +34,14 @@ tasks:
       - 'cp -rTv ./node_modules/assets/www.robotinaponcho.net ./public'
     desc: 'Copy pre-built assets'
 
+  build:css:
+    cmds:
+      - 'node_modules/.bin/sass --no-source-map -s compressed resources/sass/style.scss {{ .OUTPUT_FILE }}'
+      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE }}'
+    desc: 'Build CSS files with Sass and friends'
+    vars:
+      OUTPUT_FILE: 'public/assets/style.css'
+
   build:static:
     cmds:
       - 'node_modules/.bin/buildstatic ./static_src ./public'

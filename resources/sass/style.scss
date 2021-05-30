@@ -2,11 +2,12 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-@use "node_modules/toolbox-sass";
+@use "sass:math";
+@use "../../node_modules/toolbox-sass";
 
 $base-border-width: toolbox-sass.$base-one-pixel-in-rem * 2;
 $base-font-size: 18px;
-$base-line-height: (30px / 16px) * 1rem;
+$base-line-height: math.div(30px, 16px) * 1rem;
 $colour-black: #000000;
 $colour-blue: #0984e3;
 $colour-flippywindow-blue: #65b3eb;
@@ -131,7 +132,7 @@ body {
 
   background: $colour-gray-lighter;
   color: $colour-black;
-  font-size: percentage($base-font-size / 16px);
+  font-size: percentage(math.div($base-font-size, 16px));
   font-family: "Greycliff", toolbox-sass.$font-stack-system;
   line-height: $base-line-height;
   margin: 0;
@@ -193,7 +194,7 @@ h3 {
 }
 
 html {
-  font-size: percentage(16px / $base-font-size);
+  font-size: percentage(math.div(16px, $base-font-size));
 
   @media #{toolbox-sass.$media-small-up} {
     font-size: 100%;
@@ -207,11 +208,11 @@ img {
 
 kbd {
   background: $colour-gray-light;
-  border-radius: $base-line-height / 4;
+  border-radius: math.div($base-line-height, 4);
   font-size: 87.5%;
   font-family: inherit;
   line-height: 1;
-  padding: $base-line-height / 4;
+  padding: math.div($base-line-height, 4);
 }
 
 main {
@@ -220,7 +221,7 @@ main {
 }
 
 ol {
-  margin: ($base-line-height / 2) 0 0 0;
+  margin: math.div($base-line-height, 2) 0 0 0;
   padding: 0;
 
   & > * {
@@ -234,7 +235,7 @@ ol {
 }
 
 p {
-  margin: ($base-line-height / 2) 0 0 0;
+  margin: math.div($base-line-height, 2) 0 0 0;
 }
 
 pre {
@@ -242,14 +243,14 @@ pre {
 
   background: $colour-gray-light;
   box-sizing: border-box;
-  margin: ($base-line-height / 2) 0 0;
+  margin: math.div($base-line-height, 2) 0 0;
   max-width: $content-width;
   overflow-x: scroll;
   position: relative;
-  padding: ($base-line-height / 2) $base-line-height;
+  padding: math.div($base-line-height, 2) $base-line-height;
 
   @media screen and (min-width: #{$full-breakpoint}) {
-    margin: ($base-line-height / 2) auto 0;
+    margin: math.div($base-line-height, 2) auto 0;
     max-width: $content-width + ($base-line-height * 2);
   }
 
@@ -270,12 +271,12 @@ pre {
 }
 
 table {
-  margin: ($base-line-height / 2) 0 0 0;
+  margin: math.div($base-line-height, 2) 0 0 0;
   border-collapse: collapse;
   width: 100%;
 
   > :not(caption) > * > * {
-    padding: $base-line-height / 4;
+    padding: math.div($base-line-height, 4);
   }
 
   > tbody > tr:nth-last-of-type(odd) {
@@ -287,14 +288,14 @@ table {
 
     > * > * {
       border-bottom: $colour-black solid $base-border-width;
-      padding-bottom: (($base-line-height / 4) - $base-border-width);
+      padding-bottom: (math.div($base-line-height, 4) - $base-border-width);
       padding-top: 0;
     }
   }
 }
 
 ul {
-  margin: ($base-line-height / 2) 0 0 0;
+  margin: math.div($base-line-height, 2) 0 0 0;
   padding: 0;
 
   & > * {
@@ -314,9 +315,9 @@ ul {
   border-style: solid;
   border-width: $base-border-width;
   border-left-width: $base-line-height;
-  border-radius: $base-line-height / 2;
+  border-radius: math.div($base-line-height, 2);
   box-sizing: border-box;
-  margin: $base-line-height ($base-line-height / 2);
+  margin: $base-line-height math.div($base-line-height, 2);
   max-width: $content-width;
   position: relative;
   padding: $base-line-height - $base-border-width;
@@ -394,7 +395,7 @@ ul {
         $sheet-width: $base-line-height * 6;
 
         top: -10%;
-        box-shadow: 0 0 ($base-line-height / 2) rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 math.div($base-line-height, 2) rgba(0, 0, 0, 0.1);
         background: $colour-white;
         display: block;
         height: $sheet-width * 1.41429;
@@ -450,7 +451,7 @@ ul {
   color: $colour-white;
   display: inline-block;
   font-weight: bold;
-  padding: ($base-line-height / 2) $base-line-height;
+  padding: math.div($base-line-height, 2) $base-line-height;
   position: relative;
   border-radius: $base-line-height;
   text-decoration: none;
@@ -465,9 +466,9 @@ ul {
     border: $base-border-width solid $colour-gray;
     color: $colour-blue;
     padding:
-      ($base-line-height / 8)
+      math.div($base-line-height, 8)
       ($base-line-height * 0.375)
-      ($base-line-height / 8)
+      math.div($base-line-height, 8)
       ($base-line-height * 1.75);
 
     &::before {
@@ -478,7 +479,7 @@ ul {
       height: $base-line-height;
       left: $base-line-height * 0.375;
       position: absolute;
-      top: ($base-line-height / 8);
+      top: math.div($base-line-height, 8);
       width: $base-line-height;
     }
   }
@@ -489,7 +490,7 @@ ul {
       content: "Copied!";
       left: $base-line-height;
       opacity: 0;
-      padding: ($base-line-height / 2) 0;
+      padding: math.div($base-line-height, 2) 0;
       position: absolute;
       right: $base-line-height;
       text-align: center;
@@ -508,7 +509,7 @@ ul {
     background: $colour-white;
     border: $base-border-width solid $colour-gray;
     color: $colour-blue;
-    padding: (($base-line-height / 2) - $base-border-width)
+    padding: (math.div($base-line-height, 2) - $base-border-width)
       ($base-line-height - $base-border-width);
   }
 
@@ -539,7 +540,7 @@ ul {
 
   li {
     display: flex;
-    margin: ($base-line-height / 4) ($base-line-height / 4) 0 0;
+    margin: math.div($base-line-height, 4) math.div($base-line-height, 4) 0 0;
     padding: 0;
   }
 }
@@ -576,7 +577,7 @@ ul {
 
   &__information-list {
     list-style: none;
-    margin: $base-line-height / 2 0 0 0;
+    margin: math.div($base-line-height, 2) 0 0 0;
 
     & > * {
       margin: 0;
@@ -586,7 +587,7 @@ ul {
 
 .dropdown-menu {
   $animation-duration: 0.125s;
-  $border-radius: $base-line-height / 4;
+  $border-radius: math.div($base-line-height, 4);
 
   border-radius: $border-radius $border-radius 0 0;
   cursor: default;
@@ -599,7 +600,7 @@ ul {
     // group of selectors those browsers ignore the rule set.
     &:focus-within > &__lists {
       opacity: 1;
-      right: $base-line-height / -2;
+      right: math.div($base-line-height, -2);
       transform: none;
 
       &::before {
@@ -622,7 +623,7 @@ ul {
 
     &:hover > &__lists {
       opacity: 1;
-      right: $base-line-height / -2;
+      right: math.div($base-line-height, -2);
       transform: none;
 
       &::before {
@@ -638,7 +639,7 @@ ul {
           @media #{toolbox-sass.$media-small-down} {
             @for $i from 1 through 10 {
               .dropdown-menu__lists__list__item:nth-child(#{$i}) {
-                transition-delay: ($animation-duration * 1.75) + ($animation-duration / 4) * $i;
+                transition-delay: ($animation-duration * 1.75) + math.div($animation-duration, 4) * $i;
               }
             }
           }
@@ -653,7 +654,7 @@ ul {
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
-            transition-delay: ($animation-duration / 4) * $i;
+            transition-delay: math.div($animation-duration, 4) * $i;
           }
         }
       }
@@ -667,7 +668,7 @@ ul {
   @media (hover: none) {
     &--open &__lists {
       opacity: 1;
-      right: $base-line-height / -2;
+      right: math.div($base-line-height, -2);
       transform: none;
 
       &::before {
@@ -683,7 +684,7 @@ ul {
           @media #{toolbox-sass.$media-small-down} {
             @for $i from 1 through 10 {
               .dropdown-menu__lists__list__item:nth-child(#{$i}) {
-                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+                transition-delay: ($animation-duration * 1.5) + math.div($animation-duration, 4) * $i;
               }
             }
           }
@@ -698,7 +699,7 @@ ul {
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
-            transition-delay: ($animation-duration / 4) * $i;
+            transition-delay: math.div($animation-duration, 4) * $i;
           }
         }
       }
@@ -740,7 +741,7 @@ ul {
 
           &__list {
             &:first-child {
-              margin: 0 0 ($base-line-height / 2);
+              margin: 0 0 math.div($base-line-height, 2);
             }
 
             &__item {
@@ -757,7 +758,7 @@ ul {
   // queries or SVG fragment identifiers.
   @media #{toolbox-sass.$media-ie-11} {
     &::after {
-      $height: ($base-line-height * 1.25) * (14.14 / 22.13);
+      $height: ($base-line-height * 1.25) * math.div(14.14, 22.13);
 
       // The chevron implementation is different for Internet Explorer
       // 11 because, by default, using SVGs for background images can
@@ -769,7 +770,7 @@ ul {
       height: $height;
       position: absolute;
       right: $base-line-height * -0.3625;
-      top: calc(50% - #{$height / 2});
+      top: calc(50% - #{math.div($height, 2)});
       transform: scale(0.5);
       transition: opacity $animation-duration ease-out;
       transform-origin: center;
@@ -782,7 +783,7 @@ ul {
 
     &:hover > &__lists {
       opacity: 1;
-      right: $base-line-height / -2;
+      right: math.div($base-line-height, -2);
       transform: none;
 
       .dropdown-menu__lists__list {
@@ -790,7 +791,7 @@ ul {
           @media #{toolbox-sass.$media-small-down} {
             @for $i from 1 through 10 {
               .dropdown-menu__lists__list__item:nth-child(#{$i}) {
-                transition-delay: ($animation-duration * 1.5) + ($animation-duration / 4) * $i;
+                transition-delay: ($animation-duration * 1.5) + math.div($animation-duration, 4) * $i;
               }
             }
           }
@@ -811,7 +812,7 @@ ul {
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
-            transition-delay: ($animation-duration / 4) * $i;
+            transition-delay: math.div($animation-duration, 4) * $i;
           }
         }
       }
@@ -882,8 +883,8 @@ ul {
     padding: $base-line-height;
     position: absolute;
     right: 9999px;
-    top: calc(100% + #{$base-line-height / 2});
-    transform: translateY($base-line-height / -3);
+    top: calc(100% + #{math.div($base-line-height, 2)});
+    transform: translateY(math.div($base-line-height, -3));
     transition: opacity $animation-duration ease-out,
       transform $animation-duration ease-out;
     z-index: 1;
@@ -896,7 +897,7 @@ ul {
       display: block;
       height: 0;
       position: absolute;
-      right: ($base-line-height / 2);
+      right: math.div($base-line-height, 2);
       top: 0;
       width: 0;
     }
@@ -920,7 +921,7 @@ ul {
       // supported browsers.
       display: inline-table;
       list-style: none;
-      margin: 0 0 ($base-line-height / 2) 0;
+      margin: 0 0 math.div($base-line-height, 2) 0;
       white-space: pre;
 
       @media #{toolbox-sass.$media-medium-up} {
@@ -938,7 +939,7 @@ ul {
         opacity: 0;
         margin: 0;
         padding: 0;
-        transform: translateX($base-line-height / -2);
+        transform: translateX(math.div($base-line-height, -2));
         transition-delay: 0s;
         transition-duration: 0s;
       }
@@ -999,9 +1000,9 @@ ul {
       background-size: contain;
       content: "";
       display: block;
-      height: percentage(301 / 557);
+      height: percentage(math.div(301, 557));
       position: absolute;
-      top: $base-line-height / -2;
+      top: math.div($base-line-height, -2);
       width: 100%;
 
       @media
@@ -1139,7 +1140,7 @@ ul {
     display: flex;
     justify-content: space-between;
     margin: 0;
-    padding: (($base-line-height / 4) - ($base-border-width / 2)) 0;
+    padding: (math.div($base-line-height, 4) - math.div($base-border-width, 2)) 0;
 
     &:first-child {
       padding-top: 0;
@@ -1163,7 +1164,7 @@ ul {
       flex-shrink: 0;
       font-family: "Iosevka Web", monospace;
       font-size: 87.5%;
-      margin: 0 0 0 ($base-line-height / 2);
+      margin: 0 0 0 math.div($base-line-height, 2);
 
       span:not(class) {
         @media #{toolbox-sass.$media-small-down} {
