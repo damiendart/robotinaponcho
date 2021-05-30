@@ -31,8 +31,8 @@ tasks:
 
   build:assets:
     cmds:
-      - 'node_modules/.bin/buildstatic ./node_modules/assets/www.robotinaponcho.net ./public'
-    desc: 'Build asset files'
+      - 'cp -rTv ./node_modules/assets/www.robotinaponcho.net ./public'
+    desc: 'Copy pre-built assets'
 
   build:static:
     cmds:
