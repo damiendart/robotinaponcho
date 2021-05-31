@@ -102,7 +102,7 @@
           - Initial release.
     {% endapply %}
     {%
-        include '.templates/share.html.twig' with {
+        include '.templates/partials/share.html.twig' with {
             'link': urlBase ~ slug,
             'twitterAuthor': metaTwitterAuthor | replace({ '@': '' }),
             'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
