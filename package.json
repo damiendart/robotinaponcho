@@ -1,7 +1,7 @@
 {
   "author": "Damien Dart",
   "description": "Source code to Damien Dart's personal site.",
-  "devDependencies": {
+  "dependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
