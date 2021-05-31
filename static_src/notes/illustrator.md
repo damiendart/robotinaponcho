@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on Adobe Illustrator.
   title: Adobe Illustrator Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 Miscellaneous notes

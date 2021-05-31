@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on setting up and using PhpStorm.
   title: PhpStorm Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 My PhpStorm Customisations and Settings

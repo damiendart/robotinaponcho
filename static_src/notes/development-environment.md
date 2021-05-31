@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on setting up his development environment.
   title: Personal Development Environment Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 <div class="admonition admonition--info">

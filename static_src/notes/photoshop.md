@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on Adobe Photoshop.
   title: Photoshop Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 Converting pencil artwork to non-repro blue

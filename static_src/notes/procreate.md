@@ -4,7 +4,7 @@
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
   title: Procreate Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 Current brushes of choice

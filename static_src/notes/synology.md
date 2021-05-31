@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on setting up, using, and troubleshooting a Synology DiskStation.
   title: Synology DiskStation Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 Transferring files between DiskStations (and other machines) using rsync

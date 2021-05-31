@@ -4,7 +4,7 @@
   # license, please visit <http://creativecommons.org/licenses/by/4.0/>.
 
   title: 'Book List: 2021 Edition'
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 I'm trying to read more, so I figured keeping a list of finished

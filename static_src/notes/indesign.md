@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on Adobe InDesign.
   title: Adobe InDesign Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 Exporting colouring pages to PDF

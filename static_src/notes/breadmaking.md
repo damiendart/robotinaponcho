@@ -5,7 +5,7 @@
 
   description: Read Damien Dart's notes on breadmaking.
   title: Breadmaking Notes
-  twigTemplate: .templates/notes-base.html.twig
+  twigTemplate: .templates/base-note.html.twig
 -->
 
 My current good-enough white loaf recipe
