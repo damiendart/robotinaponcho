@@ -1024,10 +1024,10 @@ ul {
 }
 
 .header {
-  @include toolbox-sass.clearfix;
-
   background: $colour-white;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
   padding: $base-line-height;
   position: sticky;
   top: 0;
@@ -1045,7 +1045,9 @@ ul {
   }
 
   &--shadow {
-    box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
+    @supports (position: sticky) {
+      box-shadow: 0 0 $base-line-height rgba(0, 0, 0, 0.1);
+    }
   }
 
   &--slide-up {
@@ -1067,7 +1069,6 @@ ul {
   }
 
   &__title {
-    float: left;
     font-size: 125%;
     line-height: $base-line-height;
     margin: 0;
@@ -1075,10 +1076,6 @@ ul {
     @media #{toolbox-sass.$media-small-up} {
       font-size: 150%;
     }
-  }
-
-  &__navigation {
-    float: right;
   }
 
   &__rule {
