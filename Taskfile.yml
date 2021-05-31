@@ -55,8 +55,8 @@ tasks:
 
   build:static:
     cmds:
-      - 'node_modules/.bin/buildstatic ./static_src ./public'
-    desc: 'Build static files'
+      - 'node_modules/.bin/yassg ./static_src ./public'
+    desc: 'Build static site files with yassg'
 
   clean:
     cmds:

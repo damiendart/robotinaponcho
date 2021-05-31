@@ -3,8 +3,8 @@
 // please refer to the accompanying "LICENCE" file.
 
 const childProcess = require('child_process');
-const addSlugsToItems = require('toolbox-sass/buildstatic/modifiers/add-slugs-to-items');
-const addSitemap = require('toolbox-sass/buildstatic/modifiers/add-sitemap')
+const addSlugsToItems = require('yassg/src/modifiers/add-slugs-to-items');
+const addSitemap = require('yassg/src/modifiers/add-sitemap')
 
 function addGitMetadataToItems(globalData, items) {
   return [
