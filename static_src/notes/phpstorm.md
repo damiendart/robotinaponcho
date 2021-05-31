@@ -70,5 +70,9 @@ I'm also one of these people.
   - Set the *Project Opening*'s *Default directory*.
   - Set some default visual guides at 72 and 78 characters.
   - Turn off the terminal's *Audible bell*.
+  - For projects that use NPM or Yarn, turn off the option to automatically
+    add *node_modules/.bin* from the project root to `$PATH` (this one
+    is a little tricky to search for in the *Settings* window; find it
+    under *Tools* &rarr; *Terminal*).
 
 [3]: <https://typeof.net/Iosevka/>
