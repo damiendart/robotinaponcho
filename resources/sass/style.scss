@@ -255,16 +255,14 @@ pre {
   }
 
   code {
-    display: block;
+    display: flex;
     line-height: $base-line-height;
     position: relative;
 
     &::after {
       content: "";
       display: inline-block;
-      height: 100%;
-      left: 100%;
-      top: 0;
+      flex-shrink: 0;
       width: $base-line-height;
     }
   }
