@@ -1,0 +1,204 @@
+// Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:math";
+
+@use "fonts";
+@use "mixins";
+@use "variables";
+@use "../../node_modules/toolbox-sass";
+
+a {
+  @include mixins.focus-ring;
+
+  color: variables.$colour-blue;
+  font-weight: bold;
+  text-decoration: underline variables.$colour-gray;
+  text-decoration-thickness: variables.$base-border-width !important;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+body {
+  @include toolbox-sass.nice-font-rendering;
+
+  background: variables.$colour-gray-lighter;
+  color: variables.$colour-black;
+  font-size: percentage(math.div(variables.$base-font-size, 16px));
+  font-family: "Greycliff", toolbox-sass.$font-stack-system;
+  line-height: variables.$base-line-height;
+  margin: 0;
+}
+
+code {
+  background: variables.$colour-gray-light;
+  font-family: "Iosevka Web", monospace;
+  font-size: 96%;
+  line-height: 1;
+}
+
+figure {
+  @media #{toolbox-sass.$media-small-down} {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  > *:last-child {
+    position: relative;
+
+    &::after {
+      @media #{toolbox-sass.$media-small-down} {
+        content: "";
+        display: block;
+        height: toolbox-sass.$base-one-pixel-in-rem;
+        position: absolute;
+        right: variables.$base-line-height * -1;
+        width: variables.$base-line-height;
+      }
+    }
+  }
+}
+
+h1 {
+  font-size: 200%;
+  line-height: variables.$base-line-height * 1.5;
+  margin: (variables.$base-line-height * 3) 0;
+  text-align: center;
+
+  @media #{toolbox-sass.$media-medium-up} {
+    font-size: 300%;
+    line-height: variables.$base-line-height * 2;
+  }
+}
+
+h2 {
+  font-size: 150%;
+  line-height: variables.$base-line-height * 1.25;
+  margin: (variables.$base-line-height * 2.75) 0 0 0;
+}
+
+h3 {
+  font-size: 112.5%;
+  line-height: variables.$base-line-height;
+  margin: variables.$base-line-height 0 0 0;
+}
+
+html {
+  font-size: percentage(math.div(16px, variables.$base-font-size));
+
+  @media #{toolbox-sass.$media-small-up} {
+    font-size: 100%;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+kbd {
+  background: variables.$colour-gray-light;
+  border-radius: math.div(variables.$base-line-height, 4);
+  font-size: 87.5%;
+  font-family: inherit;
+  line-height: 1;
+  padding: math.div(variables.$base-line-height, 4);
+}
+
+main {
+  // Makes the "main" element behave correctly in Internet Explorer 11.
+  display: block;
+}
+
+ol {
+  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  padding: 0;
+
+  & > * {
+    margin: 0 0 0 variables.$base-line-height;
+    padding: 0;
+
+    & > ul, & > ol {
+      margin: 0;
+    }
+  }
+}
+
+p {
+  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+}
+
+pre {
+  $full-breakpoint: variables.$content-width + variables.$base-line-height * 2.5;
+
+  background: variables.$colour-gray-light;
+  box-sizing: border-box;
+  margin: math.div(variables.$base-line-height, 2) 0 0;
+  max-width: variables.$content-width;
+  overflow-x: scroll;
+  position: relative;
+  padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
+
+  @media screen and (min-width: #{$full-breakpoint}) {
+    margin: math.div(variables.$base-line-height, 2) auto 0;
+    max-width: variables.$content-width + (variables.$base-line-height * 2);
+  }
+
+  code {
+    display: flex;
+    line-height: variables.$base-line-height;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      flex-shrink: 0;
+      width: variables.$base-line-height;
+    }
+  }
+}
+
+table {
+  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  border-collapse: collapse;
+  width: 100%;
+
+  > :not(caption) > * > * {
+    padding: math.div(variables.$base-line-height, 4);
+  }
+
+  > tbody > tr:nth-last-of-type(odd) {
+    background: variables.$colour-gray-light;
+  }
+
+  > thead {
+    vertical-align: bottom;
+
+    > * > * {
+      border-bottom: variables.$colour-black solid variables.$base-border-width;
+      padding-bottom: (math.div(variables.$base-line-height, 4) - variables.$base-border-width);
+      padding-top: 0;
+    }
+  }
+}
+
+ul {
+  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  padding: 0;
+
+  & > * {
+    margin: 0 0 0 variables.$base-line-height;
+    padding: 0;
+
+    & > ul, & > ol {
+      margin: 0;
+    }
+  }
+}

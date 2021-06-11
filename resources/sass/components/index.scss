@@ -1,310 +1,12 @@
-// Copyright (C) 2020 Damien Dart, <damiendart@pobox.com>.
+// Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "../../node_modules/toolbox-sass";
 
-$base-border-width: toolbox-sass.$base-one-pixel-in-rem * 2;
-$base-font-size: 18px;
-$base-line-height: math.div(30px, 16px) * 1rem;
-$colour-black: #000000;
-$colour-blue: #0984e3;
-$colour-flippywindow-blue: #65b3eb;
-$colour-gray: #dddddd;
-$colour-gray-light: #eeeeee;
-$colour-gray-lighter: #f9f9f9;
-$colour-green: #55efc4;
-$colour-itchio-pink: #fa5c5c;
-$colour-orange: #fdcb6e;
-$colour-white: #ffffff;
-$content-width: 40rem;
-
-@mixin focus-ring($colour: currentColor, $boxShadow: false) {
-  &:focus {
-    @if ($boxShadow) {
-      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
-      outline: none;
-    } @else {
-      outline: $base-border-width solid $colour;
-    }
-
-    // Combining selectors that use ":focus-visible" and
-    // ":-moz-focusring" causes some browsers to ignore the rule set.
-    &:not(:focus-visible) {
-      outline: initial;
-      box-shadow: none;
-    }
-
-    &:not(:-moz-focusring) {
-      box-shadow: none;
-      outline: initial;
-    }
-  }
-
-  &:focus-visible {
-    @if ($boxShadow) {
-      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
-      outline: none;
-    } @else {
-      outline: $base-border-width solid $colour;
-    }
-  }
-
-  &:-moz-focusring {
-    @if ($boxShadow) {
-      box-shadow: 0 0 0 (toolbox-sass.$base-one-pixel-in-rem * 4) $colour;
-      outline: none;
-    } @else {
-      outline: $base-border-width solid $colour;
-    }
-  }
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Greycliff";
-  font-style:  normal;
-  font-weight: 400;
-  src: url("greycliff-regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Greycliff";
-  font-style:  italic;
-  font-weight: 400;
-  src: url("greycliff-oblique.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Greycliff";
-  font-style:  normal;
-  font-weight: 700;
-  src: url("greycliff-bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Iosevka Web";
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 400;
-  src: url("iosevka-regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Iosevka Web";
-  font-stretch: normal;
-  font-style: italic;
-  font-weight: 400;
-  src: url("iosevka-italic.woff2") format("woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Iosevka Web";
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 700;
-  src: url("iosevka-bold.woff2") format("woff2");
-}
-
-a {
-  @include focus-ring;
-
-  color: $colour-blue;
-  font-weight: bold;
-  text-decoration: underline $colour-gray;
-  text-decoration-thickness: $base-border-width !important;
-
-  &:active,
-  &:focus,
-  &:hover {
-    text-decoration-color: currentColor;
-  }
-}
-
-body {
-  @include toolbox-sass.nice-font-rendering;
-
-  background: $colour-gray-lighter;
-  color: $colour-black;
-  font-size: percentage(math.div($base-font-size, 16px));
-  font-family: "Greycliff", toolbox-sass.$font-stack-system;
-  line-height: $base-line-height;
-  margin: 0;
-}
-
-code {
-  background: $colour-gray-light;
-  font-family: "Iosevka Web", monospace;
-  font-size: 96%;
-  line-height: 1;
-}
-
-figure {
-  @media #{toolbox-sass.$media-small-down} {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-  }
-
-  > *:last-child {
-    position: relative;
-
-    &::after {
-      @media #{toolbox-sass.$media-small-down} {
-        content: "";
-        display: block;
-        height: toolbox-sass.$base-one-pixel-in-rem;
-        position: absolute;
-        right: $base-line-height * -1;
-        width: $base-line-height;
-      }
-    }
-  }
-}
-
-h1 {
-  font-size: 200%;
-  line-height: $base-line-height * 1.5;
-  margin: $base-line-height * 3 0;
-  text-align: center;
-
-  @media #{toolbox-sass.$media-medium-up} {
-    font-size: 300%;
-    line-height: $base-line-height * 2;
-  }
-}
-
-h2 {
-  font-size: 150%;
-  line-height: $base-line-height * 1.25;
-  margin: ($base-line-height * 2.75) 0 0 0;
-}
-
-h3 {
-  font-size: 112.5%;
-  line-height: $base-line-height;
-  margin: $base-line-height 0 0 0;
-}
-
-html {
-  font-size: percentage(math.div(16px, $base-font-size));
-
-  @media #{toolbox-sass.$media-small-up} {
-    font-size: 100%;
-  }
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-kbd {
-  background: $colour-gray-light;
-  border-radius: math.div($base-line-height, 4);
-  font-size: 87.5%;
-  font-family: inherit;
-  line-height: 1;
-  padding: math.div($base-line-height, 4);
-}
-
-main {
-  // Makes the "main" element behave correctly in Internet Explorer 11.
-  display: block;
-}
-
-ol {
-  margin: math.div($base-line-height, 2) 0 0 0;
-  padding: 0;
-
-  & > * {
-    margin: 0 0 0 $base-line-height;
-    padding: 0;
-
-    & > ul, & > ol {
-      margin: 0;
-    }
-  }
-}
-
-p {
-  margin: math.div($base-line-height, 2) 0 0 0;
-}
-
-pre {
-  $full-breakpoint: $content-width + $base-line-height * 2.5;
-
-  background: $colour-gray-light;
-  box-sizing: border-box;
-  margin: math.div($base-line-height, 2) 0 0;
-  max-width: $content-width;
-  overflow-x: scroll;
-  position: relative;
-  padding: math.div($base-line-height, 2) $base-line-height;
-
-  @media screen and (min-width: #{$full-breakpoint}) {
-    margin: math.div($base-line-height, 2) auto 0;
-    max-width: $content-width + ($base-line-height * 2);
-  }
-
-  code {
-    display: flex;
-    line-height: $base-line-height;
-    position: relative;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      flex-shrink: 0;
-      width: $base-line-height;
-    }
-  }
-}
-
-table {
-  margin: math.div($base-line-height, 2) 0 0 0;
-  border-collapse: collapse;
-  width: 100%;
-
-  > :not(caption) > * > * {
-    padding: math.div($base-line-height, 4);
-  }
-
-  > tbody > tr:nth-last-of-type(odd) {
-    background: $colour-gray-light;
-  }
-
-  > thead {
-    vertical-align: bottom;
-
-    > * > * {
-      border-bottom: $colour-black solid $base-border-width;
-      padding-bottom: (math.div($base-line-height, 4) - $base-border-width);
-      padding-top: 0;
-    }
-  }
-}
-
-ul {
-  margin: math.div($base-line-height, 2) 0 0 0;
-  padding: 0;
-
-  & > * {
-    margin: 0 0 0 $base-line-height;
-    padding: 0;
-
-    & > ul, & > ol {
-      margin: 0;
-    }
-  }
-}
+@use "../mixins";
+@use "../variables" as *;
+@use "../../../node_modules/toolbox-sass";
 
 .admonition {
   $full-breakpoint: $content-width + $base-line-height * 2.5;
@@ -443,7 +145,7 @@ ul {
 }
 
 .button {
-  @include focus-ring($colour-blue, true);
+  @include mixins.focus-ring($colour-blue, true);
 
   background: $colour-blue;
   color: $colour-white;
@@ -465,9 +167,9 @@ ul {
     color: $colour-blue;
     padding:
       math.div($base-line-height, 8)
-      ($base-line-height * 0.375)
+        ($base-line-height * 0.375)
       math.div($base-line-height, 8)
-      ($base-line-height * 1.75);
+        ($base-line-height * 1.75);
 
     &::before {
       background: url("icon-arrow-left.svg") center no-repeat;
@@ -626,7 +328,7 @@ ul {
 
       &::before {
         transform: translateY(
-          ($base-line-height * -0.3125) + toolbox-sass.$base-one-pixel-in-rem
+            ($base-line-height * -0.3125) + toolbox-sass.$base-one-pixel-in-rem
         );
         transition: transform $animation-duration ease-out;
         transition-delay: $animation-duration;
@@ -648,7 +350,7 @@ ul {
         opacity: 1;
         transform: none;
         transition: opacity $animation-duration ease-out,
-          transform $animation-duration ease-out;
+        transform $animation-duration ease-out;
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
@@ -693,7 +395,7 @@ ul {
         opacity: 1;
         transform: none;
         transition: opacity $animation-duration ease-out,
-          transform $animation-duration ease-out;
+        transform $animation-duration ease-out;
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
@@ -806,7 +508,7 @@ ul {
         position: relative;
         transform: none;
         transition: opacity $animation-duration ease-out,
-          transform $animation-duration ease-out;
+        transform $animation-duration ease-out;
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
@@ -871,10 +573,10 @@ ul {
   &__lists {
     background: $colour-black;
     box-shadow: 0 toolbox-sass.$base-one-pixel-in-rem toolbox-sass.$base-one-pixel-in-rem rgba($colour-black, 0.1),
-      0 (toolbox-sass.$base-one-pixel-in-rem * 2) (toolbox-sass.$base-one-pixel-in-rem * 2) rgba($colour-black, 0.1),
-      0 (toolbox-sass.$base-one-pixel-in-rem * 4) (toolbox-sass.$base-one-pixel-in-rem * 4) rgba($colour-black, 0.1),
-      0 (toolbox-sass.$base-one-pixel-in-rem * 8) (toolbox-sass.$base-one-pixel-in-rem * 8) rgba($colour-black, 0.1),
-      0 (toolbox-sass.$base-one-pixel-in-rem * 16) (toolbox-sass.$base-one-pixel-in-rem * 16) rgba($colour-black, 0.1);
+    0 (toolbox-sass.$base-one-pixel-in-rem * 2) (toolbox-sass.$base-one-pixel-in-rem * 2) rgba($colour-black, 0.1),
+    0 (toolbox-sass.$base-one-pixel-in-rem * 4) (toolbox-sass.$base-one-pixel-in-rem * 4) rgba($colour-black, 0.1),
+    0 (toolbox-sass.$base-one-pixel-in-rem * 8) (toolbox-sass.$base-one-pixel-in-rem * 8) rgba($colour-black, 0.1),
+    0 (toolbox-sass.$base-one-pixel-in-rem * 16) (toolbox-sass.$base-one-pixel-in-rem * 16) rgba($colour-black, 0.1);
     border-radius: $border-radius;
     color: $colour-white;
     opacity: 0;
@@ -884,7 +586,7 @@ ul {
     top: calc(100% + #{math.div($base-line-height, 2)});
     transform: translateY(math.div($base-line-height, -3));
     transition: opacity $animation-duration ease-out,
-      transform $animation-duration ease-out;
+    transform $animation-duration ease-out;
     z-index: 1;
 
     &::before {
@@ -949,7 +651,7 @@ ul {
   border-top: $base-border-width solid $colour-gray;
   margin: ($base-line-height * 3) auto 0;
   padding:
-    ($base-line-height - $base-border-width)
+      ($base-line-height - $base-border-width)
     $base-line-height
     $base-line-height;
   text-align: center;
@@ -1004,8 +706,8 @@ ul {
       width: 100%;
 
       @media
-        only screen and (-webkit-device-pixel-ratio: 2),
-        only screen and (min-resolution: 192dpi)
+      only screen and (-webkit-device-pixel-ratio: 2),
+      only screen and (min-resolution: 192dpi)
       {
         background-image: url("/flippywindow/arrow@2x.png");
       }
