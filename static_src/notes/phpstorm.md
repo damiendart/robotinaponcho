@@ -20,9 +20,10 @@ a fresh install of PhpStorm, so eh.
 ### Plugins
 
 In addition to the plugins that come bundled with PhpStorm, I also use
-[IdeaVim][2], because I'm one of those people.
+[IdeaVim][2], because I'm one of those people, and [Laravel Idea][li].
 
 [2]: <https://github.com/JetBrains/ideavim>
+[li]: <https://plugins.jetbrains.com/plugin/13441-laravel-idea>
 
 ### Removing as much of the interface as possible
 
