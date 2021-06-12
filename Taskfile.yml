@@ -109,7 +109,8 @@ tasks:
       - task: 'ci'
       - 'mkdir -p release'
       - 'tar --exclude ./protected/vendor -cvf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
-      - 'envsubst < deployment.yml > release/release.yml'
+      - 'envsubst < deployment/variables.yml > release/release.yml'
+      - 'cp deployment/pre-install-tasks.yml release/pre-install-tasks.yml'
     desc: 'Create release archive and metadata for deployment'
     env:
       RELEASE_GIT_SHA:
