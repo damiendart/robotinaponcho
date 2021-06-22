@@ -64,6 +64,9 @@ I'm also one of these people.
 
 ### Miscellaneous customisations and settings
 
+  - Ensure that PhpStorm is aware of all installed PHP CLI interpreters
+    by going to the *Settings* window, and checking *Languages &
+    Frameworks* &rarr; *PHP*.
   - If using PhpStorm 2020.3 or later, if the option is available sync
     the IDE theme with the OS (on macOS change the preferred light theme
     to *macOS Light*). Otherwise, use the Darcula theme throughout.
