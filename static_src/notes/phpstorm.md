@@ -51,7 +51,7 @@ I'm also one of these people.
     <kbd>&#8984;</kbd>+<kbd>&uarr;</kbd> will display a floating
     navigation bar if required.
 
-### IdeaVim customisation and settings
+### IdeaVim customisations and settings
 
   - Swap the audible bell for the visual one with `:set visualbell`.
   - Use the IdeaVim _Settings_ window (click the IdeaVim icon in the
