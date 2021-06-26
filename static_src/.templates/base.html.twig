@@ -14,11 +14,11 @@
 {% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
 {% block body %}
-    <header class="header">
-        <h1 class="header__title">
+    <header class="site-header">
+        <h1 class="site-header__title">
             <a href="/">{{ author }}</a>
         </h1>
-        <nav class="dropdown-menu header__navigation">
+        <nav class="dropdown-menu site-header__navigation">
             <h2 class="dropdown-menu__title">Menu</h2>
             <div class="dropdown-menu__lists">
                 <ul class="dropdown-menu__lists__list">
@@ -39,14 +39,14 @@
                 </ul>
             </div>
         </nav>
-        <hr class="header__rule">
+        <hr class="site-header__rule">
     </header>
     <main class="main-content">
         {{ block('content') }}
     </main>
-    <footer class="footer">
-        <hr class="footer__rule">
-        <p class="footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
+    <footer class="site-footer">
+        <hr class="site-footer__rule">
+        <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
     </footer>
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}

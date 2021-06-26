@@ -10,23 +10,23 @@ let initialScroll = true;
 window.addEventListener(
   'scroll',
   throttle(() => {
-    const siteHeaderElement = document.querySelector('.header');
+    const siteHeaderElement = document.querySelector('.site-header');
 
     if (window.pageYOffset > 50) {
-      siteHeaderElement.classList.add('header--shadow');
+      siteHeaderElement.classList.add('site-header--shadow');
     } else {
-      siteHeaderElement.classList.remove('header--shadow');
+      siteHeaderElement.classList.remove('site-header--shadow');
     }
 
     if (
       !initialScroll
       && window.pageYOffset > 150
       && window.pageYOffset > currentScroll
-      && document.querySelector('.header__navigation:hover, .dropdown-menu--open') === null
+      && document.querySelector('.site-header__navigation:hover, .dropdown-menu--open') === null
     ) {
-      siteHeaderElement.classList.add('header--slide-up');
+      siteHeaderElement.classList.add('site-header--slide-up');
     } else {
-      siteHeaderElement.classList.remove('header--slide-up');
+      siteHeaderElement.classList.remove('site-header--slide-up');
     }
 
     currentScroll = window.pageYOffset;

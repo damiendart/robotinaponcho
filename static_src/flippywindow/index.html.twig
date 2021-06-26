@@ -34,20 +34,20 @@
             visual issues</a>.</p>
     </div>
 
-    <div class="download">
-        <h2 class="download__link">
+    <div class="download-cta">
+        <h2 class="download-cta__link">
             <a class="button button--itchio" href="https://damiendart.itch.io/flippywindow">
                 <span class="button__download">Download</span><span class="collapsible collapsible--medium-down">
                 FlippyWindow</span> <span class="collapsible collapsible--small-down">from</span>
                 <img class="collapsible collapsible--x-small-down" alt="itch.io" src="/assets/itchio.svg" title="itch.io"></a>
         </h2>
-        <ul class="download__information-list">
-            <li class="download__information-list__item"><strong>It's
+        <ul class="download-cta__information-list">
+            <li class="download-cta__information-list__item"><strong>It's
                 free! Requires&nbsp;Windows&nbsp;8&nbsp;or&nbsp;later.</strong></li>
-            <li class="download__information-list__item">Nothing to
+            <li class="download-cta__information-list__item">Nothing to
                 install: just&nbsp;unzip&nbsp;and&nbsp;run<span class="collapsible collapsible--small-down">
                 the executable</span>.<li>
-            <li class="download__information-list__item">FlippyWindow is
+            <li class="download-cta__information-list__item">FlippyWindow is
                 <a href="https://www.robotinaponcho.net/git/#flippywindow">open-source</a>
                 (and <a href="https://github.com/damiendart/flippywindow">
                 on GitHub</a>).</li>
@@ -104,7 +104,7 @@
           - Initial release.
     {% endapply %}
     {%
-        include '.templates/partials/share.html.twig' with {
+        include '.templates/partials/sharing-links.html.twig' with {
             'link': urlBase ~ slug,
             'twitterAuthor': metaTwitterAuthor | replace({ '@': '' }),
             'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
