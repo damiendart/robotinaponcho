@@ -1,0 +1,66 @@
+// Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "../variables";
+@use "../../../node_modules/toolbox-sass";
+
+.header {
+  background: variables.$colour-white;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: variables.$base-line-height;
+  position: sticky;
+  top: 0;
+  transition: box-shadow 0.25s ease-in, transform 0.5s ease;
+  margin: 0 0 (toolbox-sass.$base-one-pixel-in-rem * -1);
+  width: 100%;
+  z-index: 1;
+
+  @media print {
+    position: relative;
+  }
+
+  html:not(.javascript) & {
+    position: relative;
+  }
+
+  &--shadow {
+    @supports (position: sticky) {
+      box-shadow: 0 0 variables.$base-line-height rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--slide-up {
+    @supports (position: sticky) {
+      @media #{toolbox-sass.$media-medium-down} {
+        box-shadow: none;
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:focus, &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    font-size: 125%;
+    line-height: variables.$base-line-height;
+    margin: 0;
+
+    @media #{toolbox-sass.$media-small-up} {
+      font-size: 150%;
+    }
+  }
+
+  &__rule {
+    display: none;
+  }
+}

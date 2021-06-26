@@ -1,0 +1,27 @@
+// Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "../variables";
+
+.footer {
+  border-top: variables.$base-border-width solid variables.$colour-gray;
+  margin: (variables.$base-line-height * 3) auto 0;
+  padding:
+      (variables.$base-line-height - variables.$base-border-width)
+    variables.$base-line-height
+    variables.$base-line-height;
+  text-align: center;
+
+  &__copyright {
+    margin: 0;
+
+    a {
+      white-space: pre;
+    }
+  }
+
+  &__rule {
+    display: none;
+  }
+}

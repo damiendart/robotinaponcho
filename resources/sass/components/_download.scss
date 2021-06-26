@@ -1,0 +1,22 @@
+@use "sass:math";
+@use "../variables";
+
+.download {
+  margin: variables.$base-line-height * 3 0;
+  text-align: center;
+  padding: 0 variables.$base-line-height;
+
+  &__link {
+    line-height: variables.$base-line-height;
+    margin: 0;
+  }
+
+  &__information-list {
+    list-style: none;
+    margin: math.div(variables.$base-line-height, 2) 0 0 0;
+
+    & > * {
+      margin: 0;
+    }
+  }
+}
