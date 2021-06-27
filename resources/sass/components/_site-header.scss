@@ -51,6 +51,13 @@
     }
   }
 
+  &__navigation {
+    position: absolute;
+    right: variables.$base-line-height;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   &__title {
     font-size: 125%;
     line-height: variables.$base-line-height;

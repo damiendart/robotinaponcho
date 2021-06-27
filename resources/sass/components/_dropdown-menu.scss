@@ -20,6 +20,9 @@
     html:not(.javascript) & {
       margin: 0;
       padding: 0;
+      position: relative;
+      right: 0;
+      transform: none;
       width: 100%;
 
       &__title {
@@ -61,56 +64,37 @@
     @include mixins.focus-ring;
 
     -webkit-appearance: none;
-    background: url("icon-chevron.svg") no-repeat right center;
-    background-size: variables.$base-line-height * 0.625;
-    background-position-x: 100%;
-    border: none;
+    background: transparent;
+    border: variables.$base-border-width solid variables.$colour-gray;
+    border-radius: $border-radius;
+    color: variables.$colour-blue;
     cursor: pointer;
     font-family: inherit;
     font-size: 100%;
     font-weight: bold;
     line-height: variables.$base-line-height;
     margin: 0;
-    padding: 0 variables.$base-line-height 0 0;
+    padding:
+      math.div(variables.$base-line-height, 4)
+      math.div(variables.$base-line-height, 2);
     position: relative;
     text-decoration: underline transparent;
     text-decoration-thickness: variables.$base-border-width !important;
-    transition:
-      opacity $animation-duration ease-out,
-      text-decoration-color $animation-duration ease-out;
+    transition: text-decoration-color $animation-duration ease-out;
 
     &:focus,
     &:hover {
+      background: variables.$colour-gray-lighter;
       text-decoration-color: currentColor;
     }
 
     &[aria-expanded="true"] {
-      opacity: 0.5;
+      background: variables.$colour-black;
+      border-color: variables.$colour-black;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      color: variables.$colour-white;
       text-decoration-color: transparent;
-    }
-
-    @media #{toolbox-sass.$media-ie-11} {
-      background: none !important;
-
-      &::after {
-        $height: (variables.$base-line-height * 1.25) * math.div(14.14, 22.13);
-
-        // The chevron implementation is different for Internet Explorer
-        // 11 because, by default, using SVGs for background images can
-        // result in blurry backgrounds. For more information, see
-        // <https://ctidd.com/2015/svg-background-scaling>.
-        background: url("icon-chevron.svg") no-repeat center;
-        background-size: cover;
-        content: "";
-        height: $height;
-        position: absolute;
-        right: variables.$base-line-height * -0.3625;
-        top: calc(50% - #{math.div($height, 2)});
-        transform: scale(0.5);
-        transition: opacity $animation-duration ease-out;
-        transform-origin: center;
-        width: variables.$base-line-height * 1.25;
-      }
     }
   }
 
@@ -121,7 +105,7 @@
       0 (toolbox-sass.$base-one-pixel-in-rem * 4) (toolbox-sass.$base-one-pixel-in-rem * 4) rgba(variables.$colour-black, 0.1),
       0 (toolbox-sass.$base-one-pixel-in-rem * 8) (toolbox-sass.$base-one-pixel-in-rem * 8) rgba(variables.$colour-black, 0.1),
       0 (toolbox-sass.$base-one-pixel-in-rem * 16) (toolbox-sass.$base-one-pixel-in-rem * 16) rgba(variables.$colour-black, 0.1);
-    border-radius: $border-radius;
+    border-radius: $border-radius 0 $border-radius $border-radius;
     color: variables.$colour-white;
     list-style: none;
     margin: 0;
@@ -129,46 +113,22 @@
     padding: variables.$base-line-height;
     position: absolute;
     right: 9999px;
-    top: calc(100% + #{math.div(variables.$base-line-height, 2)});
-    transform: translateY(math.div(variables.$base-line-height, -3));
-    transition: opacity $animation-duration ease-out,
-    transform $animation-duration ease-out;
+    top: 100%;
     visibility: hidden;
     white-space: pre;
     z-index: 1;
 
-    &::before {
-      border-bottom: (variables.$base-line-height * 0.3125) solid black;
-      border-left: (variables.$base-line-height * 0.3125) solid transparent;
-      border-right: (variables.$base-line-height * 0.3125) solid transparent;
-      content: "";
-      display: block;
-      height: 0;
-      position: absolute;
-      right: math.div(variables.$base-line-height, 2);
-      top: 0;
-      width: 0;
-    }
-
     &[aria-hidden="false"] {
       opacity: 1;
-      right: math.div(variables.$base-line-height, -2);
-      transform: none;
+      right: 0;
       visibility: visible;
-
-      &::before {
-        transform: translateY(
-            (variables.$base-line-height * -0.3125) + toolbox-sass.$base-one-pixel-in-rem
-        );
-        transition: transform $animation-duration ease-out;
-        transition-delay: $animation-duration;
-      }
 
       .dropdown-menu__list__item {
         opacity: 1;
         transform: none;
-        transition: opacity $animation-duration ease-out,
-        transform $animation-duration ease-out;
+        transition:
+          opacity $animation-duration ease-out,
+          transform $animation-duration ease-out;
 
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
