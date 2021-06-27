@@ -14,6 +14,13 @@
 {% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
 {% block body %}
+    <div class="skip-links">
+        <ul class="sub-navigation-list sub-navigation-list--dotty-always">
+            <li class="sub-navigation-list__item"><a href="#content">Skip to content</a></li>
+            <li class="sub-navigation-list__item"><a href="#footer">Skip to footer</a></li>
+        </ul>
+        <hr class="skip-links__rule">
+    </div>
     <header class="site-header">
         <h1 class="site-header__title">
             <a href="/">{{ author }}</a>
@@ -33,9 +40,11 @@
         </nav>
         <hr class="site-header__rule">
     </header>
+    <a class="anchor" id="content"></a>
     <main class="main-content">
         {{ block('content') }}
     </main>
+    <a class="anchor" id="footer"></a>
     <footer class="site-footer">
         <hr class="site-footer__rule">
         <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
