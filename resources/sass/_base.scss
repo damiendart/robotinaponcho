@@ -16,6 +16,7 @@ a {
   font-weight: bold;
   text-decoration: underline variables.$colour-gray;
   text-decoration-thickness: variables.$base-border-width !important;
+  transition: text-decoration-color 0.125s ease-out;
 
   &:active,
   &:focus,

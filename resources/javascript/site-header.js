@@ -22,7 +22,9 @@ window.addEventListener(
       !initialScroll
       && window.pageYOffset > 150
       && window.pageYOffset > currentScroll
-      && document.querySelector('.site-header__navigation:hover, .dropdown-menu--open') === null
+      && document.querySelector(
+        '.site-header__navigation:hover, .dropdown-menu__list[aria-hidden="false"]',
+      ) === null
     ) {
       siteHeaderElement.classList.add('site-header--slide-up');
     } else {

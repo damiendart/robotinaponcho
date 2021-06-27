@@ -3,9 +3,13 @@
 // please refer to the accompanying "LICENCE" file.
 
 import './copy-to-clipboard';
-import './dropdown-menu';
 import './site-header';
 import 'toolbox-sass/javascript/pretty-date';
+
 import appleClickEventFix from 'toolbox-sass/javascript/apple-click-event-fix';
+import DropdownMenu from './dropdown-menu';
 
 appleClickEventFix.applyFix();
+
+// eslint-disable-next-line no-unused-vars
+const dropdownMenu = new DropdownMenu(document.querySelector('.dropdown-menu'));

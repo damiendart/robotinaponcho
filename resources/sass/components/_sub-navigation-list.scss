@@ -1,15 +1,48 @@
+@use "sass:math";
 @use "../variables";
+@use "../../../node_modules/toolbox-sass";
 
 .sub-navigation-list {
   justify-content: center;
   display: flex;
   flex-direction: row;
   list-style: none;
-  margin: (variables.$base-line-height * -2.5) 0 (variables.$base-line-height * 3);
   padding: 0;
 
   &__item {
     padding: 0;
     margin: 0;
+  }
+
+  &--dotty {
+    flex-direction: column;
+
+    @media #{toolbox-sass.$media-large-up} {
+      flex-direction: row;
+
+      .sub-navigation-list__item + .sub-navigation-list__item {
+        margin: 0 0 0 math.div(variables.$base-line-height, 2);
+        padding: 0 0 0 math.div(variables.$base-line-height, 2);
+        position: relative;
+
+        &::before {
+          background: variables.$colour-gray;
+          border-radius: 50%;
+          content: "";
+          display: block;
+          height: math.div(variables.$base-line-height, 4);
+          left: math.div(variables.$base-line-height, -8);
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: math.div(variables.$base-line-height, 4);
+
+        }
+      }
+    }
+  }
+
+  &--note {
+    margin: (variables.$base-line-height * -2.5) 0 (variables.$base-line-height * 3);
   }
 }

@@ -20,24 +20,16 @@
         </h1>
         <nav class="dropdown-menu site-header__navigation">
             <h2 class="dropdown-menu__title">Menu</h2>
-            <div class="dropdown-menu__lists">
-                <ul class="dropdown-menu__lists__list">
-                    <li class="dropdown-menu__lists__list__item"><a href="/">About</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/flippywindow/">FlippyWindow</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/git/">Open-source Stuff</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/notes/">Notes</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/art/">Artwork and Drawings</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/crap/">The Folder of Crap</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="/privacy-policy">Privacy Policy</a></li>
-                </ul>
-                <ul class="dropdown-menu__lists__list">
-                    <li class="dropdown-menu__lists__list__item"><a href="mailto:damiendart@pobox.com" rel="me">Email</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="https://github.com/damiendart" rel="me">GitHub</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="https://www.instagram.com/damiendart/" rel="me">Instagram</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="https://twitter.com/damiendart" rel="me">Twitter</a></li>
-                    <li class="dropdown-menu__lists__list__item"><a href="https://www.buymeacoffee.com/damiendart" rel="me">Buy Me A Coffee</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu__list" role="menu">
+                <li class="dropdown-menu__list__item"><a href="/">About</a></li>
+                <li class="dropdown-menu__list__item"><a href="/flippywindow/">FlippyWindow</a></li>
+                <li class="dropdown-menu__list__item"><a href="/git/">Open-source Stuff</a></li>
+                <li class="dropdown-menu__list__item"><a href="/notes/">Notes</a></li>
+                <li class="dropdown-menu__list__item"><a href="/art/">Artwork and Drawings</a></li>
+                <li class="dropdown-menu__list__item"><a href="/crap/">The Folder of Crap</a></li>
+                <li class="dropdown-menu__list__item"><a href="/privacy-policy">Privacy Policy</a></li>
+                <li class="dropdown-menu__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+            </ul>
         </nav>
         <hr class="site-header__rule">
     </header>
@@ -47,6 +39,12 @@
     <footer class="site-footer">
         <hr class="site-footer__rule">
         <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
+        <ul class="sub-navigation-list sub-navigation-list--dotty">
+            <li class="sub-navigation-list__item"><a href="https://www.buymeacoffee.com/damiendart" rel="me">Buy Me A Coffee</a></li>
+            <li class="sub-navigation-list__item"><a href="https://github.com/damiendart" rel="me">GitHub</a></li>
+            <li class="sub-navigation-list__item"><a href="https://www.instagram.com/damiendart/" rel="me">Instagram</a></li>
+            <li class="sub-navigation-list__item"><a href="https://twitter.com/damiendart" rel="me">Twitter</a></li>
+        </ul>
     </footer>
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}
