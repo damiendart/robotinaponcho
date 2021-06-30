@@ -10,8 +10,7 @@
 @use "download-cta";
 @use "dropdown-menu";
 @use "flippywindow-introduction";
-@use "site-footer";
-@use "site-header";
+@use "homepage-introduction";
 @use "introductory-blurb";
 @use "main-content";
 @use "metadata-list";
@@ -20,5 +19,7 @@
 @use "robot-header";
 @use "screen-reader_only";
 @use "sharing-links";
+@use "site-footer";
+@use "site-header";
 @use "skip-links";
 @use "sub-navigation-list";
