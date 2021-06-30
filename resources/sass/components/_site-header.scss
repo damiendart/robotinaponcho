@@ -43,11 +43,12 @@
   }
 
   a {
-    text-decoration: none;
+    text-decoration-color: transparent;
     color: inherit;
 
-    &:focus, &:hover {
-      text-decoration: underline;
+    &:focus,
+    &:hover {
+      text-decoration-color: inherit;
     }
   }
 
