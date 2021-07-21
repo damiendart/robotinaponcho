@@ -10,16 +10,20 @@
 .button {
   @include mixins.focus-ring(variables.$colour-blue, true);
 
+  $animation-duration: 0.125s;
+
   background: variables.$colour-blue;
   color: variables.$colour-white;
   display: inline-block;
   font-weight: bold;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
-  border-radius: variables.$base-line-height;
-  text-decoration: none;
+  border-radius: variables.$button-border-radius;
+  text-decoration: underline transparent;
+  transition: text-decoration-color $animation-duration ease-out;
   white-space: nowrap;
 
+  &:focus,
   &:hover {
     text-decoration: underline;
   }

@@ -9,6 +9,8 @@ $base-border-width: toolbox-sass.$base-one-pixel-in-rem * 2;
 $base-font-size: 18px;
 $base-line-height: math.div(30px, 16px) * 1rem;
 
+$button-border-radius: math.div($base-line-height, 4);
+
 $colour-black: #000000;
 $colour-blue: #0984e3;
 $colour-flippywindow-blue: #65b3eb;
