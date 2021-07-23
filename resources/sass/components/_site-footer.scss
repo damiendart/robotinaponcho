@@ -8,9 +8,9 @@
   border-top: variables.$base-border-width solid variables.$colour-gray;
   margin: (variables.$base-line-height * 3) auto 0;
   padding:
-      (variables.$base-line-height - variables.$base-border-width)
+    ((variables.$base-line-height * 2) - variables.$base-border-width)
     variables.$base-line-height
-    variables.$base-line-height;
+    (variables.$base-line-height * 2);
   text-align: center;
 
   &__copyright {
