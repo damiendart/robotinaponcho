@@ -17,7 +17,7 @@
         {% for note in collections.notes %}
             <li class="notes-list__item">
                 <a href="/{{ note.slug }}">{{ note.title }}</a>
-                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated: </span>{{ note.git.updated.timestamp.getTime | date('d/m/Y') }}<span class="screen-reader-only">)</span></span>
+                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated </span>{{ note.git.updated.timestamp.getTime | date('d M, Y') }}<span class="screen-reader-only">)</span></span>
             </li>
         {% endfor %}
     </ul>
