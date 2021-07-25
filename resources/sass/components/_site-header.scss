@@ -54,7 +54,7 @@
 
   &__navigation {
     position: absolute;
-    right: variables.$base-line-height;
+    right: variables.$base-line-height * 0.75;
     top: 50%;
     transform: translateY(-50%);
   }

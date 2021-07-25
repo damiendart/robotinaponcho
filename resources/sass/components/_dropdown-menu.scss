@@ -65,7 +65,7 @@
 
     -webkit-appearance: none;
     background: transparent;
-    border: variables.$base-border-width solid variables.$colour-gray;
+    border: none;
     border-radius: variables.$button-border-radius;
     color: variables.$colour-blue;
     cursor: pointer;
@@ -74,17 +74,13 @@
     font-weight: bold;
     line-height: variables.$base-line-height;
     margin: 0;
-    padding:
-      math.div(variables.$base-line-height, 4)
-      math.div(variables.$base-line-height, 2);
+    padding: math.div(variables.$base-line-height, 4);
     position: relative;
-    text-decoration: underline transparent;
-    text-decoration-thickness: variables.$base-border-width !important;
-    transition: text-decoration-color $animation-duration ease-out;
 
     &:focus,
     &:hover {
-      text-decoration-color: currentColor;
+      background: variables.$colour-gray;
+      transition: background-color $animation-duration ease-out;
     }
 
     &[aria-expanded="true"] {
@@ -92,8 +88,21 @@
       border-color: variables.$colour-black;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      color: variables.$colour-white;
       text-decoration-color: transparent;
+      transition: none;
+
+      &::before {
+        background-image: url("/assets/icon-menu.svg#inverse");
+      }
+    }
+
+    &::before {
+      background: url("/assets/icon-menu.svg") no-repeat center;
+      background-size: 125%;
+      content: "";
+      display: block;
+      width: variables.$base-line-height;
+      height: variables.$base-line-height;
     }
   }
 
