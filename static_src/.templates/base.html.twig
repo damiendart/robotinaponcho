@@ -14,30 +14,24 @@
 {% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
 {% block body %}
-    <div class="skip-links">
-        <ul class="sub-navigation-list sub-navigation-list--dotty-always">
-            <li class="sub-navigation-list__item"><a href="#content">Skip to content</a></li>
-            <li class="sub-navigation-list__item"><a href="#footer">Skip to footer</a></li>
-        </ul>
-        <hr class="skip-links__rule">
-    </div>
     <header class="site-header">
-        <h1 class="site-header__title">
-            <a href="/">{{ author }}</a>
-        </h1>
-        <nav class="dropdown-menu site-header__navigation">
-            <h2 class="dropdown-menu__title"><span class="screen-reader-only">Menu</span></h2>
-            <ul class="dropdown-menu__list" role="menu">
-                <li class="dropdown-menu__list__item"><a href="/">About</a></li>
-                <li class="dropdown-menu__list__item"><a href="/flippywindow/">FlippyWindow</a></li>
-                <li class="dropdown-menu__list__item"><a href="/git/">Open-source Stuff</a></li>
-                <li class="dropdown-menu__list__item"><a href="/notes/">Notes</a></li>
-                <li class="dropdown-menu__list__item"><a href="/art/">Artwork and Drawings</a></li>
-                <li class="dropdown-menu__list__item"><a href="/crap/">The Folder of Crap</a></li>
-                <li class="dropdown-menu__list__item"><a href="/privacy-policy">Privacy Policy</a></li>
-                <li class="dropdown-menu__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+        <div class="site-header__skip-links">
+            <ul class="sub-navigation-list sub-navigation-list--dotty-always">
+                <li class="sub-navigation-list__item"><a href="#content">Skip to content</a></li>
+                <li class="sub-navigation-list__item"><a href="#footer">Skip to footer</a></li>
             </ul>
-        </nav>
+        </div>
+        <hr class="site-header__rule">
+        <div class="site-header__container">
+            <p class="site-header__title"><a href="/">{{ author }}</a></p>
+            <nav class="site-header__navigation">
+                <ul class="site-header__navigation__list">
+                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/git/">Projects</a></li>
+                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
+                    <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
         <hr class="site-header__rule">
     </header>
     <a class="anchor" id="content"></a>

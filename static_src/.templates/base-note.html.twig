@@ -6,6 +6,8 @@
 
 {% extends '.templates/base-markdown.html.twig' %}
 
+{% set section = 'notes' %}
+
 {% block content %}
     <h1>{{ title | smartypants | widont }}</h1>
     <ul class="sub-navigation-list sub-navigation-list--note">
