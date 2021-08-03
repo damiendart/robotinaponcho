@@ -11,25 +11,21 @@
 {% block content %}
     <h1>{{ title | smartypants | widont }}</h1>
     <ul class="sub-navigation-list sub-navigation-list--note">
-        <li class="sub-navigation-list__item sub-navigation-list__item--back">
-            <a class="button button--back" href="/notes/">View all notes</a>
+        <li class="sub-navigation-list__item">
+            {% if git.created.timestamp.getTime == git.updated.timestamp.getTime %}
+                <b>Created<span class="screen-reader-only">:</span></b> <a data-timestamp="{{ git.created.timestamp.getTime }}"
+                href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
+                {{ git.created.timestamp.getTime | date('d/m/Y') }}</a>
+            {% else %}
+                <b>Updated<span class="screen-reader-only">:</span></b> <a data-timestamp="{{ git.updated.timestamp.getTime }}"
+                href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
+                {{ git.updated.timestamp.getTime | date('d/m/Y') }}</a>
+            {% endif %}
+        </li>
+        <li class="sub-navigation-list__item">
+            <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a>
         </li>
     </ul>
-    <div class="admonition admonition--metadata">
-        <ul class="metadata-list">
-            <li class="metadata-list__item"><b>Created</b>:
-                <a data-timestamp="{{ git.created.timestamp.getTime }}"
-                   href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
-                    {{ git.created.timestamp.getTime | date('d/m/Y') }}</a></li>
-            <li class="metadata-list__item"><b>Last Updated</b>:
-                <a data-timestamp="{{ git.updated.timestamp.getTime }}"
-                   href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
-                   {{ git.updated.timestamp.getTime | date('d/m/Y') }}</a></li>
-            <li class="metadata-list__item"><b>Licence</b>:
-                <a href="http://creativecommons.org/licenses/by/4.0/">Creative
-                    Commons Attribution 4.0 International</a></li>
-        </ul>
-    </div>
 
     {{ renderedMarkdown | raw }}
 {% endblock %}

@@ -6,22 +6,20 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   list-style: none;
   padding: 0;
+
+  @media #{toolbox-sass.$media-medium-up} {
+    flex-direction: row;
+  }
 
   &__item {
     padding: 0;
     margin: 0;
-  }
 
-  &--dotty {
-    flex-direction: column;
-
-    @media #{toolbox-sass.$media-large-up} {
-      flex-direction: row;
-
-      .sub-navigation-list__item + .sub-navigation-list__item {
+    @media #{toolbox-sass.$media-medium-up} {
+      & + & {
         margin: 0 0 0 math.div(variables.$base-line-height, 2);
         padding: 0 0 0 math.div(variables.$base-line-height, 2);
         position: relative;
@@ -43,7 +41,7 @@
     }
   }
 
-  &--dotty-always {
+  &--rigid {
     flex-direction: row;
 
     .sub-navigation-list__item + .sub-navigation-list__item {
@@ -67,6 +65,12 @@
   }
 
   &--note {
-    margin: (variables.$base-line-height * -2.5) 0 (variables.$base-line-height * 3);
+    color: variables.$colour-gray-dark;
+    font-size: 87.5%;
+    margin: (variables.$base-line-height * -3.75) 0 (variables.$base-line-height * 4);
+
+    a {
+      color: inherit;
+    }
   }
 }
