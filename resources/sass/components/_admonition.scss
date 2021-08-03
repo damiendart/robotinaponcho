@@ -6,16 +6,21 @@
   $full-breakpoint: variables.$content-width + variables.$base-line-height * 2.5;
 
   background: variables.$colour-white;
-  border-style: solid;
-  border-width: variables.$base-border-width;
-  border-left-width: variables.$base-line-height;
-  border-radius: math.div(variables.$base-line-height, 2);
+  border-left: variables.$base-line-height solid variables.$colour-black;
   box-sizing: border-box;
-  margin: variables.$base-line-height math.div(variables.$base-line-height, 2);
-  max-width: variables.$content-width;
+  margin: variables.$base-line-height auto;
+  max-width: variables.$content-width + (variables.$base-line-height * 2);
   position: relative;
   padding: variables.$base-line-height - variables.$base-border-width;
   padding-left: variables.$base-line-height;
+
+  @media screen and (min-width: #{$full-breakpoint}) {
+    border-style: solid;
+    border-width: variables.$base-border-width;
+    border-left-width: variables.$base-line-height * 3;
+    margin: variables.$base-line-height auto;
+    padding-left: variables.$base-line-height;
+  }
 
   > *:first-child {
     margin: 0;
@@ -116,14 +121,5 @@
     }
   }
 
-  @media #{toolbox-sass.$media-small-up} {
-    margin: variables.$base-line-height;
-  }
 
-  @media screen and (min-width: #{$full-breakpoint}) {
-    border-left-width: variables.$base-line-height * 3;
-    margin: variables.$base-line-height auto;
-    max-width: variables.$content-width + (variables.$base-line-height * 2);
-    padding-left: variables.$base-line-height;
-  }
 }

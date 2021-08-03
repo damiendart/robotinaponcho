@@ -152,14 +152,13 @@ pre {
   background: variables.$colour-gray-light;
   box-sizing: border-box;
   margin: math.div(variables.$base-line-height, 2) 0 0;
-  max-width: variables.$content-width;
+  max-width: variables.$content-width + (variables.$base-line-height * 2);
   overflow-x: scroll;
   position: relative;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
 
   @media screen and (min-width: #{$full-breakpoint}) {
     margin: math.div(variables.$base-line-height, 2) auto 0;
-    max-width: variables.$content-width + (variables.$base-line-height * 2);
   }
 
   code {
