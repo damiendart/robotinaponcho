@@ -1,0 +1,136 @@
+// Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file
+
+@use "sass:math";
+@use "../variables";
+
+.social-share-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  line-height: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    margin: 0 0 0 variables.$base-line-height;
+    padding: 0;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &--permalink {
+      a {
+        position: relative;
+
+        &::before {
+          background: url("icon-copy-link.svg");
+        }
+
+        &::after {
+          background: variables.$colour-gray-lighter url("icon-check-link.svg") no-repeat center;
+          background-size: variables.$base-line-height * 1.25;
+          content: "";
+          display: inline-block;
+          height: variables.$base-line-height * 1.5;
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          transition: opacity 0.125s ease-out;
+          width: variables.$base-line-height * 1.5;
+        }
+
+        &.clipboard-success {
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &--buy-me-a-coffee {
+      a {
+        &::before {
+          background: url("icon-buy-me-a-coffee-link.svg");
+        }
+      }
+    }
+
+    &--facebook {
+      a {
+        &::before {
+          background: url("icon-facebook-link.svg");
+        }
+      }
+    }
+
+    &--github {
+      a {
+        &::before {
+          background: url("icon-github-link.svg");
+        }
+      }
+    }
+
+    &--instagram {
+      a {
+        &::before {
+          background: url("icon-instagram-link.svg");
+        }
+      }
+    }
+
+    &--twitter {
+      a {
+        &::before {
+          background: url("icon-twitter-link.svg");
+        }
+      }
+    }
+
+    a {
+      display: block;
+
+      &::before {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: variables.$base-line-height;
+        content: "";
+        display: inline-block;
+        height: variables.$base-line-height * 1.5;
+        transition: background-size 0.125s ease-out;
+        width: variables.$base-line-height * 1.5;
+      }
+
+      &:focus,
+      &:hover {
+        &::before {
+          background-size: variables.$base-line-height * 1.25;
+        }
+      }
+
+      @media (hover: none) {
+        &:focus,
+        &:hover {
+          &::before {
+            background-size: variables.$base-line-height;
+          }
+        }
+      }
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  &--condensed {
+    .social-share-list__item:not(:first-child) {
+      margin: 0 0 0 math.div(variables.$base-line-height, 2);
+    }
+  }
+}

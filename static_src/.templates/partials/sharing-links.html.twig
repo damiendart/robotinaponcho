@@ -3,6 +3,7 @@
     <p class="sharing-links__title">Share this page:</p>
     {%
         include '@toolbox-sass/social-share-list.twig' with {
+            'classNameRoot': 'social-media-list',
             'link': link,
             'twitterText': twitterText
         }

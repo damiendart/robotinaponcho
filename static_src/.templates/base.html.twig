@@ -41,13 +41,17 @@
     <a class="anchor" id="footer"></a>
     <footer class="site-footer">
         <hr class="site-footer__rule">
-        <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>.</p>
-        <ul class="sub-navigation-list sub-navigation-list--dotty">
-            <li class="sub-navigation-list__item"><a href="https://www.buymeacoffee.com/damiendart" rel="me noreferrer noopener" target="_blank">Buy Me A Coffee</a></li>
-            <li class="sub-navigation-list__item"><a href="https://github.com/damiendart" rel="me noreferrer noopener" target="_blank">GitHub</a></li>
-            <li class="sub-navigation-list__item"><a href="https://www.instagram.com/damiendart/" rel="me noreferrer noopener" target="_blank">Instagram</a></li>
-            <li class="sub-navigation-list__item"><a href="https://twitter.com/damiendart" rel="me noreferrer noopener" target="_blank">Twitter</a></li>
-        </ul>
+        <div class="site-footer__container">
+            <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>. <a href="/privacy-policy">View&nbsp;privacy&nbsp;policy</a>.</p>
+            <div class="site-footer__social-media">
+                <ul class="social-share-list social-share-list--condensed">
+                    <li class="social-share-list__item social-share-list__item--buy-me-a-coffee"><a href="https://www.buymeacoffee.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Buy Me A Coffee profile"><span>Buy Me A Coffee</span></a></li>
+                    <li class="social-share-list__item social-share-list__item--github"><a href="https://github.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s GitHub profile"><span>GitHub</span></a></li>
+                    <li class="social-share-list__item social-share-list__item--instagram"><a href="https://www.instagram.com/damiendart/" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Instagram profile"><span>Instagram</span></a></li>
+                    <li class="social-share-list__item social-share-list__item--twitter"><a href="https://twitter.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Twitter profile"><span>Twitter</span></a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}

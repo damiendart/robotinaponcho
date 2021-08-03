@@ -30,8 +30,11 @@ body {
 
   background: variables.$colour-gray-lighter;
   color: variables.$colour-black;
+  display: flex;
+  flex-direction: column;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
   font-family: "Greycliff", toolbox-sass.$font-stack-system;
+  height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
 }
@@ -93,10 +96,16 @@ h3 {
 
 html {
   font-size: percentage(math.div(16px, variables.$base-font-size));
+  height: 100%;
   scroll-behavior: smooth;
 
   @media #{toolbox-sass.$media-small-up} {
     font-size: 100%;
+  }
+
+  @media #{toolbox-sass.$media-ie-11} {
+    height: auto;
+    min-height: 100%;
   }
 }
 

@@ -2,23 +2,48 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
+@use "sass:math";
 @use "../variables";
 
 .site-footer {
-  border-top: variables.$base-border-width solid variables.$colour-gray;
+  background: variables.$colour-white;
+  box-sizing: border-box;
+  flex-grow: 1;
   margin: (variables.$base-line-height * 3) auto 0;
-  padding:
-    ((variables.$base-line-height * 2) - variables.$base-border-width)
-    variables.$base-line-height
-    (variables.$base-line-height * 2);
+  padding: variables.$base-line-height;
   text-align: center;
+  width: 100%;
+
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: variables.$header-and-footer-width;
+
+    &::before {
+      content: "";
+      flex-grow: 666;
+      flex-basis: calc((#{variables.$header-and-footer-width * 0.75} - 100%) * 666);
+      height: math.div(variables.$base-line-height, 2);
+    }
+
+    & > * {
+      flex-grow: 1;
+    }
+
+    & > *:first-child {
+      order: -1;
+    }
+  }
 
   &__copyright {
     margin: 0;
+    text-align: center;
+  }
 
-    a {
-      white-space: pre;
-    }
+  &__social-media {
+
   }
 
   &__rule {
