@@ -25,3 +25,12 @@ $colour-white: #ffffff;
 
 $content-width: 40rem;
 $header-and-footer-width: $content-width + ($base-line-height * 8);
+
+// <https://shadows.brumm.af/>
+$shadow:
+  0 (toolbox-sass.$base-one-pixel-in-rem * 1.2) (toolbox-sass.$base-one-pixel-in-rem * 2.2) rgba(0, 0, 0, 0.011),
+  0 (toolbox-sass.$base-one-pixel-in-rem * 3) (toolbox-sass.$base-one-pixel-in-rem * 5.3) rgba(0, 0, 0, 0.016),
+  0 (toolbox-sass.$base-one-pixel-in-rem * 5.6) (toolbox-sass.$base-one-pixel-in-rem * 10) rgba(0, 0, 0, 0.02),
+  0 (toolbox-sass.$base-one-pixel-in-rem * 10.1) (toolbox-sass.$base-one-pixel-in-rem * 17.9) rgba(0, 0, 0, 0.024),
+  0 (toolbox-sass.$base-one-pixel-in-rem * 18.8) (toolbox-sass.$base-one-pixel-in-rem * 33.4) rgba(0, 0, 0, 0.029),
+  0 (toolbox-sass.$base-one-pixel-in-rem * 45) (toolbox-sass.$base-one-pixel-in-rem * 80) rgba(0, 0, 0, 0.04);

@@ -6,17 +6,16 @@
   $full-breakpoint: variables.$content-width + variables.$base-line-height * 2.5;
 
   background: variables.$colour-white;
-  border-left: variables.$base-line-height solid variables.$colour-black;
+  border-left: (variables.$base-line-height / 2) solid variables.$colour-black;
+  box-shadow: variables.$shadow;
   box-sizing: border-box;
-  margin: variables.$base-line-height auto;
+  margin: variables.$base-line-height;
   max-width: variables.$content-width + (variables.$base-line-height * 2);
   position: relative;
   padding: variables.$base-line-height - variables.$base-border-width;
   padding-left: variables.$base-line-height;
 
   @media screen and (min-width: #{$full-breakpoint}) {
-    border-style: solid;
-    border-width: variables.$base-border-width;
     border-left-width: variables.$base-line-height * 3;
     margin: variables.$base-line-height auto;
     padding-left: variables.$base-line-height;
