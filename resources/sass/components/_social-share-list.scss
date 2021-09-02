@@ -52,34 +52,10 @@
       }
     }
 
-    &--buy-me-a-coffee {
-      a {
-        &::before {
-          background: url("icon-buy-me-a-coffee-link.svg");
-        }
-      }
-    }
-
     &--facebook {
       a {
         &::before {
           background: url("icon-facebook-link.svg");
-        }
-      }
-    }
-
-    &--github {
-      a {
-        &::before {
-          background: url("icon-github-link.svg");
-        }
-      }
-    }
-
-    &--instagram {
-      a {
-        &::before {
-          background: url("icon-instagram-link.svg");
         }
       }
     }
