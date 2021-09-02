@@ -14,7 +14,7 @@
 
   &__container {
     @media #{toolbox-sass.$media-large-up} {
-      margin: 0 (variables.$base-line-height * 2);
+      margin: 0 (variables.$base-line-height * 3);
       max-width: variables.$container-width;
     }
 
@@ -26,8 +26,14 @@
 
       @media #{toolbox-sass.$media-large-up} {
         max-width: variables.$content-width;
-        padding-left: variables.$base-line-height * 2;
-        padding-right: variables.$base-line-height * 2;
+      }
+    }
+
+    & > img:not(&__image--full-width) {
+      @media #{toolbox-sass.$media-medium-down} {
+        box-sizing: border-box;
+        padding-left: variables.$base-line-height;
+        padding-right: variables.$base-line-height;
       }
     }
   }
