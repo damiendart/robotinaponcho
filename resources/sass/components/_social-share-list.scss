@@ -27,11 +27,11 @@
         position: relative;
 
         &::before {
-          background: url("icon-copy-link.svg");
+          background: url("icon-copy.svg");
         }
 
         &::after {
-          background: variables.$colour-white url("icon-check-link.svg") no-repeat center;
+          background: variables.$colour-white url("icon-check.svg") no-repeat center;
           background-size: variables.$base-line-height * 1.25;
           content: "";
           display: inline-block;
@@ -55,7 +55,7 @@
     &--facebook {
       a {
         &::before {
-          background: url("icon-facebook-link.svg");
+          background: url("icon-facebook.svg");
         }
       }
     }
@@ -63,7 +63,7 @@
     &--twitter {
       a {
         &::before {
-          background: url("icon-twitter-link.svg");
+          background: url("icon-twitter.svg");
         }
       }
     }
