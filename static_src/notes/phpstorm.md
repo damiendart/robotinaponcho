@@ -69,6 +69,7 @@ drill down to find a setting.
     the IDE theme with the OS (on macOS change the preferred light theme
     to *macOS Light*). Otherwise, use the Darcula theme throughout.
   - Set the editor font to [Iosekva][3].
+  - Set default visual guides at 72 and 78 characters.
   - Set the *Project Opening*'s *Default directory*.
   - Turn off the terminal's *Audible bell*.
 
