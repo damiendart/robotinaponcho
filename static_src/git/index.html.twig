@@ -1,0 +1,48 @@
+{#
+    Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+
+{% extends '.templates/base.html.twig' %}
+
+{% set description = "View a bunch of Damien Dart's open-source stuff." | smartypants %}
+{% set section = 'projects' %}
+{% set title = "Open-source Stuff" %}
+
+{% block content %}
+    <h1>My Git Repositories</h1>
+    <p>The following Git repositories are read-only mirrors of those
+        found on <a href="https://github.com/damiendart">my public
+        GitHub profile</a>. These repositories are updated every hour
+        (provided GitHub or the mirroring script hasn’t pooped the bed).</p>
+    <p>For more information on these repositories, see the
+        <a href="/projects/">projects page</a>.</p>
+
+    <a class="anchor" id="brainfuck"></a>
+    <a class="anchor" id="flippywindow"></a>
+    <a class="anchor" id="robotinaponcho"></a>
+    <a class="anchor" id="setup"></a>
+    <a class="anchor" id="toolbox"></a>
+    <a class="anchor" id="toolbox-sass"></a>
+    <h2>Active repositories</h2>
+    <pre><code>https://www.robotinaponcho.net/git/brainfuck.git
+https://www.robotinaponcho.net/git/flippywindow.git
+https://www.robotinaponcho.net/git/robotinaponcho.git
+https://www.robotinaponcho.net/git/setup.git
+https://www.robotinaponcho.net/git/toolbox.git
+https://www.robotinaponcho.net/git/toolbox-sass.git</code></pre>
+
+    <a class="anchor" id="bastardsnake"></a>
+    <a class="anchor" id="knr-solutions"></a>
+    <a class="anchor" id="nfsnapi-python"></a>
+    <a class="anchor" id="notes"></a>
+    <a class="anchor" id="obtaincornhoop"></a>
+    <h2>Archived repositories</h2>
+    <pre><code>https://www.robotinaponcho.net/git/bastardsnake.git
+https://www.robotinaponcho.net/git/knr-solutions.git
+https://www.robotinaponcho.net/git/nfsnapi-python.git
+https://www.robotinaponcho.net/git/notes.git
+https://www.robotinaponcho.net/git/obtaincornhoop.git</code></pre>
+
+{% endblock %}

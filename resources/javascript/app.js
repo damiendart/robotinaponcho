@@ -4,7 +4,12 @@
 
 import './copy-to-clipboard';
 import 'toolbox-sass/javascript/pretty-date';
-
 import appleClickEventFix from 'toolbox-sass/javascript/apple-click-event-fix';
+import DetailsElementAnimation from './details-element-animation';
 
 appleClickEventFix.applyFix();
+
+document.querySelectorAll('details').forEach((el) => {
+  // eslint-disable-next-line no-new
+  new DetailsElementAnimation(el);
+});

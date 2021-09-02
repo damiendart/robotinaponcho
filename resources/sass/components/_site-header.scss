@@ -7,45 +7,32 @@
 @use "../../../node_modules/toolbox-sass";
 
 .site-header {
-  $site-header-padding: variables.$base-line-height;
-
-  background: variables.$colour-white;
-  box-sizing: border-box;
-  padding: $site-header-padding;
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
-  margin: 0;
 
   a {
-    text-decoration-color: transparent;
-    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
 
-    &:focus,
-    &:hover {
-      text-decoration-color: inherit;
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
   }
 
-  &__container {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    max-width: variables.$header-and-footer-width;
+  &::before {
+    content: "";
+    flex-grow: 666;
+    flex-basis: calc((#{variables.$content-width * 0.75} - 100%) * 666);
+    height: math.div(variables.$base-line-height, 4);
+  }
 
-    &::before {
-      content: "";
-      flex-grow: 666;
-      flex-basis: calc((#{variables.$content-width * 0.75} - 100%) * 666);
-      height: math.div(variables.$base-line-height, 2);
-    }
-
-    & > * {
-      flex-grow: 1;
-    }
-
-    & > *:first-child {
-      order: -1;
-    }
+  & > *:not(&__skip-links) {
+    flex-grow: 1;
   }
 
   &__navigation {
@@ -65,52 +52,52 @@
 
         &--active {
           &::after {
-            background: variables.$colour-gray;
-            bottom: $site-header-padding * -1;
+            $diameter: toolbox-sass.$base-one-pixel-in-rem * 8;
+
+            background: currentColor;
+            border-radius: math.div($diameter, 2);
+            bottom: math.div(variables.$base-line-height, -2);
             content: "";
             display: block;
-            height: toolbox-sass.$base-one-pixel-in-rem * 4;
+            height: $diameter;
+            left: calc(50% - #{math.div($diameter, 2)});
             position: absolute;
-            width: 100%;
+            width: $diameter;
           }
+        }
+      }
+    }
+
+    &--skip-links {
+      align-content: center;
+      background: variables.$colour-white;
+      height: calc(100% + #{math.div(variables.$base-line-height, 2)});
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      transition: opacity 0.125s ease-in;
+      width: 100%;
+      z-index: 2;
+
+      &:focus-within {
+        pointer-events: auto;
+        opacity: 1;
+      }
+
+      .site-header__navigation__list {
+        @media #{toolbox-sass.$media-large-up} {
+          padding: 0 (variables.$base-line-height * 2);
+          justify-content: flex-start;
         }
       }
     }
   }
 
-  &__skip-links {
-    align-content: center;
-    background: variables.$colour-white;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    transition: opacity 0.125s ease-in;
-    width: 100%;
-    z-index: 2;
-
-    &:focus-within {
-      pointer-events: auto;
-      opacity: 1;
-    }
-
-    & > * {
-      margin: 0;
-    }
-
-    &__rule {
-      display: none;
-    }
-  }
-
   &__title {
-    font-size: 150%;
-    line-height: variables.$base-line-height;
     margin: 0;
+    order: -1;
     text-align: center;
   }
 

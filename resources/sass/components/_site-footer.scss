@@ -4,47 +4,21 @@
 
 @use "sass:math";
 @use "../variables";
+@use "../../../node_modules/toolbox-sass";
 
 .site-footer {
-  background: variables.$colour-white;
-  box-sizing: border-box;
-  flex-grow: 1;
-  margin: (variables.$base-line-height * 3) auto 0;
-  padding: variables.$base-line-height;
+  padding: (variables.$base-line-height * 2) 0 0;
   text-align: center;
-  width: 100%;
 
-  &__container {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    max-width: variables.$header-and-footer-width;
-
-    &::before {
-      content: "";
-      flex-grow: 666;
-      flex-basis: calc((#{variables.$header-and-footer-width * 0.75} - 100%) * 666);
-      height: math.div(variables.$base-line-height, 2);
-    }
-
-    & > * {
-      flex-grow: 1;
-    }
-
-    & > *:first-child {
-      order: -1;
-    }
+  @media #{toolbox-sass.$media-large-up} {
+    padding: (variables.$base-line-height * 4) 0 0;
+    text-align: initial;
   }
 
   &__copyright {
     font-size: 87.5%;
+    font-style: italic;
     margin: 0;
-    text-align: center;
-  }
-
-  &__social-media {
-
   }
 
   &__rule {

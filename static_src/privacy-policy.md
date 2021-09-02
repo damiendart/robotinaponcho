@@ -12,12 +12,10 @@ This privacy policy covers how this website collects, uses, and
 maintains information collected from users, as well as how third-party
 services are utilised.
 
-<div class="admonition admonition--info">
-  <p><b>Note</b>: This privacy policy is regularly reviewed and, if
-    necessary, updated. This privacy policy was lasted reviewed on
-    <b>31/05/21</b>. We encourage you to periodically review this
-    privacy policy to stay informed on any changes.</p>
-</div>
+**Note**: This privacy policy is regularly reviewed and, if necessary,
+updated. This privacy policy was lasted reviewed on **31/05/21**. We
+encourage you to periodically review this privacy policy to stay
+informed on any changes.</p>
 
 This website and the way it is run adheres to the [General Data
 Protection Regulation (GDPR)][1] (EU) when processing personal data. As

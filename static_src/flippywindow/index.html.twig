@@ -8,31 +8,27 @@
 
 {% set description = 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.' %}
 {% set metaOpengraphImage = urlBase ~ 'flippywindow/opengraph.png' %}
+{% set section = 'projects' %}
 {% set title = 'FlippyWindow' %}
 
 {% block content %}
-    <div class="flippywindow-introduction">
-        <h1 class="flippywindow-introduction__title">FlippyWindow</h1>
-        <p class="introductory-blurb">FlippyWindow is a
-            simple Windows application that non-destructively flips any
-            part of your screen, in real-time and using minimal resources.</p>
-        <div class="flippywindow-introduction__screenshot-with-arrow">
-            <img
-                alt="A screenshot of FlippyWindow over Adobe Photoshop."
-                height="557"
-                src="/flippywindow/screenshot.png"
-                title="A screenshot of FlippyWindow over Adobe Photoshop."
-                width="776"
-            >
-        </div>
-        <p class="introductory-blurb">
-            Flipping images (or viewing things with a mirror) is a
-            technique used to
-            <a href="http://yourfirstproduct.com/info/bmreverse">help
-            view things with “fresh eyes”</a> which can aid with
-            <a href="http://www.comic-tools.com/2008/10/my-mirror-is-most-important.html">spotting
-            visual issues</a>.</p>
-    </div>
+    <h1>FlippyWindow</h1>
+    <p>FlippyWindow is a simple Windows
+        application that non-destructively flips any part of your
+        screen, in real-time, and using minimal resources.</p>
+    <img
+        alt="A screenshot of FlippyWindow over Adobe Photoshop."
+        height="557"
+        src="/flippywindow/screenshot.png"
+        title="A screenshot of FlippyWindow over Adobe Photoshop."
+        width="776"
+    >
+    <p>Flipping images (or viewing things
+        with a mirror) is a technique used to
+        <a href="http://yourfirstproduct.com/info/bmreverse">help
+        view things with “fresh eyes”</a> which can aid with
+        <a href="http://www.comic-tools.com/2008/10/my-mirror-is-most-important.html">spotting
+        visual issues</a>.</p>
 
     <div class="download-cta">
         <h2 class="download-cta__link">
@@ -103,11 +99,4 @@
 
           - Initial release.
     {% endapply %}
-    {%
-        include '.templates/partials/sharing-links.html.twig' with {
-            'link': urlBase ~ slug,
-            'twitterAuthor': metaTwitterAuthor | replace({ '@': '' }),
-            'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
-        }
-    %}
 {% endblock %}

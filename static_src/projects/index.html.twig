@@ -1,0 +1,73 @@
+{#
+    Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+
+{% extends '.templates/base.html.twig' %}
+
+{% set description = "View a bunch of Damien Dart's projects." | smartypants %}
+{% set section = 'projects' %}
+{% set title = 'Projects' %}
+
+{% block content %}
+    <h1>Projects</h1>
+    <p>Here are some nerdy things that I’ve created. Most of my
+        open-source code can be found on <a href="https://github.com/damiendart">GitHub</a>
+        (and also mirrored <a href="/git/">here</a>).</p>
+
+    <ul>
+        <li><strong><a href="https://github.com/damiendart/toolbox-sass">toolbox-sass</a></strong>:
+            A hodgepodge of web-development-related stuff.</li>
+        <li><strong><a href="https://github.com/damiendart/setup">setup</a></strong>:
+            A bunch of Ansible stuff I use to setup various things.</li>
+        <li><strong><a href="/flippywindow/">FlippyWindow</a></strong>:
+            A simple Windows application that non-destructively flips
+            any part of your screen horizontally.</li>
+        <li><strong><a href="https://github.com/damiendart/robotinaponcho">robotinaponcho</a></strong>:
+            The source code to my personal site.</li>
+        <li><strong><a href="https://github.com/damiendart/brainfuck">brainfuck</a></strong>:
+            A simple <a href="https://en.wikipedia.org/wiki/Brainfuck">brainfuck</a>
+            interpreter written in C.</li>
+        <li><strong><a href="https://github.com/damiendart/toolbox">toolbox</a></strong>:
+            Dotfiles and small scripts that don’t warrant their own repository.</li>
+    </ul>
+
+    <p>I also have a folder of <a href="/crap/">random crap</a> that I
+        use for odds-and-sods I want to publish but don't require their
+        own page.</p>
+
+    <h2>Contributions to other projects</h2>
+    <ul>
+        <li>I’ve had <a href="https://github.com/getkirby/kirby/pulls?q=is%3Apr+author%3Adamiendart">two small pull-requests</a>
+            accepted for <a href="https://getkirby.com">Kirby</a>, a
+            file-based PHP CMS.</li>
+        <li>I’ve contributed a <a href="https://github.com/kangax/html-minifier/pulls?q=is%3Apr+author%3Adamiendart">couple</a>
+            of CLI bug-fixes to <a href="https://github.com/kangax/html-minifier">HTMLMinifier</a>,
+            a JavaScript-based HTML minifier.</li>
+    </ul>
+
+    <h2>Abandoned, completed or deprecated projects</h2>
+    <ul>
+        <li><strong><a href="https://github.com/damiendart/bastardsnake">Bastard
+            Snake</a></strong></a>: Written in Haxe, Bastard Snake set
+            out to be a Snake clone that didn’t like you getting many
+            points, but only got as far as making collecting points
+            slightly inconvenient.</li>
+        <li><strong><a href="https://github.com/damiendart/notes">notes</a></strong>:
+            Notes on stuff. These notes have since been merged into <a
+            href="#robotinaponcho">my personal website repository</a>,
+            where I continue to update them.</li>
+        <li><strong><a href="https://github.com/damiendart/nfsnapi-python">nfsnapi-python</a></strong>:
+            When I used NearlyFreeSpeech.NET to host websites, I wrote a
+            simple Python package that made using their API a little
+            easier. (Be aware that I wrote this during my
+            <em>cram-as-much-shit-into-as-few-lines-as-possible</em> phase.)</li>
+        <li><strong><a href="https://github.com/damiendart/obtaincornhoop">obtaincornhoop</a></strong>:
+            I once had a Tumblr weblog; this was the custom theme I made
+            for it.</li>
+        <li><strong><a href="https://github.com/damiendart/knr-solutions">knr-solutions</a></strong>:
+            My incomplete set of solutions to the exercises in <i>The C
+            Programming Language (Second Edition)</i>.</li>
+    </ul>
+{% endblock %}

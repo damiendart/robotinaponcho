@@ -31,7 +31,7 @@
         }
 
         &::after {
-          background: variables.$colour-gray-lighter url("icon-check-link.svg") no-repeat center;
+          background: variables.$colour-white url("icon-check-link.svg") no-repeat center;
           background-size: variables.$base-line-height * 1.25;
           content: "";
           display: inline-block;
@@ -125,12 +125,6 @@
 
     span {
       display: none;
-    }
-  }
-
-  &--condensed {
-    .social-share-list__item:not(:first-child) {
-      margin: 0 0 0 math.div(variables.$base-line-height, 2);
     }
   }
 }

@@ -29,11 +29,9 @@ In addition to the plugins that come bundled with PhpStorm, I also use
 
 I'm also one of these people.
 
-<div class="admonition admonition--info">
-  <p><b>Note</b>: The search functionality in PhpStorm’s
-    <em>Settings</em> window is pretty good, so I haven’t included the
-    whole list of menus you need to drill down to find a setting.</p>
-</div>
+**Note**: The search functionality in PhpStorm’s _Settings_ window is
+pretty good, so I haven’t included the whole list of menus you need to
+drill down to find a setting.
 
   - Turn on *Use contrast scrollbars*.
   - Turn on *Use smaller indents in trees*.

@@ -24,7 +24,6 @@ Log into the new device via SSH and run a big ol' rsync command:
 $ rsync --exclude '.DS_Store' --exclude '@eaDir' --exclude 'desktop.ini' -avhPc [SRC] [DEST] |& tee /tmp/rsync-output.txt
 ```
 
-<div class="admonition admonition--info">
   <p><b>Note</b>: As the <code>-a</code> flag causes rsync to preserve
     groups and owners, you might get the dreaded <em>some files/attrs
     were not transferred</em> error at the end if there is any group or
@@ -32,7 +31,6 @@ $ rsync --exclude '.DS_Store' --exclude '@eaDir' --exclude 'desktop.ini' -avhPc 
     it's nothing more serious, perform a dry-run transfer, or
     <a href="https://explainshell.com/explain?cmd=rsync+-a">replace the
     <code>-a</code> flag</a>.
-</div>
 
 After everything has been transferred over, you might need to clean up
 any group, owner, or permission issues. (I've used [an approach from the

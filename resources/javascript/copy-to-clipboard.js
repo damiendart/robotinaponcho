@@ -15,7 +15,7 @@ const clipboardSuccessDebounceFunction = debounce(
 
 clipboard.addHandler(
   document.body,
-  (target) => target.matches('a[href$=".git"], .social-share-list__item--permalink a'),
+  (target) => target.matches('.social-share-list__item--permalink a'),
   (target) => target.getAttribute('href'),
   (target) => {
     target.classList.add('clipboard-success');

@@ -5,30 +5,23 @@
 @use "sass:math";
 
 @use "fonts";
-@use "mixins";
 @use "variables";
 @use "../../node_modules/toolbox-sass";
 
 a {
-  @include mixins.focus-ring;
-
-  color: variables.$colour-blue;
-  font-weight: bold;
-  text-decoration: underline variables.$colour-gray;
-  text-decoration-thickness: variables.$base-border-width !important;
-  transition: text-decoration-color 0.125s ease-out;
+  color: inherit;
 
   &:active,
   &:focus,
   &:hover {
-    text-decoration-color: currentColor;
+    color: inherit;
   }
 }
 
 body {
   @include toolbox-sass.nice-font-rendering;
 
-  background: variables.$colour-gray-lighter;
+  background: variables.$colour-white;
   color: variables.$colour-black;
   display: flex;
   flex-direction: column;
@@ -44,6 +37,74 @@ code {
   font-family: "Iosevka Web", monospace;
   font-size: 96%;
   line-height: 1;
+}
+
+details {
+  margin: math.div(variables.$base-line-height, 2) 0 0;
+
+  & + & {
+    margin: 0;
+  }
+
+  div {
+    margin: 0 0 0 variables.$base-line-height;
+    opacity: 0;
+    transition: opacity 0.125s ease-in-out, transform 0.125s ease-in-out;
+    padding: math.div(variables.$base-line-height, 2) 0;
+    transform: translateX(math.div(variables.$base-line-height, -2));
+
+    & > *:first-child {
+      margin: 0;
+    }
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0 0 0 variables.$base-line-height;
+    position: relative;
+
+    &::before {
+      background: url("/assets/icon-chevron.svg") no-repeat center;
+      background-size: 40%;
+      content: "";
+      display: block;
+      height: variables.$base-line-height;
+      position: absolute;
+      top: math.div(variables.$base-line-height, 18);
+      left: 0;
+      transform: rotate(-90deg);
+      transition: 0.125s transform ease;
+      width: variables.$base-line-height;
+    }
+
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &[open] {
+    div {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.25s;
+    }
+
+    summary {
+      &::before {
+        transform: none;
+      }
+    }
+  }
+
+  &[data-animation-state="closing"] {
+    div {
+      opacity: 0;
+      transform: translateX(math.div(variables.$base-line-height, -2));
+      transition-delay: 0s;
+    }
+  }
 }
 
 figure {
@@ -72,9 +133,9 @@ figure {
 
 h1 {
   font-size: 200%;
+  letter-spacing: toolbox-sass.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
   margin: (variables.$base-line-height * 4) 0;
-  text-align: center;
 
   @media #{toolbox-sass.$media-medium-up} {
     font-size: 300%;
@@ -96,21 +157,17 @@ h3 {
 
 html {
   font-size: percentage(math.div(16px, variables.$base-font-size));
-  height: 100%;
   scroll-behavior: smooth;
 
   @media #{toolbox-sass.$media-small-up} {
     font-size: 100%;
   }
-
-  @media #{toolbox-sass.$media-ie-11} {
-    height: auto;
-    min-height: 100%;
-  }
 }
 
 img {
+  display: block;
   height: auto;
+  margin: variables.$base-line-height 0;
   max-width: 100%;
 }
 
@@ -147,18 +204,17 @@ p {
 }
 
 pre {
-  $full-breakpoint: variables.$content-width + variables.$base-line-height * 2.5;
-
   background: variables.$colour-gray-light;
   box-sizing: border-box;
   margin: math.div(variables.$base-line-height, 2) 0 0;
-  max-width: variables.$content-width + (variables.$base-line-height * 2);
-  overflow-x: scroll;
+  max-width: 100%;
+  overflow-x: auto;
   position: relative;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
 
-  @media screen and (min-width: #{$full-breakpoint}) {
-    margin: math.div(variables.$base-line-height, 2) auto 0;
+  @media #{toolbox-sass.$media-large-up} {
+    margin: math.div(variables.$base-line-height, 2) variables.$base-line-height 0;
+    max-width: variables.$content-width + (variables.$base-line-height * 2);
   }
 
   code {
@@ -192,8 +248,6 @@ table {
     vertical-align: bottom;
 
     > * > * {
-      border-bottom: variables.$colour-black solid variables.$base-border-width;
-      padding-bottom: (math.div(variables.$base-line-height, 4) - variables.$base-border-width);
       padding-top: 0;
     }
   }

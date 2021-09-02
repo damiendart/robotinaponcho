@@ -12,39 +12,19 @@
   padding: 0;
 
   &__item {
-    display: flex;
-    justify-content: space-between;
     margin: 0;
-    padding: (math.div(variables.$base-line-height, 4) - math.div(variables.$base-border-width, 2)) 0;
-
-    &:first-child {
-      padding-top: 0;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-    }
-
-    &:hover {
-      .notes-list__item__meta__created {
-        opacity: 1;
-      }
-    }
+    padding: 0;
 
     & + & {
-      border-top: variables.$base-border-width solid variables.$colour-gray;
+      margin: math.div(variables.$base-line-height, 2) 0 0;
+    }
+
+    a {
+      font-weight: bold;
     }
 
     &__meta {
-      flex-shrink: 0;
-      font-size: 87.5%;
-      margin: 0 0 0 math.div(variables.$base-line-height, 2);
-
-      span:not(class) {
-        @media #{toolbox-sass.$media-small-down} {
-          display: none;
-        }
-      }
+      display: block;
     }
   }
 }

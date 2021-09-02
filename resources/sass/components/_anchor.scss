@@ -7,10 +7,5 @@
 
 .anchor {
   position: absolute;
-  margin: (variables.$base-line-height * -2) 0 0;
   visibility: hidden;
-
-  @media #{toolbox-sass.$media-ie-11} {
-    margin: (variables.$base-line-height * 1.5) 0 0;
-  }
 }

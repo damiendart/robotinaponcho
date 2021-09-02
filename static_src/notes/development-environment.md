@@ -8,12 +8,10 @@
   twigTemplate: .templates/base-note.html.twig
 -->
 
-<div class="admonition admonition--info">
-  <p><b>Note</b>: For reference, I'm currently running everything on an
-    <a href="https://www.intel.co.uk/content/www/uk/en/products/boards-kits/nuc/kits/nuc10i7fnh.html">Intel
-    NUC10i7FNH</a> with 32 GB of RAM. For web development and the other
-    sorts of nerdery I do, it works for me just fine.
-</div>
+For reference, I'm currently using an
+<a href="https://www.intel.co.uk/content/www/uk/en/products/boards-kits/nuc/kits/nuc10i7fnh.html">Intel
+NUC10i7FNH</a> with 32 GB of RAM which, for web development and the
+other sorts of nerdery I do, works for me just fine.
 
 Setting up an Ubuntu Desktop 20.04 install
 ------------------------------------------
@@ -38,7 +36,8 @@ Setting up an Ubuntu Desktop 20.04 install
     - To handle Terraform secrets, find and copy over any existing GnuPG
       bits-and-pieces (as far as I can tell, all you need is
       _pubring.gpg_, _secring.gpg_, and _trustdb.gpg_).
-    - Set the terminal font to [Iosevka][5].
+    - Set the terminal font to [Iosevka][5] (which should be already
+      installed by the provisioning Ansible playbook).
     - Install [JetBrains Toolbox][6] and use it to install PhpStorm (see
       also: [my PhpStorm notes][7]).
     - Install [Steam][8].

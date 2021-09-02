@@ -3,91 +3,32 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "../mixins";
 @use "../variables";
 @use "../../../node_modules/toolbox-sass";
 
 .button {
-  @include mixins.focus-ring(variables.$colour-blue, true);
-
   $animation-duration: 0.125s;
 
-  background: variables.$colour-blue;
+  background: variables.$colour-black;
   color: variables.$colour-white;
   display: inline-block;
   font-weight: bold;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
-  border-radius: variables.$button-border-radius;
-  text-decoration: underline transparent;
-  transition: text-decoration-color $animation-duration ease-out;
+  border-radius: variables.$base-line-height;
+  text-decoration: none;
   white-space: nowrap;
 
   &:focus,
   &:hover {
+    color: variables.$colour-white;
     text-decoration: underline;
   }
 
-  &--back {
-    background: variables.$colour-white;
-    border: variables.$base-border-width solid variables.$colour-gray;
-    color: variables.$colour-blue;
-    padding:
-      math.div(variables.$base-line-height, 8)
-      (variables.$base-line-height * 0.375)
-      math.div(variables.$base-line-height, 8)
-      (variables.$base-line-height * 1.75);
-
-    &::before {
-      background: url("icon-arrow-left.svg") center no-repeat;
-      background-size: cover;
-      content: "";
-      display: block;
-      height: variables.$base-line-height;
-      left: variables.$base-line-height * 0.375;
-      position: absolute;
-      top: math.div(variables.$base-line-height, 8);
-      width: variables.$base-line-height;
-    }
-  }
-
-  &--clipboard {
-    &::before {
-      background: inherit;
-      content: "Copied!";
-      left: variables.$base-line-height;
-      opacity: 0;
-      padding: math.div(variables.$base-line-height, 2) 0;
-      position: absolute;
-      right: variables.$base-line-height;
-      text-align: center;
-      top: 0;
-      transition: opacity 0.125s ease-out;
-    }
-
-    &.clipboard-success {
-      &::before {
-        opacity: 1;
-      }
-    }
-  }
-
-  &--inverse {
-    background: variables.$colour-white;
-    border: variables.$base-border-width solid variables.$colour-gray;
-    color: variables.$colour-blue;
-    padding:
-      (math.div(variables.$base-line-height, 2) - variables.$base-border-width)
-      (variables.$base-line-height - variables.$base-border-width);
-  }
-
-  &--itchio {
-    background: variables.$colour-itchio-pink;
-    color: variables.$colour-white;
-  }
-
   img {
+    display: inline-block;
     height: variables.$base-line-height;
+    margin: 0;
     vertical-align: bottom;
   }
 

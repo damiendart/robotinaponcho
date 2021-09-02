@@ -14,45 +14,39 @@
 {% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
 {% block body %}
-    <header class="site-header">
-        <div class="site-header__skip-links">
-            <ul class="sub-navigation-list sub-navigation-list--rigid">
-                <li class="sub-navigation-list__item"><a href="#content">Skip to content</a></li>
-                <li class="sub-navigation-list__item"><a href="#footer">Skip to footer</a></li>
-            </ul>
+    <div class="content">
+        <div class="content__container">
+            <header class="site-header">
+                <div class="site-header__navigation site-header__navigation--skip-links">
+                    <ul class="site-header__navigation__list">
+                        <li class="site-header__navigation__list__item"><a href="#content">Skip to content</a></li>
+                        <li class="site-header__navigation__list__item"><a href="#footer">Skip to footer</a></li>
+                    </ul>
+                </div>
+                <hr class="site-header__rule">
+                <p class="site-header__title"><a href="/">{{ author }}</a></p>
+                <nav class="site-header__navigation">
+                    <ul class="site-header__navigation__list">
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
+                        <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+                    </ul>
+                </nav>
+                <hr class="site-header__rule">
+            </header>
+
+            <a class="anchor" id="content"></a>
+            {{ block('content') }}
+
+            <a class="anchor" id="footer"></a>
+            <footer class="site-footer">
+                <hr class="site-footer__rule">
+                <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }}
+                    <a href="/">{{ author }}</a>.<br>
+                    <a href="/privacy-policy">View&nbsp;privacy&nbsp;policy</a>.</p>
+            </footer>
         </div>
-        <hr class="site-header__rule">
-        <div class="site-header__container">
-            <p class="site-header__title"><a href="/">{{ author }}</a></p>
-            <nav class="site-header__navigation">
-                <ul class="site-header__navigation__list">
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/git/">Projects</a></li>
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
-                    <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <hr class="site-header__rule">
-    </header>
-    <a class="anchor" id="content"></a>
-    <main class="main-content">
-        {{ block('content') }}
-    </main>
-    <a class="anchor" id="footer"></a>
-    <footer class="site-footer">
-        <hr class="site-footer__rule">
-        <div class="site-footer__container">
-            <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }} <a href="/">{{ author }}</a>. <a href="/privacy-policy">View&nbsp;privacy&nbsp;policy</a>.</p>
-            <div class="site-footer__social-media">
-                <ul class="social-share-list social-share-list--condensed">
-                    <li class="social-share-list__item social-share-list__item--buy-me-a-coffee"><a href="https://www.buymeacoffee.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Buy Me A Coffee profile"><span>Buy Me A Coffee</span></a></li>
-                    <li class="social-share-list__item social-share-list__item--github"><a href="https://github.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s GitHub profile"><span>GitHub</span></a></li>
-                    <li class="social-share-list__item social-share-list__item--instagram"><a href="https://www.instagram.com/damiendart/" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Instagram profile"><span>Instagram</span></a></li>
-                    <li class="social-share-list__item social-share-list__item--twitter"><a href="https://twitter.com/damiendart" rel="me noreferrer noopener" target="_blank" title="View Damien Dart’s Twitter profile"><span>Twitter</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    </div>
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}
 
