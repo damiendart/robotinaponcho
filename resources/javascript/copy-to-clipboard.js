@@ -35,6 +35,6 @@ Array.prototype.forEach.call(
   document.querySelectorAll('a[href$=".git"], .social-share-list__item--permalink a'),
   (element) => {
     // eslint-disable-next-line no-param-reassign
-    element.title = 'Copy to clipboard';
+    element.title = 'Copy page URL to clipboard';
   },
 );

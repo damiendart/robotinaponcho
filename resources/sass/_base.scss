@@ -212,11 +212,6 @@ pre {
   position: relative;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
 
-  @media #{toolbox-sass.$media-large-up} {
-    margin: math.div(variables.$base-line-height, 2) variables.$base-line-height 0;
-    max-width: variables.$content-width + (variables.$base-line-height * 2);
-  }
-
   code {
     display: flex;
     line-height: variables.$base-line-height;
