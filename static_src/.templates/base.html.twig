@@ -9,9 +9,9 @@
 {% set metaAuthor = author %}
 {% set metaCanonical = urlBase ~ slug %}
 {% set metaDescription = description | default(false) %}
-{% set metaOpengraphTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
+{% set metaOpengraphTitle = metaTitle | default(title) | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 {% set metaOpengraphUrl = metaCanonical %}
-{% set metaTitle = title | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
+{% set metaTitle = metaTitle | default(title) | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
 {% block body %}
     <div class="content">
