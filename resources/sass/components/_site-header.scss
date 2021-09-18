@@ -88,7 +88,7 @@
 
       .site-header__navigation__list {
         @media #{toolbox-sass.$media-large-up} {
-          padding: 0 (variables.$base-line-height * 2);
+          padding: 0 variables.$base-line-height;
           justify-content: flex-start;
         }
       }
