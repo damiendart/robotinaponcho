@@ -136,10 +136,15 @@ h1 {
   letter-spacing: toolbox-sass.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
   margin: (variables.$base-line-height * 4) 0;
+  text-align: center;
 
   @media #{toolbox-sass.$media-medium-up} {
     font-size: 300%;
     line-height: variables.$base-line-height * 2;
+  }
+
+  @media #{toolbox-sass.$media-large-up} {
+    text-align: initial;
   }
 }
 

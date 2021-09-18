@@ -6,11 +6,7 @@
 @use "../../../node_modules/toolbox-sass";
 
 .content {
-  padding: variables.$base-line-height 0 (variables.$base-line-height * 2);
-
-  @media #{toolbox-sass.$media-large-up} {
-    padding: variables.$base-line-height 0 (variables.$base-line-height * 4);
-  }
+  padding: variables.$base-line-height 0;
 
   &__container {
     @media #{toolbox-sass.$media-large-up} {
