@@ -19,10 +19,34 @@
   text-decoration: none;
   white-space: nowrap;
 
+  &:active,
   &:focus,
   &:hover {
     color: variables.$colour-white;
     text-decoration: underline;
+  }
+
+  &:focus {
+    outline: none;
+
+    &::after {
+      border: (toolbox-sass.$base-one-pixel-in-rem * 3) solid variables.$colour-black;
+      border-radius: variables.$base-line-height + (toolbox-sass.$base-one-pixel-in-rem * 6);
+      box-sizing: border-box;
+      content: "";
+      display: block;
+      height: calc(100% + #{toolbox-sass.$base-one-pixel-in-rem * 12});
+      left: toolbox-sass.$base-one-pixel-in-rem * -6;
+      position: absolute;
+      top: toolbox-sass.$base-one-pixel-in-rem * -6;
+      width: calc(100% + #{toolbox-sass.$base-one-pixel-in-rem * 12});
+    }
+
+    &:not(:focus-visible) {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   img {

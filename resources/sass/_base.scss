@@ -16,6 +16,14 @@ a {
   &:hover {
     color: inherit;
   }
+
+  &:focus {
+    outline: (toolbox-sass.$base-one-pixel-in-rem * 3) solid currentColor;
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
 }
 
 body {
