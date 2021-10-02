@@ -13,6 +13,7 @@ For reference, I'm currently using an
 NUC10i7FNH</a> with 32 GB of RAM which, for web development and the
 other sorts of nerdery I do, works for me just fine.
 
+
 Setting up an Ubuntu Desktop 20.04 install
 ------------------------------------------
 
@@ -42,7 +43,7 @@ Setting up an Ubuntu Desktop 20.04 install
       also: [my PhpStorm notes][7]).
     - Install [Steam][8].
     - Connect to any network drives.
-    - Set up Livepatch.
+    - Set up Livepatch, Syncthing, and Obsidian.
   - Set up Windows 10 VMs in VirtualBox for cross-browser testing, and
     the occasional piss-about in Creative Cloud and Visual Studio. (See
     _Setting up Windows 10 in VirtualBox_ for more information.)
