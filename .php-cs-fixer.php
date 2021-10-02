@@ -9,7 +9,7 @@ declare(strict_types=1);
 use ToolboxSass\Helpers\PHPCSFixerHelper;
 
 return (new PhpCsFixer\Config())
-    ->setRules(PHPCSFixerHelper::getHouseRules())
+    ->setRules(PHPCSFixerHelper::getHouseRules('7.4'))
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->notPath('node_modules')
