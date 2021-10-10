@@ -34,7 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
-  font-family: "Greycliff", toolbox-sass.$font-stack-system;
+  font-family: system-ui, toolbox-sass.$font-stack-system;
   height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
@@ -43,7 +43,6 @@ body {
 code {
   background: variables.$colour-gray-light;
   font-family: "Iosevka Web", monospace;
-  font-size: 96%;
   line-height: 1;
 }
 
