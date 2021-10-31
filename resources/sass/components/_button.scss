@@ -7,8 +7,6 @@
 @use "../../../node_modules/toolbox-sass";
 
 .button {
-  $animation-duration: 0.125s;
-
   background: variables.$colour-black;
   color: variables.$colour-white;
   display: inline-block;
