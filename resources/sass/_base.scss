@@ -47,11 +47,7 @@ code {
 }
 
 details {
-  margin: math.div(variables.$base-line-height, 2) 0 0;
-
-  & + & {
-    margin: 0;
-  }
+  margin: 0;
 
   div {
     margin: 0 0 0 variables.$base-line-height;
@@ -115,6 +111,8 @@ details {
 }
 
 figure {
+  margin: 0;
+
   @media #{toolbox-sass.$media-small-down} {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
@@ -142,7 +140,7 @@ h1 {
   font-size: 200%;
   letter-spacing: toolbox-sass.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
-  margin: (variables.$base-line-height * 4) 0;
+  margin: 0;
   text-align: center;
 
   @media #{toolbox-sass.$media-medium-up} {
@@ -158,13 +156,13 @@ h1 {
 h2 {
   font-size: 150%;
   line-height: variables.$base-line-height * 1.25;
-  margin: (variables.$base-line-height * 2.75) 0 0 0;
+  margin: 0;
 }
 
 h3 {
   font-size: 112.5%;
   line-height: variables.$base-line-height;
-  margin: variables.$base-line-height 0 0 0;
+  margin: 0;
 }
 
 html {
@@ -179,7 +177,7 @@ html {
 img {
   display: block;
   height: auto;
-  margin: variables.$base-line-height 0;
+  margin: 0;
   max-width: 100%;
 }
 
@@ -198,7 +196,7 @@ main {
 }
 
 ol {
-  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  margin: 0;
   padding: 0;
 
   & > * {
@@ -212,13 +210,13 @@ ol {
 }
 
 p {
-  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  margin: 0;
 }
 
 pre {
   background: variables.$colour-gray-light;
   box-sizing: border-box;
-  margin: math.div(variables.$base-line-height, 2) 0 0;
+  margin: 0;
   max-width: 100%;
   overflow-x: auto;
   position: relative;
@@ -239,7 +237,7 @@ pre {
 }
 
 table {
-  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  margin: 0;
   border-collapse: collapse;
   width: 100%;
 
@@ -261,7 +259,7 @@ table {
 }
 
 ul {
-  margin: math.div(variables.$base-line-height, 2) 0 0 0;
+  margin: 0;
   padding: 0;
 
   & > * {

@@ -4,7 +4,7 @@
 
 @use "../variables";
 
-.sharing-links {
+.cta-sharing {
   flex-direction: row;
   justify-content: center;
   margin: (variables.$base-line-height * 3) auto 0;
@@ -13,7 +13,7 @@
     display: none;
   }
 
-  &__title {
+  &__heading {
     font-weight: bold;
     margin: 0;
     text-align: center;

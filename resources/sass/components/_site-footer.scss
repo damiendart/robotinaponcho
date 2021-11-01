@@ -7,11 +7,9 @@
 @use "../../../node_modules/toolbox-sass";
 
 .site-footer {
-  padding: (variables.$base-line-height * 2) 0 0;
   text-align: center;
 
   @media #{toolbox-sass.$media-large-up} {
-    padding: (variables.$base-line-height * 4) 0 0;
     text-align: initial;
   }
 

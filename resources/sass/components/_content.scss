@@ -2,6 +2,7 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
+@use "sass:math";
 @use "../variables";
 @use "../../../node_modules/toolbox-sass";
 
@@ -12,6 +13,44 @@
     @media #{toolbox-sass.$media-large-up} {
       margin: 0 (variables.$base-line-height * 3);
       max-width: variables.$container-width;
+    }
+
+    & > h1,
+    & > h1 + * {
+      margin: (variables.$base-line-height * 4) 0 0;
+    }
+
+    & > * + * {
+      margin: math.div(variables.$base-line-height, 2) 0 0;
+    }
+
+    & > h2 {
+      margin: (variables.$base-line-height * 2.75) 0 0 0;
+    }
+
+    & > h3,
+    & > img,
+    & > img + * {
+      margin: variables.$base-line-height 0 0 0;
+    }
+
+    & > details + details {
+      margin: 0;
+    }
+
+    & > .notes-list,
+    & > .notes-list + *,
+    & > [class^="cta"],
+    & > [class^="cta"] + * {
+      margin: variables.$base-line-height * 3 0 0;
+    }
+
+    & > .site-footer {
+      margin: (variables.$base-line-height * 2) 0 0;
+
+      @media #{toolbox-sass.$media-large-up} {
+        margin: (variables.$base-line-height * 4) 0 0;
+      }
     }
 
     & > *:not(div):not(img):not(pre) {
