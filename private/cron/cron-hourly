@@ -1,4 +1,4 @@
-#!/usr/bin/env php7.4
+#!/usr/bin/env php8.0
 <?php
 
 // Copyright (C) 2021 Damien Dart, <damiendart@pobox.com>.
@@ -18,6 +18,9 @@ function echoStep(string $step): void
     }
 }
 
+/**
+ * @throws Exception
+ */
 function git(string $command, ?string $cwd = null): string
 {
     $pipes = [];
@@ -26,7 +29,7 @@ function git(string $command, ?string $cwd = null): string
         "git {$command}",
         [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
         $pipes,
-        $cwd
+        $cwd,
     );
     $stderr = stream_get_contents($pipes[2]);
     $stdout = stream_get_contents($pipes[1]);
@@ -37,7 +40,7 @@ function git(string $command, ?string $cwd = null): string
 
     if (0 !== proc_close($resource)) {
         throw new Exception(
-            "Git command \"{$command}\" exited with a non-zero status\n{$stderr}"
+            "Git command \"{$command}\" exited with a non-zero status\n{$stderr}",
         );
     }
 
@@ -46,11 +49,11 @@ function git(string $command, ?string $cwd = null): string
 
 $baseDirectory = join(
     DIRECTORY_SEPARATOR,
-    [getenv('SHARED_ROOT'), 'protected', 'git']
+    [getenv('SHARED_ROOT'), 'protected', 'git'],
 );
 $gitHubResponse = (new Client())->request(
     'GET',
-    'https://api.github.com/users/damiendart/repos'
+    'https://api.github.com/users/damiendart/repos',
 );
 $repositoryMetadata = [];
 
@@ -63,7 +66,7 @@ if (!is_dir($baseDirectory)) {
 foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
     $repositoryDirectory = join(
         DIRECTORY_SEPARATOR,
-        [$baseDirectory, basename($repository->clone_url)]
+        [$baseDirectory, basename($repository->clone_url)],
     );
 
     if (true === $repository->fork) {
@@ -84,7 +87,7 @@ foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
     $repositoryMetadata[$repository->name]['last_commit_pretty'] =
         git(
             'log -n 1 --date=short --pretty=format:%ad',
-            $repositoryDirectory
+            $repositoryDirectory,
         );
     $repositoryMetadata[$repository->name]['last_commit_timestamp'] =
         git('log -n 1 --pretty=format:%at', $repositoryDirectory);
@@ -93,7 +96,7 @@ foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
 echoStep('# Writing repository metadata');
 file_put_contents(
     $baseDirectory . DIRECTORY_SEPARATOR . 'metadata.json',
-    json_encode($repositoryMetadata)
+    json_encode($repositoryMetadata),
 );
 
 return 0;

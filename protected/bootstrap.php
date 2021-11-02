@@ -14,7 +14,7 @@ if (getenv('SENTRY_DSN')) {
             'dsn' => getenv('SENTRY_DSN'),
             'environment' => getenv('APP_ENV'),
             'release' => getenv('RELEASE_TIMESTAMP'),
-        ]
+        ],
     );
 }
 
