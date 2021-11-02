@@ -63,7 +63,7 @@ if (!is_dir($baseDirectory)) {
 foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
     $repositoryDirectory = join(
         DIRECTORY_SEPARATOR,
-        [$baseDirectory, basename($repository->git_url)]
+        [$baseDirectory, basename($repository->clone_url)]
     );
 
     if (true === $repository->fork) {
@@ -73,7 +73,7 @@ foreach (json_decode((string) $gitHubResponse->getBody()) as $repository) {
     if (is_dir($repositoryDirectory)) {
         git('fetch -q', $repositoryDirectory);
     } else {
-        git("clone -q --mirror {$repository->git_url}", $baseDirectory);
+        git("clone -q --mirror {$repository->clone_url}", $baseDirectory);
     }
 
     touch($repositoryDirectory . DIRECTORY_SEPARATOR . 'git-daemon-export-ok');
