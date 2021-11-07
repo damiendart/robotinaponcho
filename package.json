@@ -5,7 +5,7 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
-    "assets": "git+ssh://git@github.com/damiendart/assets.git#a7e37eb760a3cb78ad2bb3f47596bf82b99d9bf3",
+    "assets": "git+ssh://git@github.com/damiendart/assets.git#d2614c4f11ed02f2d60865eee1122c4da3110a7f",
     "autoprefixer": "^10.2.6",
     "cssnano": "^5.0.5",
     "esbuild": "^0.12.5",
