@@ -10,9 +10,11 @@
   padding: variables.$base-line-height 0;
 
   &__container {
+    margin: 0 auto;
+    max-width: variables.$container-width;
+
     @media #{toolbox-sass.$media-large-up} {
       margin: 0 (variables.$base-line-height * 3);
-      max-width: variables.$container-width;
     }
 
     & > h1,
