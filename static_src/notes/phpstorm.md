@@ -19,9 +19,11 @@ fresh install of PhpStorm, so eh.
 ### Plugins
 
 In addition to the plugins that come bundled with PhpStorm, I also use
-[IdeaVim][], because I’m one of those people, and [Laravel Idea][].
+[IdeaVim][], because I’m one of those people, [Key Promoter X][], and
+[Laravel Idea][].
 
   [IdeaVim]: <https://github.com/JetBrains/ideavim>
+  [Key Promoter X]: <https://plugins.jetbrains.com/plugin/9792-key-promoter-x>
   [Laravel Idea]: <https://plugins.jetbrains.com/plugin/13441-laravel-idea>
 
 ### Removing as much of the interface as possible
