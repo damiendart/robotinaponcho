@@ -12,11 +12,11 @@
 I’m Damien Dart, a full-time web developer based in South West England,
 and this is my personal website.
 
-Other places I've polluted include [Instagram][1], [itch.io][2],
-[GitHub][3], and [Twitter][4]. You can also [buy me a coffee][5].
+Other places I've polluted include [GitHub][], [Instagram][],
+[itch.io][], and [Twitter][]. You can also [buy me a coffee][].
 
-[1]: <https://www.instagram.com/damiendart/>
-[2]: <https://damiendart.itch.io/>
-[3]: <https://github.com/damiendart>
-[4]: <https://twitter.com/damiendart>
-[5]: <https://www.buymeacoffee.com/damiendart>
+  [Instagram]: <https://www.instagram.com/damiendart/>
+  [itch.io]: <https://damiendart.itch.io/>
+  [GitHub]: <https://github.com/damiendart>
+  [Twitter]: <https://twitter.com/damiendart>
+  [buy me a coffee]: <https://www.buymeacoffee.com/damiendart>
