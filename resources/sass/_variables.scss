@@ -3,14 +3,17 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "functions";
 @use "../../node_modules/toolbox-sass";
 
 $base-font-size: 18px;
-$base-line-height: math.div(30px, 16px) * 1rem;
+$base-line-height: functions.px-to-rem(30px);
 
-$colour-black: #000000;
-$colour-gray-light: #eeeeee;
-$colour-white: #ffffff;
+$colour-black-50: #fafafa;
+$colour-black-100: #ededed;
+$colour-black-800: #4b4b4b;
+$colour-black-900: #3b3b3b;
+$colour-black-1000: #000000;
 
 $container-width: 40rem + ($base-line-height * 2);
 $content-width: 40rem;

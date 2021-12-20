@@ -4,6 +4,7 @@
 
 @use "sass:math";
 @use "../variables";
+@use "../../../node_modules/toolbox-sass";
 
 .social-share-list {
   display: flex;
@@ -26,12 +27,8 @@
       a {
         position: relative;
 
-        &::before {
-          background: url("icon-copy.svg");
-        }
-
         &::after {
-          background: variables.$colour-white url("icon-check.svg") no-repeat center;
+          background: variables.$colour-black-50 url("icon-check.svg") no-repeat center;
           background-size: variables.$base-line-height * 1.25;
           content: "";
           display: inline-block;
@@ -42,11 +39,30 @@
           top: 0;
           transition: opacity 0.125s ease-out;
           width: variables.$base-line-height * 1.5;
+
+          @supports (mask: url("icon-check.svg")) {
+            background: variables.$colour-black-1000;
+            background: var(--base-foreground);
+            mask: url("icon-check.svg") no-repeat center;
+            mask-size: variables.$base-line-height * 1.25;
+          }
+        }
+
+        &::before {
+          background: url("icon-copy.svg");
+
+          @supports (mask: url("icon-copy.svg")) {
+            mask: url("icon-copy.svg");
+          }
         }
 
         &.clipboard-success {
           &::after {
             opacity: 1;
+          }
+
+          &::before {
+            opacity: 0;
           }
         }
       }
@@ -56,6 +72,10 @@
       a {
         &::before {
           background: url("icon-facebook.svg");
+
+          @supports (mask: url("icon-facebook.svg")) {
+            mask: url("icon-facebook.svg");
+          }
         }
       }
     }
@@ -64,6 +84,10 @@
       a {
         &::before {
           background: url("icon-twitter.svg");
+
+          @supports (mask: url("icon-twitter.svg")) {
+            mask: url("icon-twitter.svg");
+          }
         }
       }
     }
@@ -78,14 +102,22 @@
         content: "";
         display: inline-block;
         height: variables.$base-line-height * 1.5;
-        transition: background-size 0.125s ease-out;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: variables.$base-line-height;
+        transition: background-size 0.125s ease-out, mask-size 0.125s ease-out, opacity 0.125s ease-out;
         width: variables.$base-line-height * 1.5;
+
+        @supports (mask: url("icon-check.svg")) {
+          background: variables.$colour-black-1000;
+          background: var(--base-foreground);
+        }
       }
 
       &:focus,
       &:hover {
         &::before {
-          background-size: variables.$base-line-height * 1.25;
+          mask-size: variables.$base-line-height * 1.25;
         }
       }
 
@@ -100,7 +132,7 @@
     }
 
     span {
-      display: none;
+      @include toolbox-sass.screen-reader-only;
     }
   }
 }

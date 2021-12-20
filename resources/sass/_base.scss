@@ -8,6 +8,22 @@
 @use "variables";
 @use "../../node_modules/toolbox-sass";
 
+:root {
+  --base-background: #{variables.$colour-black-50};
+  --base-foreground: #{variables.$colour-black-1000};
+  --base-accent: #{variables.$colour-black-100};
+  --button-background: #{variables.$colour-black-1000};
+  --button-foreground: #{variables.$colour-black-50};
+
+  @media (prefers-color-scheme: dark) {
+    --base-background: #{variables.$colour-black-900};
+    --base-foreground: #{variables.$colour-black-50};
+    --base-accent: #{variables.$colour-black-800};
+    --button-background: #{variables.$colour-black-50};
+    --button-foreground: #{variables.$colour-black-900};
+  }
+}
+
 a {
   color: inherit;
 
@@ -29,8 +45,10 @@ a {
 body {
   @include toolbox-sass.nice-font-rendering;
 
-  background: variables.$colour-white;
-  color: variables.$colour-black;
+  background: variables.$colour-black-50;
+  background: var(--base-background);
+  color: variables.$colour-black-1000;
+  color: var(--base-foreground);
   display: flex;
   flex-direction: column;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
@@ -41,7 +59,8 @@ body {
 }
 
 code {
-  background: variables.$colour-gray-light;
+  background: variables.$colour-black-100;
+  background: var(--base-accent);
   font-family: "Iosevka Web", monospace;
   font-size: 96%;
   line-height: 1;
@@ -69,13 +88,14 @@ details {
     position: relative;
 
     &::before {
-      background: url("/assets/icon-chevron.svg") no-repeat center;
-      background-size: 40%;
+      background: var(--base-foreground);
       content: "";
       display: block;
       height: variables.$base-line-height;
+      mask: url("/assets/icon-chevron.svg") no-repeat center;
+      mask-size: 40%;
       position: absolute;
-      top: math.div(variables.$base-line-height, 18);
+      top: 0;
       left: 0;
       transform: rotate(-90deg);
       transition: 0.125s transform ease;
@@ -183,7 +203,8 @@ img {
 }
 
 kbd {
-  background: variables.$colour-gray-light;
+  background: variables.$colour-black-100;
+  background: var(--base-accent);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;
   font-family: inherit;
@@ -215,7 +236,8 @@ p {
 }
 
 pre {
-  background: variables.$colour-gray-light;
+  background: variables.$colour-black-100;
+  background: var(--base-accent);
   box-sizing: border-box;
   margin: 0;
   max-width: 100%;
@@ -247,7 +269,8 @@ table {
   }
 
   > tbody > tr:nth-last-of-type(odd) {
-    background: variables.$colour-gray-light;
+    background: variables.$colour-black-100;
+    background: var(--base-accent);
   }
 
   > thead {

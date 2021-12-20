@@ -3,12 +3,15 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../functions";
 @use "../variables";
 @use "../../../node_modules/toolbox-sass";
 
 .button {
-  background: variables.$colour-black;
-  color: variables.$colour-white;
+  background: variables.$colour-black-1000;
+  background: var(--button-background);
+  color: variables.$colour-black-50;
+  color: var(--button-foreground);
   display: inline-block;
   font-weight: bold;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
@@ -20,7 +23,8 @@
   &:active,
   &:focus,
   &:hover {
-    color: variables.$colour-white;
+    color: variables.$colour-black-50;
+    color: var(--button-foreground);
     text-decoration: underline;
   }
 
@@ -28,7 +32,8 @@
     outline: none;
 
     &::after {
-      border: (toolbox-sass.$base-one-pixel-in-rem * 3) solid variables.$colour-black;
+      border: (toolbox-sass.$base-one-pixel-in-rem * 3) solid variables.$colour-black-1000;
+      border-color: var(--button-background);
       border-radius: variables.$base-line-height + (toolbox-sass.$base-one-pixel-in-rem * 6);
       box-sizing: border-box;
       content: "";
@@ -58,6 +63,28 @@
     @media #{toolbox-sass.$media-small-only} {
       &::after {
         content: ":";
+      }
+    }
+  }
+
+  &__itchio {
+    @supports (mask: url("/assets/itchio.svg")) {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+      margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-2px);
+
+      &::before {
+        background: var(--button-foreground);
+        content: "";
+        display: block;
+        height: variables.$base-line-height;
+        mask: url("/assets/itchio.svg") no-repeat center;
+        width: functions.px-to-rem(98.25px);
+      }
+
+      & > * {
+        @include toolbox-sass.screen-reader-only;
       }
     }
   }

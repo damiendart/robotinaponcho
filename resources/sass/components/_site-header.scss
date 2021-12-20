@@ -70,7 +70,8 @@
 
     &--skip-links {
       align-content: center;
-      background: variables.$colour-white;
+      background: variables.$colour-black-50;
+      background: var(--base-background);
       height: calc(100% + #{math.div(variables.$base-line-height, 2)});
       left: 0;
       opacity: 0;
