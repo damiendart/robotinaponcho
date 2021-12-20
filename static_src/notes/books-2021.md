@@ -13,23 +13,25 @@ books somewhere easily available will help me stay motivated.
 
 ## Completed books
 
-  - [The Hitchhiker's Guide to the Galaxy][1] by Douglas Adams
-  - [The Colorado Kid][2] by Stephen King
-  - [Joyland][3] by Stephen King
-  - [Later][4] by Stephen King
-  - *Easy Peasy Puppy Squeezy* by Steve Mann
-  - [The Thursday Murder Club][5] by Richard Osman
-  - [The Running Man][6] by Stephen King
-  - [The Amber Spyglass (His Dark Materials)][7] by Philip Pullman
-  - [The Subtle Knife (His Dark Materials)][8] by Philip Pullman
-  - [The Northern Lights (His Dark Materials)][9] by Philip Pullman
+-   [The Restaurant at the End of the Universe][] by Douglas Adams
+-   [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams
+-   [The Colorado Kid][] by Stephen King
+-   [Joyland][] by Stephen King
+-   [Later][] by Stephen King
+-   *Easy Peasy Puppy Squeezy* by Steve Mann
+-   [The Thursday Murder Club][] by Richard Osman
+-   [The Running Man][] by Stephen King
+-   [The Amber Spyglass (His Dark Materials)][] by Philip Pullman
+-   [The Subtle Knife (His Dark Materials)][] by Philip Pullman
+-   [The Northern Lights (His Dark Materials)][] by Philip Pullman
 
-[1]: <https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)>
-[2]: <https://en.wikipedia.org/wiki/The_Colorado_Kid>
-[3]: <https://en.wikipedia.org/wiki/Joyland_(King_novel)>
-[4]: <https://en.wikipedia.org/wiki/Later_(novel)>
-[5]: <https://en.wikipedia.org/wiki/The_Thursday_Murder_Club>
-[6]: <https://en.wikipedia.org/wiki/The_Running_Man_(novel)>
-[7]: <https://en.wikipedia.org/wiki/The_Amber_Spyglass>
-[8]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
-[9]: <https://en.wikipedia.org/wiki/Northern_Lights_(Pullman_novel)>
+  [The Restaurant at the End of the Universe]: <https://en.wikipedia.org/wiki/The_Restaurant_at_the_End_of_the_Universe>
+  [The Hitchhiker’s Guide to the Galaxy]: <https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)>
+  [The Colorado Kid]: <https://en.wikipedia.org/wiki/The_Colorado_Kid>
+  [Joyland]: <https://en.wikipedia.org/wiki/Joyland_(King_novel)>
+  [Later]: <https://en.wikipedia.org/wiki/Later_(novel)>
+  [The Thursday Murder Club]: <https://en.wikipedia.org/wiki/The_Thursday_Murder_Club>
+  [The Running Man]: <https://en.wikipedia.org/wiki/The_Running_Man_(novel)>
+  [The Amber Spyglass (His Dark Materials)]: <https://en.wikipedia.org/wiki/The_Amber_Spyglass>
+  [The Subtle Knife (His Dark Materials)]: <https://en.wikipedia.org/wiki/The_Subtle_Knife>
+  [The Northern Lights (His Dark Materials)]: <https://en.wikipedia.org/wiki/Northern_Lights_(Pullman_novel)>
