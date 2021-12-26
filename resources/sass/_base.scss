@@ -8,6 +8,14 @@
 @use "variables";
 @use "../../node_modules/toolbox-sass";
 
+@mixin dark-theme {
+  --base-background: #{variables.$colour-black-900};
+  --base-foreground: #{variables.$colour-black-50};
+  --base-accent: #{variables.$colour-black-800};
+  --button-background: #{variables.$colour-black-50};
+  --button-foreground: #{variables.$colour-black-900};
+}
+
 :root {
   --base-background: #{variables.$colour-black-50};
   --base-foreground: #{variables.$colour-black-1000};
@@ -16,11 +24,13 @@
   --button-foreground: #{variables.$colour-black-50};
 
   @media (prefers-color-scheme: dark) {
-    --base-background: #{variables.$colour-black-900};
-    --base-foreground: #{variables.$colour-black-50};
-    --base-accent: #{variables.$colour-black-800};
-    --button-background: #{variables.$colour-black-50};
-    --button-foreground: #{variables.$colour-black-900};
+    &:not([data-theme="light"]) {
+      @include dark-theme;
+    }
+  }
+
+  &[data-theme="dark"] {
+    @include dark-theme;
   }
 }
 

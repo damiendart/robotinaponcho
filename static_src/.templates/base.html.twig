@@ -50,6 +50,10 @@
     <script async src="/assets/app.{{ releaseTimestamp }}.js"></script>
 {% endblock %}
 
+{% block headJavaScript %}
+    {{ parent() }},localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))
+{% endblock %}
+
 {% block headCustom %}
     <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
 {% endblock %}
