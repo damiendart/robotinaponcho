@@ -62,7 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
-  font-family: "Greycliff", toolbox-sass.$font-stack-system;
+  font-family: "IBM Plex Serif", Georgia, Times, serif;
   height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
@@ -72,7 +72,6 @@ code {
   background: variables.$colour-black-100;
   background: var(--base-accent);
   font-family: "Iosevka Web", monospace;
-  font-size: 96%;
   line-height: 1;
 }
 
@@ -168,7 +167,7 @@ figure {
 }
 
 h1 {
-  font-size: 200%;
+  font-size: 225%;
   letter-spacing: toolbox-sass.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
   margin: 0;
@@ -197,10 +196,10 @@ h3 {
 }
 
 html {
-  font-size: percentage(math.div(16px, variables.$base-font-size));
+  font-size: percentage(math.div(14px, variables.$base-font-size));
   scroll-behavior: smooth;
 
-  @media #{toolbox-sass.$media-small-up} {
+  @media #{toolbox-sass.$media-medium-up} {
     font-size: 100%;
   }
 }
@@ -217,7 +216,7 @@ kbd {
   background: var(--base-accent);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;
-  font-family: inherit;
+  font-family: toolbox-sass.$font-stack-system;
   line-height: 1;
   padding: math.div(variables.$base-line-height, 4);
 }
