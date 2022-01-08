@@ -97,7 +97,15 @@ details {
     position: relative;
 
     &::before {
-      background: var(--base-foreground);
+      // When the background is a solid block of colour, Firefox will
+      // sometimes produces faint artifacts when the element rotates.
+      // Using a radial gradient as the background mitigates this.
+      background: radial-gradient(
+          circle,
+          var(--base-foreground) 0,
+          var(--base-foreground) 60%,
+          var(--base-background) 60%
+      );
       content: "";
       display: block;
       height: variables.$base-line-height;
