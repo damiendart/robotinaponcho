@@ -3,15 +3,22 @@
   # International License. To view a copy of this license, please visit
   # <http://creativecommons.org/licenses/by/4.0/>.
 
-  title: 'Book List: 2021 Edition'
+  title: "Completed Books"
   twigTemplate: .templates/base-note.html.twig
 -->
 
-I'm trying to read more, so I figured keeping a list of finished
-books somewhere easily available will help me stay motivated.
+I’m trying to read more, so I figured keeping a list of finished books
+somewhere easily available will help me stay motivated.
 
 
-## Completed books
+## Completed books in 2022
+
+-   [Life, the Universe and Everything][] by Douglas Adams
+
+  [Life, the Universe and Everything]: <https://en.wikipedia.org/wiki/Life,_the_Universe_and_Everything>
+
+
+## Completed books in 2021
 
 -   [The Restaurant at the End of the Universe][] by Douglas Adams
 -   [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams
