@@ -46,10 +46,8 @@ tasks:
 
   build:javascript:
     cmds:
-      - 'node_modules/.bin/esbuild src/javascript/app.js --bundle --log-level=warning --outfile={{ .OUTPUT_FILE }}'
-      - 'node_modules/.bin/babel {{ .OUTPUT_FILE }} --out-file {{ .OUTPUT_FILE }} --presets=@babel/preset-env'
-      - 'node_modules/.bin/uglifyjs --compress --mangle -o {{ .OUTPUT_FILE }} -- {{ .OUTPUT_FILE }}'
-    desc: 'Build (IE11-compatible) JavaScript files with esbuild and friends'
+      - 'node_modules/.bin/esbuild src/javascript/app.js --bundle --log-level=warning --minify --outfile={{ .OUTPUT_FILE }}'
+    desc: 'Build (IE11-incompatible) JavaScript files with esbuild'
     vars:
       OUTPUT_FILE: 'public/assets/app.js'
 

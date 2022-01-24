@@ -2,7 +2,6 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-import './polyfills';
 import clipboard from 'toolbox-sass/javascript/clipboard';
 import debounce from 'toolbox-sass/javascript/debounce';
 
