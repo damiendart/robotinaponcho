@@ -13,8 +13,10 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   [So Long, and Thanks for All the Fish][] by Douglas Adams
 -   [Life, the Universe and Everything][] by Douglas Adams
 
+  [So Long, and Thanks for All the Fish]: <https://en.wikipedia.org/wiki/So_Long,_and_Thanks_for_All_the_Fish>
   [Life, the Universe and Everything]: <https://en.wikipedia.org/wiki/Life,_the_Universe_and_Everything>
 
 
