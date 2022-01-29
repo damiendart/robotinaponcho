@@ -13,10 +13,13 @@ I’m Damien Dart, a full-time web developer based in South West England,
 and this is my personal website.
 
 Other places I've polluted include [GitHub][], [Instagram][],
-[itch.io][], and [Twitter][]. You can also [buy me a coffee][].
+[itch.io][], [Pinboard][], and [Twitter][].
+
+You can also [buy me a coffee][].
 
   [Instagram]: <https://www.instagram.com/damiendart/>
   [itch.io]: <https://damiendart.itch.io/>
   [GitHub]: <https://github.com/damiendart>
+  [Pinboard]: <https://pinboard.in/u:damiendart>
   [Twitter]: <https://twitter.com/damiendart>
   [buy me a coffee]: <https://www.buymeacoffee.com/damiendart>
