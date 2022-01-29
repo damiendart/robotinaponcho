@@ -51,15 +51,13 @@ drill down to find a setting.
 
 ### IdeaVim customisations and settings
 
--   Swap the audible bell for the visual one with `:set visualbell`.
--   Use the IdeaVim *Settings* window (click the IdeaVim icon in the
-    status bar and select *Settings…*) to set the
-    <kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>Ctrl</kbd>+<kbd>E</kbd>, and
-    <kbd>Ctrl</kbd>+<kbd>V</kbd> keyboard shortcuts to be handled by the
-    IDE instead of IdeaVim.
+-   Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
+    is installed.
 -   On macOS, make IdeaVim a more pleasant experience by running
     `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false`
     in the terminal.
+
+  [my dotfiles]: <https://www.robotinaponcho.net/git/#toolbox>
 
 ### Miscellaneous customisations and settings
 
