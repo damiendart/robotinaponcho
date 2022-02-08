@@ -6,8 +6,8 @@
 @use "functions";
 @use "../../node_modules/toolbox-sass";
 
-$base-font-size: 16px;
-$base-line-height: functions.px-to-rem(28px);
+$base-font-size: 18px;
+$base-line-height: functions.px-to-rem(32px);
 
 $colour-black-50: #f8f8f8;
 $colour-black-100: #e9ecef;
@@ -15,5 +15,5 @@ $colour-black-800: #343a40;
 $colour-black-900: #212529;
 $colour-black-1000: #000000;
 
-$container-width: 40rem + ($base-line-height * 2);
-$content-width: 40rem;
+$container-width: functions.px-to-rem(720px) + ($base-line-height * 2);
+$content-width: functions.px-to-rem(720px);
