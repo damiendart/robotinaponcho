@@ -38,11 +38,14 @@ tasks:
 
   build:css:
     cmds:
-      - 'node_modules/.bin/sass --no-source-map -s compressed src/sass/app.scss {{ .OUTPUT_FILE }}'
-      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE }}'
+      - 'node_modules/.bin/sass --no-source-map -s compressed src/sass/app.scss {{ .OUTPUT_FILE_MAIN }}'
+      - 'node_modules/.bin/sass --no-source-map -s compressed src/sass/app-homepage.scss {{ .OUTPUT_FILE_HOMEPAGE }}'
+      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE_MAIN }}'
+      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE_HOMEPAGE }}'
     desc: 'Build CSS files with Sass and friends'
     vars:
-      OUTPUT_FILE: 'public/assets/style.css'
+      OUTPUT_FILE_HOMEPAGE: 'public/assets/style-homepage.css'
+      OUTPUT_FILE_MAIN: 'public/assets/style.css'
 
   build:javascript:
     cmds:

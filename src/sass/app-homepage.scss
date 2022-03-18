@@ -1,0 +1,207 @@
+// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "variables";
+@use "functions";
+@use "../../node_modules/toolbox-sass";
+
+@keyframes cloud-bob {
+  0%, 100% {
+    transform: none;
+  }
+
+  #{percentage(math.div(1, 3))} {
+    transform: translateY(functions.px-to-rem(-2px));
+  }
+
+  #{percentage(math.div(2, 3))} {
+    transform: translateY(functions.px-to-rem(2px));
+  }
+}
+
+.robot-and-things {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & * {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__container {
+    position: relative;
+    padding: 0 0 percentage(math.div(variables.$robot-and-things-original-height, variables.$robot-and-things-original-width));
+  }
+
+  &__item {
+    &__image {
+      pointer-events: none;
+      position: absolute;
+      overflow: hidden;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+
+      &::before {
+        background: variables.$colour-white;
+        mask: url("/assets/robot-and-things-outlines.png") no-repeat center;
+        mask-size: 100%;
+        opacity: 0;
+        opacity: var(--drawing-outline-opacity);
+        z-index: 0;
+
+        @supports (mask-image: -webkit-image-set(url('/assets/robot-and-things-outlines.webp') 1x)) {
+          mask-image: url("/assets/robot-and-things-outlines.webp");
+        };
+      }
+
+      &::after {
+        background: url("/assets/robot-and-things.png") no-repeat center;
+        background-size: 100%;
+        z-index: 2;
+
+        @supports (background-image: -webkit-image-set(url('/assets/robot-and-things.webp') 1x)) {
+          background-image: url("/assets/robot-and-things.webp");
+        };
+      }
+    }
+
+    &__label {
+      position: absolute;
+      overflow: hidden;
+      opacity: 0;
+
+      &::after {
+        background: url("/assets/robot-and-things.png") no-repeat center;
+        background-size: 100%;
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 3;
+
+        @supports (background-image: -webkit-image-set(url('/assets/robot-and-things.webp') 1x)) {
+          background-image: url("/assets/robot-and-things.webp");
+        };
+      }
+
+      @media (hover: none) {
+        opacity: 1;
+      }
+    }
+
+    &[href] {
+      .robot-and-things__item__image {
+        pointer-events: initial;
+
+        &::before {
+          z-index: 1;
+        }
+      }
+
+      &:focus,
+      &:hover {
+        color: transparent;
+
+        .robot-and-things__item__image {
+          &::before {
+            background-color: variables.$colour-blue;
+            transition: background-color 0.25s ease, opacity 0.25s ease;
+
+            @supports (mask-size: 100%) {
+              opacity: 1;
+            }
+          }
+        }
+
+        .robot-and-things__item__label {
+          opacity: 1;
+        }
+      }
+    }
+
+    @each $key, $item in variables.$robot-and-things-items {
+      &--#{$key} {
+        .robot-and-things__item__image {
+          $image-properties: map.get($item, "image");
+          $image-sprite: map.get($image-properties, "sprite");
+          $original-properties: map.get($image-properties, "dimensions");
+          $outline-sprite: map.get($image-properties, "outline");
+
+          height: percentage(math.div(list.nth($original-properties, 2), variables.$robot-and-things-original-height));
+          width: percentage(math.div(list.nth($original-properties, 1), variables.$robot-and-things-original-width));
+
+          @each $position, $value in map.get($image-properties, "position") {
+            #{$position}: $value;
+          }
+
+          @media #{toolbox-sass.$media-large-up} {
+            // Adding a pixel to the height is a kludge to prevent
+            // browsers from chopping a pixel or two off the bottom of
+            // some outline sprites due to all of the
+            // fractions-of-pixels being flung about.
+            height: calc(#{percentage(math.div(list.nth($original-properties, 2), variables.$robot-and-things-original-height))} + 1px);
+          }
+
+          @if (map.get($item, "animation-duration")) {
+            @media (prefers-reduced-motion: no-preference) {
+              animation: cloud-bob #{map.get($item, "animation-duration")} infinite ease-out;
+            }
+          }
+
+          &::before {
+            width: percentage(math.div(variables.$robot-and-things-outlines-sprite-sheet-width, list.nth($image-sprite, 3)));
+            height: percentage(math.div(variables.$robot-and-things-outlines-sprite-sheet-height, list.nth($image-sprite, 4)));
+            transform: translate(
+                percentage(math.div(list.nth($outline-sprite, 1), variables.$robot-and-things-outlines-sprite-sheet-width)) * -1,
+                percentage(math.div(list.nth($outline-sprite, 2), variables.$robot-and-things-outlines-sprite-sheet-height)) * -1
+            );
+          }
+
+          &::after {
+            width: percentage(math.div(variables.$robot-and-things-main-sprite-sheet-width, list.nth($image-sprite, 3)));
+            height: percentage(math.div(variables.$robot-and-things-main-sprite-sheet-height, list.nth($image-sprite, 4)));
+            transform: translate(
+                percentage(math.div(list.nth($image-sprite, 1), variables.$robot-and-things-main-sprite-sheet-width)) * -1,
+                percentage(math.div(list.nth($image-sprite, 2), variables.$robot-and-things-main-sprite-sheet-height)) * -1
+            );
+          }
+        }
+
+        @if (map.get($item, "label")) {
+          .robot-and-things__item__label {
+            $label-properties: map.get($item, "label");
+            $label-sprite: map.get($label-properties, "sprite");
+            $original-properties: map.get($label-properties, "dimensions");
+
+            height: percentage(math.div(list.nth($original-properties, 2), variables.$robot-and-things-original-height));
+            width: percentage(math.div(list.nth($original-properties, 1), variables.$robot-and-things-original-width));
+
+            @each $position, $value in map.get($label-properties, "position") {
+              #{$position}: $value;
+            }
+
+            &::after {
+              width: percentage(math.div(variables.$robot-and-things-main-sprite-sheet-width, list.nth($label-sprite, 3)));
+              height: percentage(math.div(variables.$robot-and-things-main-sprite-sheet-height, list.nth($label-sprite, 4)));
+              transform: translate(
+                  percentage(math.div(list.nth($label-sprite, 1), variables.$robot-and-things-main-sprite-sheet-width)) * -1,
+                  percentage(math.div(list.nth($label-sprite, 2), variables.$robot-and-things-main-sprite-sheet-height)) * -1
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}

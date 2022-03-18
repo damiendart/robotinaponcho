@@ -18,7 +18,9 @@
     }
 
     & > h1,
-    & > h1 + * {
+    & > .robot-and-things,
+    & > h1 + *,
+    & > .robot-and-things + * {
       margin: (variables.$base-line-height * 4) 0 0;
     }
 
@@ -66,7 +68,8 @@
       }
     }
 
-    & > img:not(&__image--full-width) {
+    & > img:not(&__image--full-width),
+    & > .robot-and-things {
       @media #{toolbox-sass.$media-medium-down} {
         box-sizing: border-box;
         padding-left: variables.$base-line-height;

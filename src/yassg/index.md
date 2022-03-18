@@ -6,8 +6,10 @@
   description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
   metaTitle: "Damien Dart's Personal Website"
   title: 'Hello!'
-  twigTemplate: '.templates/base-markdown.html.twig'
+  twigTemplate: '.templates/homepage.html.twig'
 -->
+
+<h2 id="about">About</h2>
 
 I’m Damien Dart, a full-time web developer based in South West England,
 and this is my personal website.
