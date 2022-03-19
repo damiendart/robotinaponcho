@@ -2,7 +2,7 @@
   "author": "Damien Dart",
   "description": "Source code to Damien Dart's personal site.",
   "dependencies": {
-    "assets": "github:damiendart/assets#da426bf941de499175fb4c90b30ec962381e6bc5",
+    "assets": "github:damiendart/assets#d27d1c333a4e426debe6b230fb69a12241fbd538",
     "autoprefixer": "^10.2.6",
     "cssnano": "^5.0.5",
     "esbuild": "^0.12.5",
