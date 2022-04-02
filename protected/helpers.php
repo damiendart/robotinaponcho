@@ -12,7 +12,6 @@ declare(strict_types=1);
 function git(string $command, ?string $cwd = null): string
 {
     $pipes = [];
-    // echoStep("(cd {$cwd} && git {$command})");
     $resource = proc_open(
         "git {$command}",
         [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
