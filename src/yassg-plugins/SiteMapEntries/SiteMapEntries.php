@@ -43,6 +43,7 @@ class SiteMapEntries implements PluginInterface
 
                                 if (
                                     'robots.txt' === $slug
+                                    || 'sitemap.xml' === $slug
                                     || str_starts_with($slug, 'google')
                                     || str_ends_with($slug, '.atom')
                                 ) {
