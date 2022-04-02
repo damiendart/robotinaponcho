@@ -5,6 +5,7 @@
 class ThemeSwitcher {
   constructor(element) {
     this.containerElement = element;
+    this.labelElement = document.createElement('label');
     this.themeSelectElement = document.createElement('select');
 
     this.initialiseThemeSwitcher();
@@ -18,7 +19,9 @@ class ThemeSwitcher {
       light: 'Light theme',
     };
 
+    this.labelElement.setAttribute('for', 'theme-switcher');
     this.themeSelectElement.setAttribute('aria-label', 'Change site theme');
+    this.themeSelectElement.id = 'theme-switcher';
     Object.keys(themes).forEach(
       (themeSlug) => {
         const optionElement = document.createElement('option');
@@ -33,7 +36,8 @@ class ThemeSwitcher {
       },
     );
 
-    this.containerElement.appendChild(this.themeSelectElement);
+    this.labelElement.appendChild(this.themeSelectElement);
+    this.containerElement.appendChild(this.labelElement);
 
     this.themeSelectElement.addEventListener(
       'change',

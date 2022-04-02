@@ -36,22 +36,26 @@
   &__theme-switcher {
     display: inline-block;
     font-size: 87.5%;
-    position: relative;
 
-    &::before {
-      background: var(--base-foreground);
-      content: "";
-      display: inline-block;
-      height: variables.$base-line-height;
-      mask: url("icon-set.svg");
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: variables.$base-line-height * 0.5;
-      pointer-events: none;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: variables.$base-line-height;
+    label {
+      display: block;
+      position: relative;
+
+      &::before {
+        background: var(--base-foreground);
+        content: "";
+        display: inline-block;
+        height: variables.$base-line-height;
+        mask: url("icon-set.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: variables.$base-line-height * 0.5;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: calc(50% - #{variables.$base-line-height * 0.5});
+        width: variables.$base-line-height;
+      }
     }
 
     select {

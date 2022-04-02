@@ -207,10 +207,13 @@ h3 {
 
 html {
   font-size: percentage(math.div(14px, variables.$base-font-size));
-  scroll-behavior: smooth;
 
   @media #{toolbox-sass.$media-medium-up} {
     font-size: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
   }
 }
 
@@ -312,5 +315,13 @@ ul {
     & > ul, & > ol {
       margin: 0;
     }
+  }
+}
+
+[aria-label][tabindex] {
+  overflow: auto;
+
+  &:focus-visible {
+    outline: (toolbox-sass.$base-one-pixel-in-rem * 3) solid currentColor;
   }
 }

@@ -17,7 +17,7 @@ baking this will create a decent loaf without too much faff.
 
 ### Ingredients
 
-<figure>
+<figure aria-label="Ingredient table" tabindex="0">
 
 | Ingredient               | [Baker's Percentage][1] | Example |
 | :----------------------- | :---------------------: | :-----: |
