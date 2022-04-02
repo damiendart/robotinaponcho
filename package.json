@@ -4,7 +4,7 @@
   "dependencies": {
     "@parcel/css-cli": "^1.7.4",
     "assets": "github:damiendart/assets#9584b0387c8f9b06fc07602749d69bc038f99ac3",
-    "esbuild": "^0.12.5",
+    "esbuild": "^0.14.30",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15",
     "eslint-plugin-import": "^2.25.3",
