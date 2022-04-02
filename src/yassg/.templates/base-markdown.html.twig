@@ -11,7 +11,7 @@
 {% endif %}
 
 {% block content %}
-    <h1>{{ title | smartypants | widont }}</h1>
+    <h1>{{ title | smartypants | widont | raw }}</h1>
 
     {{ renderedMarkdown | raw }}
 {% endblock %}

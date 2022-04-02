@@ -9,16 +9,16 @@
 {% set section = 'notes' %}
 
 {% block content %}
-    <h1>{{ title | smartypants | widont }}</h1>
+    <h1>{{ title | smartypants | widont | raw }}</h1>
 
-    {% if git.created.timestamp.getTime == git.updated.timestamp.getTime %}
+    {% if git.created.timestamp == git.updated.timestamp %}
         <p><em>This page was created <span class="screen-reader-only">on</span>
-            <a data-timestamp="{{ git.created.timestamp.getTime }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
-            {{ git.created.timestamp.getTime | date('d/m/Y') }}</a>.</em></p>
+            <a data-timestamp="{{ git.created.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
+            {{ git.created.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% else %}
         <p><em>This page was updated <span class="screen-reader-only">on</span>
-            <a data-timestamp="{{ git.updated.timestamp.getTime }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
-            {{ git.updated.timestamp.getTime | date('d/m/Y') }}</a>.</em></p>
+            <a data-timestamp="{{ git.updated.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
+            {{ git.updated.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% endif %}
 
     {{ renderedMarkdown | raw }}

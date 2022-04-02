@@ -29,7 +29,7 @@ tasks:
       - task: 'build:assets'
       - task: 'build:css'
       - task: 'build:javascript'
-      - task: 'build:static'
+      - task: 'build:yassg'
 
   build:assets:
     cmds:
@@ -54,9 +54,9 @@ tasks:
     vars:
       OUTPUT_FILE: 'public/assets/app.js'
 
-  build:static:
+  build:yassg:
     cmds:
-      - 'node_modules/.bin/yassg ./src/yassg ./public'
+      - 'protected/vendor/bin/yassg --config .yassg.php'
     desc: 'Build static site files with yassg'
 
   clean:

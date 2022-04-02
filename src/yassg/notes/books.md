@@ -1,11 +1,12 @@
-<!--
+<!---
   # This file is distributed under the Creative Commons Attribution 4.0
   # International License. To view a copy of this license, please visit
   # <http://creativecommons.org/licenses/by/4.0/>.
 
+  collections: 'notes'
   title: "Completed Books"
   twigTemplate: .templates/base-note.html.twig
--->
+--->
 
 I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.

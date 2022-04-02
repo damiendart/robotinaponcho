@@ -1,4 +1,4 @@
-<!--
+<!---
   # Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
   # This file is distributed under the MIT licence. For more
   # information, please refer to the accompanying "LICENCE" file.
@@ -7,7 +7,7 @@
   metaTitle: "Damien Dart's Personal Website"
   title: 'Hello!'
   twigTemplate: '.templates/homepage.html.twig'
--->
+--->
 
 <h2 id="about">About</h2>
 

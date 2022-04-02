@@ -18,14 +18,14 @@
         <id>{{ urlBase }}notes/index.atom</id>
         {% for note in collections.notes %}
             <entry>
-                <id>{{ urlBase }}{{ note.slug }}</id>
-                <link href="{{ urlBase }}{{ note.slug }}"/>
-                <published>{{ note.git.created.timestamp.getTime | date('c') }}</published>
+                <id>{{ urlBase }}{{ note.metadata.slug }}</id>
+                <link href="{{ urlBase }}{{ note.metadata.slug }}"/>
+                <published>{{ note.metadata.git.created.timestamp | date('c') }}</published>
                 <summary type="html">
-                    <![CDATA[ {{ note.renderedMarkdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.git.updated.timestamp.getTime | date('c') }}</em></p> ]]>
+                    <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updated.timestamp | date('c') }}</em></p> ]]>
                 </summary>
-                <title>{{ note.title }}</title>
-                <updated>{{ note.git.updated.timestamp.getTime | date('c') }}</updated>
+                <title>{{ note.metadata.title }}</title>
+                <updated>{{ note.metadata.git.updated.timestamp | date('c') }}</updated>
             </entry>
         {% endfor %}
     </feed>

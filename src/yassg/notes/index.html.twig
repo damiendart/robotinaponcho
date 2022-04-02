@@ -15,10 +15,10 @@
     <p>These notes are also available as an
         <a href="{{ urlBase }}notes/index.atom">Atom feed</a>.</p>
     <ul class="notes-list">
-        {% for note in collections.notes %}
+        {% for note in collections.notes | sort((a, b) => a.metadata.title <=> b.metadata.title) | sort((a, b) => b.metadata.git.updated.timestamp <=> a.metadata.git.updated.timestamp) %}
             <li class="notes-list__item">
-                <a href="/{{ note.slug }}">{{ note.title }}</a>
-                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated </span>{{ note.git.updated.timestamp.getTime | date('d M, Y') }}<span class="screen-reader-only">)</span></span>
+                <a href="/{{ note.metadata.slug }}">{{ note.metadata.title }}</a>
+                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated </span>{{ note.metadata.git.updated.timestamp | date('d M, Y') }}<span class="screen-reader-only">)</span></span>
             </li>
         {% endfor %}
     </ul>

@@ -18,35 +18,6 @@ function echoStep(string $step): void
     }
 }
 
-/**
- * @throws Exception
- */
-function git(string $command, ?string $cwd = null): string
-{
-    $pipes = [];
-    echoStep("(cd {$cwd} && git {$command})");
-    $resource = proc_open(
-        "git {$command}",
-        [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
-        $pipes,
-        $cwd,
-    );
-    $stderr = stream_get_contents($pipes[2]);
-    $stdout = stream_get_contents($pipes[1]);
-
-    foreach ($pipes as $pipe) {
-        fclose($pipe);
-    }
-
-    if (0 !== proc_close($resource)) {
-        throw new Exception(
-            "Git command \"{$command}\" exited with a non-zero status\n{$stderr}",
-        );
-    }
-
-    return $stdout;
-}
-
 $baseDirectory = join(
     DIRECTORY_SEPARATOR,
     [getenv('SHARED_ROOT'), 'protected', 'git'],

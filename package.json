@@ -12,8 +12,7 @@
     "postcss": "^8.3.0",
     "postcss-cli": "^8.3.1",
     "sass": "^1.34.0",
-    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#59c85e78931053b6c96b91450c000cbed2e70d6d",
-    "yassg": "git+https://www.robotinaponcho.net/git/yassg.git#4a778410166ff82f8ce2e2f82dd8022d8d07133e"
+    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#59c85e78931053b6c96b91450c000cbed2e70d6d"
   },
   "license": "MIT",
   "name": "robotinaponcho",
