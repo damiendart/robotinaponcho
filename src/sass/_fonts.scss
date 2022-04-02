@@ -7,9 +7,7 @@
   font-family: "IBM Plex Serif";
   font-style: normal;
   font-weight: 400;
-  src: local('IBM Plex Serif'),
-    local('IBMPlexSerif'),
-    url("ibmplexserif-regular.woff2") format("woff2"),
+  src: url("ibmplexserif-regular.woff2") format("woff2"),
     url("ibmplexserif-regular.woff") format("woff");
 }
 
@@ -18,9 +16,7 @@
   font-family: "IBM Plex Serif";
   font-style: italic;
   font-weight: 400;
-  src: local('IBM Plex Serif Italic'),
-    local('IBMPlexSerif-Italic'),
-    url("ibmplexserif-italic.woff2") format("woff2"),
+  src: url("ibmplexserif-italic.woff2") format("woff2"),
     url("ibmplexserif-italic.woff") format("woff");
 }
 
@@ -29,9 +25,7 @@
   font-family: "IBM Plex Serif";
   font-style: normal;
   font-weight: 700;
-  src: local('IBM Plex Serif'),
-    local('IBMPlexSerif'),
-    url("ibmplexserif-bold.woff2") format("woff2"),
+  src: url("ibmplexserif-bold.woff2") format("woff2"),
     url("ibmplexserif-bold.woff") format("woff");
 }
 

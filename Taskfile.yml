@@ -40,8 +40,8 @@ tasks:
     cmds:
       - 'node_modules/.bin/sass --no-source-map -s compressed src/sass/app.scss {{ .OUTPUT_FILE_MAIN }}'
       - 'node_modules/.bin/sass --no-source-map -s compressed src/sass/app-homepage.scss {{ .OUTPUT_FILE_HOMEPAGE }}'
-      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE_MAIN }}'
-      - 'node_modules/.bin/postcss --no-map --replace --use autoprefixer --use cssnano -- {{ .OUTPUT_FILE_HOMEPAGE }}'
+      - 'node_modules/.bin/parcel-css --minify --targets ">= 0.25%" {{ .OUTPUT_FILE_MAIN }} -o {{ .OUTPUT_FILE_MAIN }}'
+      - 'node_modules/.bin/parcel-css --minify --targets ">= 0.25%" {{ .OUTPUT_FILE_HOMEPAGE }} -o {{ .OUTPUT_FILE_HOMEPAGE }}'
     desc: 'Build CSS files with Sass and friends'
     vars:
       OUTPUT_FILE_HOMEPAGE: 'public/assets/style-homepage.css'
