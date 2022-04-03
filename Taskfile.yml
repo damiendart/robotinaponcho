@@ -66,6 +66,7 @@ tasks:
     desc: 'Build static site files with yassg'
     sources:
       - 'src/yassg/**/*'
+      - 'src/yassg-plugins/**/*'
 
   clean:
     cmds:
