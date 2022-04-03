@@ -1,0 +1,22 @@
+{#
+    Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+
+{% extends '.templates/base.html.twig' %}
+
+{% set title = 'Sitemap' %}
+
+{% block content %}
+    <h1>Site map</h1>
+    <ul>
+        {%
+            for entry in sitemapEntries
+                | filter(entry => 'pdf' not in entry.slug and 'sitemap' not in entry.slug and not (entry.slug matches '#notes/.+#'))
+                | sort((a, b) => a.slug <=> b.slug)
+        %}
+            <li><a href="/{{ entry.slug }}">{{ entry.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 use Robotinaponcho\Yassg\Plugins\GitMetadata\GitMetadataPlugin;
 use Robotinaponcho\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
-use Robotinaponcho\Yassg\Plugins\SiteMapEntries\SiteMapEntries;
+use Robotinaponcho\Yassg\Plugins\SiteMapEntries\SiteMapEntriesPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigToolboxSass\TwigToolboxSassPlugin;
@@ -25,7 +25,7 @@ return (new Configuration(
     ->addPlugin(new CollectionsPlugin())
     ->addPlugin(new HtmlMinifierPlugin())
     ->addPlugin(new GitMetadataPlugin())
-    ->addPlugin(new SiteMapEntries())
+    ->addPlugin(new SiteMapEntriesPlugin())
     ->addPlugin(new SlugPlugin(new BasicSlugStrategy))
     ->addPlugin(new TwigMarkdownPlugin())
     ->addPlugin(new TwigSmartyPantsPlugin())

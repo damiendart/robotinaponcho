@@ -5,6 +5,7 @@
 
   description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
   metaTitle: "Damien Dart's Personal Website"
+  sitemapTitle: 'Homepage'
   title: 'Hello!'
   twigTemplate: '.templates/homepage.html.twig'
 --->

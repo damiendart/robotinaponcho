@@ -16,7 +16,7 @@ use Yassg\Events\PreSiteBuildEvent;
 use Yassg\Files\InputFileInterface;
 use Yassg\Plugins\PluginInterface;
 
-class SiteMapEntries implements PluginInterface
+class SiteMapEntriesPlugin implements PluginInterface
 {
     public function getContainerDefinitions(): array
     {
@@ -29,13 +29,17 @@ class SiteMapEntries implements PluginInterface
                     $previous->addEventListener(
                         PreSiteBuildEvent::class,
                         function (PreSiteBuildEvent $event) use ($configuration): void {
-                            $baseUrl = $configuration->getMetadata()['urlBase'];
+                            /** @var array<SiteMapEntry> $entries */
+                            $entries = [];
 
-                            /** @var array<string> $entries */
-                            $entries = [
-                                "{$baseUrl}crap/colouring-pages-a4.pdf",
-                                "{$baseUrl}crap/colouring-pages-us.pdf",
-                            ];
+                            $entries[] = new SiteMapEntry(
+                                'crap/colouring-pages-a4.pdf',
+                                'crap/colouring-pages-a4.pdf',
+                            );
+                            $entries[] = new SiteMapEntry(
+                                'crap/colouring-pages-us.pdf',
+                                'crap/colouring-pages-us.pdf',
+                            );
 
                             /** @var InputFileInterface $inputFile */
                             foreach ($event->getInputFiles() as $inputFile) {
@@ -50,7 +54,12 @@ class SiteMapEntries implements PluginInterface
                                     continue;
                                 }
 
-                                $entries[] = "{$baseUrl}{$slug}";
+                                $entries[] = new SiteMapEntry(
+                                    $inputFile->getMetadata()['sitemapTitle']
+                                        ?? $inputFile->getMetadata()['title']
+                                        ?? $slug,
+                                    $slug,
+                                );
                             }
 
                             $configuration->setMetadata(
