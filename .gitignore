@@ -3,6 +3,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 .php-cs-fixer.cache
+.task
 node_modules
 public
 protected/vendor
