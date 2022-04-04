@@ -23,7 +23,7 @@ class HtmlMinifierPlugin implements PluginInterface
                 return (new HtmlMin())
                     // HTMLMin adds superfluous whitespace when removing
                     // unnecessary closing tags. For more information,
-                    // see <https://github.com/voku/HtmlMin/issues/50>.
+                    // see <https://github.com/voku/HtmlMin/issues/59>.
                     ->doRemoveOmittedHtmlTags(false);
             },
             ProcessorResolver::class => decorate(
