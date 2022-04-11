@@ -62,7 +62,7 @@ tasks:
 
   build:yassg:
     cmds:
-      - 'protected/vendor/bin/yassg --config .yassg.php'
+      - 'protected/vendor/bin/yassg'
     desc: 'Build static site files with yassg'
     sources:
       - 'src/yassg/**/*'
