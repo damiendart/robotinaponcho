@@ -12,6 +12,8 @@ on:
 
 jobs:
   lint:
+    env:
+      YASSG_VERBOSE: true
     name: 'Lint project'
     runs-on: 'ubuntu-20.04'
     steps:
