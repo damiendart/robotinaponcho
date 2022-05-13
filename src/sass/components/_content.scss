@@ -13,10 +13,6 @@
     margin: 0 auto;
     max-width: variables.$container-width;
 
-    @media #{toolbox-sass.$media-large-up} {
-      margin: 0 (variables.$base-line-height * 3);
-    }
-
     & > h1,
     & > .robot-and-things,
     & > h1 + *,

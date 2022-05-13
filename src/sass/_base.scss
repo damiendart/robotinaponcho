@@ -187,10 +187,6 @@ h1 {
     font-size: 300%;
     line-height: variables.$base-line-height * 2;
   }
-
-  @media #{toolbox-sass.$media-large-up} {
-    text-align: initial;
-  }
 }
 
 h2 {

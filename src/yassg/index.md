@@ -10,8 +10,6 @@
   twigTemplate: '.templates/homepage.html.twig'
 --->
 
-<h2 id="about">About</h2>
-
 I’m Damien Dart, a full-time web developer based in South West England,
 and this is my personal website.
 
