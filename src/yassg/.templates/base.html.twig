@@ -35,11 +35,13 @@
                 <hr class="site-header__rule">
             </header>
 
-            <a class="anchor" id="content"></a>
+            {% block heading %}
+                <h1 id="content">{{ title | smartypants | widont | raw }}</h1>
+            {% endblock %}
+
             {{ block('content') }}
 
-            <a class="anchor" id="footer"></a>
-            <footer class="site-footer">
+            <footer id="footer" class="site-footer">
                 <hr class="site-footer__rule">
                 <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }}
                     <a href="/">{{ author }}</a>.<br>View <a href="/privacy-policy">privacy policy</a>, <a href="/sitemap">site map</a>.</p>

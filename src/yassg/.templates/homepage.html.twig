@@ -4,19 +4,17 @@
     information, please refer to the accompanying "LICENCE" file.
 #}
 
-{% extends '.templates/base.html.twig' %}
+{% extends '.templates/base-markdown.html.twig' %}
 
 {% if description is defined %}
     {% set description = description | smartypants | trim %}
 {% endif %}
 
-{% block content %}
-    <h1>
+{% block heading %}
+    <h1 id="content">
         <picture class="homepage-robot">
             <source srcset="/assets/homepage-robot.webp, /assets/homepage-robot@2x.webp 2x" type="image/webp">
             <img alt="Hello!" height="396" src="/assets/homepage-robot.png" srcset="/assets/homepage-robot@2x.png 2x" title="Hello!" width="350">
         </picture>
     </h1>
-
-    {{ renderedMarkdown | raw }}
 {% endblock %}
