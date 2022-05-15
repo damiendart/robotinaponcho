@@ -3,7 +3,7 @@
   "description": "Source code to Damien Dart's personal site.",
   "dependencies": {
     "@parcel/css-cli": "^1.7.4",
-    "assets": "github:damiendart/assets#d635b10c1936426aad506681a4a9e6d465128ad4",
+    "assets": "github:damiendart/assets#c7100f9bb9282acb8f353004ff587671b3d533b9",
     "esbuild": "^0.14.30",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15",
