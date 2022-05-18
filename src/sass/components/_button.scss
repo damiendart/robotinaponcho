@@ -3,9 +3,9 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../breakpoints";
 @use "../functions";
 @use "../variables";
-@use "../../../node_modules/toolbox-sass";
 
 .button {
   background: variables.$colour-black-1000;
@@ -32,17 +32,17 @@
     outline: none;
 
     &::after {
-      border: (toolbox-sass.$base-one-pixel-in-rem * 3) solid variables.$colour-black-1000;
+      border: (variables.$base-one-pixel-in-rem * 3) solid variables.$colour-black-1000;
       border-color: var(--button-background);
-      border-radius: variables.$base-line-height + (toolbox-sass.$base-one-pixel-in-rem * 6);
+      border-radius: variables.$base-line-height + (variables.$base-one-pixel-in-rem * 6);
       box-sizing: border-box;
       content: "";
       display: block;
-      height: calc(100% + #{toolbox-sass.$base-one-pixel-in-rem * 12});
-      left: toolbox-sass.$base-one-pixel-in-rem * -6;
+      height: calc(100% + #{variables.$base-one-pixel-in-rem * 12});
+      left: variables.$base-one-pixel-in-rem * -6;
       position: absolute;
-      top: toolbox-sass.$base-one-pixel-in-rem * -6;
-      width: calc(100% + #{toolbox-sass.$base-one-pixel-in-rem * 12});
+      top: variables.$base-one-pixel-in-rem * -6;
+      width: calc(100% + #{variables.$base-one-pixel-in-rem * 12});
     }
 
     &:not(:focus-visible) {
@@ -60,7 +60,7 @@
   }
 
   &__download {
-    @media #{toolbox-sass.$media-small-only} {
+    @media #{breakpoints.$media-small-only} {
       &::after {
         content: ":";
       }
@@ -81,10 +81,6 @@
         height: variables.$base-line-height;
         mask: url("/assets/itchio.svg") no-repeat center;
         width: functions.px-to-rem(98.25px);
-      }
-
-      & > * {
-        @include toolbox-sass.screen-reader-only;
       }
     }
   }

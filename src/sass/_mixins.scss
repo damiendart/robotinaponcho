@@ -1,0 +1,20 @@
+// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+// Adds declarations to improve font rendering in most browsers. This
+// mixin may no longer be necessary for modern browsers (I should check
+// at some point). The following is based on
+// <https://gist.github.com/hsleonis/55712b0eafc9b25f1944>.
+@mixin nice-font-rendering {
+  /* stylelint-disable-next-line property-no-unknown */
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; // Autoprefixer omits this.
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  // Webkit on iOS devices (at least the ones I've tried) require the
+  // "-webkit-" prefix here despite Autoprefixer thinking otherwise.
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; // Just In Case(tm).
+  text-size-adjust: none;
+}

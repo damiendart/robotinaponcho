@@ -5,8 +5,9 @@
 @use "sass:math";
 
 @use "fonts";
+@use "mixins";
 @use "variables";
-@use "../../node_modules/toolbox-sass";
+@use "breakpoints";
 
 @mixin dark-theme {
   --base-background: #{variables.$colour-black-900};
@@ -46,7 +47,7 @@ a {
   }
 
   &:focus {
-    outline: (toolbox-sass.$base-one-pixel-in-rem * 3) solid currentColor;
+    outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
 
     &:not(:focus-visible) {
       outline: none;
@@ -55,7 +56,7 @@ a {
 }
 
 body {
-  @include toolbox-sass.nice-font-rendering;
+  @include mixins.nice-font-rendering;
 
   background: variables.$colour-black-50;
   background: var(--base-background);
@@ -153,7 +154,7 @@ details {
 figure {
   margin: 0;
 
-  @media #{toolbox-sass.$media-small-down} {
+  @media #{breakpoints.$media-small-down} {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     overflow-y: hidden;
@@ -164,10 +165,10 @@ figure {
     position: relative;
 
     &::after {
-      @media #{toolbox-sass.$media-small-down} {
+      @media #{breakpoints.$media-small-down} {
         content: "";
         display: block;
-        height: toolbox-sass.$base-one-pixel-in-rem;
+        height: variables.$base-one-pixel-in-rem;
         position: absolute;
         right: variables.$base-line-height * -1;
         width: variables.$base-line-height;
@@ -178,12 +179,12 @@ figure {
 
 h1 {
   font-size: 225%;
-  letter-spacing: toolbox-sass.$base-one-pixel-in-rem * -1;
+  letter-spacing: variables.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
   margin: 0;
   text-align: center;
 
-  @media #{toolbox-sass.$media-medium-up} {
+  @media #{breakpoints.$media-medium-up} {
     font-size: 300%;
     line-height: variables.$base-line-height * 2;
   }
@@ -204,7 +205,7 @@ h3 {
 html {
   font-size: percentage(math.div(14px, variables.$base-font-size));
 
-  @media #{toolbox-sass.$media-medium-up} {
+  @media #{breakpoints.$media-medium-up} {
     font-size: 100%;
   }
 
@@ -225,7 +226,7 @@ kbd {
   background: var(--base-accent);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;
-  font-family: toolbox-sass.$font-stack-system;
+  font-family: variables.$font-stack-system;
   line-height: 1;
   padding: math.div(variables.$base-line-height, 4);
 }
@@ -318,6 +319,6 @@ ul {
   overflow: auto;
 
   &:focus-visible {
-    outline: (toolbox-sass.$base-one-pixel-in-rem * 3) solid currentColor;
+    outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
   }
 }

@@ -3,8 +3,8 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../breakpoints";
 @use "../variables";
-@use "../../../node_modules/toolbox-sass";
 
 .content {
   padding: variables.$base-line-height 0;
@@ -48,7 +48,7 @@
     & > .site-footer {
       margin: (variables.$base-line-height * 2) 0 0;
 
-      @media #{toolbox-sass.$media-large-up} {
+      @media #{breakpoints.$media-large-up} {
         margin: (variables.$base-line-height * 4) 0 0;
       }
     }
@@ -59,14 +59,14 @@
       padding-left: variables.$base-line-height;
       padding-right: variables.$base-line-height;
 
-      @media #{toolbox-sass.$media-large-up} {
+      @media #{breakpoints.$media-large-up} {
         max-width: variables.$content-width;
       }
     }
 
     & > img:not(&__image--full-width),
     & > .robot-and-things {
-      @media #{toolbox-sass.$media-medium-down} {
+      @media #{breakpoints.$media-medium-down} {
         box-sizing: border-box;
         padding-left: variables.$base-line-height;
         padding-right: variables.$base-line-height;

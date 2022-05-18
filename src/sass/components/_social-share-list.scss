@@ -4,7 +4,6 @@
 
 @use "sass:math";
 @use "../variables";
-@use "../../../node_modules/toolbox-sass";
 
 .social-share-list {
   display: flex;
@@ -129,10 +128,6 @@
           }
         }
       }
-    }
-
-    span {
-      @include toolbox-sass.screen-reader-only;
     }
   }
 }

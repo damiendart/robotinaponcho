@@ -3,13 +3,13 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../breakpoints";
 @use "../variables";
-@use "../../../node_modules/toolbox-sass";
 
 .site-footer {
   text-align: center;
 
-  @media #{toolbox-sass.$media-large-up} {
+  @media #{breakpoints.$media-large-up} {
     display: flex;
     justify-content: space-between;
     text-align: left;
@@ -18,7 +18,7 @@
   & > * + * {
     margin: math.div(variables.$base-line-height, 4) 0 0;
 
-    @media #{toolbox-sass.$media-large-up} {
+    @media #{breakpoints.$media-large-up} {
       margin: 0;
     }
   }
@@ -61,10 +61,10 @@
     select {
       appearance: none;
       background: var(--base-accent);
-      border: toolbox-sass.$base-one-pixel-in-rem solid var(--base-accent);
+      border: variables.$base-one-pixel-in-rem solid var(--base-accent);
       color: inherit;
       font: inherit;
-      line-height: calc(#{variables.$base-line-height - (toolbox-sass.$base-one-pixel-in-rem * 2)});
+      line-height: calc(#{variables.$base-line-height - (variables.$base-one-pixel-in-rem * 2)});
       padding: 0 variables.$base-line-height 0 math.div(variables.$base-line-height, 8);
 
       &:focus,
@@ -74,7 +74,7 @@
 
       &:focus {
         border-color: transparent;
-        outline: (toolbox-sass.$base-one-pixel-in-rem * 3) solid currentColor;
+        outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
 
         &:not(:focus-visible) {
           outline: none;

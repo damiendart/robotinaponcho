@@ -2,13 +2,12 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
+import './apple-click-event-fix';
 import './copy-to-clipboard';
-import 'toolbox-sass/javascript/pretty-date';
-import appleClickEventFix from 'toolbox-sass/javascript/apple-click-event-fix';
+import './pretty-date';
+
 import DetailsElementAnimation from './details-element-animation';
 import ThemeSwitcher from './theme-switcher';
-
-appleClickEventFix.applyFix();
 
 document.querySelectorAll('details').forEach((el) => {
   // eslint-disable-next-line no-new

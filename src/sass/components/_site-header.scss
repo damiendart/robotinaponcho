@@ -3,8 +3,8 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../breakpoints";
 @use "../variables";
-@use "../../../node_modules/toolbox-sass";
 
 .site-header {
   align-items: center;
@@ -52,7 +52,7 @@
 
         &--active {
           &::after {
-            $diameter: toolbox-sass.$base-one-pixel-in-rem * 8;
+            $diameter: variables.$base-one-pixel-in-rem * 8;
 
             background: currentColor;
             border-radius: math.div($diameter, 2);
@@ -88,7 +88,7 @@
       }
 
       .site-header__navigation__list {
-        @media #{toolbox-sass.$media-large-up} {
+        @media #{breakpoints.$media-large-up} {
           padding: 0 variables.$base-line-height;
           justify-content: flex-start;
         }

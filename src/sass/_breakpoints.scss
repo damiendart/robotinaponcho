@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "sass:math";
+@use "functions";
+@use "variables";
+
+$breakpoint-x-small: 320px;
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-x-large: 1140px;
+
+$breakpoints-em: (
+  "x-small": math.div($breakpoint-x-small, variables.$base-one-em-in-pixels) * 1em,
+  "small": math.div($breakpoint-small, variables.$base-one-em-in-pixels) * 1em,
+  "medium": math.div($breakpoint-medium, variables.$base-one-em-in-pixels) * 1em,
+  "large": math.div($breakpoint-large, variables.$base-one-em-in-pixels) * 1em,
+  "x-large": math.div($breakpoint-x-large, variables.$base-one-em-in-pixels) * 1em,
+);
+
+$media-screen: "only screen";
+
+$media-x-small-down: "#{$media-screen} and (max-width: #{map.get($breakpoints-em, "x-small")})";
+$media-x-small-only: "#{$media-x-small-down}";
+$media-x-small-up: "#{$media-screen}";
+
+$media-small-down: "#{$media-screen} and (max-width: #{map.get($breakpoints-em, "small")})";
+$media-small-only: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "x-small") + variables.$base-one-pixel-in-em}) and (max-width: #{map.get($breakpoints-em, "small")})";
+$media-small-up: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "x-small") + variables.$base-one-pixel-in-em})";
+
+$media-medium-down: "#{$media-screen} and (max-width: #{map.get($breakpoints-em, "medium")})";
+$media-medium-only: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "small") + variables.$base-one-pixel-in-em}) and (max-width: #{map.get($breakpoints-em, "medium")})";
+$media-medium-up: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "small") + variables.$base-one-pixel-in-em})";
+
+$media-large-down: "#{$media-screen} and (max-width: #{map.get($breakpoints-em, "large")})";
+$media-large-only: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "medium") + variables.$base-one-pixel-in-em}) and (max-width: #{map.get($breakpoints-em, "large")})";
+$media-large-up: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "medium") + variables.$base-one-pixel-in-em})";
+
+$media-x-large-down: "#{$media-screen} and (max-width: #{map.get($breakpoints-em, "x-large")})";
+$media-x-large-only: "#{$media-screen} and (min-width: #{map.get($breakpoints-em, "large") + variables.$base-one-pixel-in-em})";
+$media-x-large-up: "#{$media-x-large-only}";

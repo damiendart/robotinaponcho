@@ -8,8 +8,7 @@
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15",
     "eslint-plugin-import": "^2.25.3",
-    "sass": "^1.34.0",
-    "toolbox-sass": "git+https://www.robotinaponcho.net/git/toolbox-sass.git#e095c3889cf0afe6c31bc9709279841fb0255cd5"
+    "sass": "^1.34.0"
   },
   "license": "MIT",
   "name": "robotinaponcho",
