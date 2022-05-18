@@ -4,16 +4,42 @@
     information, please refer to the accompanying "LICENCE" file.
 #}
 
-{% extends '@toolbox-sass/html-document.twig' %}
-
-{% set metaAuthor = author %}
-{% set metaCanonical = urlBase ~ slug %}
-{% set metaDescription = description | default(false) %}
-{% set metaOpengraphTitle = metaTitle | default(title) | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
-{% set metaOpengraphUrl = metaCanonical %}
 {% set metaTitle = metaTitle | default(title) | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
 
-{% block body %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, width=device-width" name="viewport">
+
+    {% block head %}
+        <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
+    {% endblock %}
+
+    <link href="{{ urlBase ~ slug }}" rel="canonical">
+    <meta content="{{ author | raw }}" name="author">
+
+    {% if description is defined %}
+        <meta content="{{ description | raw }}" name="description">
+        <meta content="{{ description | raw }}" property="og:description">
+    {% endif %}
+
+    <meta content="{{ metaOpengraphImage }}" property="og:image">
+    <meta content="{{ metaTitle | raw }}" property="og:title">
+    <meta content="website" property="og:type">
+    <meta content="{{ urlBase ~ slug }}" property="og:url">
+    <meta content="{{ metaTwitterAuthor }}" property="twitter:creator">
+    <meta content="{{ metaTwitterSite }}" property="twitter:site">
+    <meta content="summary_large_image" name="twitter:card">
+
+    {% if metaNoCrawl | default(false) %}
+        <meta content="noindex, nofollow" name="robots">
+    {% endif %}
+
+    <script>{% block headJavaScript "document.documentElement.className+='javascript',localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))" %}</script>
+    <title>{{ metaTitle | raw }}</title>
+</head>
+<body>
     <div class="content">
         <div class="content__container">
             <header class="site-header">
@@ -49,12 +75,5 @@
         </div>
     </div>
     <script src="/assets/app.{{ releaseTimestamp }}.js" type="module"></script>
-{% endblock %}
-
-{% block headJavaScript %}
-    {{ parent() }},localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))
-{% endblock %}
-
-{% block headCustom %}
-    <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
-{% endblock %}
+</body>
+</html>

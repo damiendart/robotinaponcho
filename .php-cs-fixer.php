@@ -6,10 +6,25 @@
 
 declare(strict_types=1);
 
-use ToolboxSass\Helpers\PHPCSFixerHelper;
-
 return (new PhpCsFixer\Config())
-    ->setRules(PHPCSFixerHelper::getHouseRules('8.0'))
+    ->setRules(
+        [
+            '@PhpCsFixer' => true,
+            '@PSR2' => true,
+            'array_syntax' => ['syntax' => 'short'],
+            'concat_space' => ['spacing' => 'one'],
+            'declare_strict_types' => true,
+            'ordered_imports' => ['sort_algorithm' => 'alpha'],
+            'no_unused_imports' => true,
+            'multiline_whitespace_before_semicolons' => [
+                'strategy' => 'no_multi_line',
+            ],
+            'trailing_comma_in_multiline' => [
+                'elements' => ['arrays', 'arguments', 'parameters'],
+            ],
+            'void_return' => true,
+        ],
+    )
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->notPath('node_modules')

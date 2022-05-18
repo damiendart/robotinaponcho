@@ -1,11 +1,25 @@
 <div class="cta-sharing">
     <hr class="cta-sharing__rule">
     <p class="cta-sharing__heading">Share this page:</p>
-    {%
-        include '@toolbox-sass/social-share-list.twig' with {
-            'classNameRoot': 'social-media-list',
-            'link': link,
-            'twitterText': twitterText
-        }
-    %}
+    <ul class="social-share-list">
+        <li class="social-share-list__item social-share-list__item--twitter">
+            <a
+                href="https://twitter.com/intent/tweet?source=webclient{% if twitterText %}&text={{ twitterText | escape('url') }}{% endif %}{% if twitterAuthor %}&via={{ twitterAuthor | replace({ '@': '' }) | escape('url') }}{% endif %}&url={{ link | escape('url') }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Share on Twitter"
+            ><span>Share on Twitter</span></a>
+        </li>
+        <li class="social-share-list__item social-share-list__item--facebook">
+            <a
+                href="https://www.facebook.com/sharer.php?u={{ link | escape('url') }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Share on Facebook"
+            ><span>Share on Facebook</span></a>
+        </li>
+        <li class="social-share-list__item social-share-list__item--permalink">
+            <a href="{{ link }}" title="Permalink"><span>Permalink</span></a>
+        </li>
+    </ul>
 </div>

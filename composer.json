@@ -26,15 +26,10 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://www.robotinaponcho.net/git/toolbox-sass.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://www.robotinaponcho.net/git/yassg.git"
     }
   ],
   "require": {
-    "damiendart/toolbox-sass": "dev-master",
     "ext-json": "*",
     "filp/whoops": "^2.11",
     "guzzlehttp/guzzle": "^7.1",

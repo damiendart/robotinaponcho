@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a888292bad5af5ee1034af88e8b85a32",
+    "content-hash": "ed98eea94fda0bdadd52661f5bdcad08",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -71,39 +71,6 @@
                 }
             ],
             "time": "2022-02-21T13:15:14+00:00"
-        },
-        {
-            "name": "damiendart/toolbox-sass",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://www.robotinaponcho.net/git/toolbox-sass.git",
-                "reference": "e095c3889cf0afe6c31bc9709279841fb0255cd5"
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ToolboxSass\\Helpers\\": "php/helpers"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Damien Dart",
-                    "email": "damiendart@pobox.com"
-                }
-            ],
-            "description": "A hodgepodge of web-development-related stuff.",
-            "time": "2022-05-13T16:28:02+00:00"
         },
         {
             "name": "filp/whoops",
@@ -5220,7 +5187,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "damiendart/toolbox-sass": 20,
         "damiendart/yassg": 20,
         "roave/security-advisories": 20
     },

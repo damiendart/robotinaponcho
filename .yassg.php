@@ -11,7 +11,6 @@ use Robotinaponcho\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
 use Robotinaponcho\Yassg\Plugins\SiteMapEntries\SiteMapEntriesPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
-use Robotinaponcho\Yassg\Plugins\TwigToolboxSass\TwigToolboxSassPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigWidont\TwigWidontPlugin;
 use Yassg\Configuration\Configuration;
 use Yassg\Plugins\Collections\CollectionsPlugin;
@@ -29,7 +28,6 @@ return (new Configuration(
     ->addPlugin(new SlugPlugin(new BasicSlugStrategy))
     ->addPlugin(new TwigMarkdownPlugin())
     ->addPlugin(new TwigSmartyPantsPlugin())
-    ->addPlugin(new TwigToolboxSassPlugin())
     ->addPlugin(new TwigWidontPlugin())
     ->setMetadata(
         [

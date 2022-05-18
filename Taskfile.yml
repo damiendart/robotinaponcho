@@ -64,7 +64,6 @@ tasks:
     sources:
       - 'src/yassg/**/*'
       - 'src/yassg-plugins/**/*'
-      - 'node_modules/toolbox-sass/**/*'
 
   clean:
     cmds:
