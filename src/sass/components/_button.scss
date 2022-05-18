@@ -3,8 +3,8 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "../breakpoints";
 @use "../functions";
+@use "../mixins";
 @use "../variables";
 
 .button {
@@ -60,7 +60,7 @@
   }
 
   &__download {
-    @media #{breakpoints.$media-small-only} {
+    @include mixins.breakpoint-between(x-small, small) {
       &::after {
         content: ":";
       }

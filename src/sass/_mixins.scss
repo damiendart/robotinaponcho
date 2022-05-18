@@ -2,6 +2,10 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
+@use "sass:map";
+@use "functions";
+@use "variables";
+
 // Adds declarations to improve font rendering in most browsers. This
 // mixin may no longer be necessary for modern browsers (I should check
 // at some point). The following is based on
@@ -17,4 +21,32 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; // Just In Case(tm).
   text-size-adjust: none;
+}
+
+@mixin breakpoint-between($lower-breakpoint, $upper-breakpoint) {
+  $lower-width: map.get(variables.$breakpoints, $lower-breakpoint);
+  $upper-width: map.get(variables.$breakpoints, $upper-breakpoint) - 1;
+
+  @media only screen
+    and (min-width: #{functions.px-to-em($lower-width)})
+    and (max-width: #{functions.px-to-em($upper-width)})
+  {
+    @content
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  $width: map.get(variables.$breakpoints, $breakpoint) - 1;
+
+  @media only screen and (max-width: #{functions.px-to-em($width)}) {
+    @content
+  }
+}
+
+@mixin breakpoint-up($breakpoint) {
+  $width: map.get(variables.$breakpoints, $breakpoint);
+
+  @media only screen and (min-width: #{functions.px-to-em($width)}) {
+    @content
+  }
 }

@@ -3,7 +3,7 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "../breakpoints";
+@use "../mixins";
 @use "../variables";
 
 .content {
@@ -48,7 +48,7 @@
     & > .site-footer {
       margin: (variables.$base-line-height * 2) 0 0;
 
-      @media #{breakpoints.$media-large-up} {
+      @include mixins.breakpoint-up(medium) {
         margin: (variables.$base-line-height * 4) 0 0;
       }
     }
@@ -59,14 +59,14 @@
       padding-left: variables.$base-line-height;
       padding-right: variables.$base-line-height;
 
-      @media #{breakpoints.$media-large-up} {
+      @include mixins.breakpoint-up(medium) {
         max-width: variables.$content-width;
       }
     }
 
     & > img:not(&__image--full-width),
     & > .robot-and-things {
-      @media #{breakpoints.$media-medium-down} {
+      @include mixins.breakpoint-down(medium) {
         box-sizing: border-box;
         padding-left: variables.$base-line-height;
         padding-right: variables.$base-line-height;

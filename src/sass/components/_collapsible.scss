@@ -2,23 +2,23 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-@use "../breakpoints";
+@use "../mixins";
 
 .collapsible {
   &--x-small-down {
-    @media #{breakpoints.$media-x-small-down} {
+    @include mixins.breakpoint-down(x-small) {
       display: none;
     }
   }
 
   &--small-down {
-    @media #{breakpoints.$media-small-down} {
+    @include mixins.breakpoint-down(small) {
       display: none;
     }
   }
 
   &--medium-down {
-    @media #{breakpoints.$media-medium-down} {
+    @include mixins.breakpoint-down(medium) {
       display: none;
     }
   }

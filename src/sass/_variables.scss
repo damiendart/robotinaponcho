@@ -11,6 +11,14 @@ $base-one-em-in-pixels: 16px;
 $base-one-pixel-in-em: math.div(1px, $base-one-em-in-pixels) * 1em;
 $base-one-pixel-in-rem: math.div(1px, $base-one-em-in-pixels) * 1rem;
 
+$breakpoints: (
+  x-small: 320px,
+  small: 480px,
+  medium: 768px,
+  large: 1024px,
+  x-large: 1140px,
+);
+
 $colour-black-50: #f8f8f8;
 $colour-black-100: #e9ecef;
 $colour-black-800: #343a40;

@@ -3,7 +3,7 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "../breakpoints";
+@use "../mixins";
 @use "../variables";
 
 .site-header {
@@ -88,7 +88,7 @@
       }
 
       .site-header__navigation__list {
-        @media #{breakpoints.$media-large-up} {
+        @include mixins.breakpoint-up(medium) {
           padding: 0 variables.$base-line-height;
           justify-content: flex-start;
         }

@@ -7,7 +7,6 @@
 @use "fonts";
 @use "mixins";
 @use "variables";
-@use "breakpoints";
 
 @mixin dark-theme {
   --base-background: #{variables.$colour-black-900};
@@ -154,7 +153,7 @@ details {
 figure {
   margin: 0;
 
-  @media #{breakpoints.$media-small-down} {
+  @include mixins.breakpoint-down(small) {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     overflow-y: hidden;
@@ -165,7 +164,7 @@ figure {
     position: relative;
 
     &::after {
-      @media #{breakpoints.$media-small-down} {
+      @include mixins.breakpoint-down(small) {
         content: "";
         display: block;
         height: variables.$base-one-pixel-in-rem;
@@ -184,7 +183,7 @@ h1 {
   margin: 0;
   text-align: center;
 
-  @media #{breakpoints.$media-medium-up} {
+  @include mixins.breakpoint-up(small) {
     font-size: 300%;
     line-height: variables.$base-line-height * 2;
   }
@@ -205,7 +204,7 @@ h3 {
 html {
   font-size: percentage(math.div(14px, variables.$base-font-size));
 
-  @media #{breakpoints.$media-medium-up} {
+  @include mixins.breakpoint-up(small) {
     font-size: 100%;
   }
 
