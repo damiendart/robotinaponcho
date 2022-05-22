@@ -82,6 +82,10 @@
         mask: url("/assets/itchio.svg") no-repeat center;
         width: functions.px-to-rem(98.25px);
       }
+
+      & > * {
+        @include mixins.screen-reader-only;
+      }
     }
   }
 }

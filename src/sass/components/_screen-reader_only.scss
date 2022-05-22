@@ -2,11 +2,8 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
+@use "../mixins";
+
 .screen-reader-only {
-  height: 1px;
-  left: -10000px;
-  overflow: hidden;
-  position: absolute;
-  top: auto;
-  width: 1px;
+  @include mixins.screen-reader-only;
 }
