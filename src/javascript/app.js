@@ -4,26 +4,6 @@
 
 import './apple-click-event-fix';
 import './copy-to-clipboard';
+import './details-element-animation';
 import './pretty-date';
-
-import DetailsElementAnimation from './details-element-animation';
-import ThemeSwitcher from './theme-switcher';
-
-document.querySelectorAll('details').forEach((el) => {
-  // eslint-disable-next-line no-new
-  new DetailsElementAnimation(el);
-});
-
-const siteFooterElement = document.querySelector('.site-footer');
-const themeSwitcherContainerElement = document.createElement('div');
-
-themeSwitcherContainerElement.setAttribute(
-  'class',
-  'site-footer__theme-switcher',
-);
-
-if (window.CSS && window.CSS.supports('(--css: variables)')) {
-  siteFooterElement.appendChild(themeSwitcherContainerElement);
-  // eslint-disable-next-line no-new
-  new ThemeSwitcher(themeSwitcherContainerElement);
-}
+import './theme-switcher';

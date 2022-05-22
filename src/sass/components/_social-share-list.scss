@@ -112,22 +112,6 @@
           background: var(--base-foreground);
         }
       }
-
-      &:focus,
-      &:hover {
-        &::before {
-          mask-size: variables.$base-line-height * 1.25;
-        }
-      }
-
-      @media (hover: none) {
-        &:focus,
-        &:hover {
-          &::before {
-            background-size: variables.$base-line-height;
-          }
-        }
-      }
     }
   }
 }

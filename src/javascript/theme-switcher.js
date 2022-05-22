@@ -78,4 +78,16 @@ class ThemeSwitcher {
   }
 }
 
-export default ThemeSwitcher;
+const themeSwitcherContainerElement = document.createElement('div');
+
+themeSwitcherContainerElement.setAttribute(
+  'class',
+  'site-footer__theme-switcher',
+);
+
+document
+  .querySelector('.site-footer')
+  .appendChild(themeSwitcherContainerElement);
+
+// eslint-disable-next-line no-new
+new ThemeSwitcher(themeSwitcherContainerElement);
