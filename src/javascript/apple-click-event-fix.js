@@ -10,16 +10,10 @@ function _noop() {
 // Account for iOS and iPadOS WebKit's busted handling of mouse events.
 // See <https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html>
 // for more information. This fix is based on one used by Bootstrap.
-function applyFix() {
-  if ('ontouchstart' in document.documentElement) {
-    // Internet Explorer 11 doesn't implement `NodeList.forEach()`,
-    // hence the `Array.prototype.forEach()` kludge. See
-    // <https://developer.mozilla.org/en-US/docs/Web/API/NodeList#Example>
-    // for more information.
-    Array.prototype.forEach.call(document.body.children, (element) => {
+if ('ontouchstart' in document.documentElement) {
+  Array.from(document.body.children).forEach(
+    (element) => {
       element.addEventListener('mouseover', _noop);
-    });
-  }
+    },
+  );
 }
-
-applyFix();

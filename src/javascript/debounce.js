@@ -7,8 +7,7 @@
 function debounce(callback, interval) {
   let debounceTimeoutID = null;
 
-  // eslint-disable-next-line func-names
-  return function (...args) {
+  return (...args) => {
     clearTimeout(debounceTimeoutID);
     debounceTimeoutID = setTimeout(
       () => callback.apply(this, args),

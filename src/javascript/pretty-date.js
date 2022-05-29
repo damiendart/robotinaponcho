@@ -8,12 +8,7 @@ function spellOutNumber(number) {
 
 // The following is based on <http://ejohn.org/files/pretty.js>.
 function updatePrettyDates() {
-  // Internet Explorer 11 doesn't implement `NodeList.forEach()`,
-  // hence the `Array.prototype.forEach()` kludge. See
-  // <https://developer.mozilla.org/en-US/docs/Web/API/NodeList#Example>
-  // for more information.
-  Array.prototype.forEach.call(
-    document.querySelectorAll('[data-timestamp]'),
+  document.querySelectorAll('[data-timestamp]').forEach(
     (element) => {
       const timeSince = Math.floor(
         (new Date().getTime() / 1000) - parseInt(element.getAttribute('data-timestamp'), 10),
