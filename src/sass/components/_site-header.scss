@@ -11,6 +11,7 @@
   color: inherit;
   display: flex;
   flex-wrap: wrap;
+  gap: variables.$base-line-height * 0.25;
   position: relative;
 
   a {
@@ -72,12 +73,14 @@
       align-content: center;
       background: variables.$colour-black-50;
       background: var(--base-background);
+      border-top: (variables.$base-line-height * 2) solid variables.$colour-black-50;
+      border-top-color: var(--base-background);
       height: calc(100% + #{math.div(variables.$base-line-height, 2)});
       left: 0;
       opacity: 0;
       pointer-events: none;
       position: absolute;
-      top: 0;
+      top: variables.$base-line-height * -2;
       transition: opacity 0.125s ease-in;
       width: 100%;
       z-index: 2;
@@ -100,6 +103,33 @@
     margin: 0;
     order: -1;
     text-align: center;
+
+    a {
+      color: var(--base-background);
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        background: variables.$colour-blue;
+        background: var(--secondary-colour);
+        bottom: variables.$base-line-height * -0.5;
+        content: "";
+        display: block;
+        left: variables.$base-line-height * -0.5;
+        position: absolute;
+        right: variables.$base-line-height * -0.5;
+        top: variables.$base-line-height * -3;
+        z-index: -1;
+      }
+
+      &:focus,
+      &:hover {
+        &::before {
+          background: variables.$colour-black-1000;
+          background: var(--base-foreground);
+        }
+      }
+    }
   }
 
   &__rule {
