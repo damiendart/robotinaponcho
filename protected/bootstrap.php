@@ -18,7 +18,6 @@ if (getenv('SENTRY_DSN')) {
     );
 }
 
-use ToolboxSass\Helpers\ToolboxSassHelper;
 use Whoops\Handler\Handler;
 use Whoops\Handler\PlainTextHandler;
 use Whoops\Run;
@@ -44,7 +43,7 @@ if (
     $whoops->pushHandler(new PlainTextHandler());
 } else {
     $whoops->pushHandler(function (Throwable $throwable): int {
-        include ToolboxSassHelper::getViewsDirectory() . '/fatal.php';
+        include 'fatal.php';
 
         return Handler::DONE;
     });
