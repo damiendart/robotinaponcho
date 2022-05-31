@@ -11,18 +11,20 @@
   --base-background: #{variables.$colour-black-900};
   --base-foreground: #{variables.$colour-black-50};
   --base-accent: #{variables.$colour-black-800};
-  --button-background: #{variables.$colour-black-50};
+  --button-background: #{variables.$colour-pink};
   --button-foreground: #{variables.$colour-black-900};
   --drawing-outline-opacity: 1;
+  --secondary-colour: #{variables.$colour-pink};
 }
 
 :root {
   --base-background: #{variables.$colour-black-50};
   --base-foreground: #{variables.$colour-black-1000};
   --base-accent: #{variables.$colour-black-100};
-  --button-background: #{variables.$colour-black-1000};
+  --button-background: #{variables.$colour-blue};
   --button-foreground: #{variables.$colour-black-50};
   --drawing-outline-opacity: 0;
+  --secondary-colour: #{variables.$colour-blue};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
@@ -36,7 +38,8 @@
 }
 
 a {
-  color: inherit;
+  color: variables.$colour-blue;
+  color: var(--secondary-colour);
 
   &:active,
   &:focus,
