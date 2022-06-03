@@ -10,8 +10,8 @@
   twigTemplate: '.templates/homepage.html.twig'
 --->
 
-I’m Damien Dart, a full-time web developer based in South West England,
-and this is my personal website.
+**Hello!** I’m Damien Dart, a full-time web developer based in South
+West England, and this is my personal website.
 
 Other places I've polluted include [GitHub][], [Instagram][],
 [itch.io][], [Pinboard][], and [Twitter][].

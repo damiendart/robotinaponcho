@@ -14,9 +14,9 @@
     max-width: variables.$container-width;
 
     & > h1,
-    & > .robot-and-things,
+    & > .robot,
     & > h1 + *,
-    & > .robot-and-things + * {
+    & > .robot + * {
       margin: (variables.$base-line-height * 4) 0 0;
     }
 
@@ -65,7 +65,7 @@
     }
 
     & > img:not(&__image--full-width),
-    & > .robot-and-things {
+    & > .robot {
       @include mixins.breakpoint-down(medium) {
         box-sizing: border-box;
         padding-left: variables.$base-line-height;
