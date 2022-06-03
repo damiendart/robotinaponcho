@@ -21,10 +21,10 @@
   --base-background: #{variables.$colour-white};
   --base-foreground: #{variables.$colour-black-1000};
   --base-accent: #{variables.$colour-black-100};
-  --button-background: #{variables.$colour-blue};
+  --button-background: #{variables.$colour-grape};
   --button-foreground: #{variables.$colour-white};
   --drawing-outline-opacity: 0;
-  --secondary-colour: #{variables.$colour-blue};
+  --secondary-colour: #{variables.$colour-grape};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
@@ -38,7 +38,7 @@
 }
 
 a {
-  color: variables.$colour-blue;
+  color: variables.$colour-grape;
   color: var(--secondary-colour);
 
   &:focus {

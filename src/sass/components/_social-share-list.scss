@@ -40,7 +40,7 @@
           width: variables.$base-line-height * 1.5;
 
           @supports (mask: url("icon-check.svg")) {
-            background: variables.$colour-blue;
+            background: variables.$colour-grape;
             background: var(--secondary-colour);
             mask: url("icon-check.svg") no-repeat center;
             mask-size: variables.$base-line-height * 1.25;
@@ -108,7 +108,7 @@
         width: variables.$base-line-height * 1.5;
 
         @supports (mask: url("icon-check.svg")) {
-          background: variables.$colour-blue;
+          background: variables.$colour-grape;
           background: var(--secondary-colour);
         }
       }
