@@ -18,11 +18,11 @@
 }
 
 :root {
-  --base-background: #{variables.$colour-black-50};
+  --base-background: #{variables.$colour-white};
   --base-foreground: #{variables.$colour-black-1000};
   --base-accent: #{variables.$colour-black-100};
   --button-background: #{variables.$colour-blue};
-  --button-foreground: #{variables.$colour-black-50};
+  --button-foreground: #{variables.$colour-white};
   --drawing-outline-opacity: 0;
   --secondary-colour: #{variables.$colour-blue};
 
@@ -40,12 +40,6 @@
 a {
   color: variables.$colour-blue;
   color: var(--secondary-colour);
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: inherit;
-  }
 
   &:focus {
     outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
