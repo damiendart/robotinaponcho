@@ -8,7 +8,7 @@
 @use "../variables";
 
 .button {
-  background: variables.$colour-black-1000;
+  background: variables.$colour-grape;
   background: var(--button-background);
   color: variables.$colour-black-50;
   color: var(--button-foreground);
