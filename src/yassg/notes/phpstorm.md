@@ -13,7 +13,7 @@
 
 Maybe one day I’ll get round to using a [settings repository][], but for
 the moment running through this list takes at most ten minutes with a
-fresh install of PhpStorm, so eh.
+fresh installation of PhpStorm, so eh.
 
   [settings repository]: <https://www.jetbrains.com/help/phpstorm/sharing-your-ide-settings.html#settings-repository>
 
@@ -67,7 +67,7 @@ drill down to find a setting.
 -   If using PhpStorm 2020.3 or later, if the option is available sync
     the IDE theme with the OS (on macOS change the preferred light theme
     to *macOS Light*). Otherwise, use the Darcula theme throughout.
--   Set the editor font to [Iosekva][].
+-   Set the editor font to [Iosekva][] Term.
 -   Set default visual guides at 72 and 78 characters.
 -   Set the *Project Opening*’s *Default directory*.
 -   Turn off the terminal’s *Audible bell*.
