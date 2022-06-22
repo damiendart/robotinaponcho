@@ -18,7 +18,7 @@ return (new PhpCsFixer\Config())
     ->setRules(
         [
             '@PhpCsFixer' => true,
-            '@PSR2' => true,
+            '@PSR12' => true,
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
             'declare_strict_types' => true,
