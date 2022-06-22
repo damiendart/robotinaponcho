@@ -1,10 +1,10 @@
 <?php
 
-// A generic fatal error page template.
-//
-// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
-// This file is distributed under the MIT licence. For more information,
-// please refer to the accompanying "LICENCE" file.
+/*
+ * Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+ * This file is distributed under the MIT licence. For more information,
+ * please refer to the accompanying "LICENCE" file.
+ */
 
 declare(strict_types=1);
 
