@@ -93,7 +93,7 @@ class HtmlProcessor implements ProcessorInterface
         );
 
         return preg_replace_callback(
-            '/(&#[0-9]+;)/',
+            '/(&#\d+;)/',
             function ($match): string {
                 return mb_convert_encoding(
                     $match[1],
