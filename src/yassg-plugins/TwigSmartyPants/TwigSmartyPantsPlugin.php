@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Robotinaponcho\Yassg\Plugins\TwigSmartyPants;
 
 use function DI\decorate;
+
 use Michelf\SmartyPantsTypographer;
 use Twig\Environment;
 use Twig\TwigFilter;

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Robotinaponcho\Yassg\Plugins\TwigWidont;
 
 use function DI\decorate;
+
 use Twig\Environment;
 use Twig\TwigFilter;
 use Yassg\Events\EventDispatcher;

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Robotinaponcho\Yassg\Plugins\SiteMapEntries;
 
 use function DI\decorate;
+
 use Psr\Container\ContainerInterface;
 use Yassg\Configuration\Configuration;
 use Yassg\Events\EventDispatcher;

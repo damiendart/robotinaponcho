@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Robotinaponcho\Yassg\Plugins\HtmlMinifier;
 
 use function DI\decorate;
+
 use Psr\Container\ContainerInterface;
 use voku\helper\HtmlMin;
 use Yassg\Plugins\PluginInterface;
