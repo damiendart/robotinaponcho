@@ -65,7 +65,7 @@ class SiteMapEntriesPlugin implements PluginInterface
                                 );
                             }
 
-                            $configuration->setMetadata(
+                            $configuration->mergeMetadata(
                                 ['sitemapEntries' => $entries],
                             );
                         },

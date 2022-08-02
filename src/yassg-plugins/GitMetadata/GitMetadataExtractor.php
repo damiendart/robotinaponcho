@@ -32,7 +32,7 @@ class GitMetadataExtractor implements MetadataExtractorInterface
     {
         $this->innerMetadataExtractor->addMetadata($inputFile);
 
-        $inputFile->setMetadata(
+        $inputFile->mergeMetadata(
             [
                 'git' => [
                     'created' => $this->getCreatedMetadata(
