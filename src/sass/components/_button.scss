@@ -88,4 +88,8 @@
       }
     }
   }
+
+  &--small {
+    padding: math.div(variables.$base-line-height, 4) math.div(variables.$base-line-height, 2);
+  }
 }

@@ -7,7 +7,7 @@
 @use "../variables";
 
 .content {
-  padding: variables.$base-line-height 0;
+  padding: 0 0 (variables.$base-line-height * 4);
 
   &__container {
     margin: 0 auto;

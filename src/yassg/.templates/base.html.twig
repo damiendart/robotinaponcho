@@ -40,26 +40,16 @@
     <title>{{ metaTitle | raw }}</title>
 </head>
 <body>
+    <div class="skip-links">
+        <ul class="skip-links__list">
+            <li class="skip-links__list__item">
+                <a class="button button--small" href="#footer">Skip to footer</a>
+            </li>
+        </ul>
+        <hr class="skip-links__rule">
+    </div>
     <div class="content">
         <div class="content__container">
-            <header class="site-header">
-                <div class="site-header__navigation site-header__navigation--skip-links">
-                    <ul class="site-header__navigation__list">
-                        <li class="site-header__navigation__list__item"><a href="#content">Skip to content</a></li>
-                        <li class="site-header__navigation__list__item"><a href="#footer">Skip to footer</a></li>
-                    </ul>
-                </div>
-                <hr class="site-header__rule">
-                <p class="site-header__title"><a {% if slug is same as('') %}aria-current="page" {% endif %}href="/">{{ author }}</a></p>
-                <nav class="site-header__navigation">
-                    <ul class="site-header__navigation__list">
-                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a {% if slug is same as('projects/') %}aria-current="page" {% endif %}href="/projects/">Projects</a></li>
-                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a {% if slug is same as ('notes/') %}aria-current="page" {% endif %}href="/notes/">Notes</a></li>
-                        <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
-                    </ul>
-                </nav>
-                <hr class="site-header__rule">
-            </header>
 
             {% block heading %}
                 <h1 id="content">{{ title | smartypants | widont | raw }}</h1>

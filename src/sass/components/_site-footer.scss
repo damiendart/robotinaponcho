@@ -9,18 +9,8 @@
 .site-footer {
   text-align: center;
 
-  @include mixins.breakpoint-up(medium) {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-  }
-
   & > * + * {
-    margin: math.div(variables.$base-line-height, 4) 0 0;
-
-    @include mixins.breakpoint-up(medium) {
-      margin: 0;
-    }
+    margin: math.div(variables.$base-line-height, 2) 0 0;
   }
 
   &__copyright {
