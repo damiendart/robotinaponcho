@@ -63,6 +63,7 @@ tasks:
       - 'protected/vendor/bin/yassg'
     desc: 'Build static site files with yassg'
     sources:
+      - '.yassg.php'
       - 'src/yassg/**/*'
       - 'src/yassg-plugins/**/*'
 
@@ -134,5 +135,5 @@ tasks:
     cmds:
       - cmd: 'command -v entr || (echo "\"entr\" is required."; exit 1)'
         silent: true
-      - 'while sleep 0.1; do find src/ | entr -d task build && break; done'
+      - 'while sleep 0.1; do find .yassg.php src/ | entr -d task build && break; done'
     desc: 'Runs entr to execute the "build" task on file changes'
