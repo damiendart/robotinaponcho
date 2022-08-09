@@ -27,7 +27,7 @@
         position: relative;
 
         &::after {
-          background: variables.$colour-black-50 url("icon-check.svg") no-repeat center;
+          background: variables.$colour-black-50 url("icon-check.00000000000000.svg") no-repeat center;
           background-size: variables.$base-line-height * 1.25;
           content: "";
           display: inline-block;
@@ -39,19 +39,19 @@
           transition: opacity 0.125s ease;
           width: variables.$base-line-height * 1.5;
 
-          @supports (mask: url("icon-check.svg")) {
+          @supports (mask: url("icon-check.00000000000000.svg")) {
             background: variables.$colour-grape;
             background: var(--secondary-colour);
-            mask: url("icon-check.svg") no-repeat center;
+            mask: url("icon-check.00000000000000.svg") no-repeat center;
             mask-size: variables.$base-line-height * 1.25;
           }
         }
 
         &::before {
-          background: url("icon-copy.svg");
+          background: url("icon-copy.00000000000000.svg");
 
-          @supports (mask: url("icon-copy.svg")) {
-            mask: url("icon-copy.svg");
+          @supports (mask: url("icon-copy.00000000000000.svg")) {
+            mask: url("icon-copy.00000000000000.svg");
           }
         }
 
@@ -70,9 +70,9 @@
     &--facebook {
       a {
         &::before {
-          background: url("icon-facebook.svg");
+          background: url("icon-facebook.00000000000000.svg");
 
-          @supports (mask: url("icon-facebook.svg")) {
+          @supports (mask: url("icon-facebook.00000000000000.svg")) {
             mask: url("icon-facebook.svg");
           }
         }
@@ -82,10 +82,10 @@
     &--twitter {
       a {
         &::before {
-          background: url("icon-twitter.svg");
+          background: url("icon-twitter.00000000000000.svg");
 
-          @supports (mask: url("icon-twitter.svg")) {
-            mask: url("icon-twitter.svg");
+          @supports (mask: url("icon-twitter.00000000000000.svg")) {
+            mask: url("icon-twitter.00000000000000.svg");
           }
         }
       }
@@ -107,7 +107,7 @@
         transition: background-size 0.125s ease, mask-size 0.125s ease, opacity 0.125s ease;
         width: variables.$base-line-height * 1.5;
 
-        @supports (mask: url("icon-check.svg")) {
+        @supports (mask: url("icon-check.00000000000000.svg")) {
           background: variables.$colour-grape;
           background: var(--secondary-colour);
         }

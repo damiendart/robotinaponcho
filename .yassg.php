@@ -17,6 +17,8 @@ use Yassg\Plugins\Collections\CollectionsPlugin;
 use Yassg\Plugins\Slug\SlugPlugin;
 use Yassg\Services\Slug\BasicSlugStrategy;
 
+$releaseTimestamp = getenv('RELEASE_TIMESTAMP') ?? '00000000000000';
+
 return (new Configuration(
     __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'yassg',
     __DIR__ . DIRECTORY_SEPARATOR . 'public',
@@ -35,8 +37,8 @@ return (new Configuration(
             'authorEmail' => 'damiendart@pobox.com',
             'metaTwitterAuthor' => '@damiendart',
             'metaTwitterSite' => '@damiendart',
-            'metaOpengraphImage' => 'https://www.robotinaponcho.net/assets/opengraph.png',
-            'releaseTimestamp' => getenv('RELEASE_TIMESTAMP') ?? '00000000000000',
+            'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.${releaseTimestamp}.png",
+            'releaseTimestamp' => $releaseTimestamp,
             'urlBase' => 'https://www.robotinaponcho.net/',
         ],
     );

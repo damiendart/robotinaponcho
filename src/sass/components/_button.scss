@@ -68,7 +68,7 @@
   }
 
   &__itchio {
-    @supports (mask: url("/assets/itchio.svg")) {
+    @supports (mask: url("/assets/itchio.00000000000000.svg")) {
       display: inline-block;
       position: relative;
       vertical-align: middle;
@@ -79,7 +79,7 @@
         content: "";
         display: block;
         height: variables.$base-line-height;
-        mask: url("/assets/itchio.svg") no-repeat center;
+        mask: url("/assets/itchio.00000000000000.svg") no-repeat center;
         width: functions.px-to-rem(98.25px);
       }
 
