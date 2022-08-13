@@ -10,14 +10,20 @@
   twigTemplate: '.templates/homepage.html.twig'
 --->
 
-**Hello!** I’m Damien Dart, a full-time web developer based in South
+**Hello!** I'm Damien Dart, a full-time web developer based in South
 West England, and this is my personal website.
+
+Here you'll find [my projects][], [notes], and [other assorted tat][] I
+felt like sharing.
 
 Other places I've polluted include [GitHub][], [Instagram][],
 [itch.io][], [Pinboard][], and [Twitter][].
 
 You can also [buy me a coffee][].
 
+  [my projects]: <https://www.robotinaponcho.net/projects/>
+  [notes]: <https://www.robotinaponcho.net/notes/>
+  [other assorted tat]: <https://www.robotinaponcho.net/crap/>
   [Instagram]: <https://www.instagram.com/damiendart/>
   [itch.io]: <https://damiendart.itch.io/>
   [GitHub]: <https://github.com/damiendart>
