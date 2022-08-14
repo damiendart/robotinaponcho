@@ -80,6 +80,7 @@ class HtmlProcessor implements ProcessorInterface
                 'video',
             ],
         );
+
         $output = $this->minifier->minify($input);
         $output = preg_replace(
             "/({$elementRegexGroup})>\\s</",
@@ -91,6 +92,17 @@ class HtmlProcessor implements ProcessorInterface
             '><$1',
             $output,
         );
+
+        if ($this->minifier->isDoMakeSameDomainsLinksRelative()) {
+            // Add the scheme and domain name back to canonical link
+            // URLs to prevent any future shenanigans (if the site gets
+            // mirrored, etc).
+            $output = preg_replace(
+                '/<link href=(\\S+) rel=canonical>/',
+                '<link href=https://www.robotinaponcho.net$1 rel=canonical>',
+                $output,
+            );
+        }
 
         return preg_replace_callback(
             '/(&#\d+;)/',

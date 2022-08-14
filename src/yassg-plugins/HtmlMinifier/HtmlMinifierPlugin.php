@@ -27,7 +27,8 @@ class HtmlMinifierPlugin implements PluginInterface
                     // HTMLMin adds superfluous whitespace when removing
                     // unnecessary closing tags. For more information,
                     // see <https://github.com/voku/HtmlMin/issues/59>.
-                    ->doRemoveOmittedHtmlTags(false);
+                    ->doRemoveOmittedHtmlTags(false)
+                    ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
             },
             ProcessorResolver::class => decorate(
                 function (ProcessorResolver $previous, ContainerInterface $c): ProcessorResolver {
