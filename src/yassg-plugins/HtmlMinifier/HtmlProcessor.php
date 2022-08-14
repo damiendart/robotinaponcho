@@ -82,6 +82,8 @@ class HtmlProcessor implements ProcessorInterface
         );
 
         $output = $this->minifier->minify($input);
+
+        // HTMLMin adds superfluous whitespace between block elements.
         $output = preg_replace(
             "/({$elementRegexGroup})>\\s</",
             '$1><',
