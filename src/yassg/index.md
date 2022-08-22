@@ -13,8 +13,7 @@
 **Hello!** I'm Damien Dart, a full-time web developer based in South
 West England, and this is my personal website.
 
-Here you'll find [my projects][], [notes], and [other assorted tat][] I
-felt like sharing.
+Here you'll find [my projects][], [notes], and [other assorted tat][].
 
 Other places I've polluted include [GitHub][], [Instagram][],
 [itch.io][], [Pinboard][], and [Twitter][].
