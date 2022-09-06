@@ -1,0 +1,19 @@
+// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "../functions";
+@use "../variables";
+
+.pill {
+  border-radius: variables.$base-line-height * 0.25;
+  display: inline-block;
+  background-color: var(--base-accent);
+  font-size: 75%;
+  letter-spacing: functions.px-to-rem(0.5px);
+  line-height: 1;
+  padding: (variables.$base-line-height * 0.125) (variables.$base-line-height * 0.25);
+  text-transform: uppercase;
+  vertical-align: text-bottom;
+  white-space: pre;
+}
