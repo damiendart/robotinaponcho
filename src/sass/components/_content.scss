@@ -13,46 +13,6 @@
     margin: 0 auto;
     max-width: variables.$container-width;
 
-    & > h1,
-    & > .robot,
-    & > h1 + *,
-    & > .robot + * {
-      margin: (variables.$base-line-height * 4) 0 0;
-    }
-
-    & > * + * {
-      margin: math.div(variables.$base-line-height, 2) 0 0;
-    }
-
-    & > h2 {
-      margin: (variables.$base-line-height * 2.75) 0 0 0;
-    }
-
-    & > h3,
-    & > img,
-    & > img + * {
-      margin: variables.$base-line-height 0 0 0;
-    }
-
-    & > details + details {
-      margin: 0;
-    }
-
-    & > .notes-list,
-    & > .notes-list + *,
-    & > [class^="cta"],
-    & > [class^="cta"] + * {
-      margin: variables.$base-line-height * 3 0 0;
-    }
-
-    & > .site-footer {
-      margin: (variables.$base-line-height * 2) 0 0;
-
-      @include mixins.breakpoint-up(medium) {
-        margin: (variables.$base-line-height * 4) 0 0;
-      }
-    }
-
     & > *:not(div):not(pre) {
       margin-left: auto;
       margin-right: auto;

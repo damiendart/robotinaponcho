@@ -1,0 +1,49 @@
+// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:math";
+@use "../mixins";
+@use "../variables";
+
+.stack {
+  & > * + * {
+    margin-top: math.div(variables.$base-line-height, 2);
+  }
+
+  & > h1,
+  & > .robot,
+  & > h1 + *,
+  & > .robot + * {
+    margin-top: variables.$base-line-height * 4;
+  }
+
+  & > h2 {
+    margin-top: variables.$base-line-height * 2.75;
+  }
+
+  & > h3,
+  & > img,
+  & > img + * {
+    margin-top: variables.$base-line-height;
+  }
+
+  & > details + details {
+    margin-top: 0;
+  }
+
+  & > .notes-list,
+  & > .notes-list + *,
+  & > [class^="cta"],
+  & > [class^="cta"] + * {
+    margin-top: variables.$base-line-height * 3;
+  }
+
+  & > .site-footer {
+    margin-top: variables.$base-line-height * 2;
+
+    @include mixins.breakpoint-up(medium) {
+      margin-top: variables.$base-line-height * 4;
+    }
+  }
+}
