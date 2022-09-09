@@ -19,7 +19,7 @@
             {{ git.updated.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% endif %}
 
-    {{ renderedMarkdown | raw }}
+    {{ renderedMarkdown | prettyratings | raw }}
 {% endblock %}
 
 {% block headCustom %}
