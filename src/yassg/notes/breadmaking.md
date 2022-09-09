@@ -19,7 +19,7 @@ baking this will create a decent loaf without too much faff.
 | Ingredient               | [Baker’s Percentage][] | Example |
 |:-------------------------|:----------------------:|:-------:|
 | Strong white bread flour |          100%          |  500 g  |
-| Tepid water              |          60%           |  300 g  |
+| Tepid water              |          60%           | 300 ml  |
 | A sachet of dried yeast  |          1.4%          |   7 g   |
 | Fine salt                |           2%           |  10 g   |
 | Olive oil                |           2%           |  10 ml  |
