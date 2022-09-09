@@ -15,13 +15,16 @@ $breakpoints: (
   x-small: 320px,
   small: 480px,
   medium: 768px,
+  content-max: 848px,
   large: 1024px,
   x-large: 1140px,
 );
 
+// The following colour values are based on
+// <https://yeun.github.io/open-color/>.
 $colour-black-50: #f8f9fa;
 $colour-black-100: #f1f3f5;
-$colour-black-800: #495057;
+$colour-black-800: #343a40;
 $colour-black-900: #212529;
 $colour-black-1000: #000000;
 $colour-grape: #862e9c;

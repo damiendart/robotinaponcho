@@ -13,7 +13,7 @@
     margin: 0 auto;
     max-width: variables.$container-width;
 
-    & > *:not(div):not(pre) {
+    & > *:not(div, pre, .content__container__full-width-image) {
       margin-left: auto;
       margin-right: auto;
       padding-left: variables.$base-line-height;
@@ -24,9 +24,8 @@
       }
     }
 
-    & > img,
-    & > .robot {
-      @include mixins.breakpoint-down(medium) {
+    &__full-width-image {
+      @include mixins.breakpoint-down(content-max) {
         box-sizing: border-box;
         padding-left: variables.$base-line-height;
         padding-right: variables.$base-line-height;
