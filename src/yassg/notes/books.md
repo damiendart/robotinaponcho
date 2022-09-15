@@ -14,11 +14,13 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
 -   [Mostly Harmless][] by Douglas Adams (★★)
 -   [The Man Who Died Twice][] by Richard Osman (★★★)
 -   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 -   [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [The Handmaid’s Tale]: <https://en.wikipedia.org/wiki/The_Handmaid's_Tale>
   [Mostly Harmless]: <https://en.wikipedia.org/wiki/Mostly_Harmless>
   [The Man Who Died Twice]: <https://en.wikipedia.org/wiki/The_Man_Who_Died_Twice_(novel)>
   [So Long, and Thanks for All the Fish]: <https://en.wikipedia.org/wiki/So_Long,_and_Thanks_for_All_the_Fish>
