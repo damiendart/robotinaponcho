@@ -15,8 +15,8 @@ use Robotinaponcho\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigWidont\TwigWidontPlugin;
 use Yassg\Configuration\Configuration;
 use Yassg\Plugins\Collections\CollectionsPlugin;
+use Yassg\Plugins\Slug\BasicSlugStrategy;
 use Yassg\Plugins\Slug\SlugPlugin;
-use Yassg\Services\Slug\BasicSlugStrategy;
 
 $releaseTimestamp = getenv('RELEASE_TIMESTAMP') ?? '00000000000000';
 

@@ -12,8 +12,8 @@ namespace Robotinaponcho\Yassg\Plugins\HtmlMinifier;
 
 use voku\helper\HtmlMin;
 use Yassg\Files\InputFileInterface;
+use Yassg\Files\Processors\ProcessorInterface;
 use Yassg\Files\WriteFile;
-use Yassg\Processors\ProcessorInterface;
 
 class HtmlProcessor implements ProcessorInterface
 {

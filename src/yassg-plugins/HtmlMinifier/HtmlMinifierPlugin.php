@@ -14,8 +14,8 @@ use function DI\decorate;
 
 use Psr\Container\ContainerInterface;
 use voku\helper\HtmlMin;
+use Yassg\Files\Processors\ProcessorResolver;
 use Yassg\Plugins\PluginInterface;
-use Yassg\Processors\ProcessorResolver;
 
 class HtmlMinifierPlugin implements PluginInterface
 {
