@@ -127,8 +127,8 @@ tasks:
       GIT_STATUS:
         sh: 'git status --porcelain'
 
-  # Task provides functionality that runs tasks when files changes, but
-  # it's a little basic and also slow to react to file changes. The
+  # While Task provides functionality that runs tasks when files
+  # changes, it's a little basic and slow to react to file changes. The
   # following task is an attempt to improve this functionality. For more
   # information about entr, see <http://eradman.com/entrproject/>.
   watch-build:
