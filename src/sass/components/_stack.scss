@@ -12,9 +12,9 @@
   }
 
   & > h1,
-  & > .robot,
   & > h1 + *,
-  & > .robot + * {
+  & > .image-and-text:first-child,
+  & > .image-and-text:first-child + * {
     margin-top: variables.$base-line-height * 4;
   }
 

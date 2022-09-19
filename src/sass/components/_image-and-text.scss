@@ -1,0 +1,33 @@
+// Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:math";
+@use "../mixins";
+@use "../variables";
+
+.image-and-text {
+  display: grid;
+  grid-gap: variables.$base-line-height;
+  grid-template-rows: auto auto;
+
+  @include mixins.breakpoint-up(content-wider-max) {
+    grid-gap: variables.$base-line-height * 1.5;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+  }
+
+  &__image {
+    text-align: center;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixins.ie-11-only {
+      margin-top: variables.$base-line-height;
+    }
+  }
+}

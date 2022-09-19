@@ -13,15 +13,11 @@
     margin: 0 auto;
     max-width: variables.$container-width;
 
-    & > *:not(div, pre, .content__container__full-width-image) {
+    & > *:not(pre, .content__container__full-width-image) {
       margin-left: auto;
       margin-right: auto;
       padding-left: variables.$base-line-height;
       padding-right: variables.$base-line-height;
-
-      @include mixins.breakpoint-up(medium) {
-        max-width: variables.$content-width;
-      }
     }
 
     &__full-width-image {
@@ -29,6 +25,16 @@
         box-sizing: border-box;
         padding-left: variables.$base-line-height;
         padding-right: variables.$base-line-height;
+      }
+    }
+  }
+
+  &--wide {
+    .content__container {
+      @supports (max-width: variables.$container-width-wider) {
+        @include mixins.breakpoint-up(content-wider-max) {
+          max-width: variables.$container-width-wider;
+        }
       }
     }
   }

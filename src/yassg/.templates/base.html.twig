@@ -48,7 +48,7 @@
         </ul>
         <hr class="skip-links__rule">
     </div>
-    <div class="content">
+    <div class="{{ 'content ' ~ contentClasses | default('content') }}">
         <div class="content__container stack">
 
             {% block heading %}
