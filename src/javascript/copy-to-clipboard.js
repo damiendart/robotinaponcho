@@ -7,15 +7,15 @@ import debounce from './debounce';
 document.body.addEventListener(
   'click',
   (event) => {
-    if (
-      event.target.matches('.social-share-list__item--permalink a') === false
-    ) {
+    if (event.target.matches('[data-clipboard]') === false) {
       return;
     }
 
     event.preventDefault();
 
-    window.navigator.clipboard.writeText(event.target.getAttribute('href'))
+    window.navigator.clipboard.writeText(
+      event.target.getAttribute('data-clipboard'),
+    )
       .then(
         () => {
           const onClipboardSuccess = debounce(
@@ -41,7 +41,7 @@ document.body.addEventListener(
 );
 
 Array.prototype.forEach.call(
-  document.querySelectorAll('a[href$=".git"], .social-share-list__item--permalink a'),
+  document.querySelectorAll('a[data-clipboard]'),
   (element) => {
     // eslint-disable-next-line no-param-reassign
     element.title = 'Copy page URL to clipboard';
