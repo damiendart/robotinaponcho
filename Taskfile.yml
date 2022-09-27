@@ -118,7 +118,7 @@ tasks:
       - task: 'ci'
       - 'mkdir -p release'
       - 'tar --exclude ./protected/vendor -cvf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
-      - 'envsubst < deployment/variables.yml > release/release.yml'
+      - 'envsubst < deployment/metadata.yml > release/release.yml'
       - 'cp deployment/*-tasks.yml release/'
     desc: 'Create release for deployment'
     env:
