@@ -132,6 +132,7 @@ tasks:
   # changes, it's a little basic and slow to react to file changes. The
   # following task is an attempt to improve this functionality. For more
   # information about entr, see <http://eradman.com/entrproject/>.
+  # (See also: <https://github.com/go-task/task/issues/813>.)
   watch-build:
     cmds:
       - cmd: 'command -v entr || (echo "\"entr\" is required."; exit 1)'
