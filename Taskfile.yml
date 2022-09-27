@@ -119,7 +119,8 @@ tasks:
       - 'mkdir -p release'
       - 'tar --exclude ./protected/vendor -cvf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
       - 'envsubst < deployment/variables.yml > release/release.yml'
-    desc: 'Create release archive and metadata for deployment'
+      - 'cp deployment/*-tasks.yml release/'
+    desc: 'Create release for deployment'
     env:
       RELEASE_GIT_SHA:
         sh: 'git log -n 1 --format=%H'
