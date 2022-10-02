@@ -6,7 +6,7 @@
 - name: 'Ensure Git-repository-updating cron job exists'
   ansible.builtin.cron:
     cron_file: '{{ __release_crontab }}'
-    hour: '0'
     job: 'nice -n 10 bash -c "{{ __release_base_directory }}/private/bin/update-git-repositories"'
+    minute: '0'
     name: 'Update Git Repositories'
     user: 'root'
