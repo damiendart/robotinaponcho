@@ -14,6 +14,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   [Billy Summers][] by Stephen King (★★★★)
 -   [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
 -   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
 -   [Mostly Harmless][] by Douglas Adams (★★)
@@ -21,6 +22,7 @@ somewhere easily available will help me stay motivated.
 -   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 -   [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [Billy Summers]: <https://en.wikipedia.org/wiki/Billy_Summers>
   [All Quiet on the Western Front]: <https://en.wikipedia.org/wiki/All_Quiet_on_the_Western_Front>
   [The Handmaid’s Tale]: <https://en.wikipedia.org/wiki/The_Handmaid's_Tale>
   [Mostly Harmless]: <https://en.wikipedia.org/wiki/Mostly_Harmless>
