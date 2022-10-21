@@ -14,6 +14,8 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
+-   [The Road Back][] by Erich Maria Remaque (★★★)
 -   [Billy Summers][] by Stephen King (★★★★)
 -   [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
 -   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
@@ -22,6 +24,8 @@ somewhere easily available will help me stay motivated.
 -   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 -   [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [Rita Hayworth and Shawshank Redemption]: <https://en.wikipedia.org/wiki/Rita_Hayworth_and_Shawshank_Redemption>
+  [The Road Back]: <https://en.wikipedia.org/wiki/The_Road_Back>
   [Billy Summers]: <https://en.wikipedia.org/wiki/Billy_Summers>
   [All Quiet on the Western Front]: <https://en.wikipedia.org/wiki/All_Quiet_on_the_Western_Front>
   [The Handmaid’s Tale]: <https://en.wikipedia.org/wiki/The_Handmaid's_Tale>
