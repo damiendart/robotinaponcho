@@ -16,6 +16,9 @@ use League\CommonMark\ConverterInterface;
 use Psr\Container\ContainerInterface;
 use Twig\Environment;
 use Twig\TwigFilter;
+
+use function Yassg\dedent;
+
 use Yassg\Events\EventDispatcher;
 use Yassg\Events\TwigEnvironmentCreatedEvent;
 use Yassg\Plugins\PluginInterface;

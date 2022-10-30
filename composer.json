@@ -31,17 +31,17 @@
   ],
   "require": {
     "ext-json": "*",
-    "filp/whoops": "^2.11",
-    "guzzlehttp/guzzle": "^7.1",
+    "filp/whoops": "^2.14.5",
+    "guzzlehttp/guzzle": "^7.5",
     "php": "^8.0",
-    "sentry/sdk": "^3.0"
+    "sentry/sdk": "^3.3"
   },
   "require-dev": {
     "damiendart/yassg": "dev-master",
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "michelf/php-smartypants": "^1.8",
+    "friendsofphp/php-cs-fixer": "^3.12",
+    "michelf/php-smartypants": "^1.8.1",
     "roave/security-advisories": "dev-latest",
-    "voku/html-min": "^4.4"
+    "voku/html-min": "^4.5"
   },
   "type": "project"
 }
