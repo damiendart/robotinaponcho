@@ -27,11 +27,13 @@ return (new PhpCsFixer\Config())
                 'location' => 'after_open',
                 'separate' => 'both',
             ],
-            'ordered_imports' => ['sort_algorithm' => 'alpha'],
+            'native_function_invocation' => true,
             'no_unused_imports' => true,
             'multiline_whitespace_before_semicolons' => [
                 'strategy' => 'no_multi_line',
             ],
+            'ordered_imports' => ['sort_algorithm' => 'alpha'],
+            'phpdoc_align' => ['align' => 'left'],
             'trailing_comma_in_multiline' => [
                 'elements' => ['arrays', 'arguments', 'parameters'],
             ],

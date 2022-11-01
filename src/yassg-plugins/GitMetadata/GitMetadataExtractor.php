@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace Robotinaponcho\Yassg\Plugins\GitMetadata;
 
-use DateTime;
-use Exception;
 use Yassg\Files\InputFile;
 use Yassg\Files\Metadata\MetadataExtractorInterface;
 
@@ -26,7 +24,7 @@ class GitMetadataExtractor implements MetadataExtractorInterface
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function addMetadata(InputFile $inputFile): void
     {
@@ -47,7 +45,7 @@ class GitMetadataExtractor implements MetadataExtractorInterface
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     private function getCreatedMetadata(string $pathname): array
     {
@@ -61,18 +59,18 @@ class GitMetadataExtractor implements MetadataExtractorInterface
         if (empty($gitCommandOutput[0])) {
             return [
                 'hash' => '0000000000000000000000000000000000000000',
-                'timestamp' => new DateTime(),
+                'timestamp' => new \DateTime(),
             ];
         }
 
         return [
             'hash' => $gitCommandOutput[0],
-            'timestamp' => (new DateTime())->setTimestamp((int) $gitCommandOutput[1]),
+            'timestamp' => (new \DateTime())->setTimestamp((int) $gitCommandOutput[1]),
         ];
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     private function getLastUpdatedMetadata(string $pathname): array
     {
@@ -86,13 +84,13 @@ class GitMetadataExtractor implements MetadataExtractorInterface
         if (empty($gitCommandOutput[0])) {
             return [
                 'hash' => '0000000000000000000000000000000000000000',
-                'timestamp' => new DateTime(),
+                'timestamp' => new \DateTime(),
             ];
         }
 
         return [
             'hash' => $gitCommandOutput[0],
-            'timestamp' => (new DateTime())->setTimestamp((int) $gitCommandOutput[1]),
+            'timestamp' => (new \DateTime())->setTimestamp((int) $gitCommandOutput[1]),
         ];
     }
 }

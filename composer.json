@@ -38,7 +38,7 @@
   },
   "require-dev": {
     "damiendart/yassg": "dev-master",
-    "friendsofphp/php-cs-fixer": "^3.12",
+    "friendsofphp/php-cs-fixer": "^3.13",
     "michelf/php-smartypants": "^1.8.1",
     "roave/security-advisories": "dev-latest",
     "voku/html-min": "^4.5"
