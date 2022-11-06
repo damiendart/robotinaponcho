@@ -14,6 +14,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   *The Bullet That Missed* by Richard Osman (★★★)
 -   [The Testaments][] by Margaret Atwood (★★★★)
 -   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
 -   [The Road Back][] by Erich Maria Remaque (★★★)
