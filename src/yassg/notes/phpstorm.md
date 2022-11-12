@@ -20,7 +20,7 @@ fresh installation of PhpStorm, so eh.
 ### Plugins
 
 In addition to the plugins that come bundled with PhpStorm, I also use
-[IdeaVim][], because I’m one of those people, [Key Promoter X][], and
+[IdeaVim][] (because I’m one of those people), [Key Promoter X][], and
 [Laravel Idea][].
 
   [IdeaVim]: <https://github.com/JetBrains/ideavim>
@@ -32,51 +32,49 @@ In addition to the plugins that come bundled with PhpStorm, I also use
 I’m also one of these people.
 
 **Note**: The search functionality in PhpStorm’s *Settings* window is
-pretty good, so I haven’t included the whole list of menus you need to
-drill down to find a setting.
+pretty good, so I haven’t included the whole hierarchy of menus you need
+to drill down to find a setting.
 
--   Turn on *Use contrast scrollbars*.
--   Turn on *Use smaller indents in trees*.
--   Turn off *Show tool window bars*.
--   Right-click the status bar and turn on the *Memory Indicator*.
--   Turn off *Display icons in menu items*.
--   Turn on *Widescreen tool window layout* (where appropriate).
--   Remove tabs completely (set *Tab Placement* to *None*) and instead
-    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> to switch between recent files.
--   Turn off *Show browsers popup in the editor*.
--   Hide the navigation bar (<span class="os-menu-item">View</span> →
-    <span class="os-menu-item">Appearance</span> → <span
-    class="os-menu-item">Navigation Bar</span>); on macOS,
-    <kbd>⌘</kbd>+<kbd>↑</kbd> will display a floating navigation bar if
-    required.
+- Turn on *Use contrast scrollbars*.
+- Turn on *Use smaller indents in trees*.
+- Turn off *Show tool window bars*.
+- Right-click the status bar and turn on the *Memory Indicator*.
+- Turn off *Display icons in menu items*.
+- Turn on *Widescreen tool window layout* (where appropriate).
+- Remove tabs completely (set *Tab Placement* to *None*) and instead
+  rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> to switch between recent files.
+- Turn off *Show browsers popup in the editor*.
+- Hide the navigation bar (<span class="os-menu-item">View</span> →
+  <span class="os-menu-item">Appearance</span> → <span
+  class="os-menu-item">Navigation Bar</span>).
 
 ### IdeaVim customisations and settings
 
--   Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
-    is installed.
--   On macOS, make IdeaVim a more pleasant experience by running
-    `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false`
-    in the terminal.
+- Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
+  is installed.
+- On macOS, make IdeaVim a more pleasant experience by running
+  `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false`
+  in the terminal.
 
   [my dotfiles]: <https://www.robotinaponcho.net/git/#toolbox>
 
 ### Miscellaneous customisations and settings
 
--   Check that PhpStorm is aware of all available PHP CLI interpreters
-    in *Languages & Frameworks* → *PHP* in the *Settings* window.
--   If using PhpStorm 2020.3 or later, if the option is available sync
-    the IDE theme with the OS (on macOS change the preferred light theme
-    to *macOS Light*). Otherwise, use the Darcula theme throughout.
--   Set the editor font to [Iosekva][] Term.
--   Set default visual guides at 72 and 78 characters.
--   Set the *Project Opening*’s *Default directory*.
--   Turn off the terminal’s *Audible bell*.
+- Check that PhpStorm is aware of all available PHP CLI interpreters in
+  *Languages & Frameworks* → *PHP* in the *Settings* window.
+- If using PhpStorm 2020.3 or later, if the option is available sync the
+  IDE theme with the OS (on macOS change the preferred light theme to
+  *macOS Light*). Otherwise, use the Darcula theme throughout.
+- Set the editor font to [Iosekva][] Term.
+- Set default visual guides at 72 and 78 characters.
+- Set the *Project Opening*’s *Default directory*.
+- Turn off the embedded terminal’s *Audible bell*.
 
   [Iosekva]: <https://typeof.net/Iosevka/>
 
 ### Project-level customisations and settings
 
--   For projects that use NPM or Yarn, turn off the option to
-    automatically add *node_modules/.bin* from the project root to
-    `$PATH` (this one is a little tricky to search for in the *Settings*
-    window; find it under *Tools* → *Terminal*).
+- For projects that use NPM or Yarn, turn off the setting that
+  automatically adds *node_modules/.bin* from the project root to
+  `$PATH` (this one is a little tricky to search for: find it under
+  *Tools* → *Terminal*).
