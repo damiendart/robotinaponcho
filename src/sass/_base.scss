@@ -297,15 +297,11 @@ table {
 
   tr {
     > *:first-child {
-      @include mixins.breakpoint-down(medium) {
-        padding-left: variables.$base-line-height;
-      }
+      padding-left: variables.$base-line-height;
     }
 
     > *:last-child {
-      @include mixins.breakpoint-down(medium) {
-        padding-right: variables.$base-line-height;
-      }
+      padding-right: variables.$base-line-height;
     }
   }
 }
