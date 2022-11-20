@@ -14,18 +14,18 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
--   [The Children of Men][] by P.D. James (★★)
--   *The Bullet That Missed* by Richard Osman (★★★)
--   [The Testaments][] by Margaret Atwood (★★★★)
--   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
--   [The Road Back][] by Erich Maria Remaque (★★★)
--   [Billy Summers][] by Stephen King (★★★★)
--   [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
--   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
--   [Mostly Harmless][] by Douglas Adams (★★)
--   [The Man Who Died Twice][] by Richard Osman (★★★)
--   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
--   [Life, the Universe and Everything][] by Douglas Adams (★★★)
+- [The Children of Men][] by P.D. James (★★)
+- *The Bullet That Missed* by Richard Osman (★★★)
+- [The Testaments][] by Margaret Atwood (★★★★)
+- [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
+- [The Road Back][] by Erich Maria Remaque (★★★)
+- [Billy Summers][] by Stephen King (★★★★)
+- [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
+- [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
+- [Mostly Harmless][] by Douglas Adams (★★)
+- [The Man Who Died Twice][] by Richard Osman (★★★)
+- [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
+- [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
   [The Children of Men]: <https://en.wikipedia.org/wiki/The_Children_of_Men>
   [The Testaments]: <https://en.wikipedia.org/wiki/The_Testaments>
@@ -42,18 +42,17 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2021
 
--   [The Restaurant at the End of the Universe][] by Douglas Adams (★★★)
--   [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams (★★★)
--   [The Colorado Kid][] by Stephen King (★★)
--   [Joyland][] by Stephen King (★★★)
--   [Later][] by Stephen King (★★★)
--   *Easy Peasy Puppy Squeezy* by Steve Mann
--   [The Thursday Murder Club][] by Richard Osman (★★★)
--   [The Running Man][] by Stephen King (★★★)
--   [The Amber Spyglass (His Dark Materials)][] by Philip Pullman (★★)
--   [The Subtle Knife (His Dark Materials)][] by Philip Pullman (★★★)
--   [The Northern Lights (His Dark Materials)][] by Philip Pullman
-    (★★★★)
+- [The Restaurant at the End of the Universe][] by Douglas Adams (★★★)
+- [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams (★★★)
+- [The Colorado Kid][] by Stephen King (★★)
+- [Joyland][] by Stephen King (★★★)
+- [Later][] by Stephen King (★★★)
+- *Easy Peasy Puppy Squeezy* by Steve Mann
+- [The Thursday Murder Club][] by Richard Osman (★★★)
+- [The Running Man][] by Stephen King (★★★)
+- [The Amber Spyglass (His Dark Materials)][] by Philip Pullman (★★)
+- [The Subtle Knife (His Dark Materials)][] by Philip Pullman (★★★)
+- [The Northern Lights (His Dark Materials)][] by Philip Pullman (★★★★)
 
   [The Restaurant at the End of the Universe]: <https://en.wikipedia.org/wiki/The_Restaurant_at_the_End_of_the_Universe>
   [The Hitchhiker’s Guide to the Galaxy]: <https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)>
