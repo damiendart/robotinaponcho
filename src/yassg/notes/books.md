@@ -14,6 +14,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+-   [The Children of Men][] by P.D. James (★★)
 -   *The Bullet That Missed* by Richard Osman (★★★)
 -   [The Testaments][] by Margaret Atwood (★★★★)
 -   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
@@ -26,6 +27,7 @@ somewhere easily available will help me stay motivated.
 -   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 -   [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [The Children of Men]: <https://en.wikipedia.org/wiki/The_Children_of_Men>
   [The Testaments]: <https://en.wikipedia.org/wiki/The_Testaments>
   [Rita Hayworth and Shawshank Redemption]: <https://en.wikipedia.org/wiki/Rita_Hayworth_and_Shawshank_Redemption>
   [The Road Back]: <https://en.wikipedia.org/wiki/The_Road_Back>
