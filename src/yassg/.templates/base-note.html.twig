@@ -10,13 +10,11 @@
 
 {% block content %}
     {% if git.created.timestamp == git.updated.timestamp %}
-        <p><em>This page was created <span class="screen-reader-only">on</span>
-            <a data-timestamp="{{ git.created.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">
-            {{ git.created.timestamp | date('d/m/Y') }}</a>.</em></p>
+        <p><em>This note was created <span class="screen-reader-only">on</span>
+            <a data-timestamp="{{ git.created.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">{{ git.created.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% else %}
-        <p><em>This page was updated <span class="screen-reader-only">on</span>
-            <a data-timestamp="{{ git.updated.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">
-            {{ git.updated.timestamp | date('d/m/Y') }}</a>.</em></p>
+        <p><em>This note was updated <span class="screen-reader-only">on</span>
+            <a data-timestamp="{{ git.updated.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">{{ git.updated.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% endif %}
 
     {{ renderedMarkdown | prettyratings | raw }}
