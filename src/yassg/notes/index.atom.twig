@@ -16,7 +16,7 @@
             <name>{{ author }}</name>
         </author>
         <id>{{ urlBase }}notes/index.atom</id>
-        {% for note in collections.notes %}
+        {% for note in collections.notes | sort((a, b) => b.metadata.git.created.timestamp <=> a.metadata.git.created.timestamp) %}
             <entry>
                 <id>{{ urlBase }}{{ note.metadata.slug }}</id>
                 <link href="{{ urlBase }}{{ note.metadata.slug }}"/>
