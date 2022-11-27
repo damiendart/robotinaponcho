@@ -8,18 +8,34 @@
 
 {% extends '.templates/base.html.twig' %}
 
+{%
+    set categoryNames = {
+        'adobe-creative-cloud': 'Adobe Creative Cloud',
+        'food-and-drink': 'Food and drink',
+        'phpstorm': 'PhpStorm',
+        'procreate': 'Procreate',
+        'reading': 'Reading',
+        'synology-diskstation': 'Synology DiskStation',
+        'ubuntu': 'Ubuntu',
+    }
+%}
 {% set description = "View Damien Dart's notes on stuff and things." | smartypants %}
 {% set section = 'notes' %}
 
 {% block content %}
     <p>These notes are also available as an
         <a href="{{ urlBase }}notes/index.atom">Atom feed</a>.</p>
-    <ul class="notes-list">
-        {% for note in collections.notes | sort((a, b) => a.metadata.title <=> b.metadata.title) | sort((a, b) => b.metadata.git.updated.timestamp <=> a.metadata.git.updated.timestamp) %}
-            <li class="notes-list__item">
-                <a href="/{{ note.metadata.slug }}">{{ note.metadata.title }}</a>
-                <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated </span>{{ note.metadata.git.updated.timestamp | date('d M, Y') }}<span class="screen-reader-only">)</span></span>
-            </li>
+        {% for category, notes in collections | filter((v, k) => k != 'notes') %}
+            <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
+
+            <ul class="notes-list">
+                {% for note in notes | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
+                    <li class="notes-list__item">
+                        <a href="/{{ note.metadata.slug }}">{{ note.metadata.title | smartypants }}</a>
+                        <span class="notes-list__item__meta"><span class="screen-reader-only">(</span><span>Updated </span>{{ note.metadata.git.updated.timestamp | date('d M, Y') }}<span class="screen-reader-only">)</span></span>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endfor %}
     </ul>
 {% endblock %}

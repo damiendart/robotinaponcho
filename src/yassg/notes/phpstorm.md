@@ -3,7 +3,9 @@
   # International License. To view a copy of this license, please visit
   # <http://creativecommons.org/licenses/by/4.0/>.
 
-  collections: 'notes'
+  collections:
+    - 'notes'
+    - 'phpstorm'
   description: Read Damien Dart's notes on setting up and using PhpStorm.
   title: PhpStorm Notes
   twigTemplate: .templates/base-note.html.twig

@@ -3,7 +3,9 @@
   # International License. To view a copy of this license, please visit
   # <http://creativecommons.org/licenses/by/4.0/>.
 
-  collections: 'notes'
+  collections:
+    - 'notes'
+    - 'food-and-drink'
   description: Read Damien Dart's notes on breadmaking.
   title: Breadmaking Notes
   twigTemplate: .templates/base-note.html.twig

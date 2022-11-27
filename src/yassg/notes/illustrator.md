@@ -3,7 +3,9 @@
   # International License. To view a copy of this license, please visit
   # <http://creativecommons.org/licenses/by/4.0/>.
 
-  collections: 'notes'
+  collections:
+    - 'adobe-creative-cloud'
+    - 'notes'
   description: Read Damien Dart's notes on Adobe Illustrator.
   title: Adobe Illustrator Notes
   twigTemplate: .templates/base-note.html.twig

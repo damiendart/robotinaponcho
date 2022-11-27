@@ -32,8 +32,6 @@
     margin-top: 0;
   }
 
-  & > .notes-list,
-  & > .notes-list + *,
   & > [class^="cta"],
   & > [class^="cta"] + * {
     margin-top: variables.$base-line-height * 3;
