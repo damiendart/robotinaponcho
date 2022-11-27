@@ -6,9 +6,11 @@
   collections:
     - 'notes'
     - 'reading'
-  title: "Completed Books"
   twigTemplate: .templates/base-note.html.twig
 --->
+
+Completed Books
+===============
 
 I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.
