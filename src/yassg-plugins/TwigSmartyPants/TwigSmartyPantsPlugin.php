@@ -43,6 +43,7 @@ class TwigSmartyPantsPlugin implements PluginInterface
             new TwigFilter(
                 'smartypants',
                 [SmartyPantsTypographer::class, 'defaultTransform'],
+                ['is_safe' => ['html']],
             ),
         );
     }

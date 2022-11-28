@@ -13,7 +13,7 @@
         <author>
             <email>{{ authorEmail }}</email>
             <uri>{{ urlBase }}</uri>
-            <name>{{ author }}</name>
+            <name>{{ author | smartypants }}</name>
         </author>
         <id>{{ urlBase }}notes/index.atom</id>
         {% for note in collections.notes | sort((a, b) => b.metadata.git.created.timestamp <=> a.metadata.git.created.timestamp) %}
@@ -24,7 +24,7 @@
                 <summary type="html">
                     <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updated.timestamp | date('c') }}</em></p> ]]>
                 </summary>
-                <title>{{ note.metadata.title }}</title>
+                <title>{{ note.metadata.title | smartypants }}</title>
                 <updated>{{ note.metadata.git.updated.timestamp | date('c') }}</updated>
             </entry>
         {% endfor %}

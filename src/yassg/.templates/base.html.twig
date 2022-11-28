@@ -4,7 +4,7 @@
     information, please refer to the accompanying "LICENCE" file.
 #}
 
-{% set metaTitle = metaTitle | default(title) | smartypants | trim ~ ' (www.robotinaponcho.net)' %}
+{% set metaTitle = metaTitle | default(title) | trim ~ ' (www.robotinaponcho.net)' %}
 
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
@@ -17,19 +17,19 @@
     {% endblock %}
 
     <link href="{{ urlBase ~ slug }}" rel="canonical">
-    <meta content="{{ author | raw }}" name="author">
+    <meta content="{{ author | smartypants }}" name="author">
 
     {% if description is defined %}
-        <meta content="{{ description | raw }}" name="description">
-        <meta content="{{ description | raw }}" property="og:description">
+        <meta content="{{ description | smartypants }}" name="description">
+        <meta content="{{ description | smartypants }}" property="og:description">
     {% endif %}
 
     <meta content="{{ metaOpengraphImage }}" property="og:image">
-    <meta content="{{ metaTitle | raw }}" property="og:title">
+    <meta content="{{ metaTitle | smartypants }}" property="og:title">
     <meta content="website" property="og:type">
     <meta content="{{ urlBase ~ slug }}" property="og:url">
-    <meta content="{{ metaTwitterAuthor }}" property="twitter:creator">
-    <meta content="{{ metaTwitterSite }}" property="twitter:site">
+    <meta content="{{ metaTwitterAuthor | smartypants }}" property="twitter:creator">
+    <meta content="{{ metaTwitterSite | smartypants }}" property="twitter:site">
     <meta content="summary_large_image" name="twitter:card">
 
     {% if metaNoCrawl | default(false) %}
@@ -37,7 +37,7 @@
     {% endif %}
 
     <script>{% block headJavaScript "document.documentElement.className+='javascript',localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))" %}</script>
-    <title>{{ metaTitle | raw }}</title>
+    <title>{{ metaTitle | smartypants }}</title>
 </head>
 <body>
     <div class="skip-links">
@@ -52,7 +52,7 @@
         <div class="content__container stack">
 
             {% block heading %}
-                <h1 id="content">{{ title | smartypants | widont | raw }}</h1>
+                <h1 id="content">{{ title | smartypants | widont }}</h1>
             {% endblock %}
 
             {{ block('content') }}
@@ -60,7 +60,7 @@
             <footer id="footer" class="site-footer">
                 <hr class="site-footer__rule">
                 <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }}
-                    <a href="/">{{ author }}</a>.<br>View <a href="/privacy-policy">privacy policy</a>, <a href="/sitemap">site map</a>.</p>
+                    <a href="/">{{ author | smartypants }}</a>.<br>View <a href="/privacy-policy">privacy policy</a>, <a href="/sitemap">site map</a>.</p>
             </footer>
         </div>
     </div>

@@ -8,13 +8,7 @@
 
 {% set contentClasses = 'content--wide' %}
 
-{% if description is defined %}
-    {% set description = description | smartypants | trim %}
-{% endif %}
-
-{% block heading %}{% endblock %}
-
-{% block content %}
+{% block heading %}
     <div class="image-and-text">
         <div class="image-and-text__image">
             <picture class="robot__robot" id="content">
@@ -27,3 +21,5 @@
         </div>
     </div>
 {% endblock %}
+
+{% block content %}{% endblock %}

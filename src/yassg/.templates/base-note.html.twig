@@ -17,7 +17,7 @@
             <a data-timestamp="{{ git.updated.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">{{ git.updated.timestamp | date('d/m/Y') }}</a>.</em></p>
     {% endif %}
 
-    {{ renderedMarkdown | prettyratings | raw }}
+    {{ renderedMarkdown | prettyratings }}
 {% endblock %}
 
 {% block headCustom %}

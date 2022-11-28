@@ -50,6 +50,7 @@ class TwigPrettyRatingsPlugin implements PluginInterface
                         rtrim($string),
                     );
                 },
+                ['is_safe' => ['html']],
             ),
         );
     }

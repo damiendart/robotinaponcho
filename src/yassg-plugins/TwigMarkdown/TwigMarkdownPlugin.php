@@ -68,6 +68,7 @@ class TwigMarkdownPlugin implements PluginInterface
                         ->convert($string)
                         ->getContent();
                 },
+                ['is_safe' => ['html']],
             ),
         );
     }
