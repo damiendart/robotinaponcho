@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+- [Real World][] by Natsuo Kirino (★★)
 - [The Children of Men][] by P.D. James (★★)
 - *The Bullet That Missed* by Richard Osman (★★★)
 - [The Testaments][] by Margaret Atwood (★★★★)
@@ -31,6 +32,7 @@ somewhere easily available will help me stay motivated.
 - [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 - [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [Real World]: <https://en.wikipedia.org/wiki/Real_World_(novel)>
   [The Children of Men]: <https://en.wikipedia.org/wiki/The_Children_of_Men>
   [The Testaments]: <https://en.wikipedia.org/wiki/The_Testaments>
   [Rita Hayworth and Shawshank Redemption]: <https://en.wikipedia.org/wiki/Rita_Hayworth_and_Shawshank_Redemption>
