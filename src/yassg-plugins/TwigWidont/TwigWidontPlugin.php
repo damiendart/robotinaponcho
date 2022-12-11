@@ -44,7 +44,21 @@ class TwigWidontPlugin implements PluginInterface
                 function (?string $string): string {
                     $string ??= '';
 
-                    if (str_word_count($string) < 3) {
+                    if (str_word_count($string) < 4) {
+                        return $string;
+                    }
+
+                    if (
+                        mb_strlen(
+                            join(
+                                ' ',
+                                \array_slice(
+                                    explode(' ', $string),
+                                    -2,
+                                ),
+                            ),
+                        ) > 15
+                    ) {
                         return $string;
                     }
 
