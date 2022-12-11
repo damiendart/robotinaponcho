@@ -6,14 +6,12 @@
   collections:
     - 'adobe-creative-cloud'
     - 'notes'
-  description: Read Damien Dart's notes on Adobe Illustrator.
-  title: Adobe Illustrator Notes
   twigTemplate: .templates/base-note.html.twig
 --->
 
-Miscellaneous notes
--------------------
+Adobe Illustrator Miscellany
+============================
 
-  - Check the document colour mode is set correctly.
-  - Occasionally run the _Delete Unused Panel Items_ action (located in
-    the _Default Actions_ folder) to keep document filesizes in check.
+- Check the document colour mode is set correctly.
+- Occasionally run the *Delete Unused Panel Items* action (located in
+  the *Default Actions* folder) to keep document filesizes in check.

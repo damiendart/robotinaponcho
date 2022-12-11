@@ -4,19 +4,19 @@
   # <http://creativecommons.org/licenses/by/4.0/>.
 
   collections:
-    - 'notes'
     - 'food-and-drink'
-  description: Read Damien Dart's notes on breadmaking.
-  title: Breadmaking Notes
+    - 'notes'
   twigTemplate: .templates/base-note.html.twig
 --->
 
-## My current good-enough white loaf recipe
+A Basic White Loaf Recipe
+=========================
 
 This recipe won’t produce anything award-winning, but when I feel like
 baking this will create a decent loaf without too much faff.
 
-### Ingredients
+
+## Ingredients
 
 | Ingredient               | [Baker’s Percentage][] | Example |
 |:-------------------------|:----------------------:|:-------:|
@@ -31,7 +31,8 @@ vessel.
 
   [Baker’s Percentage]: <https://en.wikipedia.org/wiki/Baker_percentage>
 
-### Method
+
+## Method
 
 1.  Chuck everything into a stand mixer set up with a dough hook and
     knead on a medium speed for two minutes. Increase the speed a notch
@@ -54,5 +55,6 @@ vessel.
 7.  Working quickly, place your dough onto the pizza stone and pour the
     boiling water into the empty loaf tin. Close the oven and let the
     bread bake for 10 minutes before turning the oven temperature down
-    to 180 °C and continuing to bake for another 35 minutes.
+    to 180 °C (assuming a fan-assisted oven) and continuing to bake for
+    another 35 minutes.
 8.  Transfer the loaf to a wire rack to cool.

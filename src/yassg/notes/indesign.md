@@ -6,16 +6,17 @@
   collections:
     - 'adobe-creative-cloud'
     - 'notes'
-  description: Read Damien Dart's notes on Adobe InDesign.
-  title: Adobe InDesign Notes
   twigTemplate: .templates/base-note.html.twig
 --->
 
-Exporting colouring pages to PDF
---------------------------------
+Adobe InDesign Miscellany
+=========================
 
-When exporting [colouring pages][1] to PDF, I use the _[High Quality
-Print]_ preset with a single modification: under _Compression_, change
+
+## Exporting colouring pages to PDF
+
+When exporting [colouring pages][] to PDF, I use the *\[High Quality
+Print\]* preset with a single modification: under *Compression*, change
 the image quality for both colour and greyscale images to medium.
 
-[1]: <https://www.robotinaponcho.net/art/>
+  [colouring pages]: <https://www.robotinaponcho.net/crap/>

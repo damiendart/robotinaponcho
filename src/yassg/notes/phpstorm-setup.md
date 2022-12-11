@@ -4,14 +4,13 @@
   # <http://creativecommons.org/licenses/by/4.0/>.
 
   collections:
+    - 'jetbrains-ides'
     - 'notes'
-    - 'phpstorm'
-  description: Read Damien Dart's notes on setting up and using PhpStorm.
-  title: PhpStorm Notes
   twigTemplate: .templates/base-note.html.twig
 --->
 
-## My PhpStorm Customisations and Settings
+My PhpStorm Customisations and Settings
+=======================================
 
 Maybe one day I’ll get round to using a [settings repository][], but for
 the moment running through this list takes at most ten minutes with a
@@ -19,7 +18,8 @@ fresh installation of PhpStorm, so eh.
 
   [settings repository]: <https://www.jetbrains.com/help/phpstorm/sharing-your-ide-settings.html#settings-repository>
 
-### Plugins
+
+## Plugins
 
 In addition to the plugins that come bundled with PhpStorm, I also use
 [IdeaVim][] (because I’m one of those people), [Key Promoter X][], and
@@ -29,7 +29,8 @@ In addition to the plugins that come bundled with PhpStorm, I also use
   [Key Promoter X]: <https://plugins.jetbrains.com/plugin/9792-key-promoter-x>
   [Laravel Idea]: <https://plugins.jetbrains.com/plugin/13441-laravel-idea>
 
-### Removing as much of the interface as possible
+
+## Removing as much of the interface as possible
 
 I’m also one of these people.
 
@@ -50,7 +51,8 @@ to drill down to find a setting.
   <span class="os-menu-item">Appearance</span> → <span
   class="os-menu-item">Navigation Bar</span>).
 
-### IdeaVim customisations and settings
+
+## IdeaVim customisations and settings
 
 - Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
   is installed.
@@ -60,23 +62,14 @@ to drill down to find a setting.
 
   [my dotfiles]: <https://www.robotinaponcho.net/git/#toolbox>
 
-### Miscellaneous customisations and settings
+
+## Miscellaneous customisations and settings
 
 - Check that PhpStorm is aware of all available PHP CLI interpreters in
   *Languages & Frameworks* → *PHP* in the *Settings* window.
 - If using PhpStorm 2020.3 or later, if the option is available sync the
   IDE theme with the OS (on macOS change the preferred light theme to
   *macOS Light*). Otherwise, use the Darcula theme throughout.
-- Set the editor font to [Iosekva][] Term.
+- Set the editor font to \[Iosekva\]\[\] Term.
 - Set default visual guides at 72 and 78 characters.
 - Set the *Project Opening*’s *Default directory*.
-- Turn off the embedded terminal’s *Audible bell*.
-
-  [Iosekva]: <https://typeof.net/Iosevka/>
-
-### Project-level customisations and settings
-
-- For projects that use NPM or Yarn, turn off the setting that
-  automatically adds *node_modules/.bin* from the project root to
-  `$PATH` (this one is a little tricky to search for: find it under
-  *Tools* → *Terminal*).
