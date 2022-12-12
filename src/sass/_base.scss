@@ -197,6 +197,10 @@ h3 {
   margin: 0;
 }
 
+hr {
+  display: none;
+}
+
 html {
   font-size: percentage(math.div(14px, variables.$base-font-size));
 
