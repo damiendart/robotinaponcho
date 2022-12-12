@@ -91,3 +91,7 @@ document
 
 // eslint-disable-next-line no-new
 new ThemeSwitcher(themeSwitcherContainerElement);
+
+document
+  .querySelector('.button--small[href="#footer"]')
+  .innerHTML += ' and theme switcher';
