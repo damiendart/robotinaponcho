@@ -16,7 +16,7 @@ Maybe one day I’ll get round to using a [settings repository][], but for
 the moment running through this list takes at most ten minutes with a
 fresh installation of PhpStorm, so eh.
 
-  [settings repository]: <https://www.jetbrains.com/help/phpstorm/sharing-your-ide-settings.html#settings-repository>
+  [settings repository]: <https://www.jetbrains.com/help/phpstorm/settings-tools-settings-repository.html>
 
 
 ## Plugins

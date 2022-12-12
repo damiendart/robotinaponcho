@@ -12,7 +12,6 @@
 Adobe InDesign Miscellany
 =========================
 
-
 ## Exporting colouring pages to PDF
 
 When exporting [colouring pages][] to PDF, I use the *\[High Quality
