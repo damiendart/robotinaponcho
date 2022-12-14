@@ -4,6 +4,7 @@
   # information, please refer to the accompanying "LICENCE" file.
 
   description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
+  hideBreadcrumbs: true
   metaTitle: "Damien Dart's Personal Website"
   sitemapTitle: 'Homepage'
   title: 'Hello!'

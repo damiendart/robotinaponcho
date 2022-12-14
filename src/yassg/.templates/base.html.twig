@@ -57,10 +57,21 @@
 
             {{ block('content') }}
 
-            <footer id="footer" class="site-footer">
+            <footer id="footer" class="site-footer stack">
                 <hr class="site-footer__rule">
-                <p class="site-footer__copyright">Copyright © {{ 'now' | date('Y') }}
-                    <a href="/">{{ author | smartypants }}</a>.<br>View <a href="/privacy-policy">privacy policy</a>, <a href="/sitemap">site map</a>.</p>
+                <nav>
+                    {% if hideBreadcrumbs | default(false) %}
+                        <p class="site-footer__navigation secondary-text"><strong>View</strong>:
+                            <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
+                    {% else %}
+                        <p class="site-footer__navigation secondary-text"><strong>Go back to</strong>:
+                            {% for breadcrumb in breadcrumbs %}<a href="/{{ breadcrumb.getSlug }}">{{ breadcrumb.getTitle }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.<br><strong>View</strong>:
+                            <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
+                    {% endif %}
+                </nav>
+                <hr class="site-footer__rule">
+                <p class="site-footer__copyright secondary-text stack__hug">Copyright © {{ 'now' | date('Y') }}
+                    <a href="/">{{ author | smartypants }}</a>.</p>
             </footer>
         </div>
     </div>

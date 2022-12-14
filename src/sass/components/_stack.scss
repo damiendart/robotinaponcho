@@ -44,4 +44,8 @@
       margin-top: variables.$base-line-height * 4;
     }
   }
+
+  & > * + .stack__hug {
+    margin-top: 0;
+  }
 }

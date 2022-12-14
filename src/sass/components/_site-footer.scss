@@ -9,14 +9,14 @@
 .site-footer {
   text-align: center;
 
-  & > * + * {
-    margin: math.div(variables.$base-line-height, 2) 0 0;
-  }
-
-  &__copyright {
-    font-size: 87.5%;
+  &__copyright,
+  &__navigation {
     font-style: italic;
     margin: 0;
+
+    strong {
+      font-weight: normal;
+    }
   }
 
   &__theme-switcher {

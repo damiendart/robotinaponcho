@@ -1,0 +1,11 @@
+@use "sass:math";
+@use "../mixins";
+@use "../variables";
+
+.secondary-text {
+  $ratio: math.div(16px, variables.$base-font-size);
+
+  @include mixins.breakpoint-up(medium) {
+    font-size: percentage($ratio);
+  }
+}
