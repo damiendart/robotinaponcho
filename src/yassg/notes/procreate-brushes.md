@@ -27,4 +27,4 @@ I tend to use [Photoshop][] to colour in final pieces because I am no
 good at picking colours and Photoshop’s fill layers are a god-send for
 me when it comes to changing and trying out colours.
 
-  [Photoshop]: <https://www.robotinaponcho.net/notes#photoshop>
+  [Photoshop]: <https://www.robotinaponcho.net/notes#adobe-creative-cloud>
