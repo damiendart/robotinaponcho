@@ -41,19 +41,24 @@ if (
 ) {
     // Using the "PrettyPageHandler" requires faffing around with CSP
     // stuff which, for the sake of a prettier error page when running
-    // the site locally, is a battle that I don't think is worth having.
+    // the site locally, isn't worth the effort.
     $whoops->pushHandler(new PlainTextHandler());
 } else {
-    $whoops->pushHandler(function (Throwable $throwable): int {
-        include 'fatal.php';
+    $whoops->pushHandler(
+        function (Throwable $throwable): int {
+            include 'fatal.php';
 
-        return Handler::DONE;
-    });
+            return Handler::DONE;
+        },
+    );
 }
 
-$whoops->pushHandler(function (Throwable $throwable): int {
-    reportThrowable($throwable);
+$whoops->pushHandler(
+    function (Throwable $throwable): int {
+        reportThrowable($throwable);
 
-    return Handler::DONE;
-});
+        return Handler::DONE;
+    },
+);
+
 $whoops->register();
