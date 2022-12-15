@@ -70,6 +70,8 @@ to drill down to find a setting.
 - If using PhpStorm 2020.3 or later, if the option is available sync the
   IDE theme with the OS (on macOS change the preferred light theme to
   *macOS Light*). Otherwise, use the Darcula theme throughout.
-- Set the editor font to \[Iosekva\]\[\] Term.
+- Set the editor font to [Iosekva][] Term.
 - Set default visual guides at 72 and 78 characters.
 - Set the *Project Opening*’s *Default directory*.
+
+  [Iosekva]: <https://typeof.net/Iosevka/>

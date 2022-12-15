@@ -52,8 +52,8 @@ managed to automate everything:
   *pubring.gpg*, *secring.gpg*, and *trustdb.gpg*).
 - Set the terminal font to [Iosevka][] Term (which should be already
   installed by the provisioning Ansible playbook).
-- Install [JetBrains Toolbox][] and use it to install GoLand and
-  PhpStorm (see also [my PhpStorm notes][]).
+- Install [JetBrains Toolbox][] and use it to install GoLand, DataGrip,
+  and [PhpStorm][].
 - Install [Steam][].
 - Connect to any network drives.
 - Set up Livepatch, Syncthing, and Obsidian.
@@ -73,7 +73,7 @@ managed to automate everything:
   [1Password extension]: <https://1password.com/downloads/linux/#browsers>
   [Iosevka]: <https://typeof.net/Iosevka/>
   [JetBrains Toolbox]: <https://www.jetbrains.com/help/phpstorm/installation-guide.html#toolbox>
-  [my PhpStorm notes]: <https://www.robotinaponcho.net/notes/phpstorm>
+  [PhpStorm]: <https://www.robotinaponcho.net/notes/phpstorm-setup>
   [Steam]: <https://github.com/ValveSoftware/steam-for-linux>
   [evaluation development environment virtual machines]: <https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/>
   [virtual machines]: <https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/>
