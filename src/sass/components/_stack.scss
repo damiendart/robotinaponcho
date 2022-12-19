@@ -11,6 +11,12 @@
     margin-top: math.div(variables.$base-line-height, 2);
   }
 
+  & > dl {
+    dd + dt {
+      margin-top: math.div(variables.$base-line-height, 2);
+    }
+  }
+
   & > h1,
   & > h1 + *,
   & > .image-and-text:first-child,

@@ -13,6 +13,7 @@ namespace Robotinaponcho\Yassg\Plugins\MarkdownSetup;
 use League\CommonMark\ConverterInterface;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
@@ -36,6 +37,11 @@ class MarkdownSetupPlugin implements PluginInterface
                     CommonMarkCoreExtension::class,
                 );
 
+                /** @var DescriptionListExtension $descriptionListExtension */
+                $descriptionListExtension = $c->get(
+                    DescriptionListExtension::class,
+                );
+
                 $environment = new Environment();
 
                 /** @var SmartPunctExtension $smartPunctuationExtension */
@@ -46,6 +52,7 @@ class MarkdownSetupPlugin implements PluginInterface
 
                 return $environment
                     ->addExtension($commonMarkCoreExtension)
+                    ->addExtension($descriptionListExtension)
                     ->addExtension($smartPunctuationExtension)
                     ->addExtension($tableExtension);
             },
