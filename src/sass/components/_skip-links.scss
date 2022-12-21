@@ -10,19 +10,25 @@
   align-content: center;
   background: variables.$colour-black-50;
   background: var(--base-background);
+  box-sizing: border-box;
   height: auto;
   left: 0;
   opacity: 0;
+  padding: variables.$base-line-height variables.$base-line-height 0;
   pointer-events: none;
   position: absolute;
-  top: math.div(variables.$base-line-height, 2);
-  transition: opacity 0.125s ease-in;
   width: 100%;
   z-index: 2;
 
   &:focus-within {
-    pointer-events: auto;
     opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.125s ease-in;
+
+    & ~ .site-header {
+      opacity: 0;
+      transition: opacity 0.125s ease-in;
+    }
   }
 
   a {
@@ -49,22 +55,6 @@
 
       &:first-child {
         margin: 0;
-      }
-
-      &--active {
-        &::after {
-          $diameter: variables.$base-one-pixel-in-rem * 8;
-
-          background: currentColor;
-          border-radius: math.div($diameter, 2);
-          bottom: math.div(variables.$base-line-height, -2);
-          content: "";
-          display: block;
-          height: $diameter;
-          left: calc(50% - #{math.div($diameter, 2)});
-          position: absolute;
-          width: $diameter;
-        }
       }
     }
   }

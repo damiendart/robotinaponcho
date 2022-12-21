@@ -4,6 +4,7 @@
   # information, please refer to the accompanying "LICENCE" file.
 
   description: "View a bunch of Damien Dart's projects."
+  section: 'projects'
   title: 'Projects'
   twigTemplate: '.templates/base-markdown.html.twig'
 --->

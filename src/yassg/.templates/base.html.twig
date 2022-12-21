@@ -43,16 +43,34 @@
     <div class="skip-links">
         <ul class="skip-links__list">
             <li class="skip-links__list__item">
-                <a class="button button--small" href="#footer">Skip to footer</a>
+                <a href="#content">Skip to content</a>
+            </li>
+            <li class="skip-links__list__item">
+                <a href="#footer">Skip to footer</a>
             </li>
         </ul>
         <hr class="skip-links__rule">
     </div>
-    <div class="{{ 'content ' ~ contentClasses | default('content') }}">
+    {% if showSiteHeader ?? true %}
+        <div class="site-header">
+            <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
+            <nav class="site-header__navigation">
+                <nav class="site-header__navigation">
+                    <ul class="site-header__navigation__list">
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
+                        <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+                    </ul>
+                </nav>
+            </nav>
+            <hr class="site-header__rule">
+        </div>
+    {% endif %}
+    <div class="{{ 'content ' ~ contentClasses | default('content') }}" id="content">
         <div class="content__container stack">
 
             {% block heading %}
-                <h1 id="content">{{ title | smartypants | widont }}</h1>
+                <h1>{{ title | smartypants | widont }}</h1>
             {% endblock %}
 
             {{ block('content') }}
@@ -60,14 +78,8 @@
             <footer id="footer" class="site-footer secondary-text stack">
                 <hr class="site-footer__rule">
                 <nav>
-                    {% if hideBreadcrumbs | default(false) %}
-                        <p class="site-footer__navigation"><strong>View</strong>:
-                            <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
-                    {% else %}
-                        <p class="site-footer__navigation"><strong>Go back to</strong>:
-                            {% for breadcrumb in breadcrumbs %}<a href="/{{ breadcrumb.getSlug }}">{{ breadcrumb.getTitle }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.<br><strong>View</strong>:
-                            <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
-                    {% endif %}
+                    <p class="site-footer__navigation"><strong>View</strong>:
+                        <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
                 </nav>
                 <hr class="site-footer__rule">
                 <p class="site-footer__copyright stack__hug">Copyright © {{ 'now' | date('Y') }}

@@ -19,6 +19,7 @@
 
   & > h1,
   & > h1 + *,
+  & > h1 + h2,
   & > .image-and-text:first-child,
   & > .image-and-text:first-child + * {
     margin-top: variables.$base-line-height * 4;

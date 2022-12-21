@@ -6,7 +6,6 @@
 
 declare(strict_types=1);
 
-use Robotinaponcho\Yassg\Plugins\Breadcrumbs\BreadcrumbsPlugin;
 use Robotinaponcho\Yassg\Plugins\GitMetadata\GitMetadataPlugin;
 use Robotinaponcho\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
 use Robotinaponcho\Yassg\Plugins\MarkdownMetadata\MarkdownMetadataPlugin;
@@ -27,7 +26,6 @@ return (new Configuration(
     __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'yassg',
     __DIR__ . DIRECTORY_SEPARATOR . 'public',
 ))
-    ->addPlugin(new BreadcrumbsPlugin())
     ->addPlugin(new CollectionsPlugin())
     ->addPlugin(new HtmlMinifierPlugin())
     ->addPlugin(new GitMetadataPlugin())

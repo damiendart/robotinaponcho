@@ -1,0 +1,73 @@
+@use "sass:math";
+@use "../variables";
+
+.site-header {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  padding: variables.$base-line-height variables.$base-line-height 0;
+  position: relative;
+
+  a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  &::before {
+    content: "";
+    flex-grow: 666;
+    flex-basis: calc((#{variables.$container-width-wider * 0.75} - 100%) * 666);
+    height: math.div(variables.$base-line-height, 4);
+  }
+
+  & > * {
+    flex-grow: 1;
+  }
+
+  &__navigation {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+
+      &__item {
+        position: relative;
+
+        &:first-child {
+          margin: 0;
+        }
+
+        &--active {
+          &::after {
+            $diameter: variables.$base-one-pixel-in-rem * 8;
+
+            background: currentColor;
+            border-radius: math.div($diameter, 2);
+            bottom: math.div(variables.$base-line-height, -2);
+            content: "";
+            display: block;
+            height: $diameter;
+            left: calc(50% - #{math.div($diameter, 2)});
+            position: absolute;
+            width: $diameter;
+          }
+        }
+      }
+    }
+  }
+
+  &__title {
+    order: -1;
+    text-align: center;
+  }
+}
