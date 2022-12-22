@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
+- [Grotesque][] by Natsuo Kirino (★★★)
 - [Real World][] by Natsuo Kirino (★★)
 - [The Children of Men][] by P.D. James (★★)
 - *The Bullet That Missed* by Richard Osman (★★★)
@@ -32,6 +33,7 @@ somewhere easily available will help me stay motivated.
 - [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
 - [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
+  [Grotesque]: <https://en.wikipedia.org/wiki/Grotesque_(novel)>
   [Real World]: <https://en.wikipedia.org/wiki/Real_World_(novel)>
   [The Children of Men]: <https://en.wikipedia.org/wiki/The_Children_of_Men>
   [The Testaments]: <https://en.wikipedia.org/wiki/The_Testaments>
