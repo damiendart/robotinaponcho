@@ -4,9 +4,11 @@
   # information, please refer to the accompanying "LICENCE" file.
 
   description: "View the privacy policy for Damien Dart's personal site."
-  title: 'Privacy Policy'
   twigTemplate: '.templates/base-markdown.html.twig'
 --->
+
+Privacy Policy
+==============
 
 This privacy policy covers how this website collects, uses, and
 maintains information collected from users, as well as how third-party
@@ -15,13 +17,13 @@ services are utilised.
 **Note**: This privacy policy is regularly reviewed and, if necessary,
 updated. This privacy policy was lasted reviewed on **22/12/21**. We
 encourage you to periodically review this privacy policy to stay
-informed on any changes.</p>
+informed on any changes.
 
 This website and the way it is run adheres to the [General Data
-Protection Regulation (GDPR)][1] (EU) when processing personal data. As
+Protection Regulation (GDPR)][] (EU) when processing personal data. As
 data controllers, the data subjects are the users of this website.
 
-[1]: <https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/>
+  [General Data Protection Regulation (GDPR)]: <https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/>
 
 
 ## The data this website collect
@@ -41,10 +43,10 @@ This website **does not** set any cookies or use any trackers, social
 media buttons or analytics services.
 
 If you use the site theme switcher to override the default theme, your
-choice will be stored using the [Web Storage API][] (specifically
-the `localStorage` mechanism) so that it persists while you browse this
+choice will be stored using the [Web Storage API][] (specifically the
+`localStorage` mechanism) so that it persists while you browse this
 site. To clear your choice, either select the *Default theme* option
-from the site theme switcher or use your browser's site data deletion
+from the site theme switcher or use your browser’s site data deletion
 functionality.
 
   [Web Storage API]: <https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API>
@@ -54,7 +56,7 @@ functionality.
 
 This website only uses third-party services that are GDPR-compliant.
 
-  - This website is hosted by [Digital Ocean][2] using servers located
-    in the United Kingdom.
+- This website is hosted by [Digital Ocean][] using servers located in
+  the United Kingdom.
 
-[2]: <https://www.digitalocean.com/security/gdpr/>
+  [Digital Ocean]: <https://www.digitalocean.com/security/gdpr/>

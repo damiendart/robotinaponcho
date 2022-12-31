@@ -5,10 +5,11 @@
 
   description: "View a bunch of Damien Dart's projects."
   section: 'projects'
-  title: 'Projects'
   twigTemplate: '.templates/base-markdown.html.twig'
 --->
 
+Projects
+========
 
 ## Drawing and writing
 
