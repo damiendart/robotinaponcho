@@ -2,15 +2,16 @@
 @use "../variables";
 
 .site-header {
-  align-items: center;
+  background: variables.$colour-red;
+  background: var(--site-header-background);
+  box-sizing: border-box;
   color: inherit;
-  display: flex;
-  flex-wrap: wrap;
-  padding: variables.$base-line-height variables.$base-line-height 0;
+  padding: variables.$base-line-height;
   position: relative;
 
   a {
-    color: inherit;
+    color: variables.$colour-white;
+    color: var(--site-header-foreground);
     font-weight: bold;
     text-decoration: none;
 
@@ -21,15 +22,25 @@
     }
   }
 
-  &::before {
-    content: "";
-    flex-grow: 666;
-    flex-basis: calc((#{variables.$container-width-wider * 0.75} - 100%) * 666);
-    height: math.div(variables.$base-line-height, 4);
-  }
 
-  & > * {
-    flex-grow: 1;
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: variables.$container-width-wider;
+    width: 100%;
+
+    &::before {
+      content: "";
+      flex-grow: 666;
+      flex-basis: calc((#{variables.$container-width-wider * 0.75} - 100%) * 666);
+      height: math.div(variables.$base-line-height, 4);
+    }
+
+    & > * {
+      flex-grow: 1;
+    }
   }
 
   &__navigation {
@@ -49,17 +60,14 @@
 
         &--active {
           &::after {
-            $diameter: variables.$base-one-pixel-in-rem * 8;
-
-            background: currentColor;
-            border-radius: math.div($diameter, 2);
-            bottom: math.div(variables.$base-line-height, -2);
+            background: variables.$colour-white;
+            background: var(--base-background);
+            bottom: variables.$base-line-height * -1;
             content: "";
             display: block;
-            height: $diameter;
-            left: calc(50% - #{math.div($diameter, 2)});
+            height: variables.$base-one-pixel-in-rem * 8;;
             position: absolute;
-            width: $diameter;
+            width: 100%;
           }
         }
       }

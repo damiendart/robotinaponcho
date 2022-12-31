@@ -93,5 +93,5 @@ document
 new ThemeSwitcher(themeSwitcherContainerElement);
 
 document
-  .querySelector('.button--small[href="#footer"]')
+  .querySelector('[href="#footer"]')
   .innerHTML += ' and theme switcher';

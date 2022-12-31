@@ -51,8 +51,8 @@
         </ul>
         <hr class="skip-links__rule">
     </div>
-    {% if showSiteHeader ?? true %}
-        <div class="site-header">
+    <div class="site-header">
+        <div class="site-header__container">
             <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
             <nav class="site-header__navigation">
                 <nav class="site-header__navigation">
@@ -65,7 +65,7 @@
             </nav>
             <hr class="site-header__rule">
         </div>
-    {% endif %}
+    </div>
     <div class="{{ 'content ' ~ contentClasses | default('content') }}" id="content">
         <div class="content__container stack">
 

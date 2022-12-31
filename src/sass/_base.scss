@@ -15,16 +15,20 @@
   --button-foreground: #{variables.$colour-black-900};
   --drawing-outline-opacity: 1;
   --secondary-colour: #{variables.$colour-pink};
+  --site-header-background: #{variables.$colour-pink};
+  --site-header-foreground: #{variables.$colour-black-900};
 }
 
 :root {
-  --base-background: #{variables.$colour-white};
+  --base-background: #{variables.$colour-black-50};
   --base-foreground: #{variables.$colour-black-1000};
   --base-accent: #{variables.$colour-black-100};
-  --button-background: #{variables.$colour-grape};
-  --button-foreground: #{variables.$colour-white};
-  --drawing-outline-opacity: 0;
-  --secondary-colour: #{variables.$colour-grape};
+  --button-background: #{variables.$colour-red};
+  --button-foreground: #{variables.$colour-black-50};
+  --drawing-outline-opacity: 1;
+  --secondary-colour: #{variables.$colour-red};
+  --site-header-background: #{variables.$colour-red};
+  --site-header-foreground: #{variables.$colour-black-50};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
@@ -38,7 +42,7 @@
 }
 
 a {
-  color: variables.$colour-grape;
+  color: variables.$colour-red;
   color: var(--secondary-colour);
 
   &:focus {
@@ -184,8 +188,8 @@ h1 {
   text-align: center;
 
   @include mixins.breakpoint-up(small) {
-    font-size: 300%;
-    line-height: variables.$base-line-height * 2;
+    font-size: 250%;
+    line-height: variables.$base-line-height * 1.75;
   }
 }
 
