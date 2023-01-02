@@ -16,6 +16,13 @@ I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.
 
 
+## Completed books in 2023
+
+- [If It Bleeds][] by Stephen King (★★★)
+
+  [If It Bleeds]: <https://en.wikipedia.org/wiki/If_It_Bleeds>
+
+
 ## Completed books in 2022
 
 - [Grotesque][] by Natsuo Kirino (★★★)
