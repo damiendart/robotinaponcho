@@ -10,13 +10,6 @@
   padding: 0;
 
   &__item {
-    margin: 0;
-    padding: 0;
-
-    & + & {
-      margin: math.div(variables.$base-line-height, 2) 0 0;
-    }
-
     a {
       font-weight: bold;
     }

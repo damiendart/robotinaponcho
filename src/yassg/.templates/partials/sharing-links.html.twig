@@ -1,7 +1,7 @@
 <div class="cta-sharing">
     <hr class="cta-sharing__rule">
     <p class="cta-sharing__heading">Share this page:</p>
-    <ul class="social-share-list">
+    <ul class="social-share-list" role="list">
         <li class="social-share-list__item social-share-list__item--twitter">
             <a
                 href="https://twitter.com/intent/tweet?source=webclient{% if twitterText %}&text={{ twitterText | smartypants | escape('url') }}{% endif %}{% if twitterAuthor %}&via={{ twitterAuthor | replace({ '@': '' }) | escape('url') }}{% endif %}&url={{ link | escape('url') }}"

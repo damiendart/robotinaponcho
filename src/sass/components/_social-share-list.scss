@@ -15,11 +15,10 @@
   padding: 0;
 
   &__item {
-    margin: 0 0 0 variables.$base-line-height;
     padding: 0;
 
-    &:first-child {
-      margin: 0;
+    &:not(:first-child) {
+      margin: 0 0 0 variables.$base-line-height;
     }
 
     &--permalink {

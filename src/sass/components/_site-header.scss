@@ -54,8 +54,8 @@
       &__item {
         position: relative;
 
-        &:first-child {
-          margin: 0;
+        &:not(:first-child) {
+          margin: 0 0 0 variables.$base-line-height;
         }
 
         &--active {

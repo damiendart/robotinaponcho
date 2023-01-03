@@ -41,7 +41,7 @@
 </head>
 <body>
     <div class="skip-links">
-        <ul class="skip-links__list">
+        <ul class="skip-links__list" role="list">
             <li class="skip-links__list__item">
                 <a href="#content">Skip to content</a>
             </li>
@@ -56,7 +56,7 @@
             <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
             <nav class="site-header__navigation">
                 <nav class="site-header__navigation">
-                    <ul class="site-header__navigation__list">
+                    <ul class="site-header__navigation__list" role="list">
                         <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
                         <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
                         <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>

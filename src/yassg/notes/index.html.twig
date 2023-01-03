@@ -34,7 +34,7 @@
     {% for category, notes in collections | filter((v, k) => k != 'notes') %}
         <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
 
-        <ul class="notes-list">
+        <ul class="notes-list stack" role="list">
             {% for note in notes | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
                 {% set verb = note.metadata.git.created.timestamp == note.metadata.git.updated.timestamp ? 'Created' : 'Updated' %}
 
