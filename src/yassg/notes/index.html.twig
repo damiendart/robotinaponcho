@@ -26,10 +26,17 @@
 {% set section = 'notes' %}
 
 {% block content %}
-    <p>My notes, wiki, digital garden, or whatever these things are
-        called nowadays.</p>
-    <p>An <a href="{{ urlBase }}notes/index.atom">Atom feed</a> is
-        also available.</p>
+    <p>My notes, wiki, digital garden, whatever one of these things are
+        called nowadays. An <a href="{{ urlBase }}notes/index.atom">Atom
+        feed</a> is also available.</p>
+
+    <h2>Topics</h2>
+    <ul>
+        {% for category, notes in collections | filter((v, k) => k != 'notes') %}
+            <li><a href="#{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</a></li>
+        {% endfor %}
+    </ul>
+
 
     {% for category, notes in collections | filter((v, k) => k != 'notes') %}
         <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
