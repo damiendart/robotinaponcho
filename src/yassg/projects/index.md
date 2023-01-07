@@ -38,7 +38,8 @@ My open-source software is available as Git repositories, either from
     of your screen horizontally.
 
 **[My solutions to the Advent of Code][]**
-:   Incomplete.
+:   So far there’s solutions to half of the [2021 Advent of Code][]
+    (written in Go). Maybe one day I will actually complete a year.
 
 **[pathshorten][]**
 :   An implementation of Vim’s [`pathshorten`][] function written in Go.
@@ -47,7 +48,9 @@ My open-source software is available as Git repositories, either from
 :   The source code to my personal site (you’re on it now).
 
 **[setup][]**
-:   A bunch of (mostly) Ansible stuff I use to set up various things.
+:   A bunch of (mostly) Ansible stuff for provisioning and maintaining
+    various machines and things, including personal and work development
+    environments, and a couple of servers for hosting small websites.
 
 **[snippets][]**
 :   A repository of code and text snippets.
@@ -67,6 +70,7 @@ My open-source software is available as Git repositories, either from
   [1]: <https://en.wikipedia.org/wiki/Brainfuck>
   [FlippyWindow]: <https://www.robotinaponcho.net/projects/flippywindow/>
   [My solutions to the Advent of Code]: <https://github.com/damiendart/adventofcode>
+  [2021 Advent of Code]: <https://adventofcode.com/2021>
   [pathshorten]: <https://github.com/damiendart/pathshorten>
   [`pathshorten`]: <https://vimhelp.org/builtin.txt.html#pathshorten%28%29>
   [robotinaponcho]: <https://github.com/damiendart/robotinaponcho>
@@ -92,9 +96,9 @@ My open-source software is available as Git repositories, either from
     class="screen-reader-only">.</span></span>
 
 **[nfsnapi-python][]**
-:   When I used NearlyFreeSpeech.NET to host websites, I wrote a simple
-    Python package that made using their API a little easier. (Be aware
-    that I wrote this during my
+:   When I used to use [NearlyFreeSpeech.NET][], I wrote a simple Python
+    package that made using their API a little easier. (Be aware that I
+    wrote this during my
     *cram-as-much-shit-into-as-few-lines-as-possible* phase.) <span
     class="pill">Abandoned<span
     class="screen-reader-only">.</span></span>
@@ -129,6 +133,7 @@ My open-source software is available as Git repositories, either from
   [Bastard Snake]: <https://github.com/damiendart/bastardsnake>
   [knr-solutions]: <https://github.com/damiendart/knr-solutions>
   [nfsnapi-python]: <https://github.com/damiendart/nfsnapi-python>
+  [NearlyFreeSpeech.NET]: <https://www.nearlyfreespeech.net/>
   [notes]: <https://github.com/damiendart/notes>
   [Timeline]: <https://github.com/damiendart/timeline>
   [JetBrains’ 25 Years of PHP History]: <https://www.jetbrains.com/lp/php-25/>
