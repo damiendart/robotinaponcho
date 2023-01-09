@@ -22,7 +22,7 @@
 :root {
   --base-background: #{variables.$colour-black-50};
   --base-foreground: #{variables.$colour-black-1000};
-  --base-accent: #{variables.$colour-black-100};
+  --base-accent: #{variables.$colour-black-200};
   --button-background: #{variables.$colour-red};
   --button-foreground: #{variables.$colour-black-50};
   --drawing-outline-opacity: 1;
@@ -71,7 +71,7 @@ body {
 }
 
 code {
-  background: variables.$colour-black-100;
+  background: variables.$colour-black-200;
   background: var(--base-accent);
   font-family: "Iosevka Web", monospace;
   line-height: 1;
@@ -229,7 +229,7 @@ img {
 }
 
 kbd {
-  background: variables.$colour-black-100;
+  background: variables.$colour-black-200;
   background: var(--base-accent);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;
@@ -266,7 +266,7 @@ p {
 }
 
 pre {
-  background: variables.$colour-black-100;
+  background: variables.$colour-black-200;
   background: var(--base-accent);
   box-sizing: border-box;
   margin: 0;
@@ -299,7 +299,7 @@ table {
   }
 
   > tbody > tr:nth-last-of-type(odd) {
-    background: variables.$colour-black-100;
+    background: variables.$colour-black-200;
     background: var(--base-accent);
   }
 
