@@ -84,12 +84,12 @@ tasks:
     cmds:
       - 'rm -fr .task node_modules public release'
       - task: 'clean:php'
-    desc: 'Delete all buildable files and third-party dependencies'
+    desc: 'Delete all buildable files, caches, and third-party dependencies'
 
   clean:php:
     cmds:
       - 'rm -fr protected/vendor'
-    desc: 'Delete PHP third-party dependencies'
+    desc: 'Delete third-party PHP dependencies'
 
   dependencies:
     cmds:
