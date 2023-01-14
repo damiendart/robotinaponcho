@@ -69,14 +69,20 @@ tasks:
 
   clean:
     cmds:
-      - 'rm -fr .task node_modules protected/vendor public release'
+      - 'rm -fr .task node_modules public release'
+      - task: 'clean:php'
     desc: 'Delete all buildable files and third-party dependencies'
+
+  clean:php:
+    cmds:
+      - 'rm -fr protected/vendor'
+    desc: 'Delete PHP third-party dependencies'
 
   dependencies:
     cmds:
       - task: 'dependencies:javascript'
       - task: 'dependencies:php'
-    desc: 'Run all dependency-installing-related tasks'
+    desc: 'Run dependency-installing-related tasks for development and testing environments'
 
   dependencies:javascript:
     cmds:
@@ -84,12 +90,17 @@ tasks:
       - 'npm ci --prefer-offline --no-audit'
     env:
       CI: true
-    desc: 'Install JavaScript dependencies for building, development, and testing'
+    desc: 'Install JavaScript dependencies'
 
   dependencies:php:
     cmds:
       - 'composer install --no-ansi --no-interaction --no-progress'
-    desc: 'Install PHP dependencies for building, development, and testing'
+    desc: 'Install PHP dependencies for development and testing environments'
+
+  dependencies:php-production:
+    cmds:
+      - 'composer install --classmap-authoritative --no-ansi --no-dev --no-interaction --no-progress'
+    desc: 'Install PHP dependencies for production environments'
 
   lint:
     cmds:
@@ -116,11 +127,13 @@ tasks:
           {{ end }}
         silent: true
       - task: 'ci'
+      - task: 'clean:php'
+      - task: 'dependencies:php-production'
       - 'mkdir -p release'
-      - 'tar --exclude ./protected/vendor -cvf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
+      - 'tar -cf release/release.tgz ./composer.* ./private/ ./protected/ ./public/'
       - 'envsubst < deployment/metadata.yml > release/release.yml'
       - 'cp deployment/*-tasks.yml release/'
-    desc: 'Create release for deployment'
+    desc: 'Create release artifacts for deployment'
     env:
       RELEASE_GIT_SHA:
         sh: 'git log -n 1 --format=%H'
