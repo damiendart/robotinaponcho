@@ -30,5 +30,11 @@ function updatePrettyDates() {
   );
 }
 
-updatePrettyDates();
-window.setInterval(updatePrettyDates, 1000);
+if (
+  window
+    .matchMedia('(prefers-reduced-motion: reduce)')
+    .matches === false
+) {
+  updatePrettyDates();
+  window.setInterval(updatePrettyDates, 1000);
+}
