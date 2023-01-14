@@ -30,6 +30,19 @@ tasks:
       - task: 'build:css'
       - task: 'build:javascript'
       - task: 'build:yassg'
+    desc: 'Run all building tasks'
+
+  # While Task provides functionality that runs tasks when files
+  # changes, it's a little basic and slow to react to file changes. The
+  # following task is an attempt to improve this functionality. For more
+  # information about entr, see <http://eradman.com/entrproject/>.
+  # (See also: <https://github.com/go-task/task/issues/813>.)
+  build-watch:
+    cmds:
+      - cmd: 'command -v entr || (echo "\"entr\" is required."; exit 1)'
+        silent: true
+      - 'while sleep 0.1; do find .yassg.php src/ | entr -d task build && break; done'
+    desc: 'Runs entr to execute the "build" task on file changes'
 
   build:assets:
     cmds:
@@ -140,15 +153,3 @@ tasks:
     vars:
       GIT_STATUS:
         sh: 'git status --porcelain'
-
-  # While Task provides functionality that runs tasks when files
-  # changes, it's a little basic and slow to react to file changes. The
-  # following task is an attempt to improve this functionality. For more
-  # information about entr, see <http://eradman.com/entrproject/>.
-  # (See also: <https://github.com/go-task/task/issues/813>.)
-  watch-build:
-    cmds:
-      - cmd: 'command -v entr || (echo "\"entr\" is required."; exit 1)'
-        silent: true
-      - 'while sleep 0.1; do find .yassg.php src/ | entr -d task build && break; done'
-    desc: 'Runs entr to execute the "build" task on file changes'
