@@ -18,8 +18,10 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [Out]: <https://en.wikipedia.org/wiki/Out_(novel)>
   [If It Bleeds]: <https://en.wikipedia.org/wiki/If_It_Bleeds>
 
 
