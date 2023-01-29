@@ -18,9 +18,11 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [Piranesi][] by Susanna Clarke (★★★★)
 - [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [Piranesi]: <https://en.wikipedia.org/wiki/Piranesi_(novel)>
   [Out]: <https://en.wikipedia.org/wiki/Out_(novel)>
   [If It Bleeds]: <https://en.wikipedia.org/wiki/If_It_Bleeds>
 
