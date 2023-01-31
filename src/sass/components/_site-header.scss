@@ -2,16 +2,13 @@
 @use "../variables";
 
 .site-header {
-  background: variables.$colour-red;
-  background: var(--site-header-background);
   box-sizing: border-box;
   color: inherit;
   padding: variables.$base-line-height;
   position: relative;
 
   a {
-    color: variables.$colour-white;
-    color: var(--site-header-foreground);
+    color: inherit;
     font-weight: bold;
     text-decoration: none;
 
@@ -60,14 +57,17 @@
 
         &--active {
           &::after {
-            background: variables.$colour-white;
-            background: var(--base-background);
-            bottom: variables.$base-line-height * -1;
+            $diameter: variables.$base-one-pixel-in-rem * 8;
+
+            background: currentColor;
+            border-radius: math.div($diameter, 2);
+            bottom: math.div(variables.$base-line-height, -2) - math.div($diameter, 2);
             content: "";
             display: block;
-            height: variables.$base-one-pixel-in-rem * 8;;
+            height: $diameter;
+            left: calc(50% - #{math.div($diameter, 2)});
             position: absolute;
-            width: 100%;
+            width: $diameter;
           }
         }
       }

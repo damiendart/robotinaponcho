@@ -15,8 +15,6 @@
   --button-foreground: #{variables.$colour-black-900};
   --drawing-outline-opacity: 1;
   --secondary-colour: #{variables.$colour-pink};
-  --site-header-background: #{variables.$colour-pink};
-  --site-header-foreground: #{variables.$colour-black-900};
 }
 
 :root {
@@ -27,8 +25,6 @@
   --button-foreground: #{variables.$colour-black-50};
   --drawing-outline-opacity: 1;
   --secondary-colour: #{variables.$colour-red};
-  --site-header-background: #{variables.$colour-red};
-  --site-header-foreground: #{variables.$colour-black-50};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
