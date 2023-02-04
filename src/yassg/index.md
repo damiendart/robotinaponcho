@@ -17,8 +17,7 @@ West England, and this is my personal website.
 
 Here you’ll find [my projects][], [notes][], and [other assorted tat][].
 
-Other places I’ve polluted include [GitHub][], [Instagram][],
-[itch.io][], [Pinboard][], and [Twitter][].
+Other places I regularly pollute include [GitHub][] and [Instagram][].
 
 You can also [buy me a coffee][].
 
@@ -27,7 +26,4 @@ You can also [buy me a coffee][].
   [other assorted tat]: <https://www.robotinaponcho.net/crap/>
   [GitHub]: <https://github.com/damiendart>
   [Instagram]: <https://www.instagram.com/damiendart/>
-  [itch.io]: <https://damiendart.itch.io/>
-  [Pinboard]: <https://pinboard.in/u:damiendart>
-  [Twitter]: <https://twitter.com/damiendart>
   [buy me a coffee]: <https://www.buymeacoffee.com/damiendart>
