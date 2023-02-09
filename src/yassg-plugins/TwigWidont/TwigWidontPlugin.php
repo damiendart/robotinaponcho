@@ -57,7 +57,7 @@ class TwigWidontPlugin implements PluginInterface
                                     -2,
                                 ),
                             ),
-                        ) > 15
+                        ) > 14
                     ) {
                         return $string;
                     }

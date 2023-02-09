@@ -206,7 +206,7 @@ hr {
 }
 
 html {
-  font-size: percentage(math.div(14px, variables.$base-font-size));
+  font-size: percentage(math.div(16px, variables.$base-font-size));
 
   @include mixins.breakpoint-up(small) {
     font-size: 100%;
