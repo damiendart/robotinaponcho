@@ -46,7 +46,7 @@ class TwigPrettyRatingsPlugin implements PluginInterface
 
                     return preg_replace(
                         '/\((★{1,5})\)/u',
-                        '<span class="pill"><span class="screen-reader-only">(</span>$1<span class="screen-reader-only">)</span></span>',
+                        '<span class="pill"><span class="visually-hidden">(</span>$1<span class="visually-hidden">)</span></span>',
                         rtrim($string),
                     );
                 },
