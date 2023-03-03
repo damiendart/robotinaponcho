@@ -18,11 +18,13 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [Mr Mercedes][] by Stephen King (★★★★)
 - [Timeline][] by Michael Crichton (★★)
 - [Piranesi][] by Susanna Clarke (★★★★)
 - [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [Mr Mercedes]: <https://en.wikipedia.org/wiki/Mr._Mercedes>
   [Timeline]: <https://en.wikipedia.org/wiki/Timeline_(novel)>
   [Piranesi]: <https://en.wikipedia.org/wiki/Piranesi_(novel)>
   [Out]: <https://en.wikipedia.org/wiki/Out_(novel)>
