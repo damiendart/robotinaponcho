@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+"""
+A basic Obsidian note exporter.
+
+Copyright (C) 2023 Damien Dart, <damiendart@pobox.com>.
+This file is distributed under the MIT licence. For more information,
+please refer to the accompanying "LICENCE" file.
+"""
+
+import argparse
+import dataclasses
+import os
+import pathlib
+import re
+import shutil
+import string
+import subprocess
+import typing
+import yaml
+
+
+template = """
+<!---
+  # This file is distributed under the Creative Commons Attribution 4.0
+  # International License. To view a copy of this license, please visit
+  # <http://creativecommons.org/licenses/by/4.0/>.
+
+  collections:
+    - {collections}
+  twigTemplate: .templates/base-note.html.twig
+--->
+
+{content}
+""".lstrip()
+
+
+class Note:
+    def __init__(self, path):
+        self.content = path.read_text()
+        self.frontmatter = []
+        self.path = path
+
+        self._parse_frontmatter()
+        self._remove_private_content()
+        self._clean_up_content()
+
+    def _clean_up_content(self):
+        if shutil.which("markdown-tidy"):
+            self.content = subprocess.run(
+                "markdown-tidy",
+                capture_output=True,
+                input=self.content,
+                text=True,
+            ).stdout
+
+        self.content = self.content.strip()
+
+    def _parse_frontmatter(self):
+        frontmatter_matches = re.findall(
+            r"^---(.*)---$",
+            self.content,
+            re.DOTALL | re.MULTILINE,
+        )
+
+        if frontmatter_matches:
+            self.frontmatter = yaml.load(
+                frontmatter_matches[0],
+                Loader=yaml.SafeLoader,
+            )
+            self.content = re.sub(
+                r"^---(.*)---$",
+                "",
+                self.content,
+                flags=re.DOTALL | re.MULTILINE,
+            )
+
+    def _remove_private_content(self):
+        self.content = re.sub(
+            r"\n## [pP]rivate.*$",
+            "",
+            self.content,
+            flags=re.DOTALL,
+        )
+
+
+def is_directory(path):
+    if not os.path.isdir(path):
+        raise argparse.ArgumentTypeError(f"{path} is not a directory")
+
+    return path
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "indir",
+        help="input directory of Obsidian-flavoured Markdown files to be processed",
+        type=is_directory,
+    )
+
+    parser.add_argument(
+        "outdir",
+        help="output directory for processed files",
+        type=is_directory,
+    )
+
+    arguments = parser.parse_args()
+    arguments.indir = os.path.abspath(arguments.indir)
+
+    for file in pathlib.Path(arguments.indir).rglob("*.md"):
+        note = Note(file)
+
+        if "tags" not in note.frontmatter:
+            continue
+
+        if bool(set(["draft", "private"]) & set(note.frontmatter["tags"])):
+            continue
+
+        note.frontmatter["tags"].append("notes")
+        note.frontmatter["tags"].sort()
+
+        outfile = open(
+            os.path.join(
+                arguments.outdir,
+                os.path.basename(note.path),
+            ),
+            "w",
+        )
+        outfile.write(
+            template.format(
+                collections="\n    - ".join(
+                    list(
+                        map(
+                            lambda x: "'" + x + "'",
+                            note.frontmatter["tags"],
+                        )
+                    )
+                ),
+                content=note.content,
+            ),
+        )
