@@ -5,7 +5,7 @@
 .secondary-text {
   $ratio: math.div(16px, variables.$base-font-size);
 
-  @include mixins.breakpoint-up(medium) {
+  @include mixins.breakpoint-up(small) {
     font-size: percentage($ratio);
   }
 }
