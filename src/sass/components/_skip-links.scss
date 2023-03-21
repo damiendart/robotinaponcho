@@ -8,32 +8,27 @@
 
 .skip-links {
   align-content: center;
-  background: variables.$colour-black-50;
-  background: var(--base-background);
+  background: variables.$colour-black-200;
+  background: var(--base-accent);
   box-sizing: border-box;
   height: auto;
   left: 0;
   opacity: 0;
-  padding: variables.$base-line-height variables.$base-line-height 0;
+  padding: variables.$base-line-height;
   pointer-events: none;
   position: absolute;
+  transition: opacity 0.125s ease-in;
   width: 100%;
   z-index: 2;
 
   &:focus-within {
     opacity: 1;
     pointer-events: auto;
-    transition: opacity 0.125s ease-in;
-
-    & ~ .site-header {
-      opacity: 0;
-      transition: opacity 0.125s ease-in;
-    }
   }
 
   a {
     font-weight: bold;
-    scroll-margin-top: math.div(variables.$base-line-height, 2);
+    scroll-margin-top: math.div(variables.$base-line-height, 4);
     text-decoration: none;
 
     &:active,
@@ -45,16 +40,16 @@
 
   &__list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     list-style: none;
-    margin: 0;
 
     &__item {
       position: relative;
+      text-align: center;
 
-      &:not(:first-child) {
-        margin: 0 0 0 variables.$base-line-height;
+      & + & {
+        margin-top: math.div(variables.$base-line-height, 4);
       }
     }
   }
