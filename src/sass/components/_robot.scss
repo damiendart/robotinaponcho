@@ -14,17 +14,17 @@
 
     &::before {
       background: url("/assets/homepage-robot-outline.00000000000000.webp");
-      background-size: 100%;
+      background-size: cover;
       content: "";
       display: block;
-      height: 100% * math.div(402, 396);
+      height: 100% * math.div(768, 749);
       left: 50%;
       opacity: 0;
       opacity: var(--drawing-outline-opacity);
       position: absolute;
       top: 50%;
-      transform: translate(-50%, -50%);
-      width: 100% * math.div(358, 350);
+      transform: translate(-50.33%, -49.71%);
+      width: 100% * math.div(725, 700);
       z-index: -1;
 
       @media only screen and (-webkit-min-device-pixel-ratio: 1.3),

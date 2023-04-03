@@ -23,7 +23,7 @@
   --base-accent: #{variables.$colour-black-200};
   --button-background: #{variables.$colour-red};
   --button-foreground: #{variables.$colour-black-50};
-  --drawing-outline-opacity: 1;
+  --drawing-outline-opacity: 0;
   --secondary-colour: #{variables.$colour-red};
 
   @media (prefers-color-scheme: dark) {
