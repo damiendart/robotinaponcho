@@ -18,7 +18,10 @@
   "config": {
     "optimize-autoloader": true,
     "sort-packages": true,
-    "vendor-dir": "protected/vendor"
+    "vendor-dir": "protected/vendor",
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   },
   "description": "Source code to Damien Dart's personal site.",
   "license": "MIT",
@@ -31,14 +34,14 @@
   ],
   "require": {
     "ext-json": "*",
-    "filp/whoops": "^2.14.6",
+    "filp/whoops": "^2.15.1",
     "guzzlehttp/guzzle": "^7.5",
     "php": "8.0.*",
     "sentry/sdk": "^3.3"
   },
   "require-dev": {
     "damiendart/yassg": "dev-master",
-    "friendsofphp/php-cs-fixer": "^3.13",
+    "friendsofphp/php-cs-fixer": "^3.16",
     "michelf/php-smartypants": "^1.8.1",
     "roave/security-advisories": "dev-latest",
     "voku/html-min": "^4.5"
