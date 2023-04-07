@@ -17,13 +17,13 @@
       background-size: cover;
       content: "";
       display: block;
-      height: 100% * math.div(768, 749);
+      height: 100% * math.div(773, 749);
       left: 50%;
       opacity: 0;
       opacity: var(--drawing-outline-opacity);
       position: absolute;
       top: 50%;
-      transform: translate(-50.33%, -49.71%);
+      transform: translate(-50.33%, -49.97%);
       width: 100% * math.div(725, 700);
       z-index: -1;
 
