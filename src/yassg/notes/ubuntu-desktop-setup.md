@@ -41,8 +41,8 @@ managed to automate everything:
 
 - Fix [a bug in the Dash to Dock GNOME Shell extension][] that causes
   icons to take ages to update when you start with an empty dock by
-  manually applying [a fix available on GitHub][] to <span
-  class="os-menu-item">/usr/<wbr>share/<wbr>gnome-shell/<wbr>extensions/<wbr>ubuntu-dock@ubuntu.com/<wbr>dash.js</span>.
+  manually applying [a fix available on GitHub][] to
+  <span class="os-menu-item">/usr/<wbr>share/<wbr>gnome-shell/<wbr>extensions/<wbr>ubuntu-dock@ubuntu.com/<wbr>dash.js</span>.
 - In Firefox: install the [1Password extension][], change the default
   search engine to DuckDuckGo, and hide all the junk from the new tab
   screen. I also sign in to my Firefox account to get my bookmarks and
@@ -64,8 +64,8 @@ managed to automate everything:
     are perfect for how often I need to use Windows. (Microsoft also
     provide [virtual machines][] for testing websites in Internet
     Explorer 11 and Edge Legacy.)
-  - Remember to update the hosts file (<span
-    class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
+  - Remember to update the hosts file
+    (<span class="os-menu-item">%SystemRoot%\\<wbr>System32\\<wbr>drivers\\<wbr>etc\\<wbr>hosts</span>)
     to [access websites and other network services on the host][].
 
   [a bug in the Dash to Dock GNOME Shell extension]: <https://github.com/micheleg/dash-to-dock/issues/1188>

@@ -48,8 +48,8 @@ to drill down to find a setting.
   rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> to switch between recent files.
 - Turn off *Show browsers popup in the editor*.
 - Hide the navigation bar (<span class="os-menu-item">View</span> →
-  <span class="os-menu-item">Appearance</span> → <span
-  class="os-menu-item">Navigation Bar</span>).
+  <span class="os-menu-item">Appearance</span> →
+  <span class="os-menu-item">Navigation Bar</span>).
 
 
 ## IdeaVim customisations and settings

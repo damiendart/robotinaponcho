@@ -18,12 +18,14 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [Adjustment Day][] by Chuck Palahniuk (★★)
 - [Mr Mercedes][] by Stephen King (★★★★)
 - [Timeline][] by Michael Crichton (★★)
 - [Piranesi][] by Susanna Clarke (★★★★)
 - [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [Adjustment Day]: <https://en.wikipedia.org/wiki/Adjustment_Day>
   [Mr Mercedes]: <https://en.wikipedia.org/wiki/Mr._Mercedes>
   [Timeline]: <https://en.wikipedia.org/wiki/Timeline_(novel)>
   [Piranesi]: <https://en.wikipedia.org/wiki/Piranesi_(novel)>

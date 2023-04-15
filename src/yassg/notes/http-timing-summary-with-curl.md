@@ -15,7 +15,7 @@ HTTP Timing Summary with cURL
 This is based on *[Timing Details With cURL][]*.
 
 ``` shell
-$ curl -o /dev/null -w "time_namelookup:  %{time_namelookup} s
+$ curl -o /dev/null -w "time_namelookup:    %{time_namelookup} s
 time_connect:       %{time_connect} s
 time_appconnect:    %{time_appconnect} s
 time_pretransfer:   %{time_pretransfer} s
@@ -25,4 +25,7 @@ time_total:         %{time_total} s
 " -s [WEBSITE-URL]
 ```
 
+See [cURL’s documentation][] for all available variables.
+
   [Timing Details With cURL]: <https://blog.josephscott.org/2011/10/14/timing-details-with-curl/>
+  [cURL’s documentation]: <https://curl.se/docs/manpage.html#-w>
