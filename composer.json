@@ -34,9 +34,9 @@
   ],
   "require": {
     "ext-json": "*",
-    "filp/whoops": "^2.15.1",
-    "guzzlehttp/guzzle": "^7.5",
-    "php": "8.0.*",
+    "filp/whoops": "^2.15.2",
+    "guzzlehttp/guzzle": "^7.6",
+    "php": "8.2.*",
     "sentry/sdk": "^3.3"
   },
   "require-dev": {

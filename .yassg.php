@@ -43,7 +43,7 @@ return (new Configuration(
             'authorEmail' => 'damiendart@pobox.com',
             'metaTwitterAuthor' => '@damiendart',
             'metaTwitterSite' => '@damiendart',
-            'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.${releaseTimestamp}.png",
+            'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.{$releaseTimestamp}.png",
             'releaseTimestamp' => $releaseTimestamp,
             'urlBase' => 'https://www.robotinaponcho.net/',
         ],

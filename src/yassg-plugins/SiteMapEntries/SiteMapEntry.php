@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Robotinaponcho\Yassg\Plugins\SiteMapEntries;
 
-class SiteMapEntry
+readonly class SiteMapEntry
 {
     public function __construct(
         private string $title,

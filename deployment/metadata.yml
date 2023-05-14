@@ -4,6 +4,6 @@
 ---
 
 github_project: 'damiendart/robotinaponcho'
-php_version: '8.0'
+php_version: '8.2'
 release_timestamp: '${RELEASE_TIMESTAMP}'
 release_git_sha: '${RELEASE_GIT_SHA}'
