@@ -26,11 +26,13 @@ $ docker volume ls -f dangling=true
 $ # If dangling volumes exist, remove them with "docker volume prune -f".
 ```
 
-You may need to run these commands with `sudo`. See the Docker
-documentation for more information [on pruning unused Docker objects][].
+You may need to run these commands with `sudo`. The Docker documentation
+has more information [on pruning unused Docker objects][] if the above
+pruning commands don’t go far enough.
 
 If, like me, you’re running these commands on a DiskStation, you can
-safely ignore any “Docker container stopped unexpectedly” notifications.
+safely ignore any “Docker container stopped unexpectedly” notifications
+from DiskStation Manager.
 
   [Synology DiskStation]: <https://www.robotinaponcho.net/notes/#synology-diskstation>
   [on pruning unused Docker objects]: <https://docs.docker.com/config/pruning/>

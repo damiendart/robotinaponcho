@@ -13,8 +13,13 @@ My PhpStorm Customisations and Settings
 =======================================
 
 Maybe one day I’ll get round to using a [settings repository][], but for
-the moment running through this list takes at most ten minutes with a
-fresh installation of PhpStorm, so eh.
+the moment going through this list with a fresh installation of PhpStorm
+takes a couple of minutes, so eh.
+
+**Note**: The search functionality in PhpStorm’s *Settings* window is
+pretty good, so I haven’t included the whole hierarchy of menus you need
+to drill down to find a particular setting. Use the setting name
+formatted in *italics* as the search term.
 
   [settings repository]: <https://www.jetbrains.com/help/phpstorm/settings-tools-settings-repository.html>
 
@@ -34,10 +39,6 @@ In addition to the plugins that come bundled with PhpStorm, I also use
 
 I’m also one of these people.
 
-**Note**: The search functionality in PhpStorm’s *Settings* window is
-pretty good, so I haven’t included the whole hierarchy of menus you need
-to drill down to find a setting.
-
 - Turn on *Use contrast scrollbars*.
 - Turn on *Use smaller indents in trees*.
 - Turn off *Show tool window bars*.
@@ -50,6 +51,10 @@ to drill down to find a setting.
 - Hide the navigation bar (<span class="os-menu-item">View</span> →
   <span class="os-menu-item">Appearance</span> →
   <span class="os-menu-item">Navigation Bar</span>).
+
+If using the New UI Beta:
+
+- Turn on *Compact mode*.
 
 
 ## IdeaVim customisations and settings
@@ -67,9 +72,8 @@ to drill down to find a setting.
 
 - Check that PhpStorm is aware of all available PHP CLI interpreters in
   *Languages & Frameworks* → *PHP* in the *Settings* window.
-- If using PhpStorm 2020.3 or later, if the option is available sync the
-  IDE theme with the OS (on macOS change the preferred light theme to
-  *macOS Light*). Otherwise, use the Darcula theme throughout.
+- Set the IDE theme to Darcula or Dark, depending on whether you’re
+  using the existing UI or the New UI Beta.
 - Set the editor font to [Iosekva][] Term.
 - Set default visual guides at 72 and 78 characters.
 - Set the *Project Opening*’s *Default directory*.

@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [No Country for Old Men][] by Cormac McCarthy (★★★★)
 - [Adjustment Day][] by Chuck Palahniuk (★★)
 - [Mr Mercedes][] by Stephen King (★★★★)
 - [Timeline][] by Michael Crichton (★★)
@@ -25,6 +26,7 @@ somewhere easily available will help me stay motivated.
 - [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [No Country for Old Men]: <https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(novel)>
   [Adjustment Day]: <https://en.wikipedia.org/wiki/Adjustment_Day>
   [Mr Mercedes]: <https://en.wikipedia.org/wiki/Mr._Mercedes>
   [Timeline]: <https://en.wikipedia.org/wiki/Timeline_(novel)>
