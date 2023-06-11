@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+- [Finders Keepers][] by Stephen King (★★★)
 - [No Country for Old Men][] by Cormac McCarthy (★★★★)
 - [Adjustment Day][] by Chuck Palahniuk (★★)
 - [Mr Mercedes][] by Stephen King (★★★★)
@@ -26,6 +27,7 @@ somewhere easily available will help me stay motivated.
 - [Out][] by Natsuo Kirino (★★★)
 - [If It Bleeds][] by Stephen King (★★★)
 
+  [Finders Keepers]: <https://en.wikipedia.org/wiki/Finders_Keepers_(King_novel)>
   [No Country for Old Men]: <https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(novel)>
   [Adjustment Day]: <https://en.wikipedia.org/wiki/Adjustment_Day>
   [Mr Mercedes]: <https://en.wikipedia.org/wiki/Mr._Mercedes>
