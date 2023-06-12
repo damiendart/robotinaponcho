@@ -37,6 +37,9 @@ My open-source software is available as Git repositories, either from
 :   A simple Windows application that non-destructively flips any part
     of your screen horizontally.
 
+**[kew][]**
+:   A *very* basic background task queue, written in PHP.
+
 **[My solutions to the Advent of Code][]**
 :   So far there’s solutions to half of the [2021 Advent of Code][]
     (written in Go). Maybe one day I will actually complete a year.
@@ -69,6 +72,7 @@ My open-source software is available as Git repositories, either from
   [brainfuck]: <https://github.com/damiendart/brainfuck>
   [1]: <https://en.wikipedia.org/wiki/Brainfuck>
   [FlippyWindow]: <https://www.robotinaponcho.net/projects/flippywindow/>
+  [kew]: <https://github.com/damiendart/kew>
   [My solutions to the Advent of Code]: <https://github.com/damiendart/adventofcode>
   [2021 Advent of Code]: <https://adventofcode.com/2021>
   [pathshorten]: <https://github.com/damiendart/pathshorten>
@@ -80,48 +84,48 @@ My open-source software is available as Git repositories, either from
   [toolbox]: <https://github.com/damiendart/toolbox>
   [yassg]: <https://github.com/damiendart/yassg>
 
-### Abandoned, completed or deprecated projects
+### Abandoned and deprecated projects
 
 **[Bastard Snake][]**
 :   Written in Haxe, Bastard Snake set out to be a Snake clone that
     didn’t like you getting many points, but only got as far as making
-    collecting points slightly inconvenient. <span
-    class="pill">Abandoned<span class="visually-hidden">.</span></span>
+    collecting points slightly inconvenient.
+    <span class="pill">Abandoned<span class="visually-hidden">.</span></span>
 
 **[knr-solutions][]**
 :   My incomplete set of solutions to the exercises in *The C
-    Programming Language (Second Edition)*. <span
-    class="pill">Abandoned<span class="visually-hidden">.</span></span>
+    Programming Language (Second Edition)*.
+    <span class="pill">Abandoned<span class="visually-hidden">.</span></span>
 
 **[nfsnapi-python][]**
 :   When I used to use [NearlyFreeSpeech.NET][], I wrote a simple Python
     package that made using their API a little easier. (Be aware that I
     wrote this during my
-    *cram-as-much-shit-into-as-few-lines-as-possible* phase.) <span
-    class="pill">Abandoned<span class="visually-hidden">.</span></span>
+    *cram-as-much-shit-into-as-few-lines-as-possible* phase.)
+    <span class="pill">Abandoned<span class="visually-hidden">.</span></span>
 
 **[notes][]**
 :   Various notes on stuff. These notes have since been merged into my
-    personal website repository, where I continue to update them. <span
-    class="pill">Deprecated<span class="visually-hidden">.</span></span>
+    personal website repository, where I continue to update them.
+    <span class="pill">Deprecated<span class="visually-hidden">.</span></span>
 
 **[Timeline][]**
 :   A Laravel web application for displaying and maintaining a timeline,
     kinda like the one at [JetBrains’ 25 Years of PHP History][]. I lost
     interest in tinkering with this in my spare time when I started
-    writing a similar internal application for work. <span
-    class="pill">Abandoned<span class="visually-hidden">.</span></span>
+    writing a similar internal application for work.
+    <span class="pill">Abandoned<span class="visually-hidden">.</span></span>
 
 **[toolbox-sass][]**
 :   A library of web-development-related stuff. I took the best bits and
     added them to my general-purpose snippet library instead. The name
-    was getting increasingly inaccurate, too. <span
-    class="pill">Deprecated<span class="visually-hidden">.</span></span>
+    was getting increasingly inaccurate, too.
+    <span class="pill">Deprecated<span class="visually-hidden">.</span></span>
 
 **[obtaincornhoop][]**
 :   Back when I had a Tumblr weblog, I created a custom theme for it.
-    The name is an anagram of “robot in a poncho”. <span
-    class="pill">Completed?<span class="visually-hidden">.</span></span>
+    The name is an anagram of “robot in a poncho”.
+    <span class="pill">Deprecated<span class="visually-hidden">.</span></span>
 
   [Bastard Snake]: <https://github.com/damiendart/bastardsnake>
   [knr-solutions]: <https://github.com/damiendart/knr-solutions>
