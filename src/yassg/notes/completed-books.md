@@ -18,16 +18,18 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
-- [Blood Music] by Greg Bear (★★★)
-- [Finders Keepers] by Stephen King (★★★)
-- [No Country for Old Men] by Cormac McCarthy (★★★★)
-- [Adjustment Day] by Chuck Palahniuk (★★)
-- [Mr Mercedes] by Stephen King (★★★★)
-- [Timeline] by Michael Crichton (★★)
-- [Piranesi] by Susanna Clarke (★★★★)
-- [Out] by Natsuo Kirino (★★★)
-- [If It Bleeds] by Stephen King (★★★)
+-   [Our Man in Havana][] by Graham Greene (★★★)
+-   [Blood Music][] by Greg Bear (★★★)
+-   [Finders Keepers][] by Stephen King (★★★)
+-   [No Country for Old Men][] by Cormac McCarthy (★★★★)
+-   [Adjustment Day][] by Chuck Palahniuk (★★)
+-   [Mr Mercedes][] by Stephen King (★★★★)
+-   [Timeline][] by Michael Crichton (★★)
+-   [Piranesi][] by Susanna Clarke (★★★★)
+-   [Out][] by Natsuo Kirino (★★★)
+-   [If It Bleeds][] by Stephen King (★★★)
 
+  [Our Man in Havana]: <https://en.wikipedia.org/wiki/Our_Man_in_Havana>
   [Blood Music]: <https://en.wikipedia.org/wiki/Blood_Music_(novel)>
   [Finders Keepers]: <https://en.wikipedia.org/wiki/Finders_Keepers_(King_novel)>
   [No Country for Old Men]: <https://en.wikipedia.org/wiki/No_Country_for_Old_Men_(novel)>
@@ -41,20 +43,20 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
-- [Grotesque] by Natsuo Kirino (★★★)
-- [Real World] by Natsuo Kirino (★★)
-- [The Children of Men] by P.D. James (★★)
-- *The Bullet That Missed* by Richard Osman (★★★)
-- [The Testaments] by Margaret Atwood (★★★★)
-- [Rita Hayworth and Shawshank Redemption] by Stephen King (★★★)
-- [The Road Back] by Erich Maria Remaque (★★★)
-- [Billy Summers] by Stephen King (★★★★)
-- [All Quiet on the Western Front] by Erich Maria Remarque (★★★★)
-- [The Handmaid’s Tale] by Margaret Atwood (★★★★)
-- [Mostly Harmless] by Douglas Adams (★★)
-- [The Man Who Died Twice] by Richard Osman (★★★)
-- [So Long, and Thanks for All the Fish] by Douglas Adams (★★★)
-- [Life, the Universe and Everything] by Douglas Adams (★★★)
+-   [Grotesque][] by Natsuo Kirino (★★★)
+-   [Real World][] by Natsuo Kirino (★★)
+-   [The Children of Men][] by P.D. James (★★)
+-   *The Bullet That Missed* by Richard Osman (★★★)
+-   [The Testaments][] by Margaret Atwood (★★★★)
+-   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
+-   [The Road Back][] by Erich Maria Remaque (★★★)
+-   [Billy Summers][] by Stephen King (★★★★)
+-   [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
+-   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
+-   [Mostly Harmless][] by Douglas Adams (★★)
+-   [The Man Who Died Twice][] by Richard Osman (★★★)
+-   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
+-   [Life, the Universe and Everything][] by Douglas Adams (★★★)
 
   [Grotesque]: <https://en.wikipedia.org/wiki/Grotesque_(novel)>
   [Real World]: <https://en.wikipedia.org/wiki/Real_World_(novel)>
@@ -73,17 +75,18 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2021
 
-- [The Restaurant at the End of the Universe] by Douglas Adams (★★★)
-- [The Hitchhiker’s Guide to the Galaxy] by Douglas Adams (★★★)
-- [The Colorado Kid] by Stephen King (★★)
-- [Joyland] by Stephen King (★★★)
-- [Later] by Stephen King (★★★)
-- *Easy Peasy Puppy Squeezy* by Steve Mann
-- [The Thursday Murder Club] by Richard Osman (★★★)
-- [The Running Man] by Stephen King (★★★)
-- [The Amber Spyglass (His Dark Materials)] by Philip Pullman (★★)
-- [The Subtle Knife (His Dark Materials)] by Philip Pullman (★★★)
-- [The Northern Lights (His Dark Materials)] by Philip Pullman (★★★★)
+-   [The Restaurant at the End of the Universe][] by Douglas Adams (★★★)
+-   [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams (★★★)
+-   [The Colorado Kid][] by Stephen King (★★)
+-   [Joyland][] by Stephen King (★★★)
+-   [Later][] by Stephen King (★★★)
+-   *Easy Peasy Puppy Squeezy* by Steve Mann
+-   [The Thursday Murder Club][] by Richard Osman (★★★)
+-   [The Running Man][] by Stephen King (★★★)
+-   [The Amber Spyglass (His Dark Materials)][] by Philip Pullman (★★)
+-   [The Subtle Knife (His Dark Materials)][] by Philip Pullman (★★★)
+-   [The Northern Lights (His Dark Materials)][] by Philip Pullman
+    (★★★★)
 
   [The Restaurant at the End of the Universe]: <https://en.wikipedia.org/wiki/The_Restaurant_at_the_End_of_the_Universe>
   [The Hitchhiker’s Guide to the Galaxy]: <https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)>
