@@ -12,6 +12,7 @@
   },
   "autoload-dev": {
     "psr-4": {
+      "Robotinaponcho\\Tests\\": "tests/",
       "Robotinaponcho\\Yassg\\Plugins\\": "src/yassg-plugins/"
     }
   },
@@ -41,8 +42,10 @@
   },
   "require-dev": {
     "damiendart/yassg": "dev-master",
+    "ext-dom": "*",
     "friendsofphp/php-cs-fixer": "^3.16",
     "michelf/php-smartypants": "^1.8.1",
+    "phpunit/phpunit": "^10.3",
     "roave/security-advisories": "dev-latest",
     "voku/html-min": "^4.5"
   },

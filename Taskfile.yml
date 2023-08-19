@@ -22,7 +22,13 @@ tasks:
       - task: 'dependencies'
       - task: 'build'
       - task: 'lint'
-    desc: 'Run all CI-related tasks'
+    desc: 'Run all default CI-related tasks'
+
+  ci:end-to-end:
+    cmds:
+      - task: 'dependencies:php'
+      - task: 'test:end-to-end'
+    desc: 'Run all end-to-end-testing-related tasks'
 
   build:
     cmds:
@@ -153,3 +159,8 @@ tasks:
     vars:
       GIT_STATUS:
         sh: 'git status --porcelain'
+
+  test:end-to-end:
+    cmds:
+      - 'protected/vendor/bin/phpunit --testdox'
+    desc: 'Run end-to-end tests with PHPUnit'

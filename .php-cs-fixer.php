@@ -22,11 +22,13 @@ return (new PhpCsFixer\Config())
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
             'declare_strict_types' => true,
+            /*
             'header_comment' => [
                 'header' => $header,
                 'location' => 'after_open',
                 'separate' => 'both',
             ],
+            */
             'native_function_invocation' => true,
             'no_unused_imports' => true,
             'multiline_whitespace_before_semicolons' => [
@@ -34,6 +36,8 @@ return (new PhpCsFixer\Config())
             ],
             'ordered_imports' => ['sort_algorithm' => 'alpha'],
             'phpdoc_align' => ['align' => 'left'],
+            'php_unit_method_casing' => ['case' => 'snake_case'],
+            'php_unit_test_class_requires_covers' => true,
             'trailing_comma_in_multiline' => [
                 'elements' => ['arrays', 'arguments', 'parameters'],
             ],

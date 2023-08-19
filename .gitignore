@@ -3,6 +3,7 @@
 # please refer to the accompanying "LICENCE" file.
 
 .php-cs-fixer.cache
+.phpunit.cache
 .task
 node_modules
 public
