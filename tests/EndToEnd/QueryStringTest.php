@@ -16,10 +16,13 @@ use Robotinaponcho\Tests\EndToEndTestCase;
  * @internal
  *
  * @coversNothing
+ *
+ * @testdox When using query strings, the application
  */
 class QueryStringTest extends EndToEndTestCase
 {
-    public function test_remove_unnecessary_query_strings_from_urls(): void
+    /** @testdox should remove unnecessary query strings from URLs */
+    public function test_should_remove_unnecessary_query_strings_from_urls(): void
     {
         $response = $this->client->request(
             'GET',

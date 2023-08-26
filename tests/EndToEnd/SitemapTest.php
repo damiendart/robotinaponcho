@@ -16,10 +16,13 @@ use Robotinaponcho\Tests\EndToEndTestCase;
  * @internal
  *
  * @coversNothing
+ *
+ * @testdox When accessing the XML Sitemap, the application
  */
 class SitemapTest extends EndToEndTestCase
 {
-    public function test_return_a_valid_sitemap_with_entries_using_the_correct_domain_name(): void
+    /** @testdox should return a valid XML Sitemap with entries using the correct domain name */
+    public function test_should_return_a_valid_xml_sitemap_with_entries_using_the_correct_domain_name(): void
     {
         $response = $this->client->request('GET', 'sitemap.xml');
 
