@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+ * Copyright (C) 2023 Damien Dart, <damiendart@pobox.com>.
  * This file is distributed under the MIT licence. For more information,
  * please refer to the accompanying "LICENCE" file.
  */
@@ -9,7 +9,7 @@
 declare(strict_types=1);
 
 $header = <<<'HEADER'
-Copyright (C) 2022 Damien Dart, <damiendart@pobox.com>.
+Copyright (C) Damien Dart, <damiendart@pobox.com>.
 This file is distributed under the MIT licence. For more information,
 please refer to the accompanying "LICENCE" file.
 HEADER;
@@ -22,13 +22,11 @@ return (new PhpCsFixer\Config())
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
             'declare_strict_types' => true,
-            /*
             'header_comment' => [
                 'header' => $header,
                 'location' => 'after_open',
                 'separate' => 'both',
             ],
-            */
             'native_function_invocation' => true,
             'no_unused_imports' => true,
             'multiline_whitespace_before_semicolons' => [
@@ -51,6 +49,6 @@ return (new PhpCsFixer\Config())
             ->notPath('public')
             ->in(__DIR__)
             ->name('*.php')
-            ->name('cron-*')
-            ->name('*.twig')
+            ->name(basename(__FILE__))
+            ->name('update-git-repositories')
     );
