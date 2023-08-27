@@ -17,20 +17,20 @@
     }
   }
 
-  & > h1,
+  & > * + h1,
+  & > * + .image-and-text,
   & > h1 + *,
   & > h1 + h2,
-  & > .image-and-text:first-child,
-  & > .image-and-text:first-child + * {
+  & > .image-and-text + * {
     margin-top: variables.$base-line-height * 4;
   }
 
-  & > h2 {
+  & > * + h2 {
     margin-top: variables.$base-line-height * 2.75;
   }
 
-  & > h3,
-  & > img,
+  & > * + h3,
+  & > * + img,
   & > img + * {
     margin-top: variables.$base-line-height;
   }
@@ -39,17 +39,9 @@
     margin-top: 0;
   }
 
-  & > [class^="cta"],
+  & > * + [class^="cta"],
   & > [class^="cta"] + * {
     margin-top: variables.$base-line-height * 3;
-  }
-
-  & > .site-footer {
-    margin-top: variables.$base-line-height * 2;
-
-    @include mixins.breakpoint-up(medium) {
-      margin-top: variables.$base-line-height * 4;
-    }
   }
 
   & > * + .stack__hug {

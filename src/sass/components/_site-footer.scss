@@ -8,6 +8,7 @@
 
 .site-footer {
   text-align: center;
+  padding: (variables.$base-line-height * 2) 0;
 
   &__copyright,
   &__navigation {

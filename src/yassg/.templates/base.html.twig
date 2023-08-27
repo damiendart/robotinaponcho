@@ -39,52 +39,58 @@
     <script>{% block headJavaScript "document.documentElement.className+='javascript',localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))" %}</script>
     <title>{{ metaTitle | smartypants }}</title>
 </head>
-<body>
-    <div class="skip-links">
-        <ul class="skip-links__list" role="list">
-            <li class="skip-links__list__item">
-                <a href="#content">Skip to content</a>
-            </li>
-            <li class="skip-links__list__item">
-                <a href="#footer">Skip to footer</a>
-            </li>
-        </ul>
-        <hr class="skip-links__rule">
-    </div>
-    <div class="site-header">
-        <div class="site-header__container">
-            <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
-            <nav class="site-header__navigation">
-                <ul class="site-header__navigation__list" role="list">
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
-                    <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
-                </ul>
-            </nav>
-            <hr class="site-header__rule">
+<body class="page">
+    <header class="page__header">
+        <div class="skip-links">
+            <ul class="skip-links__list" role="list">
+                <li class="skip-links__list__item">
+                    <a href="#content">Skip to content</a>
+                </li>
+                <li class="skip-links__list__item">
+                    <a href="#footer">Skip to footer</a>
+                </li>
+            </ul>
         </div>
-    </div>
-    <div class="{{ 'content ' ~ contentClasses | default('content') }}" id="content">
-        <div class="content__container stack">
 
+        <hr class="visually-hidden">
+
+        <div class="site-header">
+            <div class="site-header__container">
+                <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
+                <nav class="site-header__navigation">
+                    <ul class="site-header__navigation__list" role="list">
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
+                        <li class="site-header__navigation__list__item{% if section is defined and section is same as('notes') %} site-header__navigation__list__item--active{% endif %}"><a href="/notes/">Notes</a></li>
+                        <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <hr class="visually-hidden">
+
+    <main class="{{ 'content page__main ' ~ contentClasses | default('content page__main') }}" id="content">
+        <div class="content__container stack">
             {% block heading %}
                 <h1>{{ title | smartypants | widont }}</h1>
             {% endblock %}
 
             {{ block('content') }}
-
-            <footer id="footer" class="site-footer secondary-text stack">
-                <hr class="site-footer__rule">
-                <nav>
-                    <p class="site-footer__navigation"><strong>View</strong>:
-                        <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
-                </nav>
-                <hr class="site-footer__rule">
-                <p class="site-footer__copyright stack__hug">Copyright © {{ 'now' | date('Y') }}
-                    <a href="/">{{ author | smartypants }}</a>.</p>
-            </footer>
         </div>
-    </div>
+    </main>
+
+    <hr class="visually-hidden">
+
+    <footer id="footer" class="page__footer site-footer secondary-text stack">
+        <nav>
+            <p class="site-footer__navigation"><strong>View</strong>:
+                <a href="/privacy-policy">Privacy Policy</a>, <a href="/sitemap">Sitemap</a>.</p>
+        </nav>
+        <p class="site-footer__copyright stack__hug">Copyright © {{ 'now' | date('Y') }}
+            <a href="/">{{ author | smartypants }}</a>.</p>
+    </footer>
+
     <script src="/assets/app.{{ releaseTimestamp }}.js" type="module"></script>
 </body>
 </html>
