@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+-   [The Quiet American][] by Graham Greene (★★★)
 -   [Our Man in Havana][] by Graham Greene (★★★)
 -   [Blood Music][] by Greg Bear (★★★)
 -   [Finders Keepers][] by Stephen King (★★★)
@@ -29,6 +30,7 @@ somewhere easily available will help me stay motivated.
 -   [Out][] by Natsuo Kirino (★★★)
 -   [If It Bleeds][] by Stephen King (★★★)
 
+  [The Quiet American]: <https://en.wikipedia.org/wiki/The_Quiet_American>
   [Our Man in Havana]: <https://en.wikipedia.org/wiki/Our_Man_in_Havana>
   [Blood Music]: <https://en.wikipedia.org/wiki/Blood_Music_(novel)>
   [Finders Keepers]: <https://en.wikipedia.org/wiki/Finders_Keepers_(King_novel)>
