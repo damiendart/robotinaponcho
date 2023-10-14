@@ -17,16 +17,15 @@
     }
   }
 
-  & > * + h1,
-  & > * + .image-and-text,
   & > h1 + *,
   & > h1 + h2,
-  & > .image-and-text + * {
-    margin-top: variables.$base-line-height * 4;
+  & > * + .stack__widest,
+  & > .stack__widest + * {
+    margin-top: variables.$base-line-height * 2;
   }
 
   & > * + h2 {
-    margin-top: variables.$base-line-height * 2.75;
+    margin-top: variables.$base-line-height * 1.5;
   }
 
   & > * + h3,
@@ -37,11 +36,6 @@
 
   & > details + details {
     margin-top: 0;
-  }
-
-  & > * + [class^="cta"],
-  & > [class^="cta"] + * {
-    margin-top: variables.$base-line-height * 3;
   }
 
   & > * + .stack__hug {
