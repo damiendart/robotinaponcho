@@ -10,46 +10,26 @@
 .button {
   background: variables.$colour-red;
   background: var(--button-background);
+  border-radius: 2em;
   color: variables.$colour-white;
   color: var(--button-foreground);
   display: inline-block;
   font-weight: bold;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
-  border-radius: 2em;
   text-decoration: none;
   white-space: nowrap;
 
   &:active,
   &:focus,
   &:hover {
-    color: variables.$colour-black-50;
-    color: var(--button-foreground);
+    outline-color: variables.$colour-red;
+    outline-color: var(--button-background);
+    outline-offset: functions.px-to-rem(2px);
+    // Slightly increase the outline width so it's more visible against
+    // the solid coloured button.
+    outline-width: variables.$base-one-pixel-in-rem * 4;
     text-decoration: underline;
-  }
-
-  &:focus {
-    outline: none;
-
-    &::after {
-      border: (variables.$base-one-pixel-in-rem * 3) solid variables.$colour-black-1000;
-      border-color: var(--button-background);
-      border-radius: variables.$base-line-height + (variables.$base-one-pixel-in-rem * 6);
-      box-sizing: border-box;
-      content: "";
-      display: block;
-      height: calc(100% + #{variables.$base-one-pixel-in-rem * 12});
-      left: variables.$base-one-pixel-in-rem * -6;
-      position: absolute;
-      top: variables.$base-one-pixel-in-rem * -6;
-      width: calc(100% + #{variables.$base-one-pixel-in-rem * 12});
-    }
-
-    &:not(:focus-visible) {
-      &::after {
-        display: none;
-      }
-    }
   }
 
   img {

@@ -42,7 +42,8 @@ a {
   color: var(--secondary-colour);
 
   &:focus {
-    outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
+    outline-width: variables.$base-one-pixel-in-rem * 3;
+    outline-style: solid;
 
     &:not(:focus-visible) {
       outline: none;
