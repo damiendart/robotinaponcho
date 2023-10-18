@@ -61,7 +61,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
-  font-family: "Red Hat Text", sans-serif;
+  font-family: "Montserrat", sans-serif;
   height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
@@ -180,13 +180,18 @@ figure {
 h1 {
   font-size: 225%;
   letter-spacing: variables.$base-one-pixel-in-rem * -1;
-  line-height: variables.$base-line-height * 1.625;
+  line-height: variables.$base-line-height * 1.5;
   margin: 0;
+
+  @include mixins.breakpoint-up(small) {
+    font-size: 250%;
+    line-height: variables.$base-line-height * 1.75;
+  }
 }
 
 h2 {
   font-size: 150%;
-  line-height: variables.$base-line-height * 1.125;
+  line-height: variables.$base-line-height * 1.25;
   margin: 0;
 }
 
@@ -197,7 +202,7 @@ h3 {
 }
 
 html {
-  font-size: percentage(math.div(18px, variables.$base-font-size));
+  font-size: percentage(math.div(16px, variables.$base-font-size));
 
   @include mixins.breakpoint-up(small) {
     font-size: 100%;

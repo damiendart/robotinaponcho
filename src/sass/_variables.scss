@@ -5,7 +5,7 @@
 @use "sass:math";
 @use "functions";
 
-$base-font-size: 20px;
+$base-font-size: 18px;
 $base-line-height: functions.px-to-rem(32px);
 $base-one-em-in-pixels: 16px;
 $base-one-pixel-in-em: math.div(1px, $base-one-em-in-pixels) * 1em;
