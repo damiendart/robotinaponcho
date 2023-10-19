@@ -3,12 +3,26 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../functions";
 @use "../mixins";
 @use "../variables";
 
 .site-footer {
   text-align: center;
   padding: (variables.$base-line-height * 2) 0;
+  position: relative;
+
+  &::before {
+    background: variables.$colour-black-200;
+    background: var(--base-highlight);
+    content: "";
+    display: block;
+    height: functions.px-to-rem(2px);
+    left: 0;
+    position: absolute;
+    top: functions.px-to-rem(-1px);
+    width: 100%;
+  }
 
   &__copyright,
   &__navigation {
