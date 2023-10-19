@@ -3,11 +3,15 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "../functions";
 @use "../variables";
 
 .site-header {
+  background: variables.$colour-red;
+  background: var(--button-background);
+  color: variables.$colour-white;
+  color: var(--button-foreground);
   box-sizing: border-box;
-  color: inherit;
   padding: variables.$base-line-height;
   position: relative;
 
@@ -61,17 +65,14 @@
 
         &--active {
           &::after {
-            $diameter: variables.$base-one-pixel-in-rem * 8;
-
             background: currentColor;
-            border-radius: math.div($diameter, 2);
-            bottom: math.div(variables.$base-line-height, -2) - math.div($diameter, 2);
+            bottom: variables.$base-line-height * -1;
             content: "";
             display: block;
-            height: $diameter;
-            left: calc(50% - #{math.div($diameter, 2)});
+            height: variables.$base-line-height * 0.125;
+            left: 0;
             position: absolute;
-            width: $diameter;
+            width: 100%;
           }
         }
       }
