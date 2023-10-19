@@ -8,9 +8,9 @@
 
 .site-header {
   background: variables.$colour-red;
-  background: var(--button-background);
+  background: var(--secondary-background);
   color: variables.$colour-white;
-  color: var(--button-foreground);
+  color: var(--secondary-foreground);
   box-sizing: border-box;
   padding: variables.$base-line-height;
   position: relative;

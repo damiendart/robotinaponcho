@@ -40,7 +40,7 @@
 
           @supports (mask: url("icon-check.00000000000000.svg")) {
             background: variables.$colour-red;
-            background: var(--secondary-colour);
+            background: var(--base-link);
             mask: url("icon-check.00000000000000.svg") no-repeat center;
             mask-size: variables.$base-line-height * 1.25;
           }
@@ -108,7 +108,7 @@
 
         @supports (mask: url("icon-check.00000000000000.svg")) {
           background: variables.$colour-red;
-          background: var(--secondary-colour);
+          background: var(--base-link);
         }
       }
     }

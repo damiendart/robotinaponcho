@@ -46,8 +46,8 @@
 
     select {
       appearance: none;
-      background: var(--base-accent);
-      border: variables.$base-one-pixel-in-rem solid var(--base-accent);
+      background: var(--base-highlight);
+      border: variables.$base-one-pixel-in-rem solid var(--base-highlight);
       color: inherit;
       font: inherit;
       line-height: calc(#{variables.$base-line-height - (variables.$base-one-pixel-in-rem * 2)});

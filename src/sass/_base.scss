@@ -10,21 +10,21 @@
 @mixin dark-theme {
   --base-background: #{variables.$colour-black-900};
   --base-foreground: #{variables.$colour-black-50};
-  --base-accent: #{variables.$colour-black-800};
-  --button-background: #{variables.$colour-pink};
-  --button-foreground: #{variables.$colour-black-900};
+  --base-highlight: #{variables.$colour-black-800};
+  --base-link: #{variables.$colour-pink};
+  --secondary-background: #{variables.$colour-pink};
+  --secondary-foreground: #{variables.$colour-black-900};
   --drawing-outline-opacity: 1;
-  --secondary-colour: #{variables.$colour-pink};
 }
 
 :root {
   --base-background: #{variables.$colour-black-50};
   --base-foreground: #{variables.$colour-black-1000};
-  --base-accent: #{variables.$colour-black-200};
-  --button-background: #{variables.$colour-red};
-  --button-foreground: #{variables.$colour-black-50};
+  --base-highlight: #{variables.$colour-black-200};
+  --base-link: #{variables.$colour-red};
+  --secondary-background: #{variables.$colour-red};
+  --secondary-foreground: #{variables.$colour-black-50};
   --drawing-outline-opacity: 0;
-  --secondary-colour: #{variables.$colour-red};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
@@ -39,7 +39,7 @@
 
 a {
   color: variables.$colour-red;
-  color: var(--secondary-colour);
+  color: var(--base-link);
 
   &:focus {
     outline-width: variables.$base-one-pixel-in-rem * 3;
@@ -69,7 +69,7 @@ body {
 
 code {
   background: variables.$colour-black-200;
-  background: var(--base-accent);
+  background: var(--base-highlight);
   font-family: "Iosevka Web", monospace;
   line-height: 1;
 }
@@ -222,7 +222,7 @@ img {
 
 kbd {
   background: variables.$colour-black-200;
-  background: var(--base-accent);
+  background: var(--base-highlight);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;
   font-family: variables.$font-stack-system;
@@ -260,7 +260,7 @@ p {
 
 pre {
   background: variables.$colour-black-200;
-  background: var(--base-accent);
+  background: var(--base-highlight);
   box-sizing: border-box;
   margin: 0;
   max-width: 100%;
@@ -293,7 +293,7 @@ table {
 
   > tbody > tr:nth-last-of-type(odd) {
     background: variables.$colour-black-200;
-    background: var(--base-accent);
+    background: var(--base-highlight);
   }
 
   > thead {
