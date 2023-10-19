@@ -6,7 +6,7 @@
 
 .page {
   & > &__header ~ &__main {
-    margin-top: variables.$base-line-height * 4;
+    margin-top: variables.$base-line-height * 2;
   }
 
   & > &__main ~ &__footer {
