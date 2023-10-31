@@ -4,6 +4,7 @@
 
 @use "sass:math";
 @use "fonts";
+@use "functions";
 @use "mixins";
 @use "variables";
 
@@ -151,6 +152,15 @@ details {
   }
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+
+  legend {
+    font-weight: bold;
+  }
+}
+
 figure {
   margin: 0;
 
@@ -177,7 +187,7 @@ figure {
   }
 }
 
-h1 {
+h1:not([class]) {
   font-size: 225%;
   letter-spacing: variables.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
@@ -189,13 +199,15 @@ h1 {
   }
 }
 
-h2 {
+h2,
+.h2 {
   font-size: 150%;
   line-height: variables.$base-line-height * 1.25;
   margin: 0;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 112.5%;
   line-height: variables.$base-line-height;
   margin: 0;
@@ -228,6 +240,37 @@ kbd {
   font-family: variables.$font-stack-system;
   line-height: 1;
   padding: math.div(variables.$base-line-height, 4);
+}
+
+label.has-input-radio,
+label:has(input[type="radio"]) {
+  align-items: center;
+  border: functions.px-to-rem(2px) solid var(--base-highlight);
+  border-radius: variables.$base-line-height * 0.125;
+  box-sizing: border-box;
+  display: flex;
+  gap: variables.$base-line-height * 0.5;
+  padding: (variables.$base-line-height * 0.25) (variables.$base-line-height * 0.5);
+
+  &:has(input[checked]) {
+    background-color: var(--base-highlight);
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    border: functions.px-to-rem(2px) solid var(--base-link);
+    border-radius: 50%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    height: variables.$base-line-height * 0.75;
+    margin: 0;
+    padding: 0;
+    width: variables.$base-line-height * 0.75;
+
+    &:checked {
+      border-width: functions.px-to-rem(6px);
+    }
+  }
 }
 
 main {

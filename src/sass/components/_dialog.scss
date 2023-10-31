@@ -1,0 +1,99 @@
+@use "../functions";
+@use "../variables";
+
+.dialog {
+  animation: fade-in 0.25s both, slide-up 0.25s both;
+  background: var(--base-background);
+  border: none;
+  border-radius: variables.$base-line-height * 0.25;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0);
+  color: var(--base-foreground);
+  max-height: calc(100vh - #{variables.$base-line-height * 2});
+  max-width: min(calc(100vw - #{variables.$base-line-height}), #{functions.px-to-rem(500px)});
+  padding: 0;
+  text-align: left;
+  width: 100%;
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(10%);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  &[open] {
+    box-shadow: 0 0 0 100vw rgba(variables.$colour-black-1000, 0.5);
+  }
+
+  &::backdrop {
+    // The "::backdrop" pseudo-element cannot be reliably animated.
+    // Instead, we use the dialog's "box-shadow" property to emulate the
+    // backdrop, allowing us to animate it.
+    display: none;
+  }
+
+  &__body {
+    padding: variables.$base-line-height;
+    overflow: auto;
+  }
+
+  &__close {
+    appearance: none;
+    background: none;
+    border: none;
+    height: variables.$base-line-height * 0.75;
+    padding: 0;
+    width: variables.$base-line-height * 0.75;
+
+    &::before {
+      background: var(--base-link);
+      content: "";
+      display: inline-block;
+      height: 100%;
+      mask-image: url("icon-close.00000000000000.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 100%;
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: variables.$base-line-height;
+    position: relative;
+
+    &::before {
+      background: variables.$colour-black-200;
+      background: var(--base-highlight);
+      content: "";
+      display: block;
+      height: functions.px-to-rem(2px);
+      left: 0;
+      position: absolute;
+      top: functions.px-to-rem(-1px);
+      width: 100%;
+    }
+  }
+
+  &__header {
+    align-items: center;
+    background: var(--base-highlight);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0;
+    padding: (variables.$base-line-height * 0.5) (variables.$base-line-height * 0.75);
+    text-align: left;
+  }
+}

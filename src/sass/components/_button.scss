@@ -8,13 +8,17 @@
 @use "../variables";
 
 .button {
+  appearance: none;
   background: variables.$colour-red;
   background: var(--secondary-background);
+  border: none;
   border-radius: 2em;
   color: variables.$colour-white;
   color: var(--secondary-foreground);
   display: inline-block;
+  font: inherit;
   font-weight: bold;
+  line-height: inherit;
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
   text-decoration: none;
@@ -67,6 +71,6 @@
   }
 
   &--small {
-    padding: math.div(variables.$base-line-height, 4) math.div(variables.$base-line-height, 2);
+    padding: math.div(variables.$base-line-height, 4) (variables.$base-line-height * 0.75);
   }
 }

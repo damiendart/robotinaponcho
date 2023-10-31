@@ -11,4 +11,13 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
   ],
+  rules: {
+    indent: [
+      'error',
+      2,
+      {
+        ignoredNodes: ['TemplateLiteral *'],
+      },
+    ],
+  },
 };
