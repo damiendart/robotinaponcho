@@ -8,7 +8,7 @@
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: variables.$base-line-height * 0.5;
+  gap: variables.$base-line-height * 0.375;
 
   a {
     background: variables.$colour-red;
