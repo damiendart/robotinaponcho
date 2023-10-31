@@ -38,6 +38,10 @@
   }
 }
 
+:target {
+  scroll-margin-block: variables.$base-line-height;
+}
+
 a {
   color: variables.$colour-red;
   color: var(--base-link);
