@@ -24,61 +24,21 @@
     width: 100%;
   }
 
-  &__copyright,
   &__navigation {
-    font-style: italic;
-    margin: 0;
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: (variables.$base-line-height * 0.5) variables.$base-line-height;
+      justify-content: center;
 
-    strong {
-      font-weight: normal;
-    }
-  }
-
-  &__theme-switcher {
-    display: inline-block;
-
-    label {
-      display: block;
-      position: relative;
-
-      &::before {
-        background: var(--base-foreground);
-        content: "";
-        display: inline-block;
-        height: variables.$base-line-height;
-        mask: url("icon-set.00000000000000.svg");
-        mask-position: center;
-        mask-repeat: no-repeat;
-        mask-size: variables.$base-line-height * 0.5;
-        pointer-events: none;
-        position: absolute;
-        right: 0;
-        top: calc(50% - #{variables.$base-line-height * 0.5});
-        width: variables.$base-line-height;
-      }
-    }
-
-    select {
-      appearance: none;
-      background: var(--base-highlight);
-      border: variables.$base-one-pixel-in-rem solid var(--base-highlight);
-      color: inherit;
-      font: inherit;
-      line-height: calc(#{variables.$base-line-height - (variables.$base-one-pixel-in-rem * 2)});
-      padding: 0 variables.$base-line-height 0 math.div(variables.$base-line-height, 8);
-
-      &:focus,
-      &:hover {
-        border-color: currentColor;
+      @include mixins.breakpoint-up(small) {
+        flex-direction: row;
       }
 
-      &:focus {
-        border-color: transparent;
-        outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
-
-        &:not(:focus-visible) {
-          outline: none;
-          border-color: currentColor;
+      & > * {
+        a {
+          font-weight: bold;
         }
       }
     }

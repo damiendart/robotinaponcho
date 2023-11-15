@@ -95,11 +95,17 @@ class SitePreferencesDialog extends HTMLElement {
   }
 }
 
+const siteFooterNavigationItem = document.createElement('li');
+
 customElements.define('site-preferences-dialog', SitePreferencesDialog);
 
+siteFooterNavigationItem.appendChild(
+  document.createElement('site-preferences-dialog'),
+);
+
 document
-  .querySelector('.site-footer')
-  .appendChild(document.createElement('site-preferences-dialog'));
+  .querySelector('.site-footer__navigation__list')
+  .appendChild(siteFooterNavigationItem);
 document
   .querySelector('[href="#footer"]')
   .innerHTML += ' and site preferences';
