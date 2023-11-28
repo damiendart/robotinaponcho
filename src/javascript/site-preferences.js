@@ -17,7 +17,7 @@ class SitePreferencesDialog extends HTMLElement {
           <form method="dialog">
             <div class="dialog__header">
               <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="visually-hidden">Cancel</span></button>
-              <hr class="visually-hidden">
+              <hr aria-hidden="true">
               <h1 class="h3">Preferences</h2>
             </div>
             <div class="dialog__body stack">
