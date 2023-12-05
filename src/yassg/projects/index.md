@@ -44,6 +44,9 @@ My open-source software is available as Git repositories, either from
 :   So far there’s solutions to half of the [2021 Advent of Code]
     (written in Go). Maybe one day I will actually complete a year.
 
+**[nt]**
+:   A personal note-taking helper command-line application.
+
 **[pathshorten]**
 :   An implementation of Vim’s [`pathshorten`] function written in Go.
 
@@ -77,6 +80,7 @@ My open-source software is available as Git repositories, either from
   [2021 Advent of Code]: <https://adventofcode.com/2021>
   [pathshorten]: <https://github.com/damiendart/pathshorten>
   [`pathshorten`]: <https://vimhelp.org/builtin.txt.html#pathshorten%28%29>
+  [nt]: <https://github.com/damiendart/nt>
   [robotinaponcho]: <https://github.com/damiendart/robotinaponcho>
   [setup]: <https://github.com/damiendart/setup>
   [snippets]: <https://github.com/damiendart/snippets>
