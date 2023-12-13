@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+-   [The Three-Body Problem][] by Liu Cixin (★★★)
 -   [Misery][] by Stephen King (★★★★)
 -   [The Quiet American][] by Graham Greene (★★★)
 -   [Our Man in Havana][] by Graham Greene (★★★)
@@ -31,6 +32,7 @@ somewhere easily available will help me stay motivated.
 -   [Out][] by Natsuo Kirino (★★★)
 -   [If It Bleeds][] by Stephen King (★★★)
 
+  [The Three-Body Problem]: <https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)>
   [Misery]: <https://en.wikipedia.org/wiki/Misery_(novel)>
   [The Quiet American]: <https://en.wikipedia.org/wiki/The_Quiet_American>
   [Our Man in Havana]: <https://en.wikipedia.org/wiki/Our_Man_in_Havana>
