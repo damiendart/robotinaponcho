@@ -18,6 +18,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
+-   *The Second Sleep* by Robert Harris (★★)
 -   [The Three-Body Problem][] by Liu Cixin (★★★)
 -   [Misery][] by Stephen King (★★★★)
 -   [The Quiet American][] by Graham Greene (★★★)
