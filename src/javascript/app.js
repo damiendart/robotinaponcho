@@ -5,5 +5,4 @@
 import './apple-click-event-fix';
 import './copy-to-clipboard';
 import './details-element-animation';
-import './pretty-date';
 import './site-preferences';

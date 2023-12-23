@@ -10,11 +10,11 @@
 
 {% block content %}
     {% if git.created.timestamp == git.updated.timestamp %}
-        <p><em>This note was created
-            <a data-timestamp="{{ git.created.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">at {{ git.created.timestamp | date('d/m/Y H:i') }}</a>.</em></p>
+        <p><em>This note was created on
+            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">{{ git.created.timestamp | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
     {% else %}
-        <p><em>This note was updated
-            <a data-timestamp="{{ git.updated.timestamp.getTimestamp }}" href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">at {{ git.updated.timestamp | date('d/m/Y H:i') }}</a>.</em></p>
+        <p><em>This note was updated on
+            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">{{ git.updated.timestamp | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
     {% endif %}
 
     {{ renderedMarkdown | prettyratings }}
