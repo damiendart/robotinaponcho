@@ -43,11 +43,11 @@
 
         <ul class="notes-list stack" role="list">
             {% for note in notes | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
-                {% set verb = note.metadata.git.created.timestamp == note.metadata.git.updated.timestamp ? 'Created' : 'Updated' %}
+                {% set verb = note.metadata.git.createdAt == note.metadata.git.updatedAt ? 'Created' : 'Updated' %}
 
                 <li class="notes-list__item">
                     <a href="/{{ note.metadata.slug }}">{{ note.metadata.title | smartypants }}</a>
-                    <span class="notes-list__item__meta"><span class="visually-hidden">(</span><span>{{ verb }} </span>{{ note.metadata.git.updated.timestamp | date('d M, Y') }}<span class="visually-hidden">)</span></span>
+                    <span class="notes-list__item__meta"><span class="visually-hidden">(</span><span>{{ verb }} </span>{{ note.metadata.git.updatedAt | date('d M, Y') }}<span class="visually-hidden">)</span></span>
                 </li>
             {% endfor %}
         </ul>

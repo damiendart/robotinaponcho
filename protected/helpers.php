@@ -33,5 +33,5 @@ function git(string $command, ?string $cwd = null): string
         );
     }
 
-    return $stdout;
+    return trim($stdout);
 }

@@ -10,7 +10,7 @@ use Robotinaponcho\Yassg\Plugins\GitMetadata\GitMetadataPlugin;
 use Robotinaponcho\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
 use Robotinaponcho\Yassg\Plugins\MarkdownMetadata\MarkdownMetadataPlugin;
 use Robotinaponcho\Yassg\Plugins\MarkdownSetup\MarkdownSetupPlugin;
-use Robotinaponcho\Yassg\Plugins\SiteMapEntries\SiteMapEntriesPlugin;
+use Robotinaponcho\Yassg\Plugins\SitemapEntries\SitemapEntriesPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigPrettyRatings\TwigPrettyRatingsPlugin;
 use Robotinaponcho\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
@@ -31,7 +31,7 @@ return (new Configuration(
     ->addPlugin(new GitMetadataPlugin())
     ->addPlugin(new MarkdownMetadataPlugin())
     ->addPlugin(new MarkdownSetupPlugin())
-    ->addPlugin(new SiteMapEntriesPlugin())
+    ->addPlugin(new SitemapEntriesPlugin())
     ->addPlugin(new SlugPlugin(new BasicSlugStrategy))
     ->addPlugin(new TwigMarkdownPlugin())
     ->addPlugin(new TwigPrettyRatingsPlugin())

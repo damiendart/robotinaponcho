@@ -32,14 +32,14 @@ class GitMetadataExtractor implements MetadataExtractorInterface
 
         $inputFile->mergeMetadata(
             [
-                'git' => [
-                    'created' => $this->getCreatedMetadata(
+                'git' => new GitMetadata(
+                    ...$this->getCreatedMetadata(
                         $inputFile->getOriginalAbsolutePathname(),
                     ),
-                    'updated' => $this->getLastUpdatedMetadata(
+                    ...$this->getLastUpdatedMetadata(
                         $inputFile->getOriginalAbsolutePathname(),
                     ),
-                ],
+                ),
             ],
         );
     }
@@ -49,23 +49,21 @@ class GitMetadataExtractor implements MetadataExtractorInterface
      */
     private function getCreatedMetadata(string $pathname): array
     {
-        $gitCommandOutput = explode(
+        [$createdHash, $createdAt] = explode(
             ' ',
-            git(
-                "log --diff-filter=A --follow --format='%H %ct' -1 -- {$pathname}",
-            ),
+            git("log --diff-filter=A --follow --format='%H %ct' -1 -- {$pathname}"),
         );
 
-        if (empty($gitCommandOutput[0])) {
+        if (empty($createdHash)) {
             return [
-                'hash' => '0000000000000000000000000000000000000000',
-                'timestamp' => new \DateTime(),
+                'createdAt' => new \DateTimeImmutable(),
+                'createdHash' => null,
             ];
         }
 
         return [
-            'hash' => $gitCommandOutput[0],
-            'timestamp' => (new \DateTime())->setTimestamp((int) $gitCommandOutput[1]),
+            'createdAt' => \DateTimeImmutable::createFromFormat('U', $createdAt),
+            'createdHash' => $createdHash,
         ];
     }
 
@@ -74,23 +72,21 @@ class GitMetadataExtractor implements MetadataExtractorInterface
      */
     private function getLastUpdatedMetadata(string $pathname): array
     {
-        $gitCommandOutput = explode(
+        [$updatedHash, $updatedAt] = explode(
             ' ',
-            git(
-                "log -n 1 --pretty=format:'%H %ct' {$pathname}",
-            ),
+            git("log -n 1 --pretty=format:'%H %ct' {$pathname}"),
         );
 
-        if (empty($gitCommandOutput[0])) {
+        if (empty($updatedHash)) {
             return [
-                'hash' => '0000000000000000000000000000000000000000',
-                'timestamp' => new \DateTime(),
+                'updatedAt' => null,
+                'updatedHash' => new \DateTimeImmutable(),
             ];
         }
 
         return [
-            'hash' => $gitCommandOutput[0],
-            'timestamp' => (new \DateTime())->setTimestamp((int) $gitCommandOutput[1]),
+            'updatedAt' => \DateTimeImmutable::createFromFormat('U', $updatedAt),
+            'updatedHash' => $updatedHash,
         ];
     }
 }

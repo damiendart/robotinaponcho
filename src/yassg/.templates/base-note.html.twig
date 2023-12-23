@@ -9,12 +9,12 @@
 {% set section = 'notes' %}
 
 {% block content %}
-    {% if git.created.timestamp == git.updated.timestamp %}
+    {% if git.createdAt == git.updatedAt %}
         <p><em>This note was created on
-            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.created.hash }}">{{ git.created.timestamp | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
+            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.createdHash }}">{{ git.createdAt | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
     {% else %}
         <p><em>This note was updated on
-            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updated.hash }}">{{ git.updated.timestamp | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
+            <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updatedHash }}">{{ git.updatedAt | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
     {% endif %}
 
     {{ renderedMarkdown | prettyratings }}

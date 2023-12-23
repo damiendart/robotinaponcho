@@ -16,16 +16,16 @@
             <name>{{ author | smartypants }}</name>
         </author>
         <id>{{ urlBase }}notes/index.atom</id>
-        {% for note in collections.notes | sort((a, b) => b.metadata.git.created.timestamp <=> a.metadata.git.created.timestamp) | slice(0, 11) %}
+        {% for note in collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
             <entry>
                 <id>{{ urlBase }}{{ note.metadata.slug }}</id>
                 <link href="{{ urlBase }}{{ note.metadata.slug }}"/>
-                <published>{{ note.metadata.git.created.timestamp | date('c') }}</published>
+                <published>{{ note.metadata.git.createdAt | date('c') }}</published>
                 <summary type="html">
-                    <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updated.timestamp | date('c') }}</em></p> ]]>
+                    <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>
                 </summary>
                 <title>{{ note.metadata.title | smartypants }}</title>
-                <updated>{{ note.metadata.git.updated.timestamp | date('c') }}</updated>
+                <updated>{{ note.metadata.git.updatedAt | date('c') }}</updated>
             </entry>
         {% endfor %}
     </feed>
