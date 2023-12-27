@@ -20,8 +20,7 @@ readonly class MarkdownMetadataExtractor implements MetadataExtractorInterface
 {
     public function __construct(
         private MetadataExtractorInterface $innerMetadataExtractor,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws \Exception

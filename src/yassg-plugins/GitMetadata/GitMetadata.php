@@ -17,6 +17,5 @@ readonly class GitMetadata
         public \DateTimeImmutable $updatedAt,
         public ?string $createdHash,
         public ?string $updatedHash,
-    ) {
-    }
+    ) {}
 }

@@ -15,6 +15,5 @@ readonly class SitemapEntry
     public function __construct(
         public string $title,
         public string $slug,
-    ) {
-    }
+    ) {}
 }
