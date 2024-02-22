@@ -13,8 +13,8 @@
   --base-foreground: #{variables.$colour-black-50};
   --base-highlight: #{variables.$colour-black-800};
   --base-link: #{variables.$colour-pink};
-  --secondary-background: #{variables.$colour-pink};
-  --secondary-foreground: #{variables.$colour-black-900};
+  --button-background: #{variables.$colour-pink};
+  --button-foreground: #{variables.$colour-black-900};
   --drawing-outline-opacity: 1;
 }
 
@@ -23,8 +23,8 @@
   --base-foreground: #{variables.$colour-black-1000};
   --base-highlight: #{variables.$colour-black-200};
   --base-link: #{variables.$colour-red};
-  --secondary-background: #{variables.$colour-red};
-  --secondary-foreground: #{variables.$colour-black-50};
+  --button-background: #{variables.$colour-red};
+  --button-foreground: #{variables.$colour-black-50};
   --drawing-outline-opacity: 0;
 
   @media (prefers-color-scheme: dark) {

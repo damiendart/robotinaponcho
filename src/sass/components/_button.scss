@@ -10,11 +10,11 @@
 .button {
   appearance: none;
   background: variables.$colour-red;
-  background: var(--secondary-background);
+  background: var(--button-background);
   border: none;
   border-radius: variables.$base-line-height * 0.25;
   color: variables.$colour-white;
-  color: var(--secondary-foreground);
+  color: var(--button-foreground);
   display: inline-block;
   font: inherit;
   font-weight: bold;
@@ -28,7 +28,7 @@
   &:focus,
   &:hover {
     outline-color: variables.$colour-red;
-    outline-color: var(--secondary-background);
+    outline-color: var(--button-background);
     outline-offset: functions.px-to-rem(2px);
     // Slightly increase the outline width so it's more visible against
     // the solid coloured button.
@@ -59,7 +59,7 @@
       margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-5px);
 
       &::before {
-        background: var(--secondary-foreground);
+        background: var(--button-foreground);
         content: "";
         display: block;
         height: variables.$base-line-height;

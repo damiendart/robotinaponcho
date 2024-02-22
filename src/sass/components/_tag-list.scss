@@ -12,9 +12,9 @@
 
   a {
     background: variables.$colour-red;
-    background: var(--secondary-background);
+    background: var(--button-background);
     color: variables.$colour-black-50;
-    color: var(--secondary-foreground);
+    color: var(--button-foreground);
     display: inline-block;
     font-weight: bold;
     text-decoration: none;
@@ -24,7 +24,7 @@
     &:focus,
     &:hover {
       outline-color: variables.$colour-red;
-      outline-color: var(--secondary-background);
+      outline-color: var(--button-background);
       outline-offset: functions.px-to-rem(2px);
       text-decoration: underline;
     }

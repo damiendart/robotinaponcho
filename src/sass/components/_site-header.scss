@@ -7,13 +7,21 @@
 @use "../variables";
 
 .site-header {
-  background: variables.$colour-red;
-  background: var(--secondary-background);
-  color: variables.$colour-white;
-  color: var(--secondary-foreground);
   box-sizing: border-box;
   padding: variables.$base-line-height;
   position: relative;
+
+  &::before {
+    background: variables.$colour-black-200;
+    background: var(--base-highlight);
+    content: "";
+    display: block;
+    height: functions.px-to-rem(2px);
+    left: 0;
+    position: absolute;
+    bottom: functions.px-to-rem(-1px);
+    width: 100%;
+  }
 
   a {
     color: inherit;
