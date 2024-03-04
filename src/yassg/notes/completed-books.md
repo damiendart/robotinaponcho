@@ -16,6 +16,13 @@ I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.
 
 
+## Completed books in 2024
+
+-   [The Dark Forest][] by Liu Cixin (★★★★)
+
+  [The Dark Forest]: <https://en.wikipedia.org/wiki/The_Dark_Forest>
+
+
 ## Completed books in 2023
 
 -   *The Second Sleep* by Robert Harris (★★)
