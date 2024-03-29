@@ -6,15 +6,15 @@
 
 declare(strict_types=1);
 
-use Robotinaponcho\Yassg\Plugins\GitMetadata\GitMetadataPlugin;
-use Robotinaponcho\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
-use Robotinaponcho\Yassg\Plugins\MarkdownMetadata\MarkdownMetadataPlugin;
-use Robotinaponcho\Yassg\Plugins\MarkdownSetup\MarkdownSetupPlugin;
-use Robotinaponcho\Yassg\Plugins\SitemapEntries\SitemapEntriesPlugin;
-use Robotinaponcho\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
-use Robotinaponcho\Yassg\Plugins\TwigPrettyRatings\TwigPrettyRatingsPlugin;
-use Robotinaponcho\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
-use Robotinaponcho\Yassg\Plugins\TwigWidont\TwigWidontPlugin;
+use App\Yassg\Plugins\GitMetadata\GitMetadataPlugin;
+use App\Yassg\Plugins\HtmlMinifier\HtmlMinifierPlugin;
+use App\Yassg\Plugins\MarkdownMetadata\MarkdownMetadataPlugin;
+use App\Yassg\Plugins\MarkdownSetup\MarkdownSetupPlugin;
+use App\Yassg\Plugins\SitemapEntries\SitemapEntriesPlugin;
+use App\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
+use App\Yassg\Plugins\TwigPrettyRatings\TwigPrettyRatingsPlugin;
+use App\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
+use App\Yassg\Plugins\TwigWidont\TwigWidontPlugin;
 use Yassg\Configuration\Configuration;
 use Yassg\Plugins\Collections\CollectionsPlugin;
 use Yassg\Plugins\Slug\BasicSlugStrategy;

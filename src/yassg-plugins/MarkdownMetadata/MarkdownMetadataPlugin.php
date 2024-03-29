@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\MarkdownMetadata;
+namespace App\Yassg\Plugins\MarkdownMetadata;
 
 use function DI\decorate;
 

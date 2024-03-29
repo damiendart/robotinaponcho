@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\MarkdownSetup;
+namespace App\Yassg\Plugins\MarkdownSetup;
 
 use League\CommonMark\ConverterInterface;
 use League\CommonMark\Environment\Environment;

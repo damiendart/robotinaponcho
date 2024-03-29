@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\SitemapEntries;
+namespace App\Yassg\Plugins\SitemapEntries;
 
 use function DI\decorate;
 

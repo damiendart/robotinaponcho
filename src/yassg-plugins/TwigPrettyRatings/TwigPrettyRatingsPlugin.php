@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\TwigPrettyRatings;
+namespace App\Yassg\Plugins\TwigPrettyRatings;
 
 use function DI\decorate;
 

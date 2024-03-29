@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\TwigSmartyPants;
+namespace App\Yassg\Plugins\TwigSmartyPants;
 
 use function DI\decorate;
 

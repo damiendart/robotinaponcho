@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\GitMetadata;
+namespace App\Yassg\Plugins\GitMetadata;
 
 readonly class GitMetadata
 {

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Tests;
+namespace App\Tests;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;

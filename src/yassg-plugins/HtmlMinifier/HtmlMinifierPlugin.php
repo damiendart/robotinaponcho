@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\HtmlMinifier;
+namespace App\Yassg\Plugins\HtmlMinifier;
 
 use function DI\decorate;
 

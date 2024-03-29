@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\TwigMarkdown;
+namespace App\Yassg\Plugins\TwigMarkdown;
 
 use function DI\decorate;
 

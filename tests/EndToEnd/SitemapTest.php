@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Tests\EndToEnd;
+namespace App\Tests\EndToEnd;
 
-use Robotinaponcho\Tests\EndToEndTestCase;
+use App\Tests\EndToEndTestCase;
 
 /**
  * @internal

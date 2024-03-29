@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\MarkdownMetadata;
+namespace App\Yassg\Plugins\MarkdownMetadata;
 
 use Yassg\Files\InputFile;
 use Yassg\Files\Metadata\MetadataExtractorInterface;

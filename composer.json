@@ -12,8 +12,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Robotinaponcho\\Tests\\": "tests/",
-      "Robotinaponcho\\Yassg\\Plugins\\": "src/yassg-plugins/"
+      "App\\Tests\\": "tests/",
+      "App\\Yassg\\Plugins\\": "src/yassg-plugins/"
     }
   },
   "config": {

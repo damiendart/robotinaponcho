@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Robotinaponcho\Yassg\Plugins\TwigWidont;
+namespace App\Yassg\Plugins\TwigWidont;
 
 use function DI\decorate;
 
