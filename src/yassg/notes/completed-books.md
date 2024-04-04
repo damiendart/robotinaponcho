@@ -18,8 +18,10 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2024
 
+-   [Death’s End][] by Liu Cixin (★★★★)
 -   [The Dark Forest][] by Liu Cixin (★★★★)
 
+  [Death’s End]: <https://en.wikipedia.org/wiki/Death%27s_End>
   [The Dark Forest]: <https://en.wikipedia.org/wiki/The_Dark_Forest>
 
 
