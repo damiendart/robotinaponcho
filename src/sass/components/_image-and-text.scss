@@ -25,9 +25,5 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @include mixins.ie-11-only {
-      margin-top: variables.$base-line-height;
-    }
   }
 }

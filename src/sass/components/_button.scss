@@ -54,21 +54,19 @@
   }
 
   &__itchio {
-    @supports (mask: url("/assets/itchio.00000000000000.svg")) {
-      display: inline-block;
-      position: relative;
-      vertical-align: middle;
-      margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-5px);
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-5px);
 
-      &::before {
-        background: currentColor;
-        content: "";
-        display: block;
-        height: variables.$base-line-height;
-        margin-left: functions.px-to-rem(3px);
-        mask: url("/assets/itchio.00000000000000.svg") no-repeat center;
-        width: functions.px-to-rem(98.25px);
-      }
+    &::before {
+      background: currentColor;
+      content: "";
+      display: block;
+      height: variables.$base-line-height;
+      margin-left: functions.px-to-rem(3px);
+      mask: url("/assets/itchio.00000000000000.svg") no-repeat center;
+      width: functions.px-to-rem(98.25px);
     }
   }
 

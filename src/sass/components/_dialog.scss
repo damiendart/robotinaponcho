@@ -74,7 +74,6 @@
     position: relative;
 
     &::before {
-      background: variables.$colour-black-200;
       background: var(--base-highlight);
       content: "";
       display: block;

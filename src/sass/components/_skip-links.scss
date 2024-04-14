@@ -7,7 +7,6 @@
 @use "../variables";
 
 .skip-links {
-  background: variables.$colour-black-200;
   background: var(--base-highlight);
   box-sizing: border-box;
   height: auto;

@@ -11,9 +11,7 @@
   gap: variables.$base-line-height * 0.375;
 
   a {
-    background: variables.$colour-red;
     background: var(--button-background);
-    color: variables.$colour-black-50;
     color: var(--button-foreground);
     display: inline-block;
     font-weight: bold;
@@ -23,7 +21,6 @@
     &:active,
     &:focus,
     &:hover {
-      outline-color: variables.$colour-red;
       outline-color: var(--button-background);
       outline-offset: functions.px-to-rem(2px);
       text-decoration: underline;

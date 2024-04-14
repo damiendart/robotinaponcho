@@ -54,9 +54,7 @@ a {
 body {
   @include mixins.nice-font-rendering;
 
-  background: variables.$colour-black-50;
   background: var(--base-background);
-  color: variables.$colour-black-1000;
   color: var(--base-foreground);
   display: flex;
   flex-direction: column;
@@ -68,7 +66,6 @@ body {
 }
 
 code {
-  background: variables.$colour-black-200;
   background: var(--base-highlight);
   font-family: "Iosevka Web", monospace;
   line-height: 1;
@@ -307,7 +304,6 @@ p {
 }
 
 pre {
-  background: variables.$colour-black-200;
   background: var(--base-highlight);
   box-sizing: border-box;
   margin: 0;
@@ -340,7 +336,6 @@ table {
   }
 
   > tbody > tr:nth-last-of-type(odd) {
-    background: variables.$colour-black-200;
     background: var(--base-highlight);
   }
 

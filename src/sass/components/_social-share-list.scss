@@ -26,32 +26,22 @@
         position: relative;
 
         &::after {
-          background: variables.$colour-black-50 url("icon-check.00000000000000.svg") no-repeat center;
-          background-size: variables.$base-line-height * 1.25;
+          background-color: var(--base-link);
           content: "";
           display: inline-block;
           height: variables.$base-line-height * 1.5;
           left: 0;
+          mask: url("icon-check.00000000000000.svg") no-repeat center;
+          mask-size: variables.$base-line-height * 1.25;
           opacity: 0;
           position: absolute;
           top: 0;
           transition: opacity 0.125s ease;
           width: variables.$base-line-height * 1.5;
-
-          @supports (mask: url("icon-check.00000000000000.svg")) {
-            background: variables.$colour-red;
-            background: var(--base-link);
-            mask: url("icon-check.00000000000000.svg") no-repeat center;
-            mask-size: variables.$base-line-height * 1.25;
-          }
         }
 
         &::before {
-          background: url("icon-copy.00000000000000.svg");
-
-          @supports (mask: url("icon-copy.00000000000000.svg")) {
-            mask: url("icon-copy.00000000000000.svg");
-          }
+          mask: url("icon-copy.00000000000000.svg");
         }
 
         &.clipboard-success {
@@ -69,11 +59,7 @@
     &--facebook {
       a {
         &::before {
-          background: url("icon-facebook.00000000000000.svg");
-
-          @supports (mask: url("icon-facebook.00000000000000.svg")) {
-            mask: url("icon-facebook.svg");
-          }
+          mask: url("icon-facebook.svg");
         }
       }
     }
@@ -81,11 +67,7 @@
     &--twitter {
       a {
         &::before {
-          background: url("icon-twitter.00000000000000.svg");
-
-          @supports (mask: url("icon-twitter.00000000000000.svg")) {
-            mask: url("icon-twitter.00000000000000.svg");
-          }
+          mask: url("icon-twitter.00000000000000.svg");
         }
       }
     }
@@ -107,7 +89,6 @@
         width: variables.$base-line-height * 1.5;
 
         @supports (mask: url("icon-check.00000000000000.svg")) {
-          background: variables.$colour-red;
           background: var(--base-link);
         }
       }
