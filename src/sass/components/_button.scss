@@ -8,13 +8,11 @@
 @use "../variables";
 
 .button {
+  $s: &;
+
   appearance: none;
-  background: variables.$colour-red;
-  background: var(--button-background);
   border: none;
   border-radius: variables.$base-line-height * 0.25;
-  color: variables.$colour-white;
-  color: var(--button-foreground);
   display: inline-block;
   font: inherit;
   font-weight: bold;
@@ -26,13 +24,9 @@
 
   &:active,
   &:focus,
+  &:focus-visible,
   &:hover {
-    outline-color: variables.$colour-red;
-    outline-color: var(--button-background);
     outline-offset: functions.px-to-rem(2px);
-    // Slightly increase the outline width so it's more visible against
-    // the solid coloured button.
-    outline-width: variables.$base-one-pixel-in-rem * 4;
     text-decoration: underline;
   }
 
@@ -41,6 +35,14 @@
     height: variables.$base-line-height;
     margin: 0;
     vertical-align: bottom;
+  }
+
+  &:not(#{$s}--inverted) {
+    --outline-color: var(--button-background);
+
+    background: var(--button-background);
+    color: var(--button-foreground);
+    outline-offset: functions.px-to-rem(2px);
   }
 
   &__download {
@@ -59,7 +61,7 @@
       margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-5px);
 
       &::before {
-        background: var(--button-foreground);
+        background: currentColor;
         content: "";
         display: block;
         height: variables.$base-line-height;
@@ -68,6 +70,11 @@
         width: functions.px-to-rem(98.25px);
       }
     }
+  }
+
+  &--inverted {
+    background: transparent;
+    border: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
   }
 
   &--small {

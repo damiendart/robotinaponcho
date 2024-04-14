@@ -38,23 +38,18 @@
   }
 }
 
+:focus-visible {
+  outline: var(--outline-color, currentColor) solid (variables.$base-one-pixel-in-rem * 3);
+}
+
 :target {
   scroll-margin-block: variables.$base-line-height;
 }
 
 a {
-  color: variables.$colour-red;
   color: var(--base-link);
-
-  &:focus {
-    outline-width: variables.$base-one-pixel-in-rem * 3;
-    outline-style: solid;
-
-    &:not(:focus-visible) {
-      outline: none;
-    }
-  }
 }
+
 
 body {
   @include mixins.nice-font-rendering;
@@ -267,11 +262,13 @@ label:has(input[type="radio"]) {
   input[type="radio"] {
     appearance: none;
     border: functions.px-to-rem(2px) solid var(--base-link);
+    color: var(--base-link);
     border-radius: 50%;
     box-sizing: border-box;
     flex-shrink: 0;
     height: variables.$base-line-height * 0.75;
     margin: 0;
+    outline-offset: functions.px-to-rem(2px);
     padding: 0;
     width: variables.$base-line-height * 0.75;
 
@@ -387,8 +384,4 @@ ul {
 
 [aria-label][tabindex] {
   overflow: auto;
-
-  &:focus-visible {
-    outline: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
-  }
 }
