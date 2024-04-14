@@ -260,7 +260,7 @@ label:has(input[type="radio"]) {
   gap: variables.$base-line-height * 0.5;
   padding: (variables.$base-line-height * 0.25) (variables.$base-line-height * 0.5);
 
-  &:has(input[checked]) {
+  &:has(input:checked) {
     background-color: var(--base-highlight);
   }
 
