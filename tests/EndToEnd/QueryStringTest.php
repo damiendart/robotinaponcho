@@ -11,17 +11,19 @@ declare(strict_types=1);
 namespace App\Tests\EndToEnd;
 
 use App\Tests\EndToEndTestCase;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\TestDox;
 
 /**
  * @internal
  *
  * @coversNothing
- *
- * @testdox When using query strings, the application
  */
+#[CoversNothing]
+#[TestDox('When using query strings, the application')]
 class QueryStringTest extends EndToEndTestCase
 {
-    /** @testdox should remove unnecessary query strings from URLs */
+    #[TestDox('should remove unnecessary query strings from URLs')]
     public function test_should_remove_unnecessary_query_strings_from_urls(): void
     {
         $response = $this->client->request(

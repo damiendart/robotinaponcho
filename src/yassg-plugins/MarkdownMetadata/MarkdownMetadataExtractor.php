@@ -14,7 +14,6 @@ use Yassg\Files\InputFile;
 use Yassg\Files\Metadata\MetadataExtractorInterface;
 
 use function Yassg\preg_match_safe;
-use function Yassg\preg_replace_safe;
 
 readonly class MarkdownMetadataExtractor implements MetadataExtractorInterface
 {
@@ -38,7 +37,7 @@ readonly class MarkdownMetadataExtractor implements MetadataExtractorInterface
         ) {
             $inputFile->mergeMetadata(['title' => $titles[1]]);
             $inputFile->setContent(
-                preg_replace_safe(
+                preg_replace(
                     "/{$titles[1]}\n=+\n/",
                     '',
                     $inputFile->getContent(),

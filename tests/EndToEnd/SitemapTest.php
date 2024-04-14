@@ -11,17 +11,19 @@ declare(strict_types=1);
 namespace App\Tests\EndToEnd;
 
 use App\Tests\EndToEndTestCase;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\TestDox;
 
 /**
  * @internal
  *
  * @coversNothing
- *
- * @testdox When accessing the XML Sitemap, the application
  */
+#[CoversNothing]
+#[TestDox('When accessing the XML Sitemap, the application')]
 class SitemapTest extends EndToEndTestCase
 {
-    /** @testdox should return a valid XML Sitemap with entries using the correct domain name */
+    #[TestDox('should return a valid XML Sitemap with entries using the correct domain name')]
     public function test_should_return_a_valid_xml_sitemap_with_entries_using_the_correct_domain_name(): void
     {
         $response = $this->client->request('GET', 'sitemap.xml');

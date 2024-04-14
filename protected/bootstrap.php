@@ -23,6 +23,7 @@ if (getenv('SENTRY_DSN')) {
 use Whoops\Handler\Handler;
 use Whoops\Handler\PlainTextHandler;
 use Whoops\Run;
+use Whoops\Util\Misc;
 
 function reportThrowable(Throwable $throwable): void
 {
@@ -35,10 +36,7 @@ function reportThrowable(Throwable $throwable): void
 
 $whoops = new Run();
 
-if (
-    'local' === getenv('APP_ENV')
-    || Whoops\Util\Misc::isCommandLine()
-) {
+if ('local' === getenv('APP_ENV') || Misc::isCommandLine()) {
     // Using the "PrettyPageHandler" requires faffing around with CSP
     // stuff which, for the sake of a prettier error page when running
     // the site locally, isn't worth the effort.
