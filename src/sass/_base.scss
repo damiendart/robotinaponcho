@@ -38,6 +38,15 @@
   }
 }
 
+:is(a, button, [aria-label][tabindex]):active,
+:is(a, button, [aria-label][tabindex]):hover,
+:is(a, button, [aria-label][tabindex]):focus,
+:is(a, button, [aria-label][tabindex]):focus-visible {
+  text-decoration-color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: functions.px-to-rem(2px);
+}
+
 :focus-visible {
   outline: var(--outline-color, currentColor) solid (variables.$base-one-pixel-in-rem * 3);
 }
@@ -49,7 +58,6 @@
 a {
   color: var(--base-link);
 }
-
 
 body {
   @include mixins.nice-font-rendering;

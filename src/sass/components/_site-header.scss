@@ -25,13 +25,7 @@
   a {
     color: inherit;
     font-weight: bold;
-    text-decoration: none;
-
-    &:active,
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
+    text-decoration-line: none;
   }
 
   &__container {

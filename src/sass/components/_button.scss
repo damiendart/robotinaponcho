@@ -17,18 +17,11 @@
   font: inherit;
   font-weight: bold;
   line-height: inherit;
+  outline-offset: functions.px-to-rem(2px);
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
-  text-decoration: none;
+  text-decoration-line: none;
   white-space: nowrap;
-
-  &:active,
-  &:focus,
-  &:focus-visible,
-  &:hover {
-    outline-offset: functions.px-to-rem(2px);
-    text-decoration: underline;
-  }
 
   img {
     display: inline-block;

@@ -6,8 +6,9 @@ site-preferences-dialog {
   vertical-align: text-bottom;
 
   #open-preferences-dialog {
-    all: unset;
+    appearance: none;
     border: none;
+    background: none;
     color: var(--base-link);
     cursor: pointer;
     display: flex;
@@ -15,22 +16,14 @@ site-preferences-dialog {
     font-weight: bold;
     gap: variables.$base-line-height * 0.125;
     line-height: initial;
-    padding: 0;
     margin: auto;
+    padding: 0;
 
     &:active,
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-
-    &:focus {
-      outline-width: variables.$base-one-pixel-in-rem * 3;
-      outline-style: solid;
-
-      &:not(:focus-visible) {
-        outline: none;
-      }
+    &:focus,
+    &:focus-visible,
+    &:hover {
+      text-decoration-line: underline;
     }
 
     &::before {

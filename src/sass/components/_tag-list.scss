@@ -15,7 +15,7 @@
     color: var(--button-foreground);
     display: inline-block;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration-line: none;
     padding: (variables.$base-line-height * 0.125) (variables.$base-line-height * 0.25);
 
     &:active,
@@ -23,7 +23,6 @@
     &:hover {
       outline-color: var(--button-background);
       outline-offset: functions.px-to-rem(2px);
-      text-decoration: underline;
     }
   }
 }
