@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   gap: variables.$base-line-height * 0.375;
 
-  a {
+  :where(a) {
     background: var(--button-background);
     color: var(--button-foreground);
     display: inline-block;

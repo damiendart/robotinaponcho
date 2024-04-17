@@ -9,22 +9,26 @@
 @use "variables";
 
 @mixin dark-theme {
-  --base-background: #{variables.$colour-black-900};
-  --base-foreground: #{variables.$colour-black-50};
-  --base-highlight: #{variables.$colour-black-800};
-  --base-link: #{variables.$colour-pink};
-  --button-background: #{variables.$colour-pink};
-  --button-foreground: #{variables.$colour-black-900};
+  --base-background: #{variables.$colour-grey-900};
+  --base-foreground: #{variables.$colour-grey-50};
+  --base-highlight: #{variables.$colour-grey-800};
+  --base-link: #{variables.$colour-pink-500};
+  --button-background: #{variables.$colour-pink-500};
+  --button-background-active: #{variables.$colour-pink-700};
+  --button-background-hover: #{variables.$colour-pink-600};
+  --button-foreground: #{variables.$colour-grey-900};
   --drawing-outline-opacity: 1;
 }
 
 :root {
-  --base-background: #{variables.$colour-black-50};
-  --base-foreground: #{variables.$colour-black-1000};
-  --base-highlight: #{variables.$colour-black-200};
-  --base-link: #{variables.$colour-red};
-  --button-background: #{variables.$colour-red};
-  --button-foreground: #{variables.$colour-black-50};
+  --base-background: #{variables.$colour-grey-50};
+  --base-foreground: #{variables.$colour-base-black};
+  --base-highlight: #{variables.$colour-grey-200};
+  --base-link: #{variables.$colour-red-500};
+  --button-background: #{variables.$colour-red-500};
+  --button-background-active: #{variables.$colour-red-700};
+  --button-background-hover: #{variables.$colour-red-600};
+  --button-foreground: #{variables.$colour-grey-50};
   --drawing-outline-opacity: 0;
 
   @media (prefers-color-scheme: dark) {
@@ -38,13 +42,15 @@
   }
 }
 
-:is(a, button, [aria-label][tabindex]):active,
-:is(a, button, [aria-label][tabindex]):hover,
-:is(a, button, [aria-label][tabindex]):focus,
-:is(a, button, [aria-label][tabindex]):focus-visible {
-  text-decoration-color: currentColor;
-  text-decoration-line: underline;
-  text-decoration-thickness: functions.px-to-rem(2px);
+a {
+  &:active,
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    text-decoration-color: currentColor;
+    text-decoration-line: underline;
+    text-decoration-thickness: functions.px-to-rem(2px);
+  }
 }
 
 :focus-visible {
@@ -241,7 +247,6 @@ img {
 }
 
 kbd {
-  background: variables.$colour-black-200;
   background: var(--base-highlight);
   border-radius: math.div(variables.$base-line-height, 4);
   font-size: 87.5%;

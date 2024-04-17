@@ -21,16 +21,27 @@ $breakpoints: (
   x-large: 1140px,
 );
 
-// The following colour values are based on
-// <https://yeun.github.io/open-color/>.
-$colour-black-50: #f8f9fa;
-$colour-black-200: #e9ecef;
-$colour-black-800: #343a40;
-$colour-black-900: #212529;
-$colour-black-1000: #000000;
-$colour-red: #c92a2a;
-$colour-pink: #f06595;
-$colour-white: #ffffff;
+$colour-base-white: #ffffff;
+$colour-base-black: #000000;
+
+// The grey, base (500) red, and pink colour values are from
+// <https://yeun.github.io/open-color/>. The remaining red colour values
+// were creating by fiddling around with the base colour using
+// <https://www.tints.dev/brand/C92A2A>. RGB values are converted to
+// OKLCH equivalents using <https://colorjs.io/apps/convert/>.
+
+$colour-grey-50: oklch(98.16% 0.0017 247.8);
+$colour-grey-200: oklch(94.17% 0.0052 247.9);
+$colour-grey-800: oklch(34.51% 0.0133 248.2);
+$colour-grey-900: oklch(26.21% 0.0095 248.2);
+
+$colour-red-500: oklch(54.57% 0.1949 26.61);
+$colour-red-600: oklch(49.75% 0.1763 26.49);
+$colour-red-700: oklch(48.09% 0.1702 26.47);
+
+$colour-pink-500: oklch(69.24% 0.1765 1.25);
+$colour-pink-600: oklch(63.96% 0.1968 3.187);
+$colour-pink-700: oklch(58.81% 0.201 5.248);
 
 $container-width: functions.px-to-rem(720px) + ($base-line-height * 2);
 $container-width-wider: functions.px-to-rem(920px) + ($base-line-height * 2);

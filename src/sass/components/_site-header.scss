@@ -22,7 +22,7 @@
     width: 100%;
   }
 
-  a {
+  :where(a) {
     color: inherit;
     font-weight: bold;
     text-decoration-line: none;

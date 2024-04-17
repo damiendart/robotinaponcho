@@ -31,7 +31,7 @@
   }
 
   &[open] {
-    box-shadow: 0 0 0 100vw rgba(variables.$colour-black-1000, 0.5);
+    box-shadow: 0 0 0 100vw rgba(variables.$colour-base-black, 0.5);
   }
 
   &::backdrop {
@@ -47,15 +47,19 @@
   }
 
   &__close {
+    --close-colour: var(--button-background);
+    --outline-color: var(--button-background);
+
     appearance: none;
     background: none;
     border: none;
     height: variables.$base-line-height * 0.75;
+    outline-offset: functions.px-to-rem(2px);
     padding: 0;
     width: variables.$base-line-height * 0.75;
 
     &::before {
-      background: var(--base-link);
+      background: var(--close-colour);
       content: "";
       display: inline-block;
       height: 100%;
@@ -64,6 +68,15 @@
       mask-repeat: no-repeat;
       mask-size: 100%;
       width: 100%;
+    }
+
+    &:hover,
+    &:focus {
+      --close-colour: var(--button-background-hover);
+    }
+
+    &:active {
+      --close-colour: var(--button-background-active);
     }
   }
 

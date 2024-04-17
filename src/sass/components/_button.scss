@@ -35,7 +35,15 @@
 
     background: var(--button-background);
     color: var(--button-foreground);
-    outline-offset: functions.px-to-rem(2px);
+
+    &:hover,
+    &:focus {
+      background: var(--button-background-hover);
+    }
+
+    &:active {
+      background: var(--button-background-active);
+    }
   }
 
   &__download {
