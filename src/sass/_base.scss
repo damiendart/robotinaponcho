@@ -72,8 +72,9 @@ body {
   color: var(--base-foreground);
   display: flex;
   flex-direction: column;
-  font-size: percentage(math.div(variables.$base-font-size, 16px));
   font-family: "Montserrat", sans-serif;
+  font-feature-settings: "dlig", "liga";
+  font-size: percentage(math.div(variables.$base-font-size, 16px));
   height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
