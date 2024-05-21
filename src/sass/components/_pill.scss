@@ -12,6 +12,11 @@
   font-size: 75%;
   letter-spacing: functions.px-to-rem(0.5px);
   line-height: 1;
+
+  // In WebKit-based browsers, "-webkit-line-box-contains" seems to
+  // accomplish what we'd use "text-box-trim" for.
+  -webkit-line-box-contain: glyphs;
+
   padding: (variables.$base-line-height * 0.125) (variables.$base-line-height * 0.25);
   text-transform: uppercase;
   vertical-align: text-bottom;

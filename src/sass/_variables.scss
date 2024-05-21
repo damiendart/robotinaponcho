@@ -6,7 +6,7 @@
 @use "functions";
 
 $base-font-size: 18px;
-$base-line-height: functions.px-to-rem(32px);
+$base-line-height: functions.px-to-rem(30px);
 $base-one-em-in-pixels: 16px;
 $base-one-pixel-in-em: math.div(1px, $base-one-em-in-pixels) * 1em;
 $base-one-pixel-in-rem: math.div(1px, $base-one-em-in-pixels) * 1rem;
@@ -46,6 +46,6 @@ $colour-pink-700: oklch(58.81% 0.201 5.248);
 $container-width: functions.px-to-rem(720px) + ($base-line-height * 2);
 $container-width-wider: functions.px-to-rem(920px) + ($base-line-height * 2);
 
-$font-stack-system: system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
-  Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+$font-stack-base: Seravek, "Gill Sans Nova", Ubuntu, "Segoe UI", "DejaVu Sans", source-sans-pro, sans-serif;
+$font-stack-monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+$font-stack-system: system-ui, sans-serif;

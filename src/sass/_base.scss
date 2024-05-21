@@ -3,7 +3,6 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "fonts";
 @use "functions";
 @use "mixins";
 @use "variables";
@@ -72,8 +71,7 @@ body {
   color: var(--base-foreground);
   display: flex;
   flex-direction: column;
-  font-family: "Montserrat", sans-serif;
-  font-feature-settings: "dlig", "liga";
+  font-family: variables.$font-stack-base;
   font-size: percentage(math.div(variables.$base-font-size, 16px));
   height: 100%;
   line-height: variables.$base-line-height;
@@ -82,7 +80,8 @@ body {
 
 code {
   background: var(--base-highlight);
-  font-family: "Iosevka Web", monospace;
+  font-family: variables.$font-stack-monospace;
+  font-size: 90%;
   line-height: 1;
 }
 
@@ -225,11 +224,7 @@ h3,
 }
 
 html {
-  font-size: percentage(math.div(16px, variables.$base-font-size));
-
-  @include mixins.breakpoint-up(small) {
-    font-size: 100%;
-  }
+  font-size: 100%;
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -328,7 +323,7 @@ pre {
 
   code {
     display: flex;
-    line-height: variables.$base-line-height;
+    line-height: variables.$base-line-height * 0.9;
     position: relative;
 
     &::after {
