@@ -6,6 +6,7 @@
   collections:
     - 'notes'
     - 'procreate'
+  git: '$Metadata$'
   twigTemplate: .templates/base-note.html.twig
 --->
 

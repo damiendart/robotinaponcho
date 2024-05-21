@@ -15,7 +15,7 @@ readonly class GitMetadata
     public function __construct(
         public \DateTimeImmutable $createdAt,
         public \DateTimeImmutable $updatedAt,
-        public ?string $createdHash,
-        public ?string $updatedHash,
+        public string $createdHash,
+        public string $updatedHash,
     ) {}
 }

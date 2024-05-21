@@ -6,6 +6,7 @@
   collections:
     - 'notes'
     - 'synology-diskstation'
+  git: '$Metadata$'
   twigTemplate: .templates/base-note.html.twig
 --->
 

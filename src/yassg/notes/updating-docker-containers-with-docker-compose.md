@@ -6,6 +6,7 @@
   collections:
     - 'docker'
     - 'notes'
+  git: '$Metadata$'
   twigTemplate: .templates/base-note.html.twig
 --->
 

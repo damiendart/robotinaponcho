@@ -6,6 +6,7 @@
   collections:
     - 'adobe-creative-cloud'
     - 'notes'
+  gitMetadata: '$Metadata$'
   twigTemplate: .templates/base-note.html.twig
 --->
 

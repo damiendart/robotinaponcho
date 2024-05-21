@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace App\Yassg\Plugins\GitMetadata;
 
 use Yassg\Files\InputFile;
+use Yassg\Files\InputFileInterface;
 use Yassg\Files\Metadata\MetadataExtractorInterface;
 
 class GitMetadataExtractor implements MetadataExtractorInterface
@@ -30,63 +31,43 @@ class GitMetadataExtractor implements MetadataExtractorInterface
     {
         $this->innerMetadataExtractor->addMetadata($inputFile);
 
+        if (false === \array_key_exists('git', $inputFile->getMetadata())) {
+            $this->addDummyMetadata($inputFile);
+
+            return;
+        }
+
+        $metadata = explode(' ', trim($inputFile->getMetadata()['git'], '$'));
+
+        if (5 !== \count($metadata)) {
+            $this->addDummyMetadata($inputFile);
+
+            return;
+        }
+
         $inputFile->mergeMetadata(
             [
                 'git' => new GitMetadata(
-                    ...$this->getCreatedMetadata(
-                        $inputFile->getOriginalAbsolutePathname(),
-                    ),
-                    ...$this->getLastUpdatedMetadata(
-                        $inputFile->getOriginalAbsolutePathname(),
-                    ),
+                    \DateTimeImmutable::createFromFormat('U', $metadata[2]),
+                    \DateTimeImmutable::createFromFormat('U', $metadata[4]),
+                    $metadata[1],
+                    $metadata[3],
                 ),
             ],
         );
     }
 
-    /**
-     * @throws \Exception
-     */
-    private function getCreatedMetadata(string $pathname): array
+    private function addDummyMetadata(InputFileInterface $inputFile): void
     {
-        [$createdHash, $createdAt] = explode(
-            ' ',
-            git("log --diff-filter=A --follow --format='%H %ct' -1 -- {$pathname}"),
+        $inputFile->mergeMetadata(
+            [
+                'git' => new GitMetadata(
+                    new \DateTimeImmutable(),
+                    new \DateTimeImmutable(),
+                    '0000000000000000000000000000000000000000',
+                    '0000000000000000000000000000000000000000',
+                ),
+            ],
         );
-
-        if (empty($createdHash)) {
-            return [
-                'createdAt' => new \DateTimeImmutable(),
-                'createdHash' => null,
-            ];
-        }
-
-        return [
-            'createdAt' => \DateTimeImmutable::createFromFormat('U', $createdAt),
-            'createdHash' => $createdHash,
-        ];
-    }
-
-    /**
-     * @throws \Exception
-     */
-    private function getLastUpdatedMetadata(string $pathname): array
-    {
-        [$updatedHash, $updatedAt] = explode(
-            ' ',
-            git("log -n 1 --pretty=format:'%H %ct' {$pathname}"),
-        );
-
-        if (empty($updatedHash)) {
-            return [
-                'updatedAt' => null,
-                'updatedHash' => new \DateTimeImmutable(),
-            ];
-        }
-
-        return [
-            'updatedAt' => \DateTimeImmutable::createFromFormat('U', $updatedAt),
-            'updatedHash' => $updatedHash,
-        ];
     }
 }

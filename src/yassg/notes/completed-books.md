@@ -6,6 +6,7 @@
   collections:
     - 'notes'
     - 'reading'
+  git: '$Metadata$'
   twigTemplate: .templates/base-note.html.twig
 --->
 
