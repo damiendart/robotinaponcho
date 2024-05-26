@@ -14,7 +14,7 @@ env:
 tasks:
   default:
     deps:
-      - task: 'ci'
+      - task: 'start'
 
   ci:
     cmds:
@@ -121,6 +121,16 @@ tasks:
       - 'composer install --classmap-authoritative --no-ansi --no-dev --no-interaction --no-progress'
     desc: 'Install PHP dependencies for production environments'
 
+  git-filters:
+    cmds:
+      - 'git config filter.metadata.clean "./git-filter-metadata.sh"'
+      - 'git config filter.metadata.smudge "./git-filter-metadata.sh --smudge %f"'
+      - 'git config filter.metadata.required true'
+      # Git does not have a nice way of running filters manually.
+      - 'rm src/yassg/notes/*.md'
+      - 'git checkout src/yassg/notes'
+    desc: 'Install project-level Git filters'
+
   lint:
     cmds:
       - task: 'lint:javascript'
@@ -159,6 +169,12 @@ tasks:
     vars:
       GIT_STATUS:
         sh: 'git status --porcelain'
+
+  start:
+    cmds:
+      - task: 'git-filters'
+      - task: 'ci'
+    desc: 'Run all development environment setup tasks'
 
   test:end-to-end:
     cmds:
