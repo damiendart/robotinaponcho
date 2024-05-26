@@ -46,6 +46,8 @@ $colour-pink-700: oklch(58.81% 0.201 5.248);
 $container-width: functions.px-to-rem(720px) + ($base-line-height * 2);
 $container-width-wider: functions.px-to-rem(920px) + ($base-line-height * 2);
 
+// Font stacks based on those on <https://modernfontstacks.com/>.
+
 $font-stack-base: Seravek, "Gill Sans Nova", Ubuntu, "Segoe UI", "DejaVu Sans", source-sans-pro, sans-serif;
 $font-stack-monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 $font-stack-system: system-ui, sans-serif;
