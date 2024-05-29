@@ -81,7 +81,7 @@ body {
 code {
   background: var(--base-highlight);
   font-family: variables.$font-stack-monospace;
-  font-size: 90%;
+  font-size: percentage(math.div(16px, variables.$base-font-size));
   line-height: 1;
 }
 

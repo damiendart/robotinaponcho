@@ -12,7 +12,6 @@ use App\Yassg\Plugins\MarkdownMetadata\MarkdownMetadataPlugin;
 use App\Yassg\Plugins\MarkdownSetup\MarkdownSetupPlugin;
 use App\Yassg\Plugins\SitemapEntries\SitemapEntriesPlugin;
 use App\Yassg\Plugins\TwigMarkdown\TwigMarkdownPlugin;
-use App\Yassg\Plugins\TwigPrettyRatings\TwigPrettyRatingsPlugin;
 use App\Yassg\Plugins\TwigSmartyPants\TwigSmartyPantsPlugin;
 use App\Yassg\Plugins\TwigWidont\TwigWidontPlugin;
 use Yassg\Configuration\Configuration;
@@ -34,7 +33,6 @@ return (new Configuration(
     ->addPlugin(new SitemapEntriesPlugin())
     ->addPlugin(new SlugPlugin(new BasicSlugStrategy))
     ->addPlugin(new TwigMarkdownPlugin())
-    ->addPlugin(new TwigPrettyRatingsPlugin())
     ->addPlugin(new TwigSmartyPantsPlugin())
     ->addPlugin(new TwigWidontPlugin())
     ->setMetadata(
