@@ -38,11 +38,13 @@
 
     &:hover,
     &:focus {
-      background: var(--button-background-hover);
+      background: var(--button-background-hover-fallback);
+      background-color: color-mix(in oklch, var(--button-background) 100%, black 6%);
     }
 
     &:active {
-      background: var(--button-background-active);
+      background: var(--button-background-active-fallback);
+      background-color: color-mix(in oklch, var(--button-background) 100%, black 12%);
     }
   }
 
@@ -72,8 +74,11 @@
   }
 
   &--inverted {
+    $border-width: variables.$base-one-pixel-in-rem * 3;
+
     background: transparent;
-    border: (variables.$base-one-pixel-in-rem * 3) solid currentColor;
+    border: $border-width solid currentColor;
+    padding: (variables.$base-line-height * 0.5 - $border-width) (variables.$base-line-height - $border-width);
   }
 
   &--small {

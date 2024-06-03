@@ -72,11 +72,11 @@
 
     &:hover,
     &:focus {
-      --close-colour: var(--button-background-hover);
+      --close-colour: var(--button-background-hover-fallback);
     }
 
     &:active {
-      --close-colour: var(--button-background-active);
+      --close-colour: var(--button-background-active-fallback);
     }
   }
 

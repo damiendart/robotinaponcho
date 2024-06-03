@@ -13,8 +13,8 @@
   --base-highlight: #{variables.$colour-grey-800};
   --base-link: #{variables.$colour-pink-500};
   --button-background: #{variables.$colour-pink-500};
-  --button-background-active: #{variables.$colour-pink-700};
-  --button-background-hover: #{variables.$colour-pink-600};
+  --button-background-active-fallback: #{variables.$colour-pink-700};
+  --button-background-hover-fallback: #{variables.$colour-pink-600};
   --button-foreground: #{variables.$colour-grey-900};
   --drawing-outline-opacity: 1;
 }
@@ -25,8 +25,8 @@
   --base-highlight: #{variables.$colour-grey-200};
   --base-link: #{variables.$colour-red-500};
   --button-background: #{variables.$colour-red-500};
-  --button-background-active: #{variables.$colour-red-700};
-  --button-background-hover: #{variables.$colour-red-600};
+  --button-background-active-fallback: #{variables.$colour-red-700};
+  --button-background-hover-fallback: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
   --drawing-outline-opacity: 0;
 
@@ -224,7 +224,13 @@ h3,
 }
 
 html {
-  font-size: 100%;
+  @if(variables.$base-font-size > 18px) {
+    font-size: percentage(math.div(18px, variables.$base-font-size));
+
+    @include mixins.breakpoint-up(small) {
+      font-size: 100%;
+    }
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -253,13 +259,15 @@ kbd {
 
 label.has-input-radio,
 label:has(input[type="radio"]) {
+  $border-radius: variables.$base-one-pixel-in-rem * 3;
+
   align-items: center;
-  border: functions.px-to-rem(2px) solid var(--base-highlight);
+  border: $border-radius solid var(--base-highlight);
   border-radius: variables.$base-line-height * 0.125;
   box-sizing: border-box;
   display: flex;
   gap: variables.$base-line-height * 0.5;
-  padding: (variables.$base-line-height * 0.25) (variables.$base-line-height * 0.5);
+  padding: (variables.$base-line-height * 0.25 - $border-radius) (variables.$base-line-height * 0.5 - $border-radius);
 
   &:has(input:checked) {
     background-color: var(--base-highlight);
