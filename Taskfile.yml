@@ -129,7 +129,7 @@ tasks:
       # Git does not have a nice way of running filters manually.
       - 'rm src/yassg/notes/*.md'
       - 'git checkout src/yassg/notes'
-    desc: 'Install project-level Git filters'
+    desc: 'Install and run project-level Git filters'
 
   lint:
     cmds:
@@ -155,6 +155,7 @@ tasks:
             exit 1
           {{ end }}
         silent: true
+      - task: 'git-filters'
       - task: 'ci'
       - task: 'clean:php'
       - task: 'dependencies:php-production'
