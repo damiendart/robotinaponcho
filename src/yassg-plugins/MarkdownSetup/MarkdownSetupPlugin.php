@@ -25,13 +25,13 @@ class MarkdownSetupPlugin implements PluginInterface
     public function getContainerDefinitions(): array
     {
         return [
-            ConverterInterface::class => function (ContainerInterface $c): ConverterInterface {
+            ConverterInterface::class => static function (ContainerInterface $c): ConverterInterface {
                 /** @var Environment $environment */
                 $environment = $c->get(Environment::class);
 
                 return new MarkdownConverter($environment);
             },
-            Environment::class => function (ContainerInterface $c): Environment {
+            Environment::class => static function (ContainerInterface $c): Environment {
                 /** @var CommonMarkCoreExtension $commonMarkCoreExtension */
                 $commonMarkCoreExtension = $c->get(
                     CommonMarkCoreExtension::class,

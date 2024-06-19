@@ -21,7 +21,7 @@ class MarkdownMetadataPlugin implements PluginInterface
     {
         return [
             MetadataExtractorInterface::class => decorate(
-                function (MetadataExtractorInterface $previous) {
+                static function (MetadataExtractorInterface $previous) {
                     return new MarkdownMetadataExtractor($previous);
                 },
             ),

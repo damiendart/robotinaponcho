@@ -25,13 +25,13 @@ class SitemapEntriesPlugin implements PluginInterface
     {
         return [
             EventDispatcher::class => decorate(
-                function (EventDispatcher $previous, ContainerInterface $c) {
+                static function (EventDispatcher $previous, ContainerInterface $c) {
                     /** @var Configuration $configuration */
                     $configuration = $c->get(Configuration::class);
 
                     $previous->addEventListener(
                         PreSiteBuildEvent::class,
-                        function (PreSiteBuildEvent $event) use ($configuration): void {
+                        static function (PreSiteBuildEvent $event) use ($configuration): void {
                             $entries = [
                                 new SitemapEntry(
                                     'crap/colouring-pages-a4.pdf',

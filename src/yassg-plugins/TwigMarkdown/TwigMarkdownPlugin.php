@@ -54,7 +54,7 @@ class TwigMarkdownPlugin implements PluginInterface
         $environment->addFilter(
             new TwigFilter(
                 'dedent',
-                function (string $string): string {
+                static function (string $string): string {
                     return dedent($string);
                 },
             ),
@@ -63,7 +63,7 @@ class TwigMarkdownPlugin implements PluginInterface
         $environment->addFilter(
             new TwigFilter(
                 'markdown',
-                function (string $string) use ($markdownConverter): string {
+                static function (string $string) use ($markdownConverter): string {
                     return $markdownConverter
                         ->convert($string)
                         ->getContent();

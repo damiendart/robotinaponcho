@@ -52,7 +52,7 @@ if ('local' === getenv('APP_ENV') || Misc::isCommandLine()) {
 }
 
 $whoops->pushHandler(
-    function (Throwable $throwable): int {
+    static function (Throwable $throwable): int {
         reportThrowable($throwable);
 
         return Handler::DONE;

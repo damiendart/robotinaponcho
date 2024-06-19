@@ -41,7 +41,7 @@ class TwigWidontPlugin implements PluginInterface
         $environment->addFilter(
             new TwigFilter(
                 'widont',
-                function (?string $string): string {
+                static function (?string $string): string {
                     $string ??= '';
 
                     if (str_word_count($string) < 4) {

@@ -21,7 +21,7 @@ class GitMetadataPlugin implements PluginInterface
     {
         return [
             MetadataExtractorInterface::class => decorate(
-                function (MetadataExtractorInterface $previous) {
+                static function (MetadataExtractorInterface $previous) {
                     return new GitMetadataExtractor($previous);
                 },
             ),

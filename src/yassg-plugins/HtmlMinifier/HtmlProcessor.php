@@ -108,7 +108,7 @@ class HtmlProcessor implements ProcessorInterface
 
         return preg_replace_callback(
             '/(&#\d+;)/',
-            function ($match): string {
+            static function ($match): string {
                 return mb_convert_encoding(
                     $match[1],
                     'UTF-8',

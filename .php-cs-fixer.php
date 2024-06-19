@@ -36,6 +36,7 @@ return (new PhpCsFixer\Config())
             'phpdoc_align' => ['align' => 'left'],
             'php_unit_method_casing' => ['case' => 'snake_case'],
             'php_unit_test_class_requires_covers' => true,
+            'static_lambda' => true,
             'trailing_comma_in_multiline' => [
                 'elements' => ['arrays', 'arguments', 'parameters'],
             ],

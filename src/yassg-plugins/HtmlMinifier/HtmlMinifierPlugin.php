@@ -22,7 +22,7 @@ class HtmlMinifierPlugin implements PluginInterface
     public function getContainerDefinitions(): array
     {
         return [
-            HtmlMin::class => function (ContainerInterface $c): HtmlMin {
+            HtmlMin::class => static function (ContainerInterface $c): HtmlMin {
                 return (new HtmlMin())
                     // HTMLMin adds superfluous whitespace when removing
                     // unnecessary closing tags. For more information,
@@ -31,7 +31,7 @@ class HtmlMinifierPlugin implements PluginInterface
                     ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
             },
             ProcessorResolver::class => decorate(
-                function (ProcessorResolver $previous, ContainerInterface $c): ProcessorResolver {
+                static function (ProcessorResolver $previous, ContainerInterface $c): ProcessorResolver {
                     /** @var HtmlProcessor $htmlProcessor */
                     $htmlProcessor = $c->get(HtmlProcessor::class);
 
