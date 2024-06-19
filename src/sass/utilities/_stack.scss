@@ -6,7 +6,9 @@
 @use "../mixins";
 @use "../variables";
 
-.stack {
+.u-stack {
+  $s: &;
+
   & > * + * {
     margin-top: math.div(variables.$base-line-height, 2);
   }
@@ -19,8 +21,8 @@
 
   & > h1 + *,
   & > h1 + h2,
-  & > * + .stack__widest,
-  & > .stack__widest + * {
+  & > * + #{$s}__widest,
+  & > #{$s}__widest + * {
     margin-top: variables.$base-line-height * 2;
   }
 
@@ -38,7 +40,7 @@
     margin-top: 0;
   }
 
-  & > * + .stack__hug {
+  & > * + #{$s}__hug {
     margin-top: 0;
   }
 }

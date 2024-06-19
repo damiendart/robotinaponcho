@@ -16,13 +16,13 @@ class SitePreferencesDialog extends HTMLElement {
         <dialog class="dialog">
           <form method="dialog">
             <div class="dialog__header">
-              <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="visually-hidden">Cancel</span></button>
+              <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
               <hr aria-hidden="true">
               <h1 class="h3">Preferences</h2>
             </div>
-            <div class="dialog__body stack">
+            <div class="dialog__body u-stack">
               <p>Your preferences will be saved locally. For more information, see the <a href="/privacy-policy">privacy policy</a>.</p>
-              <fieldset class="stack">
+              <fieldset class="u-stack">
                 <legend>Site theme</legend>
                 ${
                   Object

@@ -71,7 +71,7 @@
     <hr aria-hidden="true">
 
     <main class="{{ 'content page__main ' ~ contentClasses | default('content page__main') }}" id="content">
-        <div class="content__container stack">
+        <div class="content__container u-stack">
             {% block heading %}
                 <h1>{{ title | smartypants | widont }}</h1>
             {% endblock %}
@@ -82,7 +82,7 @@
 
     <hr aria-hidden="true">
 
-    <footer id="footer" class="page__footer site-footer stack">
+    <footer id="footer" class="page__footer site-footer u-stack">
         <nav class="site-footer__navigation">
             <ul class="site-footer__navigation__list" role="list">
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
