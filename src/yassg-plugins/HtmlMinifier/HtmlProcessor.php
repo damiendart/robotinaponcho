@@ -100,7 +100,7 @@ class HtmlProcessor implements ProcessorInterface
             // URLs to prevent any future shenanigans (if the site gets
             // mirrored, etc).
             $output = preg_replace(
-                '/<link href=(\\S+) rel=canonical>/',
+                '/<link href=(\S+) rel=canonical>/',
                 '<link href=https://www.robotinaponcho.net$1 rel=canonical>',
                 $output,
             );

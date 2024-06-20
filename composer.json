@@ -53,11 +53,11 @@
   "require-dev": {
     "damiendart/yassg": "dev-master",
     "ext-dom": "*",
-    "friendsofphp/php-cs-fixer": "^3.53",
+    "friendsofphp/php-cs-fixer": "^3.59.3",
     "michelf/php-smartypants": "^1.8.1",
-    "phpunit/phpunit": "^11.1.2",
+    "phpunit/phpunit": "^11.2.5",
     "roave/security-advisories": "dev-latest",
-    "voku/html-min": "^4.5"
+    "voku/html-min": "^4.5.1"
   },
   "type": "project"
 }
