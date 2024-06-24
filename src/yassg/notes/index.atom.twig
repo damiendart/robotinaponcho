@@ -4,19 +4,22 @@
     This file is distributed under the MIT licence. For more
     information, please refer to the accompanying "LICENCE" file.
 #}
+    {% set items = collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
+    {% set lastUpdated = items | map(n => n.metadata.git.updatedAt) | sort | first %}
+
     <?xml version="1.0" encoding="utf-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">
         <title>Damien Dart’s Notes (www.robotinaponcho.net)</title>
         <link href="{{ urlBase }}notes/"/>
         <link href="{{ urlBase }}notes/index.atom" rel="self"/>
-        <updated>{{ 'now' | date('c') }}</updated>
+        <updated>{{ lastUpdated | date('c') }}</updated>
         <author>
             <email>{{ authorEmail }}</email>
             <uri>{{ urlBase }}</uri>
             <name>{{ author | smartypants }}</name>
         </author>
         <id>{{ urlBase }}notes/index.atom</id>
-        {% for note in collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
+        {% for note in items %}
             <entry>
                 <id>{{ urlBase }}{{ note.metadata.slug }}</id>
                 <link href="{{ urlBase }}{{ note.metadata.slug }}"/>
