@@ -11,10 +11,10 @@
     "files": ["protected/helpers.php"]
   },
   "autoload-dev": {
-    "files": ["src/cmd/ssg/helpers.php"],
+    "files": ["src/ssg/helpers.php"],
     "psr-4": {
       "App\\Tests\\": "tests/",
-      "StaticSiteGenerator\\": "src/cmd/ssg/"
+      "StaticSiteGenerator\\": "src/ssg/"
     }
   },
   "config": {

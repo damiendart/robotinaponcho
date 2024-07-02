@@ -79,11 +79,10 @@ tasks:
 
   build:ssg:
     cmds:
-      - 'src/cmd/ssg/ssg'
+      - 'src/ssg/ssg'
     desc: 'Build static site files using ssg'
     sources:
-      - 'src/cmd/ssg'
-      - 'src/yassg/**/*'
+      - 'src/ssg/**/*'
 
   clean:
     cmds:

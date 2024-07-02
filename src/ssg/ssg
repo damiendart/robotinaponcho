@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../../../protected/vendor/autoload.php';
+require_once __DIR__ . '/../../protected/vendor/autoload.php';
 
 use StaticSiteGenerator\StaticSiteGenerator;
 
 $application = new StaticSiteGenerator(
-  __DIR__ . '/../../yassg/',
-  __DIR__ . '/../../../public/',
+  __DIR__ . '/input/',
+  __DIR__ . '/../../public/',
 );
 
 exit($application->run());
