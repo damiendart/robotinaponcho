@@ -8,36 +8,40 @@
 
 declare(strict_types=1);
 
-namespace App\Yassg\Plugins\HtmlMinifier;
+namespace StaticSiteGenerator\Steps;
 
+use StaticSiteGenerator\Inputfile;
 use voku\helper\HtmlMin;
-use Yassg\Files\InputFileInterface;
-use Yassg\Files\Processors\ProcessorInterface;
-use Yassg\Files\WriteFile;
 
-class HtmlProcessor implements ProcessorInterface
+final readonly class MinifyHtmlStep implements StepInterface
 {
     private HtmlMin $minifier;
 
-    public function __construct(HtmlMin $minifier)
+    public function __construct()
     {
-        $this->minifier = $minifier;
+        $this->minifier = (new HtmlMin())
+            // HTMLMin adds superfluous whitespace when removing
+            // unnecessary closing tags. For more information,
+            // see <https://github.com/voku/HtmlMin/issues/59>.
+            ->doRemoveOmittedHtmlTags(false)
+            ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
     }
 
-    public function canProcess(InputFileInterface $file): bool
+    public function run(Inputfile ...$inputFiles): array
     {
-        return str_ends_with($file->getRelativePathname(), 'html');
+        foreach ($inputFiles as $key => $inputFile) {
+            if (! str_ends_with($inputFile->outputPath, 'html')) {
+                continue;
+            }
+
+            $inputFiles[$key] = $inputFile
+                ->withContent($this->processContent($inputFile->getContent()));
+        }
+
+        return $inputFiles;
     }
 
-    public function process(InputFileInterface $inputFile): WriteFile
-    {
-        return new WriteFile(
-            $this->minify($inputFile->getContent()),
-            $inputFile->getRelativePathname(),
-        );
-    }
-
-    private function minify(string $input): string
+    private function processContent(string $content): string
     {
         $elementRegexGroup = join(
             '|',
@@ -81,28 +85,28 @@ class HtmlProcessor implements ProcessorInterface
             ],
         );
 
-        $output = $this->minifier->minify($input);
+        $content = $this->minifier->minify($content);
 
         // HTMLMin adds superfluous whitespace between block elements.
-        $output = preg_replace(
+        $content = preg_replace(
             "/({$elementRegexGroup})>\\s</",
             '$1><',
-            $output,
+            $content,
         );
-        $output = preg_replace(
+        $content = preg_replace(
             "#>\\s<(/?({$elementRegexGroup}))#",
             '><$1',
-            $output,
+            $content,
         );
 
         if ($this->minifier->isDoMakeSameDomainsLinksRelative()) {
             // Add the scheme and domain name back to canonical link
             // URLs to prevent any future shenanigans (if the site gets
-            // mirrored, etc).
-            $output = preg_replace(
+            // mirrored, for example).
+            $content = preg_replace(
                 '/<link href=(\S+) rel=canonical>/',
                 '<link href=https://www.robotinaponcho.net$1 rel=canonical>',
-                $output,
+                $content,
             );
         }
 
@@ -115,7 +119,7 @@ class HtmlProcessor implements ProcessorInterface
                     'HTML-ENTITIES',
                 );
             },
-            $output,
+            $content,
         );
     }
 }

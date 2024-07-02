@@ -8,14 +8,12 @@
 
 declare(strict_types=1);
 
-namespace App\Yassg\Plugins\GitMetadata;
+namespace StaticSiteGenerator\ValueObjects;
 
-readonly class GitMetadata
+final readonly class SitemapEntry
 {
     public function __construct(
-        public \DateTimeImmutable $createdAt,
-        public \DateTimeImmutable $updatedAt,
-        public string $createdHash,
-        public string $updatedHash,
+        public string $title,
+        public string $slug,
     ) {}
 }

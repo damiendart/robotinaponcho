@@ -11,9 +11,10 @@
     "files": ["protected/helpers.php"]
   },
   "autoload-dev": {
+    "files": ["src/cmd/ssg/helpers.php"],
     "psr-4": {
       "App\\Tests\\": "tests/",
-      "App\\Yassg\\Plugins\\": "src/yassg-plugins/"
+      "StaticSiteGenerator\\": "src/cmd/ssg/"
     }
   },
   "config": {
@@ -27,12 +28,6 @@
   "description": "Source code to Damien Dart's personal site.",
   "license": "MIT",
   "name": "damiendart/robotinaponcho",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://www.robotinaponcho.net/git/yassg.git"
-    }
-  ],
   "replace": {
     "symfony/polyfill-ctype": "*",
     "symfony/polyfill-intl-grapheme": "*",
@@ -51,12 +46,14 @@
     "sentry/sdk": "^3.6"
   },
   "require-dev": {
-    "damiendart/yassg": "dev-master",
     "ext-dom": "*",
     "friendsofphp/php-cs-fixer": "^3.59.3",
+    "league/commonmark": "^2.4",
     "michelf/php-smartypants": "^1.8.1",
     "phpunit/phpunit": "^11.2.5",
     "roave/security-advisories": "dev-latest",
+    "symfony/yaml": "^7.1",
+    "twig/twig": "^3.10",
     "voku/html-min": "^4.5.1"
   },
   "type": "project"

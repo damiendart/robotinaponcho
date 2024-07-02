@@ -35,7 +35,7 @@ tasks:
       - task: 'build:assets'
       - task: 'build:css'
       - task: 'build:javascript'
-      - task: 'build:yassg'
+      - task: 'build:ssg'
     desc: 'Run all building tasks'
 
   # While Task provides functionality that runs tasks when files
@@ -47,7 +47,7 @@ tasks:
     cmds:
       - cmd: 'command -v entr || (echo "\"entr\" is required."; exit 1)'
         silent: true
-      - 'while sleep 0.1; do find .yassg.php src/ | entr -d task build && break; done'
+      - 'while sleep 0.1; do find src/ | entr -d task build && break; done'
     desc: 'Runs entr to execute the "build" task on file changes'
 
   build:assets:
@@ -77,14 +77,13 @@ tasks:
     vars:
       OUTPUT_FILE: 'public/assets/app.js'
 
-  build:yassg:
+  build:ssg:
     cmds:
-      - 'protected/vendor/bin/yassg'
-    desc: 'Build static site files with yassg'
+      - 'src/cmd/ssg/ssg'
+    desc: 'Build static site files using ssg'
     sources:
-      - '.yassg.php'
+      - 'src/cmd/ssg'
       - 'src/yassg/**/*'
-      - 'src/yassg-plugins/**/*'
 
   clean:
     cmds:
@@ -127,8 +126,8 @@ tasks:
       - 'git config filter.metadata.smudge "./git-filter-metadata.sh --smudge %f"'
       - 'git config filter.metadata.required true'
       # Git does not have a nice way of running filters manually.
-      - 'rm src/yassg/notes/*.md'
-      - 'git checkout src/yassg/notes'
+      - 'rm src/ssg/input/notes/*.md'
+      - 'git checkout src/ssg/input/notes'
     desc: 'Install and run project-level Git filters'
 
   lint:

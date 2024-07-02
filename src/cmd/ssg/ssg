@@ -1,0 +1,21 @@
+#!/usr/bin/env php8.2
+<?php
+
+/*
+ * Copyright (C) Damien Dart, <damiendart@pobox.com>.
+ * This file is distributed under the MIT licence. For more information,
+ * please refer to the accompanying "LICENCE" file.
+ */
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/../../../protected/vendor/autoload.php';
+
+use StaticSiteGenerator\StaticSiteGenerator;
+
+$application = new StaticSiteGenerator(
+  __DIR__ . '/../../yassg/',
+  __DIR__ . '/../../../public/',
+);
+
+exit($application->run());

@@ -8,12 +8,11 @@
 
 declare(strict_types=1);
 
-namespace App\Yassg\Plugins\SitemapEntries;
+namespace StaticSiteGenerator\ValueObjects;
 
-readonly class SitemapEntry
+final class SiteMetadata
 {
     public function __construct(
-        public string $title,
-        public string $slug,
+        public array $metadata,
     ) {}
 }
