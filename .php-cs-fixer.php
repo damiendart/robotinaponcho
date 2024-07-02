@@ -55,5 +55,6 @@ return (new Config())
             ->in(__DIR__)
             ->name('*.php')
             ->name(basename(__FILE__))
+            ->name('ssg')
             ->name('update-git-repositories'),
     );

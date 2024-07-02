@@ -13,25 +13,25 @@ require_once __DIR__ . '/../../protected/vendor/autoload.php';
 
 error_reporting(E_ALL | E_STRICT);
 set_error_handler(
-  static function (
-    int $errorCode,
-    string $message,
-    string $file = 'UNKNOWN',
-    int $line = -1,
-  ): bool {
-    if (($errorCode & error_reporting()) !== 0) {
-      throw new ErrorException($message, 0, $errorCode, $file, $line);
-    }
+    static function (
+        int $errorCode,
+        string $message,
+        string $file = 'UNKNOWN',
+        int $line = -1,
+    ): bool {
+        if (($errorCode & error_reporting()) !== 0) {
+            throw new ErrorException($message, 0, $errorCode, $file, $line);
+        }
 
-    return false;
-  },
+        return false;
+    },
 );
 
 use StaticSiteGenerator\StaticSiteGenerator;
 
 $application = new StaticSiteGenerator(
-  __DIR__ . '/input/',
-  __DIR__ . '/../../public/',
+    __DIR__ . '/input/',
+    __DIR__ . '/../../public/',
 );
 
 exit($application->run());
