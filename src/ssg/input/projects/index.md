@@ -49,6 +49,7 @@ My open-source software is available as Git repositories, either from
 
 **[pathshorten][]**
 :   An implementation of Vim’s [`pathshorten`][] function written in Go.
+    I use it a fair bit in my dotfiles and small scripts.
 
 **[robotinaponcho][]**
 :   The source code to my personal site (you’re on it now).
@@ -59,7 +60,9 @@ My open-source software is available as Git repositories, either from
     environments, and a couple of servers for hosting small websites.
 
 **[snippets][]**
-:   A repository of code and text snippets.
+:   A repository of code and text snippets. Also includes
+    `snippet-placeholder`, a simple application that I use to expand
+    placeholder content in my snippets.
 
 **[Time Tracker][]**
 :   A Vue-based time tracker.
