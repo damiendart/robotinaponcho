@@ -67,9 +67,6 @@ My open-source software is available as Git repositories, either from
 **[toolbox]**
 :   Dotfiles and small scripts that don’t warrant their own repository.
 
-**[yassg]**
-:   Yet another static site generator, written in PHP.
-
   [GitHub]: <https://github.com/damiendart>
   [my self-hosted mirrors]: <https://www.robotinaponcho.net/git/>
   [brainfuck]: <https://github.com/damiendart/brainfuck>
@@ -86,7 +83,6 @@ My open-source software is available as Git repositories, either from
   [snippets]: <https://github.com/damiendart/snippets>
   [Time Tracker]: <https://github.com/damiendart/timetracker>
   [toolbox]: <https://github.com/damiendart/toolbox>
-  [yassg]: <https://github.com/damiendart/yassg>
 
 ### Abandoned and deprecated projects
 
@@ -124,6 +120,12 @@ My open-source software is available as Git repositories, either from
     added them to my general-purpose snippet library instead. The name
     was getting increasingly inaccurate, too.
 
+**[yassg]**
+:   Yet another static site generator, written in PHP. Initially written
+    just for my personal site, I had a go at turning it into something
+    others could use. I lost interest and went back to a simpler, more
+    opinionated generator.
+
   [Bastard Snake]: <https://github.com/damiendart/bastardsnake>
   [knr-solutions]: <https://github.com/damiendart/knr-solutions>
   [nfsnapi-python]: <https://github.com/damiendart/nfsnapi-python>
@@ -133,6 +135,7 @@ My open-source software is available as Git repositories, either from
   [Timeline]: <https://github.com/damiendart/timeline>
   [JetBrains’ 25 Years of PHP History]: <https://www.jetbrains.com/lp/php-25/>
   [toolbox-sass]: <https://github.com/damiendart/toolbox-sass>
+  [yassg]: <https://github.com/damiendart/yassg>
 
 ### Contributions to other projects
 
