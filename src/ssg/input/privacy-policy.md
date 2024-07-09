@@ -56,7 +56,7 @@ deletion functionality.
 
 This website only uses third-party services that are GDPR-compliant.
 
-- This website is hosted by [Digital Ocean][] using servers located in
-  the United Kingdom.
+-   This website is hosted by [Digital Ocean][] using servers located in
+    the United Kingdom.
 
   [Digital Ocean]: <https://www.digitalocean.com/security/gdpr/>
