@@ -19,11 +19,14 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2024
 
--   [Pines][] by Blake Crouch (★★★)
+-   [Dark Matter][] by Blake Crouch (★★★)
+-   [Wayward][] by Blake Crouch (★★★)
+-   [Pines][Wayward] by Blake Crouch (★★★)
 -   [Death’s End][] by Liu Cixin (★★★★)
 -   [The Dark Forest][] by Liu Cixin (★★★★)
 
-  [Pines]: <https://en.wikipedia.org/wiki/The_Wayward_Pines_Trilogy>
+  [Dark Matter]: <https://en.wikipedia.org/wiki/Dark_Matter_(Crouch_novel)>
+  [Wayward]: <https://en.wikipedia.org/wiki/The_Wayward_Pines_Trilogy>
   [Death’s End]: <https://en.wikipedia.org/wiki/Death%27s_End>
   [The Dark Forest]: <https://en.wikipedia.org/wiki/The_Dark_Forest>
 
