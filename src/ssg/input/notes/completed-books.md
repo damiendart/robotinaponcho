@@ -19,6 +19,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2024
 
+-   [Go Set a Watchman][] by Harper Lee (★★)
 -   [The Last Town][] by Blake Crouch (★★★)
 -   [Dark Matter][] by Blake Crouch (★★★)
 -   [Wayward][The Last Town] by Blake Crouch (★★★)
@@ -26,6 +27,7 @@ somewhere easily available will help me stay motivated.
 -   [Death’s End][] by Liu Cixin (★★★★)
 -   [The Dark Forest][] by Liu Cixin (★★★★)
 
+  [Go Set a Watchman]: <https://en.wikipedia.org/wiki/Go_Set_a_Watchman>
   [The Last Town]: <https://en.wikipedia.org/wiki/The_Wayward_Pines_Trilogy>
   [Dark Matter]: <https://en.wikipedia.org/wiki/Dark_Matter_(Crouch_novel)>
   [Death’s End]: <https://en.wikipedia.org/wiki/Death%27s_End>
