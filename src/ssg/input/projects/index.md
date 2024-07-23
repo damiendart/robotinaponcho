@@ -38,7 +38,7 @@ My open-source software is available as Git repositories, either from
     of your screen horizontally.
 
 **[kew][]**
-:   A *very* basic background task queue, written in PHP.
+:   A very basic SQLite-backed background task queue, written in PHP.
 
 **[My solutions to the Advent of Code][]**
 :   So far there’s solutions to half of the [2021 Advent of Code][]
