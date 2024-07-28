@@ -18,6 +18,8 @@ use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
 use StaticSiteGenerator\Steps\ProcessMarkdownStep;
 use StaticSiteGenerator\Steps\ProcessTwigStep;
 use StaticSiteGenerator\Steps\WriteFilesStep;
+use StaticSiteGenerator\Support\MarkdownConverterFactory;
+use StaticSiteGenerator\Support\TwigEnvironmentFactory;
 use StaticSiteGenerator\ValueObjects\SiteMetadata;
 
 final readonly class StaticSiteGenerator
@@ -28,27 +30,20 @@ final readonly class StaticSiteGenerator
         private string $inputDirectory,
         private string $outputDirectory,
     ) {
-        $releaseTimestamp = getenv('RELEASE_TIMESTAMP') ?: (new \DateTimeImmutable())->format('YmdHis');
-
-        $siteMetadata = new SiteMetadata(
-            [
-                'author' => 'Damien Dart',
-                'authorEmail' => 'damiendart@pobox.com',
-                'metaTwitterAuthor' => '@damiendart',
-                'metaTwitterSite' => '@damiendart',
-                'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.{$releaseTimestamp}.png",
-                'releaseTimestamp' => $releaseTimestamp,
-                'urlBase' => 'https://www.robotinaponcho.net/',
-            ],
-        );
+        $markdownConverterFactory = new MarkdownConverterFactory();
+        $siteMetadata = new SiteMetadata();
 
         $this->pipeline = new Pipeline(
             new ProcessFrontMatterStep(),
             new GenerateSlugsStep(),
             new GenerateCollectionsStep($siteMetadata),
             new GenerateSitemapEntriesStep($siteMetadata),
-            new ProcessMarkdownStep(),
-            new ProcessTwigStep($this->inputDirectory, $siteMetadata),
+            new ProcessMarkdownStep($markdownConverterFactory),
+            new ProcessTwigStep(
+                $this->inputDirectory,
+                $siteMetadata,
+                new TwigEnvironmentFactory($markdownConverterFactory),
+            ),
             new MinifyHtmlStep(),
             new WriteFilesStep($this->outputDirectory),
         );

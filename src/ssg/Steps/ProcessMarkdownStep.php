@@ -11,29 +11,16 @@ declare(strict_types=1);
 namespace StaticSiteGenerator\Steps;
 
 use League\CommonMark\ConverterInterface;
-use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
-use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
-use League\CommonMark\Extension\Table\TableExtension;
-use League\CommonMark\MarkdownConverter;
 use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\Support\MarkdownConverterFactory;
 
 final readonly class ProcessMarkdownStep implements StepInterface
 {
     private ConverterInterface $converter;
 
-    public function __construct()
+    public function __construct(MarkdownConverterFactory $factory)
     {
-        $environment = new Environment();
-
-        $environment
-            ->addExtension(new CommonMarkCoreExtension())
-            ->addExtension(new DescriptionListExtension())
-            ->addExtension(new SmartPunctExtension())
-            ->addExtension(new TableExtension());
-
-        $this->converter = new MarkdownConverter($environment);
+        $this->converter = $factory->make();
     }
 
     public function run(Inputfile ...$inputFiles): array

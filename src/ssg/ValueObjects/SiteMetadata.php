@@ -12,7 +12,20 @@ namespace StaticSiteGenerator\ValueObjects;
 
 final class SiteMetadata
 {
-    public function __construct(
-        public array $metadata,
-    ) {}
+    public array $metadata;
+
+    public function __construct()
+    {
+        $releaseTimestamp = getenv('RELEASE_TIMESTAMP') ?: (new \DateTimeImmutable())->format('YmdHis');
+
+        $this->metadata = [
+            'author' => 'Damien Dart',
+            'authorEmail' => 'damiendart@pobox.com',
+            'metaTwitterAuthor' => '@damiendart',
+            'metaTwitterSite' => '@damiendart',
+            'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.{$releaseTimestamp}.png",
+            'releaseTimestamp' => $releaseTimestamp,
+            'urlBase' => 'https://www.robotinaponcho.net/',
+        ];
+    }
 }
