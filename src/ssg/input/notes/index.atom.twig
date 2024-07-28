@@ -4,25 +4,25 @@
     This file is distributed under the MIT licence. For more
     information, please refer to the accompanying "LICENCE" file.
 #}
-    {% set items = collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
+    {% set items = site.collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
     {% set lastUpdated = items | map(n => n.metadata.git.updatedAt) | sort | first %}
 
     <?xml version="1.0" encoding="utf-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">
         <title>Damien Dart’s Notes (www.robotinaponcho.net)</title>
-        <link href="{{ urlBase }}notes/"/>
-        <link href="{{ urlBase }}notes/index.atom" rel="self"/>
+        <link href="{{ site.urlBase }}notes/"/>
+        <link href="{{ site.urlBase }}notes/index.atom" rel="self"/>
         <updated>{{ lastUpdated | date('c') }}</updated>
         <author>
-            <email>{{ authorEmail }}</email>
-            <uri>{{ urlBase }}</uri>
-            <name>{{ author | smartypants }}</name>
+            <email>{{ site.authorEmail }}</email>
+            <uri>{{ site.urlBase }}</uri>
+            <name>{{ site.author | smartypants }}</name>
         </author>
-        <id>{{ urlBase }}notes/index.atom</id>
+        <id>{{ site.urlBase }}notes/index.atom</id>
         {% for note in items %}
             <entry>
-                <id>{{ urlBase }}{{ note.metadata.slug }}</id>
-                <link href="{{ urlBase }}{{ note.metadata.slug }}"/>
+                <id>{{ site.urlBase }}{{ note.metadata.slug }}</id>
+                <link href="{{ site.urlBase }}{{ note.metadata.slug }}"/>
                 <published>{{ note.metadata.git.createdAt | date('c') }}</published>
                 <summary type="html">
                     <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>

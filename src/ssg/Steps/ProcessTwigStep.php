@@ -51,21 +51,18 @@ final readonly class ProcessTwigStep implements StepInterface
             );
             $chainLoader->addLoader($this->filesystemLoader);
 
+            $context = $inputFile->metadata;
             $environment = $this->twigEnvironmentFactory->make($chainLoader);
-            $data = array_merge(
-                $this->globalMetadata->metadata,
-                $inputFile->metadata,
-            );
 
             if (\array_key_exists('twigTemplate', $inputFile->metadata)) {
                 $template = $inputFile->metadata['twigTemplate'];
-                $data['renderedMarkdown'] = $inputFile->getContent();
+                $context['renderedMarkdown'] = $inputFile->getContent();
             } else {
                 $template = $inputFile->outputPath;
             }
 
             $inputFiles[$key] = $inputFile
-                ->withContent($environment->render($template, $data))
+                ->withContent($environment->render($template, $context))
                 ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
         }
 

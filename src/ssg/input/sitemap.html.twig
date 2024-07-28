@@ -11,7 +11,7 @@
 {% block content %}
     <ul>
         {%
-            for entry in sitemapEntries
+            for entry in site.sitemapEntries
                 | filter(entry => 'pdf' not in entry.slug and 'sitemap' not in entry.slug and not (entry.slug matches '#notes/.+#'))
                 | sort((a, b) => a.slug <=> b.slug)
         %}

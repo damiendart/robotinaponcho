@@ -6,8 +6,8 @@
 #}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for entry in sitemapEntries | sort((a, b) => a.slug <=> b.slug) %}
-        <url><loc>{{ urlBase }}{{ entry.slug }}</loc></url>
+    {% for entry in site.sitemapEntries | sort((a, b) => a.slug <=> b.slug) %}
+        <url><loc>{{ site.urlBase }}{{ entry.slug }}</loc></url>
     {% endfor %}
 </urlset>
 {% endapply %}

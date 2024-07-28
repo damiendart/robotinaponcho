@@ -9,7 +9,7 @@
 {% extends '.templates/base.html.twig' %}
 
 {% set description = 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.' %}
-{% set metaOpengraphImage = urlBase ~ 'projects/flippywindow/opengraph.' ~ releaseTimestamp ~ '.png' %}
+{% set metaOpengraphImage = site.urlBase ~ 'projects/flippywindow/opengraph.' ~ site.releaseTimestamp ~ '.png' %}
 {% set section = 'projects' %}
 
 {% block content %}
@@ -20,7 +20,7 @@
         alt="A screenshot of FlippyWindow over Adobe Photoshop."
         class="content__container__full-width-image"
         height="557"
-        src="/projects/flippywindow/screenshot.{{ releaseTimestamp }}.png"
+        src="/projects/flippywindow/screenshot.{{ site.releaseTimestamp }}.png"
         title="A screenshot of FlippyWindow over Adobe Photoshop."
         width="776"
     >
@@ -118,8 +118,8 @@
     {%- endapply %}
     {%
         include '.templates/partials/sharing-links.html.twig' with {
-            'link': urlBase ~ slug,
-            'twitterAuthor': metaTwitterAuthor | replace({ '@': '' }),
+            'link': site.urlBase ~ slug,
+            'twitterAuthor': site.metaTwitterAuthor | replace({ '@': '' }),
             'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
         }
     %}

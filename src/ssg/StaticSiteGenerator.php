@@ -42,7 +42,7 @@ final readonly class StaticSiteGenerator
             new ProcessTwigStep(
                 $this->inputDirectory,
                 $siteMetadata,
-                new TwigEnvironmentFactory($markdownConverterFactory),
+                new TwigEnvironmentFactory($markdownConverterFactory, $siteMetadata),
             ),
             new MinifyHtmlStep(),
             new WriteFilesStep($this->outputDirectory),

@@ -13,23 +13,23 @@
     <meta content="initial-scale=1, width=device-width" name="viewport">
 
     {% block head %}
-        <link href="/assets/style.{{ releaseTimestamp }}.css" rel="stylesheet">
+        <link href="/assets/style.{{ site.releaseTimestamp }}.css" rel="stylesheet">
     {% endblock %}
 
-    <link href="{{ urlBase ~ slug }}" rel="canonical">
-    <meta content="{{ author | smartypants }}" name="author">
+    <link href="{{ site.urlBase ~ slug }}" rel="canonical">
+    <meta content="{{ site.author | smartypants }}" name="author">
 
     {% if description is defined %}
         <meta content="{{ description | smartypants }}" name="description">
         <meta content="{{ description | smartypants }}" property="og:description">
     {% endif %}
 
-    <meta content="{{ metaOpengraphImage }}" property="og:image">
+    <meta content="{{ metaOpengraphImage | default(site.metaOpengraphImage) }}" property="og:image">
     <meta content="{{ metaTitle | smartypants }}" property="og:title">
     <meta content="website" property="og:type">
-    <meta content="{{ urlBase ~ slug }}" property="og:url">
-    <meta content="{{ metaTwitterAuthor | smartypants }}" property="twitter:creator">
-    <meta content="{{ metaTwitterSite | smartypants }}" property="twitter:site">
+    <meta content="{{ site.urlBase ~ slug }}" property="og:url">
+    <meta content="{{ site.metaTwitterAuthor | smartypants }}" property="twitter:creator">
+    <meta content="{{ site.metaTwitterSite | smartypants }}" property="twitter:site">
     <meta content="summary_large_image" name="twitter:card">
 
     {% if metaNoCrawl | default(false) %}
@@ -56,7 +56,7 @@
 
         <div class="site-header">
             <div class="site-header__container">
-                <p class="site-header__title"><a href="/">{{ author | smartypants }}</a></p>
+                <p class="site-header__title"><a href="/">{{ site.author | smartypants }}</a></p>
                 <nav class="site-header__navigation">
                     <ul class="site-header__navigation__list" role="list">
                         <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
@@ -90,9 +90,9 @@
             </ul>
         </nav>
         <p class="site-footer__copyright">© {{ 'now' | date('Y') }}
-            <a href="/">{{ author | smartypants }}</a>.</p>
+            <a href="/">{{ site.author | smartypants }}</a>.</p>
     </footer>
 
-    <script src="/assets/app.{{ releaseTimestamp }}.js" type="module"></script>
+    <script src="/assets/app.{{ site.releaseTimestamp }}.js" type="module"></script>
 </body>
 </html>
