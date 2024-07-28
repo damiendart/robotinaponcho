@@ -95,6 +95,17 @@ class SitePreferencesDialog extends HTMLElement {
   }
 }
 
+window.addEventListener(
+  'storage',
+  (event) => {
+    if (event.key === 'theme') {
+      SitePreferencesDialog.setCurrentTheme(
+        SitePreferencesDialog.getCurrentTheme(),
+      );
+    }
+  },
+);
+
 const siteFooterNavigationItem = document.createElement('li');
 
 customElements.define('site-preferences-dialog', SitePreferencesDialog);
