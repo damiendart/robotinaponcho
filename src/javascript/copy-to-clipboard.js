@@ -35,15 +35,12 @@ document.body.addEventListener(
             { once: true },
           );
         },
-        () => {},
+        () => { /* block left intentionally empty */ },
       );
   },
 );
 
 Array.prototype.forEach.call(
   document.querySelectorAll('a[data-clipboard]'),
-  (element) => {
-    // eslint-disable-next-line no-param-reassign
-    element.title = 'Copy page URL to clipboard';
-  },
+  (element) => element.title = 'Copy page URL to clipboard',
 );

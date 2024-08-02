@@ -104,8 +104,5 @@ class DetailsElementAnimation {
 }
 
 document.querySelectorAll('details').forEach(
-  (el) => {
-    // eslint-disable-next-line no-new
-    new DetailsElementAnimation(el);
-  },
+  (el) => new DetailsElementAnimation(el),
 );

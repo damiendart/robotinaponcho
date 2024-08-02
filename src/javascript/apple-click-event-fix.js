@@ -2,9 +2,8 @@
 // This file is distributed under the MIT licence. For more information,
 // please refer to the accompanying "LICENCE" file.
 
-// eslint-disable-next-line no-underscore-dangle
 function _noop() {
-  return () => {};
+  return () => { /* block left intentionally empty */ };
 }
 
 // Account for iOS and iPadOS WebKit's busted handling of mouse events.

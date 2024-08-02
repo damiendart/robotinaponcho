@@ -63,10 +63,7 @@ class SitePreferencesDialog extends HTMLElement {
           this.querySelector('dialog').close();
           this.querySelectorAll('input[name="theme"]')
             .forEach(
-              (element) => {
-                // eslint-disable-next-line no-param-reassign
-                element.checked = element.value === currentTheme;
-              },
+              (element) => element.checked = element.value === currentTheme,
             );
         }
       },

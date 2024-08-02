@@ -2,10 +2,8 @@
   "author": "Damien Dart",
   "description": "Source code to Damien Dart's personal site.",
   "dependencies": {
+    "@biomejs/biome": "1.8.3",
     "esbuild": "^0.19.3",
-    "eslint": "^8.31.0",
-    "eslint-config-airbnb-base": "^15",
-    "eslint-plugin-import": "^2.26.0",
     "lightningcss-cli": "^1.18.0",
     "sass": "^1.57.1"
   },
