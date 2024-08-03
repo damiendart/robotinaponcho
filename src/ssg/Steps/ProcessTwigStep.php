@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 use StaticSiteGenerator\Support\TwigEnvironmentFactory;
-use StaticSiteGenerator\ValueObjects\SiteMetadata;
+use StaticSiteGenerator\ValueObjects\InputFileCollection;
 use Twig\Loader\ArrayLoader;
 use Twig\Loader\ChainLoader;
 use Twig\Loader\FilesystemLoader;
@@ -24,7 +24,6 @@ final readonly class ProcessTwigStep implements StepInterface
 
     public function __construct(
         string $inputDirectory,
-        private SiteMetadata $globalMetadata,
         private TwigEnvironmentFactory $twigEnvironmentFactory,
     ) {
         $this->filesystemLoader = new FilesystemLoader();
@@ -32,8 +31,10 @@ final readonly class ProcessTwigStep implements StepInterface
         $this->filesystemLoader->addPath($inputDirectory);
     }
 
-    public function run(Inputfile ...$inputFiles): array
+    public function run(InputFile ...$inputFiles): array
     {
+        $collection = new InputFileCollection(...$inputFiles);
+
         foreach ($inputFiles as $key => $inputFile) {
             if (
                 !(
@@ -60,6 +61,8 @@ final readonly class ProcessTwigStep implements StepInterface
             } else {
                 $template = $inputFile->outputPath;
             }
+
+            $context['inputFiles'] = $collection;
 
             $inputFiles[$key] = $inputFile
                 ->withContent($environment->render($template, $context))

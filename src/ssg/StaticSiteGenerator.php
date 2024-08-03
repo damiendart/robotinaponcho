@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace StaticSiteGenerator;
 
 use StaticSiteGenerator\Steps\GenerateCollectionsStep;
-use StaticSiteGenerator\Steps\GenerateSitemapEntriesStep;
 use StaticSiteGenerator\Steps\GenerateSlugsStep;
 use StaticSiteGenerator\Steps\MinifyHtmlStep;
 use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
@@ -37,11 +36,9 @@ final readonly class StaticSiteGenerator
             new ProcessFrontMatterStep(),
             new GenerateSlugsStep(),
             new GenerateCollectionsStep($siteMetadata),
-            new GenerateSitemapEntriesStep($siteMetadata),
             new ProcessMarkdownStep($markdownConverterFactory),
             new ProcessTwigStep(
                 $this->inputDirectory,
-                $siteMetadata,
                 new TwigEnvironmentFactory($markdownConverterFactory, $siteMetadata),
             ),
             new MinifyHtmlStep(),

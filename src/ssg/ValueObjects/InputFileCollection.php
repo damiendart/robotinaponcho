@@ -8,19 +8,28 @@
 
 declare(strict_types=1);
 
-namespace StaticSiteGenerator\Steps;
+namespace StaticSiteGenerator\ValueObjects;
 
-use StaticSiteGenerator\Inputfile;
-use StaticSiteGenerator\ValueObjects\SitemapEntry;
-use StaticSiteGenerator\ValueObjects\SiteMetadata;
+use StaticSiteGenerator\InputFile;
 
-final readonly class GenerateSitemapEntriesStep implements StepInterface
+/** @implements \IteratorAggregate<array-key, InputFile> */
+final class InputFileCollection implements \IteratorAggregate
 {
-    public function __construct(
-        private SiteMetadata $metadata,
-    ) {}
+    private array $inputFiles;
 
-    public function run(Inputfile ...$inputFiles): array
+    public function __construct(InputFile ...$inputFiles)
+    {
+        $this->inputFiles = $inputFiles;
+    }
+
+    /** @return \ArrayIterator<array-key, InputFile> */
+    public function getIterator(): \ArrayIterator
+    {
+        return new \ArrayIterator($this->inputFiles);
+    }
+
+    /** @return SitemapEntry[] */
+    public function getSitemapEntries(): array
     {
         $entries = [
             new SitemapEntry(
@@ -33,7 +42,7 @@ final readonly class GenerateSitemapEntriesStep implements StepInterface
             ),
         ];
 
-        foreach ($inputFiles as $inputFile) {
+        foreach ($this->inputFiles as $inputFile) {
             $slug = $inputFile->metadata['slug'];
 
             if (
@@ -47,14 +56,12 @@ final readonly class GenerateSitemapEntriesStep implements StepInterface
 
             $entries[] = new SitemapEntry(
                 $inputFile->metadata['sitemapTitle']
-                    ?? $inputFile->metadata['title']
-                    ?? $slug,
+                ?? $inputFile->metadata['title']
+                ?? $slug,
                 $slug,
             );
         }
 
-        $this->metadata->metadata['sitemapEntries'] = $entries;
-
-        return $inputFiles;
+        return $entries;
     }
 }
