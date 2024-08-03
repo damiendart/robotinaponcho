@@ -1,0 +1,59 @@
+{#
+    Copyright (C) Damien Dart, <damiendart@pobox.com>.
+    This file is distributed under the MIT licence. For more
+    information, please refer to the accompanying "LICENCE" file.
+#}
+
+{% extends '.templates/base.html.twig' %}
+
+{% set metaOpengraphImage = site.urlBase ~ 'projects/flippywindow/opengraph.' ~ site.releaseTimestamp ~ '.png' %}
+
+{% block content %}
+    <p>FlippyWindow is a simple Windows
+        application that non-destructively flips any part of your
+        screen, in real-time, and using minimal resources.</p>
+    <img
+        alt="A screenshot of FlippyWindow over Adobe Photoshop."
+        class="content__container__full-width-image"
+        height="557"
+        src="/projects/flippywindow/screenshot.{{ site.releaseTimestamp }}.png"
+        title="A screenshot of FlippyWindow over Adobe Photoshop."
+        width="776"
+    >
+    <p>Flipping images (or viewing things
+        with a mirror) is a technique used to
+        <a href="http://yourfirstproduct.com/info/bmreverse">help
+        view things with “fresh eyes”</a> which can aid with
+        <a href="http://www.comic-tools.com/2008/10/my-mirror-is-most-important.html">spotting
+        visual issues</a>.</p>
+
+    <div class="cta-download u-stack u-stack__widest">
+        <h2>
+            <a class="button button--inverted" href="https://damiendart.itch.io/flippywindow">
+                <span class="button__download">Download</span><span class="u-collapsible u-collapsible--medium-down">
+                FlippyWindow</span> <span class="u-collapsible u-collapsible--small-down">from</span>
+                <span class="button__itchio u-collapsible u-collapsible--x-small-down"><span class="u-visually-hidden">itch.io</span></span></a>
+        </h2>
+        <ul role="list">
+            <li class="cta-download__information-list__item"><strong>It's
+                free! Requires&nbsp;Windows&nbsp;8&nbsp;or&nbsp;later.</strong></li>
+            <li class="cta-download__information-list__item">Nothing to
+                install: just&nbsp;unzip&nbsp;and&nbsp;run<span class="u-collapsible u-collapsible--small-down">
+                the executable</span>.</li>
+            <li class="cta-download__information-list__item">FlippyWindow is
+                <a href="https://www.robotinaponcho.net/git/#flippywindow">open-source</a>.</li>
+            <li class="cta-download__information-list__item"><a href="#alternative-download-locations">View
+                alternative download locations</a>.</li>
+        </ul>
+    </div>
+
+    {{ renderedMarkdown | raw }}
+
+    {%
+        include '.templates/partials/sharing-links.html.twig' with {
+            'link': site.urlBase ~ slug,
+            'twitterAuthor': site.metaTwitterAuthor | replace({ '@': '' }),
+            'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
+        }
+    %}
+{% endblock %}
