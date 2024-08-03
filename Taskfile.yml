@@ -79,21 +79,37 @@ tasks:
 
   build:ssg:
     cmds:
-      - 'src/ssg/ssg'
+      - 'src/ssg/ssg ./public/'
     desc: 'Build static site files using ssg'
     sources:
       - 'src/ssg/**/*'
+
+  build:snapshot:
+    cmds:
+      - 'src/ssg/ssg ./ssg-output-{{ .TIMESTAMP }}/'
+    desc: 'Build static site files using ssg for snapshot testing'
+    env:
+      RELEASE_TIMESTAMP: '00000000000000'
+    vars:
+      TIMESTAMP:
+        sh: 'date +%Y%m%d%H%M%S'
 
   clean:
     cmds:
       - 'rm -fr .task node_modules public release'
       - task: 'clean:php'
+      - task: 'clean:snapshot'
     desc: 'Delete all buildable files, caches, and third-party dependencies'
 
   clean:php:
     cmds:
       - 'rm -fr protected/vendor'
     desc: 'Delete third-party PHP dependencies'
+
+  clean:snapshot:
+    cmds:
+      - 'rm -fr ssg-output-*'
+    desc: 'Delete timestamp-prefixed snapshot directories'
 
   dependencies:
     cmds:
@@ -179,3 +195,8 @@ tasks:
     cmds:
       - 'protected/vendor/bin/phpunit --testdox'
     desc: 'Run end-to-end tests with PHPUnit'
+
+  test:snapshot:
+    cmds:
+      - "find . -name 'ssg-output-*' | sort | tail -n 2 | xargs diff -qr"
+    desc: 'Compare the two more recent snapshot directories'

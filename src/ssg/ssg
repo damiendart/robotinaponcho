@@ -29,9 +29,6 @@ set_error_handler(
 
 use StaticSiteGenerator\StaticSiteGenerator;
 
-$application = new StaticSiteGenerator(
-    __DIR__ . '/input/',
-    __DIR__ . '/../../public/',
-);
+$application = new StaticSiteGenerator(__DIR__ . '/input/', $argv[1]);
 
 exit($application->run());
