@@ -25,7 +25,7 @@
                 <link href="{{ site.urlBase }}{{ note.metadata.slug }}"/>
                 <published>{{ note.metadata.git.createdAt | date('c') }}</published>
                 <summary type="html">
-                    <![CDATA[ {{ note.getContent | markdown | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>
+                    <![CDATA[ {{ note.getContent | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>
                 </summary>
                 <title>{{ note.metadata.title | smartypants }}</title>
                 <updated>{{ note.metadata.git.updatedAt | date('c') }}</updated>

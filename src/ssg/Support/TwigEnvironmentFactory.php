@@ -18,32 +18,13 @@ use Twig\TwigFilter;
 
 final readonly class TwigEnvironmentFactory
 {
-    public function __construct(
-        private MarkdownConverterFactory $markdownConverterFactory,
-        private SiteMetadata $siteMetadata,
-    ) {}
+    public function __construct(private SiteMetadata $siteMetadata) {}
 
     public function make(LoaderInterface $loader): Environment
     {
         $environment = new Environment(
             $loader,
             ['strict_variables' => true],
-        );
-
-        $environment->addFilter(new TwigFilter('dedent', 'StaticSiteGenerator\dedent'));
-
-        $environment->addFilter(
-            new TwigFilter(
-                'markdown',
-                function (string $string): string {
-                    $converter = $this->markdownConverterFactory->make();
-
-                    return $converter
-                        ->convert($string)
-                        ->getContent();
-                },
-                ['is_safe' => ['html']],
-            ),
         );
 
         $environment->addFilter(
