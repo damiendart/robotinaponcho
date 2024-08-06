@@ -15,6 +15,7 @@ use StaticSiteGenerator\InputFile;
 /** @implements \IteratorAggregate<array-key, InputFile> */
 final class InputFileCollection implements \IteratorAggregate
 {
+    private array $collections = [];
     private array $inputFiles;
 
     public function __construct(InputFile ...$inputFiles)
@@ -63,5 +64,40 @@ final class InputFileCollection implements \IteratorAggregate
         }
 
         return $entries;
+    }
+
+    public function getCollections(): array
+    {
+        static $collections;
+
+        if (true === \is_array($collections)) {
+            return $collections;
+        }
+
+        foreach ($this->inputFiles as $inputFile) {
+            if (
+                \array_key_exists(
+                    'collections',
+                    $inputFile->metadata,
+                )
+            ) {
+                /** @var iterable<string>|string $keys */
+                $keys = $inputFile->metadata['collections'];
+
+                if (!is_iterable($keys)) {
+                    $keys = [$keys];
+                }
+
+                foreach ($keys as $key) {
+                    $collections[$key][] = $inputFile;
+                }
+            }
+        }
+
+        if (\count($collections) > 0) {
+            ksort($collections);
+        }
+
+        return $collections;
     }
 }

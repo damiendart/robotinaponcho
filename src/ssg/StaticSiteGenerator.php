@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator;
 
-use StaticSiteGenerator\Steps\GenerateCollectionsStep;
 use StaticSiteGenerator\Steps\GenerateSlugsStep;
 use StaticSiteGenerator\Steps\MinifyHtmlStep;
 use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
@@ -30,16 +29,17 @@ final readonly class StaticSiteGenerator
         private string $outputDirectory,
     ) {
         $markdownConverterFactory = new MarkdownConverterFactory();
-        $siteMetadata = new SiteMetadata();
 
         $this->pipeline = new Pipeline(
             new ProcessFrontMatterStep(),
             new GenerateSlugsStep(),
-            new GenerateCollectionsStep($siteMetadata),
             new ProcessMarkdownStep($markdownConverterFactory),
             new ProcessTwigStep(
                 $this->inputDirectory,
-                new TwigEnvironmentFactory($markdownConverterFactory, $siteMetadata),
+                new TwigEnvironmentFactory(
+                    $markdownConverterFactory,
+                    new SiteMetadata(),
+                ),
             ),
             new MinifyHtmlStep(),
             new WriteFilesStep($this->outputDirectory),

@@ -32,13 +32,13 @@
 
     <h2>Topics</h2>
     <ul class="tag-list" role="list">
-        {% for category, notes in site.collections | filter((v, k) => k != 'notes') %}
+        {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
             <li><a href="#{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</a></li>
         {% endfor %}
     </ul>
 
 
-    {% for category, notes in site.collections | filter((v, k) => k != 'notes') %}
+    {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
         <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
 
         <ul class="notes-list u-stack" role="list">

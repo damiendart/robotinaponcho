@@ -4,7 +4,7 @@
     This file is distributed under the MIT licence. For more
     information, please refer to the accompanying "LICENCE" file.
 #}
-    {% set items = site.collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
+    {% set items = inputFiles.collections.notes | sort((a, b) => b.metadata.git.createdAt <=> a.metadata.git.createdAt) | slice(0, 11) %}
     {% set lastUpdated = items | map(n => n.metadata.git.updatedAt) | sort | first %}
 
     <?xml version="1.0" encoding="utf-8"?>
