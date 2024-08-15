@@ -17,17 +17,13 @@ use Symfony\Component\Yaml\Parser;
 final readonly class ProcessFrontMatterStep implements StepInterface
 {
     private const FRONT_MATTER_REGEXES = [
-        '/^---\n(.*?)\n---\n(.*)/s',
-        '/^{#---\n(.*?)\n---#}\n(.*)/s',
-        '/^<!---\n(.*?)\n--->\n(.*)/s',
+        '/{#---(.*)---#}/s',
+        '/<!---(.*)--->/s',
     ];
 
-    private Parser $yamlParser;
-
-    public function __construct()
-    {
-        $this->yamlParser = new Parser();
-    }
+    public function __construct(
+        private Parser $yamlParser,
+    ) {}
 
     public function run(Inputfile ...$inputFiles): array
     {
@@ -37,12 +33,11 @@ final readonly class ProcessFrontMatterStep implements StepInterface
                     1 === preg_match($regex, $inputFile->getContent(), $matches)
                     && '' !== trim($matches[1])
                 ) {
-                    /** @var array{array-key, mixed} $frontMatter */
+                    $content = str_replace($matches[0], '', $inputFile->getContent());
+                    /** @var array{array-key, mixed} $metadata */
                     $metadata = $this->yamlParser->parse($matches[1]);
 
-                    if (false === \array_key_exists('git', $metadata)) {
-                        $metadata['git'] = new GitMetadata();
-                    } else {
+                    if (\array_key_exists('git', $metadata)) {
                         $git = explode(' ', trim($metadata['git'], '$'));
 
                         if (5 !== \count($git)) {
@@ -57,30 +52,14 @@ final readonly class ProcessFrontMatterStep implements StepInterface
                         }
                     }
 
-                    if (
-                        1 === preg_match(
-                            "/(.*)\n=+/",
-                            $inputFile->getContent(),
-                            $titles,
-                        )
-                    ) {
-                        $metadata['title'] = $titles[1];
-                        $inputFiles[$key] = $inputFile
-                            ->withAdditionalMetadata($metadata)
-                            ->withContent(
-                                preg_replace(
-                                    "/{$titles[1]}\n=+\n/",
-                                    '',
-                                    $matches[2],
-                                ),
-                            );
-
-                        break;
+                    if (1 === preg_match("/(.*)\n=+/", $content, $headings)) {
+                        $content = preg_replace("/{$headings[1]}\n=+\n/", '', $content);
+                        $metadata['title'] = $headings[1];
                     }
 
                     $inputFiles[$key] = $inputFile
                         ->withAdditionalMetadata($metadata)
-                        ->withContent($matches[2]);
+                        ->withContent($content);
 
                     break;
                 }

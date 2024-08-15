@@ -19,6 +19,7 @@ use StaticSiteGenerator\Steps\WriteFilesStep;
 use StaticSiteGenerator\Support\MarkdownConverterFactory;
 use StaticSiteGenerator\Support\TwigEnvironmentFactory;
 use StaticSiteGenerator\ValueObjects\SiteMetadata;
+use Symfony\Component\Yaml\Parser;
 
 final readonly class StaticSiteGenerator
 {
@@ -31,7 +32,7 @@ final readonly class StaticSiteGenerator
         $markdownConverterFactory = new MarkdownConverterFactory();
 
         $this->pipeline = new Pipeline(
-            new ProcessFrontMatterStep(),
+            new ProcessFrontMatterStep(new Parser()),
             new GenerateSlugsStep(),
             new ProcessMarkdownStep($markdownConverterFactory),
             new ProcessTwigStep(
