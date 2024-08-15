@@ -11,7 +11,6 @@
     "files": ["protected/helpers.php"]
   },
   "autoload-dev": {
-    "files": ["src/ssg/helpers.php"],
     "psr-4": {
       "App\\Tests\\": "tests/",
       "StaticSiteGenerator\\": "src/ssg/"

@@ -1,12 +1,12 @@
 <!---
-  # Copyright (C) Damien Dart, <damiendart@pobox.com>.
-  # This file is distributed under the MIT licence. For more
-  # information, please refer to the accompanying "LICENCE" file.
+# Copyright (C) Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more
+# information, please refer to the accompanying "LICENCE" file.
 
-  description: 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.'
-  section: 'projects'
-  title: 'FlippyWindow'
-  twigTemplate: '.templates/base-flippywindow.html.twig'
+description: 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.'
+section: 'projects'
+title: 'FlippyWindow'
+twigTemplate: '.templates/base-flippywindow.html.twig'
 --->
 
 ## Frequently asked questions

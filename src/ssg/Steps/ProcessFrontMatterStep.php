@@ -10,8 +10,6 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use function StaticSiteGenerator\dedent;
-
 use StaticSiteGenerator\Inputfile;
 use StaticSiteGenerator\ValueObjects\GitMetadata;
 use Symfony\Component\Yaml\Parser;
@@ -40,7 +38,7 @@ final readonly class ProcessFrontMatterStep implements StepInterface
                     && '' !== trim($matches[1])
                 ) {
                     /** @var array{array-key, mixed} $frontMatter */
-                    $metadata = $this->yamlParser->parse(dedent($matches[1]));
+                    $metadata = $this->yamlParser->parse($matches[1]);
 
                     if (false === \array_key_exists('git', $metadata)) {
                         $metadata['git'] = new GitMetadata();

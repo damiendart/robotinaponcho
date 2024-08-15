@@ -1,12 +1,12 @@
 <!---
-  # Copyright (C) Damien Dart, <damiendart@pobox.com>.
-  # This file is distributed under the MIT licence. For more
-  # information, please refer to the accompanying "LICENCE" file.
+# Copyright (C) Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more
+# information, please refer to the accompanying "LICENCE" file.
 
-  description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
-  metaTitle: "Damien Dart's Personal Website"
-  sitemapTitle: 'Homepage'
-  twigTemplate: '.templates/homepage.html.twig'
+description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
+metaTitle: "Damien Dart's Personal Website"
+sitemapTitle: 'Homepage'
+twigTemplate: '.templates/homepage.html.twig'
 --->
 
 Hello
