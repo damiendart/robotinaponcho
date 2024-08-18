@@ -33,7 +33,7 @@ final class ProcessMarkdownStep extends AbstractStep
 
         return $inputFile
             ->withContent($this->processContent($inputFile->getContent()))
-            ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
+            ->withOutputPath($this->processOutputPath($inputFile->outputPath));
     }
 
     private function extractTitle(InputFile $inputFile): InputFile
@@ -61,7 +61,7 @@ final class ProcessMarkdownStep extends AbstractStep
         return $this->converter->convert($content)->getContent();
     }
 
-    private function processRelativePathname(string $pathname): string
+    private function processOutputPath(string $pathname): string
     {
         error_clear_last();
 

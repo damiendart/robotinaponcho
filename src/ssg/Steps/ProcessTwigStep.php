@@ -20,7 +20,7 @@ use Twig\Loader\LoaderInterface;
 
 final class ProcessTwigStep extends AbstractStep
 {
-    private InputFileCollection $collection;
+    private InputFileCollection $inputFiles;
     private LoaderInterface $filesystemLoader;
 
     public function __construct(
@@ -34,7 +34,7 @@ final class ProcessTwigStep extends AbstractStep
 
     public function run(InputFile ...$inputFiles): array
     {
-        $this->collection = new InputFileCollection(...$inputFiles);
+        $this->inputFiles = new InputFileCollection(...$inputFiles);
 
         return parent::run(...$inputFiles);
     }
@@ -67,7 +67,7 @@ final class ProcessTwigStep extends AbstractStep
             $template = $inputFile->outputPath;
         }
 
-        $context['inputFiles'] = $this->collection;
+        $context['inputFiles'] = $this->inputFiles;
 
         return $inputFile
             ->withContent($environment->render($template, $context))

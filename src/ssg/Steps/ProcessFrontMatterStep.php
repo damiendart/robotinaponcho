@@ -35,21 +35,10 @@ final class ProcessFrontMatterStep extends AbstractStep
                 $content = str_replace($matches[0], '', $inputFile->getContent());
 
                 /** @var array{array-key, mixed} $metadata */
-                $metadata = $this->yamlParser->parse($matches[1]);
+                $metadata = $this->yamlParser->parse($matches[1]) ?? [];
 
                 if (\array_key_exists('git', $metadata)) {
-                    $git = explode(' ', trim($metadata['git'], '$'));
-
-                    if (5 !== \count($git)) {
-                        $metadata['git'] = new GitMetadata();
-                    } else {
-                        $metadata['git'] = new GitMetadata(
-                            \DateTimeImmutable::createFromFormat('U', $git[2]),
-                            \DateTimeImmutable::createFromFormat('U', $git[4]),
-                            $git[1],
-                            $git[3],
-                        );
-                    }
+                    $metadata['git'] = $this->parseGitMetadataKeyword($metadata['git']);
                 }
 
                 return $inputFile
@@ -59,5 +48,21 @@ final class ProcessFrontMatterStep extends AbstractStep
         }
 
         return $inputFile;
+    }
+
+    private function parseGitMetadataKeyword(string $keyword): GitMetadata
+    {
+        $parts = explode(' ', trim($keyword, '$'));
+
+        if (5 !== \count($parts)) {
+            throw new \RuntimeException('Unable to parse expanded "Metadata" keyword');
+        }
+
+        return new GitMetadata(
+            \DateTimeImmutable::createFromFormat('U', $parts[2]),
+            \DateTimeImmutable::createFromFormat('U', $parts[4]),
+            $parts[1],
+            $parts[3],
+        );
     }
 }

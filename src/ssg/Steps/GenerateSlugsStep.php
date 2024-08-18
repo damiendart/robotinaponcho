@@ -34,7 +34,7 @@ final class GenerateSlugsStep extends AbstractStep
     {
         foreach (self::TEMPLATE_EXTENSIONS as $extension) {
             if (str_ends_with($input, ".{$extension}")) {
-                $input = mb_strcut($input, 0, -5);
+                $input = mb_strcut($input, 0, -\strlen($extension) - 1);
 
                 break;
             }
