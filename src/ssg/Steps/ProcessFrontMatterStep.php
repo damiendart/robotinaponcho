@@ -52,11 +52,6 @@ final class ProcessFrontMatterStep extends AbstractStep
                     }
                 }
 
-                if (1 === preg_match("/(.*)\n=+/", $content, $headings)) {
-                    $content = preg_replace("/{$headings[1]}\n=+\n/", '', $content);
-                    $metadata['title'] = $headings[1];
-                }
-
                 return $inputFile
                     ->withAdditionalMetadata($metadata)
                     ->withContent($content);

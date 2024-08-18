@@ -29,9 +29,31 @@ final class ProcessMarkdownStep extends AbstractStep
             return $inputFile;
         }
 
+        $inputFile = $this->extractTitle($inputFile);
+
         return $inputFile
             ->withContent($this->processContent($inputFile->getContent()))
             ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
+    }
+
+    private function extractTitle(InputFile $inputFile): InputFile
+    {
+        if (
+            1 === preg_match("/(.*)\n=+/", $content = $inputFile->getContent(), $headings)
+            && false === \array_key_exists('title', $inputFile->metadata)
+        ) {
+            return $inputFile
+                ->withContent(
+                    preg_replace(
+                        "/{$headings[1]}\n=+\n/",
+                        '',
+                        $content,
+                    ),
+                )
+                ->withAdditionalMetadata(['title' => $headings[1]]);
+        }
+
+        return $inputFile;
     }
 
     private function processContent(string $content): string
