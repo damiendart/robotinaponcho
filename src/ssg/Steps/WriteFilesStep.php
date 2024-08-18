@@ -10,39 +10,46 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 
-final readonly class WriteFilesStep implements StepInterface
+final class WriteFilesStep extends AbstractStep
 {
+    private int $fileCount;
+
     public function __construct(
-        private string $outputDirectory,
-    ) {}
+        private readonly string $outputDirectory,
+    ) {
+        $this->fileCount = 0;
+    }
 
-    public function run(Inputfile ...$inputFiles): array
+    public function run(InputFile ...$inputFiles): array
     {
-        $fileCount = 0;
+        $inputFiles = parent::run(...$inputFiles);
 
-        foreach ($inputFiles as $inputFile) {
-            $outputPath = join(
-                DIRECTORY_SEPARATOR,
-                [$this->outputDirectory, $inputFile->outputPath],
-            );
-
-            if (! is_dir(\dirname($outputPath))) {
-                mkdir(\dirname($outputPath), 0777, true);
-            }
-
-            if ($inputFile->hasModifiedContent()) {
-                file_put_contents($outputPath, $inputFile->getContent());
-            } else {
-                copy($inputFile->source, $outputPath);
-            }
-
-            ++$fileCount;
-        }
-
-        echo "{$fileCount} files written" . PHP_EOL;
+        echo $this->fileCount . ' files written' . PHP_EOL;
 
         return $inputFiles;
+    }
+
+    protected function process(InputFile $inputFile): InputFile
+    {
+        $outputPath = join(
+            DIRECTORY_SEPARATOR,
+            [$this->outputDirectory, $inputFile->outputPath],
+        );
+
+        if (! is_dir(\dirname($outputPath))) {
+            mkdir(\dirname($outputPath), 0777, true);
+        }
+
+        if ($inputFile->hasModifiedContent()) {
+            file_put_contents($outputPath, $inputFile->getContent());
+        } else {
+            copy($inputFile->source, $outputPath);
+        }
+
+        ++$this->fileCount;
+
+        return $inputFile;
     }
 }

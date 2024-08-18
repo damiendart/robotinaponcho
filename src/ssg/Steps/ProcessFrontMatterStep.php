@@ -14,7 +14,7 @@ use StaticSiteGenerator\Inputfile;
 use StaticSiteGenerator\ValueObjects\GitMetadata;
 use Symfony\Component\Yaml\Parser;
 
-final readonly class ProcessFrontMatterStep implements StepInterface
+final class ProcessFrontMatterStep extends AbstractStep
 {
     private const FRONT_MATTER_REGEXES = [
         '/{#---(.*)---#}/s',
@@ -22,50 +22,47 @@ final readonly class ProcessFrontMatterStep implements StepInterface
     ];
 
     public function __construct(
-        private Parser $yamlParser,
+        private readonly Parser $yamlParser,
     ) {}
 
-    public function run(Inputfile ...$inputFiles): array
+    protected function process(Inputfile $inputFile): Inputfile
     {
-        foreach ($inputFiles as $key => $inputFile) {
-            foreach (self::FRONT_MATTER_REGEXES as $regex) {
-                if (
-                    1 === preg_match($regex, $inputFile->getContent(), $matches)
-                    && '' !== trim($matches[1])
-                ) {
-                    $content = str_replace($matches[0], '', $inputFile->getContent());
-                    /** @var array{array-key, mixed} $metadata */
-                    $metadata = $this->yamlParser->parse($matches[1]);
+        foreach (self::FRONT_MATTER_REGEXES as $regex) {
+            if (
+                1 === preg_match($regex, $inputFile->getContent(), $matches)
+                && '' !== trim($matches[1])
+            ) {
+                $content = str_replace($matches[0], '', $inputFile->getContent());
 
-                    if (\array_key_exists('git', $metadata)) {
-                        $git = explode(' ', trim($metadata['git'], '$'));
+                /** @var array{array-key, mixed} $metadata */
+                $metadata = $this->yamlParser->parse($matches[1]);
 
-                        if (5 !== \count($git)) {
-                            $metadata['git'] = new GitMetadata();
-                        } else {
-                            $metadata['git'] = new GitMetadata(
-                                \DateTimeImmutable::createFromFormat('U', $git[2]),
-                                \DateTimeImmutable::createFromFormat('U', $git[4]),
-                                $git[1],
-                                $git[3],
-                            );
-                        }
+                if (\array_key_exists('git', $metadata)) {
+                    $git = explode(' ', trim($metadata['git'], '$'));
+
+                    if (5 !== \count($git)) {
+                        $metadata['git'] = new GitMetadata();
+                    } else {
+                        $metadata['git'] = new GitMetadata(
+                            \DateTimeImmutable::createFromFormat('U', $git[2]),
+                            \DateTimeImmutable::createFromFormat('U', $git[4]),
+                            $git[1],
+                            $git[3],
+                        );
                     }
-
-                    if (1 === preg_match("/(.*)\n=+/", $content, $headings)) {
-                        $content = preg_replace("/{$headings[1]}\n=+\n/", '', $content);
-                        $metadata['title'] = $headings[1];
-                    }
-
-                    $inputFiles[$key] = $inputFile
-                        ->withAdditionalMetadata($metadata)
-                        ->withContent($content);
-
-                    break;
                 }
+
+                if (1 === preg_match("/(.*)\n=+/", $content, $headings)) {
+                    $content = preg_replace("/{$headings[1]}\n=+\n/", '', $content);
+                    $metadata['title'] = $headings[1];
+                }
+
+                return $inputFile
+                    ->withAdditionalMetadata($metadata)
+                    ->withContent($content);
             }
         }
 
-        return $inputFiles;
+        return $inputFile;
     }
 }

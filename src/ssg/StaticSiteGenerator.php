@@ -20,6 +20,8 @@ use StaticSiteGenerator\Support\MarkdownConverterFactory;
 use StaticSiteGenerator\Support\TwigEnvironmentFactory;
 use StaticSiteGenerator\ValueObjects\SiteMetadata;
 use Symfony\Component\Yaml\Parser;
+use Whoops\Handler\PlainTextHandler;
+use Whoops\Run;
 
 final readonly class StaticSiteGenerator
 {
@@ -29,15 +31,18 @@ final readonly class StaticSiteGenerator
         private string $inputDirectory,
         private string $outputDirectory,
     ) {
-        $markdownConverterFactory = new MarkdownConverterFactory();
+        $whoops = new Run();
+
+        $whoops->pushHandler(new PlainTextHandler());
+        $whoops->register();
 
         $this->pipeline = new Pipeline(
             new ProcessFrontMatterStep(new Parser()),
             new GenerateSlugsStep(),
-            new ProcessMarkdownStep($markdownConverterFactory),
+            new ProcessMarkdownStep(new MarkdownConverterFactory()),
             new ProcessTwigStep(
-                $this->inputDirectory,
                 new TwigEnvironmentFactory(new SiteMetadata()),
+                $this->inputDirectory,
             ),
             new MinifyHtmlStep(),
             new WriteFilesStep($this->outputDirectory),

@@ -11,10 +11,10 @@ declare(strict_types=1);
 namespace StaticSiteGenerator\Steps;
 
 use League\CommonMark\ConverterInterface;
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 use StaticSiteGenerator\Support\MarkdownConverterFactory;
 
-final readonly class ProcessMarkdownStep implements StepInterface
+final class ProcessMarkdownStep extends AbstractStep
 {
     private ConverterInterface $converter;
 
@@ -23,19 +23,15 @@ final readonly class ProcessMarkdownStep implements StepInterface
         $this->converter = $factory->make();
     }
 
-    public function run(Inputfile ...$inputFiles): array
+    protected function process(InputFile $inputFile): InputFile
     {
-        foreach ($inputFiles as $key => $inputFile) {
-            if (! str_ends_with($inputFile->outputPath, 'md')) {
-                continue;
-            }
-
-            $inputFiles[$key] = $inputFile
-                ->withContent($this->processContent($inputFile->getContent()))
-                ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
+        if (! str_ends_with($inputFile->outputPath, 'md')) {
+            return $inputFile;
         }
 
-        return $inputFiles;
+        return $inputFile
+            ->withContent($this->processContent($inputFile->getContent()))
+            ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
     }
 
     private function processContent(string $content): string

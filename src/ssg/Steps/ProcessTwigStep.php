@@ -18,13 +18,14 @@ use Twig\Loader\ChainLoader;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 
-final readonly class ProcessTwigStep implements StepInterface
+final class ProcessTwigStep extends AbstractStep
 {
+    private InputFileCollection $collection;
     private LoaderInterface $filesystemLoader;
 
     public function __construct(
+        private readonly TwigEnvironmentFactory $twigEnvironmentFactory,
         string $inputDirectory,
-        private TwigEnvironmentFactory $twigEnvironmentFactory,
     ) {
         $this->filesystemLoader = new FilesystemLoader();
 
@@ -33,43 +34,44 @@ final readonly class ProcessTwigStep implements StepInterface
 
     public function run(InputFile ...$inputFiles): array
     {
-        $collection = new InputFileCollection(...$inputFiles);
+        $this->collection = new InputFileCollection(...$inputFiles);
 
-        foreach ($inputFiles as $key => $inputFile) {
-            if (
-                !(
-                    str_ends_with($inputFile->outputPath, 'twig')
-                    || \array_key_exists('twigTemplate', $inputFile->metadata)
-                )
-            ) {
-                continue;
-            }
+        return parent::run(...$inputFiles);
+    }
 
-            $chainLoader = new ChainLoader();
-
-            $chainLoader->addLoader(
-                new ArrayLoader([$inputFile->outputPath => $inputFile->getContent()]),
-            );
-            $chainLoader->addLoader($this->filesystemLoader);
-
-            $context = $inputFile->metadata;
-            $environment = $this->twigEnvironmentFactory->make($chainLoader);
-
-            if (\array_key_exists('twigTemplate', $inputFile->metadata)) {
-                $template = $inputFile->metadata['twigTemplate'];
-                $context['renderedMarkdown'] = $inputFile->getContent();
-            } else {
-                $template = $inputFile->outputPath;
-            }
-
-            $context['inputFiles'] = $collection;
-
-            $inputFiles[$key] = $inputFile
-                ->withContent($environment->render($template, $context))
-                ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
+    protected function process(InputFile $inputFile): InputFile
+    {
+        if (
+            !(
+                str_ends_with($inputFile->outputPath, 'twig')
+                || \array_key_exists('twigTemplate', $inputFile->metadata)
+            )
+        ) {
+            return $inputFile;
         }
 
-        return $inputFiles;
+        $chainLoader = new ChainLoader();
+
+        $chainLoader->addLoader(
+            new ArrayLoader([$inputFile->outputPath => $inputFile->getContent()]),
+        );
+        $chainLoader->addLoader($this->filesystemLoader);
+
+        $context = $inputFile->metadata;
+        $environment = $this->twigEnvironmentFactory->make($chainLoader);
+
+        if (\array_key_exists('twigTemplate', $inputFile->metadata)) {
+            $template = $inputFile->metadata['twigTemplate'];
+            $context['renderedMarkdown'] = $inputFile->getContent();
+        } else {
+            $template = $inputFile->outputPath;
+        }
+
+        $context['inputFiles'] = $this->collection;
+
+        return $inputFile
+            ->withContent($environment->render($template, $context))
+            ->withOutputPath($this->processRelativePathname($inputFile->outputPath));
     }
 
     private function processRelativePathname(string $pathname): string

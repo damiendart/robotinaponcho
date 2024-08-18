@@ -12,31 +12,27 @@ namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\Inputfile;
 
-final class GenerateSlugsStep implements StepInterface
+final class GenerateSlugsStep extends AbstractStep
 {
     /** @var string[] */
-    private array $documentExtensions = ['html', 'htm', 'php', 'md'];
+    private const DOCUMENT_EXTENSIONS = ['html', 'htm', 'php', 'md'];
 
     /** @var string[] */
-    private array $indexDocumentFilenames = ['index'];
+    private const INDEX_DOCUMENT_FILENAMES = ['index'];
 
     /** @var string[] */
-    private array $templateExtensions = ['twig'];
+    private const TEMPLATE_EXTENSIONS = ['twig'];
 
-    public function run(Inputfile ...$inputFiles): array
+    protected function process(Inputfile $inputFile): Inputfile
     {
-        foreach ($inputFiles as $key => $inputFile) {
-            $inputFiles[$key] = $inputFile->withAdditionalMetadata(
-                ['slug' => $this->slugify($inputFile->outputPath)],
-            );
-        }
-
-        return $inputFiles;
+        return $inputFile->withAdditionalMetadata(
+            ['slug' => $this->slugify($inputFile->outputPath)],
+        );
     }
 
     private function slugify(string $input): string
     {
-        foreach ($this->templateExtensions as $extension) {
+        foreach (self::TEMPLATE_EXTENSIONS as $extension) {
             if (str_ends_with($input, ".{$extension}")) {
                 $input = mb_strcut($input, 0, -5);
 
@@ -47,7 +43,7 @@ final class GenerateSlugsStep implements StepInterface
         error_clear_last();
 
         $input = preg_replace(
-            '/(.' . join('|.', $this->documentExtensions) . ')+$/',
+            '/(.' . join('|.', self::DOCUMENT_EXTENSIONS) . ')+$/',
             '',
             $input,
         );
@@ -56,7 +52,7 @@ final class GenerateSlugsStep implements StepInterface
             throw new \RuntimeException(preg_last_error_msg());
         }
 
-        foreach ($this->indexDocumentFilenames as $filename) {
+        foreach (self::INDEX_DOCUMENT_FILENAMES as $filename) {
             if (str_ends_with($input, "/{$filename}") || $filename === $input) {
                 $input = mb_strcut($input, 0, -\strlen($filename));
 

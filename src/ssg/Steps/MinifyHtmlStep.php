@@ -13,7 +13,7 @@ namespace StaticSiteGenerator\Steps;
 use StaticSiteGenerator\Inputfile;
 use voku\helper\HtmlMin;
 
-final readonly class MinifyHtmlStep implements StepInterface
+final class MinifyHtmlStep extends AbstractStep
 {
     private HtmlMin $minifier;
 
@@ -27,18 +27,15 @@ final readonly class MinifyHtmlStep implements StepInterface
             ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
     }
 
-    public function run(Inputfile ...$inputFiles): array
+    protected function process(Inputfile $inputFile): Inputfile
     {
-        foreach ($inputFiles as $key => $inputFile) {
-            if (! str_ends_with($inputFile->outputPath, 'html')) {
-                continue;
-            }
-
-            $inputFiles[$key] = $inputFile
-                ->withContent($this->processContent($inputFile->getContent()));
+        if (! str_ends_with($inputFile->outputPath, 'html')) {
+            return $inputFile;
         }
 
-        return $inputFiles;
+        return $inputFile->withContent(
+            $this->processContent($inputFile->getContent()),
+        );
     }
 
     private function processContent(string $content): string
