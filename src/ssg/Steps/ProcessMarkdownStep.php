@@ -44,7 +44,10 @@ final class ProcessMarkdownStep extends AbstractStep
         ) {
             return $inputFile
                 ->withContent(
-                    preg_replace(
+                    // Errors are converted into exceptions by the
+                    // custom error handler, so "preg_replace" will
+                    // always return a string.
+                    (string) preg_replace(
                         "/{$headings[1]}\n=+\n/",
                         '',
                         $content,

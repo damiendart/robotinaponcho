@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 
 final class GenerateSlugsStep extends AbstractStep
 {
@@ -23,7 +23,7 @@ final class GenerateSlugsStep extends AbstractStep
     /** @var string[] */
     private const TEMPLATE_EXTENSIONS = ['twig'];
 
-    protected function process(Inputfile $inputFile): Inputfile
+    protected function process(InputFile $inputFile): InputFile
     {
         return $inputFile->withAdditionalMetadata(
             ['slug' => $this->slugify($inputFile->outputPath)],

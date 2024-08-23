@@ -23,6 +23,7 @@ tasks:
       - task: 'dependencies'
       - task: 'build'
       - task: 'lint'
+      - task: 'static-analysis'
     desc: 'Run all default CI-related tasks'
 
   ci:end-to-end:
@@ -189,6 +190,21 @@ tasks:
     cmds:
       - task: 'ci'
     desc: 'Run all development environment setup tasks'
+
+  static-analysis:
+    cmds:
+      - task: 'static-analysis:php'
+    desc: 'Run all static-analysis-related tasks'
+
+  static-analysis:php:
+    cmds:
+      - task: 'static-analysis:php:phpstan'
+    desc: 'Run all PHP static-analysis-related tasks'
+
+  static-analysis:php:phpstan:
+    cmds:
+      - 'protected/vendor/bin/phpstan analyse --no-progress'
+    desc: 'Analyse PHP files with PHPStan'
 
   test:end-to-end:
     cmds:

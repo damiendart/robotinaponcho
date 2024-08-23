@@ -15,7 +15,7 @@ use StaticSiteGenerator\InputFile;
 /** @implements \IteratorAggregate<array-key, InputFile> */
 final class InputFileCollection implements \IteratorAggregate
 {
-    private array $collections = [];
+    /** @var InputFile[] */
     private array $inputFiles;
 
     public function __construct(InputFile ...$inputFiles)
@@ -46,6 +46,8 @@ final class InputFileCollection implements \IteratorAggregate
         foreach ($this->inputFiles as $inputFile) {
             $slug = $inputFile->metadata['slug'];
 
+            \assert(\is_string($slug));
+
             if (
                 'robots.txt' === $slug
                 || 'sitemap.xml' === $slug
@@ -55,17 +57,19 @@ final class InputFileCollection implements \IteratorAggregate
                 continue;
             }
 
-            $entries[] = new SitemapEntry(
-                $inputFile->metadata['sitemapTitle']
+            $title = $inputFile->metadata['sitemapTitle']
                 ?? $inputFile->metadata['title']
-                ?? $slug,
-                $slug,
-            );
+                ?? $slug;
+
+            \assert(\is_string($title));
+
+            $entries[] = new SitemapEntry($title, $slug);
         }
 
         return $entries;
     }
 
+    /** @return array<string, InputFile[]> */
     public function getCollections(): array
     {
         static $collections;

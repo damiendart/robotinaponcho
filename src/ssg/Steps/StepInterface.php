@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 
 interface StepInterface
 {
     /** @return InputFile[] */
-    public function run(Inputfile ...$inputFiles): array;
+    public function run(InputFile ...$inputFiles): array;
 }

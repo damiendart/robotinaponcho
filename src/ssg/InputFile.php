@@ -14,6 +14,7 @@ final readonly class InputFile
 {
     private ?string $modifiedContent;
 
+    /** @param mixed[] $metadata */
     public function __construct(
         public string $source,
         public string $outputPath,
@@ -35,10 +36,16 @@ final readonly class InputFile
 
     private function getOriginalContent(): string
     {
-        // TODO: Handle false return.
-        return file_get_contents($this->source);
+        $content = file_get_contents($this->source);
+
+        // Errors are converted into exceptions by the custom error
+        // handler, so "file_get_contents" will always return a string.
+        \assert(\is_string($content));
+
+        return $content;
     }
 
+    /** @param mixed[] $metadata */
     public function withAdditionalMetadata(array $metadata): self
     {
         return $this->withMetadata(
@@ -66,6 +73,7 @@ final readonly class InputFile
         );
     }
 
+    /** @param mixed[] $metadata */
     public function withMetadata(array $metadata): self
     {
         return new self(

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 use StaticSiteGenerator\ValueObjects\GitMetadata;
 use Symfony\Component\Yaml\Parser;
 
@@ -25,7 +25,7 @@ final class ProcessFrontMatterStep extends AbstractStep
         private readonly Parser $yamlParser,
     ) {}
 
-    protected function process(Inputfile $inputFile): Inputfile
+    protected function process(InputFile $inputFile): InputFile
     {
         foreach (self::FRONT_MATTER_REGEXES as $regex) {
             if (
@@ -34,7 +34,7 @@ final class ProcessFrontMatterStep extends AbstractStep
             ) {
                 $content = str_replace($matches[0], '', $inputFile->getContent());
 
-                /** @var array{array-key, mixed} $metadata */
+                /** @var mixed[] $metadata */
                 $metadata = $this->yamlParser->parse($matches[1]) ?? [];
 
                 if (\array_key_exists('git', $metadata)) {
@@ -59,8 +59,8 @@ final class ProcessFrontMatterStep extends AbstractStep
         }
 
         return new GitMetadata(
-            \DateTimeImmutable::createFromFormat('U', $parts[2]),
-            \DateTimeImmutable::createFromFormat('U', $parts[4]),
+            new \DateTimeImmutable('@' . $parts[2]),
+            new \DateTimeImmutable('@' . $parts[4]),
             $parts[1],
             $parts[3],
         );

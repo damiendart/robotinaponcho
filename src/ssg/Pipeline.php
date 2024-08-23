@@ -14,6 +14,7 @@ use StaticSiteGenerator\Steps\StepInterface;
 
 final readonly class Pipeline implements StepInterface
 {
+    /** @var StepInterface[] */
     private array $steps;
 
     public function __construct(StepInterface ...$steps)

@@ -49,6 +49,8 @@
     "friendsofphp/php-cs-fixer": "^3.59.3",
     "league/commonmark": "^2.4",
     "michelf/php-smartypants": "^1.8.1",
+    "phpstan/phpstan": "^1.11",
+    "phpstan/phpstan-strict-rules": "^1.6",
     "phpunit/phpunit": "^11.2.5",
     "roave/security-advisories": "dev-latest",
     "symfony/yaml": "^7.1",

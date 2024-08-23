@@ -12,11 +12,14 @@ namespace StaticSiteGenerator\ValueObjects;
 
 final class SiteMetadata
 {
+    /** @var mixed[] */
     public array $metadata;
 
     public function __construct()
     {
-        $releaseTimestamp = getenv('RELEASE_TIMESTAMP') ?: (new \DateTimeImmutable())->format('YmdHis');
+        $releaseTimestamp = false === getenv('RELEASE_TIMESTAMP')
+            ? (new \DateTimeImmutable())->format('YmdHis')
+            : getenv('RELEASE_TIMESTAMP');
 
         $this->metadata = [
             'author' => 'Damien Dart',

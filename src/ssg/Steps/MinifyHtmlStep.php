@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
-use StaticSiteGenerator\Inputfile;
+use StaticSiteGenerator\InputFile;
 use voku\helper\HtmlMin;
 
 final class MinifyHtmlStep extends AbstractStep
@@ -27,7 +27,7 @@ final class MinifyHtmlStep extends AbstractStep
             ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
     }
 
-    protected function process(Inputfile $inputFile): Inputfile
+    protected function process(InputFile $inputFile): InputFile
     {
         if (! str_ends_with($inputFile->outputPath, 'html')) {
             return $inputFile;
@@ -85,12 +85,14 @@ final class MinifyHtmlStep extends AbstractStep
         $content = $this->minifier->minify($content);
 
         // HTMLMin adds superfluous whitespace between block elements.
-        $content = preg_replace(
+        // Errors are converted into exceptions by the custom error
+        // handler, so "preg_replace" will always return a string.
+        $content = (string) preg_replace(
             "/({$elementRegexGroup})>\\s</",
             '$1><',
             $content,
         );
-        $content = preg_replace(
+        $content = (string) preg_replace(
             "#>\\s<(/?({$elementRegexGroup}))#",
             '><$1',
             $content,
@@ -100,14 +102,17 @@ final class MinifyHtmlStep extends AbstractStep
             // Add the scheme and domain name back to canonical link
             // URLs to prevent any future shenanigans (if the site gets
             // mirrored, for example).
-            $content = preg_replace(
+            $content = (string) preg_replace(
                 '/<link href=(\S+) rel=canonical>/',
                 '<link href=https://www.robotinaponcho.net$1 rel=canonical>',
                 $content,
             );
         }
 
-        return preg_replace_callback(
+        // Errors are converted into exceptions by the custom error
+        // handler, so "preg_replace_callback" will always return a
+        // string in this instance.
+        return (string) preg_replace_callback(
             '/(&#\d+;)/',
             static function ($match): string {
                 return mb_convert_encoding(

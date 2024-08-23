@@ -56,6 +56,7 @@ final readonly class StaticSiteGenerator
         return 0;
     }
 
+    /** @return InputFile[] */
     private function getInputFiles(): array
     {
         $files = new \RecursiveCallbackFilterIterator(
@@ -69,6 +70,8 @@ final readonly class StaticSiteGenerator
         );
         $inputDirectory = realpath($this->inputDirectory);
         $inputFiles = [];
+
+        \assert(\is_string($inputDirectory));
 
         /** @var \SplFileInfo $file */
         foreach (new \RecursiveIteratorIterator($files) as $file) {

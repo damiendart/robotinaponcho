@@ -59,7 +59,10 @@ final readonly class TwigEnvironmentFactory
                         return $string;
                     }
 
-                    return preg_replace(
+                    // Errors are converted into exceptions by the
+                    // custom error handler, so "preg_replace" will
+                    // always return a string.
+                    return (string) preg_replace(
                         '/\s+(\S+)$/',
                         '&#160;$1',
                         rtrim($string),
