@@ -44,9 +44,6 @@ managed to automate everything:
     icons to take ages to update when you start with an empty dock by
     manually applying [a fix available on GitHub][] to
     <span class="os-menu-item">/usr/<wbr>share/<wbr>gnome-shell/<wbr>extensions/<wbr>ubuntu-dock@ubuntu.com/<wbr>dash.js</span>.
--   Disable unnecessary Gnome animations by running
-    `gsettings set org.gnome.desktop.interface enable-animations false`
-    in the command-line.
 -   In Firefox: install the [1Password extension][], change the default
     search engine to DuckDuckGo, and hide all the junk from the new tab
     screen. I also sign in to my Mozilla account to enable syncing
