@@ -24,11 +24,6 @@ final readonly class InputFile
         $this->modifiedContent = $content;
     }
 
-    public function hasModifiedContent(): bool
-    {
-        return null !== $this->modifiedContent;
-    }
-
     public function getContent(): string
     {
         return $this->modifiedContent ?? $this->getOriginalContent();
@@ -43,6 +38,11 @@ final readonly class InputFile
         \assert(\is_string($content));
 
         return $content;
+    }
+
+    public function hasModifiedContent(): bool
+    {
+        return null !== $this->modifiedContent;
     }
 
     /** @param mixed[] $metadata */
@@ -63,16 +63,6 @@ final readonly class InputFile
         );
     }
 
-    public function withOutputPath(string $outputPath): self
-    {
-        return new self(
-            $this->source,
-            $outputPath,
-            $this->metadata,
-            $this->hasModifiedContent() ? $this->getContent() : null,
-        );
-    }
-
     /** @param mixed[] $metadata */
     public function withMetadata(array $metadata): self
     {
@@ -80,6 +70,16 @@ final readonly class InputFile
             $this->source,
             $this->outputPath,
             $metadata,
+            $this->hasModifiedContent() ? $this->getContent() : null,
+        );
+    }
+
+    public function withOutputPath(string $outputPath): self
+    {
+        return new self(
+            $this->source,
+            $outputPath,
+            $this->metadata,
             $this->hasModifiedContent() ? $this->getContent() : null,
         );
     }
