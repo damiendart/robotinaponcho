@@ -126,8 +126,8 @@ My open-source software is available as Git repositories, either from
 **[yassg][]**
 :   Yet another static site generator, written in PHP. Initially written
     just for my personal site, I had a go at turning it into something
-    others could use. I lost interest and went back to a simpler, more
-    opinionated generator.
+    others could use. I lost interest and went back to a simple, bespoke
+    generator for my personal site.
 
   [Bastard Snake]: <https://github.com/damiendart/bastardsnake>
   [knr-solutions]: <https://github.com/damiendart/knr-solutions>
