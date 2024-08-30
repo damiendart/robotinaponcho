@@ -6,10 +6,8 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set contentClasses = 'content--wide' %}
-
 {% block heading %}
-    <div class="image-and-text">
+    <div class="image-and-text u-content__max">
         <div class="image-and-text__image">
             <picture class="robot__robot" id="content">
                 <source srcset="/assets/homepage-robot.{{ site.releaseTimestamp }}.avif, /assets/homepage-robot@2x.{{ site.releaseTimestamp }}.avif 2x" type="image/avif">

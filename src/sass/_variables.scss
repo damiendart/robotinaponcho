@@ -15,8 +15,7 @@ $breakpoints: (
   x-small: 320px,
   small: 480px,
   medium: 768px,
-  content-max: 848px,
-  content-wider-max: 984px,
+  feature: 984px,
   large: 1024px,
   x-large: 1140px,
 );
@@ -43,8 +42,12 @@ $colour-pink-500: oklch(69.24% 0.1765 1.25);
 $colour-pink-600: oklch(63.96% 0.1968 3.187);
 $colour-pink-700: oklch(58.81% 0.201 5.248);
 
-$container-width: functions.px-to-rem(720px) + ($base-line-height * 2);
-$container-width-wider: functions.px-to-rem(920px) + ($base-line-height * 2);
+$content-widths: (
+  content: 720px,
+  wide: 784px,
+  max: 920px,
+  navigation: 984px,
+);
 
 // Font stacks based on those on <https://modernfontstacks.com/>.
 

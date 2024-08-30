@@ -11,7 +11,7 @@
   grid-gap: variables.$base-line-height;
   grid-template-rows: auto auto;
 
-  @include mixins.breakpoint-up(content-wider-max) {
+  @include mixins.breakpoint-up(feature) {
     grid-gap: variables.$base-line-height * 1.5;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;

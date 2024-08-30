@@ -1,0 +1,43 @@
+// Copyright (C) Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:map";
+@use "../functions";
+@use "../variables";
+
+.u-content {
+  $gutter: variables.$base-line-height;
+  $width-content: functions.px-to-rem(map.get(variables.$content-widths, content));
+  $width-max-content: functions.px-to-rem(map.get(variables.$content-widths, max));
+  $width-wide-content: functions.px-to-rem(map.get(variables.$content-widths, wide));
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(#{$gutter}, 1fr)
+    [max-content-start] minmax(0, #{($width-max-content - $width-wide-content) * 0.5})
+    [wide-content-start] minmax(0, #{($width-wide-content - $width-content) * 0.5})
+    [content-start] min(#{$width-content}, 100% - #{$gutter * 2}) [content-end]
+    minmax(0, #{($width-wide-content - $width-content) * 0.5}) [wide-content-end]
+    minmax(0, #{($width-max-content - $width-wide-content) * 0.5}) [max-content-end]
+    minmax(#{$gutter}, 1fr) [full-width-end];
+  grid-template-rows: min-content;
+  position: relative;
+
+  & > * {
+    grid-column: content;
+  }
+
+  & > &__full-width {
+    grid-column: full-width;
+  }
+
+  & > &__max {
+    grid-column: max-content;
+  }
+
+  & > pre,
+  & > &__wide {
+    grid-column: wide-content;
+  }
+}

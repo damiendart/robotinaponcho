@@ -21,8 +21,8 @@
 
   & > h1 + *,
   & > h1 + h2,
-  & > * + #{$s}__widest,
-  & > #{$s}__widest + * {
+  & > * + &__xl,
+  & > &__xl + * {
     margin-top: variables.$base-line-height * 2;
   }
 
@@ -36,11 +36,8 @@
     margin-top: variables.$base-line-height;
   }
 
-  & > details + details {
-    margin-top: 0;
-  }
-
-  & > * + #{$s}__hug {
+  & > details + details,
+  & > &__cozy + &__cozy {
     margin-top: 0;
   }
 }
