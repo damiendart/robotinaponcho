@@ -7,7 +7,7 @@ collections:
   - 'command-line'
   - 'notes'
 git: '$Metadata$'
-twigTemplate: .templates/base-note.html.twig
+template: .templates/base-note.html.twig
 --->
 
 HTTP Timing Summary with cURL

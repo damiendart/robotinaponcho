@@ -17,7 +17,7 @@
             <a href="https://github.com/damiendart/robotinaponcho/commit/{{ git.updatedHash }}">{{ git.updatedAt | date('d M, Y \\a\\t H:i') }}</a>.</em></p>
     {% endif %}
 
-    {{ renderedMarkdown | raw }}
+    {{ content | raw }}
 {% endblock %}
 
 {% block headCustom %}

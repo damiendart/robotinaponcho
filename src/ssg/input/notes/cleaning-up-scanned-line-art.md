@@ -7,7 +7,7 @@ collections:
   - 'adobe-creative-cloud'
   - 'notes'
 git: '$Metadata$'
-twigTemplate: .templates/base-note.html.twig
+template: .templates/base-note.html.twig
 --->
 
 Cleaning Up Scanned Line Art in Adobe Photoshop

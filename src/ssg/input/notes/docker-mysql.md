@@ -7,7 +7,7 @@ collections:
   - 'docker'
   - 'notes'
 git: '$Metadata$'
-twigTemplate: .templates/base-note.html.twig
+template: .templates/base-note.html.twig
 --->
 
 Running an Ad-Hoc MySQL Instance Locally with Docker

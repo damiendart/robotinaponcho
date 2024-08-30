@@ -5,8 +5,8 @@
 
 description: 'Download FlippyWindow, a simple Windows application that non-destructively flips any part of your screen.'
 section: 'projects'
+template: '.templates/base-flippywindow.html.twig'
 title: 'FlippyWindow'
-twigTemplate: '.templates/base-flippywindow.html.twig'
 --->
 
 ## Frequently asked questions

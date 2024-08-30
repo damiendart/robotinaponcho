@@ -5,7 +5,7 @@
 
 description: "View a bunch of Damien Dart's projects."
 section: 'projects'
-twigTemplate: '.templates/base-markdown.html.twig'
+template: '.templates/base-markdown.html.twig'
 --->
 
 Projects

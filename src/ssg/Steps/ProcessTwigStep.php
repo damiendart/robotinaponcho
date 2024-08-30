@@ -41,12 +41,7 @@ final class ProcessTwigStep extends AbstractStep
 
     protected function process(InputFile $inputFile): InputFile
     {
-        if (
-            !(
-                str_ends_with($inputFile->outputPath, 'twig')
-                || \array_key_exists('twigTemplate', $inputFile->metadata)
-            )
-        ) {
+        if (false === $this->shouldProcess($inputFile)) {
             return $inputFile;
         }
 
@@ -60,9 +55,9 @@ final class ProcessTwigStep extends AbstractStep
         $context = $inputFile->metadata;
         $environment = $this->twigEnvironmentFactory->make($chainLoader);
 
-        if (\array_key_exists('twigTemplate', $inputFile->metadata)) {
-            $template = $inputFile->metadata['twigTemplate'];
-            $context['renderedMarkdown'] = $inputFile->getContent();
+        if (\array_key_exists('template', $inputFile->metadata)) {
+            $template = $inputFile->metadata['template'];
+            $context['content'] = $inputFile->getContent();
         } else {
             $template = $inputFile->outputPath;
         }
@@ -85,5 +80,21 @@ final class ProcessTwigStep extends AbstractStep
         }
 
         return $pathname;
+    }
+
+    private function shouldProcess(InputFile $inputFile): bool
+    {
+        if (str_ends_with($inputFile->outputPath, 'twig')) {
+            return true;
+        }
+
+        if (
+            \array_key_exists('template', $inputFile->metadata)
+            && str_ends_with($inputFile->metadata['template'], 'twig')
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }

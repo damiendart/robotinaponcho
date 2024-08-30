@@ -7,7 +7,7 @@ collections:
   - 'jetbrains-ides'
   - 'notes'
 git: '$Metadata$'
-twigTemplate: .templates/base-note.html.twig
+template: .templates/base-note.html.twig
 --->
 
 My PhpStorm Customisations and Settings

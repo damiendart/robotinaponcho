@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'obsidian'
 git: '$Metadata$'
-twigTemplate: .templates/base-note.html.twig
+template: .templates/base-note.html.twig
 --->
 
 My Obsidian Customisations and Settings
