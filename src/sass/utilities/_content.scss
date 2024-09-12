@@ -15,29 +15,30 @@
   display: grid;
   grid-template-columns:
     [full-width-start] minmax(#{$gutter}, 1fr)
-    [max-content-start] minmax(0, #{($width-max-content - $width-wide-content) * 0.5})
-    [wide-content-start] minmax(0, #{($width-wide-content - $width-content) * 0.5})
-    [content-start] min(#{$width-content}, 100% - #{$gutter * 2}) [content-end]
-    minmax(0, #{($width-wide-content - $width-content) * 0.5}) [wide-content-end]
-    minmax(0, #{($width-max-content - $width-wide-content) * 0.5}) [max-content-end]
+    [max-content-start] min(#{$width-max-content}, 100% - #{$gutter * 2}) [max-content-end]
     minmax(#{$gutter}, 1fr) [full-width-end];
   grid-template-rows: min-content;
-  position: relative;
 
   & > * {
-    grid-column: content;
+    grid-column: max-content;
+    margin-inline: auto;
+    max-width: $width-content;
+    width: 100%;
   }
 
+  & > pre,
+  & > table,
   & > &__full-width {
     grid-column: full-width;
   }
 
   & > &__max {
-    grid-column: max-content;
+    max-width: 100%;
   }
 
   & > pre,
+  & > table,
   & > &__wide {
-    grid-column: wide-content;
+    max-width: $width-wide-content;
   }
 }
