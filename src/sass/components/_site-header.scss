@@ -30,7 +30,7 @@
   }
 
   &__container {
-    $width: functions.px-to-rem(map.get(variables.$content-widths, navigation));
+    $width: functions.px-to-rem(map.get(variables.$content-widths, header));
 
     align-items: center;
     display: flex;

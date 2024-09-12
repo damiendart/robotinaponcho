@@ -85,8 +85,20 @@ code {
   line-height: 1;
 }
 
-dd {
-  margin: 0 0 0 math.div(variables.$base-line-height, 2);
+dl {
+  margin: 0;
+  padding: 0;
+
+  dd {
+    margin: 0;
+    padding: 0;
+  }
+
+  &:not([class]) {
+    dd {
+      margin: 0 0 0 math.div(variables.$base-line-height, 2);
+    }
+  }
 }
 
 details {
@@ -197,7 +209,7 @@ figure {
   }
 }
 
-h1:not([class]) {
+h1 {
   font-size: 225%;
   letter-spacing: variables.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;

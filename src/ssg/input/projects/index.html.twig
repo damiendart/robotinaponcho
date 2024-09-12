@@ -1,0 +1,121 @@
+{#---
+# Copyright (C) Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more
+# information, please refer to the accompanying "LICENCE" file.
+
+description: "View a bunch of Damien Dart's projects."
+section: 'projects'
+title: 'Projects'
+---#}
+
+{% extends '.templates/base.html.twig' %}
+
+{%
+    set activeProjects, inactiveProjects = {
+        'brainfuck': {
+            'description': 'A simple brainfuck interpreter written in C.',
+            'url': 'https://github.com/damiendart/brainfuck',
+        },
+        'FlippyWindow': {
+            'description': 'A simple Windows application that non-destructively flips any part of your screen horizontally.',
+            'url': 'https://www.robotinaponcho.net/projects/flippywindow/',
+        },
+        'kew': {
+            'description': 'A very basic SQLite-backed background task queue, written in PHP.',
+            'url': 'https://github.com/damiendart/kew',
+        },
+        'My solutions to the Advent of Code': {
+            'description': 'So far there’s solutions to about half of the 2021 Advent of Code, written in Go.',
+            'url': 'https://github.com/damiendart/adventofcode',
+        },
+        'nt': {
+            'description': 'A personal note-taking helper command-line application.',
+            'url': 'https://github.com/damiendart/nt',
+        },
+        'pathshorten': {
+            'description': 'An implementation of Vim’s <code>pathshorten</code> function written in Go.',
+            'url': 'https://github.com/damiendart/pathshorten',
+        },
+        'robotinaponcho': {
+            'description': 'The source code to my personal site (you’re on it now).',
+            'url': 'https://github.com/damiendart/robotinaponcho',
+        },
+        'setup': {
+            'description': 'A bunch of (mainly Ansible) stuff I use to provision and maintain my personal infrastructure.',
+            'url': 'https://github.com/damiendart/setup',
+        },
+        'snippets': {
+            'description': 'A repository of code and text snippets, and a simple application for expanding placeholder content.',
+            'url': 'https://github.com/damiendart/snippets',
+        },
+        'Time Tracker': {
+            'description': 'A simple local-only time tracker web application, written using Vue.',
+            'url': 'https://github.com/damiendart/timetracker',
+        },
+        'toolbox': {
+            'description': 'Dotfiles and small scripts that don’t warrant their own repository.',
+            'url': 'https://github.com/damiendart/toolbox',
+        },
+    },
+    {
+        'Bastard Snake': {
+            'description': 'Written in Haxe, Bastard Snake set out to be a Snake clone that didn’t like you getting many points, but only got as far as making collecting points slightly inconvenient.',
+            'url': 'https://github.com/damiendart/bastardsnake',
+        },
+        'knr-solutions': {
+            'description': 'My incomplete set of solutions to the exercises in <em>The C Programming Language (Second Edition).</em>',
+            'url': 'https://github.com/damiendart/knr-solutions',
+        },
+        'nfsnapi-python': {
+            'description': 'When I used to use <a href="https://www.nearlyfreespeech.net/">NearlyFreeSpeech.NET</a>, I wrote a simple Python package that made using their API a little easier. (Be aware that I wrote this during my <em>cram-as-much-shit-into-as-few-lines-as-possible</em> phase.)',
+            'url': 'https://github.com/damiendart/nfsnapi-python',
+        },
+        'notes': {
+            'description': 'Various notes on stuff. These notes have since been merged into my personal website repository, where I continue to update them.',
+            'url': 'https://github.com/damiendart/notes',
+        },
+        'obtaincornhoop': {
+            'description': 'Back when I had a Tumblr weblog, I created a custom theme for it. The name is an anagram of “robot in a poncho”.',
+            'url': 'https://github.com/damiendart/obtaincornhoop',
+        },
+        'Timeline': {
+            'description': 'A Laravel web application for displaying and maintaining a timeline, kinda like the one at <a href="https://www.jetbrains.com/lp/php-25/">JetBrains’ 25 Years of PHP History</a>. I lost interest in tinkering with this in my spare time when I started writing a similar internal application for work.',
+            'url': 'https://github.com/damiendart/timeline',
+        },
+        'toolbox-sass': {
+            'description': 'A library of web-development-related stuff. I took the best bits and added them to my general-purpose snippet library instead. The name was getting increasingly inaccurate, too.',
+            'url': 'https://github.com/damiendart/toolbox-sass',
+        },
+        'yassg': {
+            'description': 'Yet another static site generator, written in PHP. Initially written just for my personal site, I had a go at turning it into something others could use. I lost interest and went back to a simpler, more opinionated generator.',
+            'url': 'https://github.com/damiendart/yassg',
+        },
+    }
+%}
+
+{% block content %}
+    <dl class="project-list u-content__max u-stack__md">
+        {% for title, project in activeProjects %}
+            <div class="project-list__item u-stack u-stack--flex">
+                <dt class="u-stack__split"><strong><a href="{{ project.url }}"><strong>{{ title | widont }}</a></strong></dt>
+                <dd>{{ project.description | widont }}</dd>
+            </div>
+        {% endfor %}
+    </dl>
+
+    <p>See also <a href="/crap/">The Folder of Crap</a>.</p>
+
+    <h2 id="inactive">Abandoned and deprecated projects</h2>
+    <dl>
+        {% for title, project in inactiveProjects %}
+            <dt><strong><a href="{{ project.url }}">{{ title }}</a></strong></dt>
+            <dd>{{ project.description | raw }}</dd>
+        {% endfor %}
+    </dl>
+
+    <h2>Contributions to other projects</h2>
+    <ul>
+        <li>I’ve had <a href="https://github.com/getkirby/kirby/pulls?q=is%3Apr+author%3Adamiendart">a few small pull requests</a> accepted into <a href="https://getkirby.com/">Kirby</a>, a file-based PHP CMS.</li>
+        <li>I’ve contributed <a href="https://github.com/kangax/html-minifier/pulls?q=is%3Apr+author%3Adamiendart">a couple of CLI bug-fixes</a> to <a href="https://github.com/kangax/html-minifier">HTMLMinifier</a>, a JavaScript-based HTML minifier.</li>
+    </ul>
+{% endblock %}

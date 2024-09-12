@@ -9,6 +9,10 @@
 .u-stack {
   $s: &;
 
+  & > * {
+    margin-top: 0;
+  }
+
   & > * + * {
     margin-top: math.div(variables.$base-line-height, 2);
   }
@@ -19,25 +23,38 @@
     }
   }
 
-  & > h1 + *,
-  & > h1 + h2,
-  & > * + &__xl,
-  & > &__xl + * {
-    margin-top: variables.$base-line-height * 2;
+  & > :where(* + h3),
+  & > :where(* + img),
+  & > :where(img + *),
+  & > :where(* + &__md),
+  & > :where(&__md + *) {
+    margin-top: variables.$base-line-height;
   }
 
-  & > * + h2 {
+  & > :where(* + h2),
+  & > :where(* + &__lg),
+  & > :where(&__lg + *) {
     margin-top: variables.$base-line-height * 1.5;
   }
 
-  & > * + h3,
-  & > * + img,
-  & > img + * {
-    margin-top: variables.$base-line-height;
+  & > :where(h1 + *),
+  & > :where(* + &__xl),
+  & > :where(&__xl + *) {
+    margin-top: variables.$base-line-height * 2;
   }
 
   & > details + details,
   & > &__cozy + &__cozy {
     margin-top: 0;
+  }
+
+  &--flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    & > #{$s}__split {
+      margin-block-end: auto;
+    }
   }
 }
