@@ -38,7 +38,7 @@ abstract class AbstractStep implements StepInterface
                 );
             } catch (\Throwable $throwable) {
                 throw new \RuntimeException(
-                    sprintf('Unable to process "%s"', $inputFile->source),
+                    \sprintf('Unable to process "%s"', $inputFile->source),
                     previous: $throwable,
                 );
             }

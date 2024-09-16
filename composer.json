@@ -40,21 +40,21 @@
     "ext-json": "*",
     "ext-mbstring": "*",
     "filp/whoops": "^2.15.4",
-    "guzzlehttp/guzzle": "^7.8.1",
+    "guzzlehttp/guzzle": "^7.9.2",
     "php": "8.2.*",
     "sentry/sdk": "^3.6"
   },
   "require-dev": {
     "ext-dom": "*",
-    "friendsofphp/php-cs-fixer": "^3.59.3",
-    "league/commonmark": "^2.4",
+    "friendsofphp/php-cs-fixer": "^3.64.0",
+    "league/commonmark": "^2.5.3",
     "michelf/php-smartypants": "^1.8.1",
-    "phpstan/phpstan": "^1.11",
+    "phpstan/phpstan": "^1.12.3",
     "phpstan/phpstan-strict-rules": "^1.6",
-    "phpunit/phpunit": "^11.2.5",
+    "phpunit/phpunit": "^11.3.5",
     "roave/security-advisories": "dev-latest",
-    "symfony/yaml": "^7.1",
-    "twig/twig": "^3.10",
+    "symfony/yaml": "^7.1.4",
+    "twig/twig": "^3.14",
     "voku/html-min": "^4.5.1"
   },
   "type": "project"
