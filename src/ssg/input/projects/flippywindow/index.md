@@ -13,15 +13,14 @@ title: 'FlippyWindow'
 
 ### Can’t I just use any image editor to do what FlippyWindow does?
 
-As far as I’m aware, [Adobe Photoshop CC 2019][] (and later), [Clip
-Paint Studio][], [Krita][], and [PaintTool SAI][] have features that
-allow you to non-destructively change how you view an image. I built
-FlippyWindow at a time when the applications I was using lacked such a
-feature, and the crappy laptop I had wasn't loving having to repeatedly
-flip large images the old-fashioned way.
+Last time I looked, [Adobe Photoshop CC 2019][] (and later), [Clip Paint
+Studio][], [Krita][], and [PaintTool SAI][] have features that allow you
+to non-destructively change how you view an image.
 
-Plus, I was curious to see if making something like FlippyWindow was
-possible.
+I built FlippyWindow because, at the time, all I could do was repeatedly
+flip images the “old-fashioned” away, which made my crappy underpowered
+laptop very sad. (Plus I was curious to see if something like
+FlippyWindow was even possible.)
 
 FlippyWindow can also help you spot visual issues in work outside of
 image editors, including animations, application user interfaces, and
@@ -49,27 +48,38 @@ anything.
 
 You can download FlippyWindow from this website:
 
-- [Download a ZIP archive containing a 32-bit binary of FlippyWindow][].
-- [Download a ZIP archive containing a 64-bit binary of FlippyWindow][].
+-   [Download a ZIP archive containing a 32-bit FlippyWindow binary][].
+-   [Download a ZIP archive containing a 64-bit FlippyWindow binary][].
 
 If you are unsure which archive to download, the 64-bit version is
 usually your best bet. [SHA-256 checksums][] are also available to
 verify the archive downloads (either from here or itch.io).
 
-  [Download a ZIP archive containing a 32-bit binary of FlippyWindow]: <https://www.robotinaponcho.net/projects/flippywindow/flippywindow-32-bit.zip>
-  [Download a ZIP archive containing a 64-bit binary of FlippyWindow]: <https://www.robotinaponcho.net/projects/flippywindow/flippywindow-64-bit.zip>
+<h3 id="open-source">Is FlippyWindow open-source?</h3>
+
+FlippyWindow’s source code is licenced under [the MIT licence][] and is
+available on [my personal site][] and [GitHub][].
+
+  [itch.io]: <https://itch.io/>
+  [Download a ZIP archive containing a 32-bit FlippyWindow binary]: <https://www.robotinaponcho.net/projects/flippywindow/flippywindow-32-bit.zip>
+  [Download a ZIP archive containing a 64-bit FlippyWindow binary]: <https://www.robotinaponcho.net/projects/flippywindow/flippywindow-64-bit.zip>
   [SHA-256 checksums]: <https://www.robotinaponcho.net/projects/flippywindow/flippywindow-checksums.txt>
+  [the MIT licence]: <https://github.com/damiendart/flippywindow/blob/master/LICENCE>
+  [my personal site]: <https://www.robotinaponcho.net/git/#flippywindow>
+  [GitHub]: <https://github.com/damiendart/flippywindow>
 
 ### Will earlier versions of Windows, Linux and macOS be supported?
 
-FlippyWindow uses APIs that were introduced in Windows 8 (specifically
-the second release of the Magnification API). At the moment there are
-no plans to rewrite FlippyWindow to support earlier versions of Windows
-and other operating systems.
+FlippyWindow (ab)uses APIs that were introduced in Windows 8
+(specifically the second release of the Magnification API).
+
+FlippyWindow works on the operating systems I use, so there are no plans
+to investigate whether FlippyWindow can support earlier versions of
+Windows and other operating systems.
 
 
 ## Changelog
 
 ### Version 1.0.0 (01/04/2018)
 
-- Initial release.
+-   Initial release.
