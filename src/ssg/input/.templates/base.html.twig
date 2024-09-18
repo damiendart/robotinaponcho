@@ -11,6 +11,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="initial-scale=1, width=device-width" name="viewport">
+    <title>{{ metaTitle | smartypants }}</title>
+
+    {#
+        If this script block is modified, the CSP hash in
+        "virtualhost.conf" must be updated accordingly.
+    #}
+    <script>document.documentElement.className+='javascript';localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))</script>
 
     {% block head %}
         <link href="/assets/style.{{ site.releaseTimestamp }}.css" rel="stylesheet">
@@ -18,6 +25,7 @@
 
     <link href="{{ site.urlBase ~ slug }}" rel="canonical">
     <meta content="{{ site.author | smartypants }}" name="author">
+    <meta content="light dark" name="color-scheme">
 
     {% if description is defined %}
         <meta content="{{ description | smartypants }}" name="description">
@@ -28,16 +36,13 @@
     <meta content="{{ metaTitle | smartypants }}" property="og:title">
     <meta content="website" property="og:type">
     <meta content="{{ site.urlBase ~ slug }}" property="og:url">
-    <meta content="{{ site.metaTwitterAuthor | smartypants }}" property="twitter:creator">
-    <meta content="{{ site.metaTwitterSite | smartypants }}" property="twitter:site">
+    <meta content="{{ site.metaTwitterAuthor | smartypants }}" name="twitter:creator">
+    <meta content="{{ site.metaTwitterSite | smartypants }}" name="twitter:site">
     <meta content="summary_large_image" name="twitter:card">
 
     {% if metaNoCrawl | default(false) %}
         <meta content="noindex, nofollow" name="robots">
     {% endif %}
-
-    <script>{% block headJavaScript "document.documentElement.className+='javascript',localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))" %}</script>
-    <title>{{ metaTitle | smartypants }}</title>
 </head>
 <body class="u-stack">
     <header class="page__header">

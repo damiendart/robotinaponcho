@@ -12,7 +12,7 @@ class SitePreferencesDialog extends HTMLElement {
     };
 
     this.innerHTML = `
-        <button id="open-preferences-dialog">Preferences</button>
+        <button id="open-preferences-dialog" type="button">Preferences</button>
         <dialog class="dialog">
           <form method="dialog">
             <div class="dialog__header">
