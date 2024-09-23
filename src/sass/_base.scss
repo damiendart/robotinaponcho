@@ -64,6 +64,10 @@ a {
   color: var(--base-link);
 }
 
+aside {
+  font-style: italic;
+}
+
 body {
   @include mixins.nice-font-rendering;
 

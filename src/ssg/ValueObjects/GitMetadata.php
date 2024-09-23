@@ -13,6 +13,7 @@ namespace StaticSiteGenerator\ValueObjects;
 final readonly class GitMetadata
 {
     public function __construct(
+        public string $path,
         public \DateTimeImmutable $createdAt = new \DateTimeImmutable(),
         public \DateTimeImmutable $updatedAt = new \DateTimeImmutable(),
         public string $createdHash = '0000000000000000000000000000000000000000',

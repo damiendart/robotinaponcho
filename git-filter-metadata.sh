@@ -12,7 +12,7 @@ if [ "$1" = '--smudge' ]; then
   CREATED=$(git log --diff-filter=A --follow --format='%H %ct' -1 -- "$1")
   LAST_UPDATED=$(git log -n 1 --pretty=format:'%H %ct' -- "$1")
 
-  sed "s/\\\$Metadata\\\$/\$Metadata: $CREATED $LAST_UPDATED\$/g"
+  sed "s#\\\$Metadata\\\$#\$Metadata: $CREATED $LAST_UPDATED $1\$#g"
   exit
 fi
 

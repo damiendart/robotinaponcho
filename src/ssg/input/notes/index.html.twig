@@ -47,7 +47,7 @@ title: 'Notes'
 
                 <li class="notes-list__item">
                     <a href="/{{ note.metadata.slug }}">{{ note.metadata.title | smartypants }}</a>
-                    <span class="notes-list__item__meta"><span class="u-visually-hidden">(</span><span>{{ verb }} </span>{{ note.metadata.git.updatedAt | date('d M, Y') }}<span class="u-visually-hidden">)</span></span>
+                    <span class="notes-list__item__meta"><span class="u-visually-hidden">(</span><span>{{ verb }} </span>{{ note.metadata.git.updatedAt | date('F j, Y') }}<span class="u-visually-hidden">)</span></span>
                 </li>
             {% endfor %}
         </ul>

@@ -54,11 +54,12 @@ final class ProcessFrontMatterStep extends AbstractStep
     {
         $parts = explode(' ', trim($keyword, '$'));
 
-        if (5 !== \count($parts)) {
+        if (5 > \count($parts)) {
             throw new \RuntimeException('Unable to parse expanded "Metadata" keyword');
         }
 
         return new GitMetadata(
+            join(' ', \array_slice($parts, 5)),
             new \DateTimeImmutable('@' . $parts[2]),
             new \DateTimeImmutable('@' . $parts[4]),
             $parts[1],
