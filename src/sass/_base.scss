@@ -229,6 +229,7 @@ h2,
 .h2 {
   font-size: 150%;
   line-height: variables.$base-line-height * 1.25;
+  letter-spacing: initial;
   margin: 0;
 }
 
@@ -236,6 +237,7 @@ h3,
 .h3 {
   font-size: 112.5%;
   line-height: variables.$base-line-height;
+  letter-spacing: initial;
   margin: 0;
 }
 
