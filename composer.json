@@ -36,24 +36,24 @@
     "symfony/polyfill-php81": "*"
   },
   "require": {
+    "php": "8.2.*",
     "ext-ctype": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "filp/whoops": "^2.15.4",
+    "filp/whoops": "^2.16.0",
     "guzzlehttp/guzzle": "^7.9.2",
-    "php": "8.2.*",
-    "sentry/sdk": "^3.6"
+    "sentry/sentry": "^4.9"
   },
   "require-dev": {
     "ext-dom": "*",
     "friendsofphp/php-cs-fixer": "^3.64.0",
     "league/commonmark": "^2.5.3",
     "michelf/php-smartypants": "^1.8.1",
-    "phpstan/phpstan": "^1.12.3",
-    "phpstan/phpstan-strict-rules": "^1.6",
-    "phpunit/phpunit": "^11.3.5",
+    "phpstan/phpstan": "^1.12.5",
+    "phpstan/phpstan-strict-rules": "^1.6.1",
+    "phpunit/phpunit": "^11.3.6",
     "roave/security-advisories": "dev-latest",
-    "symfony/yaml": "^7.1.4",
+    "symfony/yaml": "^7.1.5",
     "twig/twig": "^3.14",
     "voku/html-min": "^4.5.1"
   },
