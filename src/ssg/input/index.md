@@ -4,13 +4,12 @@
 # information, please refer to the accompanying "LICENCE" file.
 
 description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
-metaTitle: "Damien Dart's Personal Website"
 sitemapTitle: 'Homepage'
 template: '.templates/homepage.html.twig'
 --->
 
-Hello
-=====
+Damien Dart's Personal Website
+==============================
 
 {.text-medium}
 **Hello!** I’m Damien Dart, a full-time web developer based in South
