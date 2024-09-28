@@ -213,7 +213,8 @@ figure {
   }
 }
 
-h1 {
+h1,
+.text-larger {
   font-size: 225%;
   letter-spacing: variables.$base-one-pixel-in-rem * -1;
   line-height: variables.$base-line-height * 1.5;
@@ -226,7 +227,7 @@ h1 {
 }
 
 h2,
-.h2 {
+.text-large {
   font-size: 150%;
   line-height: variables.$base-line-height * 1.25;
   letter-spacing: initial;
@@ -234,9 +235,9 @@ h2,
 }
 
 h3,
-.h3 {
+.text-medium {
   font-size: 112.5%;
-  line-height: variables.$base-line-height;
+  line-height: variables.$base-line-height * 1.125;
   letter-spacing: initial;
   margin: 0;
 }

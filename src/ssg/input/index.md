@@ -12,6 +12,7 @@ template: '.templates/homepage.html.twig'
 Hello
 =====
 
+{.text-medium}
 **Hello!** I’m Damien Dart, a full-time web developer based in South
 West England, and this is my personal website.
 

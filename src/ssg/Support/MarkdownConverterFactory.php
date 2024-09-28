@@ -12,6 +12,7 @@ namespace StaticSiteGenerator\Support;
 
 use League\CommonMark\ConverterInterface;
 use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
@@ -25,6 +26,7 @@ final class MarkdownConverterFactory
         $environment = new Environment();
 
         $environment
+            ->addExtension(new AttributesExtension())
             ->addExtension(new CommonMarkCoreExtension())
             ->addExtension(new DescriptionListExtension())
             ->addExtension(new SmartPunctExtension())
