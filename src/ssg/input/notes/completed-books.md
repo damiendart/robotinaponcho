@@ -19,6 +19,7 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2024
 
+-   [Children of Ruin][] by Adrian Tchaikovsky (★★★★)
 -   [Before the Coffee Gets Cold][] by Toshikazu Kawaguchi (★★)
 -   [Child of God][] by Cormac McCarthy (★★)
 -   [Go Set a Watchman][] by Harper Lee (★★)
@@ -29,6 +30,7 @@ somewhere easily available will help me stay motivated.
 -   [Death’s End][] by Liu Cixin (★★★★)
 -   [The Dark Forest][] by Liu Cixin (★★★★)
 
+  [Children of Ruin]: <https://en.wikipedia.org/wiki/Children_of_Ruin>
   [Before the Coffee Gets Cold]: <https://en.wikipedia.org/wiki/Before_the_Coffee_Gets_Cold>
   [Child of God]: <https://en.wikipedia.org/wiki/Child_of_God>
   [Go Set a Watchman]: <https://en.wikipedia.org/wiki/Go_Set_a_Watchman>
