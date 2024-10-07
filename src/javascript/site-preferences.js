@@ -12,14 +12,14 @@ class SitePreferencesDialog extends HTMLElement {
     };
 
     this.innerHTML = `
-        <button id="open-preferences-dialog" type="button">Preferences</button>
+        <button aria-haspopup="dialog" id="open-preferences-dialog" type="button">Preferences</button>
         <dialog class="dialog">
           <form method="dialog">
-            <div class="dialog__header">
+            <header class="dialog__header">
               <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
               <hr aria-hidden="true">
-              <h1 class="h3">Preferences</h2>
-            </div>
+              <h1 class="text-medium">Preferences</h1>
+            </header>
             <div class="dialog__body u-stack">
               <p>Your preferences will be saved locally. For more information, see the <a href="/privacy-policy">privacy policy</a>.</p>
               <fieldset class="u-stack">
