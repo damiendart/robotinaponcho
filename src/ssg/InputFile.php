@@ -31,13 +31,9 @@ final readonly class InputFile
 
     private function getOriginalContent(): string
     {
-        $content = file_get_contents($this->source);
-
         // Errors are converted into exceptions by the custom error
         // handler, so "file_get_contents" will always return a string.
-        \assert(\is_string($content));
-
-        return $content;
+        return (string) file_get_contents($this->source);
     }
 
     public function hasModifiedContent(): bool

@@ -68,10 +68,8 @@ final readonly class StaticSiteGenerator
             ),
             static fn (\SplFileInfo $current) => !str_starts_with($current->getFilename(), '.'),
         );
-        $inputDirectory = realpath($this->inputDirectory);
+        $inputDirectory = (string) realpath($this->inputDirectory);
         $inputFiles = [];
-
-        \assert(\is_string($inputDirectory));
 
         /** @var \SplFileInfo $file */
         foreach (new \RecursiveIteratorIterator($files) as $file) {
