@@ -3,6 +3,7 @@
 // please refer to the accompanying "LICENCE" file
 
 @use "sass:math";
+@use "../functions";
 @use "../variables";
 
 .social-share-list {
@@ -31,7 +32,7 @@
           display: inline-block;
           height: variables.$base-line-height * 1.5;
           left: 0;
-          mask: url("icon-check.00000000000000.svg") no-repeat center;
+          mask: functions.cache-bust-url("icon-check.svg") no-repeat center;
           mask-size: variables.$base-line-height * 1.25;
           opacity: 0;
           position: absolute;
@@ -41,7 +42,7 @@
         }
 
         &::before {
-          mask: url("icon-copy.00000000000000.svg");
+          mask: functions.cache-bust-url("icon-copy.svg");
         }
 
         &.clipboard-success {
@@ -59,7 +60,7 @@
     &--facebook {
       a {
         &::before {
-          mask: url("icon-facebook.svg");
+          mask: functions.cache-bust-url("icon-facebook.svg");
         }
       }
     }
@@ -67,7 +68,7 @@
     &--twitter {
       a {
         &::before {
-          mask: url("icon-twitter.00000000000000.svg");
+          mask: functions.cache-bust-url("icon-twitter.svg");
         }
       }
     }
@@ -88,7 +89,7 @@
         transition: background-size 0.125s ease, mask-size 0.125s ease, opacity 0.125s ease;
         width: variables.$base-line-height * 1.5;
 
-        @supports (mask: url("icon-check.00000000000000.svg")) {
+        @supports (mask: functions.cache-bust-url("icon-check.svg")) {
           background: var(--base-link);
         }
       }

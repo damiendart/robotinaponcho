@@ -139,7 +139,7 @@ details {
       content: "";
       display: block;
       height: variables.$base-line-height;
-      mask: url("/assets/icon-chevron.00000000000000.svg") no-repeat center;
+      mask: functions.cache-bust-url("/assets/icon-chevron.svg") no-repeat center;
       mask-size: 40%;
       position: absolute;
       top: 0;

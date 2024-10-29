@@ -3,6 +3,22 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "sass:string";
+
+@function cache-bust-url($url) {
+  @each $e in ".jpg", ".png", ".svg", ".webp", ".woff", ".woff2" {
+    $i: string.length($url) - string.length($e) + 1;
+
+    @if string.slice($url, $i) == $e {
+      // The bunch of zeros is replaced with the release timestamp in a
+      // later step in the asset build pipeline (see the "build:css"
+      // task in "Taskfile.yml" for more information).
+      @return url(string.insert($url, ".00000000000000", $i));
+    }
+  }
+
+  @error 'Unable to cache-bust "#{$url}"';
+}
 
 @function px-to-em($value, $base-font-size: 16px) {
   @return math.div($value, $base-font-size) * 1em;

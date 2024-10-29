@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "../functions";
 @use "../variables";
 
 site-preferences-dialog {
@@ -32,7 +33,7 @@ site-preferences-dialog {
       display: inline-block;
       height: variables.$base-line-height * 0.65;
       margin: auto;
-      mask: url("icon-settings.00000000000000.svg");
+      mask: functions.cache-bust-url("icon-settings.svg");
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: 100%;

@@ -68,7 +68,7 @@
       display: block;
       height: variables.$base-line-height;
       margin-left: functions.px-to-rem(3px);
-      mask: url("/assets/itchio.00000000000000.svg") no-repeat center;
+      mask: functions.cache-bust-url("/assets/itchio.svg") no-repeat center;
       width: functions.px-to-rem(98.25px);
     }
   }
