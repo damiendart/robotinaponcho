@@ -15,12 +15,12 @@ title: 'FlippyWindow'
 
 Last time I looked, [Adobe Photoshop CC 2019][] (and later), [Clip Paint
 Studio][], [Krita][], and [PaintTool SAI][] have features that allow you
-to non-destructively change how you view an image.
+to non-destructively change how you view an image, so chances are
+FlippyWindow isn't necessary.
 
-I built FlippyWindow because, at the time, all I could do was repeatedly
-flip images the “old-fashioned” away, which made my crappy underpowered
-laptop very sad. (Plus I was curious to see if something like
-FlippyWindow was even possible.)
+I built FlippyWindow mainly to see if something like it was possible,
+and because, at the time, I could only flip images the “old-fashioned”
+way which would make my crappy underpowered laptop very sad.
 
 FlippyWindow can also help you spot visual issues in work outside of
 image editors, including animations, application user interfaces, and
