@@ -42,19 +42,19 @@
     "ext-mbstring": "*",
     "filp/whoops": "^2.16.0",
     "guzzlehttp/guzzle": "^7.9.2",
-    "sentry/sentry": "^4.9"
+    "sentry/sentry": "^4.10"
   },
   "require-dev": {
     "ext-dom": "*",
     "friendsofphp/php-cs-fixer": "^3.64.0",
     "league/commonmark": "^2.5.3",
     "michelf/php-smartypants": "^1.8.1",
-    "phpstan/phpstan": "^1.12.5",
+    "phpstan/phpstan": "^1.12.8",
     "phpstan/phpstan-strict-rules": "^1.6.1",
-    "phpunit/phpunit": "^11.3.6",
+    "phpunit/phpunit": "^11.4.3",
     "roave/security-advisories": "dev-latest",
-    "symfony/yaml": "^7.1.5",
-    "twig/twig": "^3.14",
+    "symfony/yaml": "^7.1.6",
+    "twig/twig": "^3.14.2",
     "voku/html-min": "^4.5.1"
   },
   "type": "project"
