@@ -2,10 +2,10 @@
   "author": "Damien Dart",
   "description": "Source code to Damien Dart's personal site.",
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "esbuild": "^0.23.0",
-    "lightningcss-cli": "^1.25.1",
-    "sass": "^1.77.8"
+    "@biomejs/biome": "^1.9.4",
+    "esbuild": "^0.24.0",
+    "lightningcss-cli": "^1.28.1",
+    "sass": "^1.80.6"
   },
   "license": "MIT",
   "name": "robotinaponcho",

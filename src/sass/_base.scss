@@ -76,7 +76,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: variables.$font-stack-base;
-  font-size: percentage(math.div(variables.$base-font-size, 16px));
+  font-size: math.percentage(math.div(variables.$base-font-size, 16px));
   height: 100%;
   line-height: variables.$base-line-height;
   margin: 0;
@@ -85,7 +85,7 @@ body {
 code {
   background: var(--base-highlight);
   font-family: variables.$font-stack-monospace;
-  font-size: percentage(math.div(16px, variables.$base-font-size));
+  font-size: math.percentage(math.div(16px, variables.$base-font-size));
   line-height: 1;
 }
 
@@ -244,7 +244,7 @@ h3,
 
 html {
   @if(variables.$base-font-size > 18px) {
-    font-size: percentage(math.div(18px, variables.$base-font-size));
+    font-size: math.percentage(math.div(18px, variables.$base-font-size));
 
     @include mixins.breakpoint-up(small) {
       font-size: 100%;
