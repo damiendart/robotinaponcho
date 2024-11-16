@@ -21,8 +21,8 @@
     {{ content | raw }}
 {% endblock %}
 
-{% block headCustom %}
+{% block head %}
     {{ parent() }}
-    <link href="{{ site.urlOrigin }}/notes/index.atom" rel="alternate" title="Damien Dart’s Notes (www.robotinaponcho.net)" type="application/atom+xml">
+    <link href="{{ site.urlOrigin }}/notes/index.atom" rel="alternate" title="Damien Dart’s Notes Atom Feed" type="application/atom+xml">
 {% endblock %}
 
