@@ -10,19 +10,19 @@
     <?xml version="1.0" encoding="utf-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">
         <title>Damien Dart’s Notes (www.robotinaponcho.net)</title>
-        <link href="{{ site.urlBase }}notes/"/>
-        <link href="{{ site.urlBase }}notes/index.atom" rel="self"/>
+        <link href="{{ site.urlOrigin }}/notes/"/>
+        <link href="{{ site.urlOrigin }}/notes/index.atom" rel="self"/>
         <updated>{{ lastUpdated | date('c') }}</updated>
         <author>
             <email>{{ site.authorEmail }}</email>
-            <uri>{{ site.urlBase }}</uri>
+            <uri>{{ site.urlOrigin }}/</uri>
             <name>{{ site.author | smartypants }}</name>
         </author>
-        <id>{{ site.urlBase }}notes/index.atom</id>
+        <id>{{ site.urlOrigin }}/notes/index.atom</id>
         {% for note in items %}
             <entry>
-                <id>{{ site.urlBase }}{{ note.metadata.slug }}</id>
-                <link href="{{ site.urlBase }}{{ note.metadata.slug }}"/>
+                <id>{{ site.urlOrigin }}/{{ note.metadata.slug }}</id>
+                <link href="{{ site.urlOrigin }}/{{ note.metadata.slug }}"/>
                 <published>{{ note.metadata.git.createdAt | date('c') }}</published>
                 <summary type="html">
                     <![CDATA[ {{ note.getContent | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>

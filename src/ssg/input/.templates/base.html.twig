@@ -23,7 +23,7 @@
         <link href="/assets/style.{{ site.releaseTimestamp }}.css" rel="stylesheet">
     {% endblock %}
 
-    <link href="{{ site.urlBase ~ slug }}" rel="canonical">
+    <link href="{{ site.urlOrigin }}/{{ slug }}" rel="canonical">
     <meta content="{{ site.author | smartypants }}" name="author">
     <meta content="light dark" name="color-scheme">
 
@@ -35,7 +35,7 @@
     <meta content="{{ metaOpengraphImage | default(site.metaOpengraphImage) }}" property="og:image">
     <meta content="{{ metaTitle | smartypants }}" property="og:title">
     <meta content="website" property="og:type">
-    <meta content="{{ site.urlBase ~ slug }}" property="og:url">
+    <meta content="{{ site.urlOrigin }}/{{ slug }}" property="og:url">
     <meta content="{{ site.metaTwitterAuthor | smartypants }}" name="twitter:creator">
     <meta content="{{ site.metaTwitterSite | smartypants }}" name="twitter:site">
     <meta content="summary_large_image" name="twitter:card">

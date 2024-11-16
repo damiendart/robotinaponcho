@@ -27,7 +27,7 @@ title: 'Notes'
 
 {% block content %}
     <p>My notes, wiki, digital garden, whatever one of these things are
-        called nowadays. An <a href="{{ site.urlBase }}notes/index.atom">Atom
+        called nowadays. An <a href="/notes/index.atom">Atom
         feed</a> is also available.</p>
 
     <h2>Topics</h2>
@@ -56,5 +56,5 @@ title: 'Notes'
 
 {% block headCustom %}
     {{ parent() }}
-    <link href="{{ urlBase }}notes/index.atom" rel="alternate" title="Damien Dart’s Notes (www.robotinaponcho.net)" type="application/atom+xml">
+    <link href="{{ site.urlOrigin }}/notes/index.atom" rel="alternate" title="Damien Dart’s Notes (www.robotinaponcho.net)" type="application/atom+xml">
 {% endblock %}

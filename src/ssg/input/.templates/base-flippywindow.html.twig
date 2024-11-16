@@ -6,7 +6,7 @@
 
 {% extends '.templates/base.html.twig' %}
 
-{% set metaOpengraphImage = site.urlBase ~ 'projects/flippywindow/opengraph.' ~ site.releaseTimestamp ~ '.png' %}
+{% set metaOpengraphImage = site.urlOrigin ~ '/projects/flippywindow/opengraph.' ~ site.releaseTimestamp ~ '.png' %}
 
 {% block content %}
     <p class="text-medium">FlippyWindow is a simple Windows application that non-destructively flips any part of your screen, in real-time, and using minimal resources.</p>
@@ -49,7 +49,7 @@
 
     {%
         include '.templates/partials/sharing-links.html.twig' with {
-            'link': site.urlBase ~ slug,
+            'link': site.urlOrigin ~ '/' ~ slug,
             'twitterAuthor': site.metaTwitterAuthor | replace({ '@': '' }),
             'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
         }

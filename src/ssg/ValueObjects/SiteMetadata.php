@@ -28,7 +28,7 @@ final class SiteMetadata
             'metaTwitterSite' => '@damiendart',
             'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.{$releaseTimestamp}.png",
             'releaseTimestamp' => $releaseTimestamp,
-            'urlBase' => 'https://www.robotinaponcho.net/',
+            'urlOrigin' => 'https://www.robotinaponcho.net',
         ];
     }
 }
