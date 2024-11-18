@@ -15,7 +15,7 @@ maintains information collected from users, as well as how third-party
 services are utilised.
 
 **Note**: This privacy policy is regularly reviewed and, if necessary,
-updated. This privacy policy was lasted reviewed on **12/11/23**. We
+updated. This privacy policy was lasted reviewed on **18/11/24**. We
 encourage you to periodically review this privacy policy to stay
 informed on any changes.
 
@@ -26,7 +26,7 @@ data controllers, the data subjects are the users of this website.
   [General Data Protection Regulation (GDPR)]: <https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/>
 
 
-## The data this website collect
+## Personal data we collect about you
 
 While browsing this website, no personal data is collected except for
 server access logs, where information from your browser or device is
