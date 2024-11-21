@@ -1,0 +1,36 @@
+// Copyright (C) Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "../mixins";
+@use "../variables";
+
+.u-text {
+  &-font-base {
+    font-family: variables.$font-stack-base;
+  }
+
+  &-font-heading {
+    font-family: variables.$font-stack-heading;
+  }
+
+  &-size-md {
+    font-size: 112.5%;
+    line-height: variables.$base-line-height * 1.125;
+  }
+
+  &-size-lg {
+    font-size: 150%;
+    line-height: variables.$base-line-height * 1.125;
+  }
+
+  &-size-xl {
+    font-size: 225%;
+    line-height: variables.$base-line-height * 1.5;
+
+    @include mixins.breakpoint-up(small) {
+      font-size: 250%;
+      line-height: variables.$base-line-height * 1.75;
+    }
+  }
+}

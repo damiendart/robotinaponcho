@@ -3,8 +3,10 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
+@use "fonts";
 @use "functions";
 @use "mixins";
+@use "utilities/text";
 @use "variables";
 
 @mixin dark-theme {
@@ -213,33 +215,25 @@ figure {
   }
 }
 
-h1,
-.text-larger {
-  font-size: 225%;
-  letter-spacing: variables.$base-one-pixel-in-rem * -1;
-  line-height: variables.$base-line-height * 1.5;
-  margin: 0;
+h1 {
+  @extend .u-text-size-xl, .u-text-font-heading;
 
-  @include mixins.breakpoint-up(small) {
-    font-size: 250%;
-    line-height: variables.$base-line-height * 1.75;
-  }
+  margin: 0;
+  text-wrap: pretty;
 }
 
-h2,
-.text-large {
-  font-size: 150%;
-  line-height: variables.$base-line-height * 1.25;
-  letter-spacing: initial;
+h2 {
+  @extend .u-text-size-lg, .u-text-font-heading;
+
   margin: 0;
+  text-wrap: pretty;
 }
 
-h3,
-.text-medium {
-  font-size: 112.5%;
-  line-height: variables.$base-line-height * 1.125;
-  letter-spacing: initial;
+h3 {
+  @extend .u-text-size-md, .u-text-font-heading;
+
   margin: 0;
+  text-wrap: pretty;
 }
 
 html {

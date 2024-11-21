@@ -20,6 +20,7 @@
     <script>document.documentElement.className+='javascript';localStorage.getItem('theme')&&document.documentElement.setAttribute('data-theme',localStorage.getItem('theme'))</script>
 
     {% block head %}
+        <link as="font" crossorigin href="/assets/gelica-semibold.{{ site.releaseTimestamp }}.woff2" rel="preload" type="font/woff2">
         <link href="/assets/style.{{ site.releaseTimestamp }}.css" rel="stylesheet">
     {% endblock %}
 
@@ -61,7 +62,7 @@
 
         <div class="site-header">
             <div class="site-header__container">
-                <p class="site-header__title"><a href="/">{{ site.author | smartypants }}</a></p>
+                <p class="site-header__title u-text-font-heading"><a href="/">{{ site.author | smartypants }}</a></p>
                 <nav class="site-header__navigation">
                     <ul class="site-header__navigation__list" role="list">
                         <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>

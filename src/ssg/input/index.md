@@ -11,7 +11,7 @@ template: '.templates/homepage.html.twig'
 Damien Dart's Personal Website
 ==============================
 
-{.text-medium}
+{.u-text-size-md}
 **Hello!** I’m Damien Dart, a full-time web developer based in South
 West England, and this is my personal website.
 
