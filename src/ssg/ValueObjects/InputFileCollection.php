@@ -49,7 +49,8 @@ final class InputFileCollection implements \IteratorAggregate
             \assert(\is_string($slug));
 
             if (
-                'robots.txt' === $slug
+                'speculation-rules.json' === $slug
+                || 'robots.txt' === $slug
                 || 'sitemap.xml' === $slug
                 || str_starts_with($slug, 'google')
                 || str_ends_with($slug, '.atom')

@@ -1,0 +1,18 @@
+{
+  "prefetch": [
+    {
+      "where": {
+        "selector_matches": "a[href^='/']"
+      },
+      "eagerness": "immediate"
+    }
+  ],
+  "prerender": [
+    {
+      "where": {
+        "selector_matches": "a[href^='/']"
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
