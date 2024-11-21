@@ -86,7 +86,7 @@ tasks:
     sources:
       - 'src/ssg/**/*'
 
-  build:snapshot:
+  build:ssg-snapshot:
     cmds:
       - 'src/ssg/ssg ./ssg-output-{{ .TIMESTAMP }}/'
     desc: 'Build static site files using ssg for snapshot testing'
@@ -100,7 +100,7 @@ tasks:
     cmds:
       - 'rm -fr .task node_modules public release'
       - task: 'clean:php'
-      - task: 'clean:snapshot'
+      - task: 'clean:ssg-snapshot'
     desc: 'Delete all buildable files, caches, and third-party dependencies'
 
   clean:php:
@@ -108,7 +108,7 @@ tasks:
       - 'rm -fr protected/vendor'
     desc: 'Delete third-party PHP dependencies'
 
-  clean:snapshot:
+  clean:ssg-snapshot:
     cmds:
       - 'rm -fr ssg-output-*'
     desc: 'Delete timestamp-prefixed snapshot directories'
@@ -211,7 +211,7 @@ tasks:
       - 'protected/vendor/bin/phpunit --testdox'
     desc: 'Run end-to-end tests with PHPUnit'
 
-  test:snapshot:
+  test:ssg-snapshot:
     cmds:
       - "find . -name 'ssg-output-*' | sort | tail -n 2 | xargs diff -qr"
     desc: 'Compare the two more recent snapshot directories'
