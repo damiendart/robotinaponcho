@@ -401,6 +401,7 @@ ul {
     }
   }
 
+  &[class] > *,
   &[role="list"] > * {
     list-style: none;
     margin-left: 0;

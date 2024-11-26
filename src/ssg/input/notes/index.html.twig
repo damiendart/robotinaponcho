@@ -31,7 +31,7 @@ title: 'Notes'
         feed</a> is also available.</p>
 
     <h2>Topics</h2>
-    <ul class="tag-list" role="list">
+    <ul class="tag-list">
         {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
             <li><a href="#{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</a></li>
         {% endfor %}
@@ -41,7 +41,7 @@ title: 'Notes'
     {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
         <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
 
-        <ul class="notes-list u-stack" role="list">
+        <ul class="notes-list u-stack">
             {% for note in notes | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
                 {% set verb = note.metadata.git.createdAt == note.metadata.git.updatedAt ? 'Created' : 'Updated' %}
 
