@@ -219,21 +219,21 @@ h1 {
   @extend .u-text-size-xl, .u-text-font-heading;
 
   margin: 0;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 h2 {
   @extend .u-text-size-lg, .u-text-font-heading;
 
   margin: 0;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 h3 {
   @extend .u-text-size-md, .u-text-font-heading;
 
   margin: 0;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 html {
@@ -245,8 +245,10 @@ html {
     }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    scroll-behavior: smooth;
+  &:focus-within {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
 }
 
@@ -255,10 +257,11 @@ hr[aria-hidden="true"] {
 }
 
 img {
-  display: block;
+  font-style: italic;
   height: auto;
   margin: 0;
   max-width: 100%;
+  vertical-align: middle;
 }
 
 kbd {
@@ -305,11 +308,6 @@ label:has(input[type="radio"]) {
   }
 }
 
-main {
-  // Makes the "main" element behave correctly in Internet Explorer 11.
-  display: block;
-}
-
 ol {
   margin: 0;
   padding: 0;
@@ -323,6 +321,7 @@ ol {
     }
   }
 
+  &[class] > *,
   &[role="list"] > * {
     list-style: none;
     margin-left: 0;
@@ -331,6 +330,7 @@ ol {
 
 p {
   margin: 0;
+  text-wrap: pretty;
 }
 
 pre {
