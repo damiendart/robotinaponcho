@@ -39,7 +39,10 @@
 
     &__item {
       position: relative;
-      text-align: center;
+
+      @include mixins.breakpoint-up(medium) {
+        text-align: center;
+      }
 
       & + & {
         margin-top: math.div(variables.$base-line-height, 4);
