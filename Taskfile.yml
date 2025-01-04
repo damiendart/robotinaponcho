@@ -199,12 +199,18 @@ tasks:
   static-analysis:php:
     cmds:
       - task: 'static-analysis:php:phpstan'
+      - task: 'static-analysis:php:psalm'
     desc: 'Run all PHP static-analysis-related tasks'
 
   static-analysis:php:phpstan:
     cmds:
       - 'protected/vendor/bin/phpstan analyse --no-progress'
     desc: 'Analyse PHP files with PHPStan'
+
+  static-analysis:php:psalm:
+    cmds:
+      - 'protected/vendor/bin/psalm.phar --no-diff --show-info=true --stats'
+    desc: 'Analyse PHP files with Psalm'
 
   test:end-to-end:
     cmds:

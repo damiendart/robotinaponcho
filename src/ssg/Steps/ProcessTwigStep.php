@@ -20,6 +20,7 @@ use Twig\Loader\LoaderInterface;
 
 final class ProcessTwigStep extends AbstractStep
 {
+    /** @psalm-suppress PropertyNotSetInConstructor */
     private InputFileCollection $inputFiles;
     private LoaderInterface $filesystemLoader;
 
@@ -55,7 +56,10 @@ final class ProcessTwigStep extends AbstractStep
         $context = $inputFile->metadata;
         $environment = $this->twigEnvironmentFactory->make($chainLoader);
 
-        if (\array_key_exists('template', $inputFile->metadata)) {
+        if (
+            \array_key_exists('template', $inputFile->metadata)
+            && \is_string($inputFile->metadata['template'])
+        ) {
             $template = $inputFile->metadata['template'];
             $context['content'] = $inputFile->getContent();
         } else {
@@ -90,6 +94,7 @@ final class ProcessTwigStep extends AbstractStep
 
         if (
             \array_key_exists('template', $inputFile->metadata)
+            && \is_string($inputFile->metadata['template'])
             && str_ends_with($inputFile->metadata['template'], 'twig')
         ) {
             return true;

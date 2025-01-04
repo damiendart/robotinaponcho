@@ -29,7 +29,7 @@ final readonly class StaticSiteGenerator
 
     public function __construct(
         private string $inputDirectory,
-        private string $outputDirectory,
+        string $outputDirectory,
     ) {
         $whoops = new Run();
 
@@ -45,7 +45,7 @@ final readonly class StaticSiteGenerator
                 $this->inputDirectory,
             ),
             new MinifyHtmlStep(),
-            new WriteFilesStep($this->outputDirectory),
+            new WriteFilesStep($outputDirectory),
         );
     }
 
@@ -59,6 +59,7 @@ final readonly class StaticSiteGenerator
     /** @return InputFile[] */
     private function getInputFiles(): array
     {
+        /** @psalm-suppress InvalidArgument */
         $files = new \RecursiveCallbackFilterIterator(
             new \RecursiveDirectoryIterator(
                 $this->inputDirectory,

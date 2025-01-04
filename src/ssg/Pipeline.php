@@ -12,7 +12,7 @@ namespace StaticSiteGenerator;
 
 use StaticSiteGenerator\Steps\StepInterface;
 
-final readonly class Pipeline implements StepInterface
+final readonly class Pipeline
 {
     /** @var StepInterface[] */
     private array $steps;
@@ -22,12 +22,10 @@ final readonly class Pipeline implements StepInterface
         $this->steps = $steps;
     }
 
-    public function run(InputFile ...$inputFiles): array
+    public function run(InputFile ...$inputFiles): void
     {
         foreach ($this->steps as $step) {
             $inputFiles = $step->run(...$inputFiles);
         }
-
-        return $inputFiles;
     }
 }

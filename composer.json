@@ -52,6 +52,7 @@
     "phpstan/phpstan": "^2.1.0",
     "phpstan/phpstan-strict-rules": "^2.0.1",
     "phpunit/phpunit": "^11.4.3",
+    "psalm/phar": "^5.26",
     "roave/security-advisories": "dev-latest",
     "symfony/yaml": "^7.1.6",
     "twig/twig": "^3.14.2",

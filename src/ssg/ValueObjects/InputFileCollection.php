@@ -12,7 +12,11 @@ namespace StaticSiteGenerator\ValueObjects;
 
 use StaticSiteGenerator\InputFile;
 
-/** @implements \IteratorAggregate<array-key, InputFile> */
+/**
+ * @psalm-api
+ *
+ * @implements \IteratorAggregate<array-key, InputFile>
+ */
 final class InputFileCollection implements \IteratorAggregate
 {
     /** @var InputFile[] */

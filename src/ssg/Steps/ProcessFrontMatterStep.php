@@ -37,7 +37,10 @@ final class ProcessFrontMatterStep extends AbstractStep
                 /** @var mixed[] $metadata */
                 $metadata = $this->yamlParser->parse($matches[1]) ?? [];
 
-                if (\array_key_exists('git', $metadata)) {
+                if (
+                    \array_key_exists('git', $metadata)
+                    && \is_string($metadata['git'])
+                ) {
                     $metadata['git'] = $this->parseGitMetadataKeyword($metadata['git']);
                 }
 

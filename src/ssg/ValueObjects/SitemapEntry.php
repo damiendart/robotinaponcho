@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\ValueObjects;
 
+/** @psalm-api */
 final readonly class SitemapEntry
 {
     public function __construct(

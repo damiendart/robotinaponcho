@@ -29,7 +29,6 @@ abstract class AbstractStep implements StepInterface
 
         foreach ($inputFiles as $inputFile) {
             try {
-                /** @var InputFile|InputFile[] $processed */
                 $processed = $this->process($inputFile);
 
                 $output = $this->collect(
