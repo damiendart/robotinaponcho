@@ -40,43 +40,42 @@ In addition to the plugins that come bundled with PhpStorm, I also use
 
 I’m also one of these people.
 
-- Turn on *Use contrast scrollbars*.
-- Turn on *Use smaller indents in trees*.
-- Turn off *Show tool window bars*.
-- Right-click the status bar and turn on the *Memory Indicator*.
-- Turn off *Display icons in menu items*.
-- Turn on *Widescreen tool window layout* (where appropriate).
-- Remove tabs completely (set *Tab Placement* to *None*) and instead
-  rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> to switch between recent files.
-- Turn off *Show browsers popup in the editor*.
-- Hide the navigation bar (<span class="os-menu-item">View</span> →
-  <span class="os-menu-item">Appearance</span> →
-  <span class="os-menu-item">Navigation Bar</span>).
-
-If using the New UI Beta:
-
-- Turn on *Compact mode*.
+-   Set the IDE theme to Dark.
+-   Turn on *Use contrast scrollbars*.
+-   Turn on *Compact mode*.
+-   Turn off *Display icons in menu items*.
+-   Turn on *Use smaller indents* for tree views.
+-   Right-click the status bar and turn on the *Memory Indicator*.
+-   Turn on *Widescreen tool window layout* (where appropriate).
+-   Remove tabs completely (set *Tab Placement* to *None*) and instead
+    rely on <kbd>Ctrl</kbd>+<kbd>E</kbd> to switch between recent files.
+-   Turn off *Show browsers popup in the editor*.
+-   Hide the navigation bar (<span class="os-menu-item">View</span> →
+    <span class="os-menu-item">Appearance</span> →
+    <span class="os-menu-item">Navigation Bar</span>).
 
 
 ## IdeaVim customisations and settings
 
-- Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
-  is installed.
-- On macOS, make IdeaVim a more pleasant experience by running
-  `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false`
-  in the terminal.
+-   Ensure that the *.ideavimrc* configuration file from [my dotfiles][]
+    is installed.
+-   On macOS, make IdeaVim a more pleasant experience by running
+    `defaults write com.jetbrains.PhpStorm ApplePressAndHoldEnabled -bool false`
+    in the terminal.
 
   [my dotfiles]: <https://www.robotinaponcho.net/git/#toolbox>
 
 
 ## Miscellaneous customisations and settings
 
-- Check that PhpStorm is aware of all available PHP CLI interpreters in
-  *Languages & Frameworks* → *PHP* in the *Settings* window.
-- Set the IDE theme to Darcula or Dark, depending on whether you’re
-  using the existing UI or the New UI Beta.
-- Set the editor font to [Iosekva][] Term.
-- Set default visual guides at 72 and 78 characters.
-- Set the *Project Opening*’s *Default directory*.
+-   Check that PhpStorm is aware of all available PHP CLI interpreters
+    in *Languages & Frameworks* → *PHP* in the *Settings* window.
+-   Set the editor font to [Iosekva][] Term.
+-   Set default visual guides at 72 and 78 characters.
+-   Set the *Project Opening*’s *Default directory*.
+-   Set the available language for the editor’s natural language gubbins
+    to *English (Great Britain)*.
+-   Turn on all *Refactoring opportunities* for the Default profile.
+-   Turn off *Enable local Full Line completion suggestions*.
 
   [Iosekva]: <https://typeof.net/Iosevka/>
