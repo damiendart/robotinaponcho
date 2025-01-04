@@ -73,9 +73,10 @@ final class InputFileCollection implements \IteratorAggregate
     /** @return array<string, InputFile[]> */
     public function getCollections(): array
     {
-        static $collections;
+        /** @var array<string, InputFile[]> $collections */
+        static $collections = [];
 
-        if (true === \is_array($collections)) {
+        if (\count($collections) > 0) {
             return $collections;
         }
 
