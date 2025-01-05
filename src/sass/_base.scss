@@ -19,6 +19,8 @@
   --button-background-hover-fallback: #{variables.$colour-pink-600};
   --button-foreground: #{variables.$colour-grey-900};
   --drawing-outline-opacity: 1;
+  --site-header-background: #{variables.$colour-pink-500};
+  --site-header-foreground: #{variables.$colour-grey-900};
 }
 
 :root {
@@ -31,6 +33,8 @@
   --button-background-hover-fallback: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
   --drawing-outline-opacity: 0;
+  --site-header-background: #{variables.$colour-red-500};
+  --site-header-foreground: #{variables.$colour-grey-50};
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
