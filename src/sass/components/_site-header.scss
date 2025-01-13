@@ -74,8 +74,44 @@
   }
 
   &__title {
-    font-size: 112.5%;
     order: -1;
     text-align: center;
+
+    a {
+      display: inline-block;
+      position: relative;
+      width: min-content;
+
+      &:focus,
+      &:hover {
+        &::after {
+          background: currentColor;
+          border-radius: functions.px-to-rem(1px);
+          bottom: functions.px-to-rem(2px);
+          content: "";
+          display: block;
+          left: 0;
+          height: functions.px-to-rem(2px);
+          position: absolute;
+          transform: rotate(-1deg) translateY(#{functions.px-to-rem(1px)});
+          width: calc(100% - #{functions.px-to-rem(4px)});
+        }
+      }
+
+      &:focus-visible {
+        outline: none;
+
+        svg {
+          outline: currentColor solid (variables.$base-one-pixel-in-rem * 3);
+          outline-offset: functions.px-to-rem(2px);
+        }
+      }
+    }
+
+    svg {
+      fill: currentColor;
+      width: functions.px-to-rem(175px);
+      vertical-align: middle;
+    }
   }
 }
