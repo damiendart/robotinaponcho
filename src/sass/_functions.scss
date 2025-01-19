@@ -10,10 +10,14 @@
     $i: string.length($url) - string.length($e) + 1;
 
     @if string.slice($url, $i) == $e {
-      // The bunch of zeros is replaced with the release timestamp in a
-      // later step in the asset build pipeline (see the "build:css"
-      // task in "Taskfile.yml" for more information).
-      @return url(string.insert($url, ".00000000000000", $i));
+      // The bunch of zeros is replaced in a later step in the asset
+      // build pipeline for cache-busting purposes (see the "build:css"
+      // task in "Taskfile.yml" for more information). This function
+      // body could be a one-liner, but the official Sass plugin for
+      // JetBrains' IDEs complains about the syntax.
+      $url: string.insert($url, ".00000000000000", $i);
+
+      @return url($url);
     }
   }
 

@@ -59,7 +59,7 @@ a {
 }
 
 :focus-visible {
-  outline: var(--outline-color, currentColor) solid (variables.$base-one-pixel-in-rem * 3);
+  outline: var(--outline-colour, currentColor) solid (variables.$base-one-pixel-in-rem * 3);
 }
 
 :target {
