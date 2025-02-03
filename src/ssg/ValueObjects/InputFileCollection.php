@@ -33,45 +33,29 @@ final class InputFileCollection implements \IteratorAggregate
         return new \ArrayIterator($this->inputFiles);
     }
 
-    /** @return SitemapEntry[] */
+    /** @return InputFile[] */
     public function getSitemapEntries(): array
     {
-        $entries = [
-            new SitemapEntry(
-                'crap/colouring-pages-a4.pdf',
-                'crap/colouring-pages-a4.pdf',
-            ),
-            new SitemapEntry(
-                'crap/colouring-pages-us.pdf',
-                'crap/colouring-pages-us.pdf',
-            ),
-        ];
+        return array_filter(
+            $this->inputFiles,
+            static function (InputFile $inputFile): bool {
+                $slug = $inputFile->metadata['slug'];
 
-        foreach ($this->inputFiles as $inputFile) {
-            $slug = $inputFile->metadata['slug'];
+                \assert(\is_string($slug));
 
-            \assert(\is_string($slug));
+                if (
+                    'speculation-rules.json' === $slug
+                    || 'robots.txt' === $slug
+                    || 'sitemap.xml' === $slug
+                    || str_starts_with($slug, 'google')
+                    || str_ends_with($slug, '.atom')
+                ) {
+                    return false;
+                }
 
-            if (
-                'speculation-rules.json' === $slug
-                || 'robots.txt' === $slug
-                || 'sitemap.xml' === $slug
-                || str_starts_with($slug, 'google')
-                || str_ends_with($slug, '.atom')
-            ) {
-                continue;
-            }
-
-            $title = $inputFile->metadata['sitemapTitle']
-                ?? $inputFile->metadata['title']
-                ?? $slug;
-
-            \assert(\is_string($title));
-
-            $entries[] = new SitemapEntry($title, $slug);
-        }
-
-        return $entries;
+                return true;
+            },
+        );
     }
 
     /** @return array<string, InputFile[]> */

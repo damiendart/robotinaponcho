@@ -12,10 +12,10 @@ title: 'Sitemap'
     <ul>
         {%
             for entry in inputFiles.sitemapEntries
-                | filter(entry => 'pdf' not in entry.slug and 'sitemap' not in entry.slug and not (entry.slug matches '#notes/.+#'))
-                | sort((a, b) => a.slug <=> b.slug)
+                | filter(entry => 'sitemap' not in entry.metadata.slug and not (entry.metadata.slug matches '#notes/.+#'))
+                | sort((a, b) => a.metadata.slug <=> b.metadata.slug)
         %}
-            <li><a href="/{{ entry.slug }}">{{ entry.title }}</a></li>
+            <li><a href="/{{ entry.metadata.slug }}">{{ entry.metadata.sitemapTitle ?? entry.metadata.title ?? entry.metadata.slug }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
