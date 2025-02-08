@@ -17,6 +17,13 @@ I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.
 
 
+## Completed books in 2025
+
+-   [Children of Memory][] by Adrian Tchaikovsky (★★)
+
+  [Children of Memory]: <https://en.wikipedia.org/wiki/Children_of_Memory_(novel)>
+
+
 ## Completed books in 2024
 
 -   [Blood Meridian][] by Cormac McCarthy (★★★)
