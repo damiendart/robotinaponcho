@@ -236,6 +236,8 @@ h2 {
 h3 {
   @extend .u-text-size-md, .u-text-font-heading;
 
+  // Tweak line height to improve consistency between headings.
+  line-height: 1.35;
   margin: 0;
   text-wrap: balance;
 }
