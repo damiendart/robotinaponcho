@@ -6,26 +6,21 @@
 @use "../variables";
 
 .u-text {
-  &-font-base {
-    font-family: variables.$font-stack-base;
-  }
-
-  &-font-heading {
-    font-family: variables.$font-stack-heading;
-  }
-
   &-size-md {
     font-size: 112.5%;
+    letter-spacing: initial;
     line-height: variables.$base-line-height * 1.125;
   }
 
   &-size-lg {
     font-size: 150%;
+    letter-spacing: initial;
     line-height: variables.$base-line-height * 1.125;
   }
 
   &-size-xl {
     font-size: 225%;
+    letter-spacing: variables.$base-one-pixel-in-rem * -1;
     line-height: variables.$base-line-height * 1.5;
 
     @include mixins.breakpoint-up(small) {

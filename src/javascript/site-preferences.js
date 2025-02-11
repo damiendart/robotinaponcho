@@ -18,7 +18,7 @@ class SitePreferencesDialog extends HTMLElement {
             <header class="dialog__header">
               <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
               <hr aria-hidden="true">
-              <h1 class="u-text-font-base u-text-size-md" id="perferences-dialog-title">Preferences</h1>
+              <h1 class="u-text-size-md" id="perferences-dialog-title">Preferences</h1>
             </header>
             <div class="dialog__body u-stack">
               <p>Your preferences will be saved locally. For more information, see the <a href="/privacy-policy">privacy policy</a>.</p>

@@ -3,7 +3,6 @@
 // please refer to the accompanying "LICENCE" file.
 
 @use "sass:math";
-@use "fonts";
 @use "functions";
 @use "mixins";
 @use "utilities/text";
@@ -220,21 +219,21 @@ figure {
 }
 
 h1 {
-  @extend .u-text-size-xl, .u-text-font-heading;
+  @extend .u-text-size-xl;
 
   margin: 0;
   text-wrap: balance;
 }
 
 h2 {
-  @extend .u-text-size-lg, .u-text-font-heading;
+  @extend .u-text-size-lg;
 
   margin: 0;
   text-wrap: balance;
 }
 
 h3 {
-  @extend .u-text-size-md, .u-text-font-heading;
+  @extend .u-text-size-md;
 
   // Tweak line height to improve consistency between headings.
   line-height: 1.35;
