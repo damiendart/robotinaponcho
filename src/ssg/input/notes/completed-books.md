@@ -19,8 +19,10 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2025
 
+-   [Recursion][] by Blake Crouch (★★★)
 -   [Children of Memory][] by Adrian Tchaikovsky (★★)
 
+  [Recursion]: <https://en.wikipedia.org/wiki/Recursion_(Crouch_novel)>
   [Children of Memory]: <https://en.wikipedia.org/wiki/Children_of_Memory_(novel)>
 
 
