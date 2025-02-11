@@ -8,11 +8,20 @@
 @use "../variables";
 
 .site-header {
-  background: var(--site-header-background);
   box-sizing: border-box;
-  color: var(--site-header-foreground);
   padding: variables.$base-line-height;
   position: relative;
+
+  &::after {
+    background: var(--base-highlight);
+    bottom: functions.px-to-rem(-1px);
+    content: "";
+    display: block;
+    height: functions.px-to-rem(2px);
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
 
   :where(a) {
     color: inherit;
