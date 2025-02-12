@@ -7,7 +7,7 @@ collections:
   - 'adobe-creative-cloud'
   - 'notes'
 git: '$Metadata$'
-template: .templates/base-note.html.twig
+template: .templates/note.html.twig
 --->
 
 Converting Pencil Artwork to Non-Repro Blue in Adobe Photoshop

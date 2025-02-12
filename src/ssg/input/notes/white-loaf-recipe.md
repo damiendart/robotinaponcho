@@ -7,7 +7,7 @@ collections:
   - 'food-and-drink'
   - 'notes'
 git: '$Metadata$'
-template: .templates/base-note.html.twig
+template: .templates/note.html.twig
 --->
 
 A Basic White Loaf Recipe

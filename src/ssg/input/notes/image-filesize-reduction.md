@@ -7,7 +7,7 @@ collections:
   - 'command-line'
   - 'notes'
 git: '$Metadata$'
-template: .templates/base-note.html.twig
+template: .templates/note.html.twig
 --->
 
 Image Filesize Reduction Techniques

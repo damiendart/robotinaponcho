@@ -83,7 +83,9 @@
             <h1>{{ title | smartypants | widont }}</h1>
         {% endblock %}
 
-        {{ block('content') }}
+        {% block content %}
+            {{ content | raw }}
+        {% endblock %}
     </main>
 
     <hr aria-hidden="true">

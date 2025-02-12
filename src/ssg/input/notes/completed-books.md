@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'reading'
 git: '$Metadata$'
-template: .templates/base-note.html.twig
+template: .templates/note.html.twig
 --->
 
 Completed Books
