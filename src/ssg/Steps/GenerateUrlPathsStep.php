@@ -12,7 +12,7 @@ namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\InputFile;
 
-final class GenerateSlugsStep extends AbstractStep
+final class GenerateUrlPathsStep extends AbstractStep
 {
     /** @var string[] */
     private const DOCUMENT_EXTENSIONS = ['html', 'htm', 'php', 'md'];
@@ -26,11 +26,11 @@ final class GenerateSlugsStep extends AbstractStep
     protected function process(InputFile $inputFile): InputFile
     {
         return $inputFile->withAdditionalMetadata(
-            ['slug' => $this->slugify($inputFile->outputPath)],
+            ['urlPath' => $this->generateUrlPath($inputFile->outputPath)],
         );
     }
 
-    private function slugify(string $input): string
+    private function generateUrlPath(string $input): string
     {
         foreach (self::TEMPLATE_EXTENSIONS as $extension) {
             if (str_ends_with($input, ".{$extension}")) {

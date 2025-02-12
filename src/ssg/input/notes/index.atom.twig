@@ -21,8 +21,8 @@
         <id>{{ site.urlOrigin }}/notes/index.atom</id>
         {% for note in items %}
             <entry>
-                <id>{{ site.urlOrigin }}/{{ note.metadata.slug }}</id>
-                <link href="{{ site.urlOrigin }}/{{ note.metadata.slug }}"/>
+                <id>{{ site.urlOrigin }}/{{ note.metadata.urlPath }}</id>
+                <link href="{{ site.urlOrigin }}/{{ note.metadata.urlPath }}"/>
                 <published>{{ note.metadata.git.createdAt | date('c') }}</published>
                 <summary type="html">
                     <![CDATA[ {{ note.getContent | raw }} <hr><p><em><b>Last updated</b>: {{ note.metadata.git.updatedAt | date('c') }}</em></p> ]]>

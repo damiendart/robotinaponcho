@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator;
 
-use StaticSiteGenerator\Steps\GenerateSlugsStep;
+use StaticSiteGenerator\Steps\GenerateUrlPathsStep;
 use StaticSiteGenerator\Steps\MinifyHtmlStep;
 use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
 use StaticSiteGenerator\Steps\ProcessMarkdownStep;
@@ -38,7 +38,7 @@ final readonly class StaticSiteGenerator
 
         $this->pipeline = new Pipeline(
             new ProcessFrontMatterStep(new Parser()),
-            new GenerateSlugsStep(),
+            new GenerateUrlPathsStep(),
             new ProcessMarkdownStep(new MarkdownConverterFactory()),
             new ProcessTwigStep(
                 new TwigEnvironmentFactory(new SiteMetadata()),

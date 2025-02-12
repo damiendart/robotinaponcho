@@ -39,16 +39,16 @@ final class InputFileCollection implements \IteratorAggregate
         return array_filter(
             $this->inputFiles,
             static function (InputFile $inputFile): bool {
-                $slug = $inputFile->metadata['slug'];
+                $urlPath = $inputFile->metadata['urlPath'];
 
-                \assert(\is_string($slug));
+                \assert(\is_string($urlPath));
 
                 if (
-                    'speculation-rules.json' === $slug
-                    || 'robots.txt' === $slug
-                    || 'sitemap.xml' === $slug
-                    || str_starts_with($slug, 'google')
-                    || str_ends_with($slug, '.atom')
+                    'speculation-rules.json' === $urlPath
+                    || 'robots.txt' === $urlPath
+                    || 'sitemap.xml' === $urlPath
+                    || str_starts_with($urlPath, 'google')
+                    || str_ends_with($urlPath, '.atom')
                 ) {
                     return false;
                 }
