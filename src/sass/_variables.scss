@@ -29,6 +29,8 @@ $colour-base-black: #000000;
 // <https://www.tints.dev/brand/C92A2A>. RGB values are converted to
 // OKLCH equivalents using <https://colorjs.io/apps/convert/>.
 
+$colour-blue-shadow: oklch(22.4% 0.0509 260.5);
+
 $colour-grey-50: oklch(98.16% 0.0017 247.8);
 $colour-grey-200: oklch(94.17% 0.0052 247.9);
 $colour-grey-800: oklch(34.51% 0.0133 248.2);
@@ -41,6 +43,7 @@ $colour-red-700: oklch(48.09% 0.1702 26.47);
 $colour-pink-500: oklch(69.24% 0.1765 1.25);
 $colour-pink-600: oklch(63.96% 0.1968 3.187);
 $colour-pink-700: oklch(58.81% 0.201 5.248);
+
 
 $content-widths: (
   default: 720px,

@@ -13,6 +13,7 @@
   --base-foreground: #{variables.$colour-grey-50};
   --base-highlight: #{variables.$colour-grey-800};
   --base-link: #{variables.$colour-pink-500};
+  --base-shadow: #{variables.$colour-base-black};
   --button-background: #{variables.$colour-pink-500};
   --button-background-active-fallback: #{variables.$colour-pink-700};
   --button-background-hover-fallback: #{variables.$colour-pink-600};
@@ -25,11 +26,13 @@
   --base-foreground: #{variables.$colour-base-black};
   --base-highlight: #{variables.$colour-grey-200};
   --base-link: #{variables.$colour-red-500};
+  --base-shadow: #{variables.$colour-blue-shadow};
   --button-background: #{variables.$colour-red-500};
   --button-background-active-fallback: #{variables.$colour-red-700};
   --button-background-hover-fallback: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
   --drawing-outline-opacity: 0;
+  --modal-backdrop-background: oklch(from var(--base-shadow) l c h / 0.54);
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
