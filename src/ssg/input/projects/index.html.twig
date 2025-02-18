@@ -106,7 +106,7 @@ title: 'Projects'
 %}
 
 {% block content %}
-    <dl class="project-list u-content__max u-stack__md">
+    <dl class="project-list u-content__wider u-stack__md">
         {% for title, project in activeProjects %}
             <div class="project-list__item u-stack u-stack--flex">
                 <dt class="u-stack__split"><strong><a href="{{ project.url }}"><strong>{{ title | widont }}</a></strong></dt>

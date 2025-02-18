@@ -43,9 +43,9 @@ $colour-pink-600: oklch(63.96% 0.1968 3.187);
 $colour-pink-700: oklch(58.81% 0.201 5.248);
 
 $content-widths: (
-  content: 720px,
+  default: 720px,
   wide: 784px,
-  max: 920px,
+  wider: 920px,
   header: 984px,
 );
 

@@ -8,37 +8,35 @@
 
 .u-content {
   $gutter: variables.$base-line-height;
-  $width-content: functions.px-to-rem(map.get(variables.$content-widths, content));
-  $width-max-content: functions.px-to-rem(map.get(variables.$content-widths, max));
-  $width-wide-content: functions.px-to-rem(map.get(variables.$content-widths, wide));
 
   display: grid;
   grid-template-columns:
     [full-width-start] minmax(#{$gutter}, 1fr)
-    [max-content-start] min(#{$width-max-content}, 100% - #{$gutter * 2}) [max-content-end]
+    [wider-content-start] min(#{functions.px-to-rem(map.get(variables.$content-widths, wider))}, 100% - #{$gutter * 2}) [wider-content-end]
     minmax(#{$gutter}, 1fr) [full-width-end];
   grid-template-rows: min-content;
 
   & > * {
-    grid-column: max-content;
+    grid-column: wider-content;
     margin-inline: auto;
-    max-width: $width-content;
+    max-width: functions.px-to-rem(map.get(variables.$content-widths, default));
     width: 100%;
   }
 
   & > pre,
   & > table,
-  & > &__full-width {
-    grid-column: full-width;
+  & > &__wide {
+    max-width: functions.px-to-rem(map.get(variables.$content-widths, wide));
   }
 
-  & > &__max {
+  & > &__wider {
     max-width: 100%;
   }
 
   & > pre,
   & > table,
-  & > &__wide {
-    max-width: $width-wide-content;
+  & > &__wide--no-gutters,
+  & > &__wider--no-gutters {
+    grid-column: full-width;
   }
 }
