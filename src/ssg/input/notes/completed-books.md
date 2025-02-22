@@ -19,9 +19,11 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2025
 
+-   [Do Androids Dream of Electric Sheep?][] by Philip K. Dick (★★★)
 -   [Recursion][] by Blake Crouch (★★★)
 -   [Children of Memory][] by Adrian Tchaikovsky (★★)
 
+  [Do Androids Dream of Electric Sheep?]: <https://en.wikipedia.org/wiki/Do_Androids_Dream_of_Electric_Sheep%3F>
   [Recursion]: <https://en.wikipedia.org/wiki/Recursion_(Crouch_novel)>
   [Children of Memory]: <https://en.wikipedia.org/wiki/Children_of_Memory_(novel)>
 
