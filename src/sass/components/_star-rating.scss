@@ -1,0 +1,26 @@
+.star-rating {
+  &::before {
+    content: var(--stars, "☆☆☆☆☆");
+    display: inline;
+  }
+
+  &--one {
+    --stars: "★☆☆☆☆";
+  }
+
+  &--two {
+    --stars: "★★☆☆☆";
+  }
+
+  &--three {
+    --stars: "★★★☆☆";
+  }
+
+  &--four {
+    --stars: "★★★★☆";
+  }
+
+  &--five {
+    --stars: "★★★★★";
+  }
+}

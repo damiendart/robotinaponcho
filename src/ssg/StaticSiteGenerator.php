@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator;
 
+use StaticSiteGenerator\Steps\AddStarRatingsMarkupStep;
 use StaticSiteGenerator\Steps\GenerateUrlPathsStep;
 use StaticSiteGenerator\Steps\MinifyHtmlStep;
 use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
@@ -44,6 +45,7 @@ final readonly class StaticSiteGenerator
                 new TwigEnvironmentFactory(new SiteMetadata()),
                 $this->inputDirectory,
             ),
+            new AddStarRatingsMarkupStep(),
             new MinifyHtmlStep(),
             new WriteFilesStep($outputDirectory),
         );

@@ -3,6 +3,7 @@
 # International License. To view a copy of this license, please visit
 # <http://creativecommons.org/licenses/by/4.0/>.
 
+bodyClasses: 'has-rating-tables'
 collections:
   - 'notes'
   - 'reading'
@@ -19,9 +20,11 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2025
 
--   [Do Androids Dream of Electric Sheep?][] by Philip K. Dick (★★★)
--   [Recursion][] by Blake Crouch (★★★)
--   [Children of Memory][] by Adrian Tchaikovsky (★★)
+| Title and Author                                           | Rating |
+|:-----------------------------------------------------------|:-------|
+| [Do Androids Dream of Electric Sheep?][] by Philip K. Dick | ★★★☆☆  |
+| [Recursion][] by Blake Crouch                              | ★★★☆☆  |
+| [Children of Memory][] by Adrian Tchaikovsky               | ★★☆☆☆  |
 
   [Do Androids Dream of Electric Sheep?]: <https://en.wikipedia.org/wiki/Do_Androids_Dream_of_Electric_Sheep%3F>
   [Recursion]: <https://en.wikipedia.org/wiki/Recursion_(Crouch_novel)>
@@ -30,17 +33,19 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2024
 
--   [Blood Meridian][] by Cormac McCarthy (★★★)
--   [Children of Ruin][] by Adrian Tchaikovsky (★★★★)
--   [Before the Coffee Gets Cold][] by Toshikazu Kawaguchi (★★)
--   [Child of God][] by Cormac McCarthy (★★)
--   [Go Set a Watchman][] by Harper Lee (★★)
--   [The Last Town][] by Blake Crouch (★★★)
--   [Dark Matter][] by Blake Crouch (★★★)
--   [Wayward][The Last Town] by Blake Crouch (★★★)
--   [Pines][The Last Town] by Blake Crouch (★★★)
--   [Death’s End][] by Liu Cixin (★★★★)
--   [The Dark Forest][] by Liu Cixin (★★★★)
+| Title and Author                                       | Rating |
+|:-------------------------------------------------------|:-------|
+| [Blood Meridian][] by Cormac McCarthy                  | ★★★☆☆  |
+| [Children of Ruin][] by Adrian Tchaikovsky             | ★★★★☆  |
+| [Before the Coffee Gets Cold][] by Toshikazu Kawaguchi | ★★☆☆☆  |
+| [Child of God][] by Cormac McCarthy                    | ★★☆☆☆  |
+| [Go Set a Watchman][] by Harper Lee                    | ★★☆☆☆  |
+| [The Last Town][] by Blake Crouch                      | ★★★☆☆  |
+| [Dark Matter][] by Blake Crouch                        | ★★★☆☆  |
+| [Wayward][The Last Town] by Blake Crouch               | ★★★☆☆  |
+| [Pines][The Last Town] by Blake Crouch                 | ★★★☆☆  |
+| [Death’s End][] by Liu Cixin                           | ★★★★☆  |
+| [The Dark Forest][] by Liu Cixin                       | ★★★★☆  |
 
   [Blood Meridian]: <https://en.wikipedia.org/wiki/Blood_Meridian>
   [Children of Ruin]: <https://en.wikipedia.org/wiki/Children_of_Ruin>
@@ -55,20 +60,22 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2023
 
--   *The Second Sleep* by Robert Harris (★★)
--   [The Three-Body Problem][] by Liu Cixin (★★★)
--   [Misery][] by Stephen King (★★★★)
--   [The Quiet American][] by Graham Greene (★★★)
--   [Our Man in Havana][] by Graham Greene (★★★)
--   [Blood Music][] by Greg Bear (★★★)
--   [Finders Keepers][] by Stephen King (★★★)
--   [No Country for Old Men][] by Cormac McCarthy (★★★★)
--   [Adjustment Day][] by Chuck Palahniuk (★★)
--   [Mr Mercedes][] by Stephen King (★★★★)
--   [Timeline][] by Michael Crichton (★★)
--   [Piranesi][] by Susanna Clarke (★★★★)
--   [Out][] by Natsuo Kirino (★★★)
--   [If It Bleeds][] by Stephen King (★★★)
+| Title and Author                              | Rating |
+|:----------------------------------------------|:-------|
+| *The Second Sleep* by Robert Harris           | ★★☆☆☆  |
+| [The Three-Body Problem][] by Liu Cixin       | ★★★☆☆  |
+| [Misery][] by Stephen King                    | ★★★★☆  |
+| [The Quiet American][] by Graham Greene       | ★★★☆☆  |
+| [Our Man in Havana][] by Graham Greene        | ★★★☆☆  |
+| [Blood Music][] by Greg Bear                  | ★★★☆☆  |
+| [Finders Keepers][] by Stephen King           | ★★★☆☆  |
+| [No Country for Old Men][] by Cormac McCarthy | ★★★★☆  |
+| [Adjustment Day][] by Chuck Palahniuk         | ★★☆☆☆  |
+| [Mr Mercedes][] by Stephen King               | ★★★★☆  |
+| [Timeline][] by Michael Crichton              | ★★☆☆☆  |
+| [Piranesi][] by Susanna Clarke                | ★★★★☆  |
+| [Out][] by Natsuo Kirino                      | ★★★☆☆  |
+| [If It Bleeds][] by Stephen King              | ★★★☆☆  |
 
   [The Three-Body Problem]: <https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)>
   [Misery]: <https://en.wikipedia.org/wiki/Misery_(novel)>
@@ -87,20 +94,22 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2022
 
--   [Grotesque][] by Natsuo Kirino (★★★)
--   [Real World][] by Natsuo Kirino (★★)
--   [The Children of Men][] by P.D. James (★★)
--   *The Bullet That Missed* by Richard Osman (★★★)
--   [The Testaments][] by Margaret Atwood (★★★★)
--   [Rita Hayworth and Shawshank Redemption][] by Stephen King (★★★)
--   [The Road Back][] by Erich Maria Remaque (★★★)
--   [Billy Summers][] by Stephen King (★★★★)
--   [All Quiet on the Western Front][] by Erich Maria Remarque (★★★★)
--   [The Handmaid’s Tale][] by Margaret Atwood (★★★★)
--   [Mostly Harmless][] by Douglas Adams (★★)
--   [The Man Who Died Twice][] by Richard Osman (★★★)
--   [So Long, and Thanks for All the Fish][] by Douglas Adams (★★★)
--   [Life, the Universe and Everything][] by Douglas Adams (★★★)
+| Title and Author                                           | Rating |
+|:-----------------------------------------------------------|:-------|
+| [Grotesque][] by Natsuo Kirino                             | ★★★☆☆  |
+| [Real World][] by Natsuo Kirino                            | ★★☆☆☆  |
+| [The Children of Men][] by P.D. James                      | ★★☆☆☆  |
+| *The Bullet That Missed* by Richard Osman                  | ★★★☆☆  |
+| [The Testaments][] by Margaret Atwood                      | ★★★★☆  |
+| [Rita Hayworth and Shawshank Redemption][] by Stephen King | ★★★☆☆  |
+| [The Road Back][] by Erich Maria Remaque                   | ★★★☆☆  |
+| [Billy Summers][] by Stephen King                          | ★★★★☆  |
+| [All Quiet on the Western Front][] by Erich Maria Remarque | ★★★★☆  |
+| [The Handmaid’s Tale][] by Margaret Atwood                 | ★★★★☆  |
+| [Mostly Harmless][] by Douglas Adams                       | ★★☆☆☆  |
+| [The Man Who Died Twice][] by Richard Osman                | ★★★☆   |
+| [So Long, and Thanks for All the Fish][] by Douglas Adams  | ★★★☆☆  |
+| [Life, the Universe and Everything][] by Douglas Adams     | ★★★☆☆  |
 
   [Grotesque]: <https://en.wikipedia.org/wiki/Grotesque_(novel)>
   [Real World]: <https://en.wikipedia.org/wiki/Real_World_(novel)>
@@ -119,18 +128,19 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2021
 
--   [The Restaurant at the End of the Universe][] by Douglas Adams (★★★)
--   [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams (★★★)
--   [The Colorado Kid][] by Stephen King (★★)
--   [Joyland][] by Stephen King (★★★)
--   [Later][] by Stephen King (★★★)
--   *Easy Peasy Puppy Squeezy* by Steve Mann
--   [The Thursday Murder Club][] by Richard Osman (★★★)
--   [The Running Man][] by Stephen King (★★★)
--   [The Amber Spyglass (His Dark Materials)][] by Philip Pullman (★★)
--   [The Subtle Knife (His Dark Materials)][] by Philip Pullman (★★★)
--   [The Northern Lights (His Dark Materials)][] by Philip Pullman
-    (★★★★)
+| Title and Author                                               | Rating |
+|:---------------------------------------------------------------|:-------|
+| [The Restaurant at the End of the Universe][] by Douglas Adams | ★★★☆☆  |
+| [The Hitchhiker’s Guide to the Galaxy][] by Douglas Adams      | ★★★☆☆  |
+| [The Colorado Kid][] by Stephen King                           | ★★☆☆☆  |
+| [Joyland][] by Stephen King                                    | ★★★☆☆  |
+| [Later][] by Stephen King                                      | ★★★☆☆  |
+| *Easy Peasy Puppy Squeezy* by Steve Mann                       | N/A    |
+| [The Thursday Murder Club][] by Richard Osman                  | ★★★☆☆  |
+| [The Running Man][] by Stephen King                            | ★★★☆☆  |
+| [The Amber Spyglass (His Dark Materials)][] by Philip Pullman  | ★★☆☆☆  |
+| [The Subtle Knife (His Dark Materials)][] by Philip Pullman    | ★★★☆☆  |
+| [The Northern Lights (His Dark Materials)][] by Philip Pullman | ★★★★☆  |
 
   [The Restaurant at the End of the Universe]: <https://en.wikipedia.org/wiki/The_Restaurant_at_the_End_of_the_Universe>
   [The Hitchhiker’s Guide to the Galaxy]: <https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(novel)>

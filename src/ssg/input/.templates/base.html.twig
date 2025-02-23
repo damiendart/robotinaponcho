@@ -44,7 +44,7 @@
         <meta content="noindex, nofollow" name="robots">
     {% endif %}
 </head>
-<body class="u-stack">
+<body class="u-stack {% if bodyClasses | default(false) %} {{ bodyClasses }}{% endif %}">
     <div class="skip-links u-stack__cozy">
         <ul class="skip-links__list" role="list">
             <li class="skip-links__list__item">

@@ -1,0 +1,17 @@
+// Copyright (C) Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+// Stuff and things to finesse HTML generated from Markdown and other
+// instances where we have limited control over HTML output.
+
+.has-rating-tables {
+  table {
+    tr {
+      > *:first-child {
+        text-wrap: balance;
+        width: 100%;
+      }
+    }
+  }
+}
