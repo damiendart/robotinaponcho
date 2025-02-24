@@ -22,10 +22,12 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                           | Rating |
 |:-----------------------------------------------------------|:-------|
+| [Animal Farm][] by George Orwell                           | ★★★☆☆  |
 | [Do Androids Dream of Electric Sheep?][] by Philip K. Dick | ★★★☆☆  |
 | [Recursion][] by Blake Crouch                              | ★★★☆☆  |
 | [Children of Memory][] by Adrian Tchaikovsky               | ★★☆☆☆  |
 
+  [Animal Farm]: <https://en.wikipedia.org/wiki/Animal_Farm>
   [Do Androids Dream of Electric Sheep?]: <https://en.wikipedia.org/wiki/Do_Androids_Dream_of_Electric_Sheep%3F>
   [Recursion]: <https://en.wikipedia.org/wiki/Recursion_(Crouch_novel)>
   [Children of Memory]: <https://en.wikipedia.org/wiki/Children_of_Memory_(novel)>
