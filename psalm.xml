@@ -5,6 +5,7 @@
   please refer to the accompanying "LICENCE" file.
 -->
 <psalm
+    ensureOverrideAttribute="false"
     errorLevel="1"
     findUnusedBaselineEntry="true"
     findUnusedCode="true"
