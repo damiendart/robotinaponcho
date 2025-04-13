@@ -241,6 +241,8 @@ h3 {
 }
 
 html {
+  scrollbar-gutter: stable;
+
   @if(variables.$base-font-size > 18px) {
     font-size: math.percentage(math.div(18px, variables.$base-font-size));
 
