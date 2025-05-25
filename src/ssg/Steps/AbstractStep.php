@@ -14,9 +14,6 @@ use StaticSiteGenerator\InputFile;
 
 abstract class AbstractStep implements StepInterface
 {
-    /** @return InputFile|InputFile[] */
-    abstract protected function process(InputFile $inputFile): array|InputFile;
-
     /**
      * @return InputFile[]
      *
@@ -45,6 +42,9 @@ abstract class AbstractStep implements StepInterface
 
         return $output;
     }
+
+    /** @return InputFile|InputFile[] */
+    abstract protected function process(InputFile $inputFile): array|InputFile;
 
     /**
      * @return InputFile[]

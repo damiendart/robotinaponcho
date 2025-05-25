@@ -29,13 +29,6 @@ final readonly class InputFile
         return $this->modifiedContent ?? $this->getOriginalContent();
     }
 
-    private function getOriginalContent(): string
-    {
-        // Errors are converted into exceptions by the custom error
-        // handler, so "file_get_contents" will always return a string.
-        return (string) file_get_contents($this->source);
-    }
-
     public function hasModifiedContent(): bool
     {
         return null !== $this->modifiedContent;
@@ -78,5 +71,12 @@ final readonly class InputFile
             $this->metadata,
             $this->hasModifiedContent() ? $this->getContent() : null,
         );
+    }
+
+    private function getOriginalContent(): string
+    {
+        // Errors are converted into exceptions by the custom error
+        // handler, so "file_get_contents" will always return a string.
+        return (string) file_get_contents($this->source);
     }
 }

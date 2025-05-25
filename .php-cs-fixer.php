@@ -35,6 +35,7 @@ return (new Config())
             'multiline_whitespace_before_semicolons' => [
                 'strategy' => 'no_multi_line',
             ],
+            'ordered_class_elements' => true,
             'ordered_imports' => ['sort_algorithm' => 'alpha'],
             'phpdoc_align' => ['align' => 'left'],
             'php_unit_method_casing' => ['case' => 'snake_case'],
