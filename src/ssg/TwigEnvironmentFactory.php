@@ -8,10 +8,9 @@
 
 declare(strict_types=1);
 
-namespace StaticSiteGenerator\Support;
+namespace StaticSiteGenerator;
 
 use Michelf\SmartyPantsTypographer;
-use StaticSiteGenerator\ValueObjects\SiteMetadata;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
 use Twig\TwigFilter;

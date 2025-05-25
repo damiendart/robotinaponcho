@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\InputFile;
-use StaticSiteGenerator\Support\TwigEnvironmentFactory;
-use StaticSiteGenerator\ValueObjects\InputFileCollection;
+use StaticSiteGenerator\InputFileCollection;
+use StaticSiteGenerator\TwigEnvironmentFactory;
 use Twig\Loader\ArrayLoader;
 use Twig\Loader\ChainLoader;
 use Twig\Loader\FilesystemLoader;

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace StaticSiteGenerator\ValueObjects;
+namespace StaticSiteGenerator;
 
 final class SiteMetadata
 {

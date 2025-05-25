@@ -12,7 +12,7 @@ namespace StaticSiteGenerator\Steps;
 
 use League\CommonMark\ConverterInterface;
 use StaticSiteGenerator\InputFile;
-use StaticSiteGenerator\Support\MarkdownConverterFactory;
+use StaticSiteGenerator\MarkdownConverterFactory;
 
 final class ProcessMarkdownStep extends AbstractStep
 {

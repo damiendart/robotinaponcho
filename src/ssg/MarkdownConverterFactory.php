@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace StaticSiteGenerator\Support;
+namespace StaticSiteGenerator;
 
 use League\CommonMark\ConverterInterface;
 use League\CommonMark\Environment\Environment;

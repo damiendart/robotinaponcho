@@ -8,9 +8,7 @@
 
 declare(strict_types=1);
 
-namespace StaticSiteGenerator\ValueObjects;
-
-use StaticSiteGenerator\InputFile;
+namespace StaticSiteGenerator;
 
 /**
  * @psalm-api

@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator\Steps;
 
+use StaticSiteGenerator\GitMetadata;
 use StaticSiteGenerator\InputFile;
-use StaticSiteGenerator\ValueObjects\GitMetadata;
 use Symfony\Component\Yaml\Parser;
 
 final class ProcessFrontMatterStep extends AbstractStep
