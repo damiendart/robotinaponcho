@@ -12,9 +12,9 @@ namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\InputFile;
 
-final class AddStarRatingsMarkupStep extends AbstractStep
+final class AddStarRatingsMarkup extends AbstractStep
 {
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         if (! str_ends_with($inputFile->outputPath, 'html')) {
             return $inputFile;

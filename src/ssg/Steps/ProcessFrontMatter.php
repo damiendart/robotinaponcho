@@ -14,7 +14,7 @@ use StaticSiteGenerator\GitMetadata;
 use StaticSiteGenerator\InputFile;
 use Symfony\Component\Yaml\Parser;
 
-final class ProcessFrontMatterStep extends AbstractStep
+final class ProcessFrontMatter extends AbstractStep
 {
     private const FRONT_MATTER_REGEXES = [
         '/{#---(.*)---#}/s',
@@ -25,7 +25,7 @@ final class ProcessFrontMatterStep extends AbstractStep
         private readonly Parser $yamlParser,
     ) {}
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         foreach (self::FRONT_MATTER_REGEXES as $regex) {
             if (

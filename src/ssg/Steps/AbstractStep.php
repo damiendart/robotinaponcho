@@ -26,7 +26,7 @@ abstract class AbstractStep implements StepInterface
 
         foreach ($inputFiles as $inputFile) {
             try {
-                $processed = $this->process($inputFile);
+                $processed = $this->processFile($inputFile);
 
                 $output = $this->collect(
                     ...$output,
@@ -44,7 +44,7 @@ abstract class AbstractStep implements StepInterface
     }
 
     /** @return InputFile|InputFile[] */
-    abstract protected function process(InputFile $inputFile): array|InputFile;
+    abstract protected function processFile(InputFile $inputFile): array|InputFile;
 
     /**
      * @return InputFile[]

@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator;
 
-use StaticSiteGenerator\Steps\AddStarRatingsMarkupStep;
-use StaticSiteGenerator\Steps\GenerateUrlPathsStep;
-use StaticSiteGenerator\Steps\MinifyHtmlStep;
-use StaticSiteGenerator\Steps\ProcessFrontMatterStep;
-use StaticSiteGenerator\Steps\ProcessMarkdownStep;
-use StaticSiteGenerator\Steps\ProcessTwigStep;
-use StaticSiteGenerator\Steps\WriteFilesStep;
+use StaticSiteGenerator\Steps\AddStarRatingsMarkup;
+use StaticSiteGenerator\Steps\GenerateUrlPaths;
+use StaticSiteGenerator\Steps\MinifyHtml;
+use StaticSiteGenerator\Steps\ProcessFrontMatter;
+use StaticSiteGenerator\Steps\ProcessMarkdown;
+use StaticSiteGenerator\Steps\ProcessTwig;
+use StaticSiteGenerator\Steps\WriteFiles;
 use Symfony\Component\Yaml\Parser;
 use Whoops\Handler\PlainTextHandler;
 use Whoops\Run;
@@ -35,16 +35,16 @@ final readonly class StaticSiteGenerator
         $whoops->register();
 
         $this->pipeline = new Pipeline(
-            new ProcessFrontMatterStep(new Parser()),
-            new GenerateUrlPathsStep(),
-            new ProcessMarkdownStep(new MarkdownConverterFactory()),
-            new ProcessTwigStep(
+            new ProcessFrontMatter(new Parser()),
+            new GenerateUrlPaths(),
+            new ProcessMarkdown(new MarkdownConverterFactory()),
+            new ProcessTwig(
                 new TwigEnvironmentFactory(new SiteMetadata()),
                 $this->inputDirectory,
             ),
-            new AddStarRatingsMarkupStep(),
-            new MinifyHtmlStep(),
-            new WriteFilesStep($outputDirectory),
+            new AddStarRatingsMarkup(),
+            new MinifyHtml(),
+            new WriteFiles($outputDirectory),
         );
     }
 

@@ -18,7 +18,7 @@ use Twig\Loader\ChainLoader;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 
-final class ProcessTwigStep extends AbstractStep
+final class ProcessTwig extends AbstractStep
 {
     /** @psalm-suppress PropertyNotSetInConstructor */
     private InputFileCollection $inputFiles;
@@ -40,7 +40,7 @@ final class ProcessTwigStep extends AbstractStep
         return parent::run(...$inputFiles);
     }
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         if (false === $this->shouldProcess($inputFile)) {
             return $inputFile;

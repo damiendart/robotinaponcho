@@ -14,7 +14,7 @@ use League\CommonMark\ConverterInterface;
 use StaticSiteGenerator\InputFile;
 use StaticSiteGenerator\MarkdownConverterFactory;
 
-final class ProcessMarkdownStep extends AbstractStep
+final class ProcessMarkdown extends AbstractStep
 {
     private ConverterInterface $converter;
 
@@ -23,7 +23,7 @@ final class ProcessMarkdownStep extends AbstractStep
         $this->converter = $factory->make();
     }
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         if (! str_ends_with($inputFile->outputPath, 'md')) {
             return $inputFile;

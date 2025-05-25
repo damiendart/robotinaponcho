@@ -12,7 +12,7 @@ namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\InputFile;
 
-final class GenerateUrlPathsStep extends AbstractStep
+final class GenerateUrlPaths extends AbstractStep
 {
     /** @var string[] */
     private const DOCUMENT_EXTENSIONS = ['html', 'htm', 'php', 'md'];
@@ -23,7 +23,7 @@ final class GenerateUrlPathsStep extends AbstractStep
     /** @var string[] */
     private const TEMPLATE_EXTENSIONS = ['twig'];
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         return $inputFile->withAdditionalMetadata(
             ['urlPath' => $this->generateUrlPath($inputFile->outputPath)],

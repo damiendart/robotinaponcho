@@ -13,7 +13,7 @@ namespace StaticSiteGenerator\Steps;
 use StaticSiteGenerator\InputFile;
 use voku\helper\HtmlMin;
 
-final class MinifyHtmlStep extends AbstractStep
+final class MinifyHtml extends AbstractStep
 {
     private HtmlMin $minifier;
 
@@ -27,7 +27,7 @@ final class MinifyHtmlStep extends AbstractStep
             ->doMakeSameDomainsLinksRelative(['www.robotinaponcho.net']);
     }
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         if (! str_ends_with($inputFile->outputPath, 'html')) {
             return $inputFile;

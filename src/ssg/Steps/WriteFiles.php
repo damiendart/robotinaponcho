@@ -12,7 +12,7 @@ namespace StaticSiteGenerator\Steps;
 
 use StaticSiteGenerator\InputFile;
 
-final class WriteFilesStep extends AbstractStep
+final class WriteFiles extends AbstractStep
 {
     private int $fileCount;
 
@@ -31,7 +31,7 @@ final class WriteFilesStep extends AbstractStep
         return $inputFiles;
     }
 
-    protected function process(InputFile $inputFile): InputFile
+    protected function processFile(InputFile $inputFile): InputFile
     {
         $outputPath = join(
             DIRECTORY_SEPARATOR,
