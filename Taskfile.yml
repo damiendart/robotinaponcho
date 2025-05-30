@@ -142,9 +142,9 @@ tasks:
       - 'git config filter.metadata.clean "./git-filter-metadata.sh"'
       - 'git config filter.metadata.smudge "./git-filter-metadata.sh --smudge %f"'
       - 'git config filter.metadata.required true'
-      # Git does not have a nice way of running filters manually.
-      - 'rm src/ssg/input/notes/*.md'
-      - 'git checkout src/ssg/input/notes'
+      - "git ls-files ':(attr:filter=metadata,glob,top)**/*' | xargs sed -i 's/$Metadata[^$]*$/$Metadata$/g'"
+      # One day I will be able to use "git checkout --stdin" instead.
+      - "git ls-files ':(attr:filter=metadata,glob,top)**/*' | xargs grep -l '$Metadata' | xargs git checkout --"
     desc: 'Install and run project-level Git filters'
 
   lint:
