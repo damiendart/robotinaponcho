@@ -13,7 +13,7 @@ class SitePreferencesDialog extends HTMLElement {
 
     this.innerHTML = `
         <button aria-haspopup="dialog" id="open-preferences-dialog" type="button">Preferences</button>
-        <dialog aria-labelledby="perferences-dialog-title" class="dialog">
+        <dialog aria-labelledby="perferences-dialog-title" closedby="any" class="dialog">
           <form method="dialog">
             <header class="dialog__header">
               <button autofocus class="dialog__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
