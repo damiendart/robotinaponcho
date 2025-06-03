@@ -40,22 +40,22 @@
     "ext-ctype": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "filp/whoops": "^2.17.0",
-    "guzzlehttp/guzzle": "^7.9.2",
-    "sentry/sentry": "^4.10"
+    "filp/whoops": "^2.18.1",
+    "guzzlehttp/guzzle": "^7.9.3",
+    "sentry/sentry": "^4.11.1"
   },
   "require-dev": {
     "ext-dom": "*",
-    "friendsofphp/php-cs-fixer": "^3.70.1",
-    "league/commonmark": "^2.6.1",
+    "friendsofphp/php-cs-fixer": "^3.75.0",
+    "league/commonmark": "^2.7.0",
     "michelf/php-smartypants": "^1.8.1",
-    "phpstan/phpstan": "^2.1.6",
-    "phpstan/phpstan-strict-rules": "^2.0.3",
-    "phpunit/phpunit": "^11.5.10",
-    "psalm/phar": "^6.8.8",
+    "phpstan/phpstan": "^2.1.17",
+    "phpstan/phpstan-strict-rules": "^2.0.4",
+    "phpunit/phpunit": "^11.5.21",
+    "psalm/phar": "^6.12.0",
     "roave/security-advisories": "dev-latest",
-    "symfony/yaml": "^7.2.3",
-    "twig/twig": "^3.20.0",
+    "symfony/yaml": "^7.3.0",
+    "twig/twig": "^3.21.1",
     "voku/html-min": "^4.5.1"
   },
   "type": "project"
