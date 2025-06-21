@@ -19,11 +19,8 @@ Here you’ll find [my projects][], [notes][], and [other assorted tat][].
 
 Other places I regularly pollute include [GitHub][] and [Instagram][].
 
-You can also [buy me a coffee][].
-
   [my projects]: <https://www.robotinaponcho.net/projects/>
   [notes]: <https://www.robotinaponcho.net/notes/>
   [other assorted tat]: <https://www.robotinaponcho.net/crap/>
   [GitHub]: <https://github.com/damiendart>
   [Instagram]: <https://www.instagram.com/damiendart/>
-  [buy me a coffee]: <https://www.buymeacoffee.com/damiendart>
