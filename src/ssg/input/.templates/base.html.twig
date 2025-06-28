@@ -76,19 +76,21 @@
         </div>
     </header>
 
-    <hr aria-hidden="true">
+    <hr aria-hidden="true" class="u-stack__cozy">
 
-    <main class="u-content u-stack u-stack__xl" id="content">
-        {% block heading %}
-            <h1>{{ title | smartypants | widont }}</h1>
-        {% endblock %}
+    <main class="u-content u-stack u-stack__cozy" id="content">
+        <div class="page-header u-content u-stack__xl">
+            {% block heading %}
+                <h1>{{ title | smartypants | widont }}</h1>
+            {% endblock %}
+        </div>
 
         {% block content %}
             {{ content | raw }}
         {% endblock %}
     </main>
 
-    <hr aria-hidden="true">
+    <hr aria-hidden="true" class="u-stack__cozy">
 
     <footer id="footer" class="page__footer site-footer u-stack u-stack__xl">
         <div class="site-footer__navigation">

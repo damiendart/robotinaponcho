@@ -8,20 +8,11 @@
 @use "../variables";
 
 .site-header {
+  background: var(--site-header-background);
   box-sizing: border-box;
+  color: var(--site-header-foreground);
   padding: variables.$base-line-height;
   position: relative;
-
-  &::after {
-    background: var(--base-highlight);
-    bottom: functions.px-to-rem(-1px);
-    content: "";
-    display: block;
-    height: functions.px-to-rem(2px);
-    left: 0;
-    position: absolute;
-    width: 100%;
-  }
 
   :where(a) {
     color: inherit;
@@ -68,14 +59,17 @@
 
         &--active {
           &::after {
+            $width: variables.$base-line-height * 0.25;
+
             background: currentColor;
-            bottom: variables.$base-line-height * -1;
+            border-radius: $width;
+            bottom: calc(#{variables.$base-line-height * -0.5} - #{$width * 0.5});
             content: "";
             display: block;
-            height: variables.$base-line-height * 0.125;
-            left: 0;
+            height: $width;
+            left: calc(50% - #{$width * 0.5});
             position: absolute;
-            width: 100%;
+            width: $width;
           }
         }
       }

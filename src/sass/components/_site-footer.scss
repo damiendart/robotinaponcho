@@ -9,13 +9,13 @@
 
 .site-footer {
   text-align: center;
-  padding: (variables.$base-line-height * 2) 0;
+  padding: var(--site-footer-padding-top, #{variables.$base-line-height * 2}) 0 (variables.$base-line-height * 2);
   position: relative;
 
   &::before {
     background: var(--base-highlight);
     content: "";
-    display: block;
+    display: var(--site-footer-border-display, block);
     height: functions.px-to-rem(2px);
     left: 0;
     position: absolute;

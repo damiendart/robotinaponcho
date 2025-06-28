@@ -18,7 +18,6 @@
   --button-background-active-fallback: #{variables.$colour-pink-700};
   --button-background-hover-fallback: #{variables.$colour-pink-600};
   --button-foreground: #{variables.$colour-grey-900};
-  --drawing-outline-opacity: 1;
 }
 
 :root {
@@ -31,8 +30,12 @@
   --button-background-active-fallback: #{variables.$colour-red-700};
   --button-background-hover-fallback: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
-  --drawing-outline-opacity: 0;
+  --drawing-outline-opacity: 1;
   --modal-backdrop-background: oklch(from var(--base-shadow) l c h / 0.54);
+  --page-header-background: #{variables.$colour-secondary-red};
+  --page-header-foreground: #{variables.$colour-base-white};
+  --site-header-background: var(--page-header-background);
+  --site-header-foreground: var(--page-header-foreground);
 
   @media (prefers-color-scheme: dark) {
     &:not([data-theme="light"]) {
@@ -311,6 +314,13 @@ label:has(input[type="radio"]) {
     &:checked {
       border-width: functions.px-to-rem(6px);
     }
+  }
+}
+
+main {
+  &:has(.u-content:last-child) ~ .site-footer {
+    --site-footer-padding-top: 0;
+    --site-footer-border-display: none;
   }
 }
 

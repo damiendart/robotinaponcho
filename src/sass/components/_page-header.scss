@@ -1,0 +1,14 @@
+@use "../variables";
+
+.page-header {
+  --base-link: currentColor;
+
+  background: var(--page-header-background);
+  box-sizing: border-box;
+  color: var(--page-header-foreground);
+  padding-block: variables.$base-line-height * 2;
+
+  h1 {
+    text-align: center;
+  }
+}

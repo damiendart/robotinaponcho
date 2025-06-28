@@ -12,6 +12,7 @@
   &__robot {
     display: inline-block;
     position: relative;
+    z-index: 1;
 
     &::before {
       background: functions.cache-bust-url("/assets/homepage-robot-outline.webp");
