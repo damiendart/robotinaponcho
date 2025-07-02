@@ -66,7 +66,10 @@ final readonly class StaticSiteGenerator
                     | \FilesystemIterator::SKIP_DOTS
                     | \FilesystemIterator::UNIX_PATHS,
             ),
-            static fn (\SplFileInfo $current) => !str_starts_with($current->getFilename(), '.'),
+            static function (\SplFileInfo $current) {
+                return !str_starts_with($current->getFilename(), '.')
+                    && !str_starts_with($current->getFilename(), '_');
+            },
         );
         $inputDirectory = (string) realpath($this->inputDirectory);
         $inputFiles = [];

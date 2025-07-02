@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'synology-diskstation'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 Getting More Information About Scheduled Tasks on Synology DiskStations

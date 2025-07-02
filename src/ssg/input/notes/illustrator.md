@@ -7,7 +7,7 @@ collections:
   - 'adobe-creative-cloud'
   - 'notes'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 Adobe Illustrator Miscellany

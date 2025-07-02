@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'ubuntu'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 Setting Up an Ubuntu Desktop 20.04 Install

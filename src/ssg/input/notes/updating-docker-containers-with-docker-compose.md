@@ -7,7 +7,7 @@ collections:
   - 'docker'
   - 'notes'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 Updating Docker Containers with Docker Compose

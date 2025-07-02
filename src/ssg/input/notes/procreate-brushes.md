@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'procreate'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 My Current Procreate Brushes of Choice

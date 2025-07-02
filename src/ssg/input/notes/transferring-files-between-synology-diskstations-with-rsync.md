@@ -7,7 +7,7 @@ collections:
   - 'notes'
   - 'synology-diskstation'
 git: '$Metadata$'
-template: .templates/note.html.twig
+template: _templates/note.html.twig
 --->
 
 Transferring Files Between Synology DiskStations with rsync

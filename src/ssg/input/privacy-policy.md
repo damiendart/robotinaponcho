@@ -4,7 +4,7 @@
 # information, please refer to the accompanying "LICENCE" file.
 
 description: "View the privacy policy for Damien Dart's personal site."
-template: '.templates/base.html.twig'
+template: '_templates/base.html.twig'
 --->
 
 Privacy Policy
