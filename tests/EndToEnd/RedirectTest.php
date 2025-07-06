@@ -201,10 +201,12 @@ class RedirectTest extends EndToEndTestCase
         $this->assertStringMatchesFormat(
             rtrim($this->baseUri, '/') . $target,
             $response->getHeaderLine('X-Guzzle-Redirect-History'),
+            'Unnecessary redirect chain detected.',
         );
         $this->assertEquals(
             '301',
             $response->getHeaderLine('X-Guzzle-Redirect-Status-History'),
+            'Unnecessary redirect chain detected.',
         );
     }
 
@@ -215,9 +217,17 @@ class RedirectTest extends EndToEndTestCase
         $response = $this->client->request(
             'GET',
             ltrim($original, '/'),
-            ['http_errors' => false],
+            [
+                'allow_redirects' => ['track_redirects' => true],
+                'http_errors' => false
+            ],
         );
 
         $this->assertEquals('410', $response->getStatusCode());
+        $this->assertEquals(
+            '',
+            $response->getHeaderLine('X-Guzzle-Redirect-History'),
+            'Unnecessary redirect chain detected.',
+        );
     }
 }
