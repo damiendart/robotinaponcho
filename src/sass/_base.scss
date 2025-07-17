@@ -337,8 +337,7 @@ ol {
     }
   }
 
-  &[class] > *,
-  &[role="list"] > * {
+  &[class] > * {
     list-style: none;
     margin-left: 0;
   }
@@ -417,8 +416,7 @@ ul {
     }
   }
 
-  &[class] > *,
-  &[role="list"] > * {
+  &[class] > * {
     list-style: none;
     margin-left: 0;
   }
