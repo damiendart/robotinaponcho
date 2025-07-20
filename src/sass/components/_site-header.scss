@@ -89,14 +89,13 @@
       &:hover {
         &::after {
           background: currentColor;
-          border-radius: functions.px-to-rem(1px);
           bottom: functions.px-to-rem(2px);
           content: "";
           display: block;
           left: 0;
           height: functions.px-to-rem(2px);
           position: absolute;
-          transform: rotate(-1deg) translateY(#{functions.px-to-rem(1px)});
+          transform: rotate(-1.75deg) translateY(#{functions.px-to-rem(1px)});
           width: calc(100% - #{functions.px-to-rem(4px)});
         }
       }
