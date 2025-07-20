@@ -219,7 +219,7 @@ class RedirectTest extends EndToEndTestCase
             ltrim($original, '/'),
             [
                 'allow_redirects' => ['track_redirects' => true],
-                'http_errors' => false
+                'http_errors' => false,
             ],
         );
 
