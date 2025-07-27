@@ -11,13 +11,12 @@ template: '_templates/homepage.html.twig'
 Damien Dart's Personal Website
 ==============================
 
-{.u-text-size-md}
 **Hello!** I’m Damien Dart, a full-time web developer based in South
 West England, and this is my personal website.
 
-Here you’ll find [my projects][], [notes][], and [other assorted tat][].
+Here you’ll find [my projects][] and [other assorted tat][].
 
-Other places I regularly pollute include [GitHub][] and [Instagram][].
+Other places I regularly pollute include [GitHub][].
 
   [my projects]: <https://www.robotinaponcho.net/projects/>
   [notes]: <https://www.robotinaponcho.net/notes/>

@@ -30,7 +30,7 @@
   --button-background-active-fallback: #{variables.$colour-red-700};
   --button-background-hover-fallback: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
-  --drawing-outline-opacity: 1;
+  --drawing-outline-background: #{variables.$colour-grey-50};
   --modal-backdrop-background: oklch(from var(--base-shadow) l c h / 0.54);
   --page-header-background: #{variables.$colour-secondary-red};
   --page-header-foreground: #{variables.$colour-base-white};

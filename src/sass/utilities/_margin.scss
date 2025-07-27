@@ -1,0 +1,9 @@
+@use "../variables";
+
+.u-margin {
+  &-bottom {
+    &-mxxl {
+      margin-block-end: variables.$base-line-height * -2.5;
+    }
+  }
+}

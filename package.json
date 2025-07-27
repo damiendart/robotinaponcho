@@ -10,7 +10,7 @@
   "license": "MIT",
   "name": "robotinaponcho",
   "optionalDependencies": {
-    "assets": "github:damiendart/assets#70d1dd0f07270ff98efa8540646f1be964e7fa18"
+    "assets": "github:damiendart/assets#ea9862a099d823237b03c1542e770139c09e3962"
   },
   "private": true
 }

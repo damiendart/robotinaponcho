@@ -7,20 +7,18 @@
 {% extends '_templates/base.html.twig' %}
 
 {% block heading %}
-    <div class="image-and-text u-content__wider">
-        <h1 class="u-stack__cozy u-visually-hidden">{{ title | smartypants | widont }}</h1>
+    <h1 class="u-stack__cozy u-visually-hidden">{{ title | smartypants | widont }}</h1>
 
-        <div class="image-and-text__image u-stack__cozy">
-            <picture class="robot__robot">
-                <source srcset="/assets/homepage-robot.{{ site.releaseTimestamp }}.avif, /assets/homepage-robot@2x.{{ site.releaseTimestamp }}.avif 2x" type="image/avif">
-                <source srcset="/assets/homepage-robot.{{ site.releaseTimestamp }}.webp, /assets/homepage-robot@2x.{{ site.releaseTimestamp }}.webp 2x" type="image/webp">
-                <img alt="A black-and-white drawing of a waving robot in a poncho." height="375" src="/assets/homepage-robot.{{ site.releaseTimestamp }}.png" srcset="/assets/homepage-robot@2x.{{ site.releaseTimestamp }}.png 2x" title="Hello!" width="350">
-            </picture>
-        </div>
-        <div class="image-and-text__text u-stack">
-            {{ content | raw }}
-        </div>
+    <div class="u-stack u-text-size-md">
+        {{ content | raw }}
+
+        <picture class="robot-in-a-poncho u-margin-bottom-mxxl u-stack__xl">
+            <source srcset="/assets/robot-in-a-poncho.{{ site.releaseTimestamp }}.avif, /assets/robot-in-a-poncho@2x.{{ site.releaseTimestamp }}.avif 2x" type="image/avif">
+            <source srcset="/assets/robot-in-a-poncho.{{ site.releaseTimestamp }}.webp, /assets/robot-in-a-poncho@2x.{{ site.releaseTimestamp }}.webp 2x" type="image/webp">
+            <img alt="A black-and-white drawing of a waving robot in a poncho." height="296" src="/assets/robot-in-a-poncho.{{ site.releaseTimestamp }}.png" title="Hello!" width="250">
+        </picture>
     </div>
+
 {% endblock %}
 
 {% block content %}{% endblock %}
