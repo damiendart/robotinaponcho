@@ -23,7 +23,7 @@
     letter-spacing: variables.$base-one-pixel-in-rem * -1;
     line-height: variables.$base-line-height * 1.5;
 
-    @include mixins.breakpoint-up(small) {
+    @include mixins.breakpoint-up(sm) {
       font-size: 250%;
       line-height: variables.$base-line-height * 1.75;
     }

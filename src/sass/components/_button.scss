@@ -49,7 +49,7 @@
   }
 
   &__download {
-    @include mixins.breakpoint-between(x-small, small) {
+    @include mixins.breakpoint-between(xs, sm) {
       &::after {
         content: ":";
       }

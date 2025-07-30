@@ -12,12 +12,12 @@ $base-one-pixel-in-em: math.div(1px, $base-one-em-in-pixels) * 1em;
 $base-one-pixel-in-rem: math.div(1px, $base-one-em-in-pixels) * 1rem;
 
 $breakpoints: (
-  x-small: 320px,
-  small: 480px,
-  medium: 768px,
+  xs: 320px,
+  sm: 480px,
+  md: 768px,
   feature: 984px,
-  large: 1024px,
-  x-large: 1140px,
+  lg: 1024px,
+  xl: 1140px,
 );
 
 $colour-base-white: #ffffff;

@@ -5,20 +5,20 @@
 @use "../mixins";
 
 .u-collapsible {
-  &--x-small-down {
-    @include mixins.breakpoint-down(x-small) {
+  &\@xs-down {
+    @include mixins.breakpoint-down(xs) {
       display: none;
     }
   }
 
-  &--small-down {
-    @include mixins.breakpoint-down(small) {
+  &\@sm-down {
+    @include mixins.breakpoint-down(sm) {
       display: none;
     }
   }
 
-  &--medium-down {
-    @include mixins.breakpoint-down(medium) {
+  &\@md-down {
+    @include mixins.breakpoint-down(md) {
       display: none;
     }
   }

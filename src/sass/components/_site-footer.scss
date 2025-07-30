@@ -31,7 +31,7 @@
       gap: (variables.$base-line-height * 0.5) variables.$base-line-height;
       justify-content: center;
 
-      @include mixins.breakpoint-up(small) {
+      @include mixins.breakpoint-up(sm) {
         flex-direction: row;
       }
 

@@ -197,7 +197,7 @@ fieldset {
 figure {
   margin: 0;
 
-  @include mixins.breakpoint-down(small) {
+  @include mixins.breakpoint-down(sm) {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     overflow-y: hidden;
@@ -208,7 +208,7 @@ figure {
     position: relative;
 
     &::after {
-      @include mixins.breakpoint-down(small) {
+      @include mixins.breakpoint-down(sm) {
         content: "";
         display: block;
         height: variables.$base-one-pixel-in-rem;
@@ -249,7 +249,7 @@ html {
   @if(variables.$base-font-size > 18px) {
     font-size: math.percentage(math.div(18px, variables.$base-font-size));
 
-    @include mixins.breakpoint-up(small) {
+    @include mixins.breakpoint-up(sm) {
       font-size: 100%;
     }
   }

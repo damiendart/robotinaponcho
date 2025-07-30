@@ -40,7 +40,7 @@
     &__item {
       position: relative;
 
-      @include mixins.breakpoint-up(medium) {
+      @include mixins.breakpoint-up(md) {
         text-align: center;
       }
 
