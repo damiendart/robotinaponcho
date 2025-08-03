@@ -18,6 +18,26 @@
   &__item {
     padding: 0;
 
+    a {
+      display: block;
+
+      &::before {
+        background: var(--base-link);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: variables.$base-line-height;
+        content: "";
+        display: inline-block;
+        height: variables.$base-line-height * 1.5;
+        mask-image: var(--social-share-list-item-mask-image, #{functions.cache-bust-url("icon-copy.svg")});
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: variables.$base-line-height;
+        transition: background-size 0.125s ease, mask-size 0.125s ease, opacity 0.125s ease;
+        width: variables.$base-line-height * 1.5;
+      }
+    }
+
     &:not(:first-child) {
       margin: 0 0 0 variables.$base-line-height;
     }
@@ -41,10 +61,6 @@
           width: variables.$base-line-height * 1.5;
         }
 
-        &::before {
-          mask: functions.cache-bust-url("icon-copy.svg");
-        }
-
         &.clipboard-success {
           &::after {
             opacity: 1;
@@ -58,41 +74,11 @@
     }
 
     &--facebook {
-      a {
-        &::before {
-          mask: functions.cache-bust-url("icon-facebook.svg");
-        }
-      }
+      --social-share-list-item-mask-image: #{functions.cache-bust-url("icon-facebook.svg")};
     }
 
     &--twitter {
-      a {
-        &::before {
-          mask: functions.cache-bust-url("icon-twitter.svg");
-        }
-      }
-    }
-
-    a {
-      display: block;
-
-      &::before {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: variables.$base-line-height;
-        content: "";
-        display: inline-block;
-        height: variables.$base-line-height * 1.5;
-        mask-position: center;
-        mask-repeat: no-repeat;
-        mask-size: variables.$base-line-height;
-        transition: background-size 0.125s ease, mask-size 0.125s ease, opacity 0.125s ease;
-        width: variables.$base-line-height * 1.5;
-
-        @supports (mask: functions.cache-bust-url("icon-check.svg")) {
-          background: var(--base-link);
-        }
-      }
+      --social-share-list-item-mask-image: #{functions.cache-bust-url("icon-twitter.svg")};
     }
   }
 }
