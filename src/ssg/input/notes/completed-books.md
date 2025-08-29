@@ -3,7 +3,6 @@
 # International License. To view a copy of this license, please visit
 # <http://creativecommons.org/licenses/by/4.0/>.
 
-bodyClasses: 'has-rating-tables'
 collections:
   - 'notes'
   - 'reading'
