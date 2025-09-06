@@ -389,9 +389,6 @@ table {
       padding-top: 0;
     }
 
-    tr {
-      border-bottom-color: currentColor;
-    }
   }
 
   tr {
@@ -400,6 +397,10 @@ table {
     td:has(+ td > .star-rating) {
       text-wrap: balance;
       width: 100%;
+    }
+
+    &:last-child {
+      border-bottom-color: currentColor;
     }
   }
 }
