@@ -37,5 +37,5 @@ jobs:
           echo "${{ secrets.ASSETS_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-      - name: 'Ensure project builds and run all linting-related tasks'
+      - name: 'Run all linting-related tasks and ensure project builds'
         run: './bin/task ci'

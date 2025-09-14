@@ -21,9 +21,9 @@ tasks:
       - task: 'git-filters'
       - task: 'clean'
       - task: 'dependencies'
-      - task: 'build'
       - task: 'lint'
       - task: 'static-analysis'
+      - task: 'build'
     desc: 'Run all default CI-related tasks'
 
   ci:end-to-end:
