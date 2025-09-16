@@ -21,7 +21,6 @@
   padding: math.div(variables.$base-line-height, 2) variables.$base-line-height;
   position: relative;
   text-decoration-line: none;
-  white-space: nowrap;
 
   img {
     display: inline-block;
@@ -45,31 +44,6 @@
     &:active {
       background: var(--button-background-active-fallback);
       background-color: color-mix(in oklch, var(--button-background) 100%, black 12%);
-    }
-  }
-
-  &__download {
-    @include mixins.breakpoint-between(xs, sm) {
-      &::after {
-        content: ":";
-      }
-    }
-  }
-
-  &__itchio {
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    margin: functions.px-to-rem(-6px) 0 0 functions.px-to-rem(-5px);
-
-    &::before {
-      background: currentColor;
-      content: "";
-      display: block;
-      height: variables.$base-line-height;
-      margin-left: functions.px-to-rem(3px);
-      mask: functions.cache-bust-url("/assets/itchio.svg") no-repeat center;
-      width: functions.px-to-rem(98.25px);
     }
   }
 
