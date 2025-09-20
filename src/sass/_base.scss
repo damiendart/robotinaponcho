@@ -379,7 +379,16 @@ table {
   width: 100%;
 
   > :not(caption) > * > * {
-    padding-block: math.div(variables.$base-line-height, 4) - functions.px-to-rem(0.5px);
+    padding-block: (variables.$base-line-height * 0.25) - functions.px-to-rem(0.5px);
+    padding-inline: variables.$base-line-height * 0.25;
+
+    &:first-child {
+      padding-inline-start: 0;
+    }
+
+    &:last-child {
+      padding-inline-end: 0;
+    }
   }
 
   > thead {
