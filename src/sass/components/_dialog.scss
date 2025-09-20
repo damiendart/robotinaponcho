@@ -27,7 +27,7 @@
   }
 
   &[open] {
-    box-shadow: 0 0 0 100vw var(--modal-backdrop-background);
+    box-shadow: 0 0 0 100vw var(--dialog-backdrop-background);
   }
 
   &::backdrop {
@@ -42,39 +42,6 @@
     overflow: auto;
   }
 
-  &__close {
-    --close-colour: var(--button-background);
-    --outline-colour: var(--button-background);
-
-    appearance: none;
-    background: none;
-    border: none;
-    height: variables.$base-line-height * 0.75;
-    outline-offset: functions.px-to-rem(2px);
-    padding: 0;
-    width: variables.$base-line-height * 0.75;
-
-    &::before {
-      background: var(--close-colour);
-      content: "";
-      display: inline-block;
-      height: 100%;
-      mask-image: functions.cache-bust-url("icon-menu-close.svg");
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: 100%;
-      width: 100%;
-    }
-
-    &:hover,
-    &:focus {
-      --close-colour: var(--button-background-hover-fallback);
-    }
-
-    &:active {
-      --close-colour: var(--button-background-active-fallback);
-    }
-  }
 
   &__footer {
     display: flex;
@@ -96,12 +63,37 @@
 
   &__header {
     align-items: center;
-    background: var(--base-highlight);
+    background: var(--site-header-background);
+    color: var(--site-header-foreground);
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     margin: 0;
     padding: (variables.$base-line-height * 0.5) (variables.$base-line-height * 0.75);
     text-align: left;
+
+    &__close {
+      appearance: none;
+      background: none;
+      border: none;
+      color: inherit;
+      height: variables.$base-line-height * 1.125;
+      outline-offset: functions.px-to-rem(2px);
+      padding: 0;
+      position: relative;
+      width: variables.$base-line-height * 1.125;
+
+      &::after {
+        background: currentColor;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        mask-image: functions.cache-bust-url("icon-menu-close.svg");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: variables.$base-line-height * 0.75;
+        width: 100%;
+      }
+    }
   }
 }
