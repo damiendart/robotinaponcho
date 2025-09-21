@@ -10,7 +10,11 @@
 .button {
   $s: &;
 
+  --outline-colour: var(--button-background);
+
   appearance: none;
+  background: var(--button-background);
+  color: var(--button-foreground);
   border: none;
   border-radius: variables.$base-line-height * 0.25;
   display: inline-block;
@@ -22,37 +26,15 @@
   position: relative;
   text-decoration-line: none;
 
-  img {
-    display: inline-block;
-    height: variables.$base-line-height;
-    margin: 0;
-    vertical-align: bottom;
+  &:hover,
+  &:focus {
+    background: var(--button-background-hover-fallback);
+    background-color: color-mix(in oklch, var(--button-background) 100%, black 6%);
   }
 
-  &:not(#{$s}--inverted) {
-    --outline-color: var(--button-background);
-
-    background: var(--button-background);
-    color: var(--button-foreground);
-
-    &:hover,
-    &:focus {
-      background: var(--button-background-hover-fallback);
-      background-color: color-mix(in oklch, var(--button-background) 100%, black 6%);
-    }
-
-    &:active {
-      background: var(--button-background-active-fallback);
-      background-color: color-mix(in oklch, var(--button-background) 100%, black 12%);
-    }
-  }
-
-  &--inverted {
-    $border-width: variables.$base-one-pixel-in-rem * 3;
-
-    background: transparent;
-    border: $border-width solid currentColor;
-    padding: (variables.$base-line-height * 0.5 - $border-width) (variables.$base-line-height - $border-width);
+  &:active {
+    background: var(--button-background-active-fallback);
+    background-color: color-mix(in oklch, var(--button-background) 100%, black 12%);
   }
 
   &--small {

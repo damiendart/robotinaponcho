@@ -59,7 +59,6 @@ a {
   &:focus-visible {
     text-decoration-color: currentColor;
     text-decoration-line: underline;
-    text-decoration-thickness: functions.px-to-rem(2px);
   }
 }
 

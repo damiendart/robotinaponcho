@@ -6,6 +6,10 @@
 @use "../variables";
 
 .u-text {
+  &-centered {
+    text-align: center;
+  }
+
   &-size-md {
     font-size: 112.5%;
     letter-spacing: initial;

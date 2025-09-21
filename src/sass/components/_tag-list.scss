@@ -17,14 +17,9 @@
     border-radius: variables.$base-line-height * 0.125;
     display: inline-block;
     font-weight: bold;
+    outline-color: currentColor;
+    outline-offset: functions.px-to-rem(2px);
     text-decoration-line: none;
     padding: (variables.$base-line-height * 0.125 - $border-width) (variables.$base-line-height * 0.5 - $border-width);
-
-    &:active,
-    &:focus,
-    &:hover {
-      outline-color: var(--button-background);
-      outline-offset: functions.px-to-rem(2px);
-    }
   }
 }
