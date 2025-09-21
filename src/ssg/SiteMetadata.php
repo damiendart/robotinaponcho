@@ -24,8 +24,6 @@ final class SiteMetadata
         $this->metadata = [
             'author' => 'Damien Dart',
             'authorEmail' => 'damiendart@pobox.com',
-            'metaTwitterAuthor' => '@damiendart',
-            'metaTwitterSite' => '@damiendart',
             'metaOpengraphImage' => "https://www.robotinaponcho.net/assets/opengraph.{$releaseTimestamp}.png",
             'releaseTimestamp' => $releaseTimestamp,
             'urlOrigin' => 'https://www.robotinaponcho.net',

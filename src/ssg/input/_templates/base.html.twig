@@ -4,14 +4,14 @@
     information, please refer to the accompanying "LICENCE" file.
 #}
 
-{% set metaTitle = metaTitle | default(title) | trim ~ ' (www.robotinaponcho.net)' %}
+{% set metaTitle = metaTitle | default(title) | trim %}
 
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="utf-8">
     <meta content="initial-scale=1, width=device-width" name="viewport">
-    <title>{{ metaTitle | smartypants }}</title>
+    <title>{{ (title | trim ~ ' (www.robotinaponcho.net)') | smartypants }}</title>
 
     {#
         If this script block is modified, the CSP hash in
@@ -37,9 +37,6 @@
     <meta content="{{ metaTitle | smartypants }}" property="og:title">
     <meta content="website" property="og:type">
     <meta content="{{ site.urlOrigin }}/{{ urlPath }}" property="og:url">
-    <meta content="{{ site.metaTwitterAuthor | smartypants }}" name="twitter:creator">
-    <meta content="{{ site.metaTwitterSite | smartypants }}" name="twitter:site">
-    <meta content="summary_large_image" name="twitter:card">
 
     {% if metaNoCrawl | default(false) %}
         <meta content="noindex, nofollow" name="robots">
@@ -82,7 +79,7 @@
     <main class="u-content u-stack u-stack__cozy" id="content">
         <div class="page-header u-content u-stack__xl">
             {% block heading %}
-                <h1>{{ title | smartypants | widont }}</h1>
+                <h1>{{ title | trim | smartypants | widont }}</h1>
             {% endblock %}
         </div>
 
