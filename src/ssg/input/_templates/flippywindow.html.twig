@@ -38,12 +38,4 @@
     </div>
 
     {{ content | raw }}
-
-    {%
-        include '_templates/partials/sharing-links.html.twig' with {
-            'link': site.urlOrigin ~ '/' ~ urlPath,
-            'twitterAuthor': site.metaTwitterAuthor | replace({ '@': '' }),
-            'twitterText': 'Download FlippyWindow, by @damiendart, a simple Windows application that non-destructively flips any part of your screen.'
-        }
-    %}
 {% endblock %}
