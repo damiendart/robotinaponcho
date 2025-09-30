@@ -20,8 +20,9 @@ $breakpoints: (
   xl: 1140px,
 );
 
-$colour-base-white: #ffffff;
 $colour-base-black: #000000;
+$colour-base-shadow: oklch(22.4% 0.0509 260.5);
+$colour-base-white: #ffffff;
 
 // The grey, base (500) red, and pink colour values are from
 // <https://yeun.github.io/open-color/>. The remaining red colour values
@@ -29,23 +30,26 @@ $colour-base-black: #000000;
 // <https://www.tints.dev/brand/C92A2A>. RGB values are converted to
 // OKLCH equivalents using <https://colorjs.io/apps/convert/>.
 
-$colour-blue-shadow: oklch(22.4% 0.0509 260.5);
-
 $colour-grey-50: oklch(98.16% 0.0017 247.8);
 $colour-grey-200: oklch(94.17% 0.0052 247.9);
-$colour-grey-300: oklch(76.92% 0.0145 248);
+$colour-grey-300: oklch(87.54% 0.0088 248);
+$colour-grey-700: oklch(40.00% 0.0105 248.1);
 $colour-grey-800: oklch(34.51% 0.0133 248.2);
 $colour-grey-900: oklch(26.21% 0.0095 248.2);
 
 $colour-red-500: oklch(54.57% 0.1949 26.61);
 $colour-red-600: oklch(49.75% 0.1763 26.49);
-$colour-red-700: oklch(48.09% 0.1702 26.47);
+$colour-red-700: oklch(46.20% 0.1702 26.47);
 
+$colour-pink-300: oklch(80.8% 0.1104 357.2);
+$colour-pink-400: oklch(74.96% 0.1475 358.8);
 $colour-pink-500: oklch(69.24% 0.1765 1.25);
 $colour-pink-600: oklch(63.96% 0.1968 3.187);
 $colour-pink-700: oklch(58.81% 0.201 5.248);
 
 $colour-secondary-red: oklch(50.74% 0.156 7.49);
+$colour-secondary-red-600: oklch(46.20% 0.156 9.20);
+$colour-secondary-red-700: oklch(40.25% 0.156 11.83);
 
 $content-widths: (
   default: 720px,

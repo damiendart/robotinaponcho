@@ -26,15 +26,13 @@
   position: relative;
   text-decoration-line: none;
 
-  &:hover,
-  &:focus {
-    background: var(--button-background-hover-fallback);
-    background-color: color-mix(in oklch, var(--button-background) 100%, black 6%);
+  &:focus,
+  &:hover {
+    background: var(--button-background-hover);
   }
 
   &:active {
-    background: var(--button-background-active-fallback);
-    background-color: color-mix(in oklch, var(--button-background) 100%, black 12%);
+    background: var(--button-background-active);
   }
 
   &--small {

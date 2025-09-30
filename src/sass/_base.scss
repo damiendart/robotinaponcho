@@ -13,11 +13,13 @@
   --base-foreground: #{variables.$colour-grey-50};
   --base-highlight: #{variables.$colour-grey-800};
   --base-link: #{variables.$colour-pink-500};
-  --base-shadow: #{variables.$colour-base-black};
+  --base-shadow: oklch(from #{variables.$colour-base-shadow} calc(l / 2) c h);
   --button-background: #{variables.$colour-pink-500};
-  --button-background-active-fallback: #{variables.$colour-pink-700};
-  --button-background-hover-fallback: #{variables.$colour-pink-600};
+  --button-background-active: #{variables.$colour-pink-300};
+  --button-background-hover: #{variables.$colour-pink-400};
   --button-foreground: #{variables.$colour-grey-900};
+  --label-border-colour: #{variables.$colour-grey-800};
+  --label-border-colour-hover: #{variables.$colour-grey-700};
   --table-border-colour: #{variables.$colour-grey-800};
 }
 
@@ -26,15 +28,21 @@
   --base-foreground: #{variables.$colour-base-black};
   --base-highlight: #{variables.$colour-grey-200};
   --base-link: #{variables.$colour-red-500};
-  --base-shadow: #{variables.$colour-blue-shadow};
+  --base-shadow: #{variables.$colour-base-shadow};
   --button-background: #{variables.$colour-red-500};
-  --button-background-active-fallback: #{variables.$colour-red-700};
-  --button-background-hover-fallback: #{variables.$colour-red-600};
+  --button-background-active: #{variables.$colour-red-700};
+  --button-background-hover: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
   --dialog-backdrop-background: oklch(from var(--base-shadow) l c h / 0.54);
   --dialog-header-background: var(--page-header-background);
+  --dialog-header-button-background: var(--dialog-header-background);
+  --dialog-header-button-foreground: var(--dialog-header-foreground);
+  --dialog-header-button-background-active: #{variables.$colour-secondary-red-700};
+  --dialog-header-button-background-hover: #{variables.$colour-secondary-red-600};
   --dialog-header-foreground: var(--page-header-foreground);
   --drawing-outline-background: #{variables.$colour-grey-50};
+  --label-border-colour: #{variables.$colour-grey-200};
+  --label-border-colour-hover: #{variables.$colour-grey-300};
   --page-header-background: #{variables.$colour-secondary-red};
   --page-header-foreground: #{variables.$colour-base-white};
   --site-header-background: var(--page-header-background);
@@ -290,12 +298,20 @@ label:has(input[type="radio"]) {
   $border-radius: variables.$base-one-pixel-in-rem * 3;
 
   align-items: center;
-  border: $border-radius solid var(--base-highlight);
+  border: $border-radius solid var(--label-border-colour);
   border-radius: variables.$base-line-height * 0.125;
   box-sizing: border-box;
   display: flex;
   gap: variables.$base-line-height * 0.5;
   padding: (variables.$base-line-height * 0.25 - $border-radius) (variables.$base-line-height * 0.5 - $border-radius);
+
+  &:hover {
+    border-color: var(--label-border-colour-hover);
+
+    input[type="radio"] {
+      border-color: var(--button-background-hover);
+    }
+  }
 
   &:has(input:checked) {
     background-color: var(--base-highlight);
@@ -303,7 +319,7 @@ label:has(input[type="radio"]) {
 
   input[type="radio"] {
     appearance: none;
-    border: functions.px-to-rem(2px) solid var(--base-link);
+    border: functions.px-to-rem(2px) solid var(--button-background);
     color: var(--base-link);
     border-radius: 50%;
     box-sizing: border-box;

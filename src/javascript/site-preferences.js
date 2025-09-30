@@ -16,7 +16,7 @@ class SitePreferencesDialog extends HTMLElement {
         <dialog aria-labelledby="perferences-dialog-title" closedby="any" class="dialog">
           <form method="dialog">
             <header class="dialog__header">
-              <button autofocus class="dialog__header__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
+              <button autofocus class="button dialog__header__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
               <hr aria-hidden="true">
               <h1 class="u-text-size-md" id="perferences-dialog-title">Preferences</h1>
             </header>
@@ -41,7 +41,7 @@ class SitePreferencesDialog extends HTMLElement {
             </div>
             <div class="dialog__footer">
               <button class="button button--small" formmethod="dialog" value="cancel">Cancel</button>
-              <button class="button button--small">Save</button>
+              <button class="button button--small">Save changes</button>
             </div>
           </form>
         </dialog>

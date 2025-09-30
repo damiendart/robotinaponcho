@@ -72,13 +72,14 @@
     padding: (variables.$base-line-height * 0.5) (variables.$base-line-height * 0.75);
     text-align: left;
 
-    &__close {
-      appearance: none;
-      background: none;
-      border: none;
-      color: inherit;
+    &__close.button {
+      --button-background: var(--dialog-header-button-background);
+      --button-background-hover: var(--dialog-header-button-background-hover);
+      --button-background-active: var(--dialog-header-button-background-active);
+      --button-foreground: var(--dialog-header-button-foreground);
+      --outline-colour: var(--dialog-header-button-foreground);
+
       height: variables.$base-line-height * 1.125;
-      outline-offset: functions.px-to-rem(2px);
       padding: 0;
       position: relative;
       width: variables.$base-line-height * 1.125;
