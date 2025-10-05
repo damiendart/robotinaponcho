@@ -1,0 +1,18 @@
+// Copyright (C) Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "../functions";
+@use "../variables";
+
+.cluster {
+  $default-gap: variables.$base-line-height * 0.375;
+
+  align-items: var(--cluster-align-items, center);
+  column-gap: var(--cluster-column-gap, #{$default-gap});
+  display: flex;
+  flex-direction: var(--cluster-flex-direction, row);
+  flex-wrap: var(--cluster-flex-wrap, wrap);
+  justify-content: var(--cluster-justify-content, flex-start);
+  row-gap: var(--cluster-row-gap, #{$default-gap});
+}

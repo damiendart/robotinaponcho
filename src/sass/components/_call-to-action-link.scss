@@ -17,4 +17,9 @@
   outline-offset: functions.px-to-rem(2px);
   padding: (variables.$base-line-height * 0.5 - $border-width) (variables.$base-line-height - $border-width);
   text-decoration: none;
+
+  &--smaller {
+    border-radius: variables.$base-line-height * 0.125;
+    padding: (variables.$base-line-height * 0.125 - $border-width) (variables.$base-line-height * 0.5 - $border-width);
+  }
 }
