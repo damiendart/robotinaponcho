@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                           | Rating |
 |:-----------------------------------------------------------|:-------|
+| [The Code Book][] by Simon Singh                           | ★★★☆☆  |
 | [Chernobyl: History of a Tragedy][] by Serhii Plokhy       | ★★★★☆  |
 | [Fermat’s Last Theorem][] by Simon Singh                   | ★★★★☆  |
 | [Wool][] by Hugh Howey                                     | ★★★☆☆  |
@@ -31,6 +32,7 @@ somewhere easily available will help me stay motivated.
 | [Recursion][] by Blake Crouch                              | ★★★☆☆  |
 | [Children of Memory][] by Adrian Tchaikovsky               | ★★☆☆☆  |
 
+  [The Code Book]: <https://en.wikipedia.org/wiki/The_Code_Book>
   [Chernobyl: History of a Tragedy]: <https://en.wikipedia.org/wiki/Special:BookSources?isbn=9780141988351>
   [Fermat’s Last Theorem]: <https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem_(book)>
   [Wool]: <https://en.wikipedia.org/wiki/Silo_(series)>
