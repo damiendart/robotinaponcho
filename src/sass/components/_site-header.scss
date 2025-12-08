@@ -11,7 +11,7 @@
   background: var(--site-header-background);
   box-sizing: border-box;
   color: var(--site-header-foreground);
-  padding: variables.$base-line-height;
+  padding-block: variables.$base-line-height;
   position: relative;
 
   :where(a) {
@@ -20,15 +20,13 @@
     text-decoration-line: none;
   }
 
-  &__container {
-    $width: functions.px-to-rem(map.get(variables.$content-widths, header));
+  &__container.u-content__wider {
+    $width: functions.px-to-rem(map.get(variables.$content-widths, wider));
 
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    max-width: $width;
-    width: 100%;
 
     &::before {
       content: "";
