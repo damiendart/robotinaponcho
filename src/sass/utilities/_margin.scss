@@ -1,6 +1,12 @@
 @use "../variables";
 
 .u-margin {
+  &-left {
+    &-auto {
+      margin-inline-start: auto;
+    }
+  }
+
   &-bottom {
     &-mxxl {
       margin-block-end: variables.$base-line-height * -2.5;

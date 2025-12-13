@@ -8,10 +8,11 @@
   border: none;
   border-radius: variables.$base-line-height * 0.25;
   box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0);
+  box-sizing: border-box;
   color: var(--base-foreground);
   max-height: calc(100vh - #{variables.$base-line-height * 2});
   max-width: min(calc(100vw - #{variables.$base-line-height}), #{functions.px-to-rem(500px)});
-  padding: 0;
+  padding: variables.$base-line-height;
   text-align: left;
   width: 100%;
 
@@ -38,50 +39,20 @@
   }
 
   &__body {
-    padding: variables.$base-line-height;
     overflow: auto;
   }
 
-
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    padding: variables.$base-line-height;
-    position: relative;
-
-    &::before {
-      background: var(--base-highlight);
-      content: "";
-      display: block;
-      height: functions.px-to-rem(2px);
-      left: 0;
-      position: absolute;
-      top: functions.px-to-rem(-1px);
-      width: 100%;
-    }
+  &__footer.u-cluster {
+    --cluster-justify-content: flex-end;
   }
 
-  &__header {
-    align-items: center;
-    background: var(--site-header-background);
-    color: var(--site-header-foreground);
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin: 0;
-    padding: (variables.$base-line-height * 0.5) (variables.$base-line-height * 0.75);
-    text-align: left;
+  &__header.u-cluster {
+    --cluster-flex-direction: row-reverse;
+    --cluster-justify-content: space-between;
 
-    &__close.button {
-      --button-background: var(--dialog-header-button-background);
-      --button-background-hover: var(--dialog-header-button-background-hover);
-      --button-background-active: var(--dialog-header-button-background-active);
-      --button-foreground: var(--dialog-header-button-foreground);
-      --outline-colour: var(--dialog-header-button-foreground);
-
+    .button {
       height: variables.$base-line-height * 1.125;
       padding: 0;
-      position: relative;
       width: variables.$base-line-height * 1.125;
 
       &::after {

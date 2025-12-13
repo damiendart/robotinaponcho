@@ -34,12 +34,6 @@
   --button-background-hover: #{variables.$colour-red-600};
   --button-foreground: #{variables.$colour-grey-50};
   --dialog-backdrop-background: oklch(from var(--base-shadow) l c h / 0.54);
-  --dialog-header-background: var(--page-header-background);
-  --dialog-header-button-background: var(--dialog-header-background);
-  --dialog-header-button-foreground: var(--dialog-header-foreground);
-  --dialog-header-button-background-active: #{variables.$colour-secondary-red-700};
-  --dialog-header-button-background-hover: #{variables.$colour-secondary-red-600};
-  --dialog-header-foreground: var(--page-header-foreground);
   --drawing-outline-background: #{variables.$colour-grey-50};
   --label-border-colour: #{variables.$colour-grey-200};
   --label-border-colour-hover: #{variables.$colour-grey-300};
@@ -198,10 +192,13 @@ details {
 
 fieldset {
   border: none;
+  margin: 0;
   padding: 0;
 
   legend {
     font-weight: bold;
+    margin: 0;
+    padding: 0;
   }
 }
 

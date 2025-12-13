@@ -5,7 +5,8 @@
 @use "../functions";
 @use "../variables";
 
-.cluster {
+.cluster,
+.u-cluster {
   $default-gap: variables.$base-line-height * 0.375;
 
   align-items: var(--cluster-align-items, center);

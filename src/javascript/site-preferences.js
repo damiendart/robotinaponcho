@@ -14,11 +14,11 @@ class SitePreferencesDialog extends HTMLElement {
     this.innerHTML = `
         <button aria-haspopup="dialog" id="open-preferences-dialog" type="button">Preferences</button>
         <dialog aria-labelledby="perferences-dialog-title" closedby="any" class="dialog">
-          <form method="dialog">
-            <header class="dialog__header">
+          <form class="u-stack" method="dialog">
+            <header class="dialog__header u-cluster">
               <button autofocus class="button dialog__header__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
               <hr aria-hidden="true">
-              <h1 class="u-text-size-md" id="perferences-dialog-title">Preferences</h1>
+              <h1 class="u-text-size-lg" id="perferences-dialog-title">Preferences</h1>
             </header>
             <div class="dialog__body u-stack">
               <p>Your preferences will be saved locally. For more information, see the <a href="/privacy-policy">privacy policy</a>.</p>
@@ -39,7 +39,7 @@ class SitePreferencesDialog extends HTMLElement {
                 }
               </fieldset>
             </div>
-            <div class="dialog__footer">
+            <div class="dialog__footer u-cluster u-stack__md">
               <button class="button button--small" formmethod="dialog" value="cancel">Cancel</button>
               <button class="button button--small">Save changes</button>
             </div>
