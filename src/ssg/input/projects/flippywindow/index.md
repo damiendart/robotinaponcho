@@ -13,24 +13,15 @@ title: 'FlippyWindow'
 
 ### Can’t I just use any image editor to do what FlippyWindow does?
 
-Last time I looked, [Adobe Photoshop CC 2019][] (and later), [Clip Paint
-Studio][], [Krita][], and [PaintTool SAI][] have features that allow you
-to non-destructively change how you view an image, so chances are
-FlippyWindow isn’t necessary.
-
-I built FlippyWindow mainly to see if something like it was possible.
-Also, at the time I had a crappy laptop and FlippyWindow made checking
-large images considerably less painful than using Photoshop to flip them
-back-and-forth.
+Probably! I wrote FlippyWindow back when I was using a version of Adobe
+Photoshop where the only way of viewing your work flipped was to
+transform it back-and-forth, which was especially painful with large
+documents. Since then, most of the image editors I’ve used (including
+Photoshop) have a way of non-destructively viewing your work flipped.
 
 FlippyWindow can also help you spot visual issues in work outside of
 image editors, including animations, application user interfaces, and
 website designs.
-
-  [Adobe Photoshop CC 2019]: <https://www.adobe.com/products/photoshop.html>
-  [Clip Paint Studio]: <https://www.clipstudio.net/>
-  [Krita]: <https://krita.org/>
-  [PaintTool SAI]: <https://www.systemax.jp/en/sai/>
 
 ### Is FlippyWindow available elsewhere?
 
@@ -58,8 +49,8 @@ available on [my personal site][] and [GitHub][].
 
 ### Will earlier versions of Windows, Linux and macOS be supported?
 
-FlippyWindow (ab)uses APIs that were introduced in Windows 8
-(specifically the second release of the Magnification API).
+FlippyWindow (ab)uses APIs that were introduced in Windows 8,
+specifically the second release of the Magnification API.
 
 FlippyWindow works on the operating systems I use, so there are no plans
 to investigate whether FlippyWindow can support earlier versions of
