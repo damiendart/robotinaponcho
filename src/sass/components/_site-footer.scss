@@ -36,6 +36,9 @@
       }
 
       & > * {
+        display: inline-flex;
+        justify-content: center;
+
         a {
           font-weight: bold;
         }

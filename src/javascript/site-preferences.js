@@ -12,11 +12,11 @@ class SitePreferencesDialog extends HTMLElement {
     };
 
     this.innerHTML = `
-        <button aria-haspopup="dialog" id="open-preferences-dialog" type="button">Preferences</button>
+        <button aria-haspopup="dialog" class="button button--subtle" id="open-preferences-dialog" type="button">Preferences</button>
         <dialog aria-labelledby="perferences-dialog-title" closedby="any" class="dialog">
           <form class="u-stack" method="dialog">
             <header class="dialog__header u-cluster">
-              <button autofocus class="button dialog__header__close" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Cancel</span></button>
+              <button autofocus class="button button--subtle dialog__header__close-button" formmethod="dialog" value="cancel"><span class="u-visually-hidden">Close modal</span></button>
               <hr aria-hidden="true">
               <h1 class="u-text-size-lg" id="perferences-dialog-title">Preferences</h1>
             </header>
@@ -40,7 +40,7 @@ class SitePreferencesDialog extends HTMLElement {
               </fieldset>
             </div>
             <div class="dialog__footer u-cluster u-stack__md">
-              <button class="button button--small" formmethod="dialog" value="cancel">Cancel</button>
+              <button class="button button--subtle button--small" formmethod="dialog" value="cancel">Cancel</button>
               <button class="button button--small">Save changes</button>
             </div>
           </form>

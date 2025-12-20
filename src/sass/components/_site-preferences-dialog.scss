@@ -3,29 +3,13 @@
 @use "../variables";
 
 site-preferences-dialog {
-  display: inline-block;
-  vertical-align: text-bottom;
+  display: contents;
 
-  #open-preferences-dialog {
-    appearance: none;
-    border: none;
-    background: none;
-    color: var(--base-link);
-    cursor: pointer;
+  #open-preferences-dialog.button {
     display: flex;
-    font: inherit;
-    font-weight: bold;
     gap: variables.$base-line-height * 0.125;
-    line-height: initial;
-    margin: auto;
-    padding: 0;
-
-    &:active,
-    &:focus,
-    &:focus-visible,
-    &:hover {
-      text-decoration-line: underline;
-    }
+    margin: 0 math.div(variables.$base-line-height, -4);
+    padding: 0 math.div(variables.$base-line-height, 4);
 
     &::before {
       background: currentColor;
@@ -38,6 +22,13 @@ site-preferences-dialog {
       mask-repeat: no-repeat;
       mask-size: 100%;
       width: variables.$base-line-height * 0.65;
+    }
+  }
+
+  &:has(dialog[open]) {
+    #open-preferences-dialog {
+      background: var(--button-background-active);
+      color: var(--button-foreground);
     }
   }
 }

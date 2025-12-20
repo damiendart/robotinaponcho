@@ -35,6 +35,11 @@
     background: var(--button-background-active);
   }
 
+  &--subtle:not(:active, :focus, :hover){
+    background: none;
+    color: var(--button-background);
+  }
+
   &--small {
     padding: math.div(variables.$base-line-height, 4) (variables.$base-line-height * 0.75);
   }
