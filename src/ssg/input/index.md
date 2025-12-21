@@ -20,6 +20,6 @@ Other places I regularly pollute include [GitHub][].
 
   [my projects]: <https://www.robotinaponcho.net/projects/>
   [notes]: <https://www.robotinaponcho.net/notes/>
-  [other assorted tat]: <https://www.robotinaponcho.net/crap/>
+  [other assorted tat]: <https://www.robotinaponcho.net/misc/>
   [GitHub]: <https://github.com/damiendart>
   [Instagram]: <https://www.instagram.com/damiendart/>

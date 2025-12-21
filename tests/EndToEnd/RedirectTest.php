@@ -139,8 +139,8 @@ class RedirectTest extends EndToEndTestCase
     public static function permanentRedirectProvider(): array
     {
         return [
-            ['/art/colouring-pages-a4.pdf', '/crap/colouring-pages-a4.pdf'],
-            ['/art/colouring-pages-us.pdf', '/crap/colouring-pages-us.pdf'],
+            ['/art/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
+            ['/art/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
             ['/assets/homepage-robot.avif', '/assets/robot-in-a-poncho.%d.avif'],
             ['/assets/homepage-robot.png', '/assets/robot-in-a-poncho.%d.png'],
             ['/assets/homepage-robot.webp', '/assets/robot-in-a-poncho.%d.webp'],
@@ -153,6 +153,9 @@ class RedirectTest extends EndToEndTestCase
             ['/assets/icon-twitter-link.svg', '/assets/icon-twitter.%d.svg'],
             ['/assets/icons-chevrons.svg', '/assets/icon-chevron.%d.svg'],
             ['/assets/og.png', '/assets/opengraph.%d.png'],
+            ['/crap/', '/misc/'],
+            ['/crap/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
+            ['/crap/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
             ['/crap/FlippyWindowVertical.zip', '/projects/flippywindow/flippywindow-64-bit.zip'],
             ['/crap/photoshop-notes.html', '/notes/#adobe-creative-cloud'],
             ['/crap/synology-notes.html', '/notes/#synology-diskstation'],

@@ -19,4 +19,4 @@ When exporting [colouring pages][] to PDF, I use the *\[High Quality
 Print\]* preset with a single modification: under *Compression*, change
 the image quality for both colour and greyscale images to medium.
 
-  [colouring pages]: <https://www.robotinaponcho.net/crap/>
+  [colouring pages]: <https://www.robotinaponcho.net/misc/>
