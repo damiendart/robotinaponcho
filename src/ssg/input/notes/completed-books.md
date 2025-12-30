@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                           | Rating |
 |:-----------------------------------------------------------|:-------|
+| [The Sense of Style][] by Steven Pinker                    | ★★★☆☆  |
 | [The Code Book][] by Simon Singh                           | ★★★☆☆  |
 | [Chernobyl: History of a Tragedy][] by Serhii Plokhy       | ★★★★☆  |
 | [Fermat’s Last Theorem][] by Simon Singh                   | ★★★★☆  |
@@ -32,6 +33,7 @@ somewhere easily available will help me stay motivated.
 | [Recursion][] by Blake Crouch                              | ★★★☆☆  |
 | [Children of Memory][] by Adrian Tchaikovsky               | ★★☆☆☆  |
 
+  [The Sense of Style]: <https://en.wikipedia.org/wiki/The_Sense_of_Style>
   [The Code Book]: <https://en.wikipedia.org/wiki/The_Code_Book>
   [Chernobyl: History of a Tragedy]: <https://en.wikipedia.org/wiki/Special:BookSources?isbn=9780141988351>
   [Fermat’s Last Theorem]: <https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem_(book)>
