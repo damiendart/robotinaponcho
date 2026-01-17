@@ -17,6 +17,15 @@ I’m trying to read more, so I figured keeping a list of finished books
 somewhere easily available will help me stay motivated.
 
 
+## Completed books in 2026
+
+| Title and Author     | Rating |
+|:---------------------|:-------|
+| [Eon][] by Greg Bear | ★★☆☆☆  |
+
+  [Eon]: <https://en.wikipedia.org/wiki/Eon_(novel)>
+
+
 ## Completed books in 2025
 
 | Title and Author                                           | Rating |
