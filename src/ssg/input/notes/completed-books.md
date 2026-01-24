@@ -19,10 +19,12 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2026
 
-| Title and Author     | Rating |
-|:---------------------|:-------|
-| [Eon][] by Greg Bear | ★★☆☆☆  |
+| Title and Author                            | Rating |
+|:--------------------------------------------|:-------|
+| [Station Eleven][] by Emily St. John Mandel | ★★★☆☆  |
+| [Eon][] by Greg Bear                        | ★★☆☆☆  |
 
+  [Station Eleven]: <https://en.wikipedia.org/wiki/Station_Eleven>
   [Eon]: <https://en.wikipedia.org/wiki/Eon_(novel)>
 
 
