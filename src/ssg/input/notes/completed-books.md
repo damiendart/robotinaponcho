@@ -21,9 +21,11 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                            | Rating |
 |:--------------------------------------------|:-------|
+| [The Hunger Games][] by Suzanne Collins     | ★★★☆☆  |
 | [Station Eleven][] by Emily St. John Mandel | ★★★☆☆  |
 | [Eon][] by Greg Bear                        | ★★☆☆☆  |
 
+  [The Hunger Games]: <https://en.wikipedia.org/wiki/The_Hunger_Games_(novel)>
   [Station Eleven]: <https://en.wikipedia.org/wiki/Station_Eleven>
   [Eon]: <https://en.wikipedia.org/wiki/Eon_(novel)>
 
