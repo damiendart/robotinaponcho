@@ -115,6 +115,7 @@ final class MinifyHtml extends AbstractStep
         return (string) preg_replace_callback(
             '/(&#\d+;)/',
             static function ($match): string {
+                // @phpstan-ignore cast.useless
                 return (string) mb_convert_encoding(
                     $match[1],
                     'UTF-8',
