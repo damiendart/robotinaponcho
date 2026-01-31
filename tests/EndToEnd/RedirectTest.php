@@ -24,6 +24,114 @@ use PHPUnit\Framework\Attributes\TestDox;
 #[TestDox('The application')]
 class RedirectTest extends EndToEndTestCase
 {
+    #[DataProvider('permanentRedirectProvider')]
+    #[TestDox('should permanently redirect "$original" correctly')]
+    public function test_should_permanent_redirect_old_urls_correctly(string $original, string $target): void
+    {
+        $response = $this->client->request(
+            'GET',
+            ltrim($original, '/'),
+            [
+                'allow_redirects' => ['track_redirects' => true],
+                'http_errors' => false,
+            ],
+        );
+
+        $this->assertEquals('200', $response->getStatusCode());
+        $this->assertStringMatchesFormat(
+            rtrim($this->baseUri, '/') . $target,
+            $response->getHeaderLine('X-Guzzle-Redirect-History'),
+            'Unnecessary redirect chain detected.',
+        );
+        $this->assertEquals(
+            '301',
+            $response->getHeaderLine('X-Guzzle-Redirect-Status-History'),
+            'Unnecessary redirect chain detected.',
+        );
+    }
+
+    public static function permanentRedirectProvider(): array
+    {
+        return [
+            ['/art/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
+            ['/art/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
+            ['/assets/homepage-robot.avif', '/assets/robot-in-a-poncho.%d.avif'],
+            ['/assets/homepage-robot.png', '/assets/robot-in-a-poncho.%d.png'],
+            ['/assets/homepage-robot.webp', '/assets/robot-in-a-poncho.%d.webp'],
+            ['/assets/homepage-robot@2x.avif', '/assets/robot-in-a-poncho@2x.%d.avif'],
+            ['/assets/homepage-robot@2x.png', '/assets/robot-in-a-poncho@2x.%d.png'],
+            ['/assets/homepage-robot@2x.webp', '/assets/robot-in-a-poncho@2x.%d.webp'],
+            ['/assets/icon-check-link.svg', '/assets/icon-check.%d.svg'],
+            ['/assets/icon-copy-link.svg', '/assets/icon-copy.%d.svg'],
+            ['/assets/icon-facebook-link.svg', '/assets/icon-facebook.%d.svg'],
+            ['/assets/icon-twitter-link.svg', '/assets/icon-twitter.%d.svg'],
+            ['/assets/icons-chevrons.svg', '/assets/icon-chevron.%d.svg'],
+            ['/assets/og.png', '/assets/opengraph.%d.png'],
+            ['/crap/', '/misc/'],
+            ['/crap/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
+            ['/crap/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
+            ['/crap/FlippyWindowVertical.zip', '/projects/flippywindow/flippywindow-64-bit.zip'],
+            ['/crap/photoshop-notes.html', '/notes/#adobe-creative-cloud'],
+            ['/crap/synology-notes.html', '/notes/#synology-diskstation'],
+            ['/flippywindow/', '/projects/flippywindow/'],
+            ['/flippywindow/flippywindow-32-bit.zip', '/projects/flippywindow/flippywindow-32-bit.zip'],
+            ['/flippywindow/flippywindow-64-bit.zip', '/projects/flippywindow/flippywindow-64-bit.zip'],
+            ['/flippywindow/opengraph.png', '/projects/flippywindow/opengraph.%d.png'],
+            ['/flippywindow/screenshot.png', '/projects/flippywindow/screenshot.%d.png'],
+            ['/git/?p=bastardsnake.git', '/git/#bastardsnake'],
+            ['/git/?p=brainfuck.git', '/git/#brainfuck'],
+            ['/git/?p=flippywindow.git', '/git/#flippywindow'],
+            ['/git/?p=knr-solutions.git', '/git/#knr-solutions'],
+            ['/git/?p=nfsnapi-python.git', '/git/#nfsnapi-python'],
+            ['/git/?p=notes.git', '/git/#notes'],
+            ['/git/?p=obtaincornhoop.git', '/git/#obtaincornhoop'],
+            ['/git/?p=robotinaponcho.git', '/git/#robotinaponcho'],
+            ['/git/index.php', '/git/'],
+            ['/git/robotinaponcho.git', '/git/#robotinaponcho'],
+            ['/notes/books', '/notes/completed-books'],
+            ['/notes/books-2021', '/notes/completed-books'],
+            ['/notes/books-2021.html', '/notes/completed-books'],
+            ['/notes/books.html', '/notes/completed-books'],
+            ['/notes/breadmaking', '/notes/white-loaf-recipe'],
+            ['/notes/breadmaking.html', '/notes/white-loaf-recipe'],
+            ['/notes/computer', '/notes/ubuntu-desktop-setup'],
+            ['/notes/computer.html', '/notes/ubuntu-desktop-setup'],
+            ['/notes/development-environment', '/notes/ubuntu-desktop-setup'],
+            ['/notes/development-environment.html', '/notes/ubuntu-desktop-setup'],
+            ['/notes/photoshop', '/notes/#adobe-creative-cloud'],
+            ['/notes/photoshop.html', '/notes/#adobe-creative-cloud'],
+            ['/notes/phpstorm', '/notes/#jetbrains-ides'],
+            ['/notes/phpstorm.html', '/notes/#jetbrains-ides'],
+            ['/notes/procreate', '/notes/#procreate'],
+            ['/notes/procreate.html', '/notes/#procreate'],
+            ['/notes/synology', '/notes/#synology-diskstation'],
+            ['/notes/synology.html', '/notes/#synology-diskstation'],
+            ['/notes/windows', '/notes/ubuntu-desktop-setup'],
+            ['/notes/windows.html', '/notes/ubuntu-desktop-setup'],
+        ];
+    }
+
+    #[DataProvider('goneProvider')]
+    #[TestDox('should return 410 Gone when requesting "$original"')]
+    public function test_should_handle_permanently_unavailable_urls_correctly(string $original): void
+    {
+        $response = $this->client->request(
+            'GET',
+            ltrim($original, '/'),
+            [
+                'allow_redirects' => ['track_redirects' => true],
+                'http_errors' => false,
+            ],
+        );
+
+        $this->assertEquals('410', $response->getStatusCode());
+        $this->assertEquals(
+            '',
+            $response->getHeaderLine('X-Guzzle-Redirect-History'),
+            'Unnecessary redirect chain detected.',
+        );
+    }
+
     public static function goneProvider(): array
     {
         return [
@@ -134,113 +242,5 @@ class RedirectTest extends EndToEndTestCase
             ['/obtaincornhoop/selectnav.min.js'],
             ['/obtaincornhoop/style.css'],
         ];
-    }
-
-    public static function permanentRedirectProvider(): array
-    {
-        return [
-            ['/art/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
-            ['/art/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
-            ['/assets/homepage-robot.avif', '/assets/robot-in-a-poncho.%d.avif'],
-            ['/assets/homepage-robot.png', '/assets/robot-in-a-poncho.%d.png'],
-            ['/assets/homepage-robot.webp', '/assets/robot-in-a-poncho.%d.webp'],
-            ['/assets/homepage-robot@2x.avif', '/assets/robot-in-a-poncho@2x.%d.avif'],
-            ['/assets/homepage-robot@2x.png', '/assets/robot-in-a-poncho@2x.%d.png'],
-            ['/assets/homepage-robot@2x.webp', '/assets/robot-in-a-poncho@2x.%d.webp'],
-            ['/assets/icon-check-link.svg', '/assets/icon-check.%d.svg'],
-            ['/assets/icon-copy-link.svg', '/assets/icon-copy.%d.svg'],
-            ['/assets/icon-facebook-link.svg', '/assets/icon-facebook.%d.svg'],
-            ['/assets/icon-twitter-link.svg', '/assets/icon-twitter.%d.svg'],
-            ['/assets/icons-chevrons.svg', '/assets/icon-chevron.%d.svg'],
-            ['/assets/og.png', '/assets/opengraph.%d.png'],
-            ['/crap/', '/misc/'],
-            ['/crap/colouring-pages-a4.pdf', '/misc/colouring-pages-a4.pdf'],
-            ['/crap/colouring-pages-us.pdf', '/misc/colouring-pages-us.pdf'],
-            ['/crap/FlippyWindowVertical.zip', '/projects/flippywindow/flippywindow-64-bit.zip'],
-            ['/crap/photoshop-notes.html', '/notes/#adobe-creative-cloud'],
-            ['/crap/synology-notes.html', '/notes/#synology-diskstation'],
-            ['/flippywindow/', '/projects/flippywindow/'],
-            ['/flippywindow/flippywindow-32-bit.zip', '/projects/flippywindow/flippywindow-32-bit.zip'],
-            ['/flippywindow/flippywindow-64-bit.zip', '/projects/flippywindow/flippywindow-64-bit.zip'],
-            ['/flippywindow/opengraph.png', '/projects/flippywindow/opengraph.%d.png'],
-            ['/flippywindow/screenshot.png', '/projects/flippywindow/screenshot.%d.png'],
-            ['/git/?p=bastardsnake.git', '/git/#bastardsnake'],
-            ['/git/?p=brainfuck.git', '/git/#brainfuck'],
-            ['/git/?p=flippywindow.git', '/git/#flippywindow'],
-            ['/git/?p=knr-solutions.git', '/git/#knr-solutions'],
-            ['/git/?p=nfsnapi-python.git', '/git/#nfsnapi-python'],
-            ['/git/?p=notes.git', '/git/#notes'],
-            ['/git/?p=obtaincornhoop.git', '/git/#obtaincornhoop'],
-            ['/git/?p=robotinaponcho.git', '/git/#robotinaponcho'],
-            ['/git/index.php', '/git/'],
-            ['/git/robotinaponcho.git', '/git/#robotinaponcho'],
-            ['/notes/books', '/notes/completed-books'],
-            ['/notes/books-2021', '/notes/completed-books'],
-            ['/notes/books-2021.html', '/notes/completed-books'],
-            ['/notes/books.html', '/notes/completed-books'],
-            ['/notes/breadmaking', '/notes/white-loaf-recipe'],
-            ['/notes/breadmaking.html', '/notes/white-loaf-recipe'],
-            ['/notes/computer', '/notes/ubuntu-desktop-setup'],
-            ['/notes/computer.html', '/notes/ubuntu-desktop-setup'],
-            ['/notes/development-environment', '/notes/ubuntu-desktop-setup'],
-            ['/notes/development-environment.html', '/notes/ubuntu-desktop-setup'],
-            ['/notes/photoshop', '/notes/#adobe-creative-cloud'],
-            ['/notes/photoshop.html', '/notes/#adobe-creative-cloud'],
-            ['/notes/phpstorm', '/notes/#jetbrains-ides'],
-            ['/notes/phpstorm.html', '/notes/#jetbrains-ides'],
-            ['/notes/procreate', '/notes/#procreate'],
-            ['/notes/procreate.html', '/notes/#procreate'],
-            ['/notes/synology', '/notes/#synology-diskstation'],
-            ['/notes/synology.html', '/notes/#synology-diskstation'],
-            ['/notes/windows', '/notes/ubuntu-desktop-setup'],
-            ['/notes/windows.html', '/notes/ubuntu-desktop-setup'],
-        ];
-    }
-
-    #[DataProvider('permanentRedirectProvider')]
-    #[TestDox('should permanently redirect "$original" correctly')]
-    public function test_should_permanent_redirect_old_urls_correctly(string $original, string $target): void
-    {
-        $response = $this->client->request(
-            'GET',
-            ltrim($original, '/'),
-            [
-                'allow_redirects' => ['track_redirects' => true],
-                'http_errors' => false,
-            ],
-        );
-
-        $this->assertEquals('200', $response->getStatusCode());
-        $this->assertStringMatchesFormat(
-            rtrim($this->baseUri, '/') . $target,
-            $response->getHeaderLine('X-Guzzle-Redirect-History'),
-            'Unnecessary redirect chain detected.',
-        );
-        $this->assertEquals(
-            '301',
-            $response->getHeaderLine('X-Guzzle-Redirect-Status-History'),
-            'Unnecessary redirect chain detected.',
-        );
-    }
-
-    #[DataProvider('goneProvider')]
-    #[TestDox('should return 410 Gone when requesting "$original"')]
-    public function test_should_handle_permanently_unavailable_urls_correctly(string $original): void
-    {
-        $response = $this->client->request(
-            'GET',
-            ltrim($original, '/'),
-            [
-                'allow_redirects' => ['track_redirects' => true],
-                'http_errors' => false,
-            ],
-        );
-
-        $this->assertEquals('410', $response->getStatusCode());
-        $this->assertEquals(
-            '',
-            $response->getHeaderLine('X-Guzzle-Redirect-History'),
-            'Unnecessary redirect chain detected.',
-        );
     }
 }
