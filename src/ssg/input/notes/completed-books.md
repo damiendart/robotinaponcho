@@ -19,13 +19,15 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2026
 
-| Title and Author                            | Rating |
-|:--------------------------------------------|:-------|
-| [The Wall][] by Marlen Haushofer            | ★★★★☆  |
-| [The Hunger Games][] by Suzanne Collins     | ★★★☆☆  |
-| [Station Eleven][] by Emily St. John Mandel | ★★★☆☆  |
-| [Eon][] by Greg Bear                        | ★★☆☆☆  |
+| Title and Author                                   | Rating |
+|:---------------------------------------------------|:-------|
+| [Roadside Picnic][] by Arkady and Boris Strugatsky | ★★☆☆☆  |
+| [The Wall][] by Marlen Haushofer                   | ★★★★☆  |
+| [The Hunger Games][] by Suzanne Collins            | ★★★☆☆  |
+| [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
+| [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [Roadside Picnic]: <https://en.wikipedia.org/wiki/Roadside_Picnic>
   [The Wall]: <https://en.wikipedia.org/wiki/The_Wall_(novel)>
   [The Hunger Games]: <https://en.wikipedia.org/wiki/The_Hunger_Games_(novel)>
   [Station Eleven]: <https://en.wikipedia.org/wiki/Station_Eleven>
