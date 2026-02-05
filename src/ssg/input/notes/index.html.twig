@@ -31,12 +31,11 @@ title: 'Notes'
         feed</a> is also available.</p>
 
     <h2>Topics</h2>
-    <ul class="cluster">
+    <ul class="u-cluster">
         {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
             <li><a class="call-to-action-link call-to-action-link--smaller" href="#{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</a></li>
         {% endfor %}
     </ul>
-
 
     {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
         <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>

@@ -5,7 +5,6 @@
 @use "../functions";
 @use "../variables";
 
-.cluster,
 .u-cluster {
   $default-gap: variables.$base-line-height * 0.375;
 
