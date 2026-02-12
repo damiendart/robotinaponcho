@@ -21,12 +21,14 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [There Is No Antimemetics Division (V1)][] by qntm | ★★★★☆  |
 | [Roadside Picnic][] by Arkady and Boris Strugatsky | ★★☆☆☆  |
 | [The Wall][] by Marlen Haushofer                   | ★★★★☆  |
 | [The Hunger Games][] by Suzanne Collins            | ★★★☆☆  |
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [There Is No Antimemetics Division (V1)]: <https://qntm.org/scp>
   [Roadside Picnic]: <https://en.wikipedia.org/wiki/Roadside_Picnic>
   [The Wall]: <https://en.wikipedia.org/wiki/The_Wall_(novel)>
   [The Hunger Games]: <https://en.wikipedia.org/wiki/The_Hunger_Games_(novel)>
