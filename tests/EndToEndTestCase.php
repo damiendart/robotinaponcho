@@ -20,7 +20,7 @@ abstract class EndToEndTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $this->baseUri = getenv('END_TO_END_TESTS_BASE_URI');
+        $this->baseUri = rtrim(getenv('END_TO_END_TESTS_BASE_URI'), '/') . '/';
         $this->client = new Client(
             [
                 'base_uri' => $this->baseUri,
