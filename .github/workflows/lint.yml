@@ -21,7 +21,7 @@ jobs:
       - name: 'Set up Node environment'
         uses: 'actions/setup-node@v5'
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 'Set up PHP environment'
         uses: 'shivammathur/setup-php@v2'
