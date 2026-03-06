@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [The Great Mathematical Problems][] by Ian Stewart | ★★☆☆☆  |
 | [There Is No Antimemetics Division (V1)][] by qntm | ★★★★☆  |
 | [Roadside Picnic][] by Arkady and Boris Strugatsky | ★★☆☆☆  |
 | [The Wall][] by Marlen Haushofer                   | ★★★★☆  |
@@ -28,6 +29,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [The Great Mathematical Problems]: <https://en.wikipedia.org/wiki/The_Great_Mathematical_Problems>
   [There Is No Antimemetics Division (V1)]: <https://qntm.org/scp>
   [Roadside Picnic]: <https://en.wikipedia.org/wiki/Roadside_Picnic>
   [The Wall]: <https://en.wikipedia.org/wiki/The_Wall_(novel)>
