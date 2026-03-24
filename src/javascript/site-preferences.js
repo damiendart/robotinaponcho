@@ -29,7 +29,7 @@ class SitePreferencesDialog extends HTMLElement {
                     .keys(themes)
                     .map(
                       (key) => `
-                        <label class="has-input-radio">
+                        <label>
                           <input id="theme-${key}" name="theme" type="radio" value="${key}" ${currentTheme === key ? 'checked' : ''}>
                           <strong>${themes[key]}</strong>
                         </label>
