@@ -42,21 +42,21 @@
     "ext-mbstring": "*",
     "filp/whoops": "^2.18.4",
     "guzzlehttp/guzzle": "^7.10.0",
-    "sentry/sentry": "^4.19.1"
+    "sentry/sentry": "^4.25.0"
   },
   "require-dev": {
     "ext-dom": "*",
-    "friendsofphp/php-cs-fixer": "^3.93.1",
-    "league/commonmark": "^2.8.0",
+    "friendsofphp/php-cs-fixer": "^3.95.1",
+    "league/commonmark": "^2.8.2",
     "michelf/php-smartypants": "^1.8.1",
-    "phpstan/phpstan": "^2.1.38",
-    "phpstan/phpstan-strict-rules": "^2.0.8",
-    "phpunit/phpunit": "^11.5.50",
-    "psalm/phar": "^6.15.0",
+    "phpstan/phpstan": "^2.1.54",
+    "phpstan/phpstan-strict-rules": "^2.0.11",
+    "phpunit/phpunit": "^11.5.55",
+    "psalm/phar": "^6.16.1",
     "roave/security-advisories": "dev-latest",
-    "symfony/yaml": "^7.4.1",
-    "twig/twig": "^3.23.0",
-    "voku/html-min": "^4.5.1"
+    "symfony/yaml": "^7.4.8",
+    "twig/twig": "^3.24.0",
+    "voku/html-min": "^5.0.0"
   },
   "type": "project"
 }
