@@ -14,10 +14,8 @@ This privacy policy covers how this website collects, uses, and
 maintains information collected from users, as well as how third-party
 services are utilised.
 
-**Note**: This privacy policy is regularly reviewed and, if necessary,
-updated. This privacy policy was lasted reviewed on **18/11/24**. We
-encourage you to periodically review this privacy policy to stay
-informed on any changes.
+This privacy policy is regularly reviewed and, if necessary, updated.
+This privacy policy was lasted reviewed on the **2nd May, 2026**.
 
 This website and the way it is run adheres to the [General Data
 Protection Regulation (GDPR)][] (EU) when processing personal data. As
@@ -28,13 +26,11 @@ data controllers, the data subjects are the users of this website.
 
 ## Personal data we collect about you
 
-While browsing this website, no personal data is collected except for
-server access logs, where information from your browser or device is
-collected when you visit this website. This information includes the URL
-accessed, the time of access, the IP address and the browser’s user
-agent. This information is only used for security purposes and to aid
-site issue investigations. All service access logs are automatically
-deleted after 14 days.
+While browsing this website, information from your browser or device is
+stored as part of server access logs. This information includes the URL
+accessed, the time of access, your IP address and the browser’s user
+agent. Server access logs are maintained for security purposes only and
+are automatically deleted after 14 days.
 
 
 ## Cookies, `localStorage`, and tracking services
