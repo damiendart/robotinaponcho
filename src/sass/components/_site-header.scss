@@ -11,7 +11,7 @@
   background: var(--site-header-background);
   box-sizing: border-box;
   color: var(--site-header-foreground);
-  padding-block: variables.$base-line-height;
+  padding: variables.$base-line-height;
   position: relative;
 
   :where(a) {
@@ -55,17 +55,14 @@
           position: relative;
 
           &::after {
-            $width: variables.$base-line-height * 0.25;
-
-            background: currentColor;
-            border-radius: $width;
-            bottom: calc(#{variables.$base-line-height * -0.5} - #{$width * 0.5});
+            background: var(--base-background);
+            bottom: variables.$base-line-height * -1;
             content: "";
             display: block;
-            height: $width;
-            left: calc(50% - #{$width * 0.5});
+            height: variables.$base-line-height * 0.25;
+            left: 0;
             position: absolute;
-            width: $width;
+            width: 100%;
           }
         }
       }

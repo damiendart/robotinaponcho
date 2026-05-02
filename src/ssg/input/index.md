@@ -5,6 +5,7 @@
 
 description: 'Visit the personal website of Damien Dart, a full-time web developer based in South West England.'
 sitemapTitle: 'Homepage'
+mainClasses: 'u-stack__cozy'
 template: '_templates/homepage.html.twig'
 --->
 

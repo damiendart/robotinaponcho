@@ -5,6 +5,7 @@
 #}
 
 {% set metaTitle = metaTitle | default(title) | trim %}
+{% set section = section | default(null) %}
 
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
@@ -54,7 +55,7 @@
         </ul>
         <hr aria-hidden="true">
     </div>
-    <header class="page__header site-header u-content u-stack__cozy">
+    <header class="site-header u-stack__cozy">
         <div class="site-header__container u-content__wider">
             <p class="site-header__title">
                 <a href="/">
@@ -66,8 +67,12 @@
             </p>
             <nav class="site-header__navigation">
                 <ul class="site-header__navigation__list">
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('projects') %} site-header__navigation__list__item--active{% endif %}"><a href="/projects/">Projects</a></li>
-                    <li class="site-header__navigation__list__item{% if section is defined and section is same as('misc') %} site-header__navigation__list__item--active{% endif %}"><a href="/misc/">Misc</a></li>
+                    <li class="site-header__navigation__list__item{% if section is same as('projects') %} site-header__navigation__list__item--active{% endif %}">
+                        <a href="/projects/"{% if urlPath is same as('projects/') %} aria-current="page"{% endif %}>Projects</a>
+                    </li>
+                    <li class="site-header__navigation__list__item{% if section is same as('misc') %} site-header__navigation__list__item--active{% endif %}">
+                        <a href="/misc/"{% if urlPath is same as('misc/') %} aria-current="page"{% endif %}>Miscellaneous</a>
+                    </li>
                     <li class="site-header__navigation__list__item"><a href="mailto:damiendart@pobox.com">Contact</a></li>
                 </ul>
             </nav>
@@ -76,12 +81,10 @@
 
     <hr aria-hidden="true" class="u-stack__cozy">
 
-    <main class="u-content u-stack u-stack__cozy" id="content">
-        <div class="page-header u-content u-stack__xl">
-            {% block heading %}
-                <h1>{{ title | trim | smartypants | widont }}</h1>
-            {% endblock %}
-        </div>
+    <main class="u-content u-stack {{ mainClasses | default("u-stack__xl") }}" id="content">
+        {% block heading %}
+            <h1>{{ title | trim | smartypants | widont }}</h1>
+        {% endblock %}
 
         {% block content %}
             {{ content | raw }}
@@ -90,7 +93,7 @@
 
     <hr aria-hidden="true" class="u-stack__cozy">
 
-    <footer id="footer" class="page__footer site-footer u-stack u-stack__xl">
+    <footer id="footer" class="site-footer u-stack u-stack__xl">
         <div class="site-footer__navigation">
             <ul class="site-footer__navigation__list">
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
