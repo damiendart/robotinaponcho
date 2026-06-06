@@ -17,8 +17,6 @@ use PHPUnit\Framework\Attributes\TestDox;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversNothing]
 #[TestDox('The application')]

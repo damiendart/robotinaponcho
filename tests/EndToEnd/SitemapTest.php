@@ -16,8 +16,6 @@ use PHPUnit\Framework\Attributes\TestDox;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversNothing]
 #[TestDox('When accessing the XML Sitemap, the application')]

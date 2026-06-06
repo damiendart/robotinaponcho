@@ -16,8 +16,6 @@ use PHPUnit\Framework\Attributes\TestDox;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversNothing]
 #[TestDox('When using query strings, the application')]
