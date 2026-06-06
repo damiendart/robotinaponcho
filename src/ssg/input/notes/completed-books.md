@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [Catching Fire][] by Suzanne Collins               | ★★★☆☆  |
 | [A Legacy of Spies][] by John le Carré             | ★★★☆☆  |
 | [The Great Mathematical Problems][] by Ian Stewart | ★★☆☆☆  |
 | [There Is No Antimemetics Division (V1)][] by qntm | ★★★★☆  |
@@ -30,6 +31,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [Catching Fire]: <https://en.wikipedia.org/wiki/Catching_Fire>
   [A Legacy of Spies]: <https://en.wikipedia.org/wiki/A_Legacy_of_Spies>
   [The Great Mathematical Problems]: <https://en.wikipedia.org/wiki/The_Great_Mathematical_Problems>
   [There Is No Antimemetics Division (V1)]: <https://qntm.org/scp>
