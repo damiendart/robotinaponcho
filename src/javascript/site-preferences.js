@@ -3,6 +3,8 @@
 // please refer to the accompanying "LICENCE" file.
 
 class SitePreferencesDialog extends HTMLElement {
+  #ctl = new AbortController();
+
   connectedCallback() {
     let currentTheme = SitePreferencesDialog.getCurrentTheme();
     const themes = {
@@ -67,6 +69,7 @@ class SitePreferencesDialog extends HTMLElement {
             );
         }
       },
+      { signal: this.#ctl.signal },
     );
 
     this.addEventListener(
@@ -74,7 +77,12 @@ class SitePreferencesDialog extends HTMLElement {
       (event) => {
         SitePreferencesDialog.setCurrentTheme(event.target.value);
       },
+      { signal: this.#ctl.signal },
     );
+  }
+
+  disconnectedCallback() {
+    this.#ctl.abort();
   }
 
   static getCurrentTheme() {
