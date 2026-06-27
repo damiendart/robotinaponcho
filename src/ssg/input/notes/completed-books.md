@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [Mockingjay][] by Suzanne Collins                  | ★★☆☆☆  |
 | [Catching Fire][] by Suzanne Collins               | ★★★☆☆  |
 | [A Legacy of Spies][] by John le Carré             | ★★★☆☆  |
 | [The Great Mathematical Problems][] by Ian Stewart | ★★☆☆☆  |
@@ -31,6 +32,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [Mockingjay]: <https://en.wikipedia.org/wiki/Mockingjay>
   [Catching Fire]: <https://en.wikipedia.org/wiki/Catching_Fire>
   [A Legacy of Spies]: <https://en.wikipedia.org/wiki/A_Legacy_of_Spies>
   [The Great Mathematical Problems]: <https://en.wikipedia.org/wiki/The_Great_Mathematical_Problems>
