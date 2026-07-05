@@ -10,44 +10,53 @@
   $s: &;
 
   & > * {
-    --gap: #{variables.$base-line-height * 0.5};
+    --u-stack-gap-multiplier: 0;
 
-    margin-block-start: 0;
-  }
+    margin-block-start: calc(#{variables.$base-line-height} * var(--u-stack-gap-multiplier));
 
-  & > * + * {
-    margin-block-start: var(--gap);
-  }
-
-  & > dl {
-    dd + dt {
-      margin-block-start: var(--gap);
+    & + * {
+      --u-stack-gap-multiplier: 0.5;
     }
   }
 
-  & > :where(* + h3),
-  & > :where(* + img),
-  & > :where(img + *),
-  & > :where(* + &__md),
-  & > :where(&__md + *) {
-    margin-block-start: calc(var(--gap) * 2);
+  & > :where(dd + dt) {
+    --u-stack-gap-multiplier: 0.5;
   }
 
-  & > :where(* + h2),
-  & > :where(* + &__lg),
-  & > :where(&__lg + *) {
-    margin-block-start: calc(var(--gap) * 3);
+  & > :where(
+    * + h3,
+    * + img,
+    * + &__1,
+    img + *,
+    &__1 + *
+  ) {
+    --u-stack-gap-multiplier: 1;
   }
 
-  & > :where(h1 + *),
-  & > :where(* + &__xl),
-  & > :where(&__xl + *) {
-    margin-block-start: calc(var(--gap) * 4);
+  & > :where(
+    * + h2,
+    * + &__1\.5,
+    &__1\.5 + *
+  ) {
+    --u-stack-gap-multiplier: 1.5;
   }
 
-  & > details + details,
-  & > &__cozy + &__cozy {
-    margin-block-start: 0;
+  & > :where(
+    h1 + *,
+    &__2 + *,
+    * + &__2
+  ) {
+    --u-stack-gap-multiplier: 2;
+  }
+
+  & > :where(
+    details + details,
+    dt + dd,
+    &__0 + *,
+    &__cozy + &__cozy,
+    * + &__0
+  ) {
+    --u-stack-gap-multiplier: 0;
   }
 
   &--flex {
@@ -55,7 +64,7 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    & > #{$s}__split {
+    & > :where(#{$s}__split) {
       margin-block-end: auto;
     }
   }

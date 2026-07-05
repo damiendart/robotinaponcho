@@ -41,7 +41,7 @@ class SitePreferencesDialog extends HTMLElement {
                 }
               </fieldset>
             </div>
-            <div class="dialog__footer u-cluster u-stack__md">
+            <div class="dialog__footer u-cluster u-stack__1">
               <button class="button button--subtle button--small" formmethod="dialog" value="cancel">Cancel</button>
               <button class="button button--small">Save changes</button>
             </div>

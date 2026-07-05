@@ -20,5 +20,11 @@
     :where(a) {
       text-decoration-line: none;
     }
+
+    dd {
+      --u-stack-gap-multiplier: 0.5;
+
+      margin-inline-start: 0;
+    }
   }
 }
