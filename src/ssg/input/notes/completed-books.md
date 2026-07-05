@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [Shōgun][] by James Clavell                        | ★★★☆☆  |
 | [Mockingjay][] by Suzanne Collins                  | ★★☆☆☆  |
 | [Catching Fire][] by Suzanne Collins               | ★★★☆☆  |
 | [A Legacy of Spies][] by John le Carré             | ★★★☆☆  |
@@ -32,6 +33,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [Shōgun]: <https://en.wikipedia.org/wiki/Sh%C5%8Dgun_(novel)>
   [Mockingjay]: <https://en.wikipedia.org/wiki/Mockingjay>
   [Catching Fire]: <https://en.wikipedia.org/wiki/Catching_Fire>
   [A Legacy of Spies]: <https://en.wikipedia.org/wiki/A_Legacy_of_Spies>
