@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                   | Rating |
 |:---------------------------------------------------|:-------|
+| [Severance][] by Ling Ma                           | ★★★☆☆  |
 | [Shōgun][] by James Clavell                        | ★★★☆☆  |
 | [Mockingjay][] by Suzanne Collins                  | ★★☆☆☆  |
 | [Catching Fire][] by Suzanne Collins               | ★★★☆☆  |
@@ -33,6 +34,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
 | [Eon][] by Greg Bear                               | ★★☆☆☆  |
 
+  [Severance]: <https://en.wikipedia.org/wiki/Severance_(novel)>
   [Shōgun]: <https://en.wikipedia.org/wiki/Sh%C5%8Dgun_(novel)>
   [Mockingjay]: <https://en.wikipedia.org/wiki/Mockingjay>
   [Catching Fire]: <https://en.wikipedia.org/wiki/Catching_Fire>
