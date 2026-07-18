@@ -19,21 +19,23 @@ somewhere easily available will help me stay motivated.
 
 ## Completed books in 2026
 
-| Title and Author                                   | Rating |
-|:---------------------------------------------------|:-------|
-| [Severance][] by Ling Ma                           | ★★★☆☆  |
-| [Shōgun][] by James Clavell                        | ★★★☆☆  |
-| [Mockingjay][] by Suzanne Collins                  | ★★☆☆☆  |
-| [Catching Fire][] by Suzanne Collins               | ★★★☆☆  |
-| [A Legacy of Spies][] by John le Carré             | ★★★☆☆  |
-| [The Great Mathematical Problems][] by Ian Stewart | ★★☆☆☆  |
-| [There Is No Antimemetics Division (V1)][] by qntm | ★★★★☆  |
-| [Roadside Picnic][] by Arkady and Boris Strugatsky | ★★☆☆☆  |
-| [The Wall][] by Marlen Haushofer                   | ★★★★☆  |
-| [The Hunger Games][] by Suzanne Collins            | ★★★☆☆  |
-| [Station Eleven][] by Emily St. John Mandel        | ★★★☆☆  |
-| [Eon][] by Greg Bear                               | ★★☆☆☆  |
+| Title and Author                                    | Rating |
+|:----------------------------------------------------|:-------|
+| [Seven Brief Lessons on Physics][] by Carlo Rovelli | ★★★☆☆  |
+| [Severance][] by Ling Ma                            | ★★★☆☆  |
+| [Shōgun][] by James Clavell                         | ★★★☆☆  |
+| [Mockingjay][] by Suzanne Collins                   | ★★☆☆☆  |
+| [Catching Fire][] by Suzanne Collins                | ★★★☆☆  |
+| [A Legacy of Spies][] by John le Carré              | ★★★☆☆  |
+| [The Great Mathematical Problems][] by Ian Stewart  | ★★☆☆☆  |
+| [There Is No Antimemetics Division (V1)][] by qntm  | ★★★★☆  |
+| [Roadside Picnic][] by Arkady and Boris Strugatsky  | ★★☆☆☆  |
+| [The Wall][] by Marlen Haushofer                    | ★★★★☆  |
+| [The Hunger Games][] by Suzanne Collins             | ★★★☆☆  |
+| [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
+| [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [Seven Brief Lessons on Physics]: <https://en.wikipedia.org/wiki/Seven_Brief_Lessons_on_Physics>
   [Severance]: <https://en.wikipedia.org/wiki/Severance_(novel)>
   [Shōgun]: <https://en.wikipedia.org/wiki/Sh%C5%8Dgun_(novel)>
   [Mockingjay]: <https://en.wikipedia.org/wiki/Mockingjay>
