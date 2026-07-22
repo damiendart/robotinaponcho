@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                    | Rating |
 |:----------------------------------------------------|:-------|
+| [American War][] by Omar El Akkad                   | ★★★★☆  |
 | [Seven Brief Lessons on Physics][] by Carlo Rovelli | ★★★☆☆  |
 | [Severance][] by Ling Ma                            | ★★★☆☆  |
 | [Shōgun][] by James Clavell                         | ★★★☆☆  |
@@ -35,6 +36,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
 | [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [American War]: <https://en.wikipedia.org/wiki/American_War_%28novel%29>
   [Seven Brief Lessons on Physics]: <https://en.wikipedia.org/wiki/Seven_Brief_Lessons_on_Physics>
   [Severance]: <https://en.wikipedia.org/wiki/Severance_(novel)>
   [Shōgun]: <https://en.wikipedia.org/wiki/Sh%C5%8Dgun_(novel)>
