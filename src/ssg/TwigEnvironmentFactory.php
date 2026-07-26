@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace StaticSiteGenerator;
 
+use League\CommonMark\ConverterInterface;
 use Michelf\SmartyPantsTypographer;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
@@ -17,13 +18,26 @@ use Twig\TwigFilter;
 
 final readonly class TwigEnvironmentFactory
 {
-    public function __construct(private SiteMetadata $siteMetadata) {}
+    /** @param array{'log': LogEntry[]} $data */
+    public function __construct(
+        private ConverterInterface $markdown,
+        private SiteMetadata $siteMetadata,
+        private array $data,
+    ) {}
 
     public function make(LoaderInterface $loader): Environment
     {
         $environment = new Environment(
             $loader,
             ['strict_variables' => true],
+        );
+
+        $environment->addFilter(
+            new TwigFilter(
+                'markdown',
+                fn (string $string): string => $this->markdown->convert($string)->getContent(),
+                ['is_safe' => ['html']],
+            ),
         );
 
         $environment->addFilter(
@@ -72,6 +86,7 @@ final readonly class TwigEnvironmentFactory
         );
 
         $environment->addGlobal('site', $this->siteMetadata->metadata);
+        $environment->addGlobal('data', $this->data);
 
         return $environment;
     }

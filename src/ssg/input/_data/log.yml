@@ -1,0 +1,9 @@
+# Copyright (C) Damien Dart, <damiendart@pobox.com>.
+# This file is distributed under the MIT licence. For more
+# information, please refer to the accompanying "LICENCE" file.
+
+# Use "date -Iseconds -u" to generate timestamps.
+
+- published_at: '2026-07-26T21:31:13+00:00'
+  content: |
+    Hi, there!

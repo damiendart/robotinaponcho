@@ -34,12 +34,18 @@ final readonly class StaticSiteGenerator
         $whoops->pushHandler(new PlainTextHandler());
         $whoops->register();
 
+        $markdownConverter = (new MarkdownConverterFactory())->make();
+
         $this->pipeline = new Pipeline(
             new ProcessFrontMatter(new Parser()),
             new GenerateUrlPaths(),
-            new ProcessMarkdown(new MarkdownConverterFactory()),
+            new ProcessMarkdown($markdownConverter),
             new ProcessTwig(
-                new TwigEnvironmentFactory(new SiteMetadata()),
+                new TwigEnvironmentFactory(
+                    $markdownConverter,
+                    new SiteMetadata(),
+                    $this->getData(),
+                ),
                 $this->inputDirectory,
             ),
             new AddStarRatingsMarkup(),
@@ -83,5 +89,35 @@ final readonly class StaticSiteGenerator
         }
 
         return $inputFiles;
+    }
+
+    /**
+     * @return array{'log': LogEntry[]}
+     */
+    private function getData(): array
+    {
+        /** @var array{array{'content': string, 'published_at': string}} $log */
+        $log = (new Parser())->parseFile(
+            join(
+                DIRECTORY_SEPARATOR,
+                [$this->inputDirectory, '_data', 'log.yml'],
+            ),
+        );
+
+        return [
+            'log' => array_map(
+                static function (array $entry): LogEntry {
+                    $publishedAt = \DateTimeImmutable::createFromFormat(
+                        \DateTimeInterface::ATOM,
+                        $entry['published_at'],
+                    );
+
+                    \assert($publishedAt instanceof \DateTimeImmutable);
+
+                    return new LogEntry($publishedAt, $entry['content']);
+                },
+                $log,
+            ),
+        ];
     }
 }

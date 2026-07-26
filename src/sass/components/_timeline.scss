@@ -1,0 +1,50 @@
+// Copyright (C) Damien Dart, <damiendart@pobox.com>.
+// This file is distributed under the MIT licence. For more information,
+// please refer to the accompanying "LICENCE" file.
+
+@use "sass:math";
+@use "../functions";
+@use "../mixins";
+@use "../variables";
+
+.timeline {
+  $dot-diameter: variables.$base-line-height * 0.375;
+
+  position: relative;
+
+  &::before {
+    background: var(--base-highlight);
+    content: "";
+    display: block;
+    height: 100%;
+    left: ($dot-diameter * 0.5) - variables.$base-one-pixel-in-rem;
+    position: absolute;
+    width: variables.$base-one-pixel-in-rem * 2;
+  }
+
+  &__entry {
+    --timeline-padding-inline-start: #{variables.$base-line-height};
+
+    padding-inline-start: var(--timeline-padding-inline-start);
+
+    @include mixins.breakpoint-up(sm) {
+      --timeline-padding-inline-start: #{variables.$base-line-height * 1.25};
+    }
+
+    &__title {
+      position: relative;
+
+      &::before {
+        background: var(--base-foreground);
+        border-radius: 50%;
+        content: "";
+        display: block;
+        height: $dot-diameter;
+        right: calc(100% + var(--timeline-padding-inline-start) - #{$dot-diameter});
+        position: absolute;
+        top: calc(50% - #{$dot-diameter * 0.5});
+        width: $dot-diameter;
+      }
+    }
+  }
+}

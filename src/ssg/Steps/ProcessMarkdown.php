@@ -12,16 +12,10 @@ namespace StaticSiteGenerator\Steps;
 
 use League\CommonMark\ConverterInterface;
 use StaticSiteGenerator\InputFile;
-use StaticSiteGenerator\MarkdownConverterFactory;
 
 final class ProcessMarkdown extends AbstractStep
 {
-    private ConverterInterface $converter;
-
-    public function __construct(MarkdownConverterFactory $factory)
-    {
-        $this->converter = $factory->make();
-    }
+    public function __construct(private ConverterInterface $converter) {}
 
     protected function processFile(InputFile $inputFile): InputFile
     {
