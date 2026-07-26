@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                    | Rating |
 |:----------------------------------------------------|:-------|
+| [Starter Villain][] by John Scalzi                  | ★★★☆☆  |
 | [American War][] by Omar El Akkad                   | ★★★★☆  |
 | [Seven Brief Lessons on Physics][] by Carlo Rovelli | ★★★☆☆  |
 | [Severance][] by Ling Ma                            | ★★★☆☆  |
@@ -36,6 +37,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
 | [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [Starter Villain]: <https://en.wikipedia.org/wiki/Starter_Villain>
   [American War]: <https://en.wikipedia.org/wiki/American_War_%28novel%29>
   [Seven Brief Lessons on Physics]: <https://en.wikipedia.org/wiki/Seven_Brief_Lessons_on_Physics>
   [Severance]: <https://en.wikipedia.org/wiki/Severance_(novel)>
