@@ -11,7 +11,7 @@
   background: var(--site-header-background);
   box-sizing: border-box;
   color: var(--site-header-foreground);
-  padding: variables.$base-line-height;
+  padding: variables.$base-line-height var(--page-gutter);
   position: relative;
 
   :where(a) {

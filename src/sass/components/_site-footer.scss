@@ -9,7 +9,7 @@
 
 .site-footer {
   text-align: center;
-  padding: var(--site-footer-padding-top, #{variables.$base-line-height * 2}) 0 (variables.$base-line-height * 2);
+  padding: var(--site-footer-padding-top, #{variables.$base-line-height * 2}) var(--page-gutter) (variables.$base-line-height * 2);
   position: relative;
 
   &::before {
