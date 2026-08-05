@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                    | Rating |
 |:----------------------------------------------------|:-------|
+| [’Salem’s Lot][] by Stephen King                    | ★★★★☆  |
 | [Starter Villain][] by John Scalzi                  | ★★★☆☆  |
 | [American War][] by Omar El Akkad                   | ★★★★☆  |
 | [Seven Brief Lessons on Physics][] by Carlo Rovelli | ★★★☆☆  |
@@ -37,6 +38,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
 | [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [’Salem’s Lot]: <https://en.wikipedia.org/wiki/%27Salem%27s_Lot>
   [Starter Villain]: <https://en.wikipedia.org/wiki/Starter_Villain>
   [American War]: <https://en.wikipedia.org/wiki/American_War_%28novel%29>
   [Seven Brief Lessons on Physics]: <https://en.wikipedia.org/wiki/Seven_Brief_Lessons_on_Physics>
