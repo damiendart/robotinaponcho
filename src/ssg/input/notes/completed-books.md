@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                    | Rating |
 |:----------------------------------------------------|:-------|
+| [Project Hail Mary][] by Andy Weir                  | ★★★★☆  |
 | [’Salem’s Lot][] by Stephen King                    | ★★★★☆  |
 | [Starter Villain][] by John Scalzi                  | ★★★☆☆  |
 | [American War][] by Omar El Akkad                   | ★★★★☆  |
@@ -38,6 +39,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
 | [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [Project Hail Mary]: <https://en.wikipedia.org/wiki/Project_Hail_Mary>
   [’Salem’s Lot]: <https://en.wikipedia.org/wiki/%27Salem%27s_Lot>
   [Starter Villain]: <https://en.wikipedia.org/wiki/Starter_Villain>
   [American War]: <https://en.wikipedia.org/wiki/American_War_%28novel%29>
