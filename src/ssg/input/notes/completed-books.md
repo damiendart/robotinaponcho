@@ -21,6 +21,7 @@ somewhere easily available will help me stay motivated.
 
 | Title and Author                                    | Rating |
 |:----------------------------------------------------|:-------|
+| [Oryx and Crake][] by Margaret Atwood               | ★★★☆☆  |
 | [Project Hail Mary][] by Andy Weir                  | ★★★★☆  |
 | [’Salem’s Lot][] by Stephen King                    | ★★★★☆  |
 | [Starter Villain][] by John Scalzi                  | ★★★☆☆  |
@@ -39,6 +40,7 @@ somewhere easily available will help me stay motivated.
 | [Station Eleven][] by Emily St. John Mandel         | ★★★☆☆  |
 | [Eon][] by Greg Bear                                | ★★☆☆☆  |
 
+  [Oryx and Crake]: <https://en.wikipedia.org/wiki/Oryx_and_Crake>
   [Project Hail Mary]: <https://en.wikipedia.org/wiki/Project_Hail_Mary>
   [’Salem’s Lot]: <https://en.wikipedia.org/wiki/%27Salem%27s_Lot>
   [Starter Villain]: <https://en.wikipedia.org/wiki/Starter_Villain>
