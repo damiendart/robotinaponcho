@@ -11,7 +11,7 @@ title: 'Notes'
 {% extends '_templates/base.html.twig' %}
 
 {%
-    set categoryNames = {
+    set categories = {
         'adobe-creative-cloud': 'Adobe Creative Cloud',
         'command-line': 'Command-line',
         'docker': 'Docker',
@@ -32,16 +32,16 @@ title: 'Notes'
 
     <h2>Topics</h2>
     <ul class="u-cluster">
-        {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
-            <li><a class="call-to-action-link call-to-action-link--smaller" href="#{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</a></li>
+        {% for slug, name in categories %}
+            <li><a class="call-to-action-link call-to-action-link--smaller" href="#{{ slug }}">{{ name | smartypants }}</a></li>
         {% endfor %}
     </ul>
 
-    {% for category, notes in inputFiles.collections | filter((v, k) => k != 'notes') %}
-        <h2 id="{{ category }}">{{ categoryNames[category] ?? category | smartypants }}</h2>
+    {% for slug, name in categories %}
+        <h2 id="{{ slug }}">{{ name }}</h2>
 
         <ul class="notes-list u-stack">
-            {% for note in notes | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
+            {% for note in inputFiles.collections[slug] | sort((a, b) => a.metadata.title <=> b.metadata.title) %}
                 {% set verb = note.metadata.git.createdAt == note.metadata.git.updatedAt ? 'Created' : 'Updated' %}
 
                 <li class="notes-list__item">
